@@ -36,11 +36,13 @@ owner:
   avatar: bio-photo.jpg # 160x160 px image for author byline
   disqus-shortname:
 
-
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
+    
 include:
   - .htaccess
-  - ["_pages"]
-  
 exclude:
   - "*.less"
   - "*.sublime-project"
