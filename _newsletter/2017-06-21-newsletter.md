@@ -29,6 +29,7 @@ One thing we in the Solution Architects team at Microsoft get asked for a lot is
 Being able to access your Azure environment and perform admin tasks on the move can be extremely useful especially when traveling. I for one have made use of the new Azure App to shut down a lab environment while in a train station from my phone, very handy when you are looking to not run up your Azure bill. Please check the App out in the app stores, please follow links below for your platform of choice
 
 [Azure App (Google Play Store)](https://play.google.com/store/apps/details?id=com.microsoft.azure)
+
 [Azure App (Apple ITunes Store)](https://itunes.apple.com/us/app/microsoft-azure/id1219013620?mt=8)
 
 
