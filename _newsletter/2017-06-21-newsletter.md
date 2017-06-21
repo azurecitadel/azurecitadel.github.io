@@ -1,7 +1,14 @@
 ---
-title: "Foo Bar Identity"
-excerpt: "Foo Bar design system including logo mark, website design, and branding applications."
+layout: article
+title: Newsletter of the week
+date: 2017-06-21
+modified:
+excerpt: "This is a descruption"
+image:
+  feature:
+  teaser:
+  thumb:
+ads: false  
 ---
 
-##Hello World
-Test
+Stuff
