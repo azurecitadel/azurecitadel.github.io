@@ -26,12 +26,9 @@ gems:
 
 # Site owner
 owner:
-  name:
-  email:
-  twitter:
-  google:
-    ad-client:
-    ad-slot:
+  name: Adam Bohle
+  email: adam.bohle@microsoft.com
+  twitter: https://twitter.com/adambohle
   bio:
   avatar: bio-photo.jpg # 160x160 px image for author byline
   disqus-shortname:
