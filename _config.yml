@@ -37,10 +37,10 @@ owner:
   disqus-shortname:
 
 collections:
-  portfolio:
+  newsletter:
     output: true
     permalink: /:collection/:path/
-    
+
 include:
   - .htaccess
 exclude:
