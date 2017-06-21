@@ -37,6 +37,9 @@ collections:
   newsletter:
     output: true
     permalink: /:collection/:path/
+  workshops:
+    output: true
+    permalink: /:collection/:path/
 
 include:
   - .htaccess
