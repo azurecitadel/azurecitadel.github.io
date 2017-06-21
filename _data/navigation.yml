@@ -1,6 +1,11 @@
 # Site navigation links
 
-- title:
-  url:
-  excerpt:
+- title: Newsletter
+  url: /newsletter/
+  excerpt: "PDU CIM Newsletter"
+  image:
+
+  - title: Workshops
+  url: /workshops/
+  excerpt: "PDU CIM Workshops"
   image:
