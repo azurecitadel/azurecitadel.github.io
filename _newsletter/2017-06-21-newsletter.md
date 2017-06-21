@@ -53,3 +53,20 @@ Microsoft Azure has a huge number of services which you as partners can leverage
 <https://docs.microsoft.com/en-us/azure/networking/networking-virtual-datacenter>
 
 
+
+## Microsoft UK GDPR Hub 
+ 
+
+At the moment it feels like you can’t go from one customer meeting to the next without mention of the looming implications of GDPR. It’s certainly not the first time it’s been raised in this newsletter and I’m sure it won’t be the last. GDPR is going to be a huge change in the way we think about data privacy in the European union. Microsoft is at the forefront of keeping our customers and partners up to date with all the possible resources which we can provide to ensure our customers are compliant with this new set of requirements. The Microsoft UK team recently announced the UK GDPR Portal. This is a great jump of location for information regarding how Azure can help with being GDPR compliant, Microsoft commitment to GDPR and how you can get started with your GDPR compliance journey as everyone comes up to speed with this new set of laws around Data.
+
+[Microsoft UK GDPR Hub Site](https://enterprise.microsoft.com/en-gb/trends/understanding-the-gdpr/)
+
+
+
+## Azure to Azure Site Recovery (A2A) 
+ 
+
+Azure site recovery has long been used to both protect and migrate workloads from on-prem locations. However we have never officially supported protecting or migrating workloads from one Azure region to another. In Preview at the moment, we have available, Azure to Azure Site Recovery. This feature will allow you to protect Azure IaaS services with source and target locations designated as Azure regions. This new feature will allow you to offer your customers complete BC/DR solutions within the Azure IaaS platform. Ensuring minimal downtime should the worst come to the worst.
+
+[Azure to Azure Site Recovery (A2A) Roadmap Information](https://azure.microsoft.com/en-gb/roadmap/azure-site-recovery-between-azure-regions/)
+
