@@ -14,3 +14,8 @@
   url: /about/
   excerpt: "About Page"
   image:
+
+- title: What is the PDU
+  url: /PDU/
+  excerpt: "What is the PDU"
+  image:

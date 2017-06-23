@@ -2,3 +2,18 @@
 
 - title: Microsoft UK PDU CIM Site
   url: https://ukpducim.github.io
+
+  - title: Newsletter
+  url: /newsletter/
+  excerpt: "PDU CIM Newsletter"
+  image:
+
+- title: Workshops
+  url: /workshops/
+  excerpt: "PDU CIM Workshops"
+  image:
+
+- title: About
+  url: /about/
+  excerpt: "About Page"
+  image:
