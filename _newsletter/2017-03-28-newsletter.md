@@ -4,6 +4,7 @@ title: Newsletter 28th March 2017
 date: 2017-03-28
 permalink: /newsletter/
 categories: newsletter
+modified: 2017-06-24 23:07:47
 ---
 
 ## The importance of Digital Partner of Record (DPOR)
