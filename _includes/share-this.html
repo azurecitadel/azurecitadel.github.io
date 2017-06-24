@@ -1,5 +1,8 @@
 <div class="inline-btn">
 	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text={{ page.title | escape | replace:' ','%20' }}&amp;url={{ page.url | replace:'index.html','' | prepend: site.url }}&amp;via={{ site.owner.twitter }}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> {{ site.data.messages.locales[site.locale].share }} Twitter</a>
 	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | replace:'index.html','' | prepend: site.url }}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> {{ site.data.messages.locales[site.locale].share }} Facebook</a>
-	<a class="btn-social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}" class="btn btn--linkedin" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+	<a class="btn-social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}" class="btn btn--linkedin" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i>{{ site.data.messages.locales[site.locale].share }} LinkedIn</a>
 </div><!-- /.share-this -->
+
+	<!-- <a class="btn-social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}" class="btn btn--linkedin" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a> -->
+
