@@ -3,6 +3,7 @@ layout: article
 title: Newsletter 8th May 2017
 date: 2017-05-08
 permalink: /newsletter/
+categories: newsletter
 ---
 
 ## Azure Architecture Center

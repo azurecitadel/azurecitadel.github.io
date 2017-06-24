@@ -3,6 +3,7 @@ layout: article
 title: Newsletter 11th April 2017
 date: 2017-04-11
 permalink: /newsletter/
+categories: newsletter
 ---
 
 ## Updates to the Azure Skills Initiative
