@@ -31,7 +31,7 @@ owner:
   twitter: https://twitter.com/adambohle
   bio:
   avatar: bio-photo.jpg # 160x160 px image for author byline
-  disqus-shortname:
+  disqus-shortname: https-ukpducim-github-io
 
 collections:
   newsletter:
