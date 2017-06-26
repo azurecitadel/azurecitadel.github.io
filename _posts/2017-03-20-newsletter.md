@@ -4,6 +4,10 @@ title: Newsletter 20th March 2017
 date: 2017-03-20
 categories: newsletter
 comments: true
+image:
+  feature:
+  teaser:
+  thumb: Microsoft-Sign-600-321.jpg
 ---
 
 {% include toc.html %}
