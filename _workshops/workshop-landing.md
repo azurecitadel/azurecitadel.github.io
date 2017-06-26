@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: category
 permalink: /workshops/
 title: "Workshops"
 ---
