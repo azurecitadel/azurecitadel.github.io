@@ -10,7 +10,7 @@ comments: true
 
 ## The importance of Digital Partner of Record (DPOR)
 
-
+test
 Digital Partner of record is a tool used within an Azure subscription to identify the Microsoft partner who has a strategic role in assisting customers through their cloud transformation and ongoing consumption of Azure resources. 
 
 As a partner, you are crucial to customer success in selling, implementing, deploying, or managing solutions based on Microsoft cloud services. We strive to ensure every customer has the level of partner support they need to maximize their business outcomes from these solutions. 
