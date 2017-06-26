@@ -6,6 +6,8 @@ categories: newsletter
 comments: true
 ---
 
+{% include toc.html %}
+
 ## The Modern Microsoft Partner Series
  
 

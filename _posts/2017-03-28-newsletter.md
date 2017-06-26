@@ -6,6 +6,8 @@ categories: newsletter
 comments: true
 ---
 
+{% include toc.html %}
+
 ## The importance of Digital Partner of Record (DPOR)
 
 

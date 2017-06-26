@@ -6,6 +6,8 @@ categories: newsletter
 comments: true
 ---
 
+{% include toc.html %}
+
 ## Azure Architecture Center
 
 
