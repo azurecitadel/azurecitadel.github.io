@@ -5,7 +5,7 @@ title: "Workshops"
 ---
 
 <div class="tiles">
-{% for post in site.workshops %}
+{% for post in page.categories.workshops %}
 	{% include post-grid.html %}
 {% endfor %}
 </div><!-- /.tiles -->
