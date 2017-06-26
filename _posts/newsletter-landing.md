@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /newsletter-landing.html
+permalink: /posts/
 title: "Newsletters"
 ---
 
