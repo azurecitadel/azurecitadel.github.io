@@ -3,6 +3,7 @@ layout: article
 title: Newsletter 11th April 2017
 date: 2017-04-11
 permalink: /posts/
+categories: newsletter
 modified: 2017-06-26 09:15:11
 comments: true
 ---
