@@ -6,6 +6,6 @@ title: "Workshops"
 
 <div class="tiles">
 {% for post in site.categories.workshops %}
-	{% include post-list.html %}
+	{% include post-grid.html %}
 {% endfor %}
 </div><!-- /.tiles -->
