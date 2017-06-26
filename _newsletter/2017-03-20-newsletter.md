@@ -4,7 +4,8 @@ title: Newsletter 20th March 2017
 date: 2017-03-20
 permalink: /newsletter/
 categories: newsletter
-modified: 2017-06-24 23:07:09
+modified: 2017-06-26 09:14:53
+comments: true
 ---
 
 ## Azure Learning Resources

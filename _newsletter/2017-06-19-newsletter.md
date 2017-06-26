@@ -4,7 +4,8 @@ title: Newsletter 19th June 2017
 date: 2017-06-21
 permalink: /newsletter/
 categories: newsletter
-modified: 2017-06-24 23:08:43
+modified: 2017-06-26 09:15:34
+comments: true
 ---
 
 ## Azure Roadmap Site

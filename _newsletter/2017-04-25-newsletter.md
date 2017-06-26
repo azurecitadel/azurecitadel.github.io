@@ -4,7 +4,8 @@ title: Newsletter 25th April 2017
 date: 2017-04-25
 permalink: /newsletter/
 categories: newsletter
-modified: 2017-06-24 23:08:13
+modified: 2017-06-26 09:15:17
+comments: true
 ---
 
 ## The Modern Microsoft Partner Series
