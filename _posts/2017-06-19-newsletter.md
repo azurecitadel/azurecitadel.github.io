@@ -8,6 +8,8 @@ modified: 2017-06-26 09:15:34
 comments: true
 ---
 
+{% include toc.html %}
+
 ## Azure Roadmap Site
  
 
