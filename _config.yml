@@ -43,8 +43,8 @@ collections:
 
 include:
   - .htaccess
-  ["_pdu"]
-  ["_workshops"]
+  - "_pdu"
+  - "_workshops"
 exclude:
   - "*.less"
   - "*.sublime-project"
