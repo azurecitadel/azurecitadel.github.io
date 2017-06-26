@@ -2,7 +2,6 @@
 layout: article
 title: Newsletter 25th April 2017
 date: 2017-04-25
-permalink: /posts/
 categories: newsletter
 collection: newsletter
 comments: true
