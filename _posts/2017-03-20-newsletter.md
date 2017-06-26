@@ -2,7 +2,7 @@
 layout: article
 title: Newsletter 20th March 2017
 date: 2017-03-20
-permalink: /newsletter/
+permalink: /posts/
 categories: newsletter
 modified: 2017-06-26 09:14:53
 comments: true
