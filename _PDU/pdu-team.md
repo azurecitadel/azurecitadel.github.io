@@ -11,4 +11,4 @@ image:
   thumb:
 ---
 
-Test
+Awaiting Content
