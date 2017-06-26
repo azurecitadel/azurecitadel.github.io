@@ -1,6 +1,6 @@
 ---
 layout: article
-permalink: /posts/
+categories: newsletter
 title: "Newsletters"
 ---
 
