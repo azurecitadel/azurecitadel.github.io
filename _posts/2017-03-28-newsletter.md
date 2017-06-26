@@ -4,6 +4,10 @@ title: Newsletter 28th March 2017
 date: 2017-03-28
 categories: newsletter
 comments: true
+image:
+  feature: 
+  teaser: Microsoft-Sign-600-321.jpg
+  thumb: 
 ---
 
 {% include toc.html %}

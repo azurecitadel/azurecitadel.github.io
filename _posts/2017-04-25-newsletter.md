@@ -4,6 +4,10 @@ title: Newsletter 25th April 2017
 date: 2017-04-25
 categories: newsletter
 comments: true
+image:
+  feature: 
+  teaser: Microsoft-Sign-600-321.jpg
+  thumb: 
 ---
 
 {% include toc.html %}
