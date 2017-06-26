@@ -3,7 +3,6 @@ layout: article
 title: Newsletter 8th May 2017
 date: 2017-05-08
 permalink: /posts/
-categories: newsletter
 modified: 2017-06-26 09:15:40
 comments: true
 ---

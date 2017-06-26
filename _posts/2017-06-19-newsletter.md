@@ -3,7 +3,6 @@ layout: article
 title: Newsletter 19th June 2017
 date: 2017-06-21
 permalink: /posts/
-categories: newsletter
 modified: 2017-06-26 09:15:34
 comments: true
 ---
