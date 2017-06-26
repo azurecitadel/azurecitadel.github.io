@@ -5,8 +5,8 @@ date: 2017-03-20
 categories: newsletter
 comments: true
 image:
-  feature: Microsoft-Sign-600-321.jpg
-  teaser:
+  feature: 
+  teaser: Microsoft-Sign-600-321.jpg
   thumb: 
 ---
 
