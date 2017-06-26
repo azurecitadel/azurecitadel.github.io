@@ -17,7 +17,6 @@ sass:
 permalink: /:categories/:year/:month/:day/:title.html
 kramdown:
   toc_levels: 1..2
-  parse_block_html: true
 highlighter: rouge
 gems:
   - jekyll-sitemap
