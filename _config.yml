@@ -44,7 +44,6 @@ collections:
 include:
   - .htaccess
   ["_pdu"]
-  ["_pages"]
   ["_workshops"]
 exclude:
   - "*.less"
