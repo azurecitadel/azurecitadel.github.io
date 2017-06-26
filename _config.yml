@@ -47,6 +47,7 @@ include:
   - "_pdu"
   - "_workshops"
   - "_posts"
+  - "_blogs"
 exclude:
   - "*.less"
   - "*.sublime-project"

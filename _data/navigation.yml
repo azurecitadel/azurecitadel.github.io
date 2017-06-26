@@ -10,6 +10,11 @@
   excerpt: "PDU CIM Workshops"
   image:
 
+- title: PDU Blog
+  url: /blog/
+  excerpt: "PDU Blogs"
+  image:
+
 - title: What is the PDU
   url: /pdu/
   excerpt: "What is the PDU"
