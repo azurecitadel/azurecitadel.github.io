@@ -45,6 +45,7 @@ include:
   - .htaccess
   - "_pdu"
   - "_workshops"
+  - "_posts"
 exclude:
   - "*.less"
   - "*.sublime-project"
