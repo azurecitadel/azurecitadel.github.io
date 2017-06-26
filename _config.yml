@@ -14,7 +14,7 @@ feed:
 sass:
   sass_dir: _sass
   style: compressed
-permalink: /:categories/:title/
+permalink: /:categories/:year/:month/:day/:title.html
 kramdown:
   toc_levels: 1..2
   parse_block_html: true
