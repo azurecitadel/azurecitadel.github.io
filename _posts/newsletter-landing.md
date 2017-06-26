@@ -8,4 +8,4 @@ title: "Newsletters"
 {% for post in site.posts %}
 	{% include post-list-bullets.html %}
 {% endfor %}
-</div>
+</div><!-- /.tiles -->
