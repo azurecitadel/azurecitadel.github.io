@@ -3,7 +3,6 @@ layout: article
 title: Newsletter 28th March 2017
 date: 2017-03-28
 categories: newsletter
-collection: newsletter
 comments: true
 ---
 

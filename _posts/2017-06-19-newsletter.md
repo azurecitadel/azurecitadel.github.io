@@ -3,7 +3,6 @@ layout: article
 title: Newsletter 19th June 2017
 date: 2017-06-21
 categories: newsletter
-collection: newsletter
 comments: true
 ---
 

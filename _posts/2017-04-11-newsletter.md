@@ -3,7 +3,6 @@ layout: article
 title: Newsletter 11th April 2017
 date: 2017-04-11
 categories: newsletter
-collection: newsletter
 comments: true
 ---
 

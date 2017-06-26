@@ -3,7 +3,6 @@ layout: article
 title: Newsletter 8th May 2017
 date: 2017-05-08
 categories: newsletter
-collection: newsletter
 comments: true
 ---
 
