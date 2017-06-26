@@ -4,6 +4,7 @@ title: Newsletter 8th May 2017
 date: 2017-05-08
 categories: newsletter
 comments: true
+author: Adam_Bohle
 image:
   feature: 
   teaser: Microsoft-Sign-600-321.jpg
