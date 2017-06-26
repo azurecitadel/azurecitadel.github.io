@@ -3,6 +3,7 @@ layout: article
 title: Newsletter 20th March 2017
 date: 2017-03-20
 categories: newsletter
+tags: newsletter
 comments: true
 author: Adam_Bohle
 image:
