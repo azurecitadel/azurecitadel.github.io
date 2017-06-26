@@ -34,14 +34,6 @@ owner:
   avatar: abohle-bio.jpg # 160x160 px image for author byline
   disqus-shortname: https-ukpducim-github-io
 
-collections:
-  newsletter:
-    output: true
-    permalink: /:collection/:path/
-  workshops:
-    output: true
-    permalink: /:collection/:path/
-
 include:
   - .htaccess
   - "_pdu"
