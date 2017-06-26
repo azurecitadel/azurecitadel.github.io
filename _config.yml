@@ -30,7 +30,7 @@ owner:
   email: adam.bohle@microsoft.com
   twitter: https://twitter.com/adambohle
   bio:
-  avatar: bio-photo.jpg # 160x160 px image for author byline
+  avatar: abohle-bio.jpg # 160x160 px image for author byline
   disqus-shortname: https-ukpducim-github-io
 
 collections:
