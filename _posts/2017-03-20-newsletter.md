@@ -84,6 +84,7 @@ To save your seat for Cloud Infrastructure advanced workloads workshop, please R
 In this section we will cover off useful learnings from the field which have arisen from working with multiple PDU partners on Cloud Infrastructure Management practice activities
 
 **Correctly Power Off VMs**
+
 The question of correctly powering off VMs in Azure has arisen on many occasions. Please be aware that powering off the VM from within the Guest OS will no “deallocate” the VM from the Azure infrastructure, so even though the VM is powered off, you will still be charged to your subscription as if the VM were still running. Chris Pietschmann over at buildazure.com wrote a recent article on this which is worth checking out;
 
 <https://buildazure.com/2017/03/16/properly-shutdown-azure-vm-to-save-money/>
