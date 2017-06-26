@@ -4,7 +4,7 @@ title: Newsletter 25th April 2017
 date: 2017-04-25
 permalink: /posts/
 categories: newsletter
-modified: 2017-06-26 09:15:17
+collection: newsletter
 comments: true
 ---
 
