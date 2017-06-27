@@ -1,9 +1,9 @@
 ---
 layout: article
-title: Meet the Team
-date: 2017-06-26
-categories: pduteam
-permalink: /pdu/
+title: PDU Team Blog
+date: 2017-06-27
+categories: pdublog
+permalink: /pdublog/
 excerpt:
 author: Adam_Bohle
 image:
