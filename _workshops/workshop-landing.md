@@ -1,7 +1,7 @@
 ---
 layout: archive
-permalink: /posts/
-title: "Newsletters"
+permalink: /workshops/
+title: "Workshops"
 ---
 
 <div class="tiles">
