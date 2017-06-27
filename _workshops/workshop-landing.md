@@ -5,7 +5,7 @@ title: "Workshops"
 ---
 
 <div class="tiles">
-{% for post in site.posts %}
+{% for workshop in site.workshops %}
 	{% include post-list.html %}
 {% endfor %}
 </div><!-- /.tiles -->
