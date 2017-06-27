@@ -53,6 +53,7 @@ include:
   - "_workshops"
   - "_posts"
   - "_blogs"
+  - "_landingpages"
 exclude:
   - "*.less"
   - "*.sublime-project"
