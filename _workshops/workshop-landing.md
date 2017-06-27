@@ -1,11 +1,11 @@
 ---
-layout: category
-permalink: /workshops/
-title: "Workshops"
+layout: archive
+permalink: /posts/
+title: "Newsletters"
 ---
 
 <div class="tiles">
-{% for post in site.categories[workshops] %}
- <li><span>{{ post.date | date_to_string }}</span> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
+{% for post in site.posts %}
+	{% include post-list.html %}
 {% endfor %}
 </div><!-- /.tiles -->
