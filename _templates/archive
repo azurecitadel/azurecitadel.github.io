@@ -5,7 +5,7 @@ date: {{ date }}
 modified:
 excerpt:
 image:
-  feature:
+  feature: DataCentre2.jpg
   teaser:
   thumb:
 ---
