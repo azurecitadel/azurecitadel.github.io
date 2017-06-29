@@ -2,6 +2,8 @@
 layout: archive
 permalink: /
 title: "Latest Posts"
+image:
+  feature: DataCentre2.jpg
 ---
 
 <div class="tiles">
