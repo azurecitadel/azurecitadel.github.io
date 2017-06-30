@@ -8,7 +8,7 @@ comments: true
 author: Adam_Bohle
 image:
   feature: 
-  teaser: Microsoft-Sign-600-321.jpg
+  teaser: Newsletter_Teaser.jpg
   thumb: 
 ---
 
