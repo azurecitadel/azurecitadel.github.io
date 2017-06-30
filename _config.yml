@@ -2,8 +2,8 @@
 
 title: "Microsoft UK PDU"
 description: "This is a site for the UK Cloud Infra and Management Team"
-logo: # 120x120 px default image used for Twitter summary card
-teaser: # 400x250 px default teaser image used in image archive grid
+logo: MSLogo.jpg
+teaser: MSLogo.jpg
 locale: en
 timezone: Europe/London
 url: https://ukpducim.github.io
