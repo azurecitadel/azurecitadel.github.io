@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Workshop Pre-requisites
+title: Workshop Pre-Requisites
 date: 2017-07-04
 categories: workshop
 permalink: /prereqs/
