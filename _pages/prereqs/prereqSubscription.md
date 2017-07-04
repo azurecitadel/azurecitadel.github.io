@@ -11,7 +11,7 @@ image:
   teaser: Education.jpg
   thumb: 
 ---
-All of the workshops require a working Azure subscription.  Ensure that you have one, selecting from one of the following options:
+All of the workshops require a working Azure subscription.  Ensure that you have one of the following options enabled and verified:
 * Visual Studio Subscription
 * Internal User Rights
 * Free Trial
@@ -20,7 +20,7 @@ All of the workshops require a working Azure subscription.  Ensure that you have
 
 The Visual Studio Enterprise subscription is the replacement for MSDN subscriptions, and should only be used for test/dev scenarios.  A Microsoft partner with the Cloud Platform competency receives a number of Visual Studio 2017 Enterprise with MSDN subscriptions:
 
-Cloud Platform Competency | Visual Studio Subscriptions
+**Cloud Platform Competency** | **Visual Studio Subscriptions**
 Silver | 10
 Gold | 35
 
@@ -39,7 +39,7 @@ No credit card is required for the activation.  Your subscription will be disabl
 
 Microsoft Cloud Platform partners are also entitled to [internal usage rights](https://azure.microsoft.com/en-us/pricing/member-offers/mpn-benefits/) Azure credits.  
 
-Cloud Platform Competency | Internal Usage Rights
+**Cloud Platform Competency** | **Internal Usage Rights**
 Silver |$6,100
 Gold | $12,100
 
