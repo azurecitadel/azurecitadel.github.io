@@ -17,7 +17,7 @@ image:
 ## Azure Learning Resources
  
 
-Useful information in the subject of learning new skills on Azure. ADAM EDIT
+Useful information in the subject of learning new skills on Azure.
  
 # Azure Learning Paths
  

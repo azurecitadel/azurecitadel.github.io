@@ -18,7 +18,14 @@ Adam_Raffe:
     name: Guy Gregory
     email: Guy.Gregory@microsoft.com
     avatar: guy.jpg
+<<<<<<< HEAD
 Andrew_Bourne:
     name: Andrew Bourne
     email: Andrew.Bourne@microsoft.com
     avatar: ATB.jpg
+=======
+Ben_Coleman:
+    name: Ben Coleman
+    email: ben.coleman@microsoft.com
+    avatar: ben.jpg
+>>>>>>> 16d0bc4b4a63094097be887911f11321fffd8571
