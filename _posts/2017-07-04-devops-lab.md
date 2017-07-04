@@ -6,7 +6,7 @@ categories: workshops
 author: Ben_Coleman
 image:
   feature: 
-  teaser: 
+  teaser: Education.jpg
   thumb: 
 comments: true
 ---
