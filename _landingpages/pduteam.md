@@ -14,8 +14,6 @@ image:
 
 Welcome to the Azure Practice Development Unit (PDU) - our remit is to grow partner capacity & capabilities in the UK channel ecosystem to drive Azure consumption. We are aligned by 4 key workload areas (Cloud & Infrastructure Management, Cloud Application Development, Data Platform & Analytics and Enterprise Mobility & Security), with the intention of increasing partner skills in order to drive and scale Azure opportunities.
 
-This site is focused on Cloud Infrastructure & Management.
-
 As part of your engagement with the PDU, a Cloud Solution Architect (CSA) will be assigned to work with you. What can you expect from your CSA? We will typically work with you in the following areas:
 
 * Provide & deliver tailored enablement workshops to ensure your teams have all the Azure skills they need.
