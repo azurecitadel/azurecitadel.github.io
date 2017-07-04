@@ -6,7 +6,7 @@ logo: MSLogo.jpg
 teaser: MSLogo.jpg
 locale: en
 timezone: Europe/London
-url: https://ukpducim.github.io
+url: https://ukpdu.github.io
 feed:
   path: atom.xml
 
@@ -45,7 +45,7 @@ owner:
   twitter: https://twitter.com/adambohle
   bio:
   avatar: abohle-bio.jpg # 160x160 px image for author byline
-  disqus-shortname: https-ukpducim-github-io
+  disqus-shortname: https-ukpdu-github-io
 
 include:
   - .htaccess
