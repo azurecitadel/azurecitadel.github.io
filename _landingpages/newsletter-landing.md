@@ -2,6 +2,10 @@
 layout: archive
 permalink: /posts/
 title: "Newsletters"
+image:
+  feature: Newsletter_Feature.jpg
+  teaser:
+  thumb:
 ---
 
 <div class="tiles">
