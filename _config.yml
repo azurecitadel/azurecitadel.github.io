@@ -37,6 +37,15 @@ defaults:
       comments: true
       share: true
       related: true
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      comments: true
+      share: true
 
 # Site owner
 owner:
@@ -52,6 +61,7 @@ include:
   - "_pdu"
   - "_workshops"
   - "_posts"
+  - "_pages"
   - "_blogs"
   - "_landingpages"
 exclude:

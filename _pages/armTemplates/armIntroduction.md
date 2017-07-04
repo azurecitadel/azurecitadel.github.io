@@ -2,10 +2,11 @@
 layout: article
 title: Authoring ARM Templates
 date: 2017-07-04
-categories: workshop
+categories: null
+permalink: /armtemplates/introduction/
 tags: [authoring, arm, workshop, hackathon, lab, template]
 comments: true
-author: Richard_Cheney
+author: Richard_Cheney`
 image:
   feature: 
   teaser: Newsletter_Teaser.jpg
@@ -18,4 +19,4 @@ Introduction to the Authoring ARM Templates workshop.
 
 ## Introduction
  
-This appears to be the ones that might be working..
+This appears to be the ones that might be working...
