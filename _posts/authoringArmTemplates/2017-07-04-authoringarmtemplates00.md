@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Authoring whatever
+title: Authoring ARM Templates
 date: 2017-07-04
 categories: workshop
 tags: [authoring, arm, workshop, hackathon, lab, template]
@@ -11,9 +11,11 @@ image:
   teaser: Newsletter_Teaser.jpg
   thumb: 
 ---
+Introduction to the Authoring ARM Templates workshop.
+
 
 {% include toc.html %}
 
-## I am a test
+## Introduction
  
-And I may be deleted by the end of the week.
+This appears to be the ones that might be working..
