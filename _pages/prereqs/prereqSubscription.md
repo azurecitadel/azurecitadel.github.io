@@ -11,6 +11,10 @@ image:
   teaser: Education.jpg
   thumb: 
 ---
+All of the workshops require a working Azure subscription.  Ensure that you have one, selecting from one of the following options:
+* Visual Studio Subscription
+* Internal User Rights
+* Free Trial
 
 ## Visual Studio Subscription
 
