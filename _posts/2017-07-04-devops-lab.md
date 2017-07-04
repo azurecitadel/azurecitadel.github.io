@@ -24,4 +24,4 @@ The scenario will cover:
 
 You do not need to be an Node.js or JavaScript expert for the coding part but you will need to make basic changes to a JS file. Likewise no prior experience with VSTS and Azure is required (but obviously beneficial). We will also spend some time with Docker registries and image building & tagging. You will be able to complete the lab with either a Windows or Mac machine, but only Windows has been tested.
 
-## <a href='/images/link.svg' height='32px'/> [Link to workshop guide](https://github.com/benc-uk/azure-node-docker-paas)
+## [![link](/images/link.svg) Link to workshop guide](https://github.com/benc-uk/azure-node-docker-paas) 
