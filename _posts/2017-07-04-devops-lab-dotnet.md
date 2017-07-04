@@ -20,6 +20,7 @@ The scenario will cover:
 - Docker & Docker Machine
 - Azure
 - VSTS
+
 You do not need to be an .NET expert for the coding part but you will need to make basic changes to a C# file, and some HTML. Likewise no prior experience with VSTS and Azure is required (but obviously beneficial). We will also spend some time with the Docker & docker-machine command line tools, but all commands will be supplied. You will be able to complete the lab with either a Windows or Mac machine, but only Windows has been tested.
 
 ## [![link](/images/link.svg) Link to workshop guide](https://github.com/benc-uk/azure-devops-core-docker) 
