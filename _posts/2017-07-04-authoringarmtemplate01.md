@@ -11,9 +11,12 @@ image:
   teaser: Newsletter_Teaser.jpg
   thumb: 
 ---
+Description
+of the 
+post
 
 {% include toc.html %}
 
 ## I am a test
  
-And I may be deleted by the end of the week.Parent folder version.
+And I may be deleted by the end of the week. Parent folder version.
