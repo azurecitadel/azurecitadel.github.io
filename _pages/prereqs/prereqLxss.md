@@ -49,6 +49,7 @@ echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy ma
 * Add the key and https transport
 ```
 sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
+
 sudo apt-get install apt-transport-https
 ```
 * Update the package list and then install Azure CLI 2.0
@@ -64,6 +65,7 @@ The default colours for both the PS1 prompt and for vi and vim can be difficult 
 * For vi(m) users then creating a .vimrc file will also help to set a more readable colour scheme
 ```
 umask 022
+
 echo -e "colo murphy\nsyntax on" >> ~/.vimrc
 ```
 Verify the installation
