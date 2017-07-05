@@ -63,7 +63,7 @@ The default colours for both the PS1 prompt and for vi and vim can be difficult 
   * The PS1 prompt colours are set in the sections that are in the format `[01:34m\]`.  The 34 is light blue, which is hard to read.  Changing the number from 34 to 36 (cyan) or 33 (yellow) will be more readable. (Info from [here](http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html).)
 * For vi(m) users then creating a .vimrc file will also help to set a more readable colour scheme
 ```
-umask 022 
+umask 022
 echo -e "colo murphy\nsyntax on" >> ~/.vimrc
 ```
 Verify the installation
