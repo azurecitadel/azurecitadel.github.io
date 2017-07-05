@@ -41,5 +41,8 @@
         background: rgba($base-color,0.2);
       }
     }
+    img {
+      max-height: 135px;
+    }
   }
 }
