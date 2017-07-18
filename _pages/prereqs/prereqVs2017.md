@@ -20,7 +20,7 @@ The installation steps for Visual Studio 2017 are the same for Enterprise, Profe
 *	Running the installer may prompt an update to itself
 *	Whilst installing Visual Studio Enterprise 2017, check the “Azure development” workload from the Web & Cloud section.
 
-![alt text](./_include/vs2017Workload.png)
+![](https://ukpducim.github.io/images/vs2017Workload.png)
 
 If Visual Studio is already installed, then you may rerun the installer to add the Azure workload:
 *	Click Start and then the Visual Studio Installer icon
@@ -39,7 +39,7 @@ If Visual Studio is already installed, then you may rerun the installer to add t
 *	Verify the configuration by opening (__File -> Open -> File__, or CTRL+O) an example JSON file, e.g. `https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json` 
 *	The screen should like similar to the one below, with the coloured JSON file in the middle pane, and the parameters, variables and resources listed in the JSON Outline pane on the left 
 
-![alt text](./_include/vs2017Configure.png) 
+![](https://ukpducim.github.io/images/vs2017Configure.png) 
 
 *	If the JSON Outline is not showing correctly, then try closing the file and reopening it.
 
