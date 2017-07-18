@@ -71,6 +71,5 @@ Once the account is enabled, prove that it is working correctly by logging into 
 * [Azure PowerShell Module](../powershell)
 * [Windows 10 Linux Subsystem and CLI 2.0](../lxss)
 * [Visual Studio 2017](../vs2017)
-  * [Configure Visual Studio for ARM Templates](../vs2017-configure)
 * [Visual Studio Code](../vscode)
 
