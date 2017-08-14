@@ -43,4 +43,4 @@ In order to allow Azure to apply our DSC settings to our Virtual Machines we are
 2. Click **New** and type **Automation** in the search box. Choose **Automation** from the results
 
 
-![overview](/images/automation_1.png)
+![](images/automation_1.png)
