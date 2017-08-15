@@ -11,6 +11,7 @@ image:
 comments: true
 ---
 This is a hands on lab / learning exercise walking through DevOps in Azure with Node.js, Docker, Web Apps & VSTS
+COOOOOOOOOOOEEE!
 
 ### Synopsis 
 From first principals and nothing but VS Code, an empty directory and a command terminal we will create a working web Node.js app running in Azure web platform services & Docker, deployed via an automated DevOps CI/CD pipeline
