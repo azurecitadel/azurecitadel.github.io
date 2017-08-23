@@ -89,16 +89,16 @@ Your first ARM template task is going to be creating a virtual network template 
 
    You should see the below code in the center of the Visual Studio workspace
 
- ```json
-    {
-     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-     "contentVersion": "1.0.0.0",
-     "parameters": {},
-     "variables": {},
-     "resources": [],
-     "outputs": {}
-    }
- ```
+   ```json
+{
+"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+"contentVersion": "1.0.0.0",
+"parameters": {},
+"variables": {},
+"resources": [],
+"outputs": {}
+}
+   ```
 
    On the left hand side of the screen you should see the JSON Outline view, if you do not see this then you will need to click **View** > **Other Windows** > **JSON Outline**.
 
