@@ -19,7 +19,7 @@ image:
 
 Useful information in the subject of learning new skills on Azure.
  
-# Azure Learning Paths
+# Azure Learning Paths test
  
 This is a really useful and little known resource which we have in the Azure Documentation area, learning paths have been constructed to enable you to pick a subject area, such as Azure API Management, Azure Automation, Azure Backup, etc. Learning paths give you a workflow to follow with links to documentation material which you can use to walk through the solution in your own Azure subscription and learn the technology. Having the learn path to guide you ensures you do not miss vital information for learning a particular feature/solution in Azure. Please follow the link below to review the available learning paths
 
