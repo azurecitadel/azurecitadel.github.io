@@ -20,7 +20,7 @@ In this workshop session we are going to construct an ARM template using Visual 
 
 Our Goal with this lab exercise is to show you how you can make use of ARM templates to automate the provisioning of your infrastructure and applications. With this knowledge you should feel more empowered to start using tools such as ARM Templates and DSC to enable Infrastructure as Code (IaC) in your projects. Lets get started.
 
-## Pre-Requirements
+### Pre-Requirements
 
 We are going to need a few things up and running on our workstation in order to complete this lab
 
@@ -37,7 +37,7 @@ We are going to need a few things up and running on our workstation in order to 
 
 In order to allow Azure to apply our DSC settings to our Virtual Machines we are going to need to use an Automation Account, the Automation account acts as a repository for our Automation needs in Azure
 
-##### Task 1: Create the Automation Account
+#### Create the Automation Account
 
 1. Browse to the Azure Portal and authenticate at https://portal.azure.com/
 2. Click **New** and type **Automation** in the search box. Choose **Automation** from the results
@@ -67,7 +67,7 @@ In order to allow Azure to apply our DSC settings to our Virtual Machines we are
 
    NOTE: The compile process may take 20-30 seconds to complete. 
 
-### Summary
+#### Summary
 
 In this exercise, you configured an Automation account, and configured DSC configuration scripts that will be leveraged by the virtual machine resources. We ran the configuration scripts through the DSC compiler to ensure that they are good to run against our VMs which we will now start building
 
@@ -80,18 +80,30 @@ Your first ARM template task is going to be creating a virtual network template 
 1. Open Visual Studio
 2.	Choose **File**, **New Project**, and then choose **Cloud**, and then **Azure Resource Group**, name the solution **ArmLab** and click **OK**
 
-   ![](/images/ARM-Fig5.png)
+    ![](/images/ARM-Fig5.png)
 
 3. On the select Azure Template dialog box we will choose **Blank Template** and then click **OK**
-4. In Solution Explorer, on the right hand side of the Visual Studio Screen click **azuredeploy.json** this will open the azuredeploy.json file in the center of the screen, you should see the below code in the center of the Visual Studio workspace
+4. In Solution Explorer, on the right hand side of the Visual Studio Screen click **azuredeploy.json** this will open the **azuredeploy.json** file in the center of the screen. 
 
-```json
-   {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {}
-   }
-```
+   ![](/images/ARM-Fig6.png)
+
+   You should see the below code in the center of the Visual Studio workspace
+
+ ```json
+    {
+     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+     "contentVersion": "1.0.0.0",
+     "parameters": {},
+     "variables": {},
+     "resources": [],
+     "outputs": {}
+    }
+ ```
+
+   On the left hand side of the screen you should see the JSON Outline view, if you do not see this then you will need to click **View** > **Other Windows** > **JSON Outline**.
+
+5. On the JSON Outline window, click **Add Resource** in the upper-left corner or right-click the resources and choose **Add New Resource**.
+
+   ![](/images/ARM-Fig7.png)
+
+6. 
