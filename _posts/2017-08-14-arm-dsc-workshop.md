@@ -83,27 +83,26 @@ Your first ARM template task is going to be creating a virtual network template 
     ![](/images/ARM-Fig5.png)
 
 3. On the select Azure Template dialog box we will choose **Blank Template** and then click **OK**
-4. In Solution Explorer, on the right hand side of the Visual Studio Screen click **azuredeploy.json** this will open the **azuredeploy.json** file in the center of the screen. 
+4. In Solution Explorer, on the right hand side of the Visual Studio Screen click **azuredeploy.json** this will open the **azuredeploy.json** file in the center of the screen.
 
-   ![](/images/ARM-Fig6.png)
+    ![](/images/ARM-Fig6.png)
 
    You should see the below code in the center of the Visual Studio workspace
 
-   ```json
-{
-"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-"contentVersion": "1.0.0.0",
-"parameters": {},
-"variables": {},
-"resources": [],
-"outputs": {}
-}
-   ```
 
-   On the left hand side of the screen you should see the JSON Outline view, if you do not see this then you will need to click **View** > **Other Windows** > **JSON Outline**.
+        {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {},
+        "resources": [],
+        "outputs": {}
+        }
 
-5. On the JSON Outline window, click **Add Resource** in the upper-left corner or right-click the resources and choose **Add New Resource**.
+   On the left hand side of the screen you should see the JSON Outline view, if you do not see this
+   then you will need to click **View** > **Other Windows** > **JSON Outline**.
 
-   ![](/images/ARM-Fig7.png)
+5. On the JSON Outline window, click **Add Resource** in the upper-left corner or right-click the
+resources and choose **Add New Resource**.
 
-6. 
+    ![](/images/ARM-Fig7.png)
