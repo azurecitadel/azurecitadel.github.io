@@ -106,3 +106,35 @@ Your first ARM template task is going to be creating a virtual network template 
 resources and choose **Add New Resource**.
 
     ![](/images/ARM-Fig7.png)
+
+7.	On the **Add Resource** dialog box, choose **Virtual Network**, enter **ArmLabVnet** in the **Name** field, and click **Add**.
+
+    ![](/images/ARM-Fig8.png)
+
+8. Go to the **azuredeploy.json** file and inspect its contents. Review the **variables** section in the JSON. It should look like the following file
+
+     {% highlight json %}
+        "variables": {
+            "ArmLabVnetPrefix": "10.0.0.0/16",
+            "ArmLabVnetSubnet1Name": "Subnet-1",
+            "ArmLabVnetSubnet1Prefix": "10.0.0.0/24",
+            "ArmLabVnetSubnet2Name": "Subnet-2",
+            "ArmLabVnetSubnet2Prefix": "10.0.1.0/24"},
+        },
+     {% endhighlight %}
+
+{:start="9"}
+9. Change the name of **Subnet-1** to **FrontEndNet**, and the name of **Subnet-2** to **DatabaseNet**.
+
+    {% highlight json %}
+        "variables": {
+            "ArmLabVnetPrefix": "10.0.0.0/16",
+            "ArmLabVnetSubnet1Name": "FrontEndNet",
+            "ArmLabVnetSubnet1Prefix": "10.0.0.0/24",
+            "ArmLabVnetSubnet2Name": "DatabaseNet",
+            "ArmLabVnetSubnet2Prefix": "10.0.1.0/24"
+        },
+      {% endhighlight %}
+
+{:start="10"}
+10. 
