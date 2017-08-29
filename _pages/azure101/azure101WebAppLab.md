@@ -48,6 +48,7 @@ Everyone else may use the Cloud Shell (**>_**) shown at the top of the Azure Por
 **1. Clone the HTML files from Github**
 
 * Type (or copy and paste) the following commands into the console, changing the value for appName to include your name or alias.  Note that the appName value will need to be globally unique as it will form the web URL.
+
 ```
 git clone https://github.com/richeney/azure101-webapp-html
 cd azure101-webapp-html
@@ -61,6 +62,7 @@ user=azure101deploy
 pwd=azure101p455w0rd
 appName=azure101YourNameHere
 ```
+
 * The above commands copy the HTML files locally, change to that directory, initialise it for Git, and then finally lists the files.  The pwd command prints the working directory so that you know where they are.
 * We are then setting git to cache our credentials after the first successful connection to a remote, and also defining some variables to use in the commands in the following sections.
 * Double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.  If you are in the Cloud Shell then cat index.html will display the raw html.  
