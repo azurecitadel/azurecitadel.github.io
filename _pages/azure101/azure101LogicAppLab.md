@@ -24,6 +24,8 @@ In this section we will use logic apps to poll for tweets from the
 presenter, and automatically send that content out from your own Twitter
 account.
 
+## Tutorial
+
 * In the Azure101PaaS resource group, click Add and find Logic Apps
 * Create a new Logic App in West Europe
 * Click into it and select Twitter for the new tweet trigger

@@ -16,7 +16,7 @@ Introductory portal lab for the Azure 101 workshop.
 
 {% include toc.html %}
 
-## Accessing the Azure Portal
+## Introduction
 
 The main Azure portal is <https://portal.azure.com>.
 
