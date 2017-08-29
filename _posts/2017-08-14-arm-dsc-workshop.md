@@ -137,4 +137,64 @@ resources and choose **Add New Resource**.
       {% endhighlight %}
 
 {:start="10"}
-10. 
+10. Deploy the template by right-clicking the **ARMLab** project, and choosing **Deploy** > **New**.
+
+    ![](/images/ARM-Fig9.png)
+
+11. If you did not sign in to your Microsoft Azure account already, you will be asked to do so now.
+12. Fill in the email address associated with the Azure account and click **Continue**.
+13. Enter your password and click **Sign In**.
+14. If you have several subscriptions, choose the one that you want your VNet to be deployed to, and on the Resource group choose **Create New**.
+15.	On the Create Resource Group dialog box, accept the default value for the name; and for the location, choose the closest location to you, and click **Create**.
+16. When you are back on the Deploy to Resource Group dialog box, click Deploy. After about a minute, your virtual network will be deployed to Azure.
+17. View the created resource group and virtual network in the Azure Management Portal by clicking **Resource Groups** and clicking the **ARMLab** resource group. in here you will see the Vnet and Subnets which we defined in the JSON file in Visual Studio.
+
+#### Summary
+
+In this exercise, you created a new virtual network with two different subnets. This will form the basis of our environment which we will now build in the following exercises
+
+### Exercise 4
+
+#### Extend with Compute
+
+In this Exercise, you will continue the work you started in the previous exercise by creating a storage account and adding virtual machines for the web application and for the database, and then configuring the machines for the roles.
+
+##### Add an Azure Storage Account
+
+1. On the **JSON Outline** window, click **Add Resource** in the upper-left corner, or right-click the resources and choose **Add New Resource**.
+2. Add a new Storage Account resource to the template named **armstorage**
+  
+   **Note: The template generated in the Azure SDK appends a unique value (13 characters in length) to the storage account name. Ensure the name specified is 11 characters or less in length.**
+
+3. In the JSON Outline locate the parameter named **armlabstorageType**
+4. Update the Storage code to use **Premium\_LRS** as the defaultValue by changing it from **Standard\_LRS** to **Premium\_LRS**
+   
+  Before:
+    {% highlight json %}
+    "armlabstorageType": {
+          "type": "string",
+          "defaultValue": "Standard_LRS",
+          "allowedValues": [
+              "Standard_LRS",
+              "Standard_ZRS",
+              "Standard_GRS",
+              "Standard_RAGRS",
+              "Premium_LRS"
+          ]
+      }
+    {% endhighlight %}
+
+  After:
+    {% highlight json %}
+    "armlabstorageType": {
+          "type": "string",
+          "defaultValue": "Premium_LRS",
+          "allowedValues": [
+              "Standard_LRS",
+              "Standard_ZRS",
+              "Standard_GRS",
+              "Standard_RAGRS",
+              "Premium_LRS"
+          ]
+      }
+    {% endhighlight %}
