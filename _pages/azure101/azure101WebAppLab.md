@@ -47,29 +47,27 @@ Everyone else may use the Cloud Shell (**>_**) shown at the top of the Azure Por
 
 **1. Clone the HTML files from Github**
 
-* Type (or copy and paste) the following commands into the console, changing the value for appName to include your name or alias.  Note that the appName value will need to be globally unique as it will form the web URL.
-
+Type (or copy and paste) the following commands into the console, changing the value for appName to include your name or alias.  Note that the appName value will need to be globally unique as it will form the web URL.
 ```
 git clone https://github.com/richeney/azure101-webapp-html
 cd azure101-webapp-html
 git init
 ls -Al
 pwd
-
 git config --global credential.helper cache
 rg=Azure101PaaS
 user=azure101deploy
 pwd=azure101p455w0rd
 appName=azure101YourNameHere
 ```
-
 * The above commands copy the HTML files locally, change to that directory, initialise it for Git, and then finally lists the files.  The pwd command prints the working directory so that you know where they are.
 * We are then setting git to cache our credentials after the first successful connection to a remote, and also defining some variables to use in the commands in the following sections.
-* Double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.  If you are in the Cloud Shell then cat index.html will display the raw html.  
+
+Double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.  If you are in the Cloud Shell then cat index.html will display the raw html.  
 
 **2. Log in to Azure using the CLI 2.0 and create the deployment user:**
 
-* Create the deployment user:
+Create the deployment user:
 ```
 az webapp deployment user set --user-name $user --password $pwd
 ```
@@ -78,7 +76,7 @@ az webapp deployment user set --user-name $user --password $pwd
 
 **3. Create the resource group:**
 
-* Create the resource group
+Create the resource group
 ```
 az group create --name $rg --location westeurope
 ```
@@ -87,7 +85,7 @@ az group create --name $rg --location westeurope
 
 The App Service plans provide the underlying resources for your apps, and multiple apps can use them. The plans define the region, available instance sizes, scale count and SKU level, i.e. free, shared, basic, standard, premium.
 
-* Create an App Service plan called quickStartPlan on the Free SKU
+Create an App Service plan called quickStartPlan on the Free SKU
 ```
 az appservice plan create --name quickStartPlan --resource-group $rg --sku FREE
 ```
@@ -95,8 +93,7 @@ az appservice plan create --name quickStartPlan --resource-group $rg --sku FREE
 
 **5. Create the Web App:**
 
-* Create the Web App. The name for the Web App must be globally unique as it forms part of the FQDN. You will be prompted to change it if it already exists.
-
+Create the Web App. The name for the Web App must be globally unique as it forms part of the FQDN. You will be prompted to change it if it already exists.
 ```
 az webapp create --name $appName --resource-group $rg --plan quickStartPlan
 ```
@@ -108,7 +105,7 @@ az webapp create --name $appName --resource-group $rg --plan quickStartPlan
 
 **6. Create the Git deployment access point:**
 
-* Create the http endpoint for the deployment:
+Create the http endpoint for the deployment:
 ```
 deployuri=$(az webapp deployment source config-local-git --name $appName --resource-group $rg --query url --output tsv)
 echo $deployuri
@@ -121,27 +118,28 @@ https://<username>@<appname>.scm.azurewebsites.net/<appname>.git
 
 **7. Add a Git remote called _Azure_ and then push to the Web App:**
 
-* Create the Git remote, calling it azure:
+Create the Git remote, calling it azure:
 ```
 git remote add azure $deployuri
 git remote -v
 ```
-* Push the master branch of the local html repo up to the azure remote
+Push the master branch of the local html repo up to the azure remote
 ```
 echo $pwd 
 git push azure master
 ```
-* Refresh the web page and confirm that it has changed
+Refresh the web page and confirm that it has changed
 
 **8. Change the HTML and push again to the Web App:**
 
-* Edit the index.html to change the Twitter account to your own.  Uou can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser. 
-* Commit the change, and then push it up to the azure remote
+Edit the index.html to change the Twitter account to your own.  Uou can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser. 
+
+Commit the change, and then push it up to the azure remote
 ```
 git commit -a -m "Description of the change" 
 git push azure master
 ```
-* Refresh the web page and see if it has been changed
+Refresh the web page and see if it has been changed
 
 ### If you have time:
 
