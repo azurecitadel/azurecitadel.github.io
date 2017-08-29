@@ -137,4 +137,10 @@ resources and choose **Add New Resource**.
       {% endhighlight %}
 
 {:start="10"}
-10. 
+10. Deploy the template by right-clicking the **ARMLab** project, and choosing **Deploy** > **New**.
+
+    ![](/images/ARM-Fig9.png)
+
+11. If you did not sign in to your Microsoft Azure account already, you will be asked to do so now.
+12. Fill in the email address associated with the Azure account and click **Continue**.
+13. Enter your password and click **Sign In**.
