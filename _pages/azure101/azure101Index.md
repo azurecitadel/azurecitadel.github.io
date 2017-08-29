@@ -1,10 +1,10 @@
 ---
 layout: article
-title: Azure 101 Content
+title: Azure 101 Index
 date: 2017-07-04
 categories: null
-permalink: /azure101/content/
-tags: [azure, 101, content]
+permalink: /azure101/
+tags: [azure, 101, index, content]
 comments: true
 author: Richard_Cheney`
 image:
@@ -17,12 +17,24 @@ Introduction to the Authoring ARM Templates workshop.
 
 {% include toc.html %}
 
+# Azure 101
+
 ## Introduction
 The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.
 
 The aim is to familiarise the student with some of the most commonly used IaaS and PaaS services in Azure, and the portal and CLI interfaces available to drive them.
 
 In terms of orientation, the trainer may use slides to help give an overview of some of the other services available within Azure, and the training will also make the student aware of some of the documentation and training resources available to them as they continue to explore.
+
+Allow five hours for a full session including all of the labs.
+
+## Pre-requisites
+The workshop requires the following:
+* [Azure Subscription](../prereqs/prereqSubscription.md)
+* [Bash and CLI 2.0](../prereqs/prereqLxss.md) (optional, only for Windows 10)
+* [Azure Modules for PowerShell](../prereqs/prereqPowershell.md) (optional, recommended for existing PowerShell users)
+* [Visual Studio Code](../prereqs/prereqVscode.md) (optional)
+* A Twitter account (optional, recommended)
 
 ## Content
 The below sections are PowerPoint content unless specified otherwise
