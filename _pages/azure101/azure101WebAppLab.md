@@ -41,7 +41,7 @@ files hosted on GitHub and pushing those into a Web App in Azure using Git.
 
 ### Select your console
 
-If the [Bash and CLI 2.0 prereqs](../prereqs/prereqLxss.md) have been followed then those Windows 10 should users will have installed the Linux subsystem, and then installed both CLI 2.0 and Git into that subsystem.  If so then open a Command Prompt and then type ``bash``.  Type in ``az login`` and follow the instructions. This will be your console.
+If the [Bash and CLI 2.0 prereqs](../prereqs/prereqLxss.md) have been followed then those Windows 10  users will have installed the Linux subsystem, and then installed both CLI 2.0 and Git into that subsystem.  If that is so then open a Command Prompt and then type ``bash``.  Type in ``az login`` and follow the instructions. This will be your console.
 
 Everyone else may use the Cloud Shell (**>_**) shown at the top of the Azure Portal.  This will create some local storage the first time you use it.  There is no need to login to Azure as it is done automatically for you.  (Note that we will not be using the permanent storage folder clouddrive as it does not support the file permissions required by git commands, so the clone of the Github repo will be transient.)  This will be your console.
 
@@ -128,6 +128,7 @@ git remote -v
 ```
 * Push the master branch of the local html repo up to the azure remote
 ```
+echo $pwd 
 git push azure master
 ```
 * Refresh the web page and confirm that it has changed
@@ -135,8 +136,9 @@ git push azure master
 **8. Change the HTML and push again to the Web App:**
 
 * Edit the index.html to change the Twitter account to your own.  Uou can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser. 
-* Push the changes up to the azure remote
+* Commit the change, and then push it up to the azure remote
 ```
+git commit -a -m "Description of the change" 
 git push azure master
 ```
 * Refresh the web page and see if it has been changed
@@ -150,110 +152,35 @@ There is a rich ecosystem built around the PaaS applications.  If you have time 
 
 --------------------------------------------------------
 
-## Option 2: Using FTP to push files to Web App
+## Option 2: Use the portal and pull the content in
 
-The diagram below gives an overview of what we are doing with a set of HTML
-files hosted on GitHub and pushing those into a Web App in Azure using FTP.
+Azure offers many ways of achieving something, with a view that users should use the tools with which they are most comfortable.  This alternative version of the lab is not recommended for larger scale web farms, but does given an insight into the power of PaaS level Web Apps.
 
-![](../../images/Az101-WebApp-FTP.jpg)
+* Open the portal
+* Create a new Resource Group, and call it **Azure101PaaS**
+* Click on **Add** in the new Resource Group and add a Web App
+  * Set the App name to something globally unique, as it will form part of the FQDN, such as **azure101\<yourname>**
+  * Create and use a new App Service Plan called **quickStartPlan** in the same region as the Resource Group, specifying the **F1** free tier
+  * Click on **Create**
+* Open the App Service blade once it has deployed successfully
+* Click on the URL in the Overview section
+* The placeholder web page will be opened in a new tab: 
 
-1.	Use git clone to download the sample static HTML site from GitHub to your laptop.
-2.	Login to Azure and create a deployment user.
-3.	Create the Azure101PaaS resource group.
-4.	Create the free tier app service plan.
-5.	Create a web app within the app service plan.
-6.	Upload HTML files to the web app using FTP.
+![](../../images/Az101-WebAppPlaceholder.jpg) 
 
-### Detailed Instructions
-
-For the Git commands, most users will use the Git Bash application.  However, those with the Linux subsystem installed on Windows 10 can run the git commands from there. For the Azure CLI 2.0 commands, students can use either the Azure Cloud Shell (>_) shown at the top of the Azure Portal, or the Linux subsystem for Windows 10 with the AZ CLI 2.0 installed.
-
-**1. Clone the html files from GitHub to your local machine:**
-
-* Open Git Bash and run the following:
-
+* Open the **App Service Editor** in the App Service blade's Development tools section
+* Select the Git button on the left and set the GitHub URL:
 ```
-git clone https://github.com/richeney/azure101-webapp-html
-cd azure101-webapp-html
-git init
-ls -Al
-pwd
+https://github.com/richeney/azure101-webapp-html
 ```
+* Click on the Clone from a git URL
+* Type ``exit`` once the clone is complete
+* Return the the tab containing the webpage, and refresh.  It should now show an updated page containing some static web page content plus a Twitter feed
+* Click on the files icon on the left and then select the index.html
+* Edit the index.html file, changing the Twitter account on the twitter-timeline class to your own
+* Return the the tab containing the webpage, and refresh.  It should now show your Twitter feed instead
 
-* The above commands copy the HTML files locally, change to that directory, initialise it for Git, and then finally lists the files.  The pwd command prints the working directory so that you know where they are.
+### If you have time:
 
-* Double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.
-
-**2. Log in to Azure using the CLI 2.0 and create the deployment user:**
-
-```
-az login
-az webapp deployment user set --user-name <id> --password <pwd>
-```
-
-* You will be prompted to make your username or password more unique if you have chosen one that is too common.
-
-**3. Create the resource group:**
-
-* Within CLI 2.0 create the resource group
-
-```
-az group create --name Azure101PaaS --location westeurope
-```
-
-**4. Create the app service plan:**
-
-App Service plans provide the dedicated resource for your apps, and multiple apps can use them. The plans define the region, available instance sizes, scale count and SKU level, i.e. free, shared, basic, standard, premium.
-
-* Create an App Service plan called quickStartPlan on the Free SKU
-
-```
-az appservice plan create --name quickStartPlan --resource-group Azure101PaaS --sku FREE
-```
-You should see output JSON when the above command succeeds
-
-**5. Create the Web App:**
-
-* The name for the web app must be globally unique as it forms part of the FQDN. You will be prompted to change it if it already exists.
-
-```
-az webapp create --name <unique_app_name> --resource-group Azure101PaaS --plan quickStartPlan
-```
-
-* Open your web browser and navigate to http://<unique_app_name>.azurewebsites.net. You should see a ‘placeholder’ web page – this indicates that the web app is running and ready to be configured.
-
-![](https://ukpducim.github.io/images/Az101-WebAppPlaceholder.jpg)
-
-**6. 6.	Upload HTML files to the web app using FTP:**
-
-In order to upload files to the web app, you will need an FTP client installed locally on your machine. Filezilla (https://filezilla-project.org/) is a good choice for this.
-
-* In the _Overview_ section of your web app, make a note of the following fields:
-    _FTP / Deployment Username_
-    _FTP Hostname_
-
-* Using your FTP client, create an FTP connection to your web app using the fields above and the password you selected earlier when creating the deployment user.
-
-* At this point, you will see a directory listing on the remote host as follows:
-
-![](https://ukpducim.github.io/images/Az101-DirectoryListing.jpg
-
-* Drill down into the Site directory and then wwwroot.
-
-* Copy the HTML files you cloned earlier into this directory on the remote host.
-
-* Refresh the web page – you should see the example site containing the Twitter feed.
-
-**7.Change the html and push it up again:**
-
-* Edit the index.html locally to change the Twitter account to your own.
-
-* Re-copy the index.html file to the web app using FTP.
-
-* Refresh the web page and see if it has been changed.
-
-### Web App Ecosystem
-
-* Browse the blade in the portal, checking out deployment slots, scale up and out, App Service Editor and Application Insights
-
-* Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. https://<website>.scm.azurewebsites.net/.
+* Browse the blade in the portal, checking out deployment options, deployment slots, scale up and out, and Application Insights
+* Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. https://\<website>.scm.azurewebsites.net/
