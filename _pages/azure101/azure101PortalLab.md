@@ -12,8 +12,7 @@ image:
   teaser: Education.jpg
   thumb: 
 ---
-Introduction to the Authoring ARM Templates workshop.
-
+Introductory portal lab for the Azure 101 workshop. 
 
 {% include toc.html %}
 
@@ -58,7 +57,7 @@ access control (RBAC) to control who has access.
         and replace the content with the markdown shown below and then resize
         to fit.
 
-Open this [Markdown link](./portalMarkdown.raw) in a new tab, and copy the contents.
+Open this [Markdown file](./portalMarkdown.txt) and copy the contents.
 
 ```
 ### Documentation
