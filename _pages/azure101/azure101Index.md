@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Azure 101 Index
-date: 2017-07-04
+title: Azure 101
+date: 2017-08-29
 categories: null
 permalink: /azure101/
 tags: [azure, 101, index, content]
@@ -14,10 +14,7 @@ image:
 ---
 Introduction to the Authoring ARM Templates workshop.
 
-
 {% include toc.html %}
-
-# Azure 101
 
 ## Introduction
 The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.

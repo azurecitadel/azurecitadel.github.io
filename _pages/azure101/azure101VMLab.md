@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Azure 101 Content
-date: 2017-07-04
+title: Azure 101 Virtual Machine Lab
+date: 2017-08-29
 categories: null
 permalink: /azure101/vm/
 tags: [azure, 101, vm, virtual, machine, linux, windows, template]
@@ -15,8 +15,6 @@ image:
 Virtual machine lab for the Azure 101 workshop.
 
 {% include toc.html %}
-
-# Azure 101 Virtual Machine Lab
 
 ## Introduction
 

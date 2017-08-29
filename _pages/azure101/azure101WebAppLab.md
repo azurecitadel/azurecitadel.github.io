@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Azure 101 Content
-date: 2017-07-04
+title: Azure 101 Web App Lab
+date: 2017-08-29
 categories: null
 permalink: /azure101/webapp/
 tags: [azure, 101, paas, web, app, git, github]
@@ -15,8 +15,6 @@ image:
 Web App lab for the Azure 101 workshop.
 
 {% include toc.html %}
-
-# Azure 101 Web App Lab
 
 ## Introduction
 

@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Azure 101 Content
-date: 2017-07-04
+title: Azure 101 Portal Lab
+date: 2017-08-29
 categories: null
 permalink: /azure101/portal/
 tags: [azure, 101, lab, portal, network, resource, group, vNet]
@@ -15,8 +15,6 @@ image:
 Introductory portal lab for the Azure 101 workshop. 
 
 {% include toc.html %}
-
-# Azure 101 Portal Lab
 
 ## Accessing the Azure Portal
 
