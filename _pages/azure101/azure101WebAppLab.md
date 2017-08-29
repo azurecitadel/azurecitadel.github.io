@@ -47,7 +47,7 @@ Everyone else may use the Cloud Shell (**>_**) shown at the top of the Azure Por
 
 **1. Clone the HTML files from Github**
 
-* •	Type (or copy and paste) the following commands into the console, changing the value for appName to include your name or alias.  Note that the appName value will need to be globally unique as it will form the web URL.
+* Type (or copy and paste) the following commands into the console, changing the value for appName to include your name or alias.  Note that the appName value will need to be globally unique as it will form the web URL.
 ```
 git clone https://github.com/richeney/azure101-webapp-html
 cd azure101-webapp-html
