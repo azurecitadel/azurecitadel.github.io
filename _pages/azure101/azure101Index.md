@@ -26,7 +26,13 @@ The aim is to familiarise the student with some of the most commonly used IaaS a
 
 In terms of orientation, the trainer may use slides to help give an overview of some of the other services available within Azure, and the training will also make the student aware of some of the documentation and training resources available to them as they continue to explore.
 
-Allow five hours for a full session including all of the labs.
+Allow five hours for a full session including all of the labs.  
+
+## Quick navigate for labs:
+*  [**LAB: Portal familiarisation and customisation, resource groups, vNets and subnets, documentation resources**](./azure101PortalLab.md)
+* [**LAB: Windows and Linux VMs, customising NSGs, defining Availability Sets**](./azure101VMLab.md)
+* [**LAB: Deploying to Web Apps from a local Docker repository**](./azure101WebAppLab.md)
+* [**LAB: Using Logic Apps with the Twitter API**](./azure101LogicAppLab.md)
 
 ## Pre-requisites
 The workshop requires the following:
@@ -45,9 +51,9 @@ The below sections are PowerPoint content unless specified otherwise
 2. Infrastructure Services
     * Compute options
     * Networking fundamentals
-    * **LAB: Portal familiarisation and customisation, resource groups, vNets and subnets, documentation resources**
+    * [**LAB: Portal familiarisation and customisation, resource groups, vNets and subnets, documentation resources**](./azure101PortalLab.md)
     * Storage and RBAC principles
-    * **LAB: Windows and Linux VMs, customising NSGs, defining Availability Sets**
+    * [**LAB: Windows and Linux VMs, customising NSGs, defining Availability Sets**](./azure101VMLab.md)
 3. Lunch
 4. Application & Platform Services
     * Responsibilities: Traditional v IaaS v PaaS v SaaS
@@ -57,11 +63,11 @@ The below sections are PowerPoint content unless specified otherwise
     * CI/CD
     * Toolchains
     * Monitoring and Insight
-6. **LAB: Deploying to Web Apps from a local Docker repository**
+6. [**LAB: Deploying to Web Apps from a local Docker repository**](./azure101WebAppLab.md)
 7. Data and Analytics
     * Hadoop, HDinsight and Data Lake
     * SQL DB, Data Warehouse and Managed Instance
     * MySQL, PostgreSQL and CosmosDB
     * Cortana Intelligence Suite, Cognitive Services, Machine Learning and IoT Suite
-8. **LAB: Using Logic Apps with the Twitter API**
+8. [**LAB: Using Logic Apps with the Twitter API**](./azure101LogicAppLab.md)
 9. Self-training and options for future enablement sessions
