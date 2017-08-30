@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Azure 101 Web App Lab
-date: 2017-08-29
+date: 2017-08-30
 categories: null
 permalink: /azure101/webapp/
 tags: [azure, 101, paas, web, app, git, github]
@@ -108,6 +108,7 @@ az webapp create --name $appName --resource-group $rg --plan quickStartPlan
 Create the http endpoint for the deployment:
 ```
 deployuri=$(az webapp deployment source config-local-git --name $appName --resource-group $rg --query url --output tsv)
+
 echo $deployuri
 ```
 * The first command create an https endpoint similar to below, and then saves that value into the $deployuri variable.  The second prints the variable to screen, e.g.:
@@ -121,11 +122,13 @@ https://<username>@<appname>.scm.azurewebsites.net/<appname>.git
 Create the Git remote, calling it azure:
 ```
 git remote add azure $deployuri
+
 git remote -v
 ```
 Push the master branch of the local html repo up to the azure remote
 ```
 echo $pwd 
+
 git push azure master
 ```
 Refresh the web page and confirm that it has changed
@@ -137,6 +140,7 @@ Edit the index.html to change the Twitter account to your own.  Uou can use ``na
 Commit the change, and then push it up to the azure remote
 ```
 git commit -a -m "Description of the change" 
+
 git push azure master
 ```
 Refresh the web page and see if it has been changed
