@@ -171,6 +171,7 @@ Azure offers many ways of achieving something, with a view that users should use
 ![](../../images/Az101-WebAppPlaceholder.jpg) 
 
 * Open the **App Service Editor** in the App Service blade's Development tools section
+* Click on the **Go** button in the main pane.  This will open up a new tab containing the App Service Editor environment.
 * Select the Git button on the left and set the GitHub URL:
 ```
 https://github.com/richeney/azure101-webapp-html
