@@ -16,6 +16,12 @@ Introduction to the Authoring ARM Templates workshop.
 
 {% include toc.html %}
 
+## Locale Test
+
+The local is either {{ local }} or {{ site.local }}.
+
+The German for overview is {{ site.data.messages.de.overview }}.
+
 ## Introduction
 The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.
 
