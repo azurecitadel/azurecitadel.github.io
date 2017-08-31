@@ -18,7 +18,9 @@ Introduction to the Authoring ARM Templates workshop.
 
 ## Locale Test #3
 
-The local is either {{ locale }} or {{ site.locale }}.
+The locale {{ site.locale }}.
+
+Adam's name is {{site.data.authors.Adam_Bohle.name}}.
 
 The German for overview is {{ site.data.messages.locales[de].overview }}.
 
