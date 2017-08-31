@@ -1,5 +1,11 @@
 # Messages for localization (description here: https://tuananh.org/2014/08/13/localization-with-jekyll/)
 
+top: summit
+
+mountain:
+    alps: matterhorn
+    himalayas: everest
+
 locales:
     # English translation
     # -------------------

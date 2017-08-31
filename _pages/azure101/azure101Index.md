@@ -16,11 +16,13 @@ Introduction to the Authoring ARM Templates workshop.
 
 {% include toc.html %}
 
-## Locale Test #3
+## Locale Test #5
 
-The locale {{ site.locale }}.
+The locale is {{ site.locale }}.
 
 Adam's name is {{site.data.authors.Adam_Bohle.name}}.
+
+I want to go to the {{ site.data.messages.top }} of {{ site.data.messages.mountain[alps] }}.
 
 The German for overview is {{ site.data.messages.locales[de].overview }}.
 
