@@ -105,3 +105,11 @@ Once the VM has been created then use the Bash shell to open a secure shell sess
 - Click on Add within the Azure101IaaS Resource Group, and find _Template Deployment_
 - In the _Load a GitHub Quickstart_ template, type “load” and select one of the community templates and accompanying parameters file
 - Search the [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates) GitHub repo to find the same template
+
+-------------------------------------------------------
+## Quick Navigate:
+* Back up to [**Azure 101**](./azure101Index.md/#introduction) main page
+  * [**Lab 1**: Portal customisation, resource groups, vNets and subnets, documentation resources](./azure101PortalLab.md/#introduction)
+  * [**Lab 2**: Deploying Windows and Linux VMs](./azure101VMLab.md/#introduction)
+  * [**Lab 3**: Deploying to Web Apps from a Docker repository](./azure101WebAppLab.md/#introduction)
+  * [**Lab 4**: Using Logic Apps with the Twitter API](./azure101LogicAppLab.md/#introduction)

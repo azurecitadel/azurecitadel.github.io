@@ -187,3 +187,11 @@ https://github.com/richeney/azure101-webapp-html
 
 * Browse the blade in the portal, checking out deployment options, deployment slots, scale up and out, and Application Insights
 * Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. https://\<website>.scm.azurewebsites.net/
+
+-------------------------------------------------------
+## Quick Navigate:
+* Back up to [**Azure 101**](./azure101Index.md/#introduction) main page
+  * [**Lab 1**: Portal customisation, resource groups, vNets and subnets, documentation resources](./azure101PortalLab.md/#introduction)
+  * [**Lab 2**: Deploying Windows and Linux VMs](./azure101VMLab.md/#introduction)
+  * [**Lab 3**: Deploying to Web Apps from a Docker repository](./azure101WebAppLab.md/#introduction)
+  * [**Lab 4**: Using Logic Apps with the Twitter API](./azure101LogicAppLab.md/#introduction)
