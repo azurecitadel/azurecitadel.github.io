@@ -18,7 +18,7 @@ Introduction to the Authoring ARM Templates workshop.
 
 ## Locale Test
 
-The local is either {{ local }} or {{ site.local }}.
+The local is either {{ locale }} or {{ site.locale }}.
 
 The German for overview is {{ site.data.messages.de.overview }}.
 
