@@ -16,15 +16,15 @@ Introduction to the Authoring ARM Templates workshop.
 
 {% include toc.html %}
 
-## Locale Test #5
+## Locale Test #6
 
 The locale is {{ site.locale }}.
 
 Adam's name is {{site.data.authors.Adam_Bohle.name}}.
 
-I want to go to the {{ site.data.messages.top }} of {{ site.data.messages.mountain[alps] }}.
+I want to go to the {{ site.data.messages.top }} of {{ site.data.messages.mountain.alps }}.
 
-The German for overview is {{ site.data.messages.locales[de].overview }}.
+The German for overview is {{ site.data.messages.locales.de.overview }}.
 
 ## Introduction
 The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.
