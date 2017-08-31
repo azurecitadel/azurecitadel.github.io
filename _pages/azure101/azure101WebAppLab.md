@@ -54,11 +54,15 @@ cd azure101-webapp-html
 git init
 ls -Al
 pwd
+
+git config --global user.email "your@email.com"
+git config --global user.name "Your Name"
 git config --global credential.helper cache
+
 rg=Azure101PaaS
 user=azure101deploy
 pwd=azure101p455w0rd
-appName=azure101YourNameHere
+appName=azure101YourName
 ```
 * The above commands copy the HTML files locally, change to that directory, initialise it for Git, and then finally lists the files.  The pwd command prints the working directory so that you know where they are.
 * We are then setting git to cache our credentials after the first successful connection to a remote, and also defining some variables to use in the commands in the following sections.
@@ -98,7 +102,7 @@ Create the Web App. The name for the Web App must be globally unique as it forms
 az webapp create --name $appName --resource-group $rg --plan quickStartPlan
 ```
 * Again, there will be output JSON when the command succeeds
-* Open your web browser and navigate to http://<unique_app_name>.azurewebsites.net. (You will also find the link in the new web app in the Azure portal.)
+* Open your web browser and navigate to http://\<unique_app_name>.azurewebsites.net. (You will also find the link in the new web app in the Azure portal.)
 * You should see a ‘placeholder’ web page – this indicates that the web app is running and ready to be configured.
 
 ![](../../images/Az101-WebAppPlaceholder.jpg)
@@ -135,7 +139,7 @@ Refresh the web page and confirm that it has changed
 
 **8. Change the HTML and push again to the Web App:**
 
-Edit the index.html to change the Twitter account to your own.  Uou can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser. 
+Edit the index.html to change the Twitter account to your own.  You can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser. 
 
 Commit the change, and then push it up to the azure remote
 ```
