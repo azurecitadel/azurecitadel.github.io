@@ -1,9 +1,9 @@
 ---
 layout: article
-title: PDU Team Blog
-date: 2017-06-27
-categories: pdublog
-permalink: /pdublog/
+title: Team Blogs
+date: 2017-08-31
+categories: blogs
+permalink: /blogs/
 excerpt:
 author: Adam_Bohle
 image:

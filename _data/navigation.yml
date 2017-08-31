@@ -2,25 +2,20 @@
 
 - title: Newsletter
   url: /posts/
-  excerpt: "PDU CIM Newsletter"
+  excerpt: "Newsletters"
   image:
 
 - title: Workshops
   url: /workshops/
-  excerpt: "PDU CIM Workshops"
+  excerpt: "Workshops"
   image:
 
 - title: Demo Projects
   url: /projects/
-  excerpt: "PDU CIM Workshops"
+  excerpt: "Demo Projects"
   image:
 
-- title: PDU Blog
-  url: /pdublog/
-  excerpt: "PDU Blogs"
-  image:
-
-- title: About the PDU
-  url: /pdu/
-  excerpt: "About the PDU"
+- title: Blogs
+  url: /blogs/
+  excerpt: "Blogs"
   image:

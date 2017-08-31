@@ -1,24 +1,19 @@
 # Footer navigation links
 
-- title: Microsoft UK PDU CIM Site
-  url: https://ukpducim.github.io
+- title: Microsoft UK PDU Site
+  url: https://ukpdu.github.io
 
 - title: Newsletter
   url: /posts/
-  excerpt: "PDU CIM Newsletter"
+  excerpt: "Newsletters"
   image:
 
 - title: Workshops
   url: /workshops/
-  excerpt: "PDU CIM Workshops"
+  excerpt: "Workshops"
   image:
 
-- title: PDU Blog
-  url: /pdublog/
-  excerpt: "PDU Blogs"
-  image:
-
-- title: About the PDU
-  url: /pdu/
-  excerpt: "About the PDU"
+- title: Blogs
+  url: /blog/
+  excerpt: "Blogs"
   image:

@@ -40,7 +40,7 @@ The workshop requires the following:
 * A Twitter account (optional, recommended)
 
 ## Content
-The below sections are PowerPoint content unless specified otherwise
+The below sections are [PowerPoint](./azure101Presenter) content unless specified otherwise
 1. Azure Intro
     * Cloud drivers and key Azure principles
     * Scale and compliancy
