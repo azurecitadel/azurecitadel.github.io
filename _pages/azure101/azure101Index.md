@@ -24,7 +24,9 @@ Adam's name is {{site.data.authors.Adam_Bohle.name}}.
 
 I want to go to the {{ site.data.messages.top }} of {{ site.data.messages.mountain.alps }}.
 
-The German for overview is {{ site.data.messages.locales.[site.locale].overview }}.
+The localisation for overview is {{ site.data.messages.locales[site.locale].overview }}.
+
+Share is {{ site.data.messages.locales[site.locale].share }}
 
 ## Introduction
 The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.
