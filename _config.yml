@@ -4,7 +4,7 @@ title: "Microsoft UK PDU"
 description: "This is a site for the UK Cloud Infra and Management Team"
 logo: MSLogo.jpg
 teaser: MSLogo.jpg
-locale: en
+locale: fr
 timezone: Europe/London
 url: https://ukpdu.github.io
 feed:
