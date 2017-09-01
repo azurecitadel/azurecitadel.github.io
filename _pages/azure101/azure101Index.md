@@ -16,7 +16,7 @@ Introduction to the Azure 101 workshop.
 
 {% include toc.html %}
 
-## Locale Test #7
+## Locale Test #8
 
 The locale is {{ site.locale }}.
 
