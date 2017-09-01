@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#", 
+  "definitions": {}, 
+  "id": "http://example.com/example.json", 
+  "properties": {
+    "emailAddress": {
+      "description": "End user's email address", 
+      "id": "/properties/emailAddress", 
+      "pattern": ".*@.*", 
+    "title": "Feedback: email", 
+      "type": "string"
+    }, 
+    "feedback": {
+      "description": "String field containing feedback from the user.", 
+      "id": "/properties/feedback", 
+      "title": "Feedback: text", 
+      "type": "string"
+    }, 
+    "name": {
+      "description": "String for username in \"GivenName FamilyName\" format.", 
+      "id": "/properties/name", 
+      "title": "Feedback: name", 
+      "type": "string"
+    }
+  }, 
+  "required": [
+    "emailAddress", 
+    "name", 
+    "feedback"
+  ], 
+  "type": "object"
+}

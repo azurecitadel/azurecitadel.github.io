@@ -37,7 +37,8 @@ The workshop requires the following:
 * [Bash and CLI 2.0](../prereqs/prereqLxss.md) (optional, only for Windows 10)
 * [Azure Modules for PowerShell](../prereqs/prereqPowershell.md) (optional, recommended for existing PowerShell users)
 * [Visual Studio Code](../prereqs/prereqVscode.md) (optional)
-* A Twitter account (optional, recommended)
+* A Twitter account (optional)
+* [Postman](https://www.getpostman.com/)
 
 ## Content
 The below sections are [PowerPoint](./azure101PresenterDeck.pptx) content unless specified otherwise
