@@ -114,7 +114,7 @@ If you have completed the lab early then search on information in the portal and
 -------------------------------------------------------
 ## Quick Navigate:
 * Back up to [**Azure 101**](./azure101Index.md/#introduction) main page
-  * [**Lab 1**: Portal customisation, resource groups, vNets and subnets, documentation resources](./azure101PortalLab.md/#introduction)
-  * [**Lab 2**: Deploying Windows and Linux VMs](./azure101VMLab.md/#introduction)
-  * [**Lab 3**: Deploying to Web Apps from a Docker repository](./azure101WebAppLab.md/#introduction)
-  * [**Lab 4**: Using Logic Apps with the Twitter API](./azure101LogicAppLab.md/#introduction)
+  * [**Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
+  * [**Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)
+  * [**Lab: **Deploying to Web Apps from GitHub**](./azure101WebAppLab.md/#introduction)
+  * [**Lab: **Using Logic Apps**](./azure101LogicAppLab.md/#introduction)

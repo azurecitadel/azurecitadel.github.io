@@ -25,11 +25,11 @@ In terms of orientation, the trainer may use slides to help give an overview of 
 
 Allow five hours for a full session including all of the labs.  
 
-## Quick navigate for labs:
-* [**LAB: Portal customisation, resource groups, vNets and subnets, documentation resources**](./azure101PortalLab.md/#introduction)
-* [**LAB: Windows and Linux VMs, customising NSGs, defining Availability Sets**](./azure101VMLab.md/#introduction)
-* [**LAB: Deploying to Web Apps from a local Docker repository**](./azure101WebAppLab.md/#introduction)
-* [**LAB: Using Logic Apps with the Twitter API**](./azure101LogicAppLab.md/#introduction)
+## Labs
+* [**Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
+* [**Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)
+* [**Lab: **Deploying to Web Apps from GitHub**](./azure101WebAppLab.md/#introduction)
+* [**Lab: **Using Logic Apps**](./azure101LogicAppLab.md/#introduction)
 
 ## Pre-requisites
 The workshop requires the following:
@@ -61,11 +61,11 @@ The below sections are [PowerPoint](./azure101PresenterDeck.pptx) content unless
     * CI/CD
     * Toolchains
     * Monitoring and Insight
-6. [**LAB: Deploying to Web Apps from a local Docker repository**](./azure101WebAppLab.md/#introduction)
+6. [**LAB: Deploying to Web Apps from a GitHub repository**](./azure101WebAppLab.md/#introduction)
 7. Data and Analytics
     * Hadoop, HDinsight and Data Lake
     * SQL DB, Data Warehouse and Managed Instance
     * MySQL, PostgreSQL and CosmosDB
     * Cortana Intelligence Suite, Cognitive Services, Machine Learning and IoT Suite
-8. [**LAB: Using Logic Apps with the Twitter API**](./azure101LogicAppLab.md/#introduction)
+8. [**LAB: Using Logic Apps to create a feedback API**](./azure101LogicAppLab.md/#introduction)
 9. Self-training and options for future enablement sessions
