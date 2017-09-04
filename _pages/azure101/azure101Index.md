@@ -26,10 +26,10 @@ In terms of orientation, the trainer may use slides to help give an overview of 
 Allow five hours for a full session including all of the labs.  
 
 ## Labs
-* [**Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
-* [**Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)
-* [**Lab: **Deploying to Web Apps from GitHub**](./azure101WebAppLab.md/#introduction)
-* [**Lab: **Using Logic Apps**](./azure101LogicAppLab.md/#introduction)
+* [Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
+* [Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)
+* [Lab: **Deploying to Web Apps from GitHub**](./azure101WebAppLab.md/#introduction)
+* [Lab: **Using Logic Apps**](./azure101LogicAppLab.md/#introduction)
 
 ## Pre-requisites
 The workshop requires the following:

@@ -114,7 +114,7 @@ If you have completed the lab early then search on information in the portal and
 -------------------------------------------------------
 ## Quick Navigate:
 * Back up to [**Azure 101**](./azure101Index.md/#introduction) main page
-  * [**Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
-  * [**Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)
-  * [**Lab: **Deploying to Web Apps from GitHub**](./azure101WebAppLab.md/#introduction)
-  * [**Lab: **Using Logic Apps**](./azure101LogicAppLab.md/#introduction)
+  * [Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
+  * [Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)
+  * [Lab: **Deploying to Web Apps from GitHub**](./azure101WebAppLab.md/#introduction)
+  * [Lab: **Using Logic Apps**](./azure101LogicAppLab.md/#introduction)
