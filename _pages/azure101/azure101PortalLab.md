@@ -112,7 +112,7 @@ If you have completed the lab early then search on information in the portal and
 -   Region to region S2S VPNs
 
 -------------------------------------------------------
-## Quick Navigate:
+## Quick Navigate
 * Back up to [**Azure 101**](./azure101Index.md/#introduction) main page
   * [Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
   * [Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)

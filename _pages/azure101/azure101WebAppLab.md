@@ -193,7 +193,7 @@ https://github.com/richeney/azure101-webapp-html
 * Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. https://\<website>.scm.azurewebsites.net/
 
 -------------------------------------------------------
-## Quick Navigate:
+## Quick Navigate
 * Back up to [**Azure 101**](./azure101Index.md/#introduction) main page
   * [Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
   * [Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)

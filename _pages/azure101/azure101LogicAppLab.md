@@ -23,9 +23,9 @@ Logic Apps are quick plug and play "if .. then ..." constructs to help developer
 In this logic app lab we will create an HTTP endpoint that will be used to receive user feedback.  This REST API could then be used by our fictional websites, mobile apps and custom applications.    
 
 We will build up the Logic App in steps:
-1. Create the basic REST API using a JSON schema, and test that is responds
+1. Create the basic REST API using a JSON schema, and test that it responds
 2. Add on a conditional branch that emails us if the feedback rating is poor
-3. Inserts a logging mechanism to retain all of the feedback in the document database API for Cosmos DB
+3. Insert a logging mechanism to retain all of the feedback in the document database API for Cosmos DB
 
 We will trigger the tests using the Postman application which is a standard way to test REST API interfaces.  The REST standard supports create, read, update and post (CRUD) actions, but we will only be using the POST action.
 
@@ -68,8 +68,8 @@ We'll create a REST API point, and define the expected schema for the JSON.  Onc
 
 * Search for **Request** / Response for the trigger
   * Paste in the JSON schema
-  
-_Note that the JSON describes the keys in order to give them titles such as_ feedbackEmail_. We will then be able to use as dynamic content later in the lab, much like a variable._ 
+
+Note that the JSON describes the keys in order to give them titles such as _feedbackEmail_. We will then be able to use as dynamic content later in the lab, much like a variable. 
 
 ### Response
 
@@ -84,7 +84,8 @@ _Note that the JSON describes the keys in order to give them titles such as_ fee
 
 ### Test the endpoint
 
-* Click on the Logic App name at the top of the portal (breadcrumbs) to show the Overview screen for the Logic App
+* Click on the Logic App name at the top of the portal
+* You will now be in the Logic App's Overview screen 
 * Click on the copy icon on the right of the **Callback url [POST]** in the Trigger History pane.  This is the HTTP REST API endpoint.
 * Open up the Postman app, skipping login
   * Change the action from **GET** to **POST** in the drop list 
@@ -166,7 +167,7 @@ We'll now add a collection called production into our feedback database, and we'
   * Partition Key: **/source**
   * Database: **feedback**
 
-![](../../images/collection.png)  
+![](../../images/cosmosDbCollection.png)  
 
 * In the Cosmos DB Overview area, copy the URI
   * The URI is in the form **https://_\<ID>_.documents.azure.com:443/**
@@ -216,9 +217,7 @@ Below is an example of the _Create or update document_ logic
 
 ![](../../images/logicAppDocument.png)  
 
-
-  _
-  * _Note the leading slash in the partition key value, source, and that this exactly matches the source variable in the JSON.  Also that we defined /source as the partition key when we added the collection.  This is key to make the partitioning work._
+* _Note the leading slash in the partition key value, source, and that this exactly matches the source variable in the JSON.  Also that we defined /source as the partition key when we added the collection.  This is key to make the partitioning work._
 * Save
 
 ### Test the whole Logic App workflow
@@ -226,6 +225,8 @@ Below is an example of the _Create or update document_ logic
 * Retest a feedback submission by going into Postman, changing the body of the JSON (choose a new name, email address and feedback message) and then clicking **Send**
 * Check the Run History and view the outputs
 * Go into Cosmos DB and use the Data Explorer to verify that the feedback is beeing collected successfully
+
+![](../../images/cosmosDbDocumentTest.png)  
 
 ## Final notes
 
@@ -236,7 +237,7 @@ Below is an example of the _Create or update document_ logic
   * Note that Functions can also be integrated into Logic Apps for full flexibility
 
 -------------------------------------------------------
-## Quick Navigate:
+## Quick Navigate
 * Back up to [**Azure 101**](./azure101Index.md/#introduction) main page
   * [Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
   * [Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)

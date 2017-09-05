@@ -107,7 +107,7 @@ Once the VM has been created then use the Bash shell to open a secure shell sess
 - Search the [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates) GitHub repo to find the same template
 
 -------------------------------------------------------
-## Quick Navigate:
+## Quick Navigate
 * Back up to [**Azure 101**](./azure101Index.md/#introduction) main page
   * [Lab: **Using the portal and creating a vNet**](./azure101PortalLab.md/#introduction)
   * [Lab: **Windows and Linux VMs**](./azure101VMLab.md/#introduction)
