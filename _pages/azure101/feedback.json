@@ -1,7 +1,7 @@
 {
     "id": 1504522921969,
     "name": "Joe Bloggs",
-    "emailAddress": "joe.bloggs@outlook.com",
+    "email": "joe.bloggs@outlook.com",
     "feedback": "Your website keeps on crashing when I add items to my Wish List.  Shocking.",
     "rating": 2,
     "source": "webapp"
