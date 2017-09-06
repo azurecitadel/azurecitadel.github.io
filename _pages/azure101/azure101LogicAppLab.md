@@ -42,7 +42,7 @@ We won't be using the Cosmos DB until the end of the lab, but we'll deploy it fi
 
 Now open up the Azure portal in a new tab and continue with the following steps.   
 
-## JSON Payload
+## JSON payload
 
 * Open the [example JSON payload](./feedback.json) into a new tab.  This is the format that the various applications will use for feedback into our system.  
   * The ID is the number of UTC milliseconds
