@@ -14,7 +14,7 @@ $code-font                   	: monospace;
 $alt-font                    	: $heading-font;
 
 $doc-font-size               	: 16;
-$doc-line-height             	: 24;
+$doc-line-height             	: 22;
 
 $border-radius               	: 3px;
 
@@ -24,6 +24,7 @@ $border-radius               	: 3px;
 
 $white                        : #fff;
 $black                        : #000;
+$slate                        : #1C465F;
 
 $body-color                  	: #ebebeb;
 
@@ -32,8 +33,8 @@ $caption-color                : mix($white, $text-color, 25%);
 
 $base-color                  	: #343434;
 $comp-color                  	: complement($base-color);
-$border-color                	: #ddd;
-$link-color                  	: #222;
+$border-color                	: #737F9F;
+$link-color                  	: #8D65A5;
 
 $primary-color               	: $black;
 $success-color               	: #2ecc71;
@@ -82,9 +83,9 @@ $form-font-size              	: $doc-font-size;
    ========================================================================== */
 
 $sliding-menu-border-color	 	 : $black;
-$sliding-menu-background 		   : $black;
+$sliding-menu-background 		   : $slate;
 $sliding-menu-color 	 		     : $white;
-$sliding-menu-background-hover : $black;
+$sliding-menu-background-hover : $slate;
 $sliding-menu-color-hover	 	   : $white;
 $sliding-menu-border   			   : 1px solid $sliding-menu-border-color;
 $button-size		         	     : 30px;
