@@ -60,8 +60,10 @@ a {
 	color: $link-color;
 	&:hover {
 		color: darken($link-color, 10);
+		font-weight: bold;
 		text-decoration: underline;
-		text-decoration-color: darken($link-color, 10);
+		text-decoration-line: 
+		text-decoration-color: $black;
 	}
 	&:focus {
 		@extend %tab-focus;
@@ -77,7 +79,8 @@ a {
 blockquote {
   padding-left: $gutter;
   padding-right: $gutter;
-  border-left: 6px solid $info-color;
+  /* border-left: 6px solid $info-color; */
+  border-left: 6px solid $slate; */
   p {
     font-family: $alt-font;
     @include font-size(24);
