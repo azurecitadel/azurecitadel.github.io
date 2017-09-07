@@ -58,9 +58,9 @@ ins {
 
 a {
 	color: $link-color;
+	font-weight: bold;
 	&:hover {
 		color: darken($link-color, 10);
-		font-weight: bold;
 		text-decoration: underline;
 		text-decoration-color: $black;
 	}
