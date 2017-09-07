@@ -45,7 +45,7 @@ $info-color                  	: #3498db;
 $table-border-color          	: $border-color;
 $table-border                	: 1px solid $table-border-color;
 $table-background            	: lighten($border-color, 4);
-$table-header-color          	: lighten($border-color, 2);
+$table-header-color          	: lighten($border-color, 4);
 $table-hover-color           	: darken($table-background, 2);
 $table-stripe-color          	: darken($table-background, 4);
 $table-stripe-color-hover    	: darken($table-stripe-color, 3);
