@@ -25,6 +25,7 @@ li {
 h1, h2, h3, h4, h5, h6 {
 	font-family: $heading-font;
 	text-rendering: optimizeLegibility; // Fix the character spacing for headings
+	color: darken($slate, 4);
 }
 h1 {
 	@include font-size(36);
@@ -58,7 +59,9 @@ ins {
 a {
 	color: $link-color;
 	&:hover {
-		color: darken($link-color, 20);
+		color: darken($link-color, 10);
+		text-decoration: underline;
+		text-decoration-color: darken($link-color, 10);
 	}
 	&:focus {
 		@extend %tab-focus;
