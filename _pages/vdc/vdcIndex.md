@@ -6,7 +6,7 @@ categories: workshops
 permalink: /vdc/
 tags: [vdc, virtual, data, centre, pre-reqs]
 comments: true
-author: Adam_Raffe`
+author: Adam_Raffe
 image:
   feature: 
   teaser: Education.jpg
