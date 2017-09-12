@@ -2,7 +2,7 @@
 layout: article
 title: VDC Overview and Pre-reqs
 date: 2017-09-12
-categories: null
+categories: workshops
 permalink: /vdc/
 tags: [vdc, virtual, data, centre, pre-reqs]
 comments: true
