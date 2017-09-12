@@ -43,15 +43,15 @@ Note that the Role Based Access Control (RBAC) section of the lab requires write
 
 Deploying a third party network virtual appliance (such as the Cisco CSR router used in this lab) programmatically is not possible until you have accepted the legal agreement. At the time of writing, the only way to do this is to create the virtual appliance through the Azure portal and subsequently delete it. You must do this first before attempting to deploy the lab environment through the ARM templates. To do this, follow these steps:
 
-1) Using the Azure portal, click on the 'Add' button on the top left of the screen. Search for 'Resource Group' and then select 'Create'. Name the resource group 'NVA-Legal'.
-2) Click the 'Add' button again, but this time search for 'Cisco' - select the option entitled 'Cisco CSR 1000v Deployment with 2 NICs' and then select create
-3) Name the virtual machine 'NVA-Legal' and use the username and password labuser / M1crosoft123. Select the resource group you created in step 1 (NVA-Legal).
-4) In the next step, select 'storage account' and create a storage account with a unique name (you will receive an error if the name is not unique)
-5) Select 'Public IP' and give the IP address any name (e.g. 'test')
-6) Assign a unique DNS label (you will receive an error if the name is not unique)
-7) Click on 'subnets' and accept the default options
-8) Select 'OK' until the virtual appliance starts to deploy. Wait for the deployment to finish.
-9) When the virtual appliance deployment has completed, delete the entire 'NVA-Legal' resource group by navigating to the resource group overview and selecting 'Delete'
+1. Using the Azure portal, click on the 'Add' button on the top left of the screen. Search for 'Resource Group' and then select 'Create'. Name the resource group 'NVA-Legal'.
+2. Click the 'Add' button again, but this time search for 'Cisco' - select the option entitled 'Cisco CSR 1000v Deployment with 2 NICs' and then select create
+3. Name the virtual machine 'NVA-Legal' and use the username and password labuser / M1crosoft123. Select the resource group you created in step 1 (NVA-Legal).
+4. In the next step, select 'storage account' and create a storage account with a unique name (you will receive an error if the name is not unique)
+5. Select 'Public IP' and give the IP address any name (e.g. 'test')
+6. Assign a unique DNS label (you will receive an error if the name is not unique)
+7. Click on 'subnets' and accept the default options
+8. Select 'OK' until the virtual appliance starts to deploy. Wait for the deployment to finish.
+9. When the virtual appliance deployment has completed, delete the entire 'NVA-Legal' resource group by navigating to the resource group overview and selecting 'Delete'
 
 ## Virtual Data Centre Workshop 
 
