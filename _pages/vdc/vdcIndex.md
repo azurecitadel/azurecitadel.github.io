@@ -1,6 +1,6 @@
 ---
 layout: article
-title: VDC Overview and Pre-reqs
+title: Virtual Data Centre Workshop
 date: 2017-09-12
 categories: workshops
 permalink: /vdc/
@@ -42,6 +42,7 @@ Note that the Role Based Access Control (RBAC) section of the lab requires write
 ## Deploy the Cisco CSR1000V Virtual Appliance
 
 Deploying a third party network virtual appliance (such as the Cisco CSR router used in this lab) programmatically is not possible until you have accepted the legal agreement. At the time of writing, the only way to do this is to create the virtual appliance through the Azure portal and subsequently delete it. You must do this first before attempting to deploy the lab environment through the ARM templates. To do this, follow these steps:
+
 1) Using the Azure portal, click on the 'Add' button on the top left of the screen. Search for 'Resource Group' and then select 'Create'. Name the resource group 'NVA-Legal'.
 2) Click the 'Add' button again, but this time search for 'Cisco' - select the option entitled 'Cisco CSR 1000v Deployment with 2 NICs' and then select create
 3) Name the virtual machine 'NVA-Legal' and use the username and password labuser / M1crosoft123. Select the resource group you created in step 1 (NVA-Legal).
