@@ -56,7 +56,7 @@ Deploying a third party network virtual appliance (such as the Cisco CSR router 
 ## Virtual Data Centre Workshop 
 
 The main virtual data centre workshop may be found here:
-**https://github.com/Araffe/vdc-networking-lab**.
+**[https://github.com/Araffe/vdc-networking-lab](https://github.com/Araffe/vdc-networking-lab)**.
 
 The workshop will follow the readme for the hands on lab element, and will also cover the fundamental concepts using the accompanying presentation materials. 
 
