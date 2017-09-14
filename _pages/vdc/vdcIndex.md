@@ -30,14 +30,16 @@ The Virtual Data Centre (VDC) lab provides a theoretical overview and hands on l
 ## Pre-requisites
 The workshop requires the following:
 * **[Azure Subscription](../prereqs/prereqSubscription.md)**
+  * Confirm that the subscription is valid and permits resource creation by creating a resource group
+  * Note that the Role Based Access Control (RBAC) section of the lab requires write access to Azure AD (i.e. Microsoft.Authorization/*/Write access)
+  * Write access to AAD may be tested by going to https://aad.portal.azure.com and confirming that you can create users and groups
+  * If you do not have a valid subscription that permits the creation of resources, ids and groups then ask for a temporary Azure Pass subscription
 * [Bash and CLI 2.0](../prereqs/prereqLxss.md) (optional, only for Windows 10)
 * [Azure Modules for PowerShell](../prereqs/prereqPowershell.md) (optional, recommended for existing PowerShell users)
 * [Visual Studio Code](../prereqs/prereqVscode.md)
 * **Acceptance for the Cisco Legal Agreement**
   * This is required in advance, or the ARM templated automated lab deployment during the workshop will not succeed
   * See steps in the section below to manually Deploy the Cisco CSR1000V Virtual Appliance, accept the agreement and then clean up 
-
-Note that the Role Based Access Control (RBAC) section of the lab requires write access to Azure AD (i.e. Microsoft.Authorization/*/Write access).  You may test this by going to https://aad.portal.azure.com and confirming that you can create users and groups.
 
 ## Deploy the Cisco CSR1000V Virtual Appliance
 
