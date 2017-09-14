@@ -37,7 +37,7 @@ The workshop requires the following:
   * This is required in advance, or the ARM templated automated lab deployment during the workshop will not succeed
   * See steps in the section below to manually Deploy the Cisco CSR1000V Virtual Appliance, accept the agreement and then clean up 
 
-Note that the Role Based Access Control (RBAC) section of the lab requires write access to Azure AD (i.e. Microsoft.Authorization/*/Write access).  Yiou may test this by going to https://aad.portal.azure.com and confirming that you can create users and groups.
+Note that the Role Based Access Control (RBAC) section of the lab requires write access to Azure AD (i.e. Microsoft.Authorization/*/Write access).  You may test this by going to https://aad.portal.azure.com and confirming that you can create users and groups.
 
 ## Deploy the Cisco CSR1000V Virtual Appliance
 
