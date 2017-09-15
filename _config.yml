@@ -1,7 +1,7 @@
 # Site wide configuration
 
-title: "Microsoft UK PDU"
-description: "This is a site for the UK Cloud Infra and Management Team"
+title: "Microsoft Azure Citadel"
+description: "A location for Azure related training material developed and maintained by the UK One Commercial Partner Solution Architect team at Microsoft"
 logo: MSLogo.jpg
 teaser: MSLogo.jpg
 locale: en
