@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Hands on lab exercise for using Hashicorp Terraform with Microsoft Azure
+title: WORK IN PROGRESS-Hands on lab exercise for using Hashicorp Terraform with Microsoft Azure
 date: 2017-09-12
 categories: workshops
 author: Adam_Bohle
