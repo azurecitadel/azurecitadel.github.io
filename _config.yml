@@ -6,7 +6,7 @@ logo: MSLogo.jpg
 teaser: MSLogo.jpg
 locale: en
 timezone: Europe/London
-url: https://ukpdu.github.io
+url: https://citadel.github.io
 feed:
   path: atom.xml
 
