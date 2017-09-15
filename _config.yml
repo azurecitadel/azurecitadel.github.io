@@ -6,7 +6,7 @@ logo: MSLogo.jpg
 teaser: MSLogo.jpg
 locale: en
 timezone: Europe/London
-url: https://citadel.github.io
+url: https://azurecitadel.github.io
 feed:
   path: atom.xml
 
