@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Azure Arm and DSC Lab Guide
+title: WORK IN PROGRESS - Azure Arm and DSC Lab Guide
 date: 2017-08-14
 categories: workshops
 author: Adam_Bohle

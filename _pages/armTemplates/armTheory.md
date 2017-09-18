@@ -63,3 +63,39 @@ The *type* is the resource type in the *Resource.Provider/resourceType* naming t
 
 ## Azure Resource Manager JSON template format
 
+The ARM template format is JSON format. 
+
+Note that the curly brace objects in JSON contain key:value pairs.  The value in the key:value pair can also be another object.  Square brackets are another object type, and contain lists of unnamed (but indexed) objects.
+
+Here is an empty template to show the structure.
+
+```
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+    }
+  ],
+  "outputs": {  }
+}
+```
+
+Sections:
+* **schema**: JSON schema that describes the template format
+* **contentVersion**: version of the schema 
+* **parameters**: inputs
+* **variables**: used within the template to simplify the resources later
+* **resources**: list of resources to deploy
+* **outputs**: output JSON information
+
+
+Of these, the schema and contentVersion are mandatory, as are the resources.  Parameters and variables are almost always included. Outputs are rarer, and only really used when nesting templates.  More on that later.  
+
+
+
+
