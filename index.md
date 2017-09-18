@@ -3,7 +3,7 @@ layout: archive
 permalink: /
 title: "Latest Posts"
 image:
-  feature: DataCentre3.jpg
+  feature: AzureCitadelBanner.png
 ---
 
 <div class="tiles">
