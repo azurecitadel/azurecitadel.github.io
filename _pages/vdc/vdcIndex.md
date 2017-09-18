@@ -30,16 +30,21 @@ The Virtual Data Centre (VDC) lab provides a theoretical overview and hands on l
 ## Pre-requisites
 The workshop requires the following:
 * **[Azure Subscription](../prereqs/prereqSubscription.md)**
-  * Confirm that the subscription is valid and permits resource creation by creating a resource group
-  * Note that the Role Based Access Control (RBAC) section of the lab requires write access to Azure AD (i.e. Microsoft.Authorization/*/Write access)
-  * Write access to AAD may be tested by going to https://aad.portal.azure.com and confirming that you can create users and groups
-  * If you do not have a valid subscription that permits the creation of resources, ids and groups then ask for a temporary Azure Pass subscription
-* [Bash and CLI 2.0](../prereqs/prereqLxss.md) (optional, only for Windows 10)
+  * Confirm that the subscription is valid: 
+    * create a resource group (to prove resource creation)
+    * go to https://aad.portal.azure.com and create a test user and group
+  * If you cannot create resources, ids and groups then request a temporary Azure Pass subscription
+    * Note that if you have used a Microsoft account (e.g. first.last@outlook.com) for a free Azure trial before then you will be able to redeem an Azure Pass code, but will not be able to activate it and you will not be able to redeem that same code again
+    * Therefore it is recommended to create a vdc.first.last@outlook.com Microsoft account, and use that in a private browser session
+    * Go to https://www.microsoftazurepass.com and follow the instructions to redeem and activate your Azure Pass
+* **Cloud Shell**
+  * In the Azure [portal](https://portal.azure.com), click on the Cloud Shell icon at the top of the screen (**>_**), create the storage account for clouddrive and confirm it is working by typing ```az account show```
+* [Bash and CLI 2.0](../prereqs/prereqLxss.md) (optional, recommended, only for Windows 10)
 * [Azure Modules for PowerShell](../prereqs/prereqPowershell.md) (optional, recommended for existing PowerShell users)
-* [Visual Studio Code](../prereqs/prereqVscode.md)
+* [Visual Studio Code](../prereqs/prereqVscode.md) (optional)
 * **Acceptance for the Cisco Legal Agreement**
   * This is required in advance, or the ARM templated automated lab deployment during the workshop will not succeed
-  * See steps in the section below to manually Deploy the Cisco CSR1000V Virtual Appliance, accept the agreement and then clean up 
+  * See steps in the [Deploy the Cisco CSR1000V Virtual Appliance](#deploy-the-cisco-csr1000v-virtual-appliance) section below to accept the agreement and then clean up 
 
 ## Deploy the Cisco CSR1000V Virtual Appliance
 
@@ -57,7 +62,7 @@ Deploying a third party network virtual appliance (such as the Cisco CSR router 
 
 ## Virtual Data Centre Workshop 
 
-The main virtual data centre workshop may be found here:
+The main virtual data centre workshop guide may be found here:
 **[https://github.com/Araffe/vdc-networking-lab](https://github.com/Araffe/vdc-networking-lab)**.
 
 The workshop will follow the readme for the hands on lab element, and will also cover the fundamental concepts using the accompanying presentation materials. 
