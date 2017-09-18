@@ -3,7 +3,7 @@ layout: archive
 permalink: /
 title: "Latest Posts"
 image:
-  feature: AzureCitadelBanner.png
+  feature: AzureCitadelBanner.jpg
 ---
 
 <div class="tiles">
