@@ -1,11 +1,11 @@
 ---
 layout: archive
-permalink: /projects/
-title: "Projects and Demos"
+permalink: /Demos/
+title: "Demos"
 ---
 
 <div class="tiles">
-{% for post in site.categories.projects %}
+{% for post in site.categories.demos %}
 	{% include post-list.html %}
 {% endfor %}
 </div>

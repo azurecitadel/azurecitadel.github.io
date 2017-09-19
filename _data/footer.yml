@@ -1,11 +1,16 @@
 # Footer navigation links
 
-- title: Microsoft UK PDU Site
-  url: https://ukpdu.github.io
+- title: Azure Citadel
+  url: https://azurecitadel.github.io
 
 - title: Newsletter
   url: /posts/
   excerpt: "Newsletters"
+  image:
+
+- title: Demos
+  url: /demos/
+  excerpt: "Demos"
   image:
 
 - title: Workshops
