@@ -6,7 +6,7 @@ categories: null
 permalink: /azure101/
 tags: [azure, 101, index, content]
 comments: true
-author: Richard_Cheney`
+author: Richard_Cheney
 image:
   feature: 
   teaser: Education.jpg
