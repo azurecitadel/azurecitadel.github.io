@@ -25,12 +25,6 @@ plugins:
   - jekyll-gist
   - jekyll-feed
 
-# Create a collection for the pages
-collections:
-  pages:
-    output: true
-    permalink: /:path
-
 # Front matter defaults
 defaults:
   # _posts
