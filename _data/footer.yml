@@ -1,7 +1,7 @@
 # Footer navigation links
 
 - title: Azure Citadel
-  url: https://azurecitadel.github.io
+  url: {{ site.url }}
 
 - title: Newsletter
   url: /posts/
