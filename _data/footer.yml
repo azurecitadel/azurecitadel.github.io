@@ -1,11 +1,20 @@
 # Footer navigation links
 
+<<<<<<< HEAD
 - title: 
+=======
+- title: Azure Citadel
+>>>>>>> b0e86a9df6cd89d4d2fdcdc7150b600b3a826c08
   url: https://azurecitadel.github.io
 
 - title: Newsletter
   url: /posts/
   excerpt: "Newsletters"
+  image:
+
+- title: Demos
+  url: /demos/
+  excerpt: "Demos"
   image:
 
 - title: Workshops
