@@ -20,7 +20,7 @@ kramdown:
   input: GFM
   toc_levels: 1..2
 highlighter: rouge
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
@@ -43,10 +43,11 @@ defaults:
       path: ""
       type: pages
     values:
-      layout: single
+      layout: article
       author_profile: true
       comments: true
       share: true
+      related: true
 
 # Site owner
 owner:
@@ -81,6 +82,7 @@ exclude:
   - README
   - Rakefile
   - config
+  - github-pages-local.md
   - gulpfile.js
   - lib
   - log
