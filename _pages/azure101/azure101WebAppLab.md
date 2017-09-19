@@ -6,7 +6,7 @@ categories: null
 permalink: /azure101/webapp/
 tags: [azure, 101, paas, web, app, git, github]
 comments: true
-author: Richard_Cheney`
+author: Richard_Cheney
 image:
   feature: 
   teaser: Education.jpg
