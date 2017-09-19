@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /Demos/
+permalink: /demos/
 title: "Demos"
 ---
 
