@@ -54,13 +54,5 @@ I will be creating a new on premise domain called **wildecompany.local** but you
 
 We've now create an Active Directory Forest with a single Domain and multiple users.
 
-Move onto the next [next lab.](./identitycreateAAD)
-
-
-## Labs
-* [Lab: **Create Windows Active Directory Domain**](./identitycreatead)
-* [Lab: **Create Azure Active Directory Tenant**](./identitycreateAAD)
-* [Lab: **Prepare Windows Active Directory**](./identityprepareAS)
-* [Lab: **Configure AD Connect**](./identityconfigureADC)
-
+Move onto the next lab [Create Azure Active Directory.](./identitycreateAAD)
 

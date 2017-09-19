@@ -36,9 +36,9 @@ The workshop requires the following:
 * Some of these steps will require a public domain (e.g. microsoft.com) with the ability to edit the DNS settings so we can match our on premise identities to the cloud. If you do not own one you can skip certain steps and still use AD Connect but it wouldn't be a great user experience in a production environment.
 
 ## Labs
-* [Lab: **Create Windows Active Directory Forest**](./identitycreatead)
-* [Lab: **Create Azure Active Directory Tenant**](./identitycreateAAD)
-* [Lab: **Prepare Windows Active Directory**](./identityprepareAS)
-* [Lab: **Configure AD Connect**](./identityconfigureADC)
+* [Lab: **Create Windows Active Directory Forest**](./identitycreatead.md)
+* [Lab: **Create Azure Active Directory Tenant**](./identitycreateAAD.md)
+* [Lab: **Prepare Windows Active Directory**](./identityprepareAD.md)
+* [Lab: **Configure AD Connect**](./identityconfigueADC.md)
 
 

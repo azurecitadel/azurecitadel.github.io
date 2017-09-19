@@ -64,13 +64,6 @@ $LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("wildecompany.loca
 
 My **@wildecompany.local** users are now **@wilde.company**. Now we have matched our on premise users to log our public domain they will have a consistent experience regardless of whether they're logging in to on premise or cloud apps. This is a fundamental step when migrating our identities to the cloud. 
 
-Move onto the next [next lab.](./identityconfigureADC)
-
-
-## Labs
-* [Lab: **Create Windows Active Directory Domain**](./identitycreatead)
-* [Lab: **Create Azure Active Directory Tenant**](./identitycreateAAD)
-* [Lab: **Prepare Windows Active Directory**](./identityprepareAS)
-* [Lab: **Configure AD Connect**](./identityconfigureADC)
+Move onto the next lab [Configure AD Connect.](./identityconfigureADC)
 
 

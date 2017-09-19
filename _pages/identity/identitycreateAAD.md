@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Create Windows Azure Active Directory
+title: Create Azure Active Directory
 date: 2017-09-19
 categories: null
 permalink: /identity/identitycreateaad/
@@ -78,13 +78,6 @@ e.g:
 * *yourcompany.co.uk > yourcompany.onmicrosoft.com*
 * *example.org > example.onmicrosoft.com*
 
-Move onto the next [next lab.](./identityprepareAD)
-
-
-## Labs
-* [Lab: **Create Windows Active Directory Domain**](./identitycreatead)
-* [Lab: **Create Azure Active Directory Tenant**](./identitycreateAAD)
-* [Lab: **Prepare Windows Active Directory**](./identityprepareAS)
-* [Lab: **Configure AD Connect**](./identityconfigureADC)
+Move onto the next lab [Prepare Active Directory.](./identityprepareAD)
 
 
