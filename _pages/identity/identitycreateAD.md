@@ -16,7 +16,7 @@ Extending Identities to the Cloud.
 
 {% include toc.html %}
 
-## Create Windows Active Directory
+## Create Windows Active Directory Forest
 First we need to create a new Windows Active Directory Forest and Domain to use during this lab and we'll utilise an ARM template to do all the hard work.
 
 I will be creating a new on premise domain called **wildecompany.local** but you can create something relevant for you.

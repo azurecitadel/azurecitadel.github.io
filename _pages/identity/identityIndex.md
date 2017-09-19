@@ -1,9 +1,9 @@
 ---
 layout: article
-title: Create Windows Active Directory Forest
+title: Extending Identities to the Cloud
 date: 2017-09-19
 categories: null
-permalink: /identity/identitycreatead/
+permalink: /identity/
 tags: [aad, identity, hybrid]
 comments: true
 author: Tom_Wilde
@@ -16,49 +16,27 @@ Extending Identities to the Cloud.
 
 {% include toc.html %}
 
-## Create Windows Active Directory
-First we need to create a new Windows Active Directory Forest and Domain to use during this lab and we'll utilise an ARM template to do all the hard work.
+## Overview
+During this lab we will learn how to extend our on premise identities to the cloud.  This allows you to provide a common identity for your users for Office 365, Azure, SaaS applications integrated with Azure AD + a whole lot more.
+![](../../images/ExtendingIdentities_exampleSSO.png)
 
-I will be creating a new on premise domain called **wildecompany.local** but you can create something relevant for you.
+We will create a new Windows Active Directory Forest, a new Azure Active Directory tenant, prepare Active Directory for AD connect and then use AD connect to synchronise users.
 
+To demonstrate I will be creating a new on premise domain called **wildecompany.local** but you can create something relevant for you.
 
-1. In the Azure Portal, search for and open **Deploy a custom template**
+## Topology
+We will end up with a single forest, single Azure AD tenant topology. This is most common topology used, a single on-premises forest, with one or multiple domains (one in this lab), and a single Azure AD tenant.  
+Pass-through Authentication will be used and we will not be syncronizing passwords. This means our on premise Active Directory Domain Controller will be completing all the authentications and passwords wont be stored in Azure. This is just one of the many ways AD Connect can be configured and is asked for by customers that want to utilise on premise infrastucture, keep passwords on premies but still utilise the cloud.
 
-![](../../images/ExtendingIdentities_1.1.png)
+![](../../images/ExtendingIdentities_singleforestsingledirectory.png)
 
-2. Select **Active-directory-new-domain > Select Template**
-
-![](../../images/ExtendingIdentities_1.2.png)
-
-3. Fill in the parameters requested > **Purchase** 
-
-*My settings are below but you can customise it relevant to you:*
-* *Admin Username - domainadmin (in a production deployment it's recommended to make this difficult to guess)*
-* *Resource Group - WildeCompany*
-* *Location - West Europe*
-* *Domain Name - wildecompany.local (the domain name requires a full stop)*
-* *Dns Prefix - wildecompany* 
-
-*Please note - The template can take up to 30minutes to deploy completely.*
-
-![](../../images/ExtendingIdentities_1.3.png)
-
-4. Log into the virtual machine created by the template **Resource Groups >  WildeCompany > adVM > Connect**
-
-![](../../images/ExtendingIdentities_1.4.png)
-
-5. In Server Manager **Tools > Active Directory Users and Computers >** right click on **Users** > create a few users
-
-![](../../images/ExtendingIdentities_1.5.png)
-
-
-We've now create an Active Directory Forest with a single Domain and multiple users.
-
-Move onto the next [next lab.](./identitycreateAAD)
-
+## Pre-requisites
+The workshop requires the following:
+* [Azure Subscription](../prereqs/prereqSubscription.md)
+* Some of these steps will require a public domain (e.g. microsoft.com) with the ability to edit the DNS settings so we can match our on premise identities to the cloud. If you do not own one you can skip certain steps and still use AD Connect but it wouldn't be a great user experience in a production environment.
 
 ## Labs
-* [Lab: **Create Windows Active Directory Domain**](./identitycreatead)
+* [Lab: **Create Windows Active Directory Forest**](./identitycreatead)
 * [Lab: **Create Azure Active Directory Tenant**](./identitycreateAAD)
 * [Lab: **Prepare Windows Active Directory**](./identityprepareAS)
 * [Lab: **Configure AD Connect**](./identityconfigureADC)
