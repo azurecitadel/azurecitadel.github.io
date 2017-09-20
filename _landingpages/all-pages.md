@@ -4,9 +4,10 @@ permalink: /all/
 title: "All Pages"
 ---
 
-<div class="tiles">
-{% for post in site.categories %}
-	{{ post.date }}
-{% endfor %}
-</div>
-<!-- /.tiles -->
+<ul>
+  {% for page in site.pages %}
+    <li><a href="{{ page.url }}">CAT:{{ page.categories  }} - TITLE:{{ page.title }}</a></li>
+  {% endfor %} 
+</ul>
+
+
