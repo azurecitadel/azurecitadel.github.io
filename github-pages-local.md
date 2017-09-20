@@ -9,3 +9,13 @@ Run all steps inside a WSL bash session.
 - To start the site locally run `bundler exec jekyll serve --config _config.yml,_config_local.yml` Note. This includes the config override
 - Go to **http://localhost:4000/** and rejoice!
 - Note; it will watch for file changes so just edit your local files and save
+
+## Other stuff
+If it stops working run through the steps again in the page linked above
+
+Then run:  
+`sudo apt install -y zlib1g-dev`
+
+Then run:  
+`bundler install`  
+(This might take FOREVER)

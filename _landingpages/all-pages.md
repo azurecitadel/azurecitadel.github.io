@@ -6,7 +6,7 @@ title: "All Pages"
 
 <div class="tiles">
 {% for post in site.categories %}
-	{% include post-list.html %}
+	{{ post.date }}
 {% endfor %}
 </div>
 <!-- /.tiles -->
