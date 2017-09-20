@@ -24,11 +24,11 @@ Next we need to create a new Azure Active Directory Tenant.  I will be creating 
 
 ![](../../images/ExtendingIdentities_2.1.png)
 
-2. Enter the new directory details, Organisation name (just a reference point) > Domain name (AKA tenant) > Region
+2. Enter the new directory details, Organisation name (just a reference point), Domain name (AKA tenant), Region **> Create**
 
 *My settings are below but you can customise it relevant to you:*
 * *Organization name - Wilde Company*
-* *Initial domain name - WildeCompany (notice suffix on my domain WildeCompany.onmicrosoft.com)*
+* *Initial domain name - WildeCompany (notice suffix on my domain WildeCompany**.onmicrosoft.com** this needs to be unique)*
 
 ![](../../images/ExtendingIdentities_2.2.png)
 
@@ -37,6 +37,7 @@ Next we need to create a new Azure Active Directory Tenant.  I will be creating 
 ![](../../images/ExtendingIdentities_2.3.png)
 
 4. Now we need to add the public domain you own to link to your new tenant *.onmicrosoft.com, **Domain Names > Add domain name**
+
 *Please skip this step if you do not own a public domain*
 
 ![](../../images/ExtendingIdentities_2.4.png)
@@ -57,7 +58,7 @@ Next we need to create a new Azure Active Directory Tenant.  I will be creating 
 
 7. In a new browser tab, log into your domain's DNS settings and **add** a TXT record with the details from the Azure Portal (see previous screen shot).
 
-*Please note - I've used porkbun.com to purchase and configure a domain but all the domain configuration portals will have a section to add a TXT record. Notice the host name and answer from previous screen shot match. DNS record updates can take up to 48 hours to take effect, but they often take effect much sooner and for me it was instant.*
+*Please note - I've used porkbun.com to purchase and configure a domain but all the domain configuration portals will have a section to add a TXT record. Notice the host name and answer from previous screenshot match. DNS record updates can take up to 48 hours to take effect, but they often take effect much sooner and for me it was instant.*
 
 *Please skip this step if you do not own a public domain*
 
@@ -70,7 +71,7 @@ Next we need to create a new Azure Active Directory Tenant.  I will be creating 
 ![](../../images/ExtendingIdentities_2.8.png)
 
 
-Now we have created a new Azure Active directory tenant and linked the new tenant *.onmicrosoft.com to your public domain. The screen shots show I have created and linked an Azure Active Directory tenant **wildecompany.onmicrosoft.com** to the public domain I own **wilde.company**.
+Now we have created a new unique Azure Active directory tenant and linked the new tenant *.onmicrosoft.com to your public domain. The screenshots show I have created and linked an Azure Active Directory tenant **wildecompany.onmicrosoft.com** to the public domain I own **wilde.company**.
 
 e.g: 
 * *wilde.company > wildecompany.onmicrosoft.com*
@@ -78,6 +79,6 @@ e.g:
 * *yourcompany.co.uk > yourcompany.onmicrosoft.com*
 * *example.org > example.onmicrosoft.com*
 
-Move onto the next lab [Prepare Active Directory.](./identityprepareAD)
+Move onto the next lab [Prepare Active Directory.](./identityprepareAD.md)
 
 

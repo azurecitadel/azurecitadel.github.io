@@ -52,7 +52,7 @@ I will be creating a new on premise domain called **wildecompany.local** but you
 ![](../../images/ExtendingIdentities_1.5.png)
 
 
-We've now create an Active Directory Forest with a single Domain and multiple users.
+We've now created an Active Directory Forest with a single Domain and multiple users.
 
-Move onto the next lab [Create Azure Active Directory.](./identitycreateAAD)
+Move onto the next lab [Create Azure Active Directory.](./identitycreateAAD.md)
 
