@@ -1,4 +1,4 @@
-![banner](images\AzureCitadelBanner.png)
+![banner](images/AzureCitadelBanner.png)
 
 # OCP CSA Site - aka Azure Citadel
 This is the Github repo for the site, which is based on Jekyll and the [Skinny Bones](https://github.com/mmistakes/skinny-bones-jekyll) theme. Do not link to this page but to the published site!
