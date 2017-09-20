@@ -55,7 +55,7 @@ owner:
   twitter: https://twitter.com/adambohle
   bio:
   avatar: abohle-bio.jpg # 160x160 px image for author byline
-  disqus-shortname: https-ukpdu-github-io
+  disqus-shortname: https-ukpducim-github-io
 
 include:
   - .htaccess
