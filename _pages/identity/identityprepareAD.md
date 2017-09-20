@@ -33,15 +33,15 @@ I will edit my on premise domain **wildecompany.local** then my users so they no
 
 3. 	In Active Directory users and computers change the UPN suffix, open user **> Account >** Select newly added UPN suffix **> OK**
 
-*Notice the original and new UPN suffix we've just created, I have changed my user1 from wildecomany.local to wilde.company.* 
+*Notice the original and new UPN suffix we've just created, I have changed my user1 from @wildecomany.local to @wilde.company.* 
 
 ![](../../images/ExtendingIdentities_3.3.png)
 
 4. 	Completing this task manually will work fine but let's try using a script to save time, run Windows PowerShell ISE as an administrator and paste in the following:
 
-```$LocalUsers = Get-ADUser -Filter {UserPrincipalName -like "*originaluserprincipalname"} -Properties userPrincipalName -ResultSetSize $null
-$LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("originaluserprincipalname","newuserprinciplname"); $_ | Set-ADUser -UserPrincipalName $newUpn}
-```
+```$LocalUsers = Get-ADUser -Filter {UserPrincipalName -like "*originaluserprincipalname"} -Properties userPrincipalName -ResultSetSize $null```
+```$LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("originaluserprincipalname","newuserprinciplname"); $_ | Set-ADUser -UserPrincipalName $newUpn}```
+
 
 *Replace all of originaluserprincipalname and newuserprincipalname and Run*
 
@@ -49,9 +49,8 @@ $LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("originaluserprinc
 * *originaluserprincipalname = wildecompany.local*
 * *newuserprincipalname = wilde.company*
 
-```$LocalUsers = Get-ADUser -Filter {UserPrincipalName -like "*wildecompany.local"} -Properties userPrincipalName -ResultSetSize $null
-$LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("wildecompany.local","wilde.company"); $_ | Set-ADUser -UserPrincipalName $newUpn}
-```
+```$LocalUsers = Get-ADUser -Filter {UserPrincipalName -like "*wildecompany.local"} -Properties userPrincipalName -ResultSetSize $null```
+```$LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("wildecompany.local","wilde.company"); $_ | Set-ADUser -UserPrincipalName $newUpn}```
 
 ![](../../images/ExtendingIdentities_3.4.png)
 
@@ -62,8 +61,8 @@ $LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("wildecompany.loca
 ![](../../images/ExtendingIdentities_3.5.png)
 
 
-My **@wildecompany.local** users are now **@wilde.company**. Now we have matched our on premise users to log our public domain they will have a consistent experience regardless of whether they're logging in to on premise or cloud apps. This is a fundamental step when migrating our identities to the cloud. 
+My **@wildecompany.local** users are now **@wilde.company**. Now we have matched our on premise users our public domain they can have a consistent experience regardless of whether they're logging in to on premise or cloud apps. This is a fundamental step when migrating identities to the cloud. 
 
-Move onto the next lab [Configure AD Connect.](./identityconfigureADC)
+Move onto the next lab [Configure AD Connect.](./identityconfigureADC.md)
 
 

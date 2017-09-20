@@ -32,7 +32,7 @@ I will be creating a new Global Admin on my **wilde.company** Azure Active Direc
 
 ![](../../images/ExtendingIdentities_4.2.png)
 
-3. In the Active Directory virtual machine (adVM), download Azure Ad Connect from https://www.microsoft.com/en-us/download/details.aspx?id=47594 and run the installer (you may need to change your internet zone settings to download the file). **Agree > Continue > Customize > Pass-through authentication** (this means all authentication are completed using the on premise Active Directory) **> Enable single sign-on** (this means users that use devices that are Active Directory domain joined will be automatically logged into cloud applications seamlessly - a great feature!)
+3. In the Active Directory virtual machine (adVM), download Azure Ad Connect from https://www.microsoft.com/en-us/download/details.aspx?id=47594 and run the installer (you may need to change your internet zone settings to download the file). **Agree > Continue > Customize > Pass-through authentication** (this means all authentications are completed using the on premise Active Directory) **> Enable single sign-on** (this means users that use devices that are Active Directory domain joined will be automatically logged into cloud applications seamlessly - a great feature!)
 
 ![](../../images/ExtendingIdentities_4.3.png)
 
