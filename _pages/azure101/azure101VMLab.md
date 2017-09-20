@@ -6,7 +6,7 @@ categories: null
 permalink: /azure101/vm/
 tags: [azure, 101, vm, virtual, machine, linux, windows, template]
 comments: true
-author: Richard_Cheney`
+author: Richard_Cheney
 image:
   feature: 
   teaser: Education.jpg

@@ -6,7 +6,7 @@ categories: null
 permalink: /azure101/portal/
 tags: [azure, 101, lab, portal, network, resource, group, vNet]
 comments: true
-author: Richard_Cheney`
+author: Richard_Cheney
 image:
   feature: 
   teaser: Education.jpg

@@ -1,6 +1,6 @@
 # Site wide configuration
 
-title: "Microsoft Azure Citadel"
+title: "Azure Citadel"
 description: "A location for Azure related training material developed and maintained by the UK One Commercial Partner Solution Architect team at Microsoft"
 logo: MSLogo.jpg
 teaser: MSLogo.jpg
@@ -20,7 +20,7 @@ kramdown:
   input: GFM
   toc_levels: 1..2
 highlighter: rouge
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
@@ -29,7 +29,7 @@ gems:
 defaults:
   # _posts
   - scope:
-      path: ""
+      path: "_posts"
       type: posts
     values:
       layout: single
@@ -40,13 +40,19 @@ defaults:
       related: true
   # _pages
   - scope:
-      path: ""
+      path: "_pages"
       type: pages
     values:
-      layout: single
+      layout: article
       author_profile: true
       comments: true
       share: true
+      related: true
+  # images
+  - scope:
+      path: "images"
+    values:
+      image: true
 
 # Site owner
 owner:
@@ -81,6 +87,7 @@ exclude:
   - README
   - Rakefile
   - config
+  - github-pages-local.md
   - gulpfile.js
   - lib
   - log

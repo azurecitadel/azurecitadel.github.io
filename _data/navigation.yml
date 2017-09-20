@@ -5,14 +5,14 @@
   excerpt: "Newsletters"
   image:
 
+- title: Demos
+  url: /demos/
+  excerpt: "Demos"
+  image:
+
 - title: Workshops
   url: /workshops/
   excerpt: "Workshops"
-  image:
-
-- title: Demo Projects
-  url: /projects/
-  excerpt: "Demo Projects"
   image:
 
 - title: Blogs

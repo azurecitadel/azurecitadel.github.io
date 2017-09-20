@@ -6,7 +6,7 @@ categories: null
 permalink: /azure101/logicapp/
 tags: [azure, 101, paas, logic, app, twitter]
 comments: true
-author: Richard_Cheney`
+author: Richard_Cheney
 image:
   feature: 
   teaser: Education.jpg
