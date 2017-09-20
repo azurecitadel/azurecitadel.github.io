@@ -20,7 +20,7 @@
   excerpt: "Blogs"
   image:
 
-- title: AllPages
-  url: /all/
-  excerpt: "All Pages"
+- title: Test
+  url: /test/
+  excerpt: "Test Page"
   image:
