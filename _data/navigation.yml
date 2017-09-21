@@ -19,3 +19,8 @@
   url: /blogs/
   excerpt: "Blogs"
   image:
+
+- title: Test
+  url: /test/
+  excerpt: "Test Page"
+  image:

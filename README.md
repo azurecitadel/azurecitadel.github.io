@@ -1,25 +1,22 @@
-# Skinny Bones Jekyll Starter
+![banner](images/AzureCitadelBanner.png)
 
-Just a little something I'm using to jump start a site refresh. I like to think of it as a starter for building your own Jekyll site. I purposely keep the styling minimal and bare to make it easier to add your own flare and markup.
+# OCP CSA Site - aka Azure Citadel
+This is the Github repo for the site, which is based on Jekyll and the [Skinny Bones](https://github.com/mmistakes/skinny-bones-jekyll) theme. Do not link to this page but to the published site!
 
-I'm currently using a variation of it on my personal website [Made Mistakes](http://mademistakes.com) with some modifications. To learn more about how to use the theme and install it check out the [Skinny Bones demo](http://mmistakes.github.io/skinny-bones-jekyll/) (*work in progress*).
+### The site is published here - [https://azurecitadel.github.io/](https://azurecitadel.github.io/)
 
-![screenshot of Skinny Bones](http://mmistakes.github.io/skinny-bones-jekyll/images/skinny-bones-theme-feature.jpg)
+# Contributing Guidelines
+Placeholder until we can agree on structure....  
+Blah please put posts here and pages here blah  
+Please use one of the following categories; **foo, bar, cheese, trousers, goat**  
+Here are some getting started templates - link here  
+blah
 
----
+### Disclaimer Boilerplate
+This is suggested boilerplate to add to pages for demos, apps or labs
 
-## Notable Features
+#### Disclaimer
+The information contained here was correct and validated at the time of publishing. Azure and other Microsoft cloud services are subject to rapid change and development. Reasonable efforts are made to keep the technical details here (links, commands, names etc) up to date but they may drift out of sync.  
 
-* Jekyll 3.x and GitHub Pages compatible.
-* Stylesheet built using Sass.
-* Data files for easier customization of the site navigation/footer and for supporting multiple authors.
-* Optional Disqus comments, table of contents, social sharing links, and Google AdSense ads.
-* And more.
+Any code or demo app published here should be considered POC grade, and exists to demonstrate technical principals rather than representing any best practice or production grade code
 
-
-# Visual Studio Code integration
-
-Add in Markdown Preview Enhanced by launching VS Code's Quick Open (Ctrl+P) and paste the following
-```
-ext install markdown-preview-enhanced
-```
