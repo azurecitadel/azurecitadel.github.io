@@ -105,6 +105,9 @@ I will be creating a new Global Admin on my **wilde.company** Azure Active Direc
 
 ![](../../images/ExtendingIdentities_4.16.png)
 
+17. Let's test logging into the cloud as a user by logging into the Microsoft Access Panel Applications - https://myapps.microsoft.com. This is where all the cloud and on premise applications would be once they've been assigned.
+
+![](../../images/ExtendingIdentities_4.17.png)
 
 Lab complete. Now we have connected our on premise and cloud directories you can open up cloud functionality to those synchronized users! 
 
