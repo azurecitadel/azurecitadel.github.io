@@ -33,17 +33,17 @@ The workshop requires the following:
   * If your workshop is being hosted by a Microsoft Cloud Solution Architect (CSA) then you will be provided with a code for an **Azure Pass** subscription
     * Open a private browser session, go to http://signup.live.com and create a new  Microsoft account in  **vdc._firstname.lastname_@outlook.com** format 
     * Go to https://www.microsoftazurepass.com and follow the instructions to redeem the code and activate your Azure Pass
-  * If you will be using you own subscription (e.g. Visual Studio Enterprise]) then you can confirm that the subscription is valid in the portal by the following: 
+  * If you will be using you own subscription (e.g. Visual Studio Enterprise) then you can confirm that the subscription is valid for the workshop by checking the following in the portal: 
     * prove the ability to create resources by creating a new resource group
-    * check for any CPU quotas in 
+    * check there are no stringent Virtual Machine or CPU quotas in Subscriptions -> Usage + Quotas
     * within Azure Active Directory, create a test user and group
   * Common pitfalls to avoid:
     * Free Trial accounts may have a CPU quota that is insufficient for the lab environment deployment to successfully complete
     * Redeeming an Azure Pass code against an email address previously used for a trial will succeed, but the activation will fail
-    *  
+    * Using a work email may mean that you do not have write access to the company's directory and therefore you cannot create users and groups
 * **Cloud Shell**
   * In the Azure [portal](https://portal.azure.com), click on the Cloud Shell icon at the top of the screen (**>_**), create the storage account for clouddrive and confirm it is working by typing ```az account show```
-* [Bash and CLI 2.0](../prereqs/prereqLxss.md) (optional, recommended, only for Windows 10)
+* [Bash and CLI 2.0](../prereqs/prereqLxss.md) (optional, recommended, only applicable for Windows 10)
 
 ## Virtual Data Centre Workshop 
 
