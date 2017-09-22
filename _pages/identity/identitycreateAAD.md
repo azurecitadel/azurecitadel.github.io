@@ -32,7 +32,7 @@ Next we need to create a new Azure Active Directory Tenant.  I will be creating 
 
 ![](../../images/ExtendingIdentities_2.2.png)
 
-3. Switch to the directory you just created (either by clicking on your **account** in the top right OR by going to **Azure Active Directory > Switch Directory**)
+3. Switch to the directory you just created (either by clicking on your **account** in the top right OR by going to **Azure Active Directory > Switch Directory**). If the new directory isn't there, try pressing refresh on your browser.
 
 ![](../../images/ExtendingIdentities_2.3.png)
 
