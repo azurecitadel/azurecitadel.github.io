@@ -51,6 +51,7 @@ I will edit my on premise domain **wildecompany.local** then my users so they no
 * *newuserprincipalname = wilde.company*
 
 ```$LocalUsers = Get-ADUser -Filter {UserPrincipalName -like "*wildecompany.local"} -Properties userPrincipalName -ResultSetSize $null```
+
 ```$LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("wildecompany.local","wilde.company"); $_ | Set-ADUser -UserPrincipalName $newUpn}```
 
 ![](../../images/ExtendingIdentities_3.4.png)
