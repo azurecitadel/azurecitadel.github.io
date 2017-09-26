@@ -15,6 +15,7 @@ All of the workshops require a working Azure subscription.  Ensure that you have
 * Visual Studio Subscription
 * Internal User Rights
 * Free Trial
+* Azure Pass
 
 ## Visual Studio Subscription
 
@@ -53,11 +54,25 @@ The internal usage rights may be activated at [http://aka.ms/ActivateIUR](http:/
 
 ## Free Azure Trial Account
 
-An Azure trial account may be created.  The trial account provides $200 of free credit, and may be used to try out any of the Azure services for 30 days.  
+An Azure trial account may be created.  The trial account provides £150 of free credit, and may be used to try out any of the Azure services for 30 days.  
 
 Visit [https://azure.microsoft.com/en-gb/free](https://azure.microsoft.com/en-gb/free) to set up the account. 
 
 Credit card details need to be provided for identity verification, but the spending limit is set to $0 to ensure that it remains free.  The spending limit may be changed if the account is going to be used ongoing.  
+
+Note that some of the services under a trial licence will be restricted, e.g. CPU quotas, and therefore a Free Trial account is not appropriate for some of the larger workshops such as Virtual Data Centre.
+
+## Azure Pass
+
+If you are a partner working with Microsoft's One Commercial Partner group and the session is being hosted by a Cloud Solution Architect (CSA), then they may provide you with an **Azure Pass** subscription.  
+   * Open a private browser session, go to http://signup.live.com and create a clean new  Microsoft account in  **_labname,firstname.lastname_@outlook.com** format 
+    * Go to https://www.microsoftazurepass.com and follow the instructions to redeem the code and activate your Azure Pass
+
+## Common Pitfalls to Avoid
+
+* Free Trial accounts may have a CPU quota that is insufficient for the lab environment deployment to successfully complete
+* Redeeming an Azure Pass code against an email address previously used for a trial will succeed, but the activation will fail
+* Using a work email may mean that you do not have write access to the company's directory and therefore you cannot create users and groups
 
 ## Verification 
 
@@ -72,4 +87,3 @@ Once the account is enabled, prove that it is working correctly by logging into 
 * [Windows 10 Linux Subsystem and CLI 2.0](../lxss)
 * [Visual Studio 2017](../vs2017)
 * [Visual Studio Code](../vscode)
-
