@@ -14,7 +14,7 @@ image:
 All of the workshops require a working Azure subscription.  Ensure that you have one of the following options enabled and verified:
 * Visual Studio Subscription
 * Internal User Rights
-* Free Trial
+* Azure Free
 * Azure Pass
 
 ## Visual Studio Subscription
@@ -52,20 +52,22 @@ The internal usage rights ([IUR](http://aka.ms/iur)) credits may be used for
 
 The internal usage rights may be activated at [http://aka.ms/ActivateIUR](http://aka.ms/ActivateIUR).  
 
-## Free Azure Trial Account
+## Azure Free Account
 
-An Azure trial account may be created.  The trial account provides £150 of free credit, and may be used to try out any of the Azure services for 30 days.  
+An Azure Free account may be created.  The account provides £150 of free credit for the first 30 days, with free access to some of the most popular products for 12 months before defaulting to more than 25 always free products.  
 
 Visit [https://azure.microsoft.com/en-gb/free](https://azure.microsoft.com/en-gb/free) to set up the account. 
 
 Credit card details need to be provided for identity verification, but the spending limit is set to $0 to ensure that it remains free.  The spending limit may be changed if the account is going to be used ongoing.  
 
-Note that some of the services under a trial licence will be restricted, e.g. CPU quotas, and therefore a Free Trial account is not appropriate for some of the larger workshops such as Virtual Data Centre.
+Note that some of the services under a trial licence will be restricted, e.g. CPU quotas, and therefore an Azure Free account is not appropriate for some of the larger workshops such as Virtual Data Centre.
+
+The [FAQ](https://azure.microsoft.com/en-gb/free/free-account-faq/) includes details of the included services and quotas. 
 
 ## Azure Pass
 
 If you are a partner working with Microsoft's One Commercial Partner group and the session is being hosted by a Cloud Solution Architect (CSA), then they may provide you with an **Azure Pass** subscription.  
-   * Open a private browser session, go to http://signup.live.com and create a clean new  Microsoft account in  **_labname,firstname.lastname_@outlook.com** format 
+   * Open a private browser session, go to http://signup.live.com and create a clean new  Microsoft account in  **_labname.firstname.lastname_@outlook.com** format 
     * Go to https://www.microsoftazurepass.com and follow the instructions to redeem the code and activate your Azure Pass
 
 ## Common Pitfalls to Avoid
@@ -77,7 +79,6 @@ If you are a partner working with Microsoft's One Commercial Partner group and t
 ## Verification 
 
 Once the account is enabled, prove that it is working correctly by logging into the portal at [http://portal.azure.com](http://portal.azure.com).  
-
 
 
 ## Links to other pre-requisite instruction pages
