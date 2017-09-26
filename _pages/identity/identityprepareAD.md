@@ -37,9 +37,10 @@ I will edit my on premise domain **wildecompany.local** then my users so they no
 
 ![](../../images/ExtendingIdentities_3.3.png)
 
-4. 	Completing this task manually will work fine but let's try using a script to save time, run Windows PowerShell ISE as an administrator and paste in the following:
+4. 	Completing this task manually will work fine but let's try using a script to save time, run Windows PowerShell ISE as an administrator and paste both of the lines below:
 
 ```$LocalUsers = Get-ADUser -Filter {UserPrincipalName -like "*originaluserprincipalname"} -Properties userPrincipalName -ResultSetSize $null```
+
 ```$LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("originaluserprincipalname","newuserprinciplname"); $_ | Set-ADUser -UserPrincipalName $newUpn}```
 
 
@@ -50,6 +51,7 @@ I will edit my on premise domain **wildecompany.local** then my users so they no
 * *newuserprincipalname = wilde.company*
 
 ```$LocalUsers = Get-ADUser -Filter {UserPrincipalName -like "*wildecompany.local"} -Properties userPrincipalName -ResultSetSize $null```
+
 ```$LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("wildecompany.local","wilde.company"); $_ | Set-ADUser -UserPrincipalName $newUpn}```
 
 ![](../../images/ExtendingIdentities_3.4.png)
@@ -63,6 +65,6 @@ I will edit my on premise domain **wildecompany.local** then my users so they no
 
 My **@wildecompany.local** users are now **@wilde.company**. Now we have matched our on premise users our public domain they can have a consistent experience regardless of whether they're logging in to on premise or cloud apps. This is a fundamental step when migrating identities to the cloud. 
 
-Move onto the next lab [Configure AD Connect.](./identityconfigureADC.md)
+Move onto the next lab [Configure AD Connect.](./identityconfigueADC.md)
 
 

@@ -22,7 +22,7 @@ We're almost ready to synchronize our identities, but first we'll create a new g
 
 I will be creating a new Global Admin on my **wilde.company** Azure Active Directory Tenant and using that account in AD Connect to synchronize my on premise users (**userX@wilde.company**).
 
-1. In Azure Portal > **Azure Active Directory > All Users > New User >** Set Name, User name and Global Administrator as the Directory Role
+1. In Azure Portal > **Azure Active Directory > Users and Groups > All Users > New User >** Set Name, User name and Global Administrator as the Directory Role **> Copy** the password.
 	
 *Noticed I have created a global administrator **tom.wilde@wilde.company***
 
@@ -32,7 +32,7 @@ I will be creating a new Global Admin on my **wilde.company** Azure Active Direc
 
 ![](../../images/ExtendingIdentities_4.2.png)
 
-3. In the Active Directory virtual machine (adVM), download Azure Ad Connect from https://www.microsoft.com/en-us/download/details.aspx?id=47594 and run the installer (you may need to change your internet zone settings to download the file). **Agree > Continue > Customize > Pass-through authentication** (this means all authentications are completed using the on premise Active Directory) **> Enable single sign-on** (this means users that use devices that are Active Directory domain joined will be automatically logged into cloud applications seamlessly - a great feature!)
+3. In the Active Directory virtual machine (adVM), download Azure Ad Connect from https://www.microsoft.com/en-us/download/details.aspx?id=47594 and run the installer (you may need to change your internet zone settings to download the file). **Agree > Continue > Customize >** select **Pass-through authentication** (this means all authentications are completed using the on premise Active Directory), select **> Enable single sign-on** (this means users that use devices that are Active Directory domain joined will be automatically logged into cloud applications seamlessly - a great feature!)
 
 ![](../../images/ExtendingIdentities_4.3.png)
 
