@@ -1,12 +1,12 @@
 ---
 layout: archive
-permalink: /demos/
-title: "Demos"
+permalink: /labs/
+title: "Labs"
 ---
 
 <div class="tiles">
 {% for page in site.pages  %}
-	{% if page.categories == "demos" %}
+	{% if page.categories == "labs" %}
 	   {% include page-list.html %}
 	{% endif %} 
 {% endfor %}

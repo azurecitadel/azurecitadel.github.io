@@ -1,8 +1,8 @@
 # Site navigation links
 
-- title: Newsletter
-  url: /posts/
-  excerpt: "Newsletters"
+- title: Workshops
+  url: /workshops/
+  excerpt: "Workshops"
   image:
 
 - title: Demos
@@ -10,17 +10,17 @@
   excerpt: "Demos"
   image:
 
-- title: Workshops
-  url: /workshops/
+- title: Labs
+  url: /labs/
   excerpt: "Workshops"
   image:
 
-- title: Blogs
-  url: /blogs/
-  excerpt: "Blogs"
+- title: Guides
+  url: /guides/
+  excerpt: "Demos"
   image:
 
-- title: Test
-  url: /test/
-  excerpt: "Test Page"
+- title: Blog
+  url: /blogs/
+  excerpt: "Blog Posts"
   image:
