@@ -1,3 +1,0 @@
-{% for feat in site.data.featured %}
-  {{ feat.title }}
-{% endfor %}
