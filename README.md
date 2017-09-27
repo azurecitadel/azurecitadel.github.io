@@ -14,6 +14,7 @@ There are four main locations for content (pages)
 
 These exist as folders at the top level of this repo and for each folder, pages within should be assigned a **single** matching category in their front matter
 
+### Example
 Example of some content in the labs section, for a page called cheese-lab.
 ```
 labs/
@@ -26,11 +27,22 @@ labs/
 This will create a new URL on the site under the labs top level e.g. `https://azurecitadel.github.io/labs/cheese-lab/` (Note the .md is not included)
 This top level page should have a category set in the front matter e.g. `categories: labs` 
 
-**IMPORTANT!** Placing a category on page means it will be picked up by the auto-indexing landing pages (one for each of the categories)
+**IMPORTANT NOTES!** 
+- Placing a category on page means it will be picked up by the auto-indexing landing pages (one for each of the categories)
+- Do not put more than one category in the `categories` list
+- Do not put a permalink in your front-matter  
+
+
 
 Any sub-pages are placed in a sub folder with the **same name** as the .md. These sub pages **should not** have category assigned (so they don't show up on the auto index) you link to these from the parent .md  
 In this example the prepguide sub-page would be linked to from the main page as follows: `[Prep Guide][./prepguide]`
 and has the following full URL `https://azurecitadel.github.io/labs/cheese-lab/prepguide/`
+
+#### Images
+Images specific for the content should be placed in an `images` sub-directory inside the sub-directory named after your main page. This makes linking to the images easy.
+
+- On the parent page link as follows `![picture](./images/cheddar.jpg)`
+- On sub-pages link like this `![picture](../images/cheddar.jpg)`
 
 
 ### Disclaimer Boilerplate
