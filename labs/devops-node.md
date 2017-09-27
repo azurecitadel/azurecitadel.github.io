@@ -6,9 +6,8 @@ categories: labs
 featured: true
 author: Ben_Coleman
 image:
-  feature: featured/corp1.jpg
+  feature: code.jpg
   teaser: project.png
-  thumb: 
 comments: true
 excerpt: From first principals create a Node.js app running in Azure & Docker, deployed via an automated DevOps CI/CD pipeline
 ---
