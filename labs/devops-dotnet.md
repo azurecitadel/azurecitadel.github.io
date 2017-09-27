@@ -3,7 +3,6 @@ layout: article
 title: Azure DevOps Lab using .NET Core and Docker Machine
 date: 2017-09-29
 categories: labs
-featured: true
 author: Ben_Coleman
 image:
   feature: code.jpg
