@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Azure 101 Web App Lab • Azure Citadel</title>
+    
+    <meta name="keywords" content="azure, 101, paas, web, app, git, github">
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Azure 101 Web App Lab">
+	
+	<meta name="twitter:site" content="@https://twitter.com/adambohle">
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="http://localhost:4000/images/MSLogo.jpg">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Azure 101 Web App Lab">
+	
+	<meta property="og:url" content="http://localhost:4000/workshops/azure101/WebAppLab/">
+	<meta property="og:site_name" content="Azure Citadel">
+
+    <link rel="canonical" href="http://localhost:4000/workshops/azure101/WebAppLab/">
+
+    <link href="http://localhost:4000/atom.xml" type="application/atom+xml" rel="alternate" title="Azure Citadel Atom Feed">
+    <link href="http://localhost:4000/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="http://localhost:4000/js/vendor/html5shiv.min.js"></script>
+      <script src="http://localhost:4000/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+      <header id="masthead">
+  <div class="inner-wrap">
+    <a href="http://localhost:4000/" class="site-title">Azure Citadel</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Azure Citadel</a></li>
+	
+    
+    <li><a href="http://localhost:4000/workshops/" >Workshops</a></li>
+  
+    
+    <li><a href="http://localhost:4000/demos/" >Demos</a></li>
+  
+    
+    <li><a href="http://localhost:4000/labs/" >Labs</a></li>
+  
+    
+    <li><a href="http://localhost:4000/guides/" >Guides</a></li>
+  
+    
+    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Azure Citadel <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="http://localhost:4000/workshops/">
+        
+        <div class="title">Workshops</div>
+        <p class="excerpt">Interactive Workshops</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/demos/">
+        
+        <div class="title">Demos</div>
+        <p class="excerpt">Guided Demos</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/labs/">
+        
+        <div class="title">Labs</div>
+        <p class="excerpt">Hands On Labs</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/guides/">
+        
+        <div class="title">Guides</div>
+        <p class="excerpt">Tech Guides</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/blog/">
+        
+        <div class="title">Blog</div>
+        <p class="excerpt">Blog Posts</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+		<div class="page-title">
+			<h1>Azure 101 Web App Lab</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<p>Web App lab for the Azure 101 workshop.</p>
+
+<nav class="toc">
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#option-1-using-git-to-push-files-to-web-app" id="markdown-toc-option-1-using-git-to-push-files-to-web-app">Option 1: Using Git to push files to Web App</a></li>
+  <li><a href="#option-2-use-the-portal-and-pull-the-content-in" id="markdown-toc-option-2-use-the-portal-and-pull-the-content-in">Option 2: Use the portal and pull the content in</a></li>
+  <li><a href="#quick-navigate" id="markdown-toc-quick-navigate">Quick Navigate</a></li>
+</ul>
+
+</nav>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The PaaS section of the lab will touch on both Web Apps and Logic Apps. The Web App lab is split into two options - the first option is for students who are familiar with Git and uses this method to push files to the Web App, while the second option is aimed at students who are less familiar with Git tools and therefore uses the portal to pull files into the Web App.</p>
+
+<hr />
+
+<h2 id="option-1-using-git-to-push-files-to-web-app">Option 1: Using Git to push files to Web App</h2>
+
+<p>The diagram below gives an overview of what we are doing with a set of html
+files hosted on GitHub and pushing those into a Web App in Azure using Git.</p>
+
+<p><img src="../images/Az101-WebApp-Git.jpg" alt="" /></p>
+
+<ol>
+  <li>Use git clone to download the sample static HTML site from GitHub to your laptop</li>
+  <li>Login to Azure and create a deployment user</li>
+  <li>Create the Azure101PaaS resource group</li>
+  <li>Create the free tier app service plan</li>
+  <li>Create a web app within the app service plan</li>
+  <li>Configure a Git access point for the web app</li>
+  <li>Define the access point as an upstream git repo called “azure”, and use git push to add the html files</li>
+</ol>
+
+<h3 id="select-your-console">Select your console</h3>
+
+<p>If the <a href="../prereqs/prereqLxss.md">Bash and CLI 2.0 prereqs</a> have been followed then those Windows 10  users will have installed the Linux subsystem, and then installed both CLI 2.0 and Git into that subsystem.  If that is so then open a Command Prompt and then type <code class="highlighter-rouge">bash</code>.  Type in <code class="highlighter-rouge">az login</code> and follow the instructions. This will be your console.</p>
+
+<p>Everyone else may use the Cloud Shell (<strong>&gt;_</strong>) shown at the top of the Azure Portal.  This will create some local storage the first time you use it.  There is no need to login to Azure as it is done automatically for you.  (Note that we will not be using the permanent storage folder clouddrive as it does not support the file permissions required by git commands, so the clone of the Github repo will be transient.)  This will be your console.</p>
+
+<h3 id="instructions">Instructions</h3>
+
+<p><strong>1. Clone the HTML files from Github</strong></p>
+
+<p>Type (or copy and paste) the following commands into the console, changing the value for appName to include your name or alias.  Note that the appName value will need to be globally unique as it will form the web URL.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/richeney/azure101-webapp-html
+cd azure101-webapp-html
+git init
+ls -Al
+pwd
+
+git config --global user.email "your@email.com"
+git config --global user.name "Your Name"
+git config --global credential.helper cache
+
+rg=Azure101PaaS
+user=azure101deploy
+pwd=azure101p455w0rd
+appName=azure101YourName
+</code></pre>
+</div>
+<ul>
+  <li>The above commands copy the HTML files locally, change to that directory, initialise it for Git, and then finally lists the files.  The pwd command prints the working directory so that you know where they are.</li>
+  <li>We are then setting git to cache our credentials after the first successful connection to a remote, and also defining some variables to use in the commands in the following sections.</li>
+</ul>
+
+<p>Double click the <em>index.html</em> file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.  If you are in the Cloud Shell then cat index.html will display the raw html.</p>
+
+<p><strong>2. Log in to Azure using the CLI 2.0 and create the deployment user:</strong></p>
+
+<p>Create the deployment user:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>az webapp deployment user set --user-name $user --password $pwd
+</code></pre>
+</div>
+<ul>
+  <li>You will be prompted to make your username or password more unique if you have chosen one that is too common, although the error is a basic 400 decline HTTP error</li>
+  <li>The deployment user is the equivalent of a service account so that Git can authenticate to Azure and deploy to it</li>
+</ul>
+
+<p><strong>3. Create the resource group:</strong></p>
+
+<p>Create the resource group</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>az group create --name $rg --location westeurope
+</code></pre>
+</div>
+
+<p><strong>4. Create the App Service plan:</strong></p>
+
+<p>The App Service plans provide the underlying resources for your apps, and multiple apps can use them. The plans define the region, available instance sizes, scale count and SKU level, i.e. free, shared, basic, standard, premium.</p>
+
+<p>Create an App Service plan called quickStartPlan on the Free SKU</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>az appservice plan create --name quickStartPlan --resource-group $rg --sku FREE
+</code></pre>
+</div>
+<ul>
+  <li>You should see output JSON when the above command succeeds</li>
+</ul>
+
+<p><strong>5. Create the Web App:</strong></p>
+
+<p>Create the Web App. The name for the Web App must be globally unique as it forms part of the FQDN. You will be prompted to change it if it already exists.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>az webapp create --name $appName --resource-group $rg --plan quickStartPlan
+</code></pre>
+</div>
+<ul>
+  <li>Again, there will be output JSON when the command succeeds</li>
+  <li>Open your web browser and navigate to http://&lt;unique_app_name&gt;.azurewebsites.net. (You will also find the link in the new web app in the Azure portal.)</li>
+  <li>You should see a ‘placeholder’ web page – this indicates that the web app is running and ready to be configured.</li>
+</ul>
+
+<p><img src="../images/Az101-WebAppPlaceholder.jpg" alt="" /></p>
+
+<p><strong>6. Create the Git deployment access point:</strong></p>
+
+<p>Create the http endpoint for the deployment:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>deployuri=$(az webapp deployment source config-local-git --name $appName --resource-group $rg --query url --output tsv)
+
+echo $deployuri
+</code></pre>
+</div>
+<ul>
+  <li>The first command create an https endpoint similar to below, and then saves that value into the $deployuri variable.  The second prints the variable to screen, e.g.:
+    <div class="highlighter-rouge"><pre class="highlight"><code>https://&lt;username&gt;@&lt;appname&gt;.scm.azurewebsites.net/&lt;appname&gt;.git
+</code></pre>
+    </div>
+  </li>
+  <li>Note the <em>scm</em> section of the URL - this is the Kudu address. We’ll come back to that later</li>
+</ul>
+
+<p><strong>7. Add a Git remote called <em>Azure</em> and then push to the Web App:</strong></p>
+
+<p>Create the Git remote, calling it azure:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git remote add azure $deployuri
+
+git remote -v
+</code></pre>
+</div>
+<p>Push the master branch of the local html repo up to the azure remote</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>echo $pwd 
+
+git push azure master
+</code></pre>
+</div>
+<p>Refresh the web page and confirm that it has changed</p>
+
+<p><strong>8. Change the HTML and push again to the Web App:</strong></p>
+
+<p>Edit the index.html to change the Twitter account to your own.  You can use <code class="highlighter-rouge">nano index.html</code>, or <code class="highlighter-rouge">vi index.html</code> for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser.</p>
+
+<p>Commit the change, and then push it up to the azure remote</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git commit -a -m "Description of the change" 
+
+git push azure master
+</code></pre>
+</div>
+<p>Refresh the web page and see if it has been changed</p>
+
+<h3 id="if-you-have-time">If you have time:</h3>
+
+<p>There is a rich ecosystem built around the PaaS applications.  If you have time then explore the ecosystem for Web Apps</p>
+
+<ul>
+  <li>Browse the blade in the portal, checking out deployment slots, scale up and out, App Service Editor and Application Insights</li>
+  <li>Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. https://&lt;website&gt;.scm.azurewebsites.net/.</li>
+</ul>
+
+<hr />
+
+<h2 id="option-2-use-the-portal-and-pull-the-content-in">Option 2: Use the portal and pull the content in</h2>
+
+<p>Azure offers many ways of achieving something, with a view that users should use the tools with which they are most comfortable.  This alternative version of the lab is not recommended for larger scale web farms, but does given an insight into the power of PaaS level Web Apps.</p>
+
+<ul>
+  <li>Open the portal</li>
+  <li>Create a new Resource Group, and call it <strong>Azure101PaaS</strong></li>
+  <li>Click on <strong>Add</strong> in the new Resource Group and add a Web App
+    <ul>
+      <li>Set the App name to something globally unique, as it will form part of the FQDN, such as <strong>azure101&lt;yourname&gt;</strong></li>
+      <li>Create and use a new App Service Plan called <strong>quickStartPlan</strong> in the same region as the Resource Group, specifying the <strong>F1</strong> free tier</li>
+      <li>Click on <strong>Create</strong></li>
+    </ul>
+  </li>
+  <li>Open the App Service blade once it has deployed successfully</li>
+  <li>Click on the URL in the Overview section</li>
+  <li>The placeholder web page will be opened in a new tab:</li>
+</ul>
+
+<p><img src="../images/Az101-WebAppPlaceholder.jpg" alt="" /></p>
+
+<ul>
+  <li>Open the <strong>App Service Editor</strong> in the App Service blade’s Development tools section</li>
+  <li>Click on the <strong>Go</strong> button in the main pane.  This will open up a new tab containing the App Service Editor environment.</li>
+  <li>Select the Git button on the left and set the GitHub URL:
+    <div class="highlighter-rouge"><pre class="highlight"><code>https://github.com/richeney/azure101-webapp-html
+</code></pre>
+    </div>
+  </li>
+  <li>Click on the Clone from a git URL</li>
+  <li>Type <code class="highlighter-rouge">exit</code> once the clone is complete</li>
+  <li>Return the the tab containing the webpage, and refresh.  It should now show an updated page containing some static web page content plus a Twitter feed</li>
+  <li>Click on the files icon on the left and then select the index.html</li>
+  <li>Edit the index.html file, changing the Twitter account on the twitter-timeline class to your own</li>
+  <li>Return the the tab containing the webpage, and refresh.  It should now show your Twitter feed instead</li>
+</ul>
+
+<h3 id="if-you-have-time-1">If you have time:</h3>
+
+<ul>
+  <li>Browse the blade in the portal, checking out deployment options, deployment slots, scale up and out, and Application Insights</li>
+  <li>Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. https://&lt;website&gt;.scm.azurewebsites.net/</li>
+</ul>
+
+<hr />
+<h2 id="quick-navigate">Quick Navigate</h2>
+<ul>
+  <li>Back up to <a href="./azure101Index.md/#introduction"><strong>Azure 101</strong></a> main page
+    <ul>
+      <li><a href="./azure101PortalLab.md/#introduction">Lab: <strong>Using the portal and creating a vNet</strong></a></li>
+      <li><a href="./azure101VMLab.md/#introduction">Lab: <strong>Windows and Linux VMs</strong></a></li>
+      <li><a href="./azure101WebAppLab.md/#introduction">Lab: <strong>Deploying to Web Apps from GitHub</strong></a></li>
+      <li><a href="./azure101LogicAppLab.md/#introduction">Lab: <strong>Using Logic Apps</strong></a></li>
+    </ul>
+  </li>
+</ul>
+
+				<hr />
+				<footer class="page-footer">
+					
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Azure%20101%20Web%20App%20Lab&amp;url=http://localhost:4000/workshops/azure101/WebAppLab/&amp;via=https://twitter.com/adambohle" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/workshops/azure101/WebAppLab/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/workshops/azure101/WebAppLab/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i>Share on LinkedIn</a>
+</div><!-- /.share-this -->
+
+	<!-- <a class="btn-social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/workshops/azure101/WebAppLab/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a> -->
+
+
+					<div class="page-meta">
+	<p>Updated <time datetime="2017-08-30T00:00:00Z" itemprop="datePublished">August 30, 2017</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					<hr />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'https-ukpducim-github-io';
+
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+			<li><a href="https://azurecitadel.github.io" target="_blank">Azure Citadel</a></li>
+		
+      
+			<li><a href="http://localhost:4000/workshops/" >Workshops</a></li>
+		
+      
+			<li><a href="http://localhost:4000/demos/" >Demos</a></li>
+		
+      
+			<li><a href="http://localhost:4000/labs/" >Labs</a></li>
+		
+      
+			<li><a href="http://localhost:4000/guides/" >Guides</a></li>
+		
+      
+			<li><a href="http://localhost:4000/blogs/" >Blog</a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2017 <a href="http://localhost:4000">Azure Citadel</a> powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/" rel="nofollow">Skinny Bones</a>.</p>
+</footer>
+    </div>
+
+    <script src="http://localhost:4000/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="http://localhost:4000/js/main.js"></script>
+    <!--script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script-->
+    <script type="text/javascript" src="/slick/slick.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $('.carousel').slick({
+          autoplay: true,
+          arrows: true,
+          dots: true
+        });
+      });
+    </script>
+
+  </body>
+
+</html>

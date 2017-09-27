@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#", 
+  "definitions": {}, 
+  "id": "http://azure101.com/feedback.json", 
+  "properties": {
+    "email": {
+      "description": "End user's email address", 
+      "id": "/properties/email",
+      "title": "feedbackEmail", 
+      "type": "string"
+    }, 
+    "feedback": {
+      "description": "String field containing feedback from the user.", 
+      "id": "/properties/feedback", 
+      "title": "feedbackText", 
+      "type": "string"
+    }, 
+    "id": {
+      "description": "UTC milliseconds to create unique timestamp based ID", 
+      "id": "/properties/id", 
+      "title": "feedbackId", 
+      "type": "integer"
+    },
+    "name": {
+      "description": "String for username in \"GivenName FamilyName\" format.", 
+      "id": "/properties/name", 
+      "title": "feedbackName", 
+      "type": "string"
+    },
+    "rating": {
+      "description": "Star rating - integer, 1-5 are valid", 
+      "id": "/properties/rating", 
+      "title": "feedbackRating", 
+      "type": "integer"
+    },
+    "source": {
+      "default": "webapp",
+      "description": "Where did the feedback come from.  Used to partition.", 
+      "id": "/properties/source", 
+      "title": "feedbackSource", 
+      "type": "string"
+    }
+  }, 
+  "required": [
+    "id",
+    "email", 
+    "name", 
+    "feedback",
+    "rating",
+    "source"
+  ], 
+  "type": "object"
+}

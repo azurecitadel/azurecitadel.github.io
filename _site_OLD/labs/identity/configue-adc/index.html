@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Configure Active Directory Connect • Azure Citadel</title>
+    
+    <meta name="keywords" content="aad, identity, hybrid">
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Configure Active Directory Connect">
+	
+	<meta name="twitter:site" content="@https://twitter.com/adambohle">
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="http://localhost:4000/images/MSLogo.jpg">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Configure Active Directory Connect">
+	
+	<meta property="og:url" content="http://localhost:4000/labs/identity/configue-adc/">
+	<meta property="og:site_name" content="Azure Citadel">
+
+    <link rel="canonical" href="http://localhost:4000/labs/identity/configue-adc/">
+
+    <link href="http://localhost:4000/atom.xml" type="application/atom+xml" rel="alternate" title="Azure Citadel Atom Feed">
+    <link href="http://localhost:4000/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="http://localhost:4000/js/vendor/html5shiv.min.js"></script>
+      <script src="http://localhost:4000/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+      <header id="masthead">
+  <div class="inner-wrap">
+    <a href="http://localhost:4000/" class="site-title">Azure Citadel</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Azure Citadel</a></li>
+	
+    
+    <li><a href="http://localhost:4000/workshops/" >Workshops</a></li>
+  
+    
+    <li><a href="http://localhost:4000/demos/" >Demos</a></li>
+  
+    
+    <li><a href="http://localhost:4000/labs/" >Labs</a></li>
+  
+    
+    <li><a href="http://localhost:4000/guides/" >Guides</a></li>
+  
+    
+    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Azure Citadel <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="http://localhost:4000/workshops/">
+        
+        <div class="title">Workshops</div>
+        <p class="excerpt">Interactive Workshops</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/demos/">
+        
+        <div class="title">Demos</div>
+        <p class="excerpt">Guided Demos</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/labs/">
+        
+        <div class="title">Labs</div>
+        <p class="excerpt">Hands On Labs</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/guides/">
+        
+        <div class="title">Guides</div>
+        <p class="excerpt">Tech Guides</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/blog/">
+        
+        <div class="title">Blog</div>
+        <p class="excerpt">Blog Posts</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+		<div class="page-title">
+			<h1>Configure Active Directory Connect</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<p>Extending Identities to the Cloud.</p>
+
+<nav class="toc">
+<ul id="markdown-toc">
+  <li><a href="#configure-active-directory-connect" id="markdown-toc-configure-active-directory-connect">Configure Active Directory Connect</a></li>
+</ul>
+
+</nav>
+
+<h2 id="configure-active-directory-connect">Configure Active Directory Connect</h2>
+
+<p>We’re almost ready to synchronize our identities, but first we’ll create a new global admin (specifically for the new Azure AD Tenant) and use that account for AD Connect.</p>
+
+<p>I will be creating a new Global Admin on my <strong>wilde.company</strong> Azure Active Directory Tenant and using that account in AD Connect to synchronize my on premise users (<strong>userX@wilde.company</strong>).</p>
+
+<ol>
+  <li>In Azure Portal &gt; <strong>Azure Active Directory &gt; Users and Groups &gt; All Users &gt; New User &gt;</strong> Set Name, User name and Global Administrator as the Directory Role <strong>&gt; Copy</strong> the password.</li>
+</ol>
+
+<p><em>Noticed I have created a global administrator <strong>tom.wilde@wilde.company</strong></em></p>
+
+<p><img src="../images/ExtendingIdentities_4.1.png" alt="" /></p>
+
+<ol>
+  <li>Log out of the azure portal and log in as the global administrator you just created.</li>
+</ol>
+
+<p><img src="../images/ExtendingIdentities_4.2.png" alt="" /></p>
+
+<ol>
+  <li>In the Active Directory virtual machine (adVM), download Azure Ad Connect from https://www.microsoft.com/en-us/download/details.aspx?id=47594 and run the installer (you may need to change your internet zone settings to download the file). <strong>Agree &gt; Continue &gt; Customize &gt;</strong> select <strong>Pass-through authentication</strong> (this means all authentications are completed using the on premise Active Directory), select <strong>&gt; Enable single sign-on</strong> (this means users that use devices that are Active Directory domain joined will be automatically logged into cloud applications seamlessly - a great feature!)</li>
+</ol>
+
+<p><img src="../images/ExtendingIdentities_4.3.png" alt="" /></p>
+
+<ol>
+  <li>Enter the Global Administrator details for the new Azure Active Directory Tenant <strong>&gt; Next</strong></li>
+</ol>
+
+<p><em>I have used my <strong>tom.wilde@wilde.company</strong> global admin</em></p>
+
+<p><img src="../images/ExtendingIdentities_4.4.png" alt="" /></p>
+
+<ol>
+  <li>Connect the Directories. <strong>Add Directory &gt; Create a new AD Account for AD Connect to use &gt; OK</strong></li>
+</ol>
+
+<p><img src="../images/ExtendingIdentities_4.5.png" alt="" /></p>
+
+<ol>
+  <li>On prem and cloud directories are now connected! <strong>Next</strong></li>
+</ol>
+
+<p><img src="../images/ExtendingIdentities_4.6.png" alt="" /></p>
+
+<ol>
+  <li>Notice the on premise domain shows not added and the new Azure Active Directory public domain shows as verified.
+<strong>Next</strong></li>
+</ol>
+
+<p><img src="../images/ExtendingIdentities_4.7.png" alt="" /></p>
+
+<ol>
+  <li>Choose what OU’s you want to sync.</li>
+</ol>
+
+<p><em>All my users are in the Users organizational unit but you may seperate them out to remote/cloud/departmental groups.</em></p>
+
+<p><img src="../images/ExtendingIdentities_4.8.png" alt="" /></p>
+
+<ol>
+  <li>Choose how you want to uniquely identify your users <strong>&gt; Next</strong></li>
+</ol>
+
+<p><em>I only have a single on premise directory so the default options work but if you have multiple directory you need to choose what makes a user unique.</em></p>
+
+<p><img src="../images/ExtendingIdentities_4.9.png" alt="" /></p>
+
+<ol>
+  <li><strong>Next</strong></li>
+</ol>
+
+<p><em>Again, for this lab we can synchronize all users but you could apply some filtering to only sync the users that would use the cloud.</em></p>
+
+<p><img src="../images/ExtendingIdentities_4.10.png" alt="" /></p>
+
+<ol>
+  <li><strong>Password writeback &gt; Next</strong></li>
+</ol>
+
+<p><em>I have selected password writeback (so any password changes in the cloud will replicate to on premise) and have not selected password synchronization (so passwords are not actually stored in the cloud).</em></p>
+
+<p><img src="../images/ExtendingIdentities_4.11.png" alt="" /></p>
+
+<ol>
+  <li><strong>Enable Single Sign on &gt;</strong> authenticate with your local domain admin <strong>&gt; Next</strong></li>
+</ol>
+
+<p><em>If you add Windows 10 devices to the on premise domain they can be authenticated automatically with cloud applications.</em></p>
+
+<p><img src="../images/ExtendingIdentities_4.12.png" alt="" /></p>
+
+<ol>
+  <li>Confirm you want to start synchronization after the installation is complete <strong>&gt; Install</strong></li>
+</ol>
+
+<p><img src="../images/ExtendingIdentities_4.13.png" alt="" /></p>
+
+<ol>
+  <li>Notice the information displayed <strong>&gt; Exit</strong></li>
+</ol>
+
+<p><img src="../images/ExtendingIdentities_4.14.png" alt="" /></p>
+
+<ol>
+  <li>Let’s verify the connection, in the Azure portal <strong>&gt; Azure Active Directory &gt; AD Connect</strong></li>
+</ol>
+
+<p><em>Notice my sync status, seamless single sign-on and pass-through authentication are all enabled for wilde company.</em></p>
+
+<p><img src="../images/ExtendingIdentities_4.15.png" alt="" /></p>
+
+<ol>
+  <li><strong>Users and Groups &gt; All Users</strong></li>
+</ol>
+
+<p><em>Notice the new users and their usernames <strong>x@wilde.company</strong>, these have been synchronized from on premise.</em></p>
+
+<p><img src="../images/ExtendingIdentities_4.16.png" alt="" /></p>
+
+<ol>
+  <li>Let’s test logging into the cloud as a user by logging into the Microsoft Access Panel Applications - https://myapps.microsoft.com. This is where all the cloud and on premise applications would be once they’ve been assigned.</li>
+</ol>
+
+<p><img src="../images/ExtendingIdentities_4.17.png" alt="" /></p>
+
+<p>Lab complete. Now we have connected our on premise and cloud directories you can open up cloud functionality to those synchronized users!</p>
+
+
+				<hr />
+				<footer class="page-footer">
+					
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Configure%20Active%20Directory%20Connect&amp;url=http://localhost:4000/labs/identity/configue-adc/&amp;via=https://twitter.com/adambohle" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/labs/identity/configue-adc/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/labs/identity/configue-adc/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i>Share on LinkedIn</a>
+</div><!-- /.share-this -->
+
+	<!-- <a class="btn-social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/labs/identity/configue-adc/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a> -->
+
+
+					<div class="page-meta">
+	<p>Updated <time datetime="2017-09-19T00:00:00Z" itemprop="datePublished">September 19, 2017</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					<hr />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'https-ukpducim-github-io';
+
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+			<li><a href="https://azurecitadel.github.io" target="_blank">Azure Citadel</a></li>
+		
+      
+			<li><a href="http://localhost:4000/workshops/" >Workshops</a></li>
+		
+      
+			<li><a href="http://localhost:4000/demos/" >Demos</a></li>
+		
+      
+			<li><a href="http://localhost:4000/labs/" >Labs</a></li>
+		
+      
+			<li><a href="http://localhost:4000/guides/" >Guides</a></li>
+		
+      
+			<li><a href="http://localhost:4000/blogs/" >Blog</a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2017 <a href="http://localhost:4000">Azure Citadel</a> powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/" rel="nofollow">Skinny Bones</a>.</p>
+</footer>
+    </div>
+
+    <script src="http://localhost:4000/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="http://localhost:4000/js/main.js"></script>
+    <!--script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script-->
+    <script type="text/javascript" src="/slick/slick.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $('.carousel').slick({
+          autoplay: true,
+          arrows: true,
+          dots: true
+        });
+      });
+    </script>
+
+  </body>
+
+</html>

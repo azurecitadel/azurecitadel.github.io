@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-27T14:35:30+01:00</updated><id>http://localhost:4000/</id><title type="html">Azure Citadel</title><subtitle>A location for Azure related training material developed and maintained by the UK One Commercial Partner Solution Architect team at Microsoft</subtitle><entry><title type="html">Newsletter 19th June 2017</title><link href="http://localhost:4000/2017/06/21/newsletter/" rel="alternate" type="text/html" title="Newsletter 19th June 2017" /><published>2017-06-21T00:00:00+01:00</published><updated>2017-06-21T00:00:00+01:00</updated><id>http://localhost:4000/2017/06/21/newsletter</id><content type="html" xml:base="http://localhost:4000/2017/06/21/newsletter/">{% include toc.html %}
+
+## Azure Roadmap Site
+ 
+
+One thing we in the Solution Architects team at Microsoft get asked for a lot is the Azure Roadmap. Communicating roadmaps to partners and customers when working for a software vendor can usually be tricky, very often you are presenting material which is often subject to change and usually comes with a lot of disclaimers. One of the great things about Microsoft Azure is that you as the end user have good insight into what services are going to be coming down the road into General Availability by seeing what is currently in Public Preview via the preview portal &lt;https://preview.portal.azure.com&gt;. To build on this we now have the Azure Roadmap site which you can go to and view the current state of new features in the Azure Platform. If you are looking stay informed about new services in Azure so that you can keep your customers up to date on the platform
+
+[Azure Roadmap Site](https://azure.microsoft.com/en-gb/roadmap)
+
+
+
+## Azure Cloud Shell
+ 
+
+ One feature that’s been in private preview for a while is the Azure Cloud Shell which has recently gone into Public Preview. This is a really nice little tool which allows you to run a terminal session with Azure CLI installed directly in the Azure web portal. Essentially this tool is run in a Docker container for the duration of the session. This is great if you want quick access to the platform agnostic CLI tool to run commands against your Azure tenant. When you fire up the CLI you are automatically logged in with your web session credentials. Please follow the below link to take a look at the tool and view instructions on how to use it.   
+
+[Azure Cloud Shell Documentation Overview](https://docs.microsoft.com/en-us/azure/cloud-shell/overview)
+
+
+
+## Azure Portal Mobile App
+ 
+
+Being able to access your Azure environment and perform admin tasks on the move can be extremely useful especially when traveling. I for one have made use of the new Azure App to shut down a lab environment while in a train station from my phone, very handy when you are looking to not run up your Azure bill. Please check the App out in the app stores, please follow links below for your platform of choice
+
+[Azure App (Google Play Store)](https://play.google.com/store/apps/details?id=com.microsoft.azure)
+
+[Azure App (Apple ITunes Store)](https://itunes.apple.com/us/app/microsoft-azure/id1219013620?mt=8)
+
+
+
+## Partner Next
+ 
+
+In the Practice Development Unit at Microsoft we spend a lot of our time talking to new and existing partners about how they can transform their business to take advantage of the Cloud. Essentially how can they become the Partner of the future in the cloud paradigm as customers choose to adopt Cloud over incumbent on premise solutions. For many Microsoft Partners this can be a daunting task. However at Microsoft we are committed to our Partner ecosystem, we appreciate how important our partners our in the success of the Azure Cloud platform and want to help as much as we can in smoothing this transition for our partners. With this in mind we have developed the Partner Next platform to help provide our Partners with the information they need to attain success in the Cloud first world.
+
+[Microsoft UK Partner Next](https://www.microsoft.com/uk/partner/next/)
+
+
+
+## Azure Infrastructure – Hub and Spoke vDC Best Practice
+ 
+
+Microsoft Azure has a huge number of services which you as partners can leverage to deliver huge business benefits to your customers. All of that is for nought if the fundamental foundations of the Infrastructure design are not considered correctly. Very often we, as technical professionals can get swept up in the desire to implement the “cool tech”. However we need to ensure that we are implementing these new solutions on a scalable and future proof foundation. For Azure networking Microsoft have developed a set of reference architectures to show you how to implement a Hub and Spoke network architecture with your customers to ensure you start with and continue to develop a scalable solution as your customers adopt more and more cloud services and move more and more of their IT requirements to the Azure platform. Please see the following links for details regarding Hub and Spoke topologies as well as the concept of the Azure vDC.
+
+&lt;https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke&gt;
+
+&lt;https://docs.microsoft.com/en-us/azure/networking/networking-virtual-datacenter&gt;
+
+
+
+## Microsoft UK GDPR Hub 
+ 
+
+At the moment it feels like you can’t go from one customer meeting to the next without mention of the looming implications of GDPR. It’s certainly not the first time it’s been raised in this newsletter and I’m sure it won’t be the last. GDPR is going to be a huge change in the way we think about data privacy in the European union. Microsoft is at the forefront of keeping our customers and partners up to date with all the possible resources which we can provide to ensure our customers are compliant with this new set of requirements. The Microsoft UK team recently announced the UK GDPR Portal. This is a great jump of location for information regarding how Azure can help with being GDPR compliant, Microsoft commitment to GDPR and how you can get started with your GDPR compliance journey as everyone comes up to speed with this new set of laws around Data.
+
+[Microsoft UK GDPR Hub Site](https://enterprise.microsoft.com/en-gb/trends/understanding-the-gdpr/)
+
+
+
+## Azure to Azure Site Recovery (A2A) 
+ 
+
+Azure site recovery has long been used to both protect and migrate workloads from on-prem locations. However we have never officially supported protecting or migrating workloads from one Azure region to another. In Preview at the moment, we have available, Azure to Azure Site Recovery. This feature will allow you to protect Azure IaaS services with source and target locations designated as Azure regions. This new feature will allow you to offer your customers complete BC/DR solutions within the Azure IaaS platform. Ensuring minimal downtime should the worst come to the worst.
+
+[Azure to Azure Site Recovery (A2A) Roadmap Information](https://azure.microsoft.com/en-gb/roadmap/azure-site-recovery-between-azure-regions/)</content><author><name>Adam_Bohle</name></author><summary type="html">Azure Roadmap Site Azure Cloud Shell Azure Portal Mobile App Partner Next Azure Infrastructure – Hub and Spoke vDC Best Practice Microsoft UK GDPR Hub Azure to Azure Site Recovery (A2A) Azure Roadmap Site One thing we in the Solution Architects team at Microsoft get asked for a lot is the Azure Roadmap. Communicating roadmaps to partners and customers when working for a software vendor can usually be tricky, very often you are presenting material which is often subject to change and usually comes with a lot of disclaimers. One of the great things about Microsoft Azure is that you as the end user have good insight into what services are going to be coming down the road into General Availability by seeing what is currently in Public Preview via the preview portal https://preview.portal.azure.com. To build on this we now have the Azure Roadmap site which you can go to and view the current state of new features in the Azure Platform. If you are looking stay informed about new services in Azure so that you can keep your customers up to date on the platform Azure Roadmap Site Azure Cloud Shell One feature that’s been in private preview for a while is the Azure Cloud Shell which has recently gone into Public Preview. This is a really nice little tool which allows you to run a terminal session with Azure CLI installed directly in the Azure web portal. Essentially this tool is run in a Docker container for the duration of the session. This is great if you want quick access to the platform agnostic CLI tool to run commands against your Azure tenant. When you fire up the CLI you are automatically logged in with your web session credentials. Please follow the below link to take a look at the tool and view instructions on how to use it. Azure Cloud Shell Documentation Overview Azure Portal Mobile App Being able to access your Azure environment and perform admin tasks on the move can be extremely useful especially when traveling. I for one have made use of the new Azure App to shut down a lab environment while in a train station from my phone, very handy when you are looking to not run up your Azure bill. Please check the App out in the app stores, please follow links below for your platform of choice Azure App (Google Play Store) Azure App (Apple ITunes Store) Partner Next In the Practice Development Unit at Microsoft we spend a lot of our time talking to new and existing partners about how they can transform their business to take advantage of the Cloud. Essentially how can they become the Partner of the future in the cloud paradigm as customers choose to adopt Cloud over incumbent on premise solutions. For many Microsoft Partners this can be a daunting task. However at Microsoft we are committed to our Partner ecosystem, we appreciate how important our partners our in the success of the Azure Cloud platform and want to help as much as we can in smoothing this transition for our partners. With this in mind we have developed the Partner Next platform to help provide our Partners with the information they need to attain success in the Cloud first world. Microsoft UK Partner Next Azure Infrastructure – Hub and Spoke vDC Best Practice Microsoft Azure has a huge number of services which you as partners can leverage to deliver huge business benefits to your customers. All of that is for nought if the fundamental foundations of the Infrastructure design are not considered correctly. Very often we, as technical professionals can get swept up in the desire to implement the “cool tech”. However we need to ensure that we are implementing these new solutions on a scalable and future proof foundation. For Azure networking Microsoft have developed a set of reference architectures to show you how to implement a Hub and Spoke network architecture with your customers to ensure you start with and continue to develop a scalable solution as your customers adopt more and more cloud services and move more and more of their IT requirements to the Azure platform. Please see the following links for details regarding Hub and Spoke topologies as well as the concept of the Azure vDC. https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke https://docs.microsoft.com/en-us/azure/networking/networking-virtual-datacenter Microsoft UK GDPR Hub At the moment it feels like you can’t go from one customer meeting to the next without mention of the looming implications of GDPR. It’s certainly not the first time it’s been raised in this newsletter and I’m sure it won’t be the last. GDPR is going to be a huge change in the way we think about data privacy in the European union. Microsoft is at the forefront of keeping our customers and partners up to date with all the possible resources which we can provide to ensure our customers are compliant with this new set of requirements. The Microsoft UK team recently announced the UK GDPR Portal. This is a great jump of location for information regarding how Azure can help with being GDPR compliant, Microsoft commitment to GDPR and how you can get started with your GDPR compliance journey as everyone comes up to speed with this new set of laws around Data. Microsoft UK GDPR Hub Site Azure to Azure Site Recovery (A2A) Azure site recovery has long been used to both protect and migrate workloads from on-prem locations. However we have never officially supported protecting or migrating workloads from one Azure region to another. In Preview at the moment, we have available, Azure to Azure Site Recovery. This feature will allow you to protect Azure IaaS services with source and target locations designated as Azure regions. This new feature will allow you to offer your customers complete BC/DR solutions within the Azure IaaS platform. Ensuring minimal downtime should the worst come to the worst. Azure to Azure Site Recovery (A2A) Roadmap Information</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3Enil,%20%22teaser%22=%3E%22Newsletter_Teaser.jpg%22,%20%22thumb%22=%3Enil%7D" /></entry><entry><title type="html">Newsletter 8th May 2017</title><link href="http://localhost:4000/2017/05/08/newsletter/" rel="alternate" type="text/html" title="Newsletter 8th May 2017" /><published>2017-05-08T00:00:00+01:00</published><updated>2017-05-08T00:00:00+01:00</updated><id>http://localhost:4000/2017/05/08/newsletter</id><content type="html" xml:base="http://localhost:4000/2017/05/08/newsletter/">{% include toc.html %}
+
+## Azure Architecture Center
+
+
+It can often be a struggle to know if you are doing something in a Azure correctly, It’s difficult to know which technology choice is the best when you have access to so many different solutions in a hyper scale cloud such as Azure. How ever you may, or may not, have been aware that as part of the Microsoft Documentation for Azure we have a number of different reference architectures for simple VM deployments right up to geo-resilient multi node configurations as well as best practices for developing cloud ready applications in Azure. I strongly advise you to look at the following link and go through the wealth of information therein as part of your learning on how to architect solutions in Azure
+
+
+[Azure Architecture Center Site](https://docs.microsoft.com/en-us/azure/architecture/)
+
+
+## Azure Networking Blog Series and Channel 9 Videos
+ 
+
+I trust we can all agree that in a hybrid networking environment, two components are key, Networking and Identity. Many partners who I speak to have questions around how best to manage the networking component, as identity ultimately relies in the networking. If you have questions or if there is anything you are not sure about around Azure networking I recommend you check out the below 3-part blog post of Azure networking
+
+&lt;https://azure.microsoft.com/en-gb/blog/networking-to-and-within-the-azure-cloud/&gt;
+
+For those of you who want to go into more detail on specific Azure Networking technologies, then I advise you to check out the webinar video recordings from our EMEA Azure Networking specialists here at Microsoft. These videos will give you a wealth of information around all aspects of Azure networking to assist you in planning out your customer deployments.
+
+&lt;https://channel9.msdn.com/Series/Azure-Networking-Deep-Dive-EMEA-TZ&gt;
+
+
+## Azure Billing Role and Invoice API 
+ 
+
+As a Microsoft CSP partner, you are going to be interested in the billing aspect of Azure. Recently a new role was added to the RBAC in Azure, Billing Reader role allows you to assign a user the ability to read billing information and nothing else. Great for service accounts to expose the billing information into a custom portal for you customers. The new billing API allows you now to also programmatically access billing information so you can automate or expose the billing information for your partners through a third party solution. Please click the following link for details
+
+&lt;https://azure.microsoft.com/en-gb/blog/azure-billing-reader-role-and-preview-of-invoice-api/&gt;
+
+
+## New Azure services in the UK
+ 
+
+When you look at the services available in each Azure region, you will very quickly see that not all regions are equal, and with good reason. Regions vary in size and potential addressable market. It simply doesn’t make sense to offer all services in all regions. The UK regions are relatively new to the global Azure datacentre footprint and thus, has been lacking in certain features. In the below blog post Andres Juarez, Principal Program Manager for the UK Azure DCs talks about the latest additions to the UK Azure regions, including import/export, HDInsight and the Azure Container Registry
+ 
+&lt;https://azure.microsoft.com/en-gb/blog/announcing-new-azure-services-in-the-uk/&gt;
+
+
+## Microsoft Self-Paced Labs
+ 
+
+Self-paced labs are a great way to gain experience and exposure to technologies. The below link will take you to the Microsoft Self-Paced Lab portal where you can spin up a lab environment and start working with different technology areas, not just related to Azure, and start learning through “doing”. Please take the time to browse the content and see if there is anything which appeals to you. As always, please feel free to reach out to your PDP and CSA-P aligned to your Partner organisation if there is anything you want to go into more depth on.    
+ 
+&lt;https://www.microsoft.com/handsonlabs/SelfPacedLabs&gt;
+
+
+## Useful Partner Portal links
+ 
+
+The Microsoft partner portals can be a daunting place to navigate, like many large vendor organisations with a large portfolio of solutions, we have portals which have grown in a somewhat organic nature. The below links are useful for our partners who are focused on Cloud Management and Infrastructure solutions
+
+&lt;aka.ms/omspartner&gt;
+
+&lt;aka.ms/infrapartner&gt;
+
+These links will take you directly to a wealth of information pertinent to the partner opportunity around Infrastructure and Infrastructure management, along with technical enablement and sales &amp; marketing enablement as well as information on how to showcase your customer success stories and become recognised as a capable partner in this space</content><author><name>Adam_Bohle</name></author><summary type="html">Azure Architecture Center Azure Networking Blog Series and Channel 9 Videos Azure Billing Role and Invoice API New Azure services in the UK Microsoft Self-Paced Labs Useful Partner Portal links Azure Architecture Center It can often be a struggle to know if you are doing something in a Azure correctly, It’s difficult to know which technology choice is the best when you have access to so many different solutions in a hyper scale cloud such as Azure. How ever you may, or may not, have been aware that as part of the Microsoft Documentation for Azure we have a number of different reference architectures for simple VM deployments right up to geo-resilient multi node configurations as well as best practices for developing cloud ready applications in Azure. I strongly advise you to look at the following link and go through the wealth of information therein as part of your learning on how to architect solutions in Azure Azure Architecture Center Site Azure Networking Blog Series and Channel 9 Videos I trust we can all agree that in a hybrid networking environment, two components are key, Networking and Identity. Many partners who I speak to have questions around how best to manage the networking component, as identity ultimately relies in the networking. If you have questions or if there is anything you are not sure about around Azure networking I recommend you check out the below 3-part blog post of Azure networking https://azure.microsoft.com/en-gb/blog/networking-to-and-within-the-azure-cloud/ For those of you who want to go into more detail on specific Azure Networking technologies, then I advise you to check out the webinar video recordings from our EMEA Azure Networking specialists here at Microsoft. These videos will give you a wealth of information around all aspects of Azure networking to assist you in planning out your customer deployments. https://channel9.msdn.com/Series/Azure-Networking-Deep-Dive-EMEA-TZ Azure Billing Role and Invoice API As a Microsoft CSP partner, you are going to be interested in the billing aspect of Azure. Recently a new role was added to the RBAC in Azure, Billing Reader role allows you to assign a user the ability to read billing information and nothing else. Great for service accounts to expose the billing information into a custom portal for you customers. The new billing API allows you now to also programmatically access billing information so you can automate or expose the billing information for your partners through a third party solution. Please click the following link for details https://azure.microsoft.com/en-gb/blog/azure-billing-reader-role-and-preview-of-invoice-api/ New Azure services in the UK When you look at the services available in each Azure region, you will very quickly see that not all regions are equal, and with good reason. Regions vary in size and potential addressable market. It simply doesn’t make sense to offer all services in all regions. The UK regions are relatively new to the global Azure datacentre footprint and thus, has been lacking in certain features. In the below blog post Andres Juarez, Principal Program Manager for the UK Azure DCs talks about the latest additions to the UK Azure regions, including import/export, HDInsight and the Azure Container Registry https://azure.microsoft.com/en-gb/blog/announcing-new-azure-services-in-the-uk/ Microsoft Self-Paced Labs Self-paced labs are a great way to gain experience and exposure to technologies. The below link will take you to the Microsoft Self-Paced Lab portal where you can spin up a lab environment and start working with different technology areas, not just related to Azure, and start learning through “doing”. Please take the time to browse the content and see if there is anything which appeals to you. As always, please feel free to reach out to your PDP and CSA-P aligned to your Partner organisation if there is anything you want to go into more depth on. https://www.microsoft.com/handsonlabs/SelfPacedLabs Useful Partner Portal links The Microsoft partner portals can be a daunting place to navigate, like many large vendor organisations with a large portfolio of solutions, we have portals which have grown in a somewhat organic nature. The below links are useful for our partners who are focused on Cloud Management and Infrastructure solutions &amp;lt;aka.ms/omspartner&amp;gt; &amp;lt;aka.ms/infrapartner&amp;gt; These links will take you directly to a wealth of information pertinent to the partner opportunity around Infrastructure and Infrastructure management, along with technical enablement and sales &amp;amp; marketing enablement as well as information on how to showcase your customer success stories and become recognised as a capable partner in this space</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3Enil,%20%22teaser%22=%3E%22Newsletter_Teaser.jpg%22,%20%22thumb%22=%3Enil%7D" /></entry><entry><title type="html">Newsletter 25th April 2017</title><link href="http://localhost:4000/2017/04/25/newsletter/" rel="alternate" type="text/html" title="Newsletter 25th April 2017" /><published>2017-04-25T00:00:00+01:00</published><updated>2017-04-25T00:00:00+01:00</updated><id>http://localhost:4000/2017/04/25/newsletter</id><content type="html" xml:base="http://localhost:4000/2017/04/25/newsletter/">{% include toc.html %}
+
+## The Modern Microsoft Partner Series
+ 
+
+Our main goal within the Practice Development Unit is to make you as successful with the Azure platform as possible. To do this we have various initiatives focused around sales and marketing enablement and technical enablement and assistance. However we must not overlook the broader overall partner transformation process required to be successful in the public cloud market. With this in mind, Microsoft and research firm IDC (www.idc.com) have created a series of ebooks focused on the transformation process partners should consider when they are looking to transform their business into a cloud first partner. Please see the links below to download the ebooks.
+
+&lt;http://www.aka.ms/boomingcloud&gt;
+
+&lt;http://aka.ms/differentiate&gt;
+
+&lt;https://aka.ms/modernsalesmarketing&gt;
+
+&lt;https://aka.ms/optimizeops&gt;
+
+&lt;https://aka.ms/deliverclv&gt;
+
+
+## GDPR is coming
+
+
+Many of you will be facing questions from your customers around how they can prepare for GDPR which will come into effect in May 2018. The General Data Protection Regulation is an updated data protection regulation which is applicable to any business or organisation which holds data referencing anyone within the European Union. With heavy penalties for those who infringe on any of the rules laid out in the GDPR, every business which operates in Europe needs to be up to speed on what the new regulations mean and how they can prepare for compliance.
+
+With this in mind, Microsoft has created a lot of content around how our customers and partners can work with Microsoft solutions to ensure compliance. Please follow the below link to go to the Microsoft portal for all things GDPR in relation to Microsoft, detailing what GDPR is, and how Microsoft can help you be compliant with this new regulation
+
+&lt;https://microsoft.com/gdpr&gt;
+
+To help you further with GDPR, Microsoft will also be hosting the following webinar on the 18th May to assist our partners with having discussions with their customers around GDPR. I encourage you to join this webinar if you are unfamiliar with GDPR, and if you are already familiar with GDPR, but want to learn more about what Microsoft is doing to help businesses with compliance.
+
+&lt;http://note.microsoft.com/UK-PRM-WBNR-FY17-05May-18-General-Data-Protection-Regulation-GDPR-Awareness_320038_Registration.html&gt;
+
+
+## Microsoft Inspire Event – Discounts for Partners
+
+
+If you are looking to attend the Microsoft Inspire event in Washington D.C. from the 9th to the 13th June, but are concerned about the cost. Then as a Microsoft CSP partner you are entitled to a $200 discount. Simply use the following discount code “PTGNDPVL” when registering at the below link
+
+&lt;https://partner.microsoft.com/en-us/inspire&gt;
+
+
+## Azure ARM Template Snippets
+
+
+We know many of you are looking to automate your infrastructure deployments into Azure and that many of you have been utilizing Azure Resource Manager templates and the concept of Infrastructure as Code to ensure you can quickly deploy your cloud based environments as quickly and consistently as possible. Many of you will have used Visual Studio and the Azure SDK to do this, some will use the cross platform Visual Studio Code text editor with the ARM template authoring extensions to do this efficiently. However if you want to know the anatomy of how the JSON which makes up the various resource types is structured utilising the latest API versions. You may want to check out the following link and search for the various resource types, Virtual Machines, Virtual Networks, Storage etc etc and understand what is required to stand up the resources you are looking to automate 
+
+&lt;https://docs.microsoft.com/en-gb/azure/templates/&gt;
+
+
+
+## Cloud Architect Bootcamp – Bellevue WA. USA
+
+
+Registration is still open for the Cloud Architect Bootcamp in Bellevue, close to the Microsoft campus on May 15th-19th. If you have not already booked yourself in on this I encourage you to visit the registration page and consider this invaluable opportunity to get in front of Microsoft Product Managers and engineers across the various technology areas of Microsoft Azure. This is a fantastic chance to network with the people who build Azure and with your peers in the partner community. 
+This boot-camp is open to all our Microsoft partners who are looking to go into deep technical depth on Microsoft Azure over a 4-day intense learning experience with the people who built the platform.
+
+Please follow the below link to register:
+
+&lt;https://www.msregistration.com/cebootcamp/Content/CloudArchitectPartner.aspx&gt;
+
+
+
+## Partner University
+
+
+I know you are all on the lookout for places to learn more about Microsoft Azure. We all learn in different ways and we all have our preferred method of learning. For those looking for a structured learning path, you should really check out the Microsoft Partner University. Here you will find learning tracks with specific focus areas around Cloud Infrastructure and Management. You will also find tracks for Application Development as well as Data platform and analytics if you are looking to branch out your skillsets into other areas within the Azure platform.
+
+Please check out the below link to access the Partner University portal and please take the time to see if the content here can assist you in your learning 
+
+&lt;https://partner.microsoft.com/en-GB/Training/&gt;
+
+
+
+## UK Partner Concierge Service
+The UK Partner concierge service is designed to assist our partners with navigating the Microsoft partner system and assisting partners from a commercial aspect with marketing as well as assisting with help navigating the Microsoft systems to assist you with realizing all the benefits you are entitled too and helping with any licensing queries you may have. 
+
+Please see the attached PowerPoint presentation for details of the service, and visit the following link for more details
+
+&lt;https://Aka.ms/ukconcierge&gt;</content><author><name>Adam_Bohle</name></author><summary type="html">The Modern Microsoft Partner Series GDPR is coming Microsoft Inspire Event – Discounts for Partners Azure ARM Template Snippets Cloud Architect Bootcamp – Bellevue WA. USA Partner University UK Partner Concierge Service The Modern Microsoft Partner Series Our main goal within the Practice Development Unit is to make you as successful with the Azure platform as possible. To do this we have various initiatives focused around sales and marketing enablement and technical enablement and assistance. However we must not overlook the broader overall partner transformation process required to be successful in the public cloud market. With this in mind, Microsoft and research firm IDC (www.idc.com) have created a series of ebooks focused on the transformation process partners should consider when they are looking to transform their business into a cloud first partner. Please see the links below to download the ebooks. http://www.aka.ms/boomingcloud http://aka.ms/differentiate https://aka.ms/modernsalesmarketing https://aka.ms/optimizeops https://aka.ms/deliverclv GDPR is coming Many of you will be facing questions from your customers around how they can prepare for GDPR which will come into effect in May 2018. The General Data Protection Regulation is an updated data protection regulation which is applicable to any business or organisation which holds data referencing anyone within the European Union. With heavy penalties for those who infringe on any of the rules laid out in the GDPR, every business which operates in Europe needs to be up to speed on what the new regulations mean and how they can prepare for compliance. With this in mind, Microsoft has created a lot of content around how our customers and partners can work with Microsoft solutions to ensure compliance. Please follow the below link to go to the Microsoft portal for all things GDPR in relation to Microsoft, detailing what GDPR is, and how Microsoft can help you be compliant with this new regulation https://microsoft.com/gdpr To help you further with GDPR, Microsoft will also be hosting the following webinar on the 18th May to assist our partners with having discussions with their customers around GDPR. I encourage you to join this webinar if you are unfamiliar with GDPR, and if you are already familiar with GDPR, but want to learn more about what Microsoft is doing to help businesses with compliance. http://note.microsoft.com/UK-PRM-WBNR-FY17-05May-18-General-Data-Protection-Regulation-GDPR-Awareness_320038_Registration.html Microsoft Inspire Event – Discounts for Partners If you are looking to attend the Microsoft Inspire event in Washington D.C. from the 9th to the 13th June, but are concerned about the cost. Then as a Microsoft CSP partner you are entitled to a $200 discount. Simply use the following discount code “PTGNDPVL” when registering at the below link https://partner.microsoft.com/en-us/inspire Azure ARM Template Snippets We know many of you are looking to automate your infrastructure deployments into Azure and that many of you have been utilizing Azure Resource Manager templates and the concept of Infrastructure as Code to ensure you can quickly deploy your cloud based environments as quickly and consistently as possible. Many of you will have used Visual Studio and the Azure SDK to do this, some will use the cross platform Visual Studio Code text editor with the ARM template authoring extensions to do this efficiently. However if you want to know the anatomy of how the JSON which makes up the various resource types is structured utilising the latest API versions. You may want to check out the following link and search for the various resource types, Virtual Machines, Virtual Networks, Storage etc etc and understand what is required to stand up the resources you are looking to automate https://docs.microsoft.com/en-gb/azure/templates/ Cloud Architect Bootcamp – Bellevue WA. USA Registration is still open for the Cloud Architect Bootcamp in Bellevue, close to the Microsoft campus on May 15th-19th. If you have not already booked yourself in on this I encourage you to visit the registration page and consider this invaluable opportunity to get in front of Microsoft Product Managers and engineers across the various technology areas of Microsoft Azure. This is a fantastic chance to network with the people who build Azure and with your peers in the partner community. This boot-camp is open to all our Microsoft partners who are looking to go into deep technical depth on Microsoft Azure over a 4-day intense learning experience with the people who built the platform. Please follow the below link to register: https://www.msregistration.com/cebootcamp/Content/CloudArchitectPartner.aspx Partner University I know you are all on the lookout for places to learn more about Microsoft Azure. We all learn in different ways and we all have our preferred method of learning. For those looking for a structured learning path, you should really check out the Microsoft Partner University. Here you will find learning tracks with specific focus areas around Cloud Infrastructure and Management. You will also find tracks for Application Development as well as Data platform and analytics if you are looking to branch out your skillsets into other areas within the Azure platform. Please check out the below link to access the Partner University portal and please take the time to see if the content here can assist you in your learning https://partner.microsoft.com/en-GB/Training/ UK Partner Concierge Service The UK Partner concierge service is designed to assist our partners with navigating the Microsoft partner system and assisting partners from a commercial aspect with marketing as well as assisting with help navigating the Microsoft systems to assist you with realizing all the benefits you are entitled too and helping with any licensing queries you may have. Please see the attached PowerPoint presentation for details of the service, and visit the following link for more details https://Aka.ms/ukconcierge</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3Enil,%20%22teaser%22=%3E%22Newsletter_Teaser.jpg%22,%20%22thumb%22=%3Enil%7D" /></entry><entry><title type="html">Newsletter 11th April 2017</title><link href="http://localhost:4000/2017/04/11/newsletter/" rel="alternate" type="text/html" title="Newsletter 11th April 2017" /><published>2017-04-11T00:00:00+01:00</published><updated>2017-04-11T00:00:00+01:00</updated><id>http://localhost:4000/2017/04/11/newsletter</id><content type="html" xml:base="http://localhost:4000/2017/04/11/newsletter/">{% include toc.html %}
+
+## Updates to the Azure Skills Initiative
+ 
+
+Learning the vast amount of technologies which are available in modern hyper scale clouds can be a daunting prospect to even the most avid of technologists. With this in mind, Microsoft launched the “Azure Skills” Initiative to help address the need to Mass Online training as well as provide technologists looking to build their skills on Azure, access to reduced cost courses and exam fees. 
+
+New Courses are coming online all the time, we recently created new course content for the following subjects
+
+[Migrating Workloads to Azure](https://openedx.microsoft.com/courses/course-v1:Microsoft+AZURE212x+2017_T2/about)
+[Application Monitoring and Feedback Loops](https://openedx.microsoft.com/courses/course-v1:Microsoft+DEVOPS200.7+2017_T2/about)
+[Infrastructure as Code}(https://openedx.microsoft.com/courses/course-v1:Microsoft+DEVOPS200.2x+2017_T2/about)
+
+Given the ever expanding list of services and updates to those services we are looking to add courses over the coming year, the plan for this is listed below, please be advised that this may be subject to change;
+
+*	Data &amp; Analytics courses releasing in Q4                                                     
+    *	Delivering a Data Warehouse in the Cloud (available April 24)
+    *	Developing NoSQL Solutions in Azure (available April 24)
+    *	Processing Big Data with Hadoop in Azure HDInsight (available April 24)
+    *	Implementing Real-Time Analytics with Hadoop in Azure HDInsight (available April 24)
+    *	Implementing Predictive Analytics with Spark in Azure HDInsight (available April 24)
+    *	Processing Big Data with Azure Data Lake Analytics (available April 24)
+    *	Processing Real-Time Data Streams in Azure (available April 24)
+    *	Orchestrating Big Data with Azure Data Factory (available April 24)
+    *	Securing Data in Azure and SQL Server (available April 24)
+    *	Recovering Data in Azure and SQL Server (available April 24)
+    *	Provisioning SQL Server and Azure SQL Databases (available April 27)      
+*	Cloud Administration courses releasing in Q4 
+    *	Azure Stack Configuration (release date TBD)  
+    *	Developing Big Data Solutions with Azure Machine Learning (release date TBD)
+    *	Developing IoT Solutions with Azure IoT Hub (release date TBD)
+    *	Integrating Windows Server Identities with Microsoft Azure (release date TBD)
+    *	Integrating Windows Server Infrastructure with Microsoft Azure (release date TBD)
+*	DevOps courses releasing in Q4 
+    *	Introduction to DevOps (available April 24)
+    *	Mobile DevOps (release date TBD)
+*	Cloud Development courses releasing in Q4 
+    *	Developing Microsoft Azure Solutions (available April 24)
+
+If you haven’t checked out the Skills Initiative, I advise to do so. There is a huge wealth of content available to help you come up to speed with Azure Technologies, please follow this link for details
+
+&lt;https://www.microsoft.com/en-us/learning/azure-skills-training.aspx&gt;
+
+
+## The Azure Podcast
+ 
+
+If you are anything like me, you’ll be struggling to find the time to stay up to date with the latest news in the technology world, I rely on many aggregation services, RSS feeds, Twitter and Podcasts. You may or may not be aware of The Azure Podcast run by Sujit D’Mello, Cale Teeter, Evan Basalik and our very own UK PDU CSA-P Russell Young. The podcast covers a wide variety of technologies and very often product owners and programme managers will be invited to speak about new technologies which are coming down the line. If you are not already subscribed, please check out the following link for details.
+
+&lt;http://azpodcast.azurewebsites.net/&gt;
+
+
+## Instant File Recovery from Azure Linux VMs 
+
+
+If you are someone who “drinks and roots” then you may be thankful that Azure now supports, in preview, the ability to perform file level recovery restores on Linux VMs. This functionality is supported across Debian, Ubuntu, CentOS, Redhat and Oracle Linux (Please consult the following link for supported version levels). 
+
+&lt;https://azure.microsoft.com/en-us/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview/&gt;
+
+
+
+## Azure Monitor Generally Available
+
+
+Azure Monitor, generally available since the end of March is a great tool within the Resource Manager portal which enables easy access to metric data coming out of your resource types. Azure monitor gives you 30-days, for free, of retention data on resource type activity. You may have already been using Azure Monitor through the “Activity Log” of your various resource types, but now it is available as a stand alone blade to monitor all your ARM based resources. Please check out the following link for more details
+
+&lt;https://azure.microsoft.com/en-us/blog/announcing-the-general-availability-of-azure-monitor/&gt;
+
+
+
+## Azure gaining adoption in the Enterprise
+
+
+A survey commissioned by Sumo Logic (www.sumologic.com) and run by UBM research has found that Azure is the preferred cloud platform of choice in the enterprise. This is not really surprising given the Microsoft heritage in the enterprise and our commitment to innovation. However the survey is significant as Azure has traditionally held the second place to AWS in terms of Cloud usage and adoption. Please see the following link for details on the survey
+
+[Azure Surpasses AWS as the public cloud of choice](http://www.computerworld.com/article/3186756/cloud-computing/azure-surpasses-aws-as-the-public-cloud-of-choice.html?idg_eid=2e76264060ce5161c491cf0f52289036&amp;email_SHA1_lc=661ba4cd55309e8fee92340381bdec81a5c3cba2&amp;cid=cw_nlt_computerworld_servers_datacenter_2017-04-05&amp;utm_source=Sailthru&amp;utm_medium=email&amp;utm_campaign=Computerworld%20Data%20Center%202017-04-05&amp;utm_term=computerworld_servers_datacenter)
+
+
+
+## Sales training for selling Azure 
+Understanding how to sell Cloud to your customers and position the value of cloud is essential in the market we are in. Understanding the capabilities of the platform is one thing, understanding how your customers can leverage this new and exciting technology to transform their business is a definitive shift in how we sell to our customers. 
+
+If you want to learn how to succeed in this “Brave New World” then you will want to take a look at the below link which will allow you to register to upcoming webinar training events to help you position Azure solutions with your customers
+
+[Monetize the Cloud and Advance your Azure Business](https://www.microsoftpartnerserverandcloud.com/Pages/azurewebinars.aspx)</content><author><name>Adam_Bohle</name></author><summary type="html">Updates to the Azure Skills Initiative The Azure Podcast Instant File Recovery from Azure Linux VMs Azure Monitor Generally Available Azure gaining adoption in the Enterprise Sales training for selling Azure Updates to the Azure Skills Initiative Learning the vast amount of technologies which are available in modern hyper scale clouds can be a daunting prospect to even the most avid of technologists. With this in mind, Microsoft launched the “Azure Skills” Initiative to help address the need to Mass Online training as well as provide technologists looking to build their skills on Azure, access to reduced cost courses and exam fees. New Courses are coming online all the time, we recently created new course content for the following subjects Migrating Workloads to Azure Application Monitoring and Feedback Loops [Infrastructure as Code}(https://openedx.microsoft.com/courses/course-v1:Microsoft+DEVOPS200.2x+2017_T2/about) Given the ever expanding list of services and updates to those services we are looking to add courses over the coming year, the plan for this is listed below, please be advised that this may be subject to change; Data &amp;amp; Analytics courses releasing in Q4 Delivering a Data Warehouse in the Cloud (available April 24) Developing NoSQL Solutions in Azure (available April 24) Processing Big Data with Hadoop in Azure HDInsight (available April 24) Implementing Real-Time Analytics with Hadoop in Azure HDInsight (available April 24) Implementing Predictive Analytics with Spark in Azure HDInsight (available April 24) Processing Big Data with Azure Data Lake Analytics (available April 24) Processing Real-Time Data Streams in Azure (available April 24) Orchestrating Big Data with Azure Data Factory (available April 24) Securing Data in Azure and SQL Server (available April 24) Recovering Data in Azure and SQL Server (available April 24) Provisioning SQL Server and Azure SQL Databases (available April 27) Cloud Administration courses releasing in Q4 Azure Stack Configuration (release date TBD) Developing Big Data Solutions with Azure Machine Learning (release date TBD) Developing IoT Solutions with Azure IoT Hub (release date TBD) Integrating Windows Server Identities with Microsoft Azure (release date TBD) Integrating Windows Server Infrastructure with Microsoft Azure (release date TBD) DevOps courses releasing in Q4 Introduction to DevOps (available April 24) Mobile DevOps (release date TBD) Cloud Development courses releasing in Q4 Developing Microsoft Azure Solutions (available April 24) If you haven’t checked out the Skills Initiative, I advise to do so. There is a huge wealth of content available to help you come up to speed with Azure Technologies, please follow this link for details https://www.microsoft.com/en-us/learning/azure-skills-training.aspx The Azure Podcast If you are anything like me, you’ll be struggling to find the time to stay up to date with the latest news in the technology world, I rely on many aggregation services, RSS feeds, Twitter and Podcasts. You may or may not be aware of The Azure Podcast run by Sujit D’Mello, Cale Teeter, Evan Basalik and our very own UK PDU CSA-P Russell Young. The podcast covers a wide variety of technologies and very often product owners and programme managers will be invited to speak about new technologies which are coming down the line. If you are not already subscribed, please check out the following link for details. http://azpodcast.azurewebsites.net/ Instant File Recovery from Azure Linux VMs If you are someone who “drinks and roots” then you may be thankful that Azure now supports, in preview, the ability to perform file level recovery restores on Linux VMs. This functionality is supported across Debian, Ubuntu, CentOS, Redhat and Oracle Linux (Please consult the following link for supported version levels). https://azure.microsoft.com/en-us/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview/ Azure Monitor Generally Available Azure Monitor, generally available since the end of March is a great tool within the Resource Manager portal which enables easy access to metric data coming out of your resource types. Azure monitor gives you 30-days, for free, of retention data on resource type activity. You may have already been using Azure Monitor through the “Activity Log” of your various resource types, but now it is available as a stand alone blade to monitor all your ARM based resources. Please check out the following link for more details https://azure.microsoft.com/en-us/blog/announcing-the-general-availability-of-azure-monitor/ Azure gaining adoption in the Enterprise A survey commissioned by Sumo Logic (www.sumologic.com) and run by UBM research has found that Azure is the preferred cloud platform of choice in the enterprise. This is not really surprising given the Microsoft heritage in the enterprise and our commitment to innovation. However the survey is significant as Azure has traditionally held the second place to AWS in terms of Cloud usage and adoption. Please see the following link for details on the survey Azure Surpasses AWS as the public cloud of choice Sales training for selling Azure Understanding how to sell Cloud to your customers and position the value of cloud is essential in the market we are in. Understanding the capabilities of the platform is one thing, understanding how your customers can leverage this new and exciting technology to transform their business is a definitive shift in how we sell to our customers. If you want to learn how to succeed in this “Brave New World” then you will want to take a look at the below link which will allow you to register to upcoming webinar training events to help you position Azure solutions with your customers Monetize the Cloud and Advance your Azure Business</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3Enil,%20%22teaser%22=%3E%22Newsletter_Teaser.jpg%22,%20%22thumb%22=%3Enil%7D" /></entry><entry><title type="html">Newsletter 28th March 2017</title><link href="http://localhost:4000/2017/03/28/newsletter/" rel="alternate" type="text/html" title="Newsletter 28th March 2017" /><published>2017-03-28T00:00:00+01:00</published><updated>2017-03-28T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/28/newsletter</id><content type="html" xml:base="http://localhost:4000/2017/03/28/newsletter/">{% include toc.html %}
+
+## The importance of Digital Partner of Record (DPOR)
+
+
+Digital Partner of record is a tool used within an Azure subscription to identify the Microsoft partner who has a strategic role in assisting customers through their cloud transformation and ongoing consumption of Azure resources. 
+
+As a partner, you are crucial to customer success in selling, implementing, deploying, or managing solutions based on Microsoft cloud services. We strive to ensure every customer has the level of partner support they need to maximize their business outcomes from these solutions. 
+
+We recognize partners for the role(s) they play in supporting these cloud-based solutions, from the initial transaction to the solution deployment and ongoing customer support. Recently, we announced new program enhancements that will benefit all the partners involved in a cloud subscription, as well as the Digital Partner of Record (DPOR). 
+
+In addition, the customer’s Global Admin for each cloud subscription can designate their lead services partner as the DPOR through their admin portal, which identifies the key services/lifecycle support partner who’s engaged in providing ongoing support. DPORs have access to important information necessary to fully support customers and will be the contact for FastTrack services.
+
+For more details around the benefits of DPOR and what it means for you as a Microsoft partner, please review the link below. If you have any questions, please do reach out to us. Also please take a look the attached PDF file which highlights many of the incentives around DPOR and what it means to partners
+
+&lt;https://partner.microsoft.com/en-us/membership/digital-partner-of-record&gt;
+
+
+## Build your Azure Cloud Practice
+ 
+
+As a partner in the Microsoft Practice Development Unit, it’s our goal to ensure you have everything you need to transform your business into a flourishing public cloud orientated business. With this goal in mind, Microsoft have created a series of Playbooks, these Playbooks are focused on the “how” around creating successful Cloud Practices across what we see as the four main areas for Microsoft partners looking to deliver cloud services to their customers. 
+ 
+
+**Cloud Infrastructure and Management**
+**Data Platform &amp; Analytics**
+**Cloud Application Development**
+**Enterprise Mobility &amp; Security**
+ 
+
+In the Practice Development Unit we advise all our partners to review these Playbooks as part of their cloud practice development transformation. You can find the links to these Playbooks via visiting the following page and filling out the required form to access the download links
+
+&lt;https://partner.microsoft.com/en-US/campaigns/cloud-practice-playbooks&gt;
+
+For an introduction to the Playbooks you can also visit the following link and read the “How to Build a Successful Cloud Practice” blog post from our Worldwide Partner Group CTO, Eduardo Kassner.
+
+&lt;https://blogs.partner.microsoft.com/mpn/mpnnew-playbooks-build-successful-cloud-practicelnen-us/&gt;
+
+
+## PDU Book club
+ 
+
+*“The book you don’t read, won’t help – Jim Rohn”.*
+
+With that quote in mind I wanted to list for you a couple of books which I feel may help in navigating the “Post Cloud World”. With the Enterprise IT industry shifting from yearly or multiyear enterprise license agreements into a consumption based, pay as you go model, we as sellers of technology need to understand how we adapt to sell based on customer consumption. If you have not already looked into this area, then you may find the below books of interest; 
+
+[Consumption Economics – J.B. Wood, Todd Hewlin and Thomas Lah](https://www.amazon.co.uk/Consumption-Economics-New-Rules-Tech/dp/0984213031/ref=tmm_hrd_swatch_0?_encoding=UTF8&amp;qid=1490115573&amp;sr=8-1)
+
+[Technology as a Service Playbook: How to grow a profitable subscription business – Thomas Lah, J.B. Wood](https://www.amazon.co.uk/Consumption-Economics-New-Rules-Tech/dp/0984213031/ref=tmm_hrd_swatch_0?_encoding=UTF8&amp;qid=1490115573&amp;sr=8-1)
+
+
+## Azure Hybrid Use Benefit
+
+
+If your customers have existing Windows licenses with Software Assurance they may be able to make significant savings on Azure VMs. Utilising this BYOL benefit your customers may well be able to make significant savings on Azure compute by utilising the licenses they already own and running them in Azure.
+
+Please click the following link for details on the Azure Hybrid Use Benefit
+
+&lt;https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/&gt;
+
+
+## SAP on Azure
+
+
+Many of you may be working with customers who utilise SAP solutions for their business critical ERP and business process solutions. You may, or may not be aware, that SAP solutions are moving from am “AnyDB” or “Bring your own DB” to an architecture enforcing the use of the new SAP HANA in memory DB technology for use with current SAP Applications as well as the S/4 on HANA architecture. SAP customers have a requirement to move to HANA by 2025 and are likely to be looking for cloud based solutions for hosting SAP workloads as part of their overall cloud strategy. Please utilise the below resources if you have customers interested in migrating SAP solutions to a cloud platform. Alternatively contact adam.bohle@microsoft.com for more information.
+
+[SAP on Azure](https://azure.microsoft.com/en-us/solutions/sap/)
+
+[Azure offers market leading support for SAP HANA workloads](https://azure.microsoft.com/en-us/blog/azure-offers-market-leading-support-for-sap-hana-workloads/)
+
+
+## Cloud Architect Bootcamp – Bellevue, WA, USA
+
+
+On the 15-19 May, the Microsoft Cloud &amp; Enterprise business unit will be hosting one of its Cloud Architect bootcamps  at the Westin hotel in Bellevue, Washington, close the Redmond campus.
+
+This event is open to Microsoft employees and partners. You can expect L300-L400 training across the Azure platform with keynotes from top engineering executives, product owners and subject matter experts. Breakout design sessions as well as lab exercises. If you wish to attend please follow the registration link below. Partner ticket costs for this event are $1,800.00. All partners are also liable for their own travel and accommodation. Please use the following promotion code when booking (5PDU17CAMP)
+
+[Register Here](https://www.msregistration.com/cebootcamp/Content/CloudArchitectPartner.aspx)</content><author><name>Adam_Bohle</name></author><summary type="html">The importance of Digital Partner of Record (DPOR) Build your Azure Cloud Practice PDU Book club Azure Hybrid Use Benefit SAP on Azure Cloud Architect Bootcamp – Bellevue, WA, USA The importance of Digital Partner of Record (DPOR) Digital Partner of record is a tool used within an Azure subscription to identify the Microsoft partner who has a strategic role in assisting customers through their cloud transformation and ongoing consumption of Azure resources. As a partner, you are crucial to customer success in selling, implementing, deploying, or managing solutions based on Microsoft cloud services. We strive to ensure every customer has the level of partner support they need to maximize their business outcomes from these solutions. We recognize partners for the role(s) they play in supporting these cloud-based solutions, from the initial transaction to the solution deployment and ongoing customer support. Recently, we announced new program enhancements that will benefit all the partners involved in a cloud subscription, as well as the Digital Partner of Record (DPOR). In addition, the customer’s Global Admin for each cloud subscription can designate their lead services partner as the DPOR through their admin portal, which identifies the key services/lifecycle support partner who’s engaged in providing ongoing support. DPORs have access to important information necessary to fully support customers and will be the contact for FastTrack services. For more details around the benefits of DPOR and what it means for you as a Microsoft partner, please review the link below. If you have any questions, please do reach out to us. Also please take a look the attached PDF file which highlights many of the incentives around DPOR and what it means to partners https://partner.microsoft.com/en-us/membership/digital-partner-of-record Build your Azure Cloud Practice As a partner in the Microsoft Practice Development Unit, it’s our goal to ensure you have everything you need to transform your business into a flourishing public cloud orientated business. With this goal in mind, Microsoft have created a series of Playbooks, these Playbooks are focused on the “how” around creating successful Cloud Practices across what we see as the four main areas for Microsoft partners looking to deliver cloud services to their customers. Cloud Infrastructure and Management Data Platform &amp;amp; Analytics Cloud Application Development Enterprise Mobility &amp;amp; Security In the Practice Development Unit we advise all our partners to review these Playbooks as part of their cloud practice development transformation. You can find the links to these Playbooks via visiting the following page and filling out the required form to access the download links https://partner.microsoft.com/en-US/campaigns/cloud-practice-playbooks For an introduction to the Playbooks you can also visit the following link and read the “How to Build a Successful Cloud Practice” blog post from our Worldwide Partner Group CTO, Eduardo Kassner. https://blogs.partner.microsoft.com/mpn/mpnnew-playbooks-build-successful-cloud-practicelnen-us/ PDU Book club “The book you don’t read, won’t help – Jim Rohn”. With that quote in mind I wanted to list for you a couple of books which I feel may help in navigating the “Post Cloud World”. With the Enterprise IT industry shifting from yearly or multiyear enterprise license agreements into a consumption based, pay as you go model, we as sellers of technology need to understand how we adapt to sell based on customer consumption. If you have not already looked into this area, then you may find the below books of interest; Consumption Economics – J.B. Wood, Todd Hewlin and Thomas Lah Technology as a Service Playbook: How to grow a profitable subscription business – Thomas Lah, J.B. Wood Azure Hybrid Use Benefit If your customers have existing Windows licenses with Software Assurance they may be able to make significant savings on Azure VMs. Utilising this BYOL benefit your customers may well be able to make significant savings on Azure compute by utilising the licenses they already own and running them in Azure. Please click the following link for details on the Azure Hybrid Use Benefit https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/ SAP on Azure Many of you may be working with customers who utilise SAP solutions for their business critical ERP and business process solutions. You may, or may not be aware, that SAP solutions are moving from am “AnyDB” or “Bring your own DB” to an architecture enforcing the use of the new SAP HANA in memory DB technology for use with current SAP Applications as well as the S/4 on HANA architecture. SAP customers have a requirement to move to HANA by 2025 and are likely to be looking for cloud based solutions for hosting SAP workloads as part of their overall cloud strategy. Please utilise the below resources if you have customers interested in migrating SAP solutions to a cloud platform. Alternatively contact adam.bohle@microsoft.com for more information. SAP on Azure Azure offers market leading support for SAP HANA workloads Cloud Architect Bootcamp – Bellevue, WA, USA On the 15-19 May, the Microsoft Cloud &amp;amp; Enterprise business unit will be hosting one of its Cloud Architect bootcamps at the Westin hotel in Bellevue, Washington, close the Redmond campus. This event is open to Microsoft employees and partners. You can expect L300-L400 training across the Azure platform with keynotes from top engineering executives, product owners and subject matter experts. Breakout design sessions as well as lab exercises. If you wish to attend please follow the registration link below. Partner ticket costs for this event are $1,800.00. All partners are also liable for their own travel and accommodation. Please use the following promotion code when booking (5PDU17CAMP) Register Here</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3Enil,%20%22teaser%22=%3E%22Newsletter_Teaser.jpg%22,%20%22thumb%22=%3Enil%7D" /></entry><entry><title type="html">Newsletter 20th March 2017</title><link href="http://localhost:4000/2017/03/20/newsletter/" rel="alternate" type="text/html" title="Newsletter 20th March 2017" /><published>2017-03-20T00:00:00+00:00</published><updated>2017-03-20T00:00:00+00:00</updated><id>http://localhost:4000/2017/03/20/newsletter</id><content type="html" xml:base="http://localhost:4000/2017/03/20/newsletter/">{% include toc.html %}
+
+## Azure Learning Resources
+ 
+
+Useful information in the subject of learning new skills on Azure.
+ 
+# Azure Learning Paths
+ 
+This is a really useful and little known resource which we have in the Azure Documentation area, learning paths have been constructed to enable you to pick a subject area, such as Azure API Management, Azure Automation, Azure Backup, etc. Learning paths give you a workflow to follow with links to documentation material which you can use to walk through the solution in your own Azure subscription and learn the technology. Having the learn path to guide you ensures you do not miss vital information for learning a particular feature/solution in Azure. Please follow the link below to review the available learning paths
+
+[Azure Learning Paths](https://azure.microsoft.com/en-us/documentation/learning-paths/)
+
+
+# Upcoming Online Azure Training Events
+
+Microsoft regularly hosts online learning events across a number of technology areas in the Azure portfolio, please see below for a list of upcoming webinar events which you may find useful;
+
+[20th March 2017 What's new in Enterprise Mobility + Security](https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x12635770001)
+
+
+[20 March 2017 Understanding Identity &amp; Access with Azure](https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x14689670001)
+
+[23 March 2017 Technical Deep Dive on Big Data on IoT Solutions with Data Factory and HDInsight] (https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x10930900001)
+
+[29th March 2017  Use Azure Security Center and OMS to prevent, detect and respond to threats](http://note.microsoft.com/UK-PRM-WBNR-FY17-03Mar-29-Use-Azure-Security-Center-and-OMS-to-prevent-detect-and-respond-to-threats_310548_Registration.html)
+
+[5th April 2017 Technical Deep Dive on App Service - Mobile App Notification Hubs](https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x10914750001)
+
+[6th April 2017 Technical Deep Dive on Data Lake Analytics and Machine Learning for IoT solutions](https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x10948760001)
+
+
+## Upcoming UK Events
+ 
+
+Stay informed regarding Microsoft and partner hosted training events which will be useful in building your Azure Cloud Practice 
+ 
+**London ISV Industry Insight Event – 6th April 2017**
+ 
+On the 6th April our Enterprise Partner Group (EPG) will be hosting an event in London to bring customers and partners together with ISVs and share industry specific insights across a number of verticals from Media, Insurance, Banking, Manufacturing, etc. The event will include a keynote from Jason Zander, CVP Azure R&amp;D. We plan to host 2-300 customers at this event with afternoon breakout sessions, please see the below registration link for full details.
+
+[ISV Industry Insight Event Registration](https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x15482739b4f)
+
+
+**EMEA GBB Cloud Infrastructure Partner LABS, Microsoft, 2 Kingdom Street, Paddington**
+
+On the 27th and the 29th of March, Microsoft will be hosting interactive training and “hands on”  sessions, meant to bring clarity on the newest technologies in the Azure cloud and advanced workloads, such as IT Operations Insights &amp; Analytics, Automation &amp; Control, Hybrid Storage, Open Source, Networking and Security in the Cloud. Partner labs are setup in the format of end-to-end demo heavy sessions. In order to register for sessions, please follow the email links below;
+
+**Agenda**
+*	Lab 1: Insight &amp; Analytics – Automation &amp; Control 
+*	Lab 2: Open Source 
+*	Lab 3: Hybrid Storage
+*	Lab 4: Networking &amp; Security 
+Detailed agenda for each day is provided in the attachment. 
+
+**Audience**
+*	Azure architects and engineers
+*	We welcome two architects/ engineers per company at each lab
+
+**Prepare for your workshop**
+*	Consider and ensure you meet the pre-requisites for each lab   in the attachment. Some labs require Laptops &amp; Azure               subscription.
+
+*	Be ready to openly share your views and present current challenges in your projects (no worries, you don't need to share actual customer names or info).
+
+To save your seat for Cloud Infrastructure advanced workloads workshop, please Register ASAP by clicking the relevant link in the left column of the invitation, and we’ll confirm your reservation by email.
+
+[Insight &amp; Analytics, 27th March (1 day)](mailto:elinaz@microsoft.com?subject=Cloud%20Infra%20Event:%20Register%20for%20INSIGHTS%20and%20ANALYTICS%20Partner%20LAB%20on%2027th%20of%20March)
+[Open Source, 27th March (1 day)](mailto:elinaz@microsoft.com?subject=Cloud%20Infra%20Event:%20Register%20for%20OSS%20Partner%20LAB%20on%2027th%20of%20March)
+[Hybrid Storage, 27th March (1 day)](mailto:elinaz@microsoft.com?subject=Cloud%20Infra%20Event:%20Register%20for%20HYBRID%20STORAGE%20Partner%20LAB%20on%2027th%20of%20March)
+[Networking and Security, 29th March (1 day)](mailto:elinaz@microsoft.com?subject=Cloud%20Infra%20Event:%20Register%20for%20NETWORKING%20Partner%20LAB%20on%2029th%20of%20March)
+
+
+## Technical Insights
+
+
+In this section we will cover off useful learnings from the field which have arisen from working with multiple PDU partners on Cloud Infrastructure Management practice activities
+
+**Correctly Power Off VMs**
+
+The question of correctly powering off VMs in Azure has arisen on many occasions. Please be aware that powering off the VM from within the Guest OS will no “deallocate” the VM from the Azure infrastructure, so even though the VM is powered off, you will still be charged to your subscription as if the VM were still running. Chris Pietschmann over at buildazure.com wrote a recent article on this which is worth checking out;
+
+&lt;https://buildazure.com/2017/03/16/properly-shutdown-azure-vm-to-save-money/&gt;</content><author><name>Adam_Bohle</name></author><summary type="html">Azure Learning Resources Azure Learning Paths Upcoming Online Azure Training Events Upcoming UK Events Technical Insights Azure Learning Resources Useful information in the subject of learning new skills on Azure. Azure Learning Paths This is a really useful and little known resource which we have in the Azure Documentation area, learning paths have been constructed to enable you to pick a subject area, such as Azure API Management, Azure Automation, Azure Backup, etc. Learning paths give you a workflow to follow with links to documentation material which you can use to walk through the solution in your own Azure subscription and learn the technology. Having the learn path to guide you ensures you do not miss vital information for learning a particular feature/solution in Azure. Please follow the link below to review the available learning paths Azure Learning Paths Upcoming Online Azure Training Events Microsoft regularly hosts online learning events across a number of technology areas in the Azure portfolio, please see below for a list of upcoming webinar events which you may find useful; 20th March 2017 What’s new in Enterprise Mobility + Security 20 March 2017 Understanding Identity &amp;amp; Access with Azure [23 March 2017 Technical Deep Dive on Big Data on IoT Solutions with Data Factory and HDInsight] (https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x10930900001) 29th March 2017 Use Azure Security Center and OMS to prevent, detect and respond to threats 5th April 2017 Technical Deep Dive on App Service - Mobile App Notification Hubs 6th April 2017 Technical Deep Dive on Data Lake Analytics and Machine Learning for IoT solutions Upcoming UK Events Stay informed regarding Microsoft and partner hosted training events which will be useful in building your Azure Cloud Practice London ISV Industry Insight Event – 6th April 2017 On the 6th April our Enterprise Partner Group (EPG) will be hosting an event in London to bring customers and partners together with ISVs and share industry specific insights across a number of verticals from Media, Insurance, Banking, Manufacturing, etc. The event will include a keynote from Jason Zander, CVP Azure R&amp;amp;D. We plan to host 2-300 customers at this event with afternoon breakout sessions, please see the below registration link for full details. ISV Industry Insight Event Registration EMEA GBB Cloud Infrastructure Partner LABS, Microsoft, 2 Kingdom Street, Paddington On the 27th and the 29th of March, Microsoft will be hosting interactive training and “hands on” sessions, meant to bring clarity on the newest technologies in the Azure cloud and advanced workloads, such as IT Operations Insights &amp;amp; Analytics, Automation &amp;amp; Control, Hybrid Storage, Open Source, Networking and Security in the Cloud. Partner labs are setup in the format of end-to-end demo heavy sessions. In order to register for sessions, please follow the email links below; Agenda Lab 1: Insight &amp;amp; Analytics – Automation &amp;amp; Control Lab 2: Open Source Lab 3: Hybrid Storage Lab 4: Networking &amp;amp; Security Detailed agenda for each day is provided in the attachment. Audience Azure architects and engineers We welcome two architects/ engineers per company at each lab Prepare for your workshop Consider and ensure you meet the pre-requisites for each lab in the attachment. Some labs require Laptops &amp;amp; Azure subscription. Be ready to openly share your views and present current challenges in your projects (no worries, you don’t need to share actual customer names or info). To save your seat for Cloud Infrastructure advanced workloads workshop, please Register ASAP by clicking the relevant link in the left column of the invitation, and we’ll confirm your reservation by email. Insight &amp;amp; Analytics, 27th March (1 day) Open Source, 27th March (1 day) Hybrid Storage, 27th March (1 day) Networking and Security, 29th March (1 day) Technical Insights In this section we will cover off useful learnings from the field which have arisen from working with multiple PDU partners on Cloud Infrastructure Management practice activities Correctly Power Off VMs The question of correctly powering off VMs in Azure has arisen on many occasions. Please be aware that powering off the VM from within the Guest OS will no “deallocate” the VM from the Azure infrastructure, so even though the VM is powered off, you will still be charged to your subscription as if the VM were still running. Chris Pietschmann over at buildazure.com wrote a recent article on this which is worth checking out; https://buildazure.com/2017/03/16/properly-shutdown-azure-vm-to-save-money/</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3Enil,%20%22teaser%22=%3E%22Newsletter_Teaser.jpg%22,%20%22thumb%22=%3Enil%7D" /></entry></feed>

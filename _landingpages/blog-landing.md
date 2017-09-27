@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /blogs/
+permalink: /blog/
 title: "Blog Posts"
 ---
 

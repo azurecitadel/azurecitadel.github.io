@@ -1,0 +1,34 @@
+### Documentation
+
+* [Products](https://azure.microsoft.com/en-us/services) and [Pricing]( https://azure.microsoft.com/en-us/pricing/)
+* [Azure Docs](https://docs.microsoft.com/en-us/azure/) and [Subscription Limits](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)
+* [Architecture](https://docs.microsoft.com/en-us/azure/index#pivot=architecture)
+* [Learning Paths](https://azure.microsoft.com/en-us/documentation/learning-paths/)
+* Interactive [Azure Services](http://azureplatform.azurewebsites.net/en-us/) Overview
+* Azure [Resource Explorer](https://resources.azure.com/) and [Storage Explorer](http://storageexplorer.com/)
+* Azure [Price Calculator](https://azure.microsoft.com/en-us/pricing/calculator/) and [TCO Calculator](https://www.tco.microsoft.com/)
+
+
+### Partner Portals
+
+* [MPN Portal](http://partner.microsoft.com/)
+* [Cloud Solution Partner (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider)
+* [Azure Account Portal](http://account.windowsazure.com/Subscriptions)
+* [Partner Support](https://partner.microsoft.com/en-GB/support), including [Advanced Support for Partners (ASP)](https://partner.microsoft.com/en-US/Support/advanced-cloud-support?advancedcloudsupport) and [Visual Studio Subscriptions](https://support.microsoft.com/kb/4013871/?tpqid=800-000036) 
+* [Cloud Practice Playbooks](https://partner.microsoft.com/en-US/campaigns/cloud-practice-playbooks) and [Partner Concierge](https://aka.ms/ukconcierge) for marketing
+
+### Training Resources
+
+* [OpenEdx MOOC Courses](https://openedx.microsoft.com/)
+* [Channel9](https://channel9.msdn.com/)
+* [Microsoft Virtual Academy](https://mva.microsoft.com/product-training/microsoft-azure)
+* [Partner University](https://partner.microsoft.com/en-gb/training), including [Partner Upskill](https://aka.ms/mpnukupskill) and [Cloud and Proud](https://www.microsoft.com/uk/partner/cloudandproud/)
+* Prep guides for [70-533](https://mva.microsoft.com/en-US/training-courses/certification-exam-overview-70-533-implementing-microsoft-azure-infrastructure-solutions-17405) and [70-534](https://mva.microsoft.com/en-us/training-courses/certification-exam-overview-70-534-architecting-microsoft-azure-solutions-17406)
+
+### Keeping Up To Date
+
+* [Azure Blog](https://azure.microsoft.com/en-gb/blog/)
+* [Azure Weekly](https://buildazure.com/)
+* Azure Public Preview [Roadmap](https://www.microsoft.com/en-us/cloud-platform/roadmap-public-preview)
+* [Roadmap](https://azure.microsoft.com/en-gb/roadmap/) and [Updates]( https://azure.microsoft.com/en-gb/updates/)
+* Azure [Preview Portal](http://preview.portal.azure.com)

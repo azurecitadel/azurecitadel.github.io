@@ -7,7 +7,7 @@ title: "Workshops"
 <div class="tiles">
 {% for page in site.pages  %}
 	{% if page.categories == "workshops" %}
-	   {% include page-list.html %}
+	   {% include page-grid.html %}
 	{% endif %} 
 {% endfor %}
 </div>

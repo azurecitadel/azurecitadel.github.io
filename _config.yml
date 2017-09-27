@@ -4,6 +4,7 @@ title: "Azure Citadel"
 description: "A location for Azure related training material developed and maintained by the UK One Commercial Partner Solution Architect team at Microsoft"
 logo: MSLogo.jpg
 teaser: MSLogo.jpg
+featured: project.png
 locale: en
 timezone: Europe/London
 url: https://azurecitadel.github.io

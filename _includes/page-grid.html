@@ -1,0 +1,23 @@
+<article class="tile" itemscope itemtype="http://schema.org/Article">
+   <a href="{{ site.url }}{{ page.url }}" title="{{ page.title }}" class="post-teaser">
+     {% if page.image.teaser %}
+       <img src="{{ site.url }}/images/{{ page.image.teaser }}" alt="teaser" itemprop="image">
+     {% else %}
+       <img src="{{ site.url }}/images/{{ site.teaser }}" alt="teaser" itemprop="image">
+     {% endif %}
+   </a>
+
+   {% if page.date %}
+      {% assign datetime = page.date | date: "%B %d, %Y" %}
+   {% endif %}
+   {% if page.author %}
+     {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}
+   {% endif %}
+
+   <p class="entry-date">
+      <strong>{{ author.name }}</strong> <br/> <span>{{ datetime }}</span>
+   </p>
+   
+   <h2 class="post-title" itemprop="name"><a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a></h2>
+   <p class="post-excerpt" itemprop="description">{{ page.excerpt | strip_html | truncate: 160 }}</p>
+ </article>

@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<div id="main" role="main">			
+	<div class="wrap">
+		{% if page.image.feature %}
+		<div class="page-feature">
+			<div class="page-image">
+				<img src="{{ site.url }}/images/{{ page.image.feature }}" class="page-feature-image" alt="{{ page.title }}">
+				{% if page.image.credit %}{% include image-credit.html %}{% endif %}
+			</div><!-- /.page-image -->
+		</div><!-- /.page-feature -->
+		{% endif %}
+
+		<div class="archive-wrap">
+			<div class="page-content">
+
+            <div class="carousel">
+					{% for featured_page in site.pages %}
+						{% if featured_page.featured %}
+							<div>
+								<h2><a href="{{ site.url }}{{ featured_page.url }}">{{ featured_page.title }}</a></h2>
+								<p class="post-excerpt" itemprop="description">{{ featured_page.excerpt | strip_html | truncate: 160 }}</p>
+								<a href="{{ site.url }}{{ featured_page.url }}">
+									{% if featured_page.image.feature %}
+										<img src="{{ site.url }}/images/{{ featured_page.image.feature }}" >
+									{% else %}
+										<img src="{{ site.url }}/images/{{ site.featured }}" >
+									{% endif %}
+								</a>
+							</div>
+							{% endif %} 
+						{% endfor %}
+						</div>
+
+				<br/>
+				<h1>Content</h1>
+				
+				<div class="tiles">
+					{% for hometile in site.data.hometiles %}
+					<div class="tile hometile" onclick="location.href='{{ hometile.url }}'">
+						<h4>{{ hometile.title }}</h4>
+						<img src="{{ site.url }}/images/{{ hometile.img }}" style="width:128px; display:block; margin:auto;" />
+					</div>
+					{% endfor %}
+				</div>
+				 
+				{{ content }}
+
+			</div><!-- /.page-content -->
+		</div class="archive-wrap"><!-- /.archive-wrap -->
+	</div><!-- /.wrap -->
+</div><!-- /#main -->
+

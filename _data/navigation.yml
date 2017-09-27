@@ -2,25 +2,25 @@
 
 - title: Workshops
   url: /workshops/
-  excerpt: "Workshops"
+  excerpt: "Interactive Workshops"
   image:
 
 - title: Demos
   url: /demos/
-  excerpt: "Demos"
+  excerpt: "Guided Demos"
   image:
 
 - title: Labs
   url: /labs/
-  excerpt: "Workshops"
+  excerpt: "Hands On Labs"
   image:
 
 - title: Guides
   url: /guides/
-  excerpt: "Demos"
+  excerpt: "Tech Guides"
   image:
 
 - title: Blog
-  url: /blogs/
+  url: /blog/
   excerpt: "Blog Posts"
   image:

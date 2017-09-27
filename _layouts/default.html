@@ -27,6 +27,9 @@
       <script src="{{ site.url }}/js/vendor/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+
   </head>
 
   <body id="js-body">
@@ -41,6 +44,18 @@
 
     <script src="{{ site.url }}/js/vendor/jquery-1.9.1.min.js"></script>
     <script src="{{ site.url }}/js/main.js"></script>
+    <!--script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script-->
+    <script type="text/javascript" src="/slick/slick.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $('.carousel').slick({
+          autoplay: true,
+          arrows: true,
+          dots: true
+        });
+      });
+    </script>
 
   </body>
 

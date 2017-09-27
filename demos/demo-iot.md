@@ -15,4 +15,4 @@ Messages received at the IoT hub are placed on a Service Bus queue, from the que
 
 ![overview](./images/iot-demo.png)
 
-## [![link](/images/link.svg) Link to demo guide and repo](https://github.com/benc-uk/azure-iot-demo) 
+## [![link](/images/icons/link.svg) Link to demo guide and repo](https://github.com/benc-uk/azure-iot-demo) 
