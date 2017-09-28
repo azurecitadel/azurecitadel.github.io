@@ -25,7 +25,7 @@ Example of some content in the labs section, for a page called cheese-lab.
          └── cheddar.jpg
 ```
 This will create a new URL on the site under the labs top level e.g. `https://azurecitadel.github.io/labs/cheese-lab/` (Note the .md is not included)
-This top level page should have a category set in the front matter e.g. `categories: labs` 
+This top level page should have a category set in the front matter e.g. `categories: labs`. If the category set here doesn't match the folder the page is in, then the fabric of space time will warp and the entire site will disappear from existence (maybe)
 
 **IMPORTANT NOTES!** 
 - Placing a category on page means it will be picked up by the auto-indexing landing pages (one for each of the categories)
