@@ -5,8 +5,9 @@ title: "Demos"
 ---
 
 <div class="tiles">
-{% for post in site.categories.demos %}
-	{% include post-list.html %}
+{% for page in site.pages  %}
+	{% if page.categories == "demos" %}
+	   {% include page-grid.html %}
+	{% endif %} 
 {% endfor %}
 </div>
-<!-- /.tiles -->

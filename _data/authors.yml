@@ -2,31 +2,35 @@
 Adam_Bohle:
     name: Adam Bohle
     email: Adam.Bohle@microsoft.com
-    avatar: abohle-bio.jpg
+    avatar: authors/adam-b.jpg
 Richard_Cheney:
     name: Richard Cheney
     email: Richard.Cheney@microsoft.com
-    avatar: richeney.jpg
-Ian_Warren:
-    name: Ian Warren
-    email: Ian.Warren@microsoft.com
+    avatar: authors/rich-c.jpg
+#Ian_Warren:
+#    name: Ian Warren
+#    email: Ian.Warren@microsoft.com
 Adam_Raffe:
     name: Adam Raffe
     email: Adam.Raffe@microsoft.com
-    avatar: Adam2.jpg
-Guy_Gregory:
-    name: Guy Gregory
-    email: Guy.Gregory@microsoft.com
-    avatar: guy.jpg
-Andrew_Bourne:
-    name: Andrew Bourne
-    email: Andrew.Bourne@microsoft.com
-    avatar: ATB.png
+    avatar: authors/adam-r.jpg
+#Guy_Gregory:
+#    name: Guy Gregory
+#    email: Guy.Gregory@microsoft.com
+#    avatar: authors/guy-g.jpg
+#Andrew_Bourne:
+#    name: Andrew Bourne
+#    email: Andrew.Bourne@microsoft.com
+#    avatar: authors/andrew-b.png
 Ben_Coleman:
     name: Ben Coleman
     email: ben.coleman@microsoft.com
-    avatar: ben.jpg
+    avatar: authors/ben-c.jpg
 Tom_Wilde:
     name: Tom Wilde
     email: tom.wilde@microsoft.com
-    avatar: tomwilde.jpg
+    avatar: authors/tom-w.png
+John_Duckmanton:
+    name: John Duckmanton
+    email: tom.wilde@microsoft.com
+    avatar: authors/john-d.jpg
