@@ -1,9 +1,11 @@
 ---
 layout: article
-title: WIP Placeholder
+title: WIP Placeholder!
 date: 2017-09-27
-featured: true
 author: Ben_Coleman
+image:
+  feature: test-tall.jpg
+excerpt: Yes this is stuff
 ---
 #### WIP 
 This is a test unpublished page
