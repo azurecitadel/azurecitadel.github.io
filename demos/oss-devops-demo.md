@@ -7,7 +7,7 @@ tags: [devops]
 comments: true
 author: Ben_Coleman
 image:
-  teaser: ../demos/oss-devops-demo/images/architecture.png
+  teaser: cloud-builder.png
 ---
 
 Video demo run-through of open source DevOps on Azure with VSTS using Node.js. This is loosely based on [this lab](/labs/devops-node/)  

@@ -8,7 +8,7 @@ comments: true
 author: Ben_Coleman
 image:
   feature: 
-  teaser: code.jpg
+  teaser: cloud-tools.png
 ---
 
 This is a small shared repo of demo and sample Azure Functions. They are either demos or fulfil a basic usecase.
