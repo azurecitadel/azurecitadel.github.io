@@ -58,6 +58,11 @@ The grid of icons and links is populated from [hometiles.yml in the data folder]
 
 Further customization can be carried out, by modifying [home.html in the _layouts folder](_layouts/home.html)
 
+# Drafts & WIP
+- If you want to work on something and not have it published **at all**, then place it into `_drafts` folder
+- If you want to work on something as a work in progress and have it published but hidden, put your page(s) into the `unpub` folder and **don't assign a category**. You can then view it on the site, but it will not appear under any of the sections
+
+
 # Disclaimer Boilerplate
 This is suggested boilerplate to add to pages for demos, apps or labs
 
