@@ -8,7 +8,7 @@ comments: true
 author: Ben_Coleman
 image:
   feature: 
-  teaser: code.jpg
+  teaser: blueprint.png
 ---
 I have written a number of demo apps all of which are “optimized” for deployment to Azure and Docker containers. These are designed for demos and hands on lab exercises, to be used with Azure and DevOps CI & CD scenarios, where you need “something” to deploy and push through the pipeline.  
 Most of the apps are small simple web applications but they are designed for ease of deployment, showcasing use of open source in Azure and running within containers, rather than complete rigid examples of a fully functioning architecture.

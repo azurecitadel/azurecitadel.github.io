@@ -9,7 +9,7 @@ author: Richard_Cheney
 featured: true
 excerpt: The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.
 image:
-  feature: Education.jpg
+  feature: featured/corp1.jpg
   teaser: Education.jpg
   thumb: 
 ---

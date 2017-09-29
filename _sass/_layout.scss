@@ -270,6 +270,8 @@
 	// expand image to cover full width of header
 	img {
 		width: 100%;
+		object-fit: cover;
+		height: 400px;
 	}
 }
 // make image flush with edges on small screens

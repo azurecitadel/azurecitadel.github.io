@@ -7,8 +7,8 @@ tags: [node, python, dotnet, angular]
 comments: true
 author: Ben_Coleman
 image:
-  feature: 
-  teaser: code.jpg
+  feature: secure.png
+  teaser: secure.png
 ---
 This is a working Node.js app to demonstrate Azure B2C
 

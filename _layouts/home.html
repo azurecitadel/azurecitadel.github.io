@@ -7,7 +7,7 @@ layout: default
 		{% if page.image.feature %}
 		<div class="page-feature">
 			<div class="page-image">
-				<img src="{{ site.url }}/images/{{ page.image.feature }}" class="page-feature-image" alt="{{ page.title }}">
+				<img style="object-fit:auto; height:auto" src="{{ site.url }}/images/{{ page.image.feature }}" class="page-feature-image" alt="{{ page.title }}">
 				{% if page.image.credit %}{% include image-credit.html %}{% endif %}
 			</div><!-- /.page-image -->
 		</div><!-- /.page-feature -->
@@ -21,7 +21,6 @@ layout: default
 						{% if featured_page.featured %}
 							<div>
 								<h2><a href="{{ site.url }}{{ featured_page.url }}">{{ featured_page.title }}</a></h2>
-								<p class="post-excerpt" itemprop="description">{{ featured_page.excerpt | strip_html | truncate: 160 }}</p>
 								<a href="{{ site.url }}{{ featured_page.url }}">
 									{% if featured_page.image.feature %}
 										<img src="{{ site.url }}/images/{{ featured_page.image.feature }}" >
@@ -29,6 +28,7 @@ layout: default
 										<img src="{{ site.url }}/images/{{ site.featured }}" >
 									{% endif %}
 								</a>
+								<p class="post-excerpt" itemprop="description">{{ featured_page.excerpt | strip_html | truncate: 160 }}</p>
 							</div>
 							{% endif %} 
 						{% endfor %}
