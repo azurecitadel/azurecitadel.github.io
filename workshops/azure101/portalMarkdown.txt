@@ -15,7 +15,7 @@
 * [Cloud Solution Partner (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider)
 * [Azure Account Portal](http://account.windowsazure.com/Subscriptions)
 * [Partner Support](https://partner.microsoft.com/en-GB/support), including [Advanced Support for Partners (ASP)](https://partner.microsoft.com/en-US/Support/advanced-cloud-support?advancedcloudsupport) and [Visual Studio Subscriptions](https://support.microsoft.com/kb/4013871/?tpqid=800-000036) 
-* [Cloud Practice Playbooks](https://partner.microsoft.com/en-US/campaigns/cloud-practice-playbooks) and [Partner Concierge](https://aka.ms/ukconcierge) for marketing
+* [Cloud Practice Playbooks](https://partner.microsoft.com/en-US/campaigns/cloud-practice-playbooks) and [Partner Concierge](ukpc@microsoft.com))
 
 ### Training Resources
 
