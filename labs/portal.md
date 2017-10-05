@@ -14,7 +14,7 @@ image:
 
 ## Introduction
 
-The main Azure portal is <https://portal.azure.com>.
+The main Azure portal is <a href="https://portal.azure.com" target="_new">https://portal.azure.com</a>.
 
 Login using the account for your Azure subscription. Your account
 information is at the top right, including password change, and viewing
@@ -41,7 +41,7 @@ customise those dashboards. You can also share dashboards with other AAD
 users or groups within the subscription, leveraging the role based
 access control (RBAC) to control who has access.
 
-- Open this <a href="/labs/portal/portalMarkdown.txt" target="_new">Markdown file</a>
+- Open this <a href="/labs/portal/portalMarkdown.txt" target="_new">Markdown file</a> in a new tab
  and copy the contents
 - Create a new dashboard in the Azure portal, and name it "Azure 101".
 - From the Tile Gallery’s General area, pull across the following items:
@@ -59,20 +59,19 @@ Once complete, your dashboard should look something like this:
 
 Let’s click through some of the documentation links in the Markdown box:
 
--   Interactive [Azure
-    Services](http://azureplatform.azurewebsites.net/en-us/) Overview
--   [Products](https://azure.microsoft.com/en-us/services) and [Pricing](https://azure.microsoft.com/en-us/pricing)
--   [Azure Docs](https://docs.microsoft.com/en-us/azure)
--   [Architecture](https://docs.microsoft.com/en-us/azure/index#pivot=architecture)
--   [Learning
-    Paths](https://azure.microsoft.com/en-us/documentation/learning-paths)
-
+Link | Description
+<a href="http://azureinteractives.azurewebsites.net/" target="_new">Azure Interactives</a> | Interactive Overview of Azure Services 
+<a href="https://azure.microsoft.com/en-us/services" target="_new">Products</a> | Main page for Azure Products
+<a href="https://azure.microsoft.com/en-us/pricing" target="_new">Pricing</a> | Pricing and TCO Calculators, plus pricing page for each product
+<a href="https://docs.microsoft.com/en-us/azure" target="_new">Documentation</a> | Azure documentation, quickstarts, SDKs and APIs etc.
+<a href="https://docs.microsoft.com/en-us/azure/index#pivot=architecture" target="_new">Architecture</a> | Patterns and Reference Architecture 
+<a href="https://azure.microsoft.com/en-us/documentation/learning-paths" target="_new">Learning Paths</a> | Guided (and finite) paths for learning a new area  
 
 ------------------------------------------------------------------
 
 ## Create a resource group called Azure101IaaS
 
--   Open the Azure [portal](http://portal.azure.com)
+-   Open the Azure <a href="https://portal.azure.com" target="_new">portal</a>.
 -   Choose one of the following options:
     -   Click on the + New icon (or G+N), search for _Resource Group_ and click on it.
     -   Click on _Resource Groups_ in your favourites and click on **Add**
