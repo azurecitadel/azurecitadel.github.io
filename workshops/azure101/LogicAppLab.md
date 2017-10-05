@@ -78,7 +78,7 @@ Note that the JSON describes the keys in order to give them titles such as _feed
     * Click on the _Add dynamic content_ button and select **feedbackId**
   * Body: **Feedback received from _feedbackEmail_**
 
-![](../images/logicAppRequestResponse.png)
+![](/workshops/azure101/images/logicAppRequestResponse.png)
 
 ### Test the endpoint
 

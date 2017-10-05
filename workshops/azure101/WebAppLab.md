@@ -67,7 +67,7 @@ appName=azure101YourName
 
 Double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.  If you are in the Cloud Shell then cat index.html will display the raw html.  
 
-**2. Log in to Azure using the CLI 2.0 and create the deployment user:**
+**2. Log in to Azure using the CLI 2.0 and create the deployment user**
 
 Create the deployment user:
 ```
@@ -76,14 +76,14 @@ az webapp deployment user set --user-name $user --password $pwd
 * You will be prompted to make your username or password more unique if you have chosen one that is too common, although the error is a basic 400 decline HTTP error
 * The deployment user is the equivalent of a service account so that Git can authenticate to Azure and deploy to it
 
-**3. Create the resource group:**
+**3. Create the resource group**
 
 Create the resource group
 ```
 az group create --name $rg --location westeurope
 ```
 
-**4. Create the App Service plan:**
+**4. Create the App Service plan**
 
 The App Service plans provide the underlying resources for your apps, and multiple apps can use them. The plans define the region, available instance sizes, scale count and SKU level, i.e. free, shared, basic, standard, premium.
 
@@ -93,7 +93,7 @@ az appservice plan create --name quickStartPlan --resource-group $rg --sku FREE
 ```
 * You should see output JSON when the above command succeeds
 
-**5. Create the Web App:**
+**5. Create the Web App**
 
 Create the Web App. The name for the Web App must be globally unique as it forms part of the FQDN. You will be prompted to change it if it already exists.
 ```
@@ -105,7 +105,7 @@ az webapp create --name $appName --resource-group $rg --plan quickStartPlan
 
 ![](../images/Az101-WebAppPlaceholder.jpg)
 
-**6. Create the Git deployment access point:**
+**6. Create the Git deployment access point**
 
 Create the http endpoint for the deployment:
 ```
@@ -119,7 +119,7 @@ https://<username>@<appname>.scm.azurewebsites.net/<appname>.git
 ```
 * Note the _scm_ section of the URL - this is the Kudu address. We’ll come back to that later
 
-**7. Add a Git remote called _Azure_ and then push to the Web App:**
+**7. Add a Git remote called _Azure_ and then push to the Web App**
 
 Create the Git remote, calling it azure:
 ```
@@ -135,7 +135,7 @@ git push azure master
 ```
 Refresh the web page and confirm that it has changed
 
-**8. Change the HTML and push again to the Web App:**
+**8. Change the HTML and push again to the Web App**
 
 Edit the index.html to change the Twitter account to your own.  You can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser. 
 
