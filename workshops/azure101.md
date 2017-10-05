@@ -46,7 +46,7 @@ Lab | Description
 <a href="/labs/logicapps" target="_new">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
 
 ### Content
-The below sections are [PowerPoint](./PresenterDeck.pptx) content unless specified otherwise
+The below sections are [PowerPoint](/workshops/azure101/azure101InfraAndAppsPresenterDeck.pptx) content unless specified otherwise
 1. Azure Intro
     * Cloud drivers and key Azure principles
     * Scale and compliancy
