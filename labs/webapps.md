@@ -1,7 +1,8 @@
 ---
 layout: article
 title: Web App Lab
-date: 2017-08-30
+categories: labs
+date: 2017-09-20
 tags: [azure, 101, paas, web, app, git, github]
 comments: true
 author: Richard_Cheney

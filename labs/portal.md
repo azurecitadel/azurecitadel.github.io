@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Portal Lab
+categories: labs
 date: 2017-08-29
 tags: [azure, 101, lab, portal, network, resource, group, vNet]
 comments: true

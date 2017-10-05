@@ -1,7 +1,8 @@
 ---
 layout: article
 title: Azure 101 Logic App Lab
-date: 2017-08-29
+categories: labs
+date: 2017-10-05
 tags: [azure, 101, paas, logic, app, twitter]
 comments: true
 author: Richard_Cheney

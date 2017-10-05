@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Virtual Machine Quickstart Lab
+categories: labs
 date: 2017-08-29
 tags: [azure, 101, vm, virtual, machine, linux, windows, template]
 comments: true
