@@ -9,6 +9,7 @@ image:
   feature: 
   teaser: Education.jpg
   thumb: 
+excerpt: Familiarise yourself with the portal, customise the dashboard and create your first vNet
 ---
 {% include toc.html %}
 

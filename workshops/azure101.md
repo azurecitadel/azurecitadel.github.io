@@ -30,9 +30,9 @@ Allow five hours for a full session including all of the labs.
 
 Lab | Description
 <a href="/labs/portal/" target="_new">Portal & vNets</a> | Learn and customise the Azure portal, and create vNets and subnets
-<a href="/workshops/azure101/VMLab" target="_new">VM Quickstart</a> | Follow a Quickstart for either Linux or Windows VMs, via the portal, CLI or PowerShell
-<a href="/workshops/azure101/WebAppLab" target="_new">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
-<a href="/workshops/azure101/LogicAppsLab" target="_new">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
+<a href="/labs/vmquickstart" target="_new">VM Quickstart</a> | Follow a Quickstart for either Linux or Windows VMs, via the portal, CLI or PowerShell
+<a href="/labs/webapps" target="_new">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
+<a href="/labs/logicapps" target="_new">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
 
 ## Pre-requisites
 The workshop requires the following
