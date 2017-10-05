@@ -24,16 +24,6 @@ In terms of orientation, the trainer may use slides to help give an overview of 
 
 Allow five hours for a full session including all of the labs.  
 
-## Labs
-
-### Cloud Infrastructure and Apps track
-
-Lab | Description
-<a href="/labs/portal/" target="_new">Portal & vNets</a> | Learn and customise the Azure portal, and create vNets and subnets
-<a href="/labs/vmquickstart" target="_new">VM Quickstart</a> | Follow a Quickstart for either Linux or Windows VMs, via the portal, CLI or PowerShell
-<a href="/labs/webapps" target="_new">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
-<a href="/labs/logicapps" target="_new">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
-
 ## Pre-requisites
 The workshop requires the following
 
@@ -45,7 +35,17 @@ Pre-req | Required | Comment
 A Twitter account | Optional | 
 <a href="https://www.getpostman.com" target="_new">Postman</a> | Required | Used in the Logic Apps lab to post JSON
 
-## Content
+## Cloud Infrastructure and Apps track
+
+### Labs
+
+Lab | Description
+<a href="/labs/portal/" target="_new">Portal & vNets</a> | Learn and customise the Azure portal, and create vNets and subnets
+<a href="/labs/vmquickstart" target="_new">VM Quickstart</a> | Follow a Quickstart for either Linux or Windows VMs, via the portal, CLI or PowerShell
+<a href="/labs/webapps" target="_new">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
+<a href="/labs/logicapps" target="_new">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
+
+### Content
 The below sections are [PowerPoint](./PresenterDeck.pptx) content unless specified otherwise
 1. Azure Intro
     * Cloud drivers and key Azure principles
@@ -54,9 +54,9 @@ The below sections are [PowerPoint](./PresenterDeck.pptx) content unless specifi
 2. Infrastructure Services
     * Compute options
     * Networking fundamentals
-    * [**LAB: Portal familiarisation and customisation, resource groups, vNets and subnets, documentation resources**](./PortalLab/#introduction)
+    * **LAB: Portal familiarisation and customisation, resource groups, vNets and subnets, documentation resources**
     * Storage and RBAC principles
-    * [**LAB: Windows and Linux VMs, customising NSGs, defining Availability Sets**](./VMLab/#introduction)
+    * **LAB: Windows and Linux VMs, customising NSGs, defining Availability Sets**
 3. Lunch
 4. Application & Platform Services
     * Responsibilities: Traditional v IaaS v PaaS v SaaS
@@ -66,11 +66,11 @@ The below sections are [PowerPoint](./PresenterDeck.pptx) content unless specifi
     * CI/CD
     * Toolchains
     * Monitoring and Insight
-6. [**LAB: Deploying to Web Apps from a GitHub repository**](./WebAppLab/#introduction)
+6. **LAB: Deploying to Web Apps from a GitHub repository**
 7. Data and Analytics
     * Hadoop, HDinsight and Data Lake
     * SQL DB, Data Warehouse and Managed Instance
     * MySQL, PostgreSQL and CosmosDB
     * Cortana Intelligence Suite, Cognitive Services, Machine Learning and IoT Suite
-8. [**LAB: Using Logic Apps to create a feedback API**](./LogicAppLab/#introduction)
+8. **LAB: Using Logic Apps to create a feedback API**
 9. Self-training and options for future enablement sessions
