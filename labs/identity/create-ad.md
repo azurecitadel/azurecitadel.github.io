@@ -23,11 +23,15 @@ I will be creating a new on-premise Windows Active Directory domain called **wil
 
 1. In the Azure Portal, search for and open **Deploy a custom template**
 
-    ![](../images/ExtendingIdentities_1.1.png)
+2. testing
+
+4. testing
+
+![](../images/ExtendingIdentities_1.1.png)
 
 2. Type in **Active-directory-new-domain > Select Template**
 
-   ![](../images/ExtendingIdentities_1.2.png)
+![](../images/ExtendingIdentities_1.2.png)
 
 3. Fill in the parameters requested > **Purchase** 
 
@@ -40,11 +44,11 @@ I will be creating a new on-premise Windows Active Directory domain called **wil
 
 *Please note - The template can take up to 30minutes to deploy completely.*
 
-  ![](../images/ExtendingIdentities_1.3.png)
+![](../images/ExtendingIdentities_1.3.png)
 
 4. Log into the virtual machine created by the template **Resource Groups >  WildeCompany > adVM > Connect**
 
- ![](../images/ExtendingIdentities_1.4.png)
+![](../images/ExtendingIdentities_1.4.png)
 
 5. In Server Manager **Tools > Active Directory Users and Computers >** right click on **Users > New > Users >** create a few dummy users. 
 
