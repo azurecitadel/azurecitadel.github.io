@@ -30,6 +30,15 @@ Allow five hours for a full session including all of the labs.
 * [Lab: **Deploying to Web Apps from GitHub**](./WebAppLab/#introduction)
 * [Lab: **Using Logic Apps**](./LogicAppLab/#introduction)
 
+### **Cloud Infrastructure and Apps track** 
+
+Lab | Description
+<a href="/workshops/azure101/PortalLab" target="_new">Dashboards and vNets</a> | Learn and customise the Azure portal, and create vNets and subnets
+<a href="/workshops/azure101/VMLab" target="_new">Virtual Machine Quickstart</a> | Follow a Quickstart for either Linux or Windows VMs, via the portal, CLI or PowerShell
+<a href="/workshops/azure101/WebAppLab" target="_new">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
+<a href="/workshops/azure101/LogicAppsLab" target="_new">Logic App Lab</a> | Create a feedback mechanism, with HTTP endpoint, conditional email alerting and logging to Cosmos DB
+
+
 ## Pre-requisites
 The workshop requires the following:
 * [Azure Subscription](/guides/prereqs/subscription)

@@ -54,7 +54,7 @@ access control (RBAC) to control who has access.
 
 Once complete, your dashboard should look something like this:
 
-![](../images/Az101-Dashboard.png)
+![](/workshops/azure101/images/Az101-Dashboard.png)
 
 ## Documentation
 

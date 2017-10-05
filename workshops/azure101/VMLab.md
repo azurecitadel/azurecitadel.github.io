@@ -44,7 +44,7 @@ Follow the Windows VM 5 minute quickstart and create a Windows Server 2016 Datac
 - **Size:** _DS1\_v2_
 - **Use Managed Disks:** _Yes_
 
-![](../images/Az101-CreateVM.JPG)
+![](/workshops/azure101/images/Az101-CreateVM.JPG)
 
 ### If you have time:
 
@@ -92,7 +92,7 @@ little.
 
 ### Templates
 
-- Click on _Download template and parameters_. Browse the template JSON, the parameters JSON, and the scripts to deploy the template from PowerShell and CLI 2.0. ![](../images/Az101-ARMTemplate.JPG)
+- Click on _Download template and parameters_. Browse the template JSON, the parameters JSON, and the scripts to deploy the template from PowerShell and CLI 2.0. ![](/workshops/azure101/images/Az101-ARMTemplate.JPG)
 - Click on Create to submit the job
 
 Once the VM has been created then use the Bash shell to open a secure shell session:

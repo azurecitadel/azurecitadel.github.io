@@ -93,7 +93,7 @@ Note that the JSON describes the keys in order to give them titles such as _feed
     * Key: **Content-Type**
     * Value: **application/json**
 
-![](../images/postmanHeaders.png)  
+![](/workshops/azure101/images/postmanHeaders.png)  
 
   * On the Body tab, toggle the body type to raw
   * Open the [example JSON payload](./feedback.json) we saw earlier into a new tab, and copy the contents to the clipboard 
@@ -101,7 +101,7 @@ Note that the JSON describes the keys in order to give them titles such as _feed
   * Click on the blue **Send** button
   * The HTTP response from the Logic App should show in the bottom pane:
 
-![](../images/postmanBody.png)
+![](/workshops/azure101/images/postmanBody.png)
 
   * The headers of the response also include the id number  
 
@@ -112,7 +112,7 @@ Note that the JSON describes the keys in order to give them titles such as _feed
 * Click on the new **Runs History** entry to view the details
   * Open up the individual steps to view the inputs and outputs
 
-![](../images/logicAppRun.png)
+![](/workshops/azure101/images/logicAppRun.png)
 
 
 ## Send an email if feedback rating is poor
@@ -133,7 +133,7 @@ We will now add a conditional action that will only email us if the feedback rat
   * Subject: **Feedback from _feedbackName_**
   * Body: Add in all of the useful information from the JSON payload to create the body of the email.  The screenshot below gives an example.
 
-![](../images/logicAppEmail.png)
+![](/workshops/azure101/images/logicAppEmail.png)
 
 * Click on **Save**
 
@@ -147,7 +147,7 @@ We will now add a conditional action that will only email us if the feedback rat
 * Check the details of the new **Runs History** entry
 * Check your inbox and verify that the feedback email has been received
 
-![](../images/logicAppEmailTest.png)
+![](/workshops/azure101/images/logicAppEmailTest.png)
 
 ## Adding a permanent record into Cosmos DB
 
@@ -165,7 +165,7 @@ We'll now add a collection called production into our feedback database, and we'
   * Partition Key: **/source**
   * Database: **feedback**
 
-![](../images/cosmosDbCollection.png)  
+![](/workshops/azure101/images/cosmosDbCollection.png)  
 
 * In the Cosmos DB Overview area, copy the URI
   * The URI is in the form **https://_\<ID>_.documents.azure.com:443/**
@@ -186,7 +186,7 @@ We'll now add a collection called production into our feedback database, and we'
   * _Tip_: Open up a new tab or window to portal.azure.com and copy the values using the icon on the right of each field  
 * Example connection screen below:
 
-![](../images/cosmosDbManualConnection.png)  
+![](/workshops/azure101/images/cosmosDbManualConnection.png)  
 
 ### Define the document format and placement
 
@@ -213,7 +213,7 @@ Set the parameters for the _Create or update document_ action:
 
 Below is an example of the _Create or update document_ logic
 
-![](../images/logicAppDocument.png)  
+![](/workshops/azure101/images/logicAppDocument.png)  
 
 * _Note the leading slash in the partition key value, source, and that this exactly matches the source variable in the JSON.  Also that we defined /source as the partition key when we added the collection.  This is key to make the partitioning work._
 * Save
@@ -224,7 +224,7 @@ Below is an example of the _Create or update document_ logic
 * Check the Run History and view the outputs
 * Go into Cosmos DB and use the Data Explorer to verify that the feedback is beeing collected successfully
 
-![](../images/cosmosDbDocumentTest.png)  
+![](/workshops/azure101/images/cosmosDbDocumentTest.png)  
 
 ## Final notes
 

@@ -25,7 +25,7 @@ The PaaS section of the lab will touch on both Web Apps and Logic Apps. The Web 
 The diagram below gives an overview of what we are doing with a set of html
 files hosted on GitHub and pushing those into a Web App in Azure using Git.
 
-![](../images/Az101-WebApp-Git.jpg)
+![](/workshops/azure101/images/Az101-WebApp-Git.jpg)
 
 1.	Use git clone to download the sample static HTML site from GitHub to your laptop
 2.	Login to Azure and create a deployment user
@@ -37,7 +37,7 @@ files hosted on GitHub and pushing those into a Web App in Azure using Git.
 
 ### Select your console
 
-If the [Bash and CLI 2.0 prereqs](../prereqs/prereqLxss.md) have been followed then those Windows 10  users will have installed the Linux subsystem, and then installed both CLI 2.0 and Git into that subsystem.  If that is so then open a Command Prompt and then type ``bash``.  Type in ``az login`` and follow the instructions. This will be your console.
+If the [Bash and CLI 2.0 prereqs](/guides/prereqs/prereqLxss.md) have been followed then those Windows 10  users will have installed the Linux subsystem, and then installed both CLI 2.0 and Git into that subsystem.  If that is so then open a Command Prompt and then type ``bash``.  Type in ``az login`` and follow the instructions. This will be your console.
 
 Everyone else may use the Cloud Shell (**>_**) shown at the top of the Azure Portal.  This will create some local storage the first time you use it.  There is no need to login to Azure as it is done automatically for you.  (Note that we will not be using the permanent storage folder clouddrive as it does not support the file permissions required by git commands, so the clone of the Github repo will be transient.)  This will be your console.
 
@@ -103,7 +103,7 @@ az webapp create --name $appName --resource-group $rg --plan quickStartPlan
 * Open your web browser and navigate to http://\<unique_app_name>.azurewebsites.net. (You will also find the link in the new web app in the Azure portal.)
 * You should see a ‘placeholder’ web page – this indicates that the web app is running and ready to be configured.
 
-![](../images/Az101-WebAppPlaceholder.jpg)
+![](/workshops/azure101/images/Az101-WebAppPlaceholder.jpg)
 
 **6. Create the Git deployment access point**
 
@@ -170,7 +170,7 @@ Azure offers many ways of achieving something, with a view that users should use
 * Click on the URL in the Overview section
 * The placeholder web page will be opened in a new tab: 
 
-![](../images/Az101-WebAppPlaceholder.jpg) 
+![](/workshops/azure101/images/Az101-WebAppPlaceholder.jpg) 
 
 * Open the **App Service Editor** in the App Service blade's Development tools section
 * Click on the **Go** button in the main pane.  This will open up a new tab containing the App Service Editor environment.
