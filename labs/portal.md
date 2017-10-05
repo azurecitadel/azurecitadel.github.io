@@ -41,7 +41,7 @@ customise those dashboards. You can also share dashboards with other AAD
 users or groups within the subscription, leveraging the role based
 access control (RBAC) to control who has access.
 
-- Open this <a href="/labs/portal/markdown.txt" target="_new">Markdown file</a>
+- Open this <a href="/labs/portal/portalMarkdown.txt" target="_new">Markdown file</a>
  and copy the contents
 - Create a new dashboard in the Azure portal, and name it "Azure 101".
 - From the Tile Gallery’s General area, pull across the following items:

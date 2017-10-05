@@ -34,15 +34,16 @@ Lab | Description
 <a href="/workshops/azure101/WebAppLab" target="_new">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
 <a href="/workshops/azure101/LogicAppsLab" target="_new">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
 
-
 ## Pre-requisites
-The workshop requires the following:
-* [Azure Subscription](/guides/prereqs/subscription)
-* [Bash and CLI 2.0](/guides/prereqs/lxss) (optional, only for Windows 10)
-* [Azure Modules for PowerShell](/guides/prereqs/powershell) (optional, recommended for existing PowerShell users)
-* [Visual Studio Code](/guides/prereqs/vscode) (optional)
-* A Twitter account (optional)
-* [Postman](https://www.getpostman.com/)
+The workshop requires the following
+
+Pre-req | Required | Comment
+<a href="/guides/prereqs/subscription" target="_new">Azure Subscription</a> | Required | 
+<a href="/guides/prereqs/lxss" target="_new">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
+<a href="/guides/prereqs/powershell" target="_new">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
+<a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> | Optional | 
+A Twitter account | Optional | 
+<a href="https://www.getpostman.com" target="_new">Postman</a> | Required | Used in the Logic Apps lab to post JSON
 
 ## Content
 The below sections are [PowerPoint](./PresenterDeck.pptx) content unless specified otherwise
