@@ -27,22 +27,22 @@ I will be creating a new on-premise Windows Active Directory domain called **wil
 
 4. testing
 
-![](../images/ExtendingIdentities_1.1.png)
+    ![](../images/ExtendingIdentities_1.1.png)
 
 2. Type in **Active-directory-new-domain > Select Template**
 
-![](../images/ExtendingIdentities_1.2.png)
+    ![](../images/ExtendingIdentities_1.2.png)
 
 3. Fill in the parameters requested > **Purchase** 
 
-*My settings are below but you can customise it relevant to you:*
-* *Admin Username - domainadmin (in a production deployment it's recommended to make this difficult to guess)*
-* *Resource Group - WildeCompany*
-* *Location - West Europe*
-* *Domain Name - wildecompany.local (the domain name requires a full stop)*
-* *Dns Prefix - wildecompany* 
+    *My settings are below but you can customise it relevant to you:*
+    * *Admin Username - domainadmin (in a production deployment it's recommended to make this difficult to guess)*
+    * *Resource Group - WildeCompany*
+    * *Location - West Europe*
+    * *Domain Name - wildecompany.local (the domain name requires a full stop)*
+    * *Dns Prefix - wildecompany* 
 
-*Please note - The template can take up to 30minutes to deploy completely.*
+    *Please note - The template can take up to 30minutes to deploy completely.*
 
 ![](../images/ExtendingIdentities_1.3.png)
 
