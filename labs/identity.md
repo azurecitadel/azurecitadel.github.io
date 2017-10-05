@@ -25,7 +25,7 @@ To demonstrate I will be creating a new on premise domain called **wildecompany.
 
 ## Topology
 We will end up with a single forest, single Azure AD tenant topology. This is most common topology used, a single on-premises forest, with one or multiple domains and a single Azure AD tenant.  
-Pass-through Authentication will be used and we will not be synchronizing passwords. This means our on premise Active Directory Domain Controller will be completing all the authentications and passwords wont be stored in Azure. This is just one of the many ways AD Connect can be configured and is asked for by customers that want to utilise on premise infrastucture, keep passwords on premies but still utilise the cloud.
+Pass-through Authentication will be used and we will not be synchronizing passwords. This means our on premise Active Directory Domain Controller will be completing all the authentications and passwords won't be stored in Azure. This is just one of the **many** ways AD Connect can be configured and is asked for by customers that want to utilise on premise infrastucture, keep passwords on-premises but still utilise the cloud.
 
 ![](./images/ExtendingIdentities_singleforestsingledirectory.png)
 
@@ -38,6 +38,6 @@ The workshop requires the following:
 * [Lab: **Create Windows Active Directory Forest**](./create-ad)
 * [Lab: **Create Azure Active Directory Tenant**](./create-aad)
 * [Lab: **Prepare Windows Active Directory**](./prepare-ad)
-* [Lab: **Configure AD Connect**](./configue-adc)
+* [Lab: **Configure AD Connect**](./configure-adc)
 
 

@@ -17,10 +17,11 @@ Extending Identities to the Cloud.
 ## Create Azure Active Directory
 Next we need to create a new Azure Active Directory Tenant.  I will be creating a tenant called **wilde.company** (this is a public domain that I own), if you do not own a public domain and are completing this lab as a learning exercise then you will not be able to verify the domain, don't worry and continue as normal.
 
+![](./images/prepare-ad.png)
 
 1. Log into the Azure Portal as a Global Administrator **New > Security + Identity  > Azure Active Directory**
 
-![](../images/ExtendingIdentities_2.1.png)
+![](./images/ExtendingIdentities_2.1.png)
 
 2. Enter the new directory details, Organisation name (just a reference point), Domain name (AKA tenant), Region **> Create**
 
@@ -28,17 +29,17 @@ Next we need to create a new Azure Active Directory Tenant.  I will be creating 
 * *Organization name - Wilde Company*
 * *Initial domain name - WildeCompany (notice suffix on my domain WildeCompany**.onmicrosoft.com** this needs to be unique)*
 
-![](../images/ExtendingIdentities_2.2.png)
+![](./images/ExtendingIdentities_2.2.png)
 
 3. Switch to the directory you just created (either by clicking on your **account** in the top right OR by going to **Azure Active Directory > Switch Directory**). If the new directory isn't there, try pressing refresh on your browser.
 
-![](../images/ExtendingIdentities_2.3.png)
+![](./images/ExtendingIdentities_2.3.png)
 
 4. Now we need to add the public domain you own to link to your new tenant *.onmicrosoft.com, **Domain Names > Add domain name**
 
 *Please skip this step if you do not own a public domain*
 
-![](../images/ExtendingIdentities_2.4.png)
+![](./images/ExtendingIdentities_2.4.png)
 
 5. **Add domain name**
 
@@ -52,7 +53,7 @@ Next we need to create a new Azure Active Directory Tenant.  I will be creating 
 
 *Please skip this step if you do not own a public domain*
 
-![](../images/ExtendingIdentities_2.6.png)
+![](./images/ExtendingIdentities_2.6.png)
 
 7. In a new browser tab, log into your domain's DNS settings and **add** a TXT record with the details from the Azure Portal (see previous screen shot).
 
@@ -60,13 +61,13 @@ Next we need to create a new Azure Active Directory Tenant.  I will be creating 
 
 *Please skip this step if you do not own a public domain*
 
-![](../images/ExtendingIdentities_2.7.png)
+![](./images/ExtendingIdentities_2.7.png)
 
 8. In the Azure portal **Verify > Success**.
 
 *Please skip this step if you do not own a public domain*
 
-![](../images/ExtendingIdentities_2.8.png)
+![](./images/ExtendingIdentities_2.8.png)
 
 
 Now we have created a new unique Azure Active directory tenant and linked the new tenant *.onmicrosoft.com to your public domain. The screenshots show I have created and linked an Azure Active Directory tenant **wildecompany.onmicrosoft.com** to the public domain I own **wilde.company**.
@@ -77,6 +78,6 @@ e.g:
 * *yourcompany.co.uk > yourcompany.onmicrosoft.com*
 * *example.org > example.onmicrosoft.com*
 
-Move onto the next lab [Prepare Active Directory.](./identityprepareAD.md)
+Move onto the next lab [Prepare Active Directory.](./prepare-ad.md)
 
 
