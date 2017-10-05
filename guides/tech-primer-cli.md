@@ -8,7 +8,7 @@ comments: true
 author: Richard_Cheney
 image:
   teaser: blueprint.png
-excerpt: Delve into CLI 2.0 and understand how to work with the interface, integrate with Bash scripts and work with the JMESPATH queries. 
+excerpt: WORK IN PROGRESS! Delve into CLI 2.0, integrate with Bash scripts and unlock the power of the JMESPATH queries. 
 ---
 WORK IN PROGRESS
 

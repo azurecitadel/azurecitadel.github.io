@@ -7,12 +7,14 @@ tags: [authoring, arm, workshop, hackathon, lab, template]
 comments: true
 author: Richard_Cheney
 featured: true
-excerpt: The Authoring ARM Templates workshop is a collection of short labs to increase your understanding of Azure's Infrastructure as Code capability.
+excerpt: WORK IN PROGRESS! The Authoring ARM Templates workshop is a collection of short labs to increase your understanding of Azure's Infrastructure as Code capability.
 image:
   feature: featured/corp1.jpg
   teaser: Education.jpg
   thumb: 
 ---
+**WORK IN PROGRESS**
+
 {% include toc.html %}
 
 ## Introduction
