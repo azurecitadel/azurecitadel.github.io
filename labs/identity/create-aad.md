@@ -17,6 +17,7 @@ Extending Identities to the Cloud.
 ## Create Azure Active Directory
 Next we need to create a new Azure Active Directory Tenant.  I will be creating a tenant called **wilde.company** (this is a public domain that I own), if you do not own a public domain and are completing this lab as a learning exercise then you will not be able to verify the domain, don't worry and continue as normal.
 
+![](../images/prepare-ad.png)
 
 1. Log into the Azure Portal as a Global Administrator **New > Security + Identity  > Azure Active Directory**
 
@@ -77,6 +78,6 @@ e.g:
 * *yourcompany.co.uk > yourcompany.onmicrosoft.com*
 * *example.org > example.onmicrosoft.com*
 
-Move onto the next lab [Prepare Active Directory.](./identityprepareAD.md)
+Move onto the next lab [Prepare Active Directory.](./prepare-ad.md)
 
 

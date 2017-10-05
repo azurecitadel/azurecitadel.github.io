@@ -17,8 +17,9 @@ Extending Identities to the Cloud.
 ## Create Windows Active Directory Forest
 First we need to create a new Windows Active Directory Forest and Domain to use during this lab and we'll utilise an ARM template to do all the hard work.
 
-I will be creating a new on premise domain called **wildecompany.local** but you can create something relevant for you. Use a name slightly different to your public domain as this commonly happens and we will make them match, *e.g. onpremiseAD.local.*
+I will be creating a new on-premise Windows Active Directory domain called **wildecompany.local**. It's common that an on-premise Windows Active Directory domain doesn't always exactly match your public domain so in a future lab I will show an easy work around. *e.g. Company.local for Windows Active Directory and Company.org for public domain can work together*
 
+![](../images/create-ad.png)
 
 1. In the Azure Portal, search for and open **Deploy a custom template**
 
@@ -54,5 +55,5 @@ I will be creating a new on premise domain called **wildecompany.local** but you
 
 We've now created an Active Directory Forest with a single Domain and multiple users.
 
-Move onto the next lab [Create Azure Active Directory.](./identitycreateAAD.md)
+Move onto the next lab [Create Azure Active Directory.](./create-ad.md)
 

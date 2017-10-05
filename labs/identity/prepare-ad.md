@@ -16,14 +16,15 @@ Extending Identities to the Cloud.
 
 ## Prepare Windows Active Directory
 Now we need to configure our on premise domain to match the newly created and verified domain (if you own it) and configure our on premise identities to match. 
-I will edit my on premise domain **wildecompany.local** then my users so they no longer log in as **wildecompany.local**, instead now log into **wilde.company**.
+I will edit my on premise domain **wildecompany.local** then my users so they no longer log in as **user@wildecompany.local**, instead now log into **user@wilde.company** so they match!
 
+![](./prepare-ad.png)
 
 1. Connect to Domain Controller as a domain administrator, from server manager **Tools > Active Directory Domains and Trusts >** right click on **Active Directory Domains and Trusts > Properties**
 
 ![](../images/ExtendingIdentities_3.1.png)
 
-2. Enter your verified domain name > **Add**
+2. Enter your verified domain name > **Add**. 
 
 *I have added wilde.company*
 
@@ -35,7 +36,7 @@ I will edit my on premise domain **wildecompany.local** then my users so they no
 
 ![](../images/ExtendingIdentities_3.3.png)
 
-4. 	Completing this task manually will work fine but let's try using a script to save time, run Windows PowerShell ISE as an administrator and paste both of the lines below:
+4. 	Completing this task manually will work fine but let's try using a script to save time, run Windows PowerShell ISE as an administrator on the domain controller and paste both of the lines below:
 
 ```$LocalUsers = Get-ADUser -Filter {UserPrincipalName -like "*originaluserprincipalname"} -Properties userPrincipalName -ResultSetSize $null```
 
@@ -63,6 +64,6 @@ I will edit my on premise domain **wildecompany.local** then my users so they no
 
 My **@wildecompany.local** users are now **@wilde.company**. Now we have matched our on premise users our public domain they can have a consistent experience regardless of whether they're logging in to on premise or cloud apps. This is a fundamental step when migrating identities to the cloud. 
 
-Move onto the next lab [Configure AD Connect.](./identityconfigueADC.md)
+Move onto the next lab [Configure AD Connect.](./configure-adc.md)
 
 
