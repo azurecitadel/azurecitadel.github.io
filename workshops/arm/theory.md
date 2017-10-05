@@ -51,16 +51,28 @@ Type ```az provider show --namespace Microsoft.Network``` to view the JSON detai
 
 You can see the definitions of the resources, resource groups and resource providers in use within your subscription in the resource explorer ([http:/resources.azure.com](http:/resources.azure.com)).  
 
-Drill into an existing resource group and select the resources within it and the unique *id* will reflect:
-* the subscription id
-* resource group name
-* resource provider and type 
-* and the resource name itself
+Drill into an existing resource group, select a resource within it and examine the *id* key's value.  
+
+**ADD IN THE PROPER TEXT FOR THE CURRENT DIRS IMAGES SUBDIR**
+![](./images/armResourceExplorer.png)
+
+Here is an example:
+```
+/subscriptions/2ca76be1-7e80-4f2b-92f7-06b2763a68cc/resourceGroups/networkCore/providers/Microsoft.Network/publicIPAddresses/VpnGateway-pip
+```
+This can be broken down into:
+
+**Name** | **Section** | **Value**
+Subscription ID | /subscriptions/2ca76be1-7e80-4f2b-92f7-06b2763a68cc | 2ca76be1-7e80-4f2b-92f7-06b2763a68cc
+Resource Group | resourceGroups/networkCore | networkCore
+Resource Provider | providers/Microsoft.Network | Microsoft.Network
+Resource Type | publicIPAddresses | Microsoft.Network/publicIPAddresses
+Resource Name | VpnGateway-pip | VpnGateway-pip
+
+Note that the resource provider type can be multi-level for nested resource types.
 
 The *type* is the resource type in the *Resource.Provider/resourceType* naming type, e.g. "Microsoft.Logic/workflows"   
     
-![](../images/armResourceExplorer.png)
-
 ## Azure Resource Manager JSON template format
 
 The ARM template format is JSON format. 
@@ -85,17 +97,22 @@ Here is an empty template to show the structure.
 }
 ```
 
-Sections:
-* **schema**: JSON schema that describes the template format
-* **contentVersion**: version of the schema 
-* **parameters**: inputs
-* **variables**: used within the template to simplify the resources later
-* **resources**: list of resources to deploy
-* **outputs**: output JSON information
+**Section** | Description
+**schema** | JSON schema that describes the template format
+**contentVersion** | version of the schema 
+**parameters** | user (or script) inputs to the template
+**variables** | used within the template to simplify the resources later
+**resources** | list of resources to deploy
+**outputs** | optional output JSON information
 
 
 Of these, the schema and contentVersion are mandatory, as are the resources.  Parameters and variables are almost always included. Outputs are rarer, and only really used when nesting templates.  More on that later.  
 
+## Recommended reading
 
+For more background information on JSON templates and how they deploy using into Azure Resource Manager, start with the following links:
 
-
+* [Azure Resource Manager landing page](https://docs.microsoft.com/en-us/azure/azure-resource-manager/)
+* [What is Resource Manager?](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
+* [Resource Providers and Types](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services)
+* [Template Sections](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)

@@ -13,8 +13,6 @@ image:
   teaser: Education.jpg
   thumb: 
 ---
-Introduction to the Azure 101 workshop.
-
 {% include toc.html %}
 
 ## Introduction
