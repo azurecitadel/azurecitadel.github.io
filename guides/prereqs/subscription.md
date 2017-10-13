@@ -80,10 +80,6 @@ If you are a partner working with Microsoft's One Commercial Partner group and t
 Once the account is enabled, prove that it is working correctly by logging into the portal at [http://portal.azure.com](http://portal.azure.com).  
 
 
-## Links to other pre-requisite instruction pages
+#### Links to other pre-requisite instruction pages
  
-* [Azure Subscription](../subscription)
-* [Azure PowerShell Module](../powershell)
-* [Windows 10 Linux Subsystem and CLI 2.0](../lxss)
-* [Visual Studio 2017](../vs2017)
-* [Visual Studio Code](../vscode)
+* [Links to other pre-requisite instructions can be found here](../../prereqs)

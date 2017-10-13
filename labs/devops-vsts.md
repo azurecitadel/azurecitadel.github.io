@@ -12,8 +12,6 @@ image:
   thumb: 
 ---
 
-**WORK IN PROGRESS**
-
 {% include toc.html %}
 
 # Overview
@@ -31,7 +29,7 @@ The scenario will cover:
 You do not need to have prior knowledge of Node.js or Express for this lab but you will need to make basic changes to Javascript files. Likewise no prior experience with VSTS and Azure is required (but obviously beneficial). You will be able to complete the lab using either a Windows or Mac machine, but some of the commands documented here are Windows variants.
 
 The high-level flow is:
-1. Install the prerequisite applications
+1. Install the pre-requisite applications
 2. Generate a simple Node.js Express application
 3. Commit the application code to a local Git repo
 4. Creation of a VSTS project and code repo
@@ -47,77 +45,20 @@ The high-level flow is:
 
 This lab is expected to take around 2-3 hours to complete.
 
-# Prerequisites 
+# Pre-requisites 
 
 To complete this lab you will need the following:
 
-* An active [Azure subscription](https://portal.azure.com/). If you do not have a subscription:
-  * You may have been given an [Azure Pass](https://www.microsoftazurepass.com/) card & code, please follow the steps given to activate your new subscription.
-  * OR - create a [free Azure account and subscription](https://azure.microsoft.com/en-gb/free/)
-
-* An active [Visual Studio Team Services Account](https://app.vsaex.visualstudio.com/)
-  * If you don't have an account, [create a free VSTS account](https://www.visualstudio.com/en-gb/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
-
-# Initial Setup
-
-### Install Node.js
-
-* Download & install [Node.js](https://nodejs.org/en/download/)
-    * In the installation wizard accept the default options
-
-        ![Node setup image](./images/node-js-installer.png)
-
-* Verify that Node.js is correctly installed by opening a **CMD** or **PowerShell** window and entering the following commands:
-
-```bash
-node --version
-npm --version
-```
-
-  If you don't see any errors Node.js is correctly installed.
-
-### Install Git
-* Download & Install [Git for Windows](https://git-scm.com/download/win) or [Git for Mac](https://git-scm.com/download/mac)
-    * In the installation wizard take the default options but ensure that the following selections are made:
-
-        1. Select **Use Git for the Windows command Prompt**
-
-        ![Git setup image](./images/git-installer-1.png)
-
-        2. Select **Use Git for the Windows command Prompt**
-
-        ![Git setup image](./images/git-installer-2.png)
-
-        3. Select **Enable Git Credential Manager**
-
-        ![Git setup image](./images/git-installer-3.png)
-
-* Verify that Git is correctly installed by opening a **CMD** or **PowerShell** window & entering the command `git --version`
-
-  If you don't see any errors Git is correctly installed.
-
-* Open a **CMD** or **PowerShell** new window and run the following commands (substituting your details as required):
-
-```bash
-git config --global user.email "youralias@microsoft.com"
-git config --global user.name "Your Name"
-git config --global credential.helper manager
-```
-
-### Install Visual Studio Code
-
-* Download & Install the latest version of [Visual Studio Code](https://code.visualstudio.com/download)
-    * In the installation wizard accept all the defaults. Ensure that you select the option to add VSCode to the PATH.
-
-* Verify the installation by opening a new **CMD** or **PowerShell** window and entering `code`. This will start the Visual Studio Code IDE.
-
-* In VSCode, install the *Azure Resource Manager Tools* extension from Microsoft using the VSCode Extensions Palette (search for azure resource manager):
-
-    ![Azure RM Extension Install](./images/vscode-azurerm-extension-install.png)
+Pre-req | Required | Comment
+<a href="/guides/prereqs/subscription" target="_new">Azure Subscription</a> | Required | 
+<a href="/guides/prereqs/vsts" target="_new">Visual Studio Team Services</a> | Required | 
+<a href="/guides/prereqs/git" target="_new">Git</a> | Required | 
+<a href="/guides/prereqs/nodejs" target="_new">Node.js</a> | Required |
+<a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> | Required | 
 
 # Main Lab Flow
 
-With all the setup prereqs complete, we can start the main lab.
+Ensure you have all the pre-requisites installed before starting the main lab.
 
 ### Create Node.js / Express Web App
 
@@ -128,8 +69,8 @@ With all the setup prereqs complete, we can start the main lab.
 Open a **CMD** or **PowerShell** window and run the following commands:
 
 ```
-mkdir \workspace
-cd \workspace
+mkdir \devops-lab-workspace
+cd \devops-lab-workspace
 npm install -g express-generator
 express --view=pug --git myapp
 cd myapp
@@ -155,29 +96,29 @@ This will start the Node/Express webserver which will be listening on port 3000,
 
  ![express screenshot](./images/express-screenshot.png)
 
-Press `Ctrl+C` in your VS Code terminal to stop Node from running.
+Press `Ctrl+C` in your VSCode terminal to stop Node from running.
 
 This is a VERY basic app, but remember we're not focused on writing the best web app ever, just on creating something that we can deploy to Azure as an example. But let's create a more realistic looking app:
 
-* Replace **views\index.pug** with this file: <a href="https://github.com/johnduckmanton/simple-express-webapp/blob/master/views/index.pug" target="_blank">index.pug</a>
+* Click <a href="./webapp-snippets" target="_blank">here</a> to see what changes you need to make to the code.
 
-* Replace **views\layout.pug** with this file: <a href="https://github.com/johnduckmanton/simple-express-webapp/blob/master/views/layout.pug" target="_blank">layout.pug</a>
+* Once you have made the above changes, type `npm start` again in the terminal window then open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>
+ in your browser (or refresh the previous window if you still had it open) to see your updated app.
 
-* Replace **public\stylesheets\style.css** with this file: <a href="https://github.com/johnduckmanton/simple-express-webapp/blob/master/public/stylesheets/style.css" target="_blank">style.css</a>
-
-* Type `npm start` again in the terminal window
-
-This should get your app looking something like this...
+It should look something like this...
 
 ![sample app screenshot](./images/sample-app.png)
 
 Next, in order to make our app easier to deploy to Azure, we need to change the location and name of the startup script that was generated by Express...
 
- From VSCode, press `Ctrl+'` to open the built-in terminal window and run the following PowerShell commands:
+* Press `Ctrl+C` in your VSCode terminal to stop Node from running.
+
+* From VSCode, press `Ctrl+'` to open the built-in terminal window and run the following PowerShell commands:
 
 ```powershell
 Move-item bin/www server.js
 (Get-Content server.js).replace('../app', './app') | Set-Content ./server.js
+(Get-Content package.json).replace('./bin/www', 'server.js') | Set-Content ./package.json
 ```
 
 Let's test that our changes worked. Type:
@@ -201,7 +142,7 @@ git add .
 git status
 ```
 
-> If you see files in the *node_modules* directory, you probably omitted the `--git` on the Express Generator command earlier.
+> You should see all your application files listed in green text. If you see files in the *node_modules* directory, you probably omitted the `--git` on the Express Generator command earlier.
 
 The source files are now ["staged"](https://git-scm.com/about/staging-area) in Git. The next step is to commit them to the repo.
 
@@ -213,15 +154,13 @@ git commit -m "First commit"
 
 At this point our source code is in a repository on our local machine. 
 
-> *** TODO:*** Need some notes to introduce VSTS
-
 To get the application code up into VSTS, we first need to create a new VSTS project to hold it, and then we'll need to set our VSTS project as the remote origin for our Git repo and run a push to push the code up to the remote origin.
 
 To create the new VSTS project:
 
-* Using your web browser, login to VSTS.
-* From the home screen, creat a new project by clicking **New Project**. Call it **DevOpsLab**
-    * When creating the new project leave all the options at the default, except the *Share With* option. Change this from *Everyone in Microsoft* to **Share with Team Members**.
+* Using your web browser, login to <a href="https://app.vsaex.visualstudio.com/" target="_blank">VSTS</a>.
+* From the home screen, create a new project by clicking **New Project**. Call it **DevOpsLab**
+    * When creating the new project leave all the options at the default, except the *Share With* option. Change this from *Everyone in Microsoft* to **Team Members**.
 
 Now that we have a project, we need to upload our application code into it using Git.
 
@@ -245,19 +184,17 @@ We now have our application code in a shared source code repository in VSTS!
 
 Our next step is to create a build definition to tell VSTS how to build our application...
 
-******* TODO: Add a diagram of the build *******
-
 * From the *Code* hub in VSTS, click the **Set up build** button at the top-right of the screen.
 
 * When you are prompted to select a template, select **Empty process**.
+
+* VSTS will automatically generate the name *DevOpsLab-CI* for your build definition. This is OK but it's not very descriptive, so let's change it to **Build My Node App**.
 
     >**Sidenote: About Agent Pools & Queues**
     >
     >In a typical development organization there are many teams working on several development projects at the same time, and each of these projects will require build servers to build their application from source code and to run other build activities such as automated tests etc. To allow for the builds to be automated, each server has software installed onto it called a *Build Agent*. Because there are often many build servers in an organisation, they are grouped into *Pools* (typically partitioned by type or team), and build jobs are scheduled using an *Agent Queue*.
 
 * With VSTS you don't need to provide your own build agents (though you can if you want to). You can simply share agents that are already hosted on Azure. To do this select the **Hosted** agent queue.
-
-* VSTS will automatically generate the name *DevOpsLab-CI* for your build definition. This is OK but it's not very descriptive, so let's change it to **Build My Node App**.
 
 * In the task list for this build definition on the left-hand side of the window, click **Get sources** to select the location of the source code you want to build, and ensure that these options are set:
 
@@ -266,18 +203,18 @@ Our next step is to create a build definition to tell VSTS how to build our appl
     * Branch: **master**
     * Clean: **false**
 
-* Now we're going to add a task to run Node.JS's *npm install* command:
+* Now we're going to add a task to run Node.js's *npm install* command:
 
     * On the *Phase 1* phase click **+** to add a task.
 
-    * We're looking for the **NPM** task. In the search box enter **NPM** to find the NPM task and then select it and click **Add**.
+    * We're looking for the **npm** task. In the search box enter **npm** to find the npm task. Select it and click **Add**.
 
-    * Click on the new task. The following parameters should already be set for this task:
+    * Click on the new task in the left pane. The following parameters should already be set for this task:
 
         * Display name: **npm install** (default)
         * Command: **install** (default)
 
-        This command will download all the npm packages that we need to run our application. 
+        This command will download all the npm packages that we need to run our application, as we did on our local workstation earlier. 
     
 * Next we need to zip up the application files into an archive file to save space on our server and make the build easier to manage. 
 
@@ -288,8 +225,8 @@ Our next step is to create a build definition to tell VSTS how to build our appl
     * Set these parameter values:
 
         * Display name: **Archive files** (default)
-        * Root folder (or file) to archive: **$(System.DefaultWorkingDirectory)**
-        * Prefix root folder name to archive paths: (unchecked)
+        * Root folder (or file) to archive: **.** (dot)
+        * Prefix root folder name to archive paths: (unchecked)  **NOTE: This defaults to checked**
         * Archive type: **zip**
         * Archive file to create: **$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip**
         * Replace existing archive: (checked)
@@ -302,13 +239,13 @@ Our next step is to create a build definition to tell VSTS how to build our appl
 
     * Click on the **Publish Artifact** task. The required parameters are highlighted in red.
 
-        * Path to Publish: **.** (dot)
+        * Path to Publish: **$(Build.ArtifactStagingDirectory)** (dot)
         * Artifact Name: **drop**
-        * Artifact Type: **Server** (default)
+        * Artifact Type: **Visual Studio Team Services/TFS** (default)
 
-* We don't need to add any more tasks to our build at this point, so just click **Save & queue** at the top of the window to finish. This will save the build definition, but will also queue a build to be executed. 
+* We don't need to add any more tasks to our build at this point, so just click **Save & queue** at the top-right of the window to finish. This will save the build definition, but will also queue a build to be executed. 
 
-* You will be prompted for the build parameters. Just leave the defaults and click **Queue**.
+* You will be prompted for the build parameters. Just leave the defaults and click **Save & queue**.
 
 At the top of the screen you will see a notification message saying something like '*Build #1 has been queued.*'. Click on the build number to view the build details.
 
@@ -326,8 +263,8 @@ This option shows you a history of all the builds that you executed along with t
 
 * Click on **Artifacts**.
 
-* Click the **Expore** button next to your application root folder. This will open the *Artifacts Explorer* window.
-* Expand the root folder and examine the build artifacts. When you are done click **Close**.
+* Click the **Explore** button next to your application root folder. This will open the *Artifacts Explorer* window.
+* Expand the root folder and examine the build artifacts. You should see a zip file. When you are done click **Close**.
 
 Next, we'll look at how to deploy our app to Azure taking an *Infrastructure as Code* approach.
 
@@ -449,7 +386,7 @@ In this template we are requesting an App Service Plan `"type": "Microsoft.Web/s
 
 Since our ARM Template has some parameters, we also need to create a file to define the parameters we want to supply for this specific deployment:
 
-* In VSCode, select **File > New File**.
+* In VSCode, select **File > New File** or press `Ctrl-n`.
 * Copy and paste the following JSON into the new file:
 
 ```json
@@ -472,14 +409,14 @@ Since our ARM Template has some parameters, we also need to create a file to def
   }
 }
 ```
-* Save this file as **deployParameters.json** into the same location as the *azuredeploy.json* file.
+* Save this file as **azuredeploy.parameters.json** into the same location as the *azuredeploy.json* file.
 
 You will see that there is now a '`2`' label on your *Source Control* icon in the toolbar. This indicates that you have two uncommitted files. 
 * Press `Ctrl-Shift-G` to go to the *Source Control* view, where you will see the new files listed.
 
-* Enter **'Added ARM Template'** into the message box and press `Ctrl-Enter` to commit the changes. You may see a message saying `There are no staged changes to commit. Would you like to automatically stage all your changes and commit them directly?' Click **Yes**.
+* Enter **'Added ARM Template'** into the message box and press `Ctrl-Enter` to commit the changes. You may see a message saying `There are no staged changes to commit. Would you like to automatically stage all your changes and commit them directly?' Click **Always**.
 
-* Next, click on the **'...'** icon and select **Push** to push the commit up to VSTS.
+* Next, click on the **'...'** icon at the top of the Source Control pane and select **Push** to push the commit up to VSTS.
 
 We're going to need to refer to our ARM Template files during our release deployment, so we need to include them in the build:
 
@@ -491,8 +428,7 @@ We're going to need to refer to our ARM Template files during our release deploy
 
     * Display name: **Copy ARM Template Files**
     * Source folder: **.** (dot)
-    * Contents: **azuredeploy.json**
-            **azuredeployParameters.json**
+    * Contents: **azuredeploy.json<br/>azuredeploy.parameters.json** (make sure you put each filename on a separate line)
     * Target Folder: **$(Build.ArtifactStagingDirectory)**
 
 * Drag this task so that it is positioned between the *Archive* task and the *Publish* task.
@@ -565,30 +501,27 @@ The template has created one target environment for you (which we named *Staging
 
         >**Release.EnvironmentName** is a *Release Variable* that represents the current environment name, in our case 'Staging'. Using a variable is a good practice that helps us to avoid hardcoding specific values into our definition, making it more flexible and less prone to errors. See [here](https://docs.microsoft.com/en-gb/vsts/build-release/concepts/definitions/release/variables) For a full list of the release variables available.
 
+
 So now we've created a task will deploy our app to our staging web server on Azure, but at this point the deployment would fail since we haven't yet provisioned the web server. We have the server resources we need specified in our ARM Template so we just need to add a task to create our resource group from the template before we execute this task. Let's set that up now...
 
 * Click on the **'+'** next to **Run on Agent** to add a new task.
 * In the *Add tasks* pane, search for '**Resource**', select the task called **Azure Resource Group Deployment** and click **Add**.
-* Select the new task and drag it to before our *Deploy Azure App Service* task.
+* Select the new task and drag it above our *Deploy Azure App Service* task.
 * Set the following task parameters:
     * Azure subscription: \<select your subscription\>.
     * Resource group: **MyAppRG-$(Release.EnvironmentName)**.
     * Location: **\<your preferred location\>** e.g. **West Europe**.
     * Template: Click on the '*...*' and navigate the folder structure to select **azuredeploy.json**.
-    * Template parameters: Click on the '**...**' and navigate the folder structure to select **azuredeploy.json**.
+    * Template parameters: Click on the '**...**' and navigate the folder structure to select **azuredeploy.parameters.json**.
     * Override template parameters: Click on the '**...**' to open the editor window and specify the following:
 
-        * myWebAppName: **MyWebApp-$(Release.EnvironmentName)**
+        * myWebAppName: **MyWebApp-\<your initials\>-$(Release.EnvironmentName)**
         * myAppServicePlanName: **MyAppServicePlan**
         * myAppServicePlanSKU: **Basic** (default)
         * myAppServicePlanWorkerSize: **0** (default).
+
+        >*myWebAppName* will form part of the FQDN of your application in Azure and as such it MUST be unique. To achieve this, we're appending your initials (or some other unique string) + the environment name onto the name.
     
-* Add a new task called **Deploy Azure App Service**.  
-
- Ensure the following task parameters are set:
-    * Display name: **Deploy Azure App Service** (default)
-    * Azure subscription: \<select your subscription\>.
-
 When we deploy our app we want to run a quick test to ensure the app works correctly.
 
 * Add a new task called **Cloud-based Web Performance Test**. 
@@ -597,7 +530,7 @@ When we deploy our app we want to run a quick test to ensure the app works corre
 
     * Display name: **Quick Web Performance Test** (default)
     * VS Team Services Connection: (default)
-    * Website Url: (enter the Url of your website on azure)
+    * Website Url: (enter the Url of your website on azure) This will be **http://MyWebApp-\<Initials\>-Staging.azurewebsites.net**
     * Test Name: **Deployment Smoke Test**
     * User Load: **25** (default)
     * Run Duration (sec): **60** (default)
@@ -634,15 +567,12 @@ Once we know that the release definition works as expected, we'll update it to b
 
     ![release-progress](./images/release-progress.png)
 
-* Select the **Deploy Azure App Service** step and scroll down to the bottom of the log. You should see a line that says something like...
+* Assuming that the release deployed OK, test that the app runs:
+    * Open your web brower
+    * Navigate to your app Url **http://mywebapp-\<Initials\>-staging.azurewebsites.net**
+    * You should see your app running
 
-```
-App Service successfully deployed at url http://mywebapp-staging.azurewebsites.net
-```
-
-* `Ctrl-click` on the url to open a browser session & see your app running on Azure.
-
-Assuming that the release deployed OK we can now set the release to trigger automatically following a successful build. to do this...
+We can now set the release to trigger automatically following a successful build. to do this...
 
 * Hover your cursor over the name of your release in the *Release Definitions* list in the left-hand pane, until the '**...**' button appears. Click it and select **Edit**.
 
@@ -667,7 +597,7 @@ In a CI/CD lifecycle, the last stage is to obtain feedback on your application '
     * Name: **MyApp Application Insights**
     * Application Type: **Node.js Application**
     * Subscription: <your subscription> (default)
-    * Resource Group: Select **Use existing** and select your **MyAppsRG-Staging** resource group
+    * Resource Group: Select **Use existing** and select your **MyAppRG-Staging** resource group
 
 * Click **Create**.
 
@@ -701,11 +631,11 @@ appInsights.start();
 
 * Press `Ctrl-S` to save the file.
 
-* Press `Ctrl-Shift-G` to switch to the source control view. Enter the message **'Added Application Insights'** and press `Ctrl-Enter` to commit the changes.
+* Press `Ctrl-Shift-G` to switch to the source control view. Enter the message **Added Application Insights** and press `Ctrl-Enter` to commit the changes.
 
 * From the **'...'** menu, select **Push** to push the changes up to VSTS.
 
-This will trigger a new build and a new release of your application and will take several minutes to complete. Hopefully you can remember how to track their progress in VSTS.
+This will trigger a new build and release of your application and will take several minutes to complete. Hopefully you can remember how to track their progress in VSTS.
 
 When the application has redeployed there should already be some telemetry available due to the execution of the Quick Performance Test.  Let's go back in to Azure and take a look.
 
@@ -732,17 +662,17 @@ To summarise what you just did:
 
 * You created a Node.JS application using VSCode.
 * You put the application code under local source control with Git.
-* You created a project in Visual Studio Team Sevices to manage our app development.
-* You uploaded our source code to the VSTS project's source code repository.
-* You created a VSTS Build Definition to build our app and You configured it as a CI build that would be triggered automatically when new code was committed to our source code repository.
-* Following an *Infrastructure as Code* approach, you defined the Azure resources needed to run our application in an ARM Template, which You added to source control. 
-* You created a release definition to automatically provision the Azure resources, deploy our application and run an automated test to ensure that it ran correctly.
+* You created a project in Visual Studio Team Sevices to manage your app development.
+* You uploaded your source code to the VSTS project's source code repository.
+* You created a VSTS Build Definition to build your app and you configured it as a CI build that would be triggered automatically when new code was committed to your source code repository.
+* Following an *Infrastructure as Code* approach, you defined the Azure resources needed to run your application in an ARM Template, which You added to source control. 
+* You created a release definition to automatically provision the Azure resources, deploy your application and run an automated test to ensure that it ran correctly.
 * You completed our *CI/CD* pipeline by setting the release to trigger automatically on each successful build.
 
-### Follow-on Activities
+# Follow-on Activities
 
-1. How would you modify our CI/CD pipeline to deploy the app to another environment called **QA**?
+1. How would you modify your CI/CD pipeline to deploy the app to another environment called **QA** prior to deploying to **Staging**?
 
-2. What if, in doing 1. above, we want to have someone manually check that the staging application is working correctly before we deploy into the QA environment. Can you find where we would do this?
+2. What if, in doing (1) above, we want to have someone manually approve that the QA application is working correctly before we deploy into the Staging environment. Can you find where and how we would do this?
 
 3. What features in the *Azure App Service* allow us to easily move our application from Staging to Production?

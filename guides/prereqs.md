@@ -23,7 +23,7 @@ Note that the requirements vary from workshop to workshop. Please refer to the c
 
 An active **Azure subscription**.  You will required **one** of the following:
 
-* Visual Studio scubscription (preferred)
+* Visual Studio subscription (preferred)
 * Internal Usage Rights for silver and gold partners
 * Free Azure trial account
 
@@ -51,4 +51,8 @@ Refer to the requirements list specified by the trainer to determine whether any
 * [Windows 10 Linux Subsystem and CLI 2.0](./lxss)
 * [Visual Studio 2017](./vs2017)
 * [Visual Studio Code](./vscode)
+* [Git](./git)
+* [Node.js](./nodejs)
+* [Visual Studio Team Services](./vsts)
+
 
