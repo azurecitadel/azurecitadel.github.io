@@ -38,6 +38,7 @@ The high-level flow is:
 5. Push of the local git repo into VSTS
 6. Create a VSTS Build Definition to build ( & optionally test) the application
 7. Update the build definition to deploy the app to Azure App Service using an ARM Template.
+8. Setup Azure Application Insights to monitor the application
 
 ![deployment pipeline](./images/vscode-git-ci-cd-to-azure.png)
 
@@ -535,9 +536,7 @@ Notice the ***1*** label on the *Source Control* icon in the sidebar indicating 
 
 * Next we need to push the changes up to the VSTS server. Click the *More* menu option (the **...** icon) and select **Push**.
 
-* Go back to VSTS and look at your builds. You should see that a new build has been started automatically.
-
-* When the build completes. Examine the build artifacts to make sure that we have the zip file and the ARM template files. 
+* Go back to VSTS and look at your builds. You should see that a new build has been started automatically. When the build completes. Examine the build artifacts to make sure that we have the zip file and the ARM template files. 
 
 ### Deploying to Azure
 
