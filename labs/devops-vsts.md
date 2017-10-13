@@ -341,14 +341,11 @@ To create an ARM Template for our application deployment...
                 "[concat('Microsoft.Web/serverfarms/', parameters('myAppServicePlanName'))]"
             ],
             "tags": {
-                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', 
-                parameters('myAppServicePlanName'))]": "Resource",
-                "displayName": "myWebApp"
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('myAppServicePlanName'))]": "Resource", "displayName": "myWebApp"
             },
             "properties": {
                 "name": "[parameters('myWebAppName')]",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', 
-                    parameters('myAppServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('myAppServicePlanName'))]"
             }
         }
     ]

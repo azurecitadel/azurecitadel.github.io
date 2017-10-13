@@ -11,7 +11,7 @@ image:
   teaser: Education.jpg
   thumb: 
 ---
-Be ready for a PDU workshop by making sure you have met the pre-requisites.
+Be ready for a workshop by making sure you have met the pre-requisites.
 
 ## Overview
 
