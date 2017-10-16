@@ -1,11 +1,12 @@
 ---
 layout: article
-title: Continuous Delivery with VS Code, VSTS & Azure App Service
+title: DevOps with VS Code, VSTS & Azure App Service
 date: 2017-09-29
 categories: labs
-tags: [vscode, vsts, nodejs]
+tags: [vscode, vsts, nodejs, lab]
 comments: true
 author: John_Duckmanton
+excerpt: In this lab we will use Visual Studio Code and Visual Studio Team Services to create a continuous integration/continuous deployment pipeline to deploy a Node.js application to Azure App Service using an ARM Template. 
 image:
   feature: 
   teaser: Education.jpg
@@ -16,17 +17,7 @@ image:
 
 # Overview
 
-In this lab, we wil cover using Visual Studio Code and Visual Studio Team Services to create a continuous integration/continuous deployment pipeline to deploy a Node.js application to Azure App Service using an ARM Template.
-
-The scenario will cover:
-* Node.js & Express
-* Visual Studio Code (VSCode)
-* Git & GitHub
-* Visual Studio Team Services (VSTS)
-* Azure Web App
-* ARM Templates
-
-You do not need to have prior knowledge of Node.js or Express for this lab but you will need to make basic changes to Javascript files. Likewise no prior experience with VSTS and Azure is required (but obviously beneficial). You will be able to complete the lab using either a Windows or Mac machine, but some of the commands documented here are Windows variants.
+In this lab we will use *Visual Studio Code* and *Visual Studio Team Services* to create a continuous integration/continuous deployment pipeline to deploy a Node.js application to *Azure App Service* using an ARM Template.
 
 The high-level flow is:
 1. Install the pre-requisite applications
@@ -39,22 +30,6 @@ The high-level flow is:
 8. Setup Azure Application Insights to monitor the application
 
 ![deployment pipeline](./images/vscode-git-ci-cd-to-azure.png)
-
-
-#### Time Required
-
-This lab is expected to take around 2-3 hours to complete.
-
-# Pre-requisites 
-
-To complete this lab you will need the following:
-
-Pre-req | Required | Comment
-<a href="/guides/prereqs/subscription" target="_new">Azure Subscription</a> | Required | 
-<a href="/guides/prereqs/vsts" target="_new">Visual Studio Team Services</a> | Required | 
-<a href="/guides/prereqs/git" target="_new">Git</a> | Required | 
-<a href="/guides/prereqs/nodejs" target="_new">Node.js</a> | Required |
-<a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> | Required | 
 
 # Main Lab Flow
 
