@@ -214,7 +214,7 @@ Our next step is to create a build definition to tell VSTS how to build our appl
 
     * Click on the **Publish Artifact** task. The required parameters are highlighted in red.
 
-        * Path to Publish: **$(Build.ArtifactStagingDirectory)** (dot)
+        * Path to Publish: **$(Build.ArtifactStagingDirectory)** 
         * Artifact Name: **drop**
         * Artifact Type: **Visual Studio Team Services/TFS** (default)
 
@@ -423,7 +423,7 @@ Now let's test that our changes work by making a change to the code:
 
 * Go back into VSCode and open the file *index.pug*
 
-* Change the text on line 25 
+* Change the text on line 16
 
     ```jade
     a.navbar-brand(href='#') Sample Node.js/Express Application
@@ -469,7 +469,7 @@ The template has created one target environment for you (which we named *Staging
 
         > You may see a message saying 'Click Authorise to configure Azure service connection'. In this case, click **Authorise**. This will create a Service Principal to allow VSTS to connect to Azure.
 
-    * App service name: **MyWebApp-$(Release.EnvironmentName)**
+    * App service name: **MyWebApp-\<your initials\>-$(Release.EnvironmentName)**
 
         >**Release.EnvironmentName** is a *Release Variable* that represents the current environment name, in our case 'Staging'. Using a variable is a good practice that helps us to avoid hardcoding specific values into our definition, making it more flexible and less prone to errors. See [here](https://docs.microsoft.com/en-gb/vsts/build-release/concepts/definitions/release/variables) For a full list of the release variables available.
 
@@ -481,7 +481,7 @@ So now we've created a task will deploy our app to our staging web server on Azu
 * Select the new task and drag it above our *Deploy Azure App Service* task.
 * Set the following task parameters:
     * Azure subscription: \<select your subscription\>.
-    * Resource group: **MyAppRG-$(Release.EnvironmentName)**.
+    * Resource group: **MyAppRG-$(Release.EnvironmentName)**
     * Location: **\<your preferred location\>** e.g. **West Europe**.
     * Template: Click on the '*...*' and navigate the folder structure to select **azuredeploy.json**.
     * Template parameters: Click on the '**...**' and navigate the folder structure to select **azuredeploy.parameters.json**.
@@ -502,7 +502,7 @@ When we deploy our app we want to run a quick test to ensure the app works corre
 
     * Display name: **Quick Web Performance Test** (default)
     * VS Team Services Connection: (default)
-    * Website Url: (enter the Url of your website on azure) This will be **http://MyWebApp-\<Initials\>-Staging.azurewebsites.net**
+    * Website Url: (enter the Url of your website on azure) This will be **http://MyWebApp-\<your initials\>-$(Release.EnvironmentName).azurewebsites.net**
     * Test Name: **Deployment Smoke Test**
     * User Load: **25** (default)
     * Run Duration (sec): **60** (default)
@@ -541,7 +541,7 @@ Once we know that the release definition works as expected, we'll update it to b
 
 * Assuming that the release deployed OK, test that the app runs:
     * Open your web brower
-    * Navigate to your app Url **http://mywebapp-\<Initials\>-staging.azurewebsites.net**
+    * Navigate to your app URL **http://mywebapp-\<your initials\>-staging.azurewebsites.net**
     * You should see your app running
 
 We can now set the release to trigger automatically following a successful build. to do this...
@@ -610,6 +610,7 @@ appInsights.start();
 This will trigger a new build and release of your application and will take several minutes to complete. Hopefully you can remember how to track their progress in VSTS.
 
 When the application has redeployed there should already be some telemetry available due to the execution of the Quick Performance Test.  Let's go back in to Azure and take a look.
+> Note. It can sometimes take a few minutes for data to appear in App Insights, so be patient, one tip is to click on **Time Range** and change it to 'Last 30 minutes'
 
 * Go back to the Azure Portal, and re-open the *Application Insights* blade for your app.
 
@@ -624,7 +625,7 @@ When the application has redeployed there should already be some telemetry avail
 
 ![Application Insights](./images/app-insights.png)
 
-These are just some of the large collection of available metrics, alerts and diagnostics available through Application Insights on Azure.
+You can also check the **Application map**, **Performance (preview)** views to see the data coming from your app. These are just some of the large collection of available metrics, alerts and diagnostics available through Application Insights on Azure. 
 
 ---
 
@@ -632,9 +633,9 @@ Congratulations. You finished the lab!
 
 To summarise what you just did:
 
-* You created a Node.JS application using VSCode.
+* You created a Node.js web application using VSCode.
 * You put the application code under local source control with Git.
-* You created a project in Visual Studio Team Sevices to manage your app development.
+* You created a project in Visual Studio Team Services to manage your app development.
 * You uploaded your source code to the VSTS project's source code repository.
 * You created a VSTS Build Definition to build your app and you configured it as a CI build that would be triggered automatically when new code was committed to your source code repository.
 * Following an *Infrastructure as Code* approach, you defined the Azure resources needed to run your application in an ARM Template, which You added to source control. 
