@@ -10,6 +10,7 @@ image:
   feature: 
   teaser: Education.jpg
   thumb: 
+excerpt: Index of pre-requisites to complete before attending a workshop or lab
 ---
 Be ready for a workshop by making sure you have met the pre-requisites.
 
