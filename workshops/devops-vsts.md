@@ -48,22 +48,22 @@ Pre-req | Required | Comment
 
 ### Content
 
-#### Lab 1: DevOps with VSTS & Azure
+#### [Lab 1: DevOps with VSTS & Azure](/labs/devops-vsts/)
 
 * Install the pre-requisite applications
 * Generate a simple Node.js Express application
 * Commit the application code to a local Git repo
 * Creation of a VSTS project and code repo
 * Push of the local git repo into VSTS
-* Create a VSTS Build Definition to build ( & optionally test) the application
+* Create a VSTS Build Definition to build (& optionally test) the application
 * Update the build definition to deploy the app to Azure App Service using an ARM Template.
 * Setup Azure Application Insights to monitor the application
 
 **Time Required: 2-3 Hours**
 
-#### Lab 2: Containers
+#### [Lab 2: Containers in Azure](/labs/devops-containers)
 
-* Containerize the Node.js app using Dockerfile
+* Containerize a Node.js app using Dockerfile
 * Build Docker image and test locally
 * Deploy Azure Container Registry
 * Push your image to Azure Container Registry

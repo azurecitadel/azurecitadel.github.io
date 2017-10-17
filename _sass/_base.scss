@@ -102,14 +102,14 @@ pre {
 }
 p code,
 li code {
-	@include font-size(16,no);
+	@include font-size(18,no);
 	color: $text-color;
 	white-space: nowrap;
 	margin: 0 2px;
-	padding: 6px;
-	border: 1px solid #444444;
+	padding: 2px 5px 2px 5px;
+	border: 1px solid #bdbdbd;
 	background-color: lighten($primary-color, 95);
-	border-radius: $border-radius;
+	border-radius: 1;
 }
 
 /*

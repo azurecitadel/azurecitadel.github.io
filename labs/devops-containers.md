@@ -93,16 +93,24 @@ If you don't have the Azure CLI installed on your machine an easy way to access 
 As this is a lengthy command you might want to copy and paste it into an empty scratch file in VSCode and replace the placeholder values there. Use the same resource group as you used previously
 - You will be prompted for a password, navigate to your container registry in the portal, and get the password as before from the **Access keys** blade. Copy and paste into the shell window. Tip. You will probably need to right click with the mouse as `Ctrl+V` may not work (browser dependant)
 - You should see chunk of JSON returned as output, validate the container being created with `az container list -o table`. You should see your new container listed, wait until the status changes from 'Creating' to 'Succeeded', repeating the `list` command if necessary.
+- In the `list` output will be the assigned public IP address of the new container, put this IP and the port (3000) into the browser e.g. `http://12.34.56.67:3000` and connect to the running Node.js app
 
 ---
 
 Congratulations. You finished the lab! 
 
-To summarise what you just did:
+To summarise what we just did:
 
-* You did things
-* You did more things
+* Containerized a web application and ran it locally in Docker
+* Created a container registry in Azure and pushed your image to it
+* Deployed your app as a container running in Azure
 
 # Follow-on Activities
 
-1. ????
+1. There are many other Azure Services that can run containers, try getting your image running in one of them, Azure App Services would be a good place to start.
+
+2. Investigate using Webhooks to re-deploy and refresh your running container
+
+3. Add a CI/CD build process for your container using VSTS
+
+
