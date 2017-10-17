@@ -41,9 +41,3 @@ NB. If you receive a PowerShell execution error, then check your Execution Polic
 
 The instructions are taken from [https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps).
 
-
-
-#### Links to other pre-requisite instruction pages
- 
-* [Links to other pre-requisite instructions can be found here](../../prereqs)
-

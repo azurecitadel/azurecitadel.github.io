@@ -47,9 +47,3 @@ Whilst VS Code is not as Azure integrated as Visual Studio, it does includes Int
 
 *	Whilst typing in the main body of an Azure Resource Manager JSON template, the editor will show IntelliSense for the available commands, and will also show snippets that can be quickly inserted
 
-
-
-#### Links to other pre-requisite instruction pages
- 
-* [Links to other pre-requisite instructions can be found here](../../prereqs)
-
