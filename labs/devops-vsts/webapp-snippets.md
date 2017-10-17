@@ -1,3 +1,9 @@
+---
+layout: article
+title: DevOps Lab App Snippets
+date: 2017-09-29
+comments: false
+---
 
 ## index.pug
 Replace the contents of **views\index.pug** with the following text:
