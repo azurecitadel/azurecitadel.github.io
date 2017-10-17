@@ -8,8 +8,8 @@ comments: true
 author: Richard_Cheney
 image:
   teaser: blueprint.png
-previous: ./cli-1-setup
-next: ./cli-3-jmespath
+previous: ./cli-2-firststeps
+next: ./cli-4-scripting
 ---
 WORK IN PROGRESS
 
