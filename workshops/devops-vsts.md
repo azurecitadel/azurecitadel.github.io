@@ -70,3 +70,16 @@ Pre-req | Required | Comment
 * Deploy app as container in Azure using Azure Container Instance
 
 **Time Required: 1-2 Hours**
+
+### Post-workshop Resource Cleanup
+
+As you work through the labs you will have created resources in your Azure Subscription. It would be a good idea to remove these resources now that you no longer need them, otherwise you may be charged for their resource consumption.
+
+* Login to the [Azure Portal](http://portal.azure.com).
+* Click on the **Resource Groups** menu
+* Click on the **MyAppRG-Staging** resource group
+* In the resource group blade, click on **Delete Resource Group** and follow-the on-screen instructions to confirm the deletion.
+* Repeat with the **MyAppRG-Containers** resource group if you created one in Lab 2.
+
+
+
