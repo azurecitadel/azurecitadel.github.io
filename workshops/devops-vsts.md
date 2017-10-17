@@ -1,20 +1,21 @@
 ---
 layout: article
-title: DevOps with VS Code, VSTS & Azure App Service
+title: DevOps with VSTS, Azure and Containers
 date: 2017-09-29
 categories: workshops
-tags: [vscode, vsts, nodejs, workshop]
+tags: [vscode, vsts, nodejs, docker, containers, workshop]
 comments: true
-author: John_Duckmanton
-excerpt: This workshop is a series of hands-on labs focused on deploying a Node.js app to Azure using VSTS and a DevOps approach. 
+featured: true
+author: John_And_Ben
+excerpt: This workshop is a series of hands-on labs focused on deploying a Node.js app to Azure PaaS using VSTS and a DevOps approach & containers. 
 image:
-  feature: 
+  feature: code.jpg
   teaser: Education.jpg
   thumb: 
 ---
 In this workshop we will start by using *Visual Studio Code* and *Visual Studio Team Services* to create a continuous integration/continuous deployment pipeline to deploy a Node.js application to *Azure App Service* using an ARM Template.
 
-Then, in Lab 2, we will move on to containerizing the application using <a href="https://www.docker.com" target="_blank">Docker</a> and deploying to Azure Container Instances.
+Then, in Lab 2, we will move on to containerizing the application using <a href="https://www.docker.com" target="_blank">Docker</a> and deploying to *Azure Container Instances*.
 
 The workshop will cover:
 * Node.js & Express
@@ -31,7 +32,7 @@ You do not need to have prior knowledge of Node.js or Express for this workshop 
 
 Lab | Description
 <a href="/labs/devops-vsts/" target="_new">DevOps with VSTS & Azure</a> | Learn how to create a continuous delivery pipeline with VS Code, VSTS & Azure App Service
-<a href="/labs/devops-containers" target="_new">Containers</a> | Convert your deployed application to a Docker container and deploy it as an Azure Container Instance
+<a href="/labs/devops-containers" target="_new">Containerizing Apps with Azure</a> | Convert your deployed application to a Docker container and deploy it as an Azure Container Instance
 
 ### Pre-requisites 
 
@@ -62,11 +63,10 @@ Pre-req | Required | Comment
 
 #### Lab 2: Containers
 
-* Containerize the app from lab 1 using Dockerfile
-* Build the Docker image and test locally​
-* Deploy Azure Container Registry (ACR)​
-* Push the Docker image to ACR​
-* Use Azure Cloud Shell​
-* Deploy the app as a container in Azure using Azure Container Instances
+* Containerize the Node.js app using Dockerfile
+* Build Docker image and test locally
+* Deploy Azure Container Registry
+* Push your image to Azure Container Registry
+* Deploy app as container in Azure using Azure Container Instance
 
 **Time Required: 1-2 Hours**

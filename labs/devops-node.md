@@ -3,7 +3,7 @@ layout: article
 title: Azure DevOps Lab with Node.js, Azure, Docker & VSTS
 date: 2017-09-27
 categories: labs
-featured: true
+featured: false
 author: Ben_Coleman
 image:
   feature: code.jpg
