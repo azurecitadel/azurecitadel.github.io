@@ -2,7 +2,6 @@
 layout: article
 title: CLI 2.0, Bash and JMESPATH Tech Primer
 date: 2017-10-04
-categories: guides
 tags: [cli, bash]
 comments: true
 author: Richard_Cheney
