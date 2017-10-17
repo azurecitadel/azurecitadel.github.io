@@ -46,7 +46,6 @@ Refer to the requirements list specified by the trainer to determine whether any
 ## Pre-requisites
 The workshop requires the following
 
-<<<<<<< HEAD
 Pre-req | Required | Comment
 <a href="/guides/prereqs/subscription" target="_new">Azure Subscription</a> | Required | 
 <a href="/guides/prereqs/lxss" target="_new">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
@@ -54,17 +53,3 @@ Pre-req | Required | Comment
 <a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> | Optional | Depends on lab or workshop
 <a href="/guides/prereqs/vs2017" target="_new">Visual Studio 2017</a> | Optional | 
 <a href="https://www.getpostman.com" target="_new">Postman</a> | Required | Used in the Logic Apps lab to post JSON
-=======
-## Pre-requisite instructions
- 
-* [Azure Subscription](./subscription)
-* [Azure PowerShell Module](./powershell)
-* [Windows 10 Linux Subsystem and CLI 2.0](./lxss)
-* [Visual Studio 2017](./vs2017)
-* [Visual Studio Code](./vscode)
-* [Git](./git)
-* [Node.js](./nodejs)
-* [Visual Studio Team Services](./vsts)
-
-
->>>>>>> 0f7bfcf3300cb73c049a97d44074d17693b70e80

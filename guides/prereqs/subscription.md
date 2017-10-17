@@ -77,13 +77,4 @@ If you are a partner working with Microsoft's One Commercial Partner group and t
 
 ## Verification 
 
-<<<<<<< HEAD
 Once the account is enabled, prove that it is working correctly by logging into the portal at [http://portal.azure.com](http://portal.azure.com).
-=======
-Once the account is enabled, prove that it is working correctly by logging into the portal at [http://portal.azure.com](http://portal.azure.com).  
-
-
-#### Links to other pre-requisite instruction pages
- 
-* [Links to other pre-requisite instructions can be found here](../../prereqs)
->>>>>>> 0f7bfcf3300cb73c049a97d44074d17693b70e80
