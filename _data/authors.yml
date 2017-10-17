@@ -7,21 +7,10 @@ Richard_Cheney:
     name: Richard Cheney
     email: Richard.Cheney@microsoft.com
     avatar: authors/rich-c.jpg
-#Ian_Warren:
-#    name: Ian Warren
-#    email: Ian.Warren@microsoft.com
 Adam_Raffe:
     name: Adam Raffe
     email: Adam.Raffe@microsoft.com
     avatar: authors/adam-r.jpg
-#Guy_Gregory:
-#    name: Guy Gregory
-#    email: Guy.Gregory@microsoft.com
-#    avatar: authors/guy-g.jpg
-#Andrew_Bourne:
-#    name: Andrew Bourne
-#    email: Andrew.Bourne@microsoft.com
-#    avatar: authors/andrew-b.png
 Ben_Coleman:
     name: Ben Coleman
     email: ben.coleman@microsoft.com
@@ -34,3 +23,6 @@ John_Duckmanton:
     name: John Duckmanton
     email: john.duckmanton@microsoft.com
     avatar: authors/john-d.jpg
+John_And_Ben:
+    name: John Duckmanton & Ben Coleman
+
