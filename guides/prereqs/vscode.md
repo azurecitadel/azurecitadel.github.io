@@ -31,13 +31,3 @@ Whilst VS Code is not as Azure integrated as Visual Studio, it does includes Int
     * Typing `search` will bring up the Azure Quickstart template search
 *	Whilst typing in the main body of an Azure Resource Manager JSON template, the editor will show IntelliSense for the available commands, and will also show snippets that can be quickly inserted
 
-
-
-## Links to other pre-requisite instruction pages
- 
-* [Azure Subscription](../subscription)
-* [Azure PowerShell Module](../powershell)
-* [Windows 10 Linux Subsystem and CLI 2.0](../lxss)
-* [Visual Studio 2017](../vs2017)
-* [Visual Studio Code](../vscode)
-

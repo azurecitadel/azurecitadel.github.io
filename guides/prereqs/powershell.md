@@ -41,13 +41,3 @@ NB. If you receive a PowerShell execution error, then check your Execution Polic
 
 The instructions are taken from [https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps).
 
-
-
-## Links to other pre-requisite instruction pages
- 
-* [Azure Subscription](../subscription)
-* [Azure PowerShell Module](../powershell)
-* [Windows 10 Linux Subsystem and CLI 2.0](../lxss)
-* [Visual Studio 2017](../vs2017)
-* [Visual Studio Code](../vscode)
-
