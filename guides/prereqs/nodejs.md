@@ -32,6 +32,3 @@ npm --version
 
   If you don't see any errors Node.js is correctly installed.
 
-#### Links to other pre-requisite instruction pages
- 
-* [Links to other pre-requisite instructions can be found here](../../prereqs)
