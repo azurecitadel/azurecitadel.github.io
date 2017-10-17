@@ -83,3 +83,10 @@ sudo apt-get update && sudo apt-get install git-all
 ```
 * Verify by opening Git Bash from the Start Menu and typing `git` to see the base commands
 
+<<<<<<< HEAD
+=======
+#### Links to other pre-requisite instruction pages
+ 
+* [Links to other pre-requisite instructions can be found here](../../prereqs)
+
+>>>>>>> 0f7bfcf3300cb73c049a97d44074d17693b70e80

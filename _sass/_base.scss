@@ -82,7 +82,8 @@ blockquote {
   border-left: 6px solid $slate;
   p {
     font-family: $alt-font;
-    @include font-size(24);
+		// @include font-size(24);
+		@include font-size(16);
   }
   cite {
     font-family: $base-font;
