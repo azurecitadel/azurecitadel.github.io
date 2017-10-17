@@ -1,6 +1,6 @@
 ---
 layout: article
-title: CLI 2.0, Bash and JMESPATH Tech Primer
+title: CLI 2.0 First Steps
 date: 2017-10-04
 tags: [cli, bash]
 comments: true
@@ -13,8 +13,6 @@ next: ./cli-3-jmespath
 WORK IN PROGRESS
 
 {% include toc.html %}
-
-# First Steps
 
 ## Logging into Azure 
 

@@ -24,6 +24,6 @@ Working through this lab will give you some of the tools to unleash the power of
 
 ## Contents
 
-# | Page | Description
+Page | Link | Description
 1 | <a href="/guides/cli/cli-1-setup" target="_cli">Setup</a> | Installing and updating 
 2 | <a href="/guides/cli/cli-2-firststeps" target="_cli">First Steps</a> | Orientation and simple commands 

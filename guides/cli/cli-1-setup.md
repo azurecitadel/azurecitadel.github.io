@@ -1,6 +1,6 @@
 ---
 layout: article
-title: CLI 2.0, Bash and JMESPATH Tech Primer
+title: CLI 2.0 Setup
 date: 2017-10-04
 tags: [cli, bash]
 comments: true
@@ -14,7 +14,7 @@ WORK IN PROGRESS
 
 {% include toc.html %}
 
-## Set Up
+## Installation
 
 * It is assumed that you have an [Azure subscription]({{ site.url }}/guides/prereqs/subscription) 
 * To access CLI 2.0 then either
