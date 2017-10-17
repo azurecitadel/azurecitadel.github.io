@@ -44,12 +44,14 @@ Refer to the requirements list specified by the trainer to determine whether any
   * Visual Studio 2017
 
 ## Pre-requisites
-The workshop requires the following
 
 Pre-req | Required | Comment
-<a href="/guides/prereqs/subscription" target="_new">Azure Subscription</a> | Required | 
-<a href="/guides/prereqs/lxss" target="_new">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
-<a href="/guides/prereqs/powershell" target="_new">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
-<a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> | Optional | Depends on lab or workshop
-<a href="/guides/prereqs/vs2017" target="_new">Visual Studio 2017</a> | Optional | 
-<a href="https://www.getpostman.com" target="_new">Postman</a> | Required | Used in the Logic Apps lab to post JSON
+<a href="/guides/prereqs/subscription" target="_prereq">Azure Subscription</a> | Required | 
+<a href="/guides/prereqs/lxss" target="_prereq">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
+<a href="/guides/prereqs/powershell" target="_prereq">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
+<a href="/guides/prereqs/vscode" target="_prereq">Visual Studio Code</a> | Optional | Depends on lab or workshop
+<a href="/guides/prereqs/git" target="_prereq">Git for Windows</a> | Optional | Required for DevOps lab
+<a href="/guides/prereqs/nodejs" target="_prereq">Node.js</a> | Optional | Required for DevOps Lab
+<a href="/guides/prereqs/vsts" target="_prereq">Visual Studio Team Services</a> | Optional | Required for DevOps Lab
+<a href="https://www.getpostman.com" target="_prereq">Postman</a> | Optional | Used in the Logic Apps lab to post JSON
+<a href="/guides/prereqs/vs2017" target="_prereq">Visual Studio 2017</a> | Optional | The more lightweight VS Code is preferred for most labs
