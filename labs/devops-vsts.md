@@ -33,7 +33,8 @@ The high-level flow is:
 
 # Main Lab Flow
 
-Ensure you have all the pre-requisites installed before starting the main lab.
+[Ensure you have all the pre-requisites installed](/workshops/devops-vsts/) before starting the main lab.
+
 
 ### Create Node.js / Express Web App
 
