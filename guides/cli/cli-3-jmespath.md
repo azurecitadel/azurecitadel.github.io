@@ -71,7 +71,7 @@ The structures are split into two types:
 1. Arrays, denoted by square brackets
    * Arrays in JSON are ordered lists of value
    * Also known as lists or vectors
-   * In Azure that order is often based on creation
+   * In Azure that order depends on the context.  It may be based on order, such as with VM NICs, or alphabetically by name, i.e. when listing resource groups
 2. Objects, denoted by curly brackets
    * Objects are collections of name:value pairs
    * Also known as keyed lists, dictionaries or hashes 
@@ -102,11 +102,11 @@ Each of the commands below follow ```az resource list --resource-group myAppRG-S
 ```--query '[-1]'``` | Last entity
 ```--query '[a:b]'``` | Array slice from a to b-1
 
-If you omit either the a or b value from a slice then the slice array goes to the start or end, e.g. ```'[:2]'``` gives the first two elements, whereas ```'[2:]'``` will give all remaining elements from a list, from element 2 onwards.
+If you omit either the a or b value from a slice then the slice array goes to the start or end, e.g. ```'[:2]'``` gives the first two elements (i.e. 0 and 1), whereas ```'[2:]'``` will give all remaining elements from a list, from element 2 onwards.
 
-Compare ```'[0]'``` and ```'[:1]'``` to see the subtle difference.  The former is the object that is the first element, whereas the second is an array slice, containing only that same first element, i.e. it still has square brackets around it. 
+Compare ```'[0]'``` and ```'[:1]'``` to see a subtle difference.  The former is the object that is the first array element, and therefore starts with curly brackets, whereas the second is an array slice, containing only that same first element, i.e. it still has square brackets surrounding it. 
 
-You can also step through an array using the ```'[a:b:c]'``` notation, but I cannot see a valid reason where that makes sense in Azure.  Perhaps in slicing the odd and even NICs for a VM with multiple NICs.    
+You can also step through an array using the ```'[a:b:c]'``` notation, but there are few valid reasons where that makes sense in Azure.  Perhaps in slicing the odd and even NICs for a VM with multiple NICs. One additional use is to reverse an array using ```'[::-1]'```.   
 
 You can also slice based on querying the data - see below.
 
@@ -114,5 +114,39 @@ You'll initially see little difference in the ```'[*]'``` and ```'[]'``` queries
 
 ## Selecting Object Values
 
-Querying on the name for a name:value pair is also simple.  Simply state the 
+Querying on the name for a name:value pair is also simple.  Simply state the name.  Use the ```az account show --query '<query>' --output json``` command to show your active Azure subscription.
 
+**Query** | **Output**
+```--query 'name'``` | Cosmetic name for the subscription
+```--query 'id'``` | The ID for the subscription
+```--query 'user'``` | The user **object** for the subscription
+```--query 'user.name'``` | The user **object** for the subscription
+
+The last example above shows a nested value, pulling the value of name in the user object.
+
+When pulling out individual values, the tsv output format will braces and quotes, making it easier to read into a variable.  For example: 
+
+```
+username=$(az account show --query 'user.name' --output tsv)
+echo $username 
+```
+
+## Selective filtering
+
+This is very useful for outputting selected JSON or TSV for scripting purposes, or for being selective on which columns to show in a table.  
+
+List the VMs in one of your resource groups, using ```az vm list --resource-group <resourceGroup> --output table```. 
+
+The table should show all of the VMs, with the name of each server, the resource group and the location.
+
+If you run the same command with ```--output json``` then you will see significantly more information.  If you run ```az vm list --help``` then you'll find there is a ```--show-details``` switch.  It is a little slow but has some additional information which is very useful.
+
+Capture the detailed information into a file using ```az vm list --resource-group <resourceGroup> --show-details --output json > vms.json```.  
+
+If you have [Visual Studio Code](/guides/prereqs/vscode) installed then you can type ```code vm.json``` to open it up in VS Code. (Example <a href="/guides/cli/vms.json" target="json">vms.json file</a>.)
+
+Examine the JSON output to determine the desired information.  In this example we want the VM name, size, OS, private and public IP addresses, and FQDN. 
+
+YOU ARE HERE
+
+```az vm list --output table --query "[*].[name, hardwareProfile.vmSize, storageProfile.osDisk.osType]"```
