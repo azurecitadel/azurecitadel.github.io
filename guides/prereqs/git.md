@@ -45,7 +45,3 @@ git config --global user.name "Your Name"
 git config --global credential.helper manager
 ```
 
-#### Links to other pre-requisite instruction pages
- 
-* [Links to other pre-requisite instructions can be found here](../../prereqs)
-

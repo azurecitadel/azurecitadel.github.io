@@ -19,7 +19,5 @@ If you don't already have a Visual Studio Team Services account, click [here](ht
 
 * Click [here](https://app.vsaex.visualstudio.com/) to login to your Visual Studio Team Services Account.
 
-#### Links to other pre-requisite instruction pages
- 
-* [Links to other pre-requisite instructions can be found here](../../prereqs)
+
 
