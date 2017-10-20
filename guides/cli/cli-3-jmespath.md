@@ -143,7 +143,7 @@ If you run the same command with ```--output json``` then you will see significa
 
 Capture the detailed information into a file using ```az vm list --resource-group <resourceGroup> --show-details --output json > vms.json```.  
 
-If you have [Visual Studio Code](/guides/prereqs/vscode) installed then you can type ```code vm.json``` to open it up in VS Code. (Example <a href="/guides/cli/vms.json" target="json">vms.json file</a>.)
+If you have [Visual Studio Code](/guides/prereqs/vscode) installed then you can type ```code vms.json``` to open it up in VS Code. (Example <a href="/guides/cli/vms.json" target="json">vms.json file</a>.)
 
 Examine the JSON output to determine the desired information.  In this example we want the VM name, size, OS, private and public IP addresses, and FQDN. 
 
