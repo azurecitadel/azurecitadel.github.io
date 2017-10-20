@@ -53,7 +53,7 @@ The following command lists out your resource groups, each demonstrating the out
 **Command** | **Output**
 ```az group list --output json``` | JSON output (default)
 ```az group list --output table``` | Human readable table
-```az group list --output jsonc``` | Coloured JSON output
+```az group list --output jsonc``` | Coloured JSON output (includes control characters)
 ```az group list --output tsv``` | Tab seperated values
 
 Any scripting should *always* specify the output format as CLI 2.0 users can use the ```az configure``` command to set their preferred default output format. 
