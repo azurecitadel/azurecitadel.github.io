@@ -1,6 +1,6 @@
 ---
 layout: article
-title: CLI 2.0, Bash and JMESPATH Tech Primer
+title: CLI 2.0 JMESPATH
 date: 2017-10-04
 tags: [cli, bash]
 comments: true
@@ -14,39 +14,58 @@ WORK IN PROGRESS
 
 {% include toc.html %}
 
-# First Steps
+## Introduction 
 
-## Logging into Azure 
+The ```--query``` switch is one of the "global" switches, i.e. it is available on every az command, and it enables you to query and filter the output of the command.  
 
-Log into Azure using ```az login```.  
+It uses the industry standard JMESPATH query format that is used not only by the Azure CLI 2.0, but also the AWS CLI and other commands  that need to manipulate JSON. 
 
-You will be prompted to enter a code into the [http://aka.ms/devicelogin](http://aka.ms/devicelogin) and then authenticate the session.  The session tokens survive for a number of days so if you are using a shared machine then always issue ```az logout``` at the end of your session.
+There is some excellent documentation on JMESPATH at the official site, and it covers the full range of what can be accomplished.  This guide will give you a shortcut into the commonly used functionality when querying Azure JSON output.  
 
-If you have multiple subscriptions linked to different IDs then browser cache and cookies can cause issues.  If that occurs then start an InPrivate or Incognito window and authenticate within that.
+## JSON Format
 
-Note: Most terminals support copy (of selected text) and paste with either the right mouse button, or CTRL-INS / SHIFT-INS.  For instance, in the Windows Bash shell you can double click the code to select it then right click to copy.
+Here is some example JSON output from an ```az resource list --resource-group <resourceGroup> --output json``` command.  The example resource group (myAppRG-Staging) contains a single Web App in standard app service plan.
 
-## Orientation  
+```
+[
+  {
+    "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/myAppRG-Staging/providers/Microsoft.Web/serverFarms/MyAppServicePlan",
+    "identity": null,
+    "kind": "app",
+    "location": "westeurope",
+    "managedBy": null,
+    "name": "MyAppServicePlan",
+    "plan": null,
+    "properties": null,
+    "resourceGroup": "myAppRG-Staging",
+    "sku": null,
+    "tags": {
+      "displayName": "myAppServicePlan"
+    },
+    "type": "Microsoft.Web/serverFarms"
+  },
+  {
+    "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/myAppRG-Staging/providers/Microsoft.Web/sites/MyWebApp-richeney-Staging",
+    "identity": null,
+    "kind": "app",
+    "location": "westeurope",
+    "managedBy": null,
+    "name": "MyWebApp-richeney-Staging",
+    "plan": null,
+    "properties": null,
+    "resourceGroup": "myAppRG-Staging",
+    "sku": null,
+    "tags": {
+      "displayName": "myWebApp",
+      "hidden-related:/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/myAppRG-Staging/providers/Microsoft.Web/serverfarms/MyAppServicePlan": "Resource"
+    },
+    "type": "Microsoft.Web/sites"
+  }
+]
+```
 
-* ```az``` shows the main help and list of the commands
-* ```az <command> --help``` shows help for that command
-  * if there are subcommands then you can use the ```--help``` or ```-h``` at any level
-  * the [CLI 2.0 reference](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) has a description of the available commands and parameters 
-* ```az configure``` initiates an interactive session to configure defaults for your output format, logging of sessions, data collection.  
-* ```az configure --default group=myRG location=westeurope```
-  * enables the setting of default values for common command switches such as the Resource Group or Azure Region
-  * uses space delimited key=value pairs
-  * defaults may be unset by a blank string, e.g. ```group=''```
-* the az CLI includes auto-complete
+Whilst it may initially look complex, there are only keys, values, and objects.  The objects are split into two types:
 
-## Simple Commands
-
-At this point I will assume that you have some resource groups, and that some of those contain virtual machines.
-
-For the moment, use ```az configure``` to set your default output type as table.  Or you can ensure either ```--output table``` or ```-otable``` is included in the command.
-
-**Command** | **Output**
-```az group list``` | Lists all resource groups for the subscription
-```az group list``` | As above
-
-
+1. Lists (or arrays), which are denoted by square brackets
+   * Note that the resources output is a list, so the outer brackets are square
+2. Key-value pairs    
