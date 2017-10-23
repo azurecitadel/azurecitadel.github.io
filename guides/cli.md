@@ -27,3 +27,5 @@ Working through this lab will give you some of the tools to unleash the power of
 Page | Link | Description
 1 | <a href="/guides/cli/cli-1-setup" target="_cli">Setup</a> | Installing and updating 
 2 | <a href="/guides/cli/cli-2-firststeps" target="_cli">First Steps</a> | Orientation and simple commands 
+3 | <a href="/guides/cli/cli-3-jmespath" target="_cli">JMESPATH queries</a> | Using JMESPATH queries to filter and define the output
+4 | <a href="/guides/cli/cli-4-scripting" target="_cli">Bash Scripting with CLI 2.0</a> | Common ways to integrate with Bash scripting 

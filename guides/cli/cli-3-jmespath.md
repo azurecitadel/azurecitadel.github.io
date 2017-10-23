@@ -133,20 +133,45 @@ echo $username
 
 ## Selective filtering
 
-This is very useful for outputting selected JSON or TSV for scripting purposes, or for being selective on which columns to show in a table.  
+This is very useful for outputting selected JSON or TSV for scripting purposes, or for being selective on which columns to show in a table.  It is easiest to demonstrate this by working through an example.
 
 List the VMs in one of your resource groups, using ```az vm list --resource-group <resourceGroup> --output table```. 
 
-The table should show all of the VMs, with the name of each server, the resource group and the location.
+The table should show all of the VMs, with the name of each server, the resource group and the location, which is of limited use.  
 
-If you run the same command with ```--output json``` then you will see significantly more information.  If you run ```az vm list --help``` then you'll find there is a ```--show-details``` switch.  It is a little slow but has some additional information which is very useful.
+If you run the same command with ```--output json``` then you will see significantly more information.  If you run ```az vm list --help``` then you'll find there is a ```--show-details``` switch.  It is a little slow but has some additional information which is even more useful.
 
 Capture the detailed information into a file using ```az vm list --resource-group <resourceGroup> --show-details --output json > vms.json```.  
 
 If you have [Visual Studio Code](/guides/prereqs/vscode) installed then you can type ```code vms.json``` to open it up in VS Code. (Example <a href="/guides/cli/vms.json" target="json">vms.json file</a>.)
 
-Examine the JSON output to determine the desired information.  In this example we want the VM name, size, OS, private and public IP addresses, and FQDN. 
+Examine the JSON output to determine the desired information.  In this example we want to pull only the values for the VM name, size, OS, private and public IP addresses, FQDN and current running state. Working through the nesting, the query should become something like this:
 
-YOU ARE HERE
+```
+az vm list --resource-group <resourceGroup> --show-details --output table --query "[*].[name, hardwareProfile.vmSize, storageProfile.osDisk.osType, privateIps, publicIps, fqdns, powerState]"
+```
 
-```az vm list --output table --query "[*].[name, hardwareProfile.vmSize, storageProfile.osDisk.osType]"```
+This will provide a far more useful table.  Output this as JSON and you will see that it is an array of arrays, which is why the column headings are Column1-7.  
+
+If the query is tweaked to provide an array of objects then we can control the naming:
+
+```
+az vm list --resource-group <resourceGroup> --show-details --output json --query "[*].{VM:name, Size:hardwareProfile.vmSize, OS:storageProfile.osDisk.osType, IP:privateIps, PIP:publicIps, FQDN:fqdns, State:powerState}"
+```
+
+Note that we have a) changed the second level from square brackets to curly, and b) we have defined our own keys.  Rerun the command, outputting to a table and note the column headers.  (Also note that in the JSON the keys were sorted alphabetically, whilst the tables preserved our selected order.) 
+
+One other thing you will have noticed is that it is very easy to end up with some very long queries.  If scripting then it is recommended to use a ```$query``` variable for readability, and to support dynamic queries built up from variables.  For example:
+
+```
+query='[*].{VM:name, Size:hardwareProfile.vmSize, OS:storageProfile.osDisk.osType, IP:privateIps, PIP:publicIps, FQDN:fqdns, State:powerState}'
+az vm list --resource-group <resourceGroup> --show-details --output table --query "$query"
+```
+
+### Filtering arrays based on testing values
+
+Selecting all elements in in array, or the first or last, is useful.  But often you will want to select based on other criteria.  Here is the syntax for a simple test:
+
+```
+
+
