@@ -45,22 +45,26 @@ Everyone else may use the Cloud Shell (**>_**) shown at the top of the Azure Por
 
 **1. Clone the HTML files from Github**
 
-Type (or copy and paste) the following commands into the console, changing the value for appName to include your name or alias.  _Note that the appName value will need to be globally unique as it will form the web URL._
+Type (or copy and paste) the following commands into the console, configuring the _first_ and _last_ variables to ensure that the app name and the user will be unique.  
 ```
+first=Firstname
+last=Lastname
+
 git clone https://github.com/richeney/azure101-webapp-html
 cd azure101-webapp-html
 git init
 ls -Al
 pwd
 
-git config --global user.email "your@email.com"
-git config --global user.name "Your Name"
+git config --global user.email "$first.$last@microsoft.com"
+git config --global user.name "$first $last"
 git config --global credential.helper cache
 
+
 rg=Azure101PaaS
-user=azure101deploy
+user=${first}${last}Deploy
 pwd=azure101p455w0rd
-appName=azure101YourName
+appName=azure101${first}${last}
 ```
 * The above commands copy the HTML files locally, change to that directory, initialise it for Git, and then finally lists the files.  The pwd command prints the working directory so that you know where they are.
 * We are then setting git to cache our credentials after the first successful connection to a remote, and also defining some variables to use in the commands in the following sections.
