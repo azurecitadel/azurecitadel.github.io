@@ -47,7 +47,7 @@ access control (RBAC) to control who has access.
  and copy the contents
 - Create a new dashboard in the Azure portal, and name it "Azure 101".
 - From the Tile Gallery’s General area, pull across the following items:
-  - **All Resources** Reconfigure (using the ellipsis (…)) to change to 4x4 tiles
+  - **Resource Groups** Reconfigure (using the ellipsis (…)) to change to 4x4 tiles
   - **Clock** Reconfigure to 2x1, 24 hour, and London time
   - **Quickstart Tutorials**
   - **Markdown** Change title to "Azure 101", subtitle to Useful Links, and replace the content with the markdown you copied in the first step
