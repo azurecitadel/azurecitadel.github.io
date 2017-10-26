@@ -28,47 +28,47 @@ az resource list --resource-group $rg --output table
 
 ## Setting variables using CLI 2.0 output
 
-Bash supports variables and simple arrays.  (For multi-level and name:value based objects then Perl and Pyhton would be more useful.)
+Bash supports variables and simple arrays.  (For multi-level and name:value based objects then Perl and Python would be more useful.)
 
 * Variables
   
   The example below finds the public IP address for a specific VM.
 
-  ```
-  pip=$(az vm list --show-details --output tsv --query "[?name == 'vmName'].publicIps")
-  echo $pip
-  ```
+```
+pip=$(az vm list --show-details --output tsv --query "[?name == 'vmName'].publicIps")
+echo $pip
+```
 
   With multi-word variables we can use these within simple loops.  The first command returns a white-space delimited list of the resource groups that are not within my default region.  It then loops over those, showing a table of the resources for each, using sed to indent it a little for readability.
 
-  ```
-  rgs=$(az group list --output tsv --query "[?location != 'westeurope'].name")
-  for rg in $rgs
-  do
-    echo -e "\nResource Group: $rg\n"
-    az resource list --output table --resource-group $rg | sed 's/^/  /g'
-  done
-  ```
+```
+rgs=$(az group list --output tsv --query "[?location != 'westeurope'].name")
+for rg in $rgs
+do
+  echo -e "\nResource Group: $rg\n"
+  az resource list --output table --resource-group $rg | sed 's/^/  /g'
+done
+```
 
   Many CLI 2.0 commands accept multi-word strings as an argument.  One of those is the ```--ids``` switch for the ```az vm stop``` command. 
   
   The VMs in my example resource group In the example below we are using a compound filter to select the ids of the VMs that are a) running and b) do not have an environment tag set to production.  And then we'll shut them down.
 
-  ```
-  ids=$(az vm list --show-details --query "[?tags.environment != 'production' && powerState == 'VM running'].id" --output tsv)
-  az vm stop --ids $ids
-  ```
+```
+ids=$(az vm list --show-details --query "[?tags.environment != 'production' && powerState == 'VM running'].id" --output tsv)
+az vm stop --ids $ids
+```
 
 * Arrays
 
   Again, array assignments can be completed in one command:
 
-  ```
-  rgArray=($(az group list --output tsv --query "[?location != 'westeurope'].name"))
-  echo ${rgArray[0]}
-  echo ${rgArray[*]}
-  echo ${#rgArray[*]}
-  ```
+```
+rgArray=($(az group list --output tsv --query "[?location != 'westeurope'].name"))
+echo ${rgArray[0]}
+echo ${rgArray[*]}
+echo ${#rgArray[*]}
+```
 
 The first command sets an array of the resource group names.  The others print out the first array element, all of the elements, and finally the number of elements.
 
