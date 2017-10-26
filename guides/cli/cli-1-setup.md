@@ -10,8 +10,6 @@ image:
 excerpt: WORK IN PROGRESS! Delve into CLI 2.0, integrate with Bash scripts and unlock the power of the JMESPATH queries. 
 next: ./cli-2-firststeps
 ---
-WORK IN PROGRESS
-
 {% include toc.html %}
 
 ## Installation

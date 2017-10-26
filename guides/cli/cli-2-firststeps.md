@@ -10,8 +10,6 @@ image:
 previous: ./cli-1-setup
 next: ./cli-3-jmespath
 ---
-WORK IN PROGRESS
-
 {% include toc.html %}
 
 ## Logging into Azure 

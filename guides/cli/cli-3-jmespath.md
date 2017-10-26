@@ -8,10 +8,8 @@ author: Richard_Cheney
 image:
   teaser: blueprint.png
 previous: ./cli-2-firststeps
-next: ./cli-4-scripting
+next: ./cli-4-bash
 ---
-WORK IN PROGRESS
-
 {% include toc.html %}
 
 ## Introduction 
@@ -151,7 +149,7 @@ Examine the JSON output to determine the desired information.  In this example w
 az vm list --resource-group <resourceGroup> --show-details --output table --query "[*].[name, hardwareProfile.vmSize, storageProfile.osDisk.osType, privateIps, publicIps, fqdns, powerState]"
 ```
 
-This will provide a far more useful table.  Output this as JSON and you will see that it is an array of arrays, which is why the column headings are Column1-7.  
+This is known as a multi-select, and provides a far more useful table.  Output this as JSON and you will see that it is an array of arrays, which is why the column headings are Column1-7.  
 
 If the query is tweaked to provide an array of objects then we can control the naming:
 
@@ -168,10 +166,70 @@ query='[*].{VM:name, Size:hardwareProfile.vmSize, OS:storageProfile.osDisk.osTyp
 az vm list --resource-group <resourceGroup> --show-details --output table --query "$query"
 ```
 
-### Filtering arrays based on testing values
+## Filter Projections
 
-Selecting all elements in in array, or the first or last, is useful.  But often you will want to select based on other criteria.  Here is the syntax for a simple test:
+Selecting all elements in in array, or the first or last, is useful.  But often you will want to select based on other criteria.  Rather than using [*]. [0], or [-1], we can use a filter projection base on testing the values, using [?name == 'value'].  These will always produce array slices.
+
+Here are some examples.  I have assumed that you are using the ```az configure``` defaults to limit to a specific resource group just to shorten the commands:
 
 ```
+az vm list --output json --query "[?location == 'westeurope']" 
+az vm list --output json --query "[?storageProfile.osDisk.osType == 'Linux']"
+az vm list --output tsv --query "[?name == 'vmName'].id"
+```
+
+Let's review each of those in order:
+
+1. Array slice, with all entities where the region is West Europe
+2. Another array slice, delving a little further down into the JSON to pull out (at the top level), those entities that have a Linux OS
+3. Testing on one value (the VM's name) to output only the ID
+
+The last version is commonly seen when pulling information to be used as variables in scripts.  More on that in the next post.
+
+Compound tests can also be created, using && for a logical AND, and || for a logical OR.  For example ```--query "[?tags.env == 'test' || tags.env == 'dev']```.
+
+## Pipes
+
+As in Bash, we can use pipes in our JMESPATH queries to get to the desired point.  As a simple example, compare the following:
+
+```
+az vm list --output tsv --query "[?name == 'vmName']"
+az vm list --output tsv --query "[?name == 'vmName']|[0]"
+```
+
+The VM name should be unique within that subscription and resource group, so the first will provide the array slice containing only one element.  In the second command we pull out just that first element, so thet JSON output from that will have stripped out the square braces.
+
+Pipes are very useful when combining filters with multi-selects, and also the functions shown below.  
+
+
+
+
+## Additional Functions
+
+There are a whole host of [functions](http://jmespath.org/specification.html#builtin-functions) that can be very powerful.  Here are a few examples:
+
+* **length**
+
+  Returns the number of elements in an array or array slice. For example, the number of Linux VMs in the resource group can be shown using ```az vm list --output tsv --query "length([?storageProfile.osDisk.osType == 'Linux'])"```.
+
+* **contains**, **starts_with**, **ends_with**
+
+  Useful for filtering arrays when matching portions of a string value, e.g.: ```az vm list --show-details --output json --query "[?ends_with(storageProfile.osDisk.managedDisk.storageAccountType, 'LRS')]"```
+
+  The ```contain``` function will also returns true if tested against an array if the search value matches on of the elements.
+
+
+* **min**, **max**, **min_by**, **max_by**, **sort_by**, **sort**, **reverse**
+
+  The following command will provide an array of all VMs sorted by the OS disk size, with the largest first: ``` az vm list --output json --query "reverse(sort_by([], &storageProfile.osDisk.diskSizeGb))"```
+
+* **to_array**, **to_string**, **to_number**
+
+  Use these to force the output of an expression to fit a certain data type.  
+
+In the next section we will have some example integrations with Bash scripting.
+
+
+  
 
 
