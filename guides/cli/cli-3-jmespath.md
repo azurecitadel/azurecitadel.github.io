@@ -118,7 +118,7 @@ Querying on the name for a name:value pair is also simple.  Simply state the nam
 ```--query 'name'``` | Cosmetic name for the subscription
 ```--query 'id'``` | The ID for the subscription
 ```--query 'user'``` | The user **object** for the subscription
-```--query 'user.name'``` | The user **object** for the subscription
+```--query 'user.name'``` | The value for name within the user object
 
 The last example above shows a nested value, pulling the value of name in the user object.
 
