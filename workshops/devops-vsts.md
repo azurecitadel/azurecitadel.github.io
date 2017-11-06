@@ -81,12 +81,18 @@ As you work through the labs you will have created resources in your Azure Subsc
 * In the resource group blade, click on **Delete Resource Group** and follow-the on-screen instructions to confirm the deletion.
 * Repeat with the **MyAppRG-Containers** resource group if you created one in Lab 2.
 
-You may also wish to delete the VSTS project we created:
+You may also wish to delete the VSTS project we created. but before deleting the project we need to disconnect the Service Principal that was created to access Azure:
 
-* Navigate to your *Account Hub* page
-  * If you are not logged into VSTS, navigate to https://[AccountName].visualstudio.com/_projects
-  * If you are logged in click the **Team Services** icon in the very top left of the window.
+* Disconnect the Service Principal
+  * If you are not logged into VSTS, navigate to https://*[AccountName]*.visualstudio.com/_projects
+  * If you are logged in, click the **Team Services** icon in the very top left of the window.
+  * Click on the project you were using for the labs (DevOpsLab) to open it
+  * Hover over the **settings** icon (the gear icon) and select **Services**. A list of Service Endpoints is displayed.
+  * Click on the endpoint matching your Azure Subscription
+  * in the right-hand pane, under *Actions* select **Disconnect**
 
-* Hover your cursor over the project you wish to delete, then click the Delete icon (X).
+* Delete the VSTS Project
+  * Navigate back to your *Account Hub* page by clicking the **Team Services** icon in the very top left of the window.
+  * Hover your cursor over the project you wish to delete, then click the *Delete* icon (X).
 
 
