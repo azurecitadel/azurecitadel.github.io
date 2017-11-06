@@ -7,7 +7,7 @@ tags: [vscode, vsts, nodejs, docker, containers, workshop]
 comments: true
 featured: true
 author: John_And_Ben
-excerpt: This workshop is a series of hands-on labs focused on deploying a Node.js app to Azure PaaS using VSTS and a DevOps approach & containers. 
+excerpt: This workshop is a series of hands-on labs focused on deploying a Node.js app to Azure PaaS using VSTS and a DevOps approach & containers.
 image:
   feature: code.jpg
   teaser: Education.jpg
@@ -34,7 +34,7 @@ Lab | Description
 <a href="/labs/devops-vsts/" target="_new">DevOps with VSTS & Azure</a> | Learn how to create a continuous delivery pipeline with VS Code, VSTS & Azure App Service
 <a href="/labs/devops-containers" target="_new">Containerizing Apps with Azure</a> | Convert your deployed application to a Docker container and deploy it as an Azure Container Instance
 
-### Pre-requisites 
+## Pre-requisites 
 
 To complete this workshop you will need the following:
 
@@ -48,7 +48,7 @@ Pre-req | Required | Comment
 
 ### Content
 
-#### [Lab 1: DevOps with VSTS & Azure](/labs/devops-vsts/)
+## [Lab 1: DevOps with VSTS & Azure](/labs/devops-vsts/)
 
 * Install the pre-requisite applications
 * Generate a simple Node.js Express application
@@ -61,7 +61,7 @@ Pre-req | Required | Comment
 
 **Time Required: 2-3 Hours**
 
-#### [Lab 2: Containers in Azure](/labs/devops-containers)
+## [Lab 2: Containers in Azure](/labs/devops-containers)
 
 * Containerize a Node.js app using Dockerfile
 * Build Docker image and test locally
@@ -71,7 +71,7 @@ Pre-req | Required | Comment
 
 **Time Required: 1-2 Hours**
 
-### Post-workshop Resource Cleanup
+## Post-workshop Resource Cleanup
 
 As you work through the labs you will have created resources in your Azure Subscription. It would be a good idea to remove these resources now that you no longer need them, otherwise you may be charged for their resource consumption.
 
@@ -81,5 +81,12 @@ As you work through the labs you will have created resources in your Azure Subsc
 * In the resource group blade, click on **Delete Resource Group** and follow-the on-screen instructions to confirm the deletion.
 * Repeat with the **MyAppRG-Containers** resource group if you created one in Lab 2.
 
+You may also wish to delete the VSTS project we created:
+
+* Navigate to your *Account Hub* page
+  * If you are not logged into VSTS, navigate to https://[AccountName].visualstudio.com/_projects
+  * If you are logged in click the **Team Services** icon in the very top left of the window.
+
+* Hover your cursor over the project you wish to delete, then click the Delete icon (X).
 
 

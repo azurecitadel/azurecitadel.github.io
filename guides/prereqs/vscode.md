@@ -32,12 +32,21 @@ Whilst VS Code is not as Azure integrated as Visual Studio, it does includes Int
 
 *	Click the **Reload** button to enable the extension
 
+### Install Docker Extension
+
+If you are going to be working with Docker, install the Docker extension. This extension makes it easy to build and deploy containerized applications from VSCode:
+
+* Press (`Ctrl+P`) and enter `ext install` or click on the Extension icon into the toolbar
+* Search for **Docker** and select **Docker**
+* Click on the green **Install** button
+* Click the **Reload** button to enable the extension
+
 ### Install the Azure Tools for Visual Studio Code Extension
 
 * Press (`Ctrl+P`) and enter `ext install` or click on the Extension icon into the toolbar
 * Search for **Azure Tools** and select **Azure Tools for Visual Studio Code**
 * Click on the green **Install** button
-* sClick the **Reload** button to enable the extension
+* Click the **Reload** button to enable the extension
 
 * Type `Ctrl-Shift-P` to open the Command Palette.  Examples: 
     * Typing `azure` shows all of the available extension commands

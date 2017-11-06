@@ -15,7 +15,7 @@ image:
 
 {% include toc.html %}
 
-# Overview
+## Overview
 
 In this lab we will use *Visual Studio Code* and *Visual Studio Team Services* to create a continuous integration/continuous deployment pipeline to deploy a Node.js application to *Azure App Service* using an ARM Template.
 
@@ -31,12 +31,10 @@ The high-level flow is:
 
 ![deployment pipeline](./images/vscode-git-ci-cd-to-azure.png)
 
-# Main Lab Flow
 
 [Ensure you have all the pre-requisites installed](/workshops/devops-vsts/) before starting the main lab.
 
-
-### Create Node.js / Express Web App
+## Create Node.js / Express Web App
 
 >[Express](https://expressjs.com/) is a minimal, flexible web application framework for Node.js developers that provides a robust set of features for both web and mobile web developers.
 >
@@ -108,7 +106,7 @@ The webapp should start successfully. Open <a href="http://localhost:3000" targe
 
 Press `Ctrl+C` in your VSCode terminal to shutdown the Node server.
 
-### Create a Git repo
+## Create a Git repo
 
 To start to build a CI/CD pipeline we need our code under source control so let's create a Git repo and add our code to it. From the integrated terminal run:
 
@@ -126,7 +124,7 @@ The source files are now ["staged"](https://git-scm.com/about/staging-area) in G
 git commit -m "First commit"
 ```
 
-### Push the application code up to VSTS
+## Push the application code up to VSTS
 
 At this point our source code is in a repository on our local machine. 
 
@@ -156,7 +154,7 @@ You can validate this has worked by looking in the **Code** hub (the menu option
 
 We now have our application code in a shared source code repository in VSTS!
 
-### Create a Build Definition in VSTS
+## Create a Build Definition in VSTS
 
 Our next step is to create a build definition to tell VSTS how to build our application...
 
@@ -227,7 +225,7 @@ At the top of the screen you will see a notification message saying something li
 
 Here you will see the progress of the build tasks as they execute along with their output in the console window. Let the build run to completion.
 
-### Viewing Your Builds
+## Viewing Your Builds
 
 * Select **Builds** from the **Build and Release** hub at the top of the screen.
 
@@ -244,7 +242,7 @@ This option shows you a history of all the builds that you executed along with t
 
 Next, we'll look at how to deploy our app to Azure taking an *Infrastructure as Code* approach.
 
-### Define the Azure Resources for our App
+## Define the Azure Resources for our App
 
 > #### Infrastructure as Code & ARM Templates 
 > *Infrastructure as Code* (IAC) is an approach to defining the hardware, software, networking and other resources required for an environment in machine-readable definition files that can be used to provision those resources automatically. This approach has several key benefits over traditional approaches in that the definition files can be version-controlled in the same way as source code. In addition, since the provisioning process is automated it is much faster & more reliable, and the risk associated with human error is significantly reduced.
@@ -408,7 +406,7 @@ We're going to need to refer to our ARM Template files during our release deploy
 
 ![Build tasks](./images/build-tasks.png)
 
-### Automating the Build
+## Automating the Build
 
 At this point our build has to be executed manually. That's not really a DevOps approach. So whilst we're editing the build definition, we'll update it so that it is triggered automatically when new code is committed into the repository.
 
@@ -447,7 +445,7 @@ Notice the ***1*** label on the *Source Control* icon in the sidebar indicating 
 
 * Go back to VSTS and look at your builds. You should see that a new build has been started automatically. When the build completes. Examine the build artifacts to make sure that we have the zip file and the ARM template files. 
 
-### Deploying to Azure
+## Deploying to Azure
 
 Now we're going to deploy our app to the Azure App Service using VSTS. to do this we need to create a *Release Definition*...
 
@@ -524,7 +522,7 @@ Now we'll finalise the parameters for our release definition and run it...
 > #### VSTS Artifact Version History
 > You may be wondering why you were prompted to enter a comment. This is because VSTS versions all changes to a Release Definition (and in fact other artifacts too, such as Build Definitions). You can view previous versions under the **History** tab on the definition. Here you can compare the historical versionss against the current, and you can even revert to a previous version. So in a production environment, it's a good idea to enter a comment when you save your changes to help you to identify each version in the future.
 
-### Testing the release
+## Testing the release
 
 Once we know that the release definition works as expected, we'll update it to be triggered automatically by the build, but for now we need to manually schedule a release in order to test it.
 
@@ -557,7 +555,7 @@ We can now set the release to trigger automatically following a successful build
 
 * Click **Save**
 
-### Monitoring the application
+## Monitoring the application
 
 In a CI/CD lifecycle, the last stage is to obtain feedback on your application 'running-in-the-wild' as input into your  next development cycle. This feedback can take many forms from customer surveys to automated telemetry and crash reports. Azure has lots of capabilities that support gathering this feedback such as *Application Insights*. Let's setup Application Insights to monitor our new application...
 
@@ -643,7 +641,7 @@ To summarise what you just did:
 * You created a release definition to automatically provision the Azure resources, deploy your application and run an automated test to ensure that it ran correctly.
 * You completed our *CI/CD* pipeline by setting the release to trigger automatically on each successful build.
 
-# Follow-on Activities
+#### Follow-on Activities
 
 1. How would you modify your CI/CD pipeline to deploy the app to another environment called **QA** prior to deploying to **Staging**?
 
