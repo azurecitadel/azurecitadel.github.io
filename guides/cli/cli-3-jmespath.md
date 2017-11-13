@@ -7,8 +7,10 @@ comments: true
 author: Richard_Cheney
 image:
   teaser: blueprint.png
-previous: ./cli-2-firststeps
-next: ./cli-4-bash
+previous.url: ./cli-2-firststeps
+previous.title: First Steps with CLI 2.
+next.url: ./cli-4-bash
+next.title: Using CLI 2.0 within Bash
 ---
 {% include toc.html %}
 

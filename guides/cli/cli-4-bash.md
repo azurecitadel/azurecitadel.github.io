@@ -7,7 +7,8 @@ comments: true
 author: Richard_Cheney
 image:
   teaser: blueprint.png
-previous: ./cli-3-jmespath
+previous.url: ./cli-3-jmespath
+previous.title: Using JMESPATH Queries
 ---
 {% include toc.html %}
 
