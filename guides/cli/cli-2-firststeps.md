@@ -7,10 +7,12 @@ comments: true
 author: Richard_Cheney
 image:
   teaser: blueprint.png
-previous.url: ./cli-1-setup
-previous.title: Installing and maintaining CLI 2.0
-next.url: ./cli-3-jmespath
-next.description: Using JMESPATH queries
+previous:
+  url: ../cli-1-setup
+  title: Installing and maintaining CLI 2.0
+next:
+  url: ../cli-3-jmespath
+  title: Using JMESPATH queries
 ---
 {% include toc.html %}
 

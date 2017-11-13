@@ -7,8 +7,12 @@ comments: true
 author: Richard_Cheney
 image:
   teaser: blueprint.png
-previous.url: ./cli-3-jmespath
-previous.title: Using JMESPATH Queries
+previous:
+  url: ../cli-3-jmespath
+  title: Using JMESPATH Queries
+next:
+  url: ../..
+  title: Back up to Guides
 ---
 {% include toc.html %}
 
@@ -31,16 +35,16 @@ az resource list --resource-group $rg --output table
 
 Bash supports variables and simple arrays.  (For multi-level and name:value based objects then Perl and Python would be more useful.)
 
-* Variables
+#### Variables
   
-  The example below finds the public IP address for a specific VM.
+The example below finds the public IP address for a specific VM.
 
 ```
 pip=$(az vm list --show-details --output tsv --query "[?name == 'vmName'].publicIps")
 echo $pip
 ```
 
-  With multi-word variables we can use these within simple loops.  The first command returns a white-space delimited list of the resource groups that are not within my default region.  It then loops over those, showing a table of the resources for each, using sed to indent it a little for readability.
+With multi-word variables we can use these within simple loops.  The first command returns a white-space delimited list of the resource groups that are not within my default region.  It then loops over those, showing a table of the resources for each, using sed to indent it a little for readability.
 
 ```
 rgs=$(az group list --output tsv --query "[?location != 'westeurope'].name")
@@ -51,18 +55,18 @@ do
 done
 ```
 
-  Many CLI 2.0 commands accept multi-word strings as an argument.  One of those is the ```--ids``` switch for the ```az vm stop``` command. 
+Many CLI 2.0 commands accept multi-word strings as an argument.  One of those is the ```--ids``` switch for the ```az vm stop``` command. 
   
-  The VMs in my example resource group In the example below we are using a compound filter to select the ids of the VMs that are a) running and b) do not have an environment tag set to production.  And then we'll shut them down.
+The VMs in my example resource group In the example below we are using a compound filter to select the ids of the VMs that are a) running and b) do not have an environment tag set to production.  And then we'll shut them down.
 
 ```
 ids=$(az vm list --show-details --query "[?tags.environment != 'production' && powerState == 'VM running'].id" --output tsv)
 az vm stop --ids $ids
 ```
 
-* Arrays
+#### Arrays
 
-  Again, array assignments can be completed in one command:
+Again, array assignments can be completed in one command:
 
 ```
 rgArray=($(az group list --output tsv --query "[?location != 'westeurope'].name"))
@@ -73,7 +77,7 @@ echo ${#rgArray[*]}
 
 The first command sets an array of the resource group names.  The others print out the first array element, all of the elements, and finally the number of elements.
 
-*  Handling command substituion in queries
+####  Handling command substitution in queries
 
 As the JMESPATH queries are passed as a single string, the choice of delimiter is important.  Using double quotes at either end is usually the safest approach.  For instance:
 
@@ -84,7 +88,7 @@ az vm list --query "[?tags.environment == '$env'].$key" --output tsv
 
 ## Storage SAS Token example
 
-The following is an example of generating a storage SAS token and then creating a full URL for the protected blob storage:
+This final section shows one example of JMESPATH queries in use.  It is a short piece of Bash code to generate a storage SAS token that permits access to a storage blob for the next 30 minutes.  Without the full URL the storage blob woiuld be inaccessible, assuming the permissions are set to deny public access by default.  
 
 ```
 blob=azuredeploy.json
@@ -99,6 +103,6 @@ fullURL=$shortURL?$sasToken
 echo $fullURL
 ```
 
+The full URL could be used in this context to deploy an ARM template stored in blob storage.
 
-
-
+Once the 30 minutes period has expired then the template would remain inaccessible, even with the full URL.  This is a common way of storing templates in a publically accessible location whilst maintaining control over when they are accessed and by whom.
