@@ -55,7 +55,7 @@ Resource Groups:
 
 > Note that a resource group itself will be located in a region, but this does not limit the regions that can be used by its resource.  The resouce group's region dictates where the metadata for that group resides.
 
-![](./images/armResourceGroups.png)
+![](/workshops/arm/images/armResourceGroups.png)
 
 How the resources are grouped depends on the natural organisation of applications, or on how the various resources will be managed.  As a guiding rule it is sensible to group together resources that share the same lifecycle, i.e. they will be instantiated in the same period, and may also be deleted in the future at the same time.
 
@@ -63,7 +63,7 @@ How the resources are grouped depends on the natural organisation of application
 
 Resource groups are designed as a natural management point for related resources, based on groupings, linked lifecycle, use case, billing aggregation, role based access control, etc.
 
-![](./images/armManageResourceGroups.png)
+![](/workshops/arm/images/armManageResourceGroups.png)
 
 **Tagging**
 * Assign metadata to resource
@@ -119,7 +119,7 @@ You can see the definitions of the resources, resource groups and resource provi
 
 Drill into an existing resource group, select a resource within it and examine the *id* key's value.  
 
-![](./images/armResourceExplorer.png)
+![](/workshops/arm/images/armResourceExplorer.png)
 
 Here is an example:
 ```

@@ -21,7 +21,7 @@ next:
 
 Azure Resource Manager (ARM) templates are used to deploy resources into resource groups programatically.  ARM provides full Infrastructure as Code capability for Azure.
 
-![](./images/armTemplates.png) 
+![](/workshops/arm/images/armTemplates.png) 
 
 The format is very flexible and enables the configuration of multiple resources and the dependencies between them.
 
@@ -100,7 +100,7 @@ The "name" and "sku" are illustrative parameters.  The actuak paraneters would d
 
 If you go through the following lab sections then you will create example template and parameter files.  By doing so you will also be exposed to some of the key functions that are often used.
 
-![](./images/armAuthoring.png) 
+![](/workshops/arm/images/armAuthoring.png) 
 
 The truth is that you can use any text editor to manipulate JSON files, but most power users will prefer those with support for JSON formatting and snippets of code.  Atom is a good example.
 
