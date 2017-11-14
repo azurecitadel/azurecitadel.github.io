@@ -15,5 +15,5 @@ First in a series of "tech primers" on a range of topics. Created with technical
 
 These can be used for presentations, used in labs & exercises but also given as handout/reading material.
 
-## [![link](/images/icons/link.svg) Azure Resource Manager - Tech Primer](https://1drv.ms/p/s!AhEX99ErZbKGg0EPvCoAUvLYFyGP)
+## [![link](/images/icons/link.svg) Azure Resource Manager - Tech Primer](https://1drv.ms/b/s!AhEX99ErZbKGg1DtCFnLLTCjuazu)
 
