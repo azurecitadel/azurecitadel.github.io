@@ -7,9 +7,8 @@ tags: [authoring, arm, workshop, hackathon, lab, template]
 comments: true
 author: Richard_Cheney
 featured: true
-excerpt: WORK IN PROGRESS! The Authoring ARM Templates workshop is a collection of short labs to increase your understanding of Azure's Infrastructure as Code capability.
 image:
-  feature: featured/corp1.jpg
+  feature: 
   teaser: Education.jpg
   thumb: 
 ---
@@ -19,6 +18,8 @@ image:
 
 ## Introduction
  
+**CHANGE ME AS REQUIRED**
+
 This self-paced enablement session will run through a sequence of bite-sized labs that build on each other, introducing new elements to build up a complex templated solution that may be deployed to Azure.  
 
 Each lab will always include links to the JSON templates at the start and end so that you may compare your own files and highlight any differences.
@@ -31,19 +32,6 @@ The comments section has been enabled and feedback is always welcome.
 
 ## Index 
  
-* [Theory](./theory/)
-* First principles
-  * Creating a template from scratch
-  * Adding in a resource
-  * Defining parameters
-  * Creating a parameters file
-  * Submitting into a new resource group
-* Deployment options
-  * Deploying via the Azure Portal
-  * Deploying via PowerShell
-  * Using inline parameters within Bash
-* 
-
 ## Pre-requisites
 
 #### Required
