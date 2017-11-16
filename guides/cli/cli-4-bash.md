@@ -26,7 +26,7 @@ Many of the commands below require the ```--resource-group``` switch.  If that i
 
 This is one of the simplest things to do.
 
-```
+```bash
 rg=myResourceGroup
 az resource list --resource-group $rg --output table
 ```
@@ -39,14 +39,14 @@ Bash supports variables and simple arrays.  (For multi-level and name:value base
   
 The example below finds the public IP address for a specific VM.
 
-```
+```bash
 pip=$(az vm list --show-details --output tsv --query "[?name == 'vmName'].publicIps")
 echo $pip
 ```
 
 With multi-word variables we can use these within simple loops.  The first command returns a white-space delimited list of the resource groups that are not within my default region.  It then loops over those, showing a table of the resources for each, using sed to indent it a little for readability.
 
-```
+```bash
 rgs=$(az group list --output tsv --query "[?location != 'westeurope'].name")
 for rg in $rgs
 do
@@ -59,7 +59,7 @@ Many CLI 2.0 commands accept multi-word strings as an argument.  One of those is
   
 The VMs in my example resource group In the example below we are using a compound filter to select the ids of the VMs that are a) running and b) do not have an environment tag set to production.  And then we'll shut them down.
 
-```
+```bash
 ids=$(az vm list --show-details --query "[?tags.environment != 'production' && powerState == 'VM running'].id" --output tsv)
 az vm stop --ids $ids
 ```
@@ -68,7 +68,7 @@ az vm stop --ids $ids
 
 Again, array assignments can be completed in one command:
 
-```
+```bash
 rgArray=($(az group list --output tsv --query "[?location != 'westeurope'].name"))
 echo ${rgArray[0]}
 echo ${rgArray[*]}
@@ -81,8 +81,8 @@ The first command sets an array of the resource group names.  The others print o
 
 As the JMESPATH queries are passed as a single string, the choice of delimiter is important.  Using double quotes at either end is usually the safest approach.  For instance:
 
-```
-env=test; key=name
+```bash
+env=preprod; key=name
 az vm list --query "[?tags.environment == '$env'].$key" --output tsv
 ```
 
@@ -90,7 +90,7 @@ az vm list --query "[?tags.environment == '$env'].$key" --output tsv
 
 This final section shows one example of JMESPATH queries in use.  It is a short piece of Bash code to generate a storage SAS token that permits access to a storage blob for the next 30 minutes.  Without the full URL the storage blob woiuld be inaccessible, assuming the permissions are set to deny public access by default.  
 
-```
+```bash
 blob=azuredeploy.json
 container=templates
 expiry=$(date '+%Y-%m-%dT%H:%MZ' --date "+30 minutes")

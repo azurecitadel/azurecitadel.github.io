@@ -53,7 +53,7 @@ Resource Groups:
 * the resources in a group can be from various services
 * the resources in a group can span multiple regions
 
-> Note that a resource group itself will be located in a region, but this does not limit the regions that can be used by its resource.  The resouce group's region dictates where the metadata for that group resides.
+> Note that a resource group itself will be located in a region, but this does not limit the regions that can be used by its resource.  The resource group's region determines where the metadata for that group resides.
 
 ![](/workshops/arm/images/armResourceGroups.png)
 
@@ -65,32 +65,32 @@ Resource groups are designed as a natural management point for related resources
 
 ![](/workshops/arm/images/armManageResourceGroups.png)
 
-**Tagging**
+#### Tagging
 * Assign metadata to resource
 * Multiple tags per group or resource (max 15 name/value pairs)
 * Used with billing, reporting and automation
 
-**Role Based Access Control (RBAC)** 
+#### Role Based Access Control (RBAC) 
 * Control access to resources
 * Fine grained roles and operations
 * Scoped at subscription, resource group and resource level
 * Backed by Azure AD
 
-**Policies**
+#### Policies
 * Govern resources using rule based policies
 * Apply restrictions on type, region, size, name, etc.
 * Apply at subscription or resource group level
 * Use Azure Policy to ascertain compliancy against policy for existing resources
 
-**Locks**
+#### Locks
 * Protect live resource
 * Prevent accidental changes with RBAC
 * Lock against deletion or modification
 
 ## Resource Providers
 
-The resources themselves are provided by [resource providers](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-providers).  Each *resource provider* will provider one or more *resource types*. To see which providers are registered (and unregistered) on your subscription, use the CLI 2.0 command below: 
-```
+The resources themselves are provisioned by [resource providers](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-providers).  Each *resource provider* will provide one or more *resource types*. To see which providers are registered (and unregistered) on your subscription, use the CLI 2.0 command below: 
+```bash
 az provider list --output table
 
 Namespace                               RegistrationState

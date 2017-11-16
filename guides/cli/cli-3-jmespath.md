@@ -28,7 +28,7 @@ There is some excellent documentation on JMESPATH at the official site, and it c
 
 Here is some example JSON output from an ```az resource list --resource-group <resourceGroup> --output json``` command.  The example resource group below(myAppRG-Staging) contains a single Web App in standard app service plan.
 
-```
+```json
 [
   {
     "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/myAppRG-Staging/providers/Microsoft.Web/serverFarms/MyAppServicePlan",
@@ -149,7 +149,7 @@ If you have [Visual Studio Code](/guides/prereqs/vscode) installed then you can 
 
 Examine the JSON output to determine the desired information.  In this example we want to pull only the values for the VM name, size, OS, private and public IP addresses, FQDN and current running state. Working through the nesting, the query should become something like this:
 
-```
+```bash
 az vm list --resource-group <resourceGroup> --show-details --output table --query "[*].[name, hardwareProfile.vmSize, storageProfile.osDisk.osType, privateIps, publicIps, fqdns, powerState]"
 ```
 
@@ -157,7 +157,7 @@ This is known as a multi-select, and provides a far more useful table.  Output t
 
 If the query is tweaked to provide an array of objects then we can control the naming:
 
-```
+```bash
 az vm list --resource-group <resourceGroup> --show-details --output json --query "[*].{VM:name, Size:hardwareProfile.vmSize, OS:storageProfile.osDisk.osType, IP:privateIps, PIP:publicIps, FQDN:fqdns, State:powerState}"
 ```
 
@@ -165,7 +165,7 @@ Note that we have a) changed the second level from square brackets to curly, and
 
 One other thing you will have noticed is that it is very easy to end up with some very long queries.  If scripting then it is recommended to use a ```$query``` variable for readability, and to support dynamic queries built up from variables.  For example:
 
-```
+```bash
 query='[*].{VM:name, Size:hardwareProfile.vmSize, OS:storageProfile.osDisk.osType, IP:privateIps, PIP:publicIps, FQDN:fqdns, State:powerState}'
 az vm list --resource-group <resourceGroup> --show-details --output table --query "$query"
 ```
@@ -176,7 +176,7 @@ Selecting all elements in in array, or the first or last, is useful.  But often 
 
 Here are some examples.  I have assumed that you are using the ```az configure``` defaults to limit to a specific resource group just to shorten the commands:
 
-```
+```bash
 az vm list --output json --query "[?location == 'westeurope']" 
 az vm list --output json --query "[?storageProfile.osDisk.osType == 'Linux']"
 az vm list --output tsv --query "[?name == 'vmName'].id"
@@ -196,7 +196,7 @@ Compound tests can also be created, using && for a logical AND, and || for a log
 
 As in Bash, we can use pipes in our JMESPATH queries to get to the desired point.  As a simple example, compare the following:
 
-```
+```bash
 az vm list --output tsv --query "[?name == 'vmName']"
 az vm list --output tsv --query "[?name == 'vmName']|[0]"
 ```

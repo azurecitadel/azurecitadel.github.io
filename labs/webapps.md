@@ -117,10 +117,9 @@ deployuri=$(az webapp deployment source config-local-git --name $appName --resou
 
 echo $deployuri
 ```
-* The first command create an https endpoint similar to below, and then saves that value into the $deployuri variable.  The second prints the variable to screen, e.g.:
-```
-https://<username>@<appname>.scm.azurewebsites.net/<appname>.git
-```
+* The first command create an https endpoint similar to below, and then saves that value into the $deployuri variable.  The second prints the variable to screen, e.g. 
+  `https://<username>@<appname>.scm.azurewebsites.net/<appname>.git`
+
 * Note the _scm_ section of the URL - this is the Kudu address. We’ll come back to that later
 
 **7. Add a Git remote called _Azure_ and then push to the Web App**
@@ -178,10 +177,7 @@ Azure offers many ways of achieving something, with a view that users should use
 
 * Open the **App Service Editor** in the App Service blade's Development tools section
 * Click on the **Go** button in the main pane.  This will open up a new tab containing the App Service Editor environment.
-* Select the Git button on the left and set the GitHub URL:
-```
-https://github.com/richeney/azure101-webapp-html
-```
+* Select the Git button on the left and set the GitHub URL: `https://github.com/richeney/azure101-webapp-html`
 * Click on the Clone from a git URL
 * Type ``exit`` once the clone is complete
 * Return the the tab containing the webpage, and refresh.  It should now show an updated page containing some static web page content plus a Twitter feed
