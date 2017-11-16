@@ -26,9 +26,9 @@ There is some excellent documentation on JMESPATH at the official site, and it c
 
 ## JSON Format
 
-Here is some example JSON output from an ```az resource list --resource-group <resourceGroup> --output json``` command.  The example resource group below(myAppRG-Staging) contains a single Web App in standard app service plan.
+Here is some example JSON output from an `az resource list --resource-group <resourceGroup> --output json` command.  The example resource group below(myAppRG-Staging) contains a single Web App in standard app service plan.
 
-```json
+```json-doc
 [
   {
     "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/myAppRG-Staging/providers/Microsoft.Web/serverFarms/MyAppServicePlan",

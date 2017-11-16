@@ -20,7 +20,7 @@ permalink: pretty
 kramdown:
   input: GFM
   toc_levels: 1..2
-highlighter: rouge
+highlighter: pygments
 plugins:
   - jekyll-sitemap
   - jekyll-gist
