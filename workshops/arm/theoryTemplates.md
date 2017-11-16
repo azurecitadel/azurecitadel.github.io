@@ -69,7 +69,7 @@ Here is an empty template to show the structure.
 
 Of these, the schema and contentVersion are mandatory, as are the resources.  Parameters and variables are almost always included. Outputs are rarer, and only really used when nesting templates.  More on that later.
 
-> The ARM templates may be given any name, but the common convention is to name the template file **azuredeploy.json**.
+> Any name may be used for an ARM template, but the convention is to name the template **azuredeploy.json**.
 
 ## Parameters Files
 
@@ -92,7 +92,7 @@ This is another JSON format file, following a simple schema:
 }
 ```
 
-The "name" and "sku" are illustrative parameters.  The actuak paraneters would depend on the ARM template.
+The "name" and "sku" are illustrative parameters.  The actual parameters would depend on the ARM template.
 
 > By convention the parameters file is usually named **azuredeploy.parameters.json**.
 
@@ -102,11 +102,67 @@ If you go through the following lab sections then you will create example templa
 
 ![](/workshops/arm/images/armAuthoring.png) 
 
-The truth is that you can use any text editor to manipulate JSON files, but most power users will prefer those with support for JSON formatting and snippets of code.  Atom is a good example.
+The truth is that you can use any text editor to manipulate JSON files, but most power users will prefer those with support for JSON formatting and snippets of code.  
 
-Microsoft provide a couple of integrated development environments (IDEs) that are receommended.  The more heavyweight product is Visual Studio 2017, with good integration with Azure.  Adding resources into a JSON file adds in variables and parameters as well, and it has strong intellisense so it is a good option.  However for many it is a sledgehammer to crack a nut, and can be complex and slow.
+Microsoft provide a couple of integrated development environments (IDEs) that are recommended.  
 
-The more lightweight cross platform product is Visual Studio Code.  This supports syntax highlighting, intellisense and snippets.  and through the extensions is has some 
+The more lightweight cross platform product of the two is <a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> (VS Code).  This supports JSON syntax highlighting, intellisense and ARM snippets.  It has some good integration with both Azure and the GitHub Azure Quickstart repository that we will come on to later. This is the IDE tool that you will see in the screenshots for the majority of the lab.   
+
+The more heavyweight product  is <a href="/guides/prereqs/vs2017" target="_new">Visual Studio 2017</a> (VS 2017).  Once integrated with Azure then adding resources into a JSON file also adds in variables and parameters, and it has excellent intellisense including variable values.  However for many it is a sledgehammer to crack a nut for managing something as trivial as JSON files, and can be unnecessarily complex and slow to install and start up.
+
+One option for simple editing is within the Azure Portal itself.  Type 'template' into the search and select "Deploy a custom template" from there. (Or go direct using this <a href="https://portal.azure.com/#create/Microsoft.Template" target="_new">Deploy a Custom Template</a> link.)
+
+![](/workshops/arm/images/searchTemplatesInPortal.png)
+
+The portal editor within this allows the addition of common resources, and much like Visual Studio 2017 it will also populate some of the parameters and variables.  In addition you can use common templates or pull from the Azure Quickstart repository. We will be using this initially before moving on to VS Code.
+
+Examples of other popular third text editing applications are Atom and Sublime Text.
+
+## Deploying
+
+The theme of choice continues when it comes to deployment.  There are a number of different options that you may use.
+
+![](/workshops/arm/images/deployingTemplates.png)
+
+#### Azure Portal
+
+The <a href="https://portal.azure.com/#create/Microsoft.Template" target="_new">Deploy a Custom Template</a> may also be used for submission.  It is part of the preview Templates service within the portal, which may be found in More Services area.  This provides an area for templates to be stored within Azure, but this will be an area covered in more depth later.
+
+#### PowerShell
+
+The AzureRM PowerShell modules are commonly used for deploying into a resource group.  Here is a simple example:
+
+ ```powershell
+$rg       = "myResourceGroup"
+$loc      = "West Europe"
+$template = "C:\MyTemplates\WebApp\azuredeploy.json"
+
+Login-AzureRmAccount
+New-AzureRmResourceGroup -Name $rg -Location $loc
+New-AzureRmResourceGroupDeployment -Name myDeployment -ResourceGroupName $rg -TemplateFile $template
+```
+
+Note that PowerShell is also an option for the Cloud Shell (`>_`) built into the Azure Portal.
+
+Install instructions for the [PowerShell Azure Modules](/guides/prereqs/powershell).
+
+#### CLI 2.0
+
+The Bash compliant CLI 2.0 (or 'az') is also very commonly used for deployments.  Here is an example submission matching the PowerShell one above:
+
+```bash
+rg=myResourceGroup
+loc="West Europe"
+template=/mnt/c/MyTemplates/WebApp/azuredeploy.json
+
+az login
+az group create --name $rg --location "$loc"
+az group deployment create --name myDeployment --resource-group $rg --template-file $template
+```
+
+These commands are as tested within the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install-win10" target="_new">Windows Subsystem for Linux</a> (WSL), with the CLI 2.0 added. Install instructions for [Windows Subsystem for Linux and CLI 2.0](/guides/prereqs/lxss).
+
+Again there is a bash session available within the Azure Portal using the Cloud Shell (`>_`).  In fact this is the default.  Note that there is no need to login to Cloud Shell.  Also the environment as it is maintained for you so there is no need to update.  
 
 ## Recommended reading
 

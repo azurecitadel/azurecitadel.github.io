@@ -10,6 +10,9 @@ image:
   teaser: Education.jpg
   thumb: 
 ---
+
+# **NEEDS UPDATING NOW THAT MULTIPLE DISTROS CAN BE DOWNLOADED FROM THE STORE.**
+
 Windows 10 is able to run Ubuntu as a Linux Subsystem (lxss) to enable Bash.  These instructions detail how to:
 * Install Bash
 * Modify the apt-get sources
