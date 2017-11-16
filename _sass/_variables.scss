@@ -22,19 +22,21 @@ $border-radius               	: 3px;
    Color variables
    ========================================================================== */
 
-$white                        : #fff;
-$black                        : #000;
-$slate                        : #1C465F;
+$white                          : #fff;
+$black                          : #000;
+$slate                          : #1C465F;
 
 $body-color                  	: #ebebeb;
 
 $text-color                  	: #313130;
-$caption-color                : mix($white, $text-color, 25%);
+$caption-color                  : mix($white, $text-color, 25%);
+
+$code-body-color                : #22282A; 
 
 $base-color                  	: #343434;
 $comp-color                  	: complement($base-color);
 $border-color                	: #5B3266;
-$link-color                  	: #403A82;
+$link-color                  	: rgb(94, 84, 231);
 
 $primary-color               	: $black;
 $success-color               	: #2ecc71;

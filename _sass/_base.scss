@@ -58,7 +58,6 @@ ins {
 
 a {
 	color: $link-color;
-	font-weight: bold;
 	&:hover {
 		color: darken($link-color, 10);
 		text-decoration: underline;
@@ -83,32 +82,38 @@ blockquote {
   p {
     font-family: $alt-font;
 		// @include font-size(24);
-		@include font-size(16);
+		@include font-size(20);
   }
   cite {
     font-family: $base-font;
     font-weight: 700;
     font-style: normal;
-    @include font-size(18);
+    @include font-size(20);
   }
 }
 
 // Code
 tt, code, kbd, samp, pre {
+	@include font-size(16,no);
 	font-family: $code-font;
+	color: $body-color;
+	background-color: $code-body-color;
 }
 pre {
 	overflow-x: auto; // add scrollbars to wide code blocks
 }
 p code,
 li code {
-	@include font-size(18,no);
+	@include font-size(16,no);
 	color: $text-color;
+	font-family: $code-font;
+	color: $body-color;
+	background-color: $code-body-color;
+	// background-color: lighten($primary-color, 95);
 	white-space: nowrap;
 	margin: 0 2px;
 	padding: 2px 5px 2px 5px;
 	border: 1px solid #bdbdbd;
-	background-color: lighten($primary-color, 95);
 	border-radius: 1;
 }
 
