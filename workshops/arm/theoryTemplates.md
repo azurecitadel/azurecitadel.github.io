@@ -33,6 +33,18 @@ The declarative form is a safer approach, and may be used repeatedly to provide 
 
 > Note that the default deployment mode is **incremental**.  With this mode the deployment will not affect resources in that resource group that are not described in the template.  WIth this mode it is safe to submit multiple templates into the same resource group.  The other mode is **complete** and will remove any resources that are not described in the template, and therefore this mode should be used with caution.
 
+## Templates and Parameter Files
+
+![](/workshops/arm/images/templateBasics.png) 
+
+It is possible to deploy using just a template (and this is how the labs will start) but it is common to also have a corresponding parameters file.  The deployment command then specifies both files.  It is up to you how to name the template and parameter files, but by convention the standards are **azuredeploy.json** and **azuredeploy.parameters.json** respectively.
+
+> You don't need to have parameters if using hardcoded or default values.  Alternatively, the parameters may be specified inline in the deployment command.
+
+One thing to note is that you cannot define the resource groups themselves within a template.  Templates are used for deploying resources into pre-existing resource groups.  
+
+> Most scripts will create the resource group just before the deployment command.  The CLI commands produce the same output and return code regardless of whether the resource group is created  or just confirmed as existing. 
+
 ## Azure Resource Manager JSON template format
 
 The ARM template format is JSON format. 
@@ -69,7 +81,6 @@ Here is an empty template to show the structure.
 
 Of these, the schema and contentVersion are mandatory, as are the resources.  Parameters and variables are almost always included. Outputs are rarer, and only really used when nesting templates.  More on that later.
 
-> Any name may be used for an ARM template, but the convention is to name the template **azuredeploy.json**.
 
 ## Parameters Files
 
@@ -94,8 +105,6 @@ This is another JSON format file, following a simple schema:
 
 The "name" and "sku" are illustrative parameters.  The actual parameters would depend on the ARM template.
 
-> By convention the parameters file is usually named **azuredeploy.parameters.json**.
-
 ## Authoring ARM templates
 
 If you go through the following lab sections then you will create example template and parameter files.  By doing so you will also be exposed to some of the key functions that are often used.
@@ -106,7 +115,7 @@ The truth is that you can use any text editor to manipulate JSON files, but most
 
 Microsoft provide a couple of integrated development environments (IDEs) that are recommended.  
 
-The more lightweight cross platform product of the two is <a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> (VS Code).  This supports JSON syntax highlighting, intellisense and ARM snippets.  It has some good integration with both Azure and the GitHub Azure Quickstart repository that we will come on to later. This is the IDE tool that you will see in the screenshots for the majority of the lab.   
+The more lightweight cross platform product of the two is <a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> (VS Code).  This supports JSON syntax highlighting, intellisense and ARM snippets.  It has some good integration with both Azure and the GitHub Azure Quickstart repository that we will come on to later. This is the IDE tool that you will see in the screenshots for the majority of the lab. The install instructions in the link include a couple of key extensions, plus how to install the ARM snippets.  
 
 The more heavyweight product  is <a href="/guides/prereqs/vs2017" target="_new">Visual Studio 2017</a> (VS 2017).  Once integrated with Azure then adding resources into a JSON file also adds in variables and parameters, and it has excellent intellisense including variable values.  However for many it is a sledgehammer to crack a nut for managing something as trivial as JSON files, and can be unnecessarily complex and slow to install and start up.
 
@@ -148,7 +157,7 @@ Install instructions for the [PowerShell Azure Modules](/guides/prereqs/powershe
 
 #### CLI 2.0
 
-The Bash compliant CLI 2.0 (or 'az') is also very commonly used for deployments.  Here is an example submission matching the PowerShell one above:
+The Bash compliant CLI 2.0 (or 'az') is also very commonly used for deployments.  It is written in Python and is open sourced. Here is an example CLI submission matching the PowerShell one above:
 
 ```bash
 rg=myResourceGroup
@@ -163,6 +172,41 @@ az group deployment create --name myDeployment --resource-group $rg --template-f
 These commands are as tested within the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install-win10" target="_new">Windows Subsystem for Linux</a> (WSL), with the CLI 2.0 added. Install instructions for [Windows Subsystem for Linux and CLI 2.0](/guides/prereqs/lxss).
 
 Again there is a bash session available within the Azure Portal using the Cloud Shell (`>_`).  In fact this is the default.  Note that there is no need to login to Cloud Shell.  Also the environment as it is maintained for you so there is no need to update.  
+
+#### Other Deployment Options
+
+##### Visual Studio and Visual Studio Code
+
+Visual Studio includes [Azure Resource Group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy) projects so you can deploy the project direct to Azure from within the IDE.  
+
+Visual Studio Code provides some useful functionality:
+* The Integrated Terminal pane (CTRL-') allows you to run either Bash or PowerShell commands directly from within the IDE.  (Use Preferences to switch between them.)
+* The third party Azure Tools for Visual Studio extension includes an Azure: Deploy ARM Template command in the Command Pallette (CTRL-SHIFT-P)
+
+##### Visual Studio Team Services
+
+VSTS includes Azure Deployment as one of the many available build steps:
+
+![](/workshops/arm/images/armVSTS.png)
+
+##### REST API
+
+All of the deployment types listed so far will eventually go through the REST API.  For those that wish to drive it directly then there is extensive [REST API documentation](https://docs.microsoft.com/en-us/rest/api/resources/deployments/createorupdate).
+
+##### SDKs
+
+Azure supports a number of SDKs, including .NET, Python, Node.js, Java and Ruby.  The [SDK documentation](https://docs.microsoft.com/en-us/azure/#pivot=sdkstools&panel=sdkstools-all) has Get Started and API Reference information for each, and all may be used to drive deployments.
+
+##### Configuration Management Tools
+
+Chef, Puppet, Ansible, Salt and Octopus are all Configuration Management tools and all are capable of driving Infrastructure as Code using ARM on the Azure platform.  Refer to each ISV's documentaiton for more information.
+
+##### Azure Quickstart Templates
+
+The vast majority of templateds that have been contributed to the Azure Quickstart GitHub repository include a large blue Deploy To Azure button that will go straight into the Deploy a Custom Template screens in the Azure Portal, with the template and parameters files in context and ready to submit.
+
+![](/workshops/arm/images/deployToAzure.png)
+
 
 ## Recommended reading
 

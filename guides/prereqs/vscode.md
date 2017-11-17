@@ -20,39 +20,25 @@ Whilst VS Code is not as Azure integrated as Visual Studio, it does includes Int
 
 *	Install VS Code from [https://code.visualstudio.com](https://code.visualstudio.com) 
 
-## Install Extensions
+## Recommended Extensions Setup 
 
-### Install the Azure Resource Manager Tools Extension
+Use Case | Logo | Extension | Search 
+ARM Templates | ![](/guides/prereqs/images/vscode/armLogo.png) | <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-vscode-extension" target="_vscode">Azure Resource Manager Tools</a> | "Azure Resource Manager Tools" 
+Docker | ![](/guides/prereqs/images/vscode/dockerLogo.png) | <a href="https://code.visualstudio.com/docs/languages/dockerfile" target="_vscode">Docker extension</a> |  docker publisher:microsoft 
 
-* Press (`Ctrl+P`) and enter `ext install` or lcick on the Extension icon into the toolbar
-* Search for **Azure Resource Manager Tools** and select it
-* Click on the green **Install** button
+> Installing extensions via shortcusts
+* Press (`Ctrl+P`) 
+* Enter `ext install`
+* Search, or enter extension short-code 
+* Click **Install** then **Reload**
 
-![Azure ARM Tools Extension](../images/vscode/vscode-azurerm-extension-install.png)
+## Adding Snippets for Azure Resource Manager
 
-*	Click the **Reload** button to enable the extension
+Do not install the Azure Resource Manager Snippets extension availble in the gallery.  This only has a subset of the snippets that you will find in the [GitHub repository](https://github.com/sam-cogan/azure-xplat-arm-tooling/blob/master/VSCode/armsnippets.json).
 
-### Install Docker Extension
+1. Browse to the [snippets file](https://raw.githubusercontent.com/sam-cogan/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) and copy the contents
+2. In VS Code, go to File -> Preferences -> User Snippets - JSON
+3. Paste in the contents before the last curly brace 
+4. Ensure the JSON file has no sytax errors and save
 
-If you are going to be working with Docker, install the Docker extension. This extension makes it easy to build and deploy containerized applications from VSCode:
-
-* Press (`Ctrl+P`) and enter `ext install` or click on the Extension icon into the toolbar
-* Search for **Docker** and select **Docker**
-* Click on the green **Install** button
-* Click the **Reload** button to enable the extension
-
-### Install the Azure Tools for Visual Studio Code Extension
-
-* Press (`Ctrl+P`) and enter `ext install` or click on the Extension icon into the toolbar
-* Search for **Azure Tools** and select **Azure Tools for Visual Studio Code**
-* Click on the green **Install** button
-* Click the **Reload** button to enable the extension
-
-* Type `Ctrl-Shift-P` to open the Command Palette.  Examples: 
-    * Typing `azure` shows all of the available extension commands
-    * Typing `login` will bring up the Azure login
-    * Typing `active` will set the default Azure datacentre 
-    * Typing `search` will bring up the Azure Quickstart template search
-
-*	Whilst typing in the main body of an Azure Resource Manager JSON template, the editor will show IntelliSense for the available commands, and will also show snippets that can be quickly inserted
-
+> You can create your own snippets.  Many of the snippets in the file have been contributed back to the repo by users.   
