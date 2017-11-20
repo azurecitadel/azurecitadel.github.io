@@ -10,8 +10,6 @@ image:
   teaser: blueprint.png
 excerpt: Delve into CLI 2.0, integrate with Bash scripts and unlock the power of the JMESPATH queries. 
 ---
-WORK IN PROGRESS
-
 {% include toc.html %}
 
 ## Introduction
