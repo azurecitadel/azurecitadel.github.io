@@ -171,7 +171,7 @@ az group deployment create --name myDeployment --resource-group $rg --template-f
 
 These commands are as tested within the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install-win10" target="_new">Windows Subsystem for Linux</a> (WSL), with the CLI 2.0 added. 
 
-> Install instructions for [Windows Subsystem for Linux and CLI 2.0](/guides/prereqs/lxss).
+> Install instructions for [Windows Subsystem for Linux and CLI 2.0]({{ site.url }}/guides/prereqs/wsl).
 
 Again there is a bash session available within the Azure Portal using the Cloud Shell (`>_`).  In fact this is the default.  Note that there is no need to login to Cloud Shell.  Also the environment as it is maintained for you so there is no need to update.  
 

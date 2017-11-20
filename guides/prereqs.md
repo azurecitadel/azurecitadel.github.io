@@ -24,7 +24,7 @@ All students must complete the required pre-requisites for the training prior to
 
 Pre-req | Required | Comment
 <a href="/guides/prereqs/subscription" target="_prereq">Azure Subscription</a> | Required | 
-<a href="/guides/prereqs/lxss" target="_prereq">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
+<a href="/guides/prereqs/wsl" target="_prereq">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
 <a href="/guides/prereqs/powershell" target="_prereq">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
 <a href="/guides/prereqs/vscode" target="_prereq">Visual Studio Code</a> | Optional | Depends on lab or workshop
 <a href="/guides/prereqs/git" target="_prereq">Git for Windows or Mac</a> | Optional | Required for DevOps lab

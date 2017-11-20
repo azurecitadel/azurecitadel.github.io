@@ -29,7 +29,7 @@ The workshop requires the following
 
 Pre-req | Required | Comment
 <a href="/guides/prereqs/subscription" target="_new">Azure Subscription</a> | Required | 
-<a href="/guides/prereqs/lxss" target="_new">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
+<a href="/guides/prereqs/wsl" target="_new">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
 <a href="/guides/prereqs/powershell" target="_new">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
 <a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> | Optional | 
 A Twitter account | Optional | 

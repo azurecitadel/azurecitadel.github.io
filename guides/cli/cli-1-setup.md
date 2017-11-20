@@ -27,7 +27,7 @@ The Cloud Shell is an important feature for the portal.  As it is built into the
 
 However, for Linux based systems such as Ubuntu, Debian, Red Hat and, arguably, macOS, then having the az CLI installed locally and available in the native termainals is very natural and convenient. 
 
-The Ubuntu subsystem within Windows 10 is highly recommended for power users. Follow the [install instructions]({{ site.url }}/guides/prereqs/lxss) to get the Linux subsystem enabled as a feature and CLI 2.0 installed. You can then open up Bash using either the dedicated Start Menu option, typing ```bash``` into a Command Prompt or Win+R then ```bash```. 
+The Ubuntu subsystem within Windows 10 is highly recommended for power users. Follow the [install instructions]({{ site.url }}/guides/prereqs/wsl) to get the Linux subsystem enabled as a feature and CLI 2.0 installed. You can then open up Bash using either the dedicated Start Menu option, typing ```bash``` into a Command Prompt or Win+R then ```bash```. 
 
 For Windows 7, 8 and 8.1 users then the Cloud Shell is recommended for this lab.
 

@@ -45,7 +45,7 @@ The workshop requires the following:
     * Using a work email may mean that you do not have write access to the company's directory and therefore you cannot create users and groups
 * **Cloud Shell**
   * In the Azure [portal](https://portal.azure.com), click on the Cloud Shell icon at the top of the screen (**>_**), create the storage account for clouddrive and confirm it is working by typing ```az account show```
-* [Bash and CLI 2.0](../prereqs/prereqLxss.md) (optional, recommended, only applicable for Windows 10)
+* [Bash and CLI 2.0]({{ site.url }}/prereqs/wsl) (optional, recommended, only applicable for Windows 10)
 
 ## Virtual Data Centre Workshop 
 

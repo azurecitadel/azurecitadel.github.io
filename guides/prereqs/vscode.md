@@ -81,7 +81,7 @@ You can override the shell used by Windows in the integrated console by setting 
 Shell Location | Notes
 "C:\\\\Windows\\\\sysnative\\\\cmd.exe" | 64-bit Command Prompt if available, if not 32-bit
 "C:/Windows/sysnative/WindowsPowerShell/v1.0/powershell.exe" | 64-bit PowerShell if available, if not 32-bit
-"C:/Windows/sysnative/bash.exe" | [Bash on Ubuntu](/guides/prereqs/lxss) (Windows Subsystem for Linux (WSL) on Windows 10)
+"C:/Windows/sysnative/bash.exe" | [Bash on Ubuntu]({{ site.url }}/guides/prereqs/wsl) (Windows Subsystem for Linux (WSL) on Windows 10)
 "C:/Program Files/Git/bin/bash.exe" | Git Bash
 
 > The Git  Bash shell is installed as part of Git for Windows, and is an option for WIndows 7/8.x users to use bash.  For Windows 10 users the Windows Subsystem for Linux (WSL) is a much cleaner implementation and is highly recommended.  There are no issues with having Git for Windows and WSL co-existing, with the former used by VS Code solely for the git operations, and the latter used to provide a better standard of bash integrated console. 
