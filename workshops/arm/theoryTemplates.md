@@ -11,8 +11,8 @@ previous:
   url: ../theoryARM
   title: Azure Resource Manager
 next:
-  url: ../theoryTemplates
-  title: Azure Resource Manager Templates
+  url: ../arm-lab1-firstTemplates
+  title: 'Lab 1: First Template and Deployment'
 ---
 
 {% include toc.html %}
@@ -123,7 +123,7 @@ One option for simple editing is within the Azure Portal itself.  Type 'template
 
 ![](/workshops/arm/images/searchTemplatesInPortal.png)
 
-The portal editor within this allows the addition of common resources, and much like Visual Studio 2017 it will also populate some of the parameters and variables.  In addition you can use common templates or pull from the Azure Quickstart repository. We will be using this initially before moving on to VS Code.
+The portal editor within this allows the addition of common resources, and much like Visual Studio 2017 it will also populate some of the parameters and variables.  In addition you can use common templates or pull from the Azure Quickstart repository. 
 
 Examples of other popular third text editing applications are Atom and Sublime Text.
 
@@ -135,11 +135,11 @@ The theme of choice continues when it comes to deployment.  There are a number o
 
 #### Azure Portal
 
-The <a href="https://portal.azure.com/#create/Microsoft.Template" target="_new">Deploy a Custom Template</a> may also be used for submission.  It is part of the preview Templates service within the portal, which may be found in More Services area.  This provides an area for templates to be stored within Azure, but this will be an area covered in more depth later.
+The <a href="https://portal.azure.com/#create/Microsoft.Template" target="_new">Deploy a Custom Template</a> screen may also be used for submission.  It is part of the preview Templates service within the portal, which may be found in More Services area.  This provides an area for templates to be stored within Azure, but this is an area where the options are covered in more depth later.
 
 #### PowerShell
 
-The AzureRM PowerShell modules are commonly used for deploying into a resource group.  Here is a simple example:
+The AzureRM PowerShell modules are more commonly used for deploying into a resource group.  Here is a simple example:
 
  ```powershell
 $rg       = "myResourceGroup"
@@ -153,7 +153,7 @@ New-AzureRmResourceGroupDeployment -Name myDeployment -ResourceGroupName $rg -Te
 
 Note that PowerShell is also an option for the Cloud Shell (`>_`) built into the Azure Portal.
 
-Install instructions for the [PowerShell Azure Modules](/guides/prereqs/powershell).
+> Install instructions for the [PowerShell Azure Modules](/guides/prereqs/powershell).
 
 #### CLI 2.0
 
@@ -161,26 +161,30 @@ The Bash compliant CLI 2.0 (or 'az') is also very commonly used for deployments.
 
 ```bash
 rg=myResourceGroup
-loc="West Europe"
+loc=westeurope
 template=/mnt/c/MyTemplates/WebApp/azuredeploy.json
 
 az login
-az group create --name $rg --location "$loc"
+az group create --name $rg --location $loc
 az group deployment create --name myDeployment --resource-group $rg --template-file $template
 ```
 
-These commands are as tested within the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install-win10" target="_new">Windows Subsystem for Linux</a> (WSL), with the CLI 2.0 added. Install instructions for [Windows Subsystem for Linux and CLI 2.0](/guides/prereqs/lxss).
+These commands are as tested within the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install-win10" target="_new">Windows Subsystem for Linux</a> (WSL), with the CLI 2.0 added. 
+
+> Install instructions for [Windows Subsystem for Linux and CLI 2.0](/guides/prereqs/lxss).
 
 Again there is a bash session available within the Azure Portal using the Cloud Shell (`>_`).  In fact this is the default.  Note that there is no need to login to Cloud Shell.  Also the environment as it is maintained for you so there is no need to update.  
 
 #### Other Deployment Options
 
-##### Visual Studio and Visual Studio Code
+##### Visual Studio 
 
 Visual Studio includes [Azure Resource Group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy) projects so you can deploy the project direct to Azure from within the IDE.  
 
+##### Visual Studio Code
+
 Visual Studio Code provides some useful functionality:
-* The Integrated Terminal pane (CTRL-') allows you to run either Bash or PowerShell commands directly from within the IDE.  (Use Preferences to switch between them.)
+* The Integrated Terminal pane (CTRL-') allows you to run either Bash or PowerShell commands directly from within the IDE.  (Use Preferences to switch between Bash and PowerShell.)
 * The third party Azure Tools for Visual Studio extension includes an Azure: Deploy ARM Template command in the Command Pallette (CTRL-SHIFT-P)
 
 ##### Visual Studio Team Services
@@ -199,13 +203,14 @@ Azure supports a number of SDKs, including .NET, Python, Node.js, Java and Ruby.
 
 ##### Configuration Management Tools
 
-Chef, Puppet, Ansible, Salt and Octopus are all Configuration Management tools and all are capable of driving Infrastructure as Code using ARM on the Azure platform.  Refer to each ISV's documentaiton for more information.
+Chef, Puppet, Ansible, Salt and Octopus are all Configuration Management tools and all are capable of driving Infrastructure as Code using ARM on the Azure platform.  Refer to each ISV's documentation for more information.
 
 ##### Azure Quickstart Templates
 
-The vast majority of templateds that have been contributed to the Azure Quickstart GitHub repository include a large blue Deploy To Azure button that will go straight into the Deploy a Custom Template screens in the Azure Portal, with the template and parameters files in context and ready to submit.
+The vast majority of templates that have been contributed to the Azure Quickstart GitHub repository include a large blue Deploy To Azure button that will go straight into the Deploy a Custom Template screens in the Azure Portal.  The template and parameters files will be loaded, so you can change the parameter values away from the defaults and then submit.
 
 ![](/workshops/arm/images/deployToAzure.png)
+
 
 
 ## Recommended reading

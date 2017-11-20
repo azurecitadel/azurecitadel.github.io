@@ -37,13 +37,13 @@ The Azure Resource Manager (ARM) layer sits between
   * Microsoft.Compute
   * Microsoft.Network
   * Microsoft.Storage
-  * etc.
+  * ...
 
 The ARM layer takes the requests from the users and executes against the various resource providers and therefore works as an extensible abstraction layer. 
 
 The resources that are then created, modified, listed and deleted by those Resource Providers are managed in the context of Resource Groups.
 
-## Resource groups
+## Resource Groups
 
 If you have used the ARM portal ([http://portal.azure.com](http://portal.azure.com)), then you will be familiar with deploying various resources into resource groups:
 
