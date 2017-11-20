@@ -37,10 +37,8 @@ Certain workshops make use of GitHub.  This section adds in git to the bash shel
 
 * Run Bash on Windows by typing bash in a Command Prompt
 * Ensure the package list is up to date and then install the basic Git tools
-```
-sudo apt-get update && sudo apt-get install git-all
-```
-* Verify by opening Git Bash from the Start Menu and typing `git` to see the base commands
+`sudo apt-get update && sudo apt-get install git-all`
+* Verify by going into the bash shell and typing `git` to see the base commands
 
 ## *Optional*: Change font and vi colours
 
@@ -49,8 +47,8 @@ The default colours for both the PS1 prompt and for vi and vim can be difficult 
 * Edit ~/.bashrc (using nano, vi, or vim) and then scroll to the color_prompt section.  
   * The PS1 prompt colours are set in the sections that are in the format `[01:34m\]`.  The 34 is light blue, which is hard to read.  Changing the number from 34 to 36 (cyan) or 33 (yellow) will be more readable. (Info from [here](http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html).)
 * For vi(m) users then creating a .vimrc file will also help to set a more readable colour scheme
-```
-umask 022
 
+```bash
+umask 022
 echo -e "colo murphy\nsyntax on" >> ~/.vimrc
 ```
