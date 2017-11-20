@@ -59,6 +59,8 @@ The installer for GitHub Desktop makes use of a portable Git deployment, placing
 
 An example settings.json file can be found below.
 
+> If you have 2FA enabled on your GitHub account then you will need to generate a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) and use that as your password upon first connection. 
+
 ## Integrated Console 
 
 As per the [VS Code configuration information](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration), the shell used by the Integrated Console defaults to:
