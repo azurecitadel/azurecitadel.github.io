@@ -47,19 +47,22 @@ Do not install the third party Azure Resource Manager Snippets extension availbl
 
 ## Git Integration
 
-For Git to be recognised as an SCM (source code management) provider, VS Code needs to be able to find git.exe in the PATH.  
+For Git to be recognised as an SCM (source code management) provider, VS Code needs to be able to find the git executable in the PATH.  
 
 > Currently VS Code will not find git if you have installed the Windows Subsystem for Linux and then installed git into the Bash shell. If you type `git` into either the Command Prompt or a PowerShell window then it will not be found.
 
-The newest and least intrusive Git installation is [GitHub Desktop](https://desktop.github.com/).  Install and configure.  You will need to log in to GitHub, so you can either create an ID as part of the install process, or provide your existing credentials.  ([GitHub Desktop](https://desktop.github.com/) is preferred to the older [Git for Windows](https://git-scm.com/download/win).) 
+If you have a Windows desktop OS then install [Git for Windows](https://git-scm.com/download/win) if you have not done so already. Recommended settings:  
+* **Unselect the checboxes for Windows Explorer integration and file associations**
+* Use Git from the Windows Command Prompt (default)
+* Use OpenSSH (default)
+* Use the OpenSSL library (default)
+* Checkout Windows-style, commit Unix-style endings (default)
+* **User Windows' default console window**
+* Retain all extra optoins (caching, Git Credential Manager, symbolic links)
 
-The installer for GitHub Desktop makes use of a portable Git deployment, placing a number of executables including git.exe into `%LOCALAPPDATA%\GitHub\PortableGit_*COMMITID*\mingw32\\bin`.  You can ensure VS Code can find this by either:
-1. adding the directory to the PATH environment variable and restarting VS Code
-2. setting **git.path** in Settings (CTRL-,)
+> Note that there is a newer and less  intrusive Git installation from [GitHub Desktop](https://desktop.github.com/), but this is not as easy to integrate with VS Code as Git for Windows and is therefore not recommended.
 
-An example settings.json file can be found below.
-
-> If you have 2FA enabled on your GitHub account then you will need to generate a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) and use that as your password upon first connection. 
+ If you have 2FA enabled on your GitHub account then you will need a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/). Use that in place of the password upon first clone or sync action. 
 
 ## Integrated Console 
 
@@ -76,11 +79,11 @@ To override the defaults, you can manually configure the settings.json.  Open up
 You can override the shell used by Windows in the integrated console by setting the **terminal.integrated.shell.windows** value:
 
 Shell Location | Notes
-"C:/Windows/sysnative/cmd.exe" | 64-bit Command Prompt if available, if not 32-bit
+"C:\\\\Windows\\\\sysnative\\\\cmd.exe" | 64-bit Command Prompt if available, if not 32-bit
 "C:/Windows/sysnative/WindowsPowerShell/v1.0/powershell.exe" | 64-bit PowerShell if available, if not 32-bit
 "C:/Windows/sysnative/bash.exe" | [Bash on Ubuntu](/guides/prereqs/lxss) (Windows Subsystem for Linux (WSL) on Windows 10)
 
-> Note that pathing may use either forward or backslashes in the settings.json file, but backslashes will need to be escaped (i.e. \\\\) 
+> Note that pathing may use either forward or backslashes in the settings.json file, but backslashes will need to be escaped (i.e. \\\\).  The exception is Command Prompt which requires backslashes as shown.  
 
 The example settings file at the bottom of this page shows an example of the shell being overridden. 
 
@@ -90,8 +93,9 @@ For reference, here is an example settings.json user override area:
 
 ```json
 {
-    "bashpath": "C:/Windows/sysnative/bash.exe",
-    "poshpath": "C:/Windows/sysnative/WindowsPowerShell/v1.0/powershell.exe",
+    // "C:/Windows/sysnative/bash.exe",
+    // "C:/Windows/sysnative/WindowsPowerShell/v1.0/powershell.exe",
+    // "C:\\Windows\\sysnative\\cmd.exe",
     "terminal.integrated.shell.windows": "C:/Windows/sysnative/bash.exe",
     "git.path": "C:/Users/richeney/AppData/Local/GitHub/PortableGit_f02737a78695063deace08e96d5042710d3e32db/mingw32/bin/git.exe",
     "git.enableSmartCommit": true,
@@ -105,9 +109,7 @@ For reference, here is an example settings.json user override area:
 }
 ```
 
-
-
-The bashpath and poshpath variables are ones I have created.  As they are not used in the main settings file they will have a wiggly underscore. It is possible to open multiple terminal sessions by clicking on the *+* icon.  And if you change the terminal.integrated.shell.windows then you can open up sessions using different shells, as shown in the screenshot below:
+It is possible to open multiple terminal sessions by clicking on the *+* icon, and this is the reason that this settings file includes the commented fields with the additional shell paths.  If you change the terminal.integrated.shell.windows then you can open up sessions using different shells, as shown in the screenshot below:
 
 ![](/guides/prereqs/images/vscode/multipleShells.png) 
 
