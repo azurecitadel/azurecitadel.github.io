@@ -66,7 +66,7 @@ If you have a Windows desktop OS then install [Git for Windows](https://git-scm.
 
 ## Integrated Console 
 
-As per the [VS Code configuration information](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration), the shell used by the Integrated Console defaults to:
+As per the [VS Code Integrated Console](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration) configuration information, the shell used by the Integrated Console defaults to:
 
 **OS** | **Default Shell**
 Windows 10 | PowerShell
@@ -82,8 +82,11 @@ Shell Location | Notes
 "C:\\\\Windows\\\\sysnative\\\\cmd.exe" | 64-bit Command Prompt if available, if not 32-bit
 "C:/Windows/sysnative/WindowsPowerShell/v1.0/powershell.exe" | 64-bit PowerShell if available, if not 32-bit
 "C:/Windows/sysnative/bash.exe" | [Bash on Ubuntu](/guides/prereqs/lxss) (Windows Subsystem for Linux (WSL) on Windows 10)
+"C:/Program Files/Git/bin/bash.exe" | Git Bash
 
-> Note that pathing may use either forward or backslashes in the settings.json file, but backslashes will need to be escaped (i.e. \\\\).  The exception is Command Prompt which requires backslashes as shown.  
+> The Git  Bash shell is installed as part of Git for Windows, and is an option for WIndows 7/8.x users to use bash.  For Windows 10 users the Windows Subsystem for Linux (WSL) is a much cleaner implementation and is highly recommended.  There are no issues with having Git for Windows and WSL co-existing, with the former used by VS Code solely for the git operations, and the latter used to provide a better standard of bash integrated console. 
+
+Note that pathing may use either forward or backslashes in the settings.json file, but backslashes will need to be escaped (i.e. \\\\).  The exception is Command Prompt which requires backslashes as shown.  
 
 The example settings file at the bottom of this page shows an example of the shell being overridden. 
 
@@ -116,13 +119,13 @@ Personalising VS Code using the menu options will also change this configuration
 
 ## Personalisation
 
-VS Code has great configuration and extensibility options to allow you to personalise it to your own preferences. 
+VS Code has great configuration and extensibility options to allow you to personalise it to your own preferences. The following information is therefore entirely optional, but is included for anyone who would like to emulate my VS Code configuration. 
  
 The settings cog at the bottom left allows you to select colour and icon themes, and to install new ones. As you can see from the settings file above my installation uses both the Material Theme (for the icons) and the Nord Theme (for the colour scheme).
 
 I also hide the menu bar (which can be toggled back on temporarily using ALT), and I have disabled the minimap by default.
 
-> Windows 10 also allows you to set custom colours for the title bar in the Color Settings area.  Mine is set to 59, 66, 82, which is the same as the Nord background colour for the status bar. 
+> Windows 10 also allows you to set custom colours for Windows' title bars in the Color Settings area.  Mine is set to 59, 66, 82, which is the same as the Nord background colour for the status bar. 
 
 ## Useful Keyboard Shortcuts
 
