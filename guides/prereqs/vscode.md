@@ -97,7 +97,6 @@ For reference, here is an example settings.json user override area:
     // "C:/Windows/sysnative/WindowsPowerShell/v1.0/powershell.exe",
     // "C:\\Windows\\sysnative\\cmd.exe",
     "terminal.integrated.shell.windows": "C:/Windows/sysnative/bash.exe",
-    "git.path": "C:/Users/richeney/AppData/Local/GitHub/PortableGit_f02737a78695063deace08e96d5042710d3e32db/mingw32/bin/git.exe",
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "workbench.colorTheme": "Nord",
