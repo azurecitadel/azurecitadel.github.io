@@ -125,6 +125,8 @@ The settings cog at the bottom left allows you to select colour and icon themes,
 
 I also hide the menu bar (which can be toggled back on temporarily using ALT), and I have disabled the minimap by default.
 
+![](/guides/prereqs/images/vscode/personalised.png) 
+
 > Windows 10 also allows you to set custom colours for Windows' title bars in the Color Settings area.  Mine is set to 59, 66, 82, which is the same as the Nord background colour for the status bar. 
 
 ## Useful Keyboard Shortcuts
