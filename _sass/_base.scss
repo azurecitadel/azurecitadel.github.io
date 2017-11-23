@@ -96,8 +96,8 @@ blockquote {
 tt, code, kbd, samp, pre {
 	@include font-size(16,no);
 	font-family: $code-font;
-	color: $body-color;
-	background-color: $code-bg-color;
+	color: $code-color;
+	background-color: $code-background-color;
 }
 pre {
 	overflow-x: auto; // add scrollbars to wide code blocks
@@ -107,8 +107,8 @@ li code {
 	@include font-size(16,no);
 	color: $text-color;
 	font-family: $code-font;
-	color: $body-color;
-	background-color: $code-bg-color;
+	color: $code-color;
+	background-color: $code-background-color;
 	// background-color: lighten($primary-color, 95);
 	white-space: nowrap;
 	margin: 0 2px;

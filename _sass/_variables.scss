@@ -31,12 +31,13 @@ $body-color                  	: #ebebeb;
 $text-color                  	: #313130;
 $caption-color                  : mix($white, $text-color, 25%);
 
-$code-bg-color                : #22282A; 
+$code-color                    : #D8DEE9; // $nord4
+$code-background-color          : #2E3440; // $nord0
 
 $base-color                  	: #343434;
 $comp-color                  	: complement($base-color);
 $border-color                	: #5B3266;
-$link-color                  	: rgb(94, 84, 231);
+$link-color                  	: darken(#5E81AC, 1);
 
 $primary-color               	: $black;
 $success-color               	: #2ecc71;
