@@ -20,32 +20,38 @@ Visual Studio Code is a free alternative source code editor to Visual Studio.  I
 
 Whilst VS Code is not as tightly integrated with Azure as Visual Studio, it does includes IntelliSense code completion and colour coding for JSON templates.  It can be integrated further by adding the Azure Resource Manager Tools extension.  And you can then make use of the Azure quickstart templates on GitHub and the ARM template references for the various Azure service providers on the Azure docs site.
 
+The instructions also link to the recommended setup for both Ubuntu on Windows 10, and for PowerShell.    The PowerShell configuration will add in both the PowerShell Azure Modules (AzureRM), and also the CLI commands.  The Ubuntu configuration will give you the ability to run the CLI commands, but also to wrap them with Bash shell scripts.  
+
 ## Summary of Configuration
 
 This guide will run through a number of configurations that are recommended for the various labs. 
 
 Here is a summary:
 
-1. Install [VS Code](https://code.visualstudio.com) [(->)](#install-visual-studio-code)
-1. Install [Git for Windows](https://git-scm.com/download/win) [(->)](#install-git-for-windows)
+1. [Visual Studio Code](#install-visual-studio-code)
+    * Install vscode from [https://code.visualstudio.com](https://code.visualstudio.com)
+1. [Git](#install-git-for-windows)
+    * Install [Git for Windows](https://git-scm.com/download/win) 
     * Remove all Explorer integrations, file associations, and use Command Prompt as the shell
-    * Check that `git` works within Command Prompt so that the integrated VS Code Git works
-1. Install [Azure CLI](https://aka.ms/GetTheAzureCLI) for Windows MSI installer [(->)](#install-azure-cli)
-    * Check `az` works within Command Prompt
-    * This is used by the Azure CLI Tools extension for the intellisense and tooltips help
-1. Install the [Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)
-1. Add in the recommended extensions to VS Code [(->)](recommended-extensions-for-visual-studio-code)
+    * Check  `git` works in PowerShell (or Command Prompt) 
+    * If successful then Git should be the integrated SCM in Visual Studio Code
+1. <a href="/guides/prereqs/powershell" target="_blank">PowerShell</a>
+    * Install the [Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)
+    * Install the [Azure CLI installer (MSI)](https://aka.ms/InstallAzureCliWindows)
+    * Check `az` works within PowerShell
+1. <a href="/guides/prereqs/wsl" target="_blank">Bash</a> (Windows 10 only)
+    * install Ubuntu into the Windows subsystem for Linux  
+    * follow the instructions to add both git and the Azure CLI into the subsystem
+1. [Visual Studio Code Extensions](#recommended-extensions-for-visual-studio-code)
     * Azure Resource Manager Tools
-    * Azure CLI Tools
     * Docker
-1. Add in the [ARM snippets](https://github.com/sam-cogan/azure-xplat-arm-tooling/blob/master/VSCode/armsnippets.json) [(->)](adding-snippets-for-azure-resource-manager)
-1. On Windows 10, install bash via the [Windows Subsystem for Linux](/guides/prereqs/wsl), adding git and az (optional)
-1. Configure settings.json for your preferred Integrated Console. [#] 
-    * CLI on bash (preferred)
+1. [ARM snippets](#adding-snippets-for-azure-resource-manager)
+    * Add in the [ARM snippets](https://github.com/sam-cogan/azure-xplat-arm-tooling/blob/master/VSCode/armsnippets.json) 
+1. [Integrated Console](#integrated-console) 
+    * Bash (Windows 10)
     * PowerShell
-    * CLI on Command Prompt
   
-The *(->)* link at the end of each section links to more detailed sections below.  There is also some additional and optional personalisation configuration.
+There are also some additional sections with some optional personalisation configuration.
 
 ## Install Visual Studio Code
 
@@ -84,8 +90,7 @@ Type `az login` and follow the instructions to
 ## Recommended Extensions for Visual Studio Code 
 
 Use Case | Logo | Extension | Search 
-ARM | ![](/guides/prereqs/images/vscode/armLogo.png) | <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-vscode-extension"
-CLI | ![](/guides/prereqs/images/vscode/azureCliLogo.png) | <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli" target="_vscode">Azure CLI Tools</a> | "Azure CLI Tools" 
+ARM | ![](/guides/prereqs/images/vscode/armLogo.png) | <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-vscode-extension" target="_vscode">Azure Resource Manager Tools</a> | "Azure Resource Manager Tools"
 Docker | ![](/guides/prereqs/images/vscode/dockerLogo.png) | <a href="https://code.visualstudio.com/docs/languages/dockerfile" target="_vscode">Docker extension</a> |  docker publisher:microsoft 
 
 Installing extensions via shortcuts
@@ -93,6 +98,7 @@ Installing extensions via shortcuts
 * Type `ext install`
 * Search for the extension 
 * Click **Install** then **Reload**
+
 
 ## Adding Snippets for Azure Resource Manager
 
@@ -104,8 +110,6 @@ Do not install the third party Azure Resource Manager Snippets extension availbl
 4. Ensure the JSON file has no syntax errors and save
 
 > You can create your own snippets.  Many of the snippets in the file have been contributed back to the repo by users. 
-
-
 
 ## Integrated Console 
 
@@ -127,7 +131,7 @@ Shell Location | Notes
 "C:/Windows/sysnative/bash.exe" | [Bash on Ubuntu]({{ site.url }}/guides/prereqs/wsl) (Windows Subsystem for Linux (WSL) on Windows 10)
 "C:/Program Files/Git/bin/bash.exe" | Git Bash
 
-> The Git  Bash shell is installed as part of Git for Windows, and is an option for WIndows 7/8.x users to use bash.  For Windows 10 users the Windows Subsystem for Linux (WSL) is a much cleaner implementation and is highly recommended.  There are no issues with having Git for Windows and WSL co-existing, with the former used by VS Code solely for the git operations, and the latter used to provide a better standard of bash integrated console. 
+> The Git  Bash shell is installed as part of Git for Windows, and is an option for WIndows 7/8.x users to use bash, but installation of the Azure CLI into Git Bash is sometimes problematic.  For Windows 10 users the Windows Subsystem for Linux (WSL) is a much cleaner implementation and is highly recommended.  There are no issues with having Git Bash and WSL co-existing, with the former used by VS Code solely for the git operations, and the latter used to provide a better standard of bash integrated console. 
 
 Note that pathing may use either forward or backslashes in the settings.json file, but backslashes will need to be escaped (i.e. \\\\).  The exception is Command Prompt which requires backslashes as shown.  
 
@@ -171,6 +175,12 @@ I also hide the menu bar (which can be toggled back on temporarily using ALT), a
 ![](/guides/prereqs/images/vscode/personalised.png) 
 
 > Windows 10 also allows you to set custom colours for Windows' title bars in the Color Settings area.  Mine is set to 59, 66, 82, which is the same as the Nord background colour for the status bar. 
+
+## Using Visual Studio Code
+
+Visual Studio Code is amazingly powerful and flexible.  
+
+It is highly recommended to spend a little time with the Help and Learn resources on the welcome page in order to familiarise yourself.
 
 ## Useful Keyboard Shortcuts
 

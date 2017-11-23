@@ -30,15 +30,17 @@ Verify the installation
 * Type `az` to show the base commands
 * Type `az login` and follow the instructions to log in to Azure
 * Type `az account list` to show the subscription info in JSON output format
- 
+
 ## Add Git to the Windows 10 Linux Subsystem
 
-Certain workshops make use of GitHub.  This section adds in git to the bash shell. 
+Certain workshops make use of GitHub.  This section adds git to the bash shell. 
 
 * Run Bash on Windows by typing bash in a Command Prompt
 * Ensure the package list is up to date and then install the basic Git tools
 `sudo apt-get update && sudo apt-get install git-all`
 * Verify by going into the bash shell and typing `git` to see the base commands
+
+> Note that apt-get is the package manager for Ubuntu.  If you selected a different distro then search online for the command to install git on that distro.
 
 ## *Optional*: Change font and vi colours
 
