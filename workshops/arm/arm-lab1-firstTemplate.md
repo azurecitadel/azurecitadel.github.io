@@ -111,53 +111,49 @@ Your ARM template should now look something like this, but with a different (and
 
 Note that we will come back to ensuring the uniqueness of certain values.
 
-## Deploy the template with PowerShell
-
-### Open up the Integrated Console and login to Azure
+## Open up the Integrated Console and login to Azure
 
 * Open up the Integrated Console using CRTL-' (or View \| Integrated Console)
-* Type `Login-AzureRmAccount` to launch the dialog window
-* Switch to it using ALT-TAB and authenticate
 
-Once authenticated then you will not need to reauthenticate for a period of time.  
+### Logging in using CLI
 
-> It has been assumed that you have only one subscription.  If not then use `Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>`.
-
-### Deploy the template
-
-In the Integrate Console, create a new resource group called 'lab1' and then deploy the azuredeploy.json template into it.
-
-```powershell
-New-AzureRmResourceGroup -Name lab1 -Location "West Europe"
-New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile c:\\MyTemplates\\lab1\\azuredeploy.json
-```
-## Deploy the template with CLI
-
-### Open up the Integrated Console and login to Azure
-
-* Open up the Integrated Console using CRTL-' (or View \| Integrated Console)
 * Type `az login` and follow the instructions
-
-> Note that you can double click on a word to select, and right click to copy the selected text
-
-Once authenticated then you will not need to reauthenticate for a period of time.  
 
 > It has been assumed that you have only one subscription.  If not then use `az account set --subscription <yourSubscriptionName>`.
 
-### Deploy the template
+### Logging in using PowerShell
 
-In the Integrate Console, create a new resource group called 'lab1' and then deploy the azuredeploy.json template into it.
+* Type `Login-AzureRmAccount` to launch the dialog window
+* Switch to it using ALT-TAB and authenticate
 
+> It has been assumed that you have only one subscription.  If not then use `Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>`.
+
+Once authenticated then you will not need to reauthenticate for a period of time.  
+
+## Create the resource group and deploy the template
+
+In the Integrated Console, create a new resource group called 'lab1' and then deploy the azuredeploy.json template into it.
+
+##### Bash
 ```bash
 az group create --name lab1 --location "West Europe"
 az group deployment create --name job1 --resource-group lab1 --template-file /mnt/c/MyTemplates/lab1/azuredeploy.json 
+```
+
+##### PowerShell
+```powershell
+New-AzureRmResourceGroup -Name lab1 -Location "West Europe"
+New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile c:\\MyTemplates\\lab1\\azuredeploy.json
 ```
 
 > Note that the filename pathing assumes Linux.  If you are using the CLI within PowerShell then use the native Windows pathing, e.g. c:\\MyTemplates\\lab1\\azuredeploy.json.  Please convert any filenames in subsequent CLI examples.
 
 ## Validation
 
-Check the  
+* Select the 'lab1' resource group in the portal.
+* Validate the storage account exists with your unique name
+* Click on Deployments in the Settings section of the resource group blade
+* Click on the Events link in the Related section
+* Select one or two of the events to show the Detail blade
 
-
-
+Browse the [deployment operations](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-deployment-operations#powershell) documentation for more detail, and information on how to access the same information programmatically through PowerShell, Azure CLI and the REST API.
