@@ -2,7 +2,7 @@
 
 * [Products](https://azure.microsoft.com/en-us/services) and [Pricing]( https://azure.microsoft.com/en-us/pricing/)
 * [Azure Docs](https://docs.microsoft.com/en-us/azure/) and [Subscription Limits](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)
-* [Architecture](https://docs.microsoft.com/en-us/azure/index#pivot=architecture)
+* [Architecture](https://docs.microsoft.com/en-us/azure/index#pivot=architecture) and [SLAs](https://azure.microsoft.com/en-gb/support/legal/sla/)
 * [Azure Interactives](http://azureinteractives.azurewebsites.net/)
 * [Learning Paths](https://azure.microsoft.com/en-us/documentation/learning-paths/)
 * Azure [Resource Explorer](https://resources.azure.com/) and [Storage Explorer](http://storageexplorer.com/)
