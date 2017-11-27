@@ -7,7 +7,7 @@ tags: [citadel, markdown, git, github, jekyll]
 comments: true
 author: Richard_Cheney
 image:
-  teaser: citadelicon.svg
+  teaser: cloud-tools.png
 excerpt: Want to contribute content to Azure Citadel?  Read our guide. 
 ---
 
