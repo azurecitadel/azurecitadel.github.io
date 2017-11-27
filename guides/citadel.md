@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Contributing to Azure Citadel
-date: 2017-11-29
+date: 2017-11-27
 categories: guides
 tags: [citadel, markdown, git, github, jekyll]
 comments: true
