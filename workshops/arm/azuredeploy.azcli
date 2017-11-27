@@ -1,4 +1,0 @@
-# This is a comment
-
-az account list --output table
-az --version

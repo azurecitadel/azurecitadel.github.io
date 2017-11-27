@@ -109,11 +109,14 @@ Your ARM template should now look something like this, but with a different (and
 }
 ```
 
-Note that we will come back to ensuring the uniqueness of certain values.
+Note that we will come back to ensuring the uniqueness of certain values, such as storage account names.
 
 ## Open up the Integrated Console and login to Azure
 
+Let's move on and deploy the template.  We'll run this in the Integrated Console for now.  You can use the CLI commands in either bash or PowerShell consoles, or the PowerShell cmdlets from the AzureRM module.  Your choice. 
+
 * Open up the Integrated Console using CRTL-' (or View \| Integrated Console)
+
 
 ### Logging in using CLI
 
@@ -139,6 +142,7 @@ In the Integrated Console, create a new resource group called 'lab1' and then de
 az group create --name lab1 --location "West Europe"
 az group deployment create --name job1 --resource-group lab1 --template-file /mnt/c/MyTemplates/lab1/azuredeploy.json 
 ```
+> Note that the filename pathing assumes Linux.  If you are using the CLI within PowerShell then use the native Windows pathing, e.g. c:\\MyTemplates\\lab1\\azuredeploy.json.  Please convert any filenames in subsequent CLI examples.
 
 ##### PowerShell
 ```powershell
@@ -146,9 +150,7 @@ New-AzureRmResourceGroup -Name lab1 -Location "West Europe"
 New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile c:\\MyTemplates\\lab1\\azuredeploy.json
 ```
 
-> Note that the filename pathing assumes Linux.  If you are using the CLI within PowerShell then use the native Windows pathing, e.g. c:\\MyTemplates\\lab1\\azuredeploy.json.  Please convert any filenames in subsequent CLI examples.
-
-## Validation
+## Validating a deployment
 
 * Select the 'lab1' resource group in the portal.
 * Validate the storage account exists with your unique name
@@ -157,3 +159,57 @@ New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateF
 * Select one or two of the events to show the Detail blade
 
 Browse the [deployment operations](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-deployment-operations#powershell) documentation for more detail, and information on how to access the same information programmatically through PowerShell, Azure CLI and the REST API.
+
+## Adding a user parameter
+
+Let's move that storage account name up into the parameters section.
+
+
+
+1. Add the `arm-parameters` snippet into the parameters object
+1. Change the name to 'storageAccount'
+1. Select the unique storage account resource name 
+1. Press CTRL-F2 to select both occurences (as per the status bar)
+1. Replace them with `[parameters('storageAccount')]`
+1. Save the template
+
+After the editing your template should look similar to this:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccount": {
+           "type": "string",
+           "metadata": {
+                "description": ""
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageAccount')]",
+            "apiVersion": "2015-06-15",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[parameters('storageAccount')]"
+            },
+            "properties": {
+                "accountType": "Standard_LRS"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Note the syntax of the parameters function.  Functions are within square brackets as all expressions within square brackets are evaluated prior to deployment. The function's arguments are listed in round brackets, e.g. [functioname(arg1, arg2, arg3)].  In this instance we are passing in the name of the parameter as a string, hence the single quotes.  
+
+ 
+
+
+
+> Visual Studio Code tip: note in the video how the    
