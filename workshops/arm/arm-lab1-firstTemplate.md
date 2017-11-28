@@ -348,7 +348,9 @@ PowerShell can do exactly the same, replacing `New-AzureRmResourceGroupDeploymen
 
 These will all flush out fundamental issues with the format of the template.  However, the only true test is to deploy the template. 
 
-Once you have completed updating your template then deploy it to the lab1 resource group to confirm that it works as expected. You shouldn't need to specify any parameters, but you can do so if you wish.
+Once you have completed updating your template then deploy it to the lab1 resource group to confirm that it works as expected. You shouldn't need to specify any parameters, but you can do so if you wish.  If you have issues with your template then compare it against the one at the bottom of the lab to see how it differs.  
+
+ 
 
 You can use the `az storage account list --resource-group lab1 --output table` command to show the results of the concatenated unique name. 
 
@@ -358,7 +360,7 @@ Okay, so we have created an empty template, and added a basic resource snippet, 
 
 This process is fairly common, and is how you would work through the options to determine which should be hardcoded, which should be parameterised, and how flexible you will allow that parameterisation to be.
 
-Here is the final template for this lab.  Compare it against yours. 
+Here is the final template for this lab:
 
 ```json
 {
@@ -406,6 +408,8 @@ Here is the final template for this lab.  Compare it against yours.
     "outputs": {}
 }
 ```
+
+Compare it against yours. Visual Studio Code can help with comparing files. If you create a new file (CTRL-N), and paste in the contents then you can open up the Command Palette (CTRL-SHIFT-P) and type 'compare' to bring up "File: Compare Active File With...".  Select this and then the unsaved Untitled-1 file that you just created.  Visual Studio Code will highlight differing lines with red and green highlighting.
 
 ## What's up next
 
