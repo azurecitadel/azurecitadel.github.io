@@ -18,7 +18,9 @@ next:
 
 ## Overview
 
-In this lab we will be creating a simple template using Visual Studio Code.  We will then be deploying it into a resource group using Azure CLI 2.0.  We will then factor some of the resource's values up into the parameters section.
+In this lab we will be creating a simple template using Visual Studio Code.  We will then be deploying it into a resource group using Azure CLI 2.0.  We will then factor some of the resource's values up into the parameters section, and then make use of the variables section to introduce some additional functionality.
+
+The lab will make use of the storage account resources, which is one of the simpler ones available on the Azure platform.
 
 ## Pre-reqs
 
@@ -140,14 +142,14 @@ In the Integrated Console, create a new resource group called 'lab1' and then de
 ##### Bash
 ```bash
 az group create --name lab1 --location "West Europe"
-az group deployment create --name job1 --resource-group lab1 --template-file /mnt/c/MyTemplates/lab1/azuredeploy.json 
+az group deployment create --name job1 --resource-group lab1 --template-file /mnt/c/myTemplates/lab1/azuredeploy.json 
 ```
-> Note that the filename pathing assumes Linux.  If you are using the CLI within PowerShell then use the native Windows pathing, e.g. c:\\MyTemplates\\lab1\\azuredeploy.json.  Please convert any filenames in subsequent CLI examples.
+> Note that the filename pathing assumes Linux.  If you are using the CLI within PowerShell then use the native Windows pathing, e.g. c:\\myTemplates\\lab1\\azuredeploy.json.  Please convert any filenames in subsequent CLI examples.
 
 ##### PowerShell
 ```powershell
 New-AzureRmResourceGroup -Name lab1 -Location "West Europe"
-New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile c:\\MyTemplates\\lab1\\azuredeploy.json
+New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile c:\\myTemplates\\lab1\\azuredeploy.json
 ```
 
 ## Validating a deployment
@@ -162,9 +164,9 @@ Browse the [deployment operations](https://docs.microsoft.com/en-us/azure/azure-
 
 ## Adding a user parameter
 
+### storageAccount
+
 Let's move that storage account name up into the parameters section.
-
-
 
 1. Add the `arm-parameters` snippet into the parameters object
 1. Change the name to 'storageAccount'
@@ -208,8 +210,203 @@ After the editing your template should look similar to this:
 
 Note the syntax of the parameters function.  Functions are within square brackets as all expressions within square brackets are evaluated prior to deployment. The function's arguments are listed in round brackets, e.g. [functioname(arg1, arg2, arg3)].  In this instance we are passing in the name of the parameter as a string, hence the single quotes.  
 
- 
+### accountType
 
+Let's also do the same with the accountType, and introduce a couple more parameter controls at the same time.  You should now be getting used to vscode, so I'll be less explicit. The Azure Docs area is an excellent resource and that especially so for the ARM templates.  If you search on "azure docs ARM template parameters" then the top hit will take you to the <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates#parameters" target="_ docs">authoring templates</a> page.  Use this as a reference as you define the parameter section.
 
+1. Add the accountType to the parameters section, and use the parameter value in the resource section.
+1. Set the only allowed values to be Standard\_LRS, Premium\_LRS, or Standard\_RAGRS
+1. Set the default value to be Standard\_LRS
 
-> Visual Studio Code tip: note in the video how the    
+Note that the parameter type is from a fixed list:
+* string
+* secureString
+* int
+* boolean
+* object 
+* secureObject
+* array
+
+Strings, integers and booleans (true\|false) are self explanatory.
+
+The arrays and objects are the standard JSON constructs, and allow for more complex nested parameters to be defined. 
+
+The secureString and secureObject allow for sensitive data such as passwords, keys and other secrets to be specified, whilst ensuring that those parameters cannot be read following resource deployment.  More on those later.
+
+Once you have updated the template then it should look similar to this:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccount": {
+           "type": "string",
+           "metadata": {
+                "description": "Storage Account Name - must be unique"
+            },
+        "accountType": {
+           "type": "string",
+           "defaultValue": "Standard_LRS",
+           "allowedValues": [
+               "Standard_LRS",
+               "Premium_LRS",
+               "Standard_RAGRS",
+           ],
+           "metadata": {
+                "description": "SKU Type"
+            }
+        }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageAccount')]",
+            "apiVersion": "2015-06-15",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[parameters('storageAccount')]"
+            },
+            "properties": {
+                "accountType": "[parameters('accountType')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+I have also updated the cosmetic descriptions for the two parameters.
+
+## Submitting with parameter specified inline
+
+We can now specify the storage account name as we deploy.  We'll use the default value for the accountType.  Let's also start using some variables to make the commands a little shorter and reusable.
+
+##### Bash
+```bash
+rg=lab1
+template=/mnt/c/myTemplates/lab1/azuredeploy.json
+job=job2
+parms="storageAccount=richeneysa2"
+az group deployment create --name $job --parameters "$parms" --template-file $template --resource-group $rg  
+```
+Note that the inline parameters may be either space delimited NAME=VALUE pairs, or a JSON string. Therefore both of the following would be valid as an argument for the --parameters switch:
+
+```bash
+parms="storageAccount=richeneysa3 accountType=Premium_LRS"
+parms='{ "storageAccount": { "value": "richeneysa4" }, "accountType": { "value": "Standard_RAGRS" } }'
+```
+We'll look at the parameters JSON format more in the next lab.
+
+##### PowerShell
+```powershell
+$rg="lab1"
+$template="/mnt/c/myTemplates/lab1/azuredeploy.json"
+$job="job3"
+$storageAccount="richeneysa5"
+New-AzureRmResourceGroupDeployment -Name $job -ResourceGroupName $rg -TemplateFile $template -storageAccount $storageAccount
+```
+
+The inline parameters for PowerShell deployments are very slick, and effectively create additional switches for the deployment cmdlet on the fly based on the parameter names specified in the template.  See the `-storageAccount` switch in the example above; this only works as we have storageAccount as a parameter value in our template.    
+
+## Using variables
+
+Okay, our template is now looking pretty good.  The major issue with it is that it does not ensure that the storageAccount will be unique and therefore the success of the deployment cannot be assured.  Let's fix that.  A quick search on "azure storage account naming conventions" takes us to the <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions" target="docs">naming conventions</a> page in the best practices area.  The storage account name has to be lower case alphanumerics with 3-24 characters, and it recommends using a standard prefix.
+
+1. Change the storageAccount user parameter to storageAccountPrefix 
+1. Add in a default for the new parameter
+1. Create a storageAccount variable to concatenate the storageAccountPrefix with a string of numbers to make it unique.  We will introduce a few new functions to do this:
+    * **uniqueString**: will perform a hash function based on the provided string(s) and return 13 characters.  It isn't globally unique but the prefix will get us on safe ground. We'll provide it with out subscriptionID as the seed. 
+    * **concat**:  will concatenate two or more strings
+    * **toLower**: will lower case a string
+1. If we are going to concatenate the uniqueString with the prefix then we need to make sure we do not exceed 24 chars for the storageAccount, so we'll also put a maxLength restruction on the prefix parameter.
+1. Finally we will reference the variable in the resources section.
+
+Work through the steps and modify your template.  Please do this without skipping ahead to check on the template at the end of this lab page.
+
+If you need more information on the syntax of uniqueString() etc. then search on "arm functions" and it will will bring up the documentation for the various <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource" target="docs">functions</a>.  The subscription ID information can be found in the Resource functions area.  This area is constantly expanding as the functionality grows.
+
+Explore the functions available.  Some of them will be introduced as we work through different 
+
+## Testing template file validity
+
+As you get more complex with JSON templates, you will start to appreciate the intellisense that is built into vscode and the Azure Resource Manager Tools extension.
+
+Errors will get wavy red underlines, and warnings will have yellow.  Hover over one of these and the tooltip will give good information on what needs to be addressed. 
+
+The scrollbar on the right hand side will also show where there are issues to be resolved so that you can scroll quickly from one to the other. 
+
+You should not consider a template file ready to use until all errors and warnings have been removed.
+
+One of the other features that makes it easier to work with is that you can collapse sections of the JSON file.  If you move the mouse cursor just to the left of the file content then the + and - symbols appear based on the brackets.   Click on a - and it will collapse it.  It can be helpful to collapse known good sections, making it easier to focus on a section that you are actively creating or troubleshooting.   
+
+You can also use the `az group deployment validate` subcommand to syntactically validate a template file.  The rest of the command switches are the same as `az group deployment create`, making it easy to include that in a workflow.
+
+PowerShell can do exactly the same, replacing `New-AzureRmResourceGroupDeployment` with `Test-AzureRmResourceGroupDeployment`.
+
+These will all flush out fundamental issues with the format of the template.  However, the only true test is to deploy the template. 
+
+Once you have completed updating your template then deploy it to the lab1 resource group to confirm that it works as expected. You shouldn't need to specify any parameters, but you can do so if you wish.
+
+You can use the `az storage account list --resource-group lab1 --output table` command to show the results of the concatenated unique name. 
+
+## Final template
+
+Okay, so we have created an empty template, and added a basic resource snippet, before slowly iterating on the template file until we have a more useful and robust template that we can use.  As you moved through the lab you made more use of both vscode and the Azure documentation available.
+
+This process is fairly common, and is how you would work through the options to determine which should be hardcoded, which should be parameterised, and how flexible you will allow that parameterisation to be.
+
+Here is the final template for this lab.  Compare it against yours. 
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountPrefix": {
+           "type": "string",
+           "maxLength": 11,
+           "defaultValue": "richeneysa",
+           "metadata": {
+                "description": "Storage Account Prefix"
+            }
+        },
+        "accountType": {
+           "type": "string",
+           "defaultValue": "Standard_LRS",
+           "allowedValues": [
+               "Standard_LRS",
+               "Premium_LRS",
+               "Standard_RAGRS"
+           ],
+           "metadata": {
+                "description": "SKU Type"
+            }
+        }
+    },
+    "variables": {
+        "storageAccount": "[toLower(concat(parameters('storageAccountPrefix'),uniqueString(subscription().subscriptionId)))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageAccount')]",
+            "apiVersion": "2015-06-15",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[variables('storageAccount')]"
+            },
+            "properties": {
+                "accountType": "[parameters('accountType')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+## What's up next
+
+In the next section we will first look at parameter files, before looking at some of the other areas to find resource information.  
