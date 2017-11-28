@@ -35,19 +35,19 @@ Pre-req | Required | Comment
 A Twitter account | Optional | 
 <a href="https://www.getpostman.com" target="_new">Postman</a> | Required | Used in the Logic Apps lab to post JSON
 
-> Please confirm that your Azure subscription is working correctly _before_ the session:
->* Browse to [Azure Portal](http://portal.azure.com)
->* Authenticate to confirm your credentials are working correctly
->* Click on the '**+ New**' in the left hand pane
->* Search for 'Resource Group' and select it
->* Click Create and use the following parameters
->    * Resource Group Name: **Azure101IaaS**
->       * The name should show a green tick once you move away from the text box
->    * Subscription: \<your subscription name>
->    * Resource Group Location: **West Europe**
-> * Click on Create 
->
-> If the resource group is successfuly deployed then your subscription has sufficient permissions for the Azure 101 workshop.
+Please confirm that your Azure subscription is working correctly _before_ the session:
+* Browse to [Azure Portal](http://portal.azure.com)
+* Authenticate to confirm your credentials are working correctly
+* Click on the '**+ New**' in the left hand pane
+* Search for 'Resource Group' and select it
+* Click Create and use the following parameters
+    * Resource Group Name: **Azure101IaaS**
+       * The name should show a green tick once you move way from the text box
+    * Subscription: \<your subscription name>
+    * Resource Group Location: **West Europe**
+* Click on Create 
+
+If the resource group is successfuly deployed then your subscription has sufficient permissions for the Azure 101 workshop.
 
 
 
