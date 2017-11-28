@@ -306,7 +306,7 @@ $rg="lab1"
 $template="/mnt/c/myTemplates/lab1/azuredeploy.json"
 $job="job3"
 $storageAccount="richeneysa5"
-New-AzureRmResourceGroupDeployment -Name $job -ResourceGroupName $rg -TemplateFile $template -storageAccount $storageAccount
+New-AzureRmResourceGroupDeployment -Name $job -storageAccount $storageAccount -TemplateFile $template -ResourceGroupName $rg 
 ```
 
 The inline parameters for PowerShell deployments are very slick, and effectively create additional switches for the deployment cmdlet on the fly based on the parameter names specified in the template.  See the `-storageAccount` switch in the example above; this only works as we have storageAccount as a parameter value in our template.    
