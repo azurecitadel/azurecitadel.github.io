@@ -40,3 +40,4 @@ Section | Description
 <a href="/workshops/arm/theoryARM/" target="_blank">ARM Theory</a> | A short theory session on Azure Resource Manager
 <a href="/workshops/arm/theoryTemplates/" target="_blank">ARM Templates</a> | Overview of the ARM template schema and options for creating and deploying 
 <a href="/workshops/arm/arm-lab1-firstTemplate/" target="_blank">Lab #1</a> | Create a simple template, factor in parameters, and deploy using CLI or PowerShell
+<a href="/workshops/arm/arm-lab2-parameterFilesAndResources" target="_blank">Lab #2</a> | Using parameter files, sources for resources
