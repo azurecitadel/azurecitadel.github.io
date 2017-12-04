@@ -155,4 +155,4 @@ To test that the function works as expected:
 
 * This is just a simple example of using the Azure Portal to create an Azure Serverless Function triggered by a blob appearing in Azure storage. There are many other ways to trigger a function: calling a HTTP endpoint, a message arriving on a queue, a timer, an Event Hub event etc. In addition to using the portal diretly as we did here, You can also develop your function using Visual Studio or Visual Studio Code (or your favourite editor), and deploy it from GitHub.
 
-For more information on Functions see the [Azure unctions Documentation](https://docs.microsoft.com/en-us/azure/azure-functions/)
+For more information on Functions see the [Azure Functions Documentation](https://docs.microsoft.com/en-us/azure/azure-functions/)
