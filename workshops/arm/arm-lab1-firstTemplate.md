@@ -354,9 +354,9 @@ Once you have completed updating your template then deploy it to the lab1 resour
 
 You can use the `az storage account list --resource-group lab1 --output table` command to show the results of the concatenated unique name. 
 
-## Final template
+## Final azuredeploy.json template
 
-Okay, so we have created an empty template, and added a basic resource snippet, before slowly iterating on the template file until we have a more useful and robust template that we can use.  As you moved through the lab you made more use of both vscode and the Azure documentation available.
+Okay, so we have created an empty template, and added a basic resource snippet, before slowly iterating on the template file until we have a more useful and robust template that we can use.  As you moved through the lab you made more use of both vscode's functionality and also some of the available Azure documentation.
 
 This process is fairly common, and is how you would work through the options to determine which should be hardcoded, which should be parameterised, and how flexible you will allow that parameterisation to be.
 
@@ -411,6 +411,113 @@ Here is the final template for this lab:
 
 Compare it against yours. Visual Studio Code can help with comparing files. If you create a new file (CTRL-N), and paste in the contents then you can open up the Command Palette (CTRL-SHIFT-P) and type 'compare' to bring up "File: Compare Active File With...".  Select this and then the unsaved Untitled-1 file that you just created.  Visual Studio Code will highlight differing lines with red and green highlighting.
 
+## Parameter Files
+
+OK, so now we have a pretty solid template for the storage account resource type, working well with the inline parameters we used in the CLI and PowerShell deployments.  We will now create a parameter file so that it becomes a standalone file definitions.  
+
+The parameter file format uses a different JSON schema to the main templates, and as it does less then it is a simpler design.  Here is the example we used in the theory section:
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "value": "myResourceName"
+    },
+    "sku": {
+      "value": "Standard"
+    }
+  }
+}
+```
+
+The JSON schema does support a few more options, but these are rarely seen.  Essentially you need the schema and contentVersion, and for each object in the parameters section there is a simple sub-object that only includes the "value" name:value pair.
+
+The template and parameters file may be called anything, but the common naming convention for both are:
+
+**File Type** | **Naming Convention**
+template file | azuredeploy.json
+parameters file | azuredeploy.parameters.json
+
+## Creating a parameter file
+
+Let's create a parameter file in our lab1 folder.
+
+<video video width="800" height="600" autoplay loop>
+  <source type="video/mp4" src="/workshops/arm/images/creatingParameterFile.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+
+1. Open vscode
+1. Create a new file, 'azuredeploy.parameters.json', in the lab1 folder
+1. Type in `armp!` to bring up the snippet for the parameter file
+1. Break open the parameters object
+1. Use the `arm-paramvalue` snippet to add in parameter values for the two parameters in the section of your azuredeploy.json template
+1. Set your values to something that will be accepted during deployment
+
+The arm-paramvalue snippet is designed to highlight the parameter name, so you can type straight away, and then you can tab to the second placeholder to start typing the value.
+
+You can use the split editor mode in vscode to see both files at the same time (CTRL-\, or View \| Split Editor).  You can also save some screen estate by toggling the side bar (CTRL-B, or View \| Toggle Side Bar).
+
+Don't forget that the two parameters will need to seperated by a comma.  You will see a syntax error flagged up by vscode until you do.
+
+Once you have created your parameter file it should look similar to this:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountPrefix": {
+            "value": "richeneysa"
+        },
+        "accountType": {
+            "value": "Standard_LRS"
+        }
+    }
+}
+```
+
+## Deploying with a parameter file
+
+We will continue to use variables for the deployment name and the resource group, but we'l switch the parm variable to our new parameter file.  
+
+##### Bash
+```bash
+rg=lab1
+job=job.$(date --utc +"%Y%m%d.%H%M")
+template=/mnt/c/myTemplates/lab1/azuredeploy.json
+parms=/mnt/c/myTemplates/lab1/azuredeploy.parameters.json
+az group deployment create --name $job --parameters "@$parms" --template-file $template --resource-group $rg  
+```
+Note the **@** sign just before the parms variable in the --parameters switch. 
+
+##### PowerShell
+```powershell
+$rg="lab1"
+$job="job3"
+$template="C:\myTemplates\lab1\azuredeploy.json"
+$parms="c:\myTemplates\lab1\azuredeploy.parameters.json"
+New-AzureRmResourceGroupDeployment -Name $job -TemplateParameterFile $parms -TemplateFile $template -ResourceGroupName $rg 
+``` 
+
+## Finishing Up
+
+OK, that is the end of Lab 1.  Whilst it may seem that we have done a lot of work around a simple resource type such as storage account, it is a useful process to follow so that you have good knowledge of the template and parameter file structure and how to move resource elements up into variables and parameters to control the level of user flexibility.  And we have deployed via either PowerShell and Bash as we moved through the lab so that you are familiar with that side as well.
+
+You probably have a few storage accounts now in your lab1 resource group.   You can clear them up by using the portal, or run these commands:
+
+##### Bash
+```bash
+az group delete --resource-group lab1 --yes --no-wait
+```
+
+##### PowerShell
+```powershell
+Remove-AzureRmResourceGroup -Name lab1
+```
+
 ## What's up next
 
-In the next section we will first look at parameter files, before looking at some of the other areas to find resource information.  
+Creating templates from scratch using empty templates and snippets is only one or the possible ways.  In the next lab we will leverage some of the export functionality in the portal in combination with the ARM resource type reference documentation.  
