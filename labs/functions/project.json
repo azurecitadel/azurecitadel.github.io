@@ -1,0 +1,9 @@
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "CsvHelper": "6.0.0"
+      }
+    }
+   }
+}
