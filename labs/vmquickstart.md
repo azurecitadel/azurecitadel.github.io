@@ -26,7 +26,7 @@ Go to the <a href="https://docs.microsoft.com/en-us/azure/" target="docs">Azure 
 Notes:
 * The sections below show the parameters recommended for either Windows or Linux VMs
 * If running short on time then the steps to install a web service (IIS for Windows, NGINX for Linux) should be considered optional
-* The Linux portal steps below include fuller details on using an SSH key pair rather than a password
+* The Linux portal steps below include fuller details on using an SSH key pair rather than a password - again this is optional
 * For those using CLI 2.0 then use the bash shell in Windows 10 if you have it configured.  If not then click on the Cloud Shell icon in the portal and run the commands from within there.
 * If you have followed the portal customisation lab then you will also have links to some of the quickstarts directly on your dashboard
 * The 5 minute quickstarts are supplemented by additional VM tutorials available on disks, DSC, images, scale sets, load balancing, backup, monitoring, policies, etc.
@@ -88,8 +88,7 @@ Follow the Linux VM quickstart to create an Ubuntu Server 16.04 LTS server with 
 - **Subnet:** _dbSubnet_
 - **Availability Set:** Create _myLinuxAS_
 
-*Do not* click on Create straight away. Let’s explore templates a
-little.
+*Do not* click on Create straight away. Let’s explore templates a little.
 
 ### Templates
 

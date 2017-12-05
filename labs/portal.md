@@ -73,6 +73,8 @@ Link | Description
 
 ## Create a resource group called Azure101IaaS
 
+If you have already created a resource group called Azure101IaaS as part of the prereqs for the Azure 101 workshop then you can go straight to the creation of the vNet within the resource group.
+
 -   Open the Azure <a href="https://portal.azure.com" target="portal">portal</a>.
 -   Choose one of the following options:
     -   Click on the + New icon (or G+N), search for _Resource Group_ and click on it.
@@ -82,21 +84,26 @@ Link | Description
     -   Resource Group Name: _Azure101IaaS_
     -   Resource Group Location: _West Europe_
 -   Note the deployment notification area
--   Refresh the resource groups and click on the _Azure101IaaS_ resource group
+
 
 ## Create a Virtual Network (VNet) with two subnets
 
+-   Click on the _Azure101IaaS_ resource group
+    -   If it is not visible then refresh the resource groups
 -   Add a Virtual Network:
     -   Click on the **+**
     -   Search on _Virtual Network_
     -   Select, then Create
 -   **Name:** _azure101vNet_
 -   **Address space:** _10.4.0.0/16_
+-   **Resource Group:** Select the 'Use Existing' radio button and select _Azure101IaaS_ from the drop down box
+-   **Location:** _West Europe_
 -   **Subnet name:** _webSubnet_
 -   **Subnet address range:** _10.4.1.0/24_
 
-Once created, click into the VNet and add the second subnet:
--   Select subnets on the blade
+Once created, click on the new VNet in the Azure101IaaS resource group
+-   THis will open up the "blade"
+-   Scroll down the pane and find Subnets in the Settings area
 -   Add _dbSubnet_ (10.4.2.0/24)
 
 ### If you have time:
