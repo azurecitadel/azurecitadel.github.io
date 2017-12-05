@@ -28,12 +28,12 @@ Allow five hours for a full session including all of the labs.
 The workshop requires the following
 
 Pre-req | Required | Comment
-<a href="/guides/prereqs/subscription" target="_new">Azure Subscription</a> | Required | 
-<a href="/guides/prereqs/wsl" target="_new">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
-<a href="/guides/prereqs/powershell" target="_new">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
-<a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> | Optional | 
+<a href="/guides/prereqs/subscription" target="_blank">Azure Subscription</a> | Required | 
+<a href="/guides/prereqs/wsl" target="_blank">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
+<a href="/guides/prereqs/powershell" target="_blank">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
+<a href="/guides/prereqs/vscode" target="_blank">Visual Studio Code</a> | Optional | 
 A Twitter account | Optional | 
-<a href="https://www.getpostman.com" target="_new">Postman</a> | Required | Used in the Logic Apps lab to post JSON
+<a href="https://www.getpostman.com" target="_blank">Postman</a> | Required | Used in the Logic Apps lab to post JSON
 
 Please confirm that your Azure subscription is working correctly _before_ the session:
 * Browse to [Azure Portal](http://portal.azure.com)
@@ -56,10 +56,10 @@ If the resource group is successfuly deployed then your subscription has suffici
 ### Labs
 
 Lab | Description
-<a href="/labs/portal/" target="_new">Portal & vNets</a> | Learn and customise the Azure portal, and create vNets and subnets
-<a href="/labs/vmquickstart" target="_new">VM Quickstart</a> | Follow a Quickstart for either Linux or Windows VMs, via the portal, CLI or PowerShell
-<a href="/labs/webapps" target="_new">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
-<a href="/labs/logicapps" target="_new">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
+<a href="/labs/portal/" target="_blank">Portal & vNets</a> | Learn and customise the Azure portal, and create vNets and subnets
+<a href="/labs/vmquickstart" target="_blank">VM Quickstart</a> | Follow a Quickstart for either Linux or Windows VMs, via the portal, CLI or PowerShell
+<a href="/labs/webapps" target="_blank">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
+<a href="/labs/logicapps" target="_blank">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
 
 ### Content
 The below sections are [PowerPoint](/workshops/azure101/azure101InfraAndAppsPresenterDeck.pptx) content unless specified otherwise

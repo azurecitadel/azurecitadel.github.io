@@ -45,11 +45,18 @@ Everyone else may use the Cloud Shell (**>_**) shown at the top of the Azure Por
 
 **1. Clone the HTML files from Github**
 
-Type (or copy and paste) the following commands into the console, configuring the _first_ and _last_ variables to ensure that the app name and the user will be unique.  
-```
+We will use some bash variables to make this section work well.  Set the _first_ and _last_ variables to match your given name and family name.  
+
+```bash
 first=Firstname
 last=Lastname
+```
 
+This will help to ensure that the variables set in the following section are likely to be unique, notably the app name (which has to be globally unique) and the username (that has to be unique within the subscription). 
+
+Type (or copy and paste) the following commands into the console:
+
+```bash
 git clone https://github.com/richeney/azure101-webapp-html
 cd azure101-webapp-html
 git init
@@ -60,30 +67,40 @@ git config --global user.email "$first.$last@microsoft.com"
 git config --global user.name "$first $last"
 git config --global credential.helper cache
 
-
 rg=Azure101PaaS
 user=${first}${last}Deploy
 pwd=azure101p455w0rd
 appName=azure101${first}${last}
 ```
-* The above commands copy the HTML files locally, change to that directory, initialise it for Git, and then finally lists the files.  The pwd command prints the working directory so that you know where they are.
-* We are then setting git to cache our credentials after the first successful connection to a remote, and also defining some variables to use in the commands in the following sections.
+1. The first section
+  * clones the HTML files in the GitHub repo locally
+  * changes the working directory to the new clone of the repo and then initialises it for Git
+  * lists the files and then finally the pwd command prints the working directory so that you know where they are locally
+2. The second section 
+  * configures git with user information 
+  * sets up to cache our credentials after the first successful connection to a remote repository
+3. The third section then defines some variables (for the resource group, deployment user credentials and the web app name) that we'll use later in the lab
 
-Double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.  If you are in the Cloud Shell then cat index.html will display the raw html.  
+If you have installed full bash on Windows 10 then you may double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.  
+
+If you are in the Cloud Shell then `cat index.html` will display the raw html.  
 
 **2. Log in to Azure using the CLI 2.0 and create the deployment user**
 
 Create the deployment user:
+
 ```
 az webapp deployment user set --user-name $user --password $pwd
 ```
+
 * You will be prompted to make your username or password more unique if you have chosen one that is too common, although the error is a basic 400 decline HTTP error
 * The deployment user is the equivalent of a service account so that Git can authenticate to Azure and deploy to it
 
 **3. Create the resource group**
 
-Create the resource group
-```
+Create the resource group:
+
+```bash
 az group create --name $rg --location westeurope
 ```
 
@@ -92,17 +109,21 @@ az group create --name $rg --location westeurope
 The App Service plans provide the underlying resources for your apps, and multiple apps can use them. The plans define the region, available instance sizes, scale count and SKU level, i.e. free, shared, basic, standard, premium.
 
 Create an App Service plan called quickStartPlan on the Free SKU
-```
+
+```bash
 az appservice plan create --name quickStartPlan --resource-group $rg --sku FREE
 ```
+
 * You should see output JSON when the above command succeeds
 
 **5. Create the Web App**
 
 Create the Web App. The name for the Web App must be globally unique as it forms part of the FQDN. You will be prompted to change it if it already exists.
-```
+
+```bash
 az webapp create --name $appName --resource-group $rg --plan quickStartPlan
 ```
+
 * Again, there will be output JSON when the command succeeds
 * Open your web browser and navigate to http://\<unique_app_name>.azurewebsites.net. (You will also find the link in the new web app in the Azure portal.)
 * You should see a ‘placeholder’ web page – this indicates that the web app is running and ready to be configured.
@@ -112,11 +133,13 @@ az webapp create --name $appName --resource-group $rg --plan quickStartPlan
 **6. Create the Git deployment access point**
 
 Create the http endpoint for the deployment:
-```
+
+```bash
 deployuri=$(az webapp deployment source config-local-git --name $appName --resource-group $rg --query url --output tsv)
 
 echo $deployuri
 ```
+
 * The first command create an https endpoint similar to below, and then saves that value into the $deployuri variable.  The second prints the variable to screen, e.g. 
   `https://<username>@<appname>.scm.azurewebsites.net/<appname>.git`
 
@@ -125,17 +148,21 @@ echo $deployuri
 **7. Add a Git remote called _Azure_ and then push to the Web App**
 
 Create the Git remote, calling it azure:
-```
+
+```bash
 git remote add azure $deployuri
 
 git remote -v
 ```
+
 Push the master branch of the local html repo up to the azure remote
-```
+
+```bash
 echo $pwd 
 
 git push azure master
 ```
+
 Refresh the web page and confirm that it has changed
 
 **8. Change the HTML and push again to the Web App**
@@ -143,11 +170,13 @@ Refresh the web page and confirm that it has changed
 Edit the index.html to change the Twitter account to your own.  You can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser. 
 
 Commit the change, and then push it up to the azure remote
-```
+
+```bash
 git commit -a -m "Description of the change" 
 
 git push azure master
 ```
+
 Refresh the web page and see if it has been changed
 
 ### If you have time:
@@ -165,22 +194,34 @@ Azure offers many ways of achieving something, with a view that users should use
 
 * Open the portal
 * Create a new Resource Group, and call it **Azure101PaaS**
-* Click on **Add** in the new Resource Group and add a Web App
-  * Set the App name to something globally unique, as it will form part of the FQDN, such as **azure101\<yourname>**
-  * Create and use a new App Service Plan called **quickStartPlan** in the same region as the Resource Group, specifying the **F1** free tier
+* Click on **+ New**, search for "Web App" and click on Create
+  * Set the App name to something globally unique, such as **azure101\<yourname>**, as it will form part of the FQDN
+  * Create a new resource group, and call it _Azure101PaaS_
+  * Keep the default of Windows web app
+  * Click on the app servioce plan/location so that we can define our own
+    * create a new App Service Plan called **quickStartPlan** 
+    * use the same region as the Resource Group
+    * specify the **F1** free tier
+    * click on **OK**
   * Click on **Create**
-* Open the App Service blade once it has deployed successfully
+
+Once the web app has deployed successfully:
+* Open the App Service blade 
 * Click on the URL in the Overview section
 * The placeholder web page will be opened in a new tab: 
 
 ![](/labs/webapps/images/webappPlaceholder.jpg) 
 
-* Open the **App Service Editor** in the App Service blade's Development tools section
-* Click on the **Go** button in the main pane.  This will open up a new tab containing the App Service Editor environment.
-* Select the Git button on the left and set the GitHub URL: `https://github.com/richeney/azure101-webapp-html`
+* Scroll down in the App Service blade and find the **App Service Editor** in the Development Tools section
+* Click on the **Go->** link in the main pane.  This will open up a new tab containing the App Service Editor environment.
+* Select the Git button on the left 
+
+    ![Git](/labs/webapps/images/gitLogo.png)
+
+* Set the Repository URL to `https://github.com/richeney/azure101-webapp-html`
 * Click on the Clone from a git URL
 * Type ``exit`` once the clone is complete
-* Return the the tab containing the webpage, and refresh.  It should now show an updated page containing some static web page content plus a Twitter feed
+* Return to your browser tab containing the webpage, and refresh.  It should now show an updated page containing some static web page content plus a Twitter feed
 * Click on the files icon on the left and then select the index.html
 * Edit the index.html file, changing the Twitter account on the twitter-timeline class to your own
 * Return the the tab containing the webpage, and refresh.  It should now show your Twitter feed instead
