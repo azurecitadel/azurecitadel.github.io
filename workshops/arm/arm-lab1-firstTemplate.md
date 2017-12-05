@@ -10,8 +10,8 @@ previous:
   url: ../theoryTemplates
   title: Azure Resource Manager Templates
 next:
-  url: ../arm-lab2-functions
-  title: Utilising more complex functions 
+  url: ../arm-lab2-sourcesOfResources
+  title: Other sources of resources 
 ---
 
 {% include toc.html %}
