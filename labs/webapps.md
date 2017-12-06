@@ -155,7 +155,7 @@ git remote add azure $deployuri
 git remote -v
 ```
 
-Push the master branch of the local html repo up to the azure remote
+Push the master branch of the local html repo up to the azure remote:
 
 ```bash
 echo $pwd 
@@ -163,13 +163,13 @@ echo $pwd
 git push azure master
 ```
 
-Refresh the web page and confirm that it has changed
+Refresh the web page and confirm that it has changed.
 
 **8. Change the HTML and push again to the Web App**
 
 Edit the index.html to change the Twitter account to your own.  You can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser. 
 
-Commit the change, and then push it up to the azure remote
+Commit the change, and then push it up to the azure remote:
 
 ```bash
 git commit -a -m "Description of the change" 
@@ -177,7 +177,7 @@ git commit -a -m "Description of the change"
 git push azure master
 ```
 
-Refresh the web page and see if it has been changed
+Refresh the web page and confirm that it has been changed as expected.  
 
 ### If you have time:
 
