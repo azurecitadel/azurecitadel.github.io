@@ -20,3 +20,7 @@ Grab your [Azure free](https://azure.microsoft.com/en-gb/free/) subscription and
 ----------
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/D9182vBuj2M" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+----------
+
+Follow Azure Dan on Twitter: @azuredan
