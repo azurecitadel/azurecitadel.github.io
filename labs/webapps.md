@@ -193,26 +193,26 @@ There is a rich ecosystem built around the PaaS applications.  If you have time 
 Azure offers many ways of achieving something, with a view that users should use the tools with which they are most comfortable.  This alternative version of the lab is not recommended for larger scale web farms, but does given an insight into the power of PaaS level Web Apps.
 
 * Open the portal
-* Create a new Resource Group, and call it **Azure101PaaS**
 * Click on **+ New**, search for "Web App" and click on Create
   * Set the App name to something globally unique, such as **azure101\<yourname>**, as it will form part of the FQDN
-  * Create a new resource group, and call it _Azure101PaaS_
-  * Keep the default of Windows web app
-  * Click on the app servioce plan/location so that we can define our own
-    * create a new App Service Plan called **quickStartPlan** 
+  * Create a new resource group, and call it **Azure101PaaS**
+  * There is a choice of WIndows or Linux based web apps.  Retain the WIndows default.
+  * Click on the app service plan/location so that we can define our own
+    * create a new App Service Plan called **freeTier** 
     * use the same region as the Resource Group
     * specify the **F1** free tier
     * click on **OK**
   * Click on **Create**
 
 Once the web app has deployed successfully:
-* Open the App Service blade 
-* Click on the URL in the Overview section
-* The placeholder web page will be opened in a new tab: 
+* open the App Service blade 
+* click on the URL in the Overview section
+
+The placeholder web page will be opened in a new tab: 
 
 ![](/labs/webapps/images/webappPlaceholder.jpg) 
 
-* Scroll down in the App Service blade and find the **App Service Editor** in the Development Tools section
+* Scroll down the App Service blade and find **App Service Editor** in the Development Tools section
 * Click on the **Go->** link in the main pane.  This will open up a new tab containing the App Service Editor environment.
 * Select the Git button on the left 
 
