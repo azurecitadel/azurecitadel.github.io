@@ -27,4 +27,7 @@ John_And_Ben:
     email: ben.coleman@microsoft.com
     name: John Duckmanton & Ben Coleman
     avatar: authors/bcdj.jpg
-
+Dan_Baker:
+    name: Dan Baker
+    email: dan.baker@microsoft.com
+    avatar: authors/dan-b.jpg
