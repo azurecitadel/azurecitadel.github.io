@@ -30,14 +30,25 @@ We will trigger the tests using the Postman application which is a standard way 
 
 ## Deploy Cosmos DB
 
-We won't be using the Cosmos DB until the end of the lab, but we'll deploy it first as it will take a little while to be created.
+We won't be using the Cosmos DB until the end of the lab, but we'll deploy it first as it will take a little while to be created.  You can either create the Cosmos DB via the portal, or deploy it via the CLI as infrastructure as code
+
+#### Portal
 
 * Click **Add** in the Azure101PaaS resource group
 * Add Azure Cosmos DB
   * ID: **\<yourname>cosmosdb**
-  * API: **SQL (DocumentDB)**
+  * API: **SQL** (this is essentially DocumentDB, or NoSQL)
   * Resource Group: **Azure101PaaS**
   * Location: **West Europe**
+
+#### CLI 2.0
+
+You can use the CLI to deploy a template to build the Cosmos DB.  Don't forget to **change the name=\<yourname>cosmosdb parameter** before submitting.
+
+```bash
+template='http://azurecitadel.github.io/labs/logicapps/azuredeploy.json'
+az group deployment create --parameters name=<yourname>cosmosdb --resource-group Azure101PaaS --template-uri $template --name job1  --no-wait  
+```
 
 Now open up the Azure portal in a new tab and continue with the following steps.   
 
@@ -51,6 +62,13 @@ Now open up the Azure portal in a new tab and continue with the following steps.
 
 ## Create the Logic App
 
+Create an empty Logic App in the Azure101PaaS resource group:
+
+<video video width="800" height="600" autoplay controls muted>
+  <source type="video/mp4" src="/labs/logicapps/images/createLogicApp.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+
 * Click on **New** or **Add** 
 * Find _Logic App_ and click on **Create**
   * Name: **feedbackLogicApp**
@@ -63,25 +81,34 @@ Now open up the Azure portal in a new tab and continue with the following steps.
 
 We'll create a REST API point, and define the expected schema for the JSON.  Once a valid request has been received then we'll send back an HTTP response.
 
+<video video width="800" height="600" autoplay controls muted>
+  <source type="video/mp4" src="/labs/logicapps/images/workflow-1-httpEndpoint.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+
 ### Request
 
-* Search for **Request** / Response for the trigger
-  * Paste in the JSON schema
+* Search for **http request** and select the trigger
+* Paste in the JSON schema
 
 Note that the JSON describes the keys in order to give them titles such as _feedbackEmail_. We will then be able to use as dynamic content later in the lab, much like a variable. 
 
 ### Response
 
-* Click on **+New Step** and then **Add an action**
-* Search for Request / **Response** for the action
-  * Use the default HTTP status code of 200
-  * Add a header, with **_id_** as the key and **_feedbackId_** as the value
-    * Click on the _Add dynamic content_ button and select **feedbackId**
-  * Body: **Feedback received from _feedbackEmail_**
+* Select the corresponding **response**
+* Use the default HTTP status code of 200
+* Add a header, with **ID** as the key
+* Click in the value field for the ID key and then select **_feedbackId_** from the selection of dynamic content
+* Body: Set to **Feedback received from _feedbackEmail_**, again making use of the dynamic content 
 
 ![](/labs/logicapps/images/logicAppRequestResponse.png)
 
 ### Test the endpoint
+
+<video video width="800" height="600" autoplay controls muted>
+  <source type="video/mp4" src="/labs/logicapps/images/testHttpEndpoint.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
 
 * Click on the Logic App name at the top of the portal
 * You will now be in the Logic App's Overview screen 
@@ -114,7 +141,6 @@ Note that the JSON describes the keys in order to give them titles such as _feed
   * Open up the individual steps to view the inputs and outputs
 
 ![](/labs/logicapps/images/logicAppRun.png)
-
 
 ## Send an email if feedback rating is poor
 
@@ -160,13 +186,12 @@ We'll now add a collection called production into our feedback database, and we'
 
 * Go into the Cosmos DB resource
 * Click on **Add Collection** in the Overview
-  * Collection Id: **production**
+  * Database id: **main**
+  * Collection Id: **feedback**
   * Storage Capacity: **Fixed (10GB)**
   * Initial Throughput Capacity (RU/s): **400**
-  * Partition Key: **/source**
-  * Database: **feedback**
 
-![](/labs/logicapps/images/cosmosDbCollection.png)  
+![Cosmos DB Connection](/labs/logicapps/images/workflow-3-cosmosDbCollection.png)
 
 * In the Cosmos DB Overview area, copy the URI
   * The URI is in the form **https://_\<ID>_.documents.azure.com:443/**
@@ -177,46 +202,39 @@ We'll now add a collection called production into our feedback database, and we'
 * Click on **Edit** to re-open the Logic App Designer
 * Add a new action between Response and the Condition
   * Hover the mouse over the arrow under Response and a **+** sign will appear
-* Search on Cosmos DB and select _Create or update document_
-* Create the connection manually
-  * Click on the _Manually enter connection information_ link
-  * The required values for Connection Name and  Access Key can be found in the Cosmos DB **Keys** area 
-    * **Connection Name** = Primary Connection String
-    * **Account ID** = first part of URI, i.e. https://**\<Account ID>**.documents.azure.com:443/ 
-    * **Access Key** = Primary Key
-  * _Tip_: Open up a new tab or window to portal.azure.com and copy the values using the icon on the right of each field  
-* Example connection screen below:
+  * Click on it and then select 'Add an action'
+* Search on 'Cosmos DB' and select _Create or update document_
+* Paste in the connection string `https://<yourname>cosmosdb.documents.azure.com:443/`
+* Select the Cosmos DB and click on Create
 
-![](/labs/logicapps/images/cosmosDbManualConnection.png)  
+![Cosmos DB Connection](/labs/logicapps/images/workflow-3-cosmosDbConnection.png)
 
 ### Define the document format and placement
 
 Set the parameters for the _Create or update document_ action:
 
-* **Database ID**: Select _feedback_ from the drop down
-* **Collection ID**: Select _production_ from the drop down
-* **Document**: Enter the following, replacing ``_feedbackVarname_`` with the relevant dynamic content:
+* **Database ID**: Select _main_ from the drop down
+* **Collection ID**: Select _feedback_ from the drop down
+* **Document**: Enter the following, replacing `feedbackVarname` with the relevant dynamic content:
 
 ```
 {
-  "email": "_feedbackEmail_",
-  "feedback": "_feedbackText_",
-  "id": "_feedbackId_",
-  "name": "_feedbackName_",
-  "source": "/_feedbackSource_",
-  "rating": "_feedbackRating_"
+  "email": "feedbackEmail",
+  "feedback": "feedbackText",
+  "id": "feedbackId",
+  "name": "feedbackName",
+  "source": "feedbackSource",
+  "rating": "feedbackRating"
 }
 ```
   
-* Set **IsUpsert** to _Yes_
-  * This allows both updates and inserts
-* In advanced options, set the **Partition key value** to /_\_feedbackSource\_
+* Set **IsUpsert** to _Yes_, which allows both updates and inserts
+* Do not set up a partition ley.  These are only used for the unlimited size Cosmos DBs where the partition key is import for sharding.
 
 Below is an example of the _Create or update document_ logic
 
-![](/labs/logicapps/images/logicAppDocument.png)  
+![Cosmos DB Connection](/labs/logicapps/images/workflow-3-cosmosDbDocument.png)
 
-* _Note the leading slash in the partition key value, source, and that this exactly matches the source variable in the JSON.  Also that we defined /source as the partition key when we added the collection.  This is key to make the partitioning work._
 * Save
 
 ### Test the whole Logic App workflow
