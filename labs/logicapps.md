@@ -91,11 +91,18 @@ We'll create a REST API point, and define the expected schema for the JSON.  Onc
 * Search for **http request** and select the trigger
 * Paste in the JSON schema
 
+![request](/labs/logicapps/images/httpRequest.png)
+
 Note that the JSON describes the keys in order to give them titles such as _feedbackEmail_. We will then be able to use as dynamic content later in the lab, much like a variable. 
 
 ### Response
 
+* Click on the **+ New Step** at the bottom
+* Select **Add an Action**
 * Select the corresponding **response**
+
+![request](/labs/logicapps/images/httpRequest.png)
+
 * Use the default HTTP status code of 200
 * Add a header, with **ID** as the key
 * Click in the value field for the ID key and then select **_feedbackId_** from the selection of dynamic content
