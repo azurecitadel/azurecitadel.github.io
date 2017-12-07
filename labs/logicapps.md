@@ -229,7 +229,7 @@ Set the parameters for the _Create or update document_ action:
 ```
   
 * Set **IsUpsert** to _Yes_, which allows both updates and inserts
-* Do not set up a partition ley.  These are only used for the unlimited size Cosmos DBs where the partition key is import for sharding.
+* Do not set up a partition key.  These are only used for the unlimited size Cosmos DBs where the partition key is import for sharding.
 
 Below is an example of the _Create or update document_ logic
 
