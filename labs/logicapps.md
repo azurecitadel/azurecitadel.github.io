@@ -235,13 +235,14 @@ PR departments proactively monitor for comments on social media platforms, notab
 
 ### Create the conditional action
 
-Another video, foillowed by the steps:
+Another video, followed by the steps:
 
 <video video width="800" height="600" autoplay controls muted>
   <source type="video/mp4" src="/labs/logicapps/images/workflow-2-conditionalEmail.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
 
+* Return to the Logic App, and re-open the Logic App Designer
 * Click on **+New Step** and then **Add a condition**
   * Value:  **_rating_**
   * Operator: **is less than**
