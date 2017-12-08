@@ -1,6 +1,6 @@
 ---
 layout: article
-title: POostman instructions for testing the HTTP endpoint
+title: Postman instructions for testing the HTTP endpoint
 date: 2017-12-07
 categories: guides
 tags: [logic, app, postman, test, http, endpoint, json, payload]
@@ -31,6 +31,19 @@ The video below shows Postman in action, followed by the step by step instructio
     * Value: **application/json**
 
 ![](/labs/logicapps/images/postmanHeaders.png)  
+
+  * Copy the sample payload JSON from the code block below:
+
+```json
+{
+    "id": 1504522921969,
+    "name": "Joe Bloggs",
+    "email": "joe.bloggs@outlook.com",
+    "feedback": "Your website crashes when I add items to my Wish List.  Shocking.",
+    "rating": 2,
+    "source": "webapp"
+}
+```
 
   * On the Body tab, toggle the body type to raw
   * Open the <a href="/labs/logicapps/feedback.json" target="payload">example JSON payload</a> we saw earlier, and copy the contents to the clipboard 
