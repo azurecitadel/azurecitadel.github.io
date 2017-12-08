@@ -127,9 +127,13 @@ Note that the JSON describes the keys in order to give them titles such as _emai
 * Click in the value field for the ID key and then select **_id_** from the selection of dynamic content
 * Body: Set to **Feedback from _name_ has been successfuly received** (followed by a newline), again making use of the dynamic content 
 
+Once you have completed the configuration then your Logic App should look something like the picture below.
+
 ![](/labs/logicapps/images/httpRequestResponse.png)
 
-> In the steps above we generated the JSON schema on the fly, but you can also create proper schemas outside of the portal and then paste those in.  As an example, I also generated a [JSON schema](/labs/logicapps/schema.json] using the excellent https://jsonschema.net website and then modified to customise the variable titles, descriptions, etc.  The schema describes the expected format.
+Don't forget to **Save** your Logic App's new HTTP endpoint before we test that it works in the next step.
+
+> In the steps above we generated the JSON schema on the fly, but you can also create proper schemas outside of the portal and then paste those in.  As an example, I also generated a [JSON schema](/labs/logicapps/schema.json) using the excellent https://jsonschema.net website and then modified to customise the variable titles, descriptions, etc.  The schema describes the expected format.
 
 ### Test the endpoint
 
