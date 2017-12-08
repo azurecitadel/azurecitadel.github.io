@@ -6,38 +6,38 @@
     "email": {
       "description": "End user's email address", 
       "id": "/properties/email",
-      "title": "feedbackEmail", 
+      "title": "email", 
       "type": "string"
     }, 
     "feedback": {
       "description": "String field containing feedback from the user.", 
       "id": "/properties/feedback", 
-      "title": "feedbackText", 
+      "title": "feedback", 
       "type": "string"
     }, 
     "id": {
       "description": "UTC milliseconds to create unique timestamp based ID", 
       "id": "/properties/id", 
-      "title": "feedbackId", 
+      "title": "id", 
       "type": "integer"
     },
     "name": {
       "description": "String for username in \"GivenName FamilyName\" format.", 
       "id": "/properties/name", 
-      "title": "feedbackName", 
+      "title": "name", 
       "type": "string"
     },
     "rating": {
       "description": "Star rating - integer, 1-5 are valid", 
       "id": "/properties/rating", 
-      "title": "feedbackRating", 
+      "title": "rating", 
       "type": "integer"
     },
     "source": {
       "default": "webapp",
       "description": "Where did the feedback come from.  Used to partition.", 
       "id": "/properties/source", 
-      "title": "feedbackSource", 
+      "title": "source", 
       "type": "string"
     }
   }, 
