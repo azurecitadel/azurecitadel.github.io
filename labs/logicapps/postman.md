@@ -55,4 +55,10 @@ The video below shows Postman in action, followed by the step by step instructio
 
 If you take a look at the headers of the response then you'll notice some standard headers, some that are associated with the Logic App itself, and also our custom header showing the ID number that we originally passed in through the sample JSON payload. 
 
-If you want to POST again to retest, i.e. after adding Logic App workflow functionality, then you can just click on the blue POST button again.  And feel free to modify the content of the JSON payload before POSTing.
+If you want to POST again to retest, i.e. after adding Logic App workflow functionality, then you can just click on the blue SEND button again.  And feel free to modify the content of the JSON payload before POSTing.
+
+## Generating cURL commands from Postman
+
+This section is entirely optional and you are free to ignore it.
+
+You can generate a curl command from within Postman.  Once you have the REST API test woirking successfully, then click on the 'code' link at the top right of the application, just underneath that blue SEND button.  You can then use the drop down to select cURL, and see the command you can run within bash to achieve the same test.  This is very useful for those of you wishing to automate endpoint testing. 
