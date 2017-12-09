@@ -40,7 +40,7 @@ For this lab we will be using Visual Studio Code, and it is assumed that you hav
 ## Create the azuredeploy.json template
 
 Let's create an empty ARM JSON file in Visual Studio Code using the snippets.  
-<video video width="800" height="600" autoplay loop>
+<video video width="800" height="600" autoplay controls>
   <source type="video/mp4" src="/workshops/arm/images/lab1-1-createTemplate.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
@@ -74,7 +74,7 @@ The theory section on [ARM templates](../theoryTemplates) explains the various s
 ## Add a storage account resource
 
 Let's add a simple storage account resource into the empty list:
-<video video width="800" height="600" autoplay loop>
+<video video width="800" height="600" autoplay controls>
   <source type="video/mp4" src="/workshops/arm/images/lab1-2-addStorageAccount.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
@@ -304,8 +304,8 @@ We'll look at the parameters JSON format more in the next lab.
 ```powershell
 $rg="lab1"
 $template="/mnt/c/myTemplates/lab1/azuredeploy.json"
-$job="job3"
-$storageAccount="richeneysa5"
+$job="job2"
+$storageAccount="richeneysa2"
 New-AzureRmResourceGroupDeployment -Name $job -storageAccount $storageAccount -TemplateFile $template -ResourceGroupName $rg 
 ```
 
@@ -350,9 +350,148 @@ These will all flush out fundamental issues with the format of the template.  Ho
 
 Once you have completed updating your template then deploy it to the lab1 resource group to confirm that it works as expected. You shouldn't need to specify any parameters, but you can do so if you wish.  If you have issues with your template then compare it against the one at the bottom of the lab to see how it differs.  
 
- 
+You can use the `az storage account list --resource-group lab1 --output table` or `(Get-AzureRmStorageAccount -ResourceGroupName lab1).StorageAccountName` commands to show the results of the concatenated unique name. 
 
-You can use the `az storage account list --resource-group lab1 --output table` command to show the results of the concatenated unique name. 
+## Using the outputs section
+
+The last section is probably the most optional out of all of the ARM template sections, but you will start to make more and more use of it if you start to nest templates, or wrap them up in other scripting.  
+
+If you have been deploying the templates using the bash CLi with the standard JSON output, then you will see that you have some standard JSON information outputted by each deployment.  You can customise that output using the output section.  We are going to use it to output the unique storage account name that has been generated.
+
+### Configuring the outputs section in the template
+
+In the video below we'll configure the output section in our azuredeploy.json file:
+
+<video video width="800" height="600" autoplay controls>
+  <source type="video/mp4" src="/workshops/arm/images/lab1-4-addingOutputs.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+
+The outputs section in our template now looks like this:
+
+```json
+    "outputs": {
+        "storageAccount": {
+            "type": "string",
+            "value": "[variables('storageAccount')]"
+        }
+    }
+```
+
+The JSON from the deployment upon completion will now be customised.  Below is an example of that output. Check out the outputs section:
+
+```json
+{
+  "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/lab1/providers/Microsoft.Resources/deployments/job.20171209.1344",
+  "name": "job.20171209.1344",
+  "properties": {
+    "correlationId": "4b9b4fab-6277-49ae-9d5b-3228290e74a7",
+    "debugSetting": null,
+    "dependencies": [],
+    "mode": "Incremental",
+    "outputs": {
+      "storageAccount": {
+        "type": "String",
+        "value": "richeneysa4wqyiyovsesrs"
+      }
+    },
+    "parameters": {
+      "accountType": {
+        "type": "String",
+        "value": "Standard_LRS"
+      },
+      "storageAccountPrefix": {
+        "type": "String",
+        "value": "richeneysa"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiVersions": null,
+            "locations": [
+              "westeurope"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts"
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "template": null,
+    "templateLink": null,
+    "timestamp": "2017-12-09T13:47:06.021708+00:00"
+  },
+  "resourceGroup": "lab1"
+}
+```
+
+Look at where the name of the storage account is nested within the JSON object.  If we remove all of the other data, it would look like this::
+
+```json
+{
+  "properties" : {
+    "outputs" : {
+      "storageAccount" {
+        "type": "String",
+        "value": "richeneysa4wqyiyovsesrs"
+      }
+    }
+  }
+}
+```
+
+### Using the outputs section with Bash and PowerShell
+
+And we can now harvest that output in order to set a variable.  Let's see how you can do that for a single value in both Bash and PowerShell:
+
+
+#### Bash
+```bash
+rg=lab1
+job=job.$(date --utc +"%Y%m%d.%H%M")
+template=/mnt/c/myTemplates/lab1/azuredeploy.json
+query='properties.outputs.storageAccount.value'
+storageAccount=$(az group deployment create --query "$query" --template-file $template --output tsv --name $job --resource-group $rg)
+echo $storageAccount
+richeneysa4wqyiyovsesrs
+```
+
+Let's focus on what is new. 
+
+The `query='properties.outputs.storageAccount.value'` line is setting a new `$query` variable to match the nesting you saw in the JSON above. And we have introduced the `--query` switch to the deployment, which allows us to use these JMESPATH queries to customise which values are output.  
+
+We have also used the `--output` switch to output in tab separated value format which is far simpler when settings bash variables.  Run `az account show --output json` to see what that the default output looks like and then compare with the other possible output types, jsonc, table and tsv.  Try a few simple queries such as `--query user` and `--query user.name` to see how it affects the result. 
+
+The JMESPATH queries are hugely flexible and powerful, but here we are simply selecting one of the outputs.  There is a separate [Bash and CLI](/guides/cli/) guide if you want to go deeper in this area.
+
+#### PowerShell
+```powershell
+$rg="lab1"
+$job = 'job.' + ((Get-Date).ToUniversalTime()).tostring("MMddyy.HHmm")
+$template="C:\myTemplates\lab1\azuredeploy.json"
+$storageAccount = (New-AzureRmResourceGroupDeployment -Name $job -storageAccount $storageAccount -TemplateFile $template -ResourceGroupName $rg).Outputs.storageAccount.Value
+echo $storageAccount
+```
+
+And here we are doing exactly the same logic in PowerShell.  Note how the command is wrapped in parentheses and then we are pulling out the sub-value.  
+
+### More on outputs
+
+There are a more sections in these labs that go into a little more detail on outputs.   
+
+First is the outputs section for the Azure Quickstart Template in lab2.  This deals with multiple values in the output sections and how you can install and use 'jq' in bash, or use the more flexible objects within PowerShell.
+
+Secondly, the third lab on more complex objects covers some of the functions that you can use to pull out useful information.
+
+Finally, check out the section in the fourth lab on nesting templates. 
 
 ## Final azuredeploy.json template
 
@@ -405,17 +544,22 @@ Here is the final template for this lab:
             }
         }
     ],
-    "outputs": {}
-}
+    "outputs": {
+        "storageAccount": {
+            "type": "string",
+            "value": "[variables('storageAccount')]"
+        }
+    }
+}}
 ```
 
 Compare it against yours. Visual Studio Code can help with comparing files. If you create a new file (CTRL-N), and paste in the contents then you can open up the Command Palette (CTRL-SHIFT-P) and type 'compare' to bring up "File: Compare Active File With...".  Select this and then the unsaved Untitled-1 file that you just created.  Visual Studio Code will highlight differing lines with red and green highlighting.
 
 ## Parameter Files
 
-OK, so now we have a pretty solid template for the storage account resource type, working well with the inline parameters we used in the CLI and PowerShell deployments.  We will now create a parameter file so that it becomes a standalone file definitions.  
+OK, so now we have a pretty solid template for the storage account resource type, working well with the inline parameters we used in the CLI and PowerShell deployments.  We will now create a parameter file so that we can use the two files together for our deployments.  
 
-The parameter file format uses a different JSON schema to the main templates, and as it does less then it is a simpler design.  Here is the example we used in the theory section:
+The parameter file format uses a different JSON schema to the main templates, and, as it does rather less, the parameter schema is a much simpler design.  Here is the example we used in the theory section:
 
 ```json
 {
@@ -444,8 +588,8 @@ parameters file | azuredeploy.parameters.json
 
 Let's create a parameter file in our lab1 folder.
 
-<video video width="800" height="600" autoplay loop>
-  <source type="video/mp4" src="/workshops/arm/images/creatingParameterFile.mp4"></source>
+<video video width="800" height="600" autoplay controls>
+  <source type="video/mp4" src="/workshops/arm/images/lab1-5-creatingParameterFile.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
 
@@ -489,24 +633,25 @@ rg=lab1
 job=job.$(date --utc +"%Y%m%d.%H%M")
 template=/mnt/c/myTemplates/lab1/azuredeploy.json
 parms=/mnt/c/myTemplates/lab1/azuredeploy.parameters.json
-az group deployment create --name $job --parameters "@$parms" --template-file $template --resource-group $rg  
+query='properties.outputs.storageAccount.value'
+storageAccount=$(az group deployment create --parameters "@$parms" --template-file $template --query "$query" --output tsv --name $job --resource-group $rg)
 ```
 Note the **@** sign just before the parms variable in the --parameters switch. 
 
 ##### PowerShell
 ```powershell
 $rg="lab1"
-$job="job3"
+$job = 'job.' + ((Get-Date).ToUniversalTime()).tostring("MMddyy.HHmm")
 $template="C:\myTemplates\lab1\azuredeploy.json"
 $parms="c:\myTemplates\lab1\azuredeploy.parameters.json"
-New-AzureRmResourceGroupDeployment -Name $job -TemplateParameterFile $parms -TemplateFile $template -ResourceGroupName $rg 
+$storageAccount = (New-AzureRmResourceGroupDeployment -Name $job -TemplateParameterFile $parms -TemplateFile $template -ResourceGroupName $rg).Outputs.storageAccount.Value 
 ``` 
 
 ## Finishing Up
 
 OK, that is the end of Lab 1.  Whilst it may seem that we have done a lot of work around a simple resource type such as storage account, it is a useful process to follow so that you have good knowledge of the template and parameter file structure and how to move resource elements up into variables and parameters to control the level of user flexibility.  And we have deployed via either PowerShell and Bash as we moved through the lab so that you are familiar with that side as well.
 
-You probably have a few storage accounts now in your lab1 resource group.   You can clear them up by using the portal, or run these commands:
+You probably have a few storage accounts now in your lab1 resource group.   You can remove them all by deteing the lab1 resource group using the portal, or by running either of these commands:
 
 ##### Bash
 ```bash

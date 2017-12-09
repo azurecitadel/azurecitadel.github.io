@@ -22,28 +22,30 @@ The snippets we used in lab 1 are very useful and easy to use.  They meet most b
 * They are not actively maintained and therefore do not include all of the new functionality
 * They do not cover all of the services available on Azure
 
-In this lab we will create templates from some of the other major sources of resource type information to speed up the templating process and enable infrastructure as code deployments for some of the newer or more exotic services available on the Azure platform.
+In this lab we will create templates from some of the other major sources of resource type information to speed up the templating process and enable us to deply infrastructure as code for some of the higher value services available on the Azure platform, or to make use of newer functionality.
 
 1. First we will use the export functionality from the portal immediately prior to submission
 1. We will then use the semi-hidden ARM template editor in the portal
 1. Finally we will leverage some of the IP on the Azure quickstart templates on GitHub
 
-## A. Web Apps
+## Exporting templates from the portal
 
 This is a good lab to talk about API versions and the reference documentation.  
 
 We'll see that the snippets are outdated and missing certain new capabilities.  We will use the export to get a more up to date version, and in combination with the reference material we will then update the template to create the parameterisation options that we want for our standardised deployment.
 
-### Examining the snippets and comparing against the reference documentation
+### Comparing snippets against the reference documentation
 
 Let's look at the snippets for web apps.  When you create a web app, it also needs an app service plan.  
 
 * Create a new azuredeploy.json template in a lab2a folder.
-* Add in two new snippets:
+* Add in two new snippets to your array of resources:
   * arm-plan
   * arm-webapp
 
-You will notice that the API versions for both are a little old:
+You will have to have a comma between the resources to avoid the telltale red lines that signify a syntax error.
+
+Look at the apiVersion property for the two resource and you will notice that the API versions for both are a little old:
 
 **Resource.Provider/type** | **Snippet apiVersion** 
 Microsoft.Web/serverfarms | 2014-06-01
@@ -74,7 +76,7 @@ OK, let's export an example template and parameters file.
   * App Service Plan / Location: Click on the **>** arrow
     * Create new
     * App Service Plan: **Free**
-    * Location: **West Europ**
+    * Location: **West Europe**
     * Pricing tier: **F1 Free**
 
 **_DO NOT CLICK ON THE CREATE BUTTON!_** Click on the _Automation Options_ link instead.
@@ -172,15 +174,17 @@ Quick guide:
 1. Add in a variables section
 1. Create variable names to match the names of parameters to be "moved"
   1. Hardcode the values where sensible
-  1. Derive th evalues where possible
+  1. Derive the values where possible
 1. Remove parameters that are no longer required
 1. Change the appropriate parameter calls in the resources section to variable calls
 1. Add in default values and allowed values for remaining parameters
 1. Strip down the parameters file to only the required parameter values
 1. Test
 
+Here is a video that shows example files being edited.  (Note the use of CTRL-F2 in vscode to Change All Occurrences.)
+
 <video video width="800" height="600" controls autoplay muted>
-  <source type="video/mp4" src="/workshops/arm/arm-lab2-portalExport.md/images/refactoringExport.mp4}"></source>
+  <source type="video/mp4" src="/workshops/arm/images/lab2-2-refactoringExport.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
 
@@ -287,7 +291,7 @@ It is possible to export a whole resource group definition as ARM JSON.  This is
 
 ![Compare](/workshops/arm/images/lab2-3-compareRgExports.png)
 
-## Hidden Template Editor
+## Template editor in the Azure portal
 
 The second way of getting resources is to use the Azure Resource Manager template editor that is built into the portal itself.  The Templates area in the portal allows you to save templates you use repeatedly, and the portal is one of the many possible deployment types.  
 
@@ -480,7 +484,7 @@ Here is the resulting template:
 
 This is a very quick way of creating some of the most commonly used template resources, and it is nice in that it creates a mix of resources, variables and parameters. Note that the OS disks in this template are the older storage account version, rather than Managed Disks.
 
-You'll also notice the lack of a parameters file.  This is because it is intended for you to deploy interactively in the portal, but once you save you can edit the template and the parameters file, and that gives you an opportunity to save them both out and then refactor as you see fit. However it should be noted that the password will not follow our best practices for secure strings.  More in that in lab 3. 
+You'll also notice the lack of a parameters file.  This is because it is intended for you to deploy interactively in the portal.  However, as soon as you save you can edit both the template and the parameters file, and that gives you an opportunity to save them both out and then refactor as you see fit. Note the cleartext password in the parameter file.  This does not follow our best practices for secure strings when you are deploying using parameter files.  More in that in lab 3. 
 
 ## Azure Quickstart templates
 
@@ -493,17 +497,21 @@ You will find the azuredeploy.json and azuredeploy.parameters.json as expected. 
 1. **metadata.json** contains the information that dictates how the entry is shown in the Microsoft Azure Quickstart Templates site.  The parameters information is pulled directly from the azuredeploy.json, pulling out the parameter name and metadata description.
 1. **readme.md** is a readme file in markdown format.  Click on the raw format to see how the markdown is written and rendered into the static HTML that you see when browsing the GitHub repo itself.
 
-Copy out the azuredeploy.json and azuredeploy.parameters.json out into new files in a lab2c folder. Thi sis easier when looking at the raw versions.
+Copy out the azuredeploy.json and azuredeploy.parameters.json out into new files in a lab2c folder. This is easier when looking at the raw versions.
 
 The 101-vm-simple-linux template is one of the simpler templates, but it gives us an opportunity to see how a virtual machine is constructed, and some of the common practices when developing templates.
 
 #### Parameters
 
-The parameters are well defined with good defaults and allowed values for the ubuntuOSVersion.  As mentioned above, the metadata.description is set for each as this is used in the Microsoft Azure overview page.
+The parameters are well defined in the template with sensible defaults and allowed values for the ubuntuOSVersion.  As mentioned above, the metadata.description is set for each as this is used in the Microsoft Azure overview page.
 
 Looking at the corresponding azuredeploy.parameters.json file, it is usual to pass the first three parameters, admin user and password, and the DNS label for the public IP.  Note again that the password string is defined as a securestring, so once deployed you will not be able to see the value, but the password will be in clear text in the parameters file.  
 
-We will address this soon enought, looking at both using secrets held in Key Vault and also controlling access to JSON files hosted centrally.   
+We will address this soon enough, looking at two different ways of preventing unwanted access to secrets:
+* using secrets held in Key Vault 
+* controlling access to JSON files hosted centrally
+
+These will both be covered in future labs.   
 
 #### Variables
 
@@ -515,8 +523,163 @@ Using good variable names makes the main resource section much easier to read an
 
 One thing that is not necessary, but is very good practice, is to put the resources in rough order of instantiation.  You can see that in this template.
 
-The  storage account, public IP (PIP) and vNet are created first as they have no dependencies.  They will be deployed in parallel by ARM.  Note also that a single subnet is created as a child resource in the vNet.
+The storage account, public IP (PIP) and vNet are created first as they have no dependencies.  They will be deployed in parallel by ARM.  Note also that a single subnet is created as a child resource in the vNet.
 
 The NIC is then created.  Pay attention to the dependsOn array, which contains the resourceId function for both the vNet and the PIP.  These cannot be predefined as a variable as those resources are not available at the time of interpretation.  But ARM will see those and make the appropriate dependencies, taking the ID from those resources once they have been created.
 
-**YOU ARE HERE**
+And finally we have the virtual machine utself which has dependencies on both the NIC and the storage account.  You will see all of these resources when you look at the resource group after a successful deployment.  
+
+It is worth taking a moment to look at the [virtual machines reference](https://docs.microsoft.com/en-gb/azure/templates/microsoft.compute/virtualmachines) area as a virtual machine is actually one of the most complicated resources within Azure.  This template is only using a small subset of the number of possible properties in this resource type.  We will be using one of those in the next lab, in order to use a password that has been stored as a secret in Key Vault and pass that through as securetext.
+
+Also take a look at the sub-resource type that you can have within virtual machines, the [virtual machines extensions reference](https://docs.microsoft.com/en-gb/azure/templates/microsoft.compute/virtualmachines/extensions) area. This is how you can extend the virtual machines to automatically add in virtual machine agents such as antimalware, Operations Management Suite (OMS), diagnostics, Desired State Configuration (DSC) and third party extensions such as the plugin for Chef.
+
+When defining your building block standards for key resource types such as virtual machines then use the documentation available in the Azure Docs area.  For example, there is some fantastic information on the site for both [Windows]{https://docs.microsoft.com/en-us/azure/virtual-machines/windows/} and [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/) virtual machines to enable you to customise your standard build and build up your own IP.
+
+#### Outputs 
+
+The last section is probably the most optional out of all of the ARM template sections, but you will start to make more and more use of it if you start to nest templates, or wrap them up in other scripting.  
+
+If you have been deploying the templates using the bash CLi with the standard JSON output, then you will see that you have some standard JSON information outputted by each deployment.  You can customise that output using the output section.  In this template it is adding in both the server's hostname, and the ssh connection string to connect to a terminal session.
+
+Check the truncated JSON output below from a test deployment and find the outputs object:
+
+```json
+{
+  "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/lab2/providers/Microsoft.Resources/deployments/job.20171208.0830",
+  "name": "job.20171208.0830",
+  "properties": {
+    "correlationId": "9306d86d-3910-41d1-a098-63aab6a2f243",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/lab2/providers/Microsoft.Network/publicIPAddresses/myPublicIP",
+            "resourceGroup": "lab2",
+            "resourceName": "myPublicIP",
+            "resourceType": "Microsoft.Network/publicIPAddresses"
+          },
+          {
+            "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/lab2/providers/Microsoft.Network/virtualNetworks/MyVNET",
+            "resourceGroup": "lab2",
+            "resourceName": "MyVNET",
+            "resourceType": "Microsoft.Network/virtualNetworks"
+          }
+        ],
+        "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/lab2/providers/Microsoft.Network/networkInterfaces/myVMNic",
+        "resourceGroup": "lab2",
+        "resourceName": "myVMNic",
+        "resourceType": "Microsoft.Network/networkInterfaces"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/lab2/providers/Microsoft.Storage/storageAccounts/bgsjx5attarpasalinuxvm",
+            "resourceGroup": "lab2",
+            "resourceName": "bgsjx5attarpasalinuxvm",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/lab2/providers/Microsoft.Network/networkInterfaces/myVMNic",
+            "resourceGroup": "lab2",
+            "resourceName": "myVMNic",
+            "resourceType": "Microsoft.Network/networkInterfaces"
+          },
+          {
+            "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/lab2/providers/Microsoft.Storage/storageAccounts/bgsjx5attarpasalinuxvm",
+            "resourceGroup": "lab2",
+            "resourceName": "bgsjx5attarpasalinuxvm",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/lab2/providers/Microsoft.Compute/virtualMachines/MyUbuntuVM",
+        "resourceGroup": "lab2",
+        "resourceName": "MyUbuntuVM",
+        "resourceType": "Microsoft.Compute/virtualMachines"
+      }
+    ],
+    "mode": "Incremental",
+    "outputs": {
+      "hostname": {
+        "type": "String",
+        "value": "richeneyvm.westeurope.cloudapp.azure.com"
+      },
+      "sshCommand": {
+        "type": "String",
+        "value": "ssh richeney@richeneyvm.westeurope.cloudapp.azure.com"
+      }
+    },
+    "parameters": {
+      "adminPassword": {
+        "type": "SecureString"
+      },
+      "adminUsername": {
+        "type": "String",
+        "value": "richeney"
+      },
+      "dnsLabelPrefix": {
+        "type": "String",
+        "value": "richeneyvm"
+      },
+      "ubuntuOSVersion": {
+        "type": "String",
+        "value": "16.04.0-LTS"
+      }
+    },
+    :
+    :
+    :
+    "provisioningState": "Succeeded",
+    "template": null,
+    "templateLink": null,
+    "timestamp": "2017-12-08T08:33:20.465371+00:00"
+  },
+  "resourceGroup": "lab2"
+}
+```
+
+#### Reading multiple outputs
+
+As we saw in the first lab, you could pull out a single output variable, such as the sshCommand, using a simple JMESPATH query:
+```bash
+sshCommand=$(az group deployment create --name $job --parameters "@$parms" --template-file $template --resource-group $rg --query properties.outputs.sshCommand.value --output tsv)
+echo $sshCommand
+```  
+
+But we have two variables that we want, which is more of a challenge.  We can change the JMESPATH to output an array with both variables in order, and use the output as a here string to the read inbuilt command:
+```bash
+query='[properties.outputs.hostname.value, properties.outputs.sshCommand.value]'
+read hostName sshCommand <<< $(az group deployment create --name $job --parameters "@$parms" --template-file $template --resource-group $rg --query $query --output tsv)
+echo "hostName is $hostName"
+echo "sshCommand is $sshCommand"
+```  
+
+This works, but is a little risky when values can include spaces, as indeed the sshCommand does.
+
+Another approach is to output JSON and read that into a variable as multi-line text.  And then we can use jq to run JMESPOATH queries against that.  You can install jq on  Ubuntu by typing `sudo get-apt update && sudo apt-get install jq`.  Once that is there then we can do this instead:
+
+```bash
+outputs=$(az group deployment create --name $job --parameters "@$parms" --template-file $template --resource-group $rg --query properties.outputs --output tsv)
+hostName=$(jq -r .hostname.value <<< $outputs)
+sshCommand=$(jq -r .sshCommand.value <<< $outputs)
+```
+
+The first line used a JMESPATH query to filter down to the output section of the JSON, which then shortens the jq commands that follow. 
+
+However Python and PowerShell are frankly better for natively handling JSON. 
+
+Let's look at setting a variable in PowerShell to the full output of the command and then pulling out the required variables in the following commands. 
+
+```powershell
+$outputs = (New-AzureRmResourceGroupDeployment -Name $job -TemplateParameterFile $parms -TemplateFile $template -ResourceGroupName $rg).Outputs
+$hostName = $Outputs.hostname.Value
+$sshCommand = $Outputs.sshCommand.Value
+```
+
+## Finishing up
+
+If you have been testing out your templates by deploying them then feel free to delete those test resource group(s) as you did in the last lab.
+
+## What's up next
+
+In the next section we'll start to use some of the more complex functions that you can make use of in ARM templates.
