@@ -111,11 +111,11 @@ Next we need to define a blob container in our storage account that we will use 
 
 * Back in the Azure Portal click on the function **ProcessCSVFile** to open the code editor.
 
-* Replace the contents of the editor window with the code in [this file](/labs/functions/run.csx).
+* Replace the contents of the editor window with the code in <a href="/labs/functions/run.csx.txt" target="_blank">this file</a>.
 
 * This code uses a third-party library called [CsvHelper](http://joshclose.github.io/CsvHelper/) to process the csv file. This library is packaged as a [NuGet](http://nuget.org) package so in order to reference it in our code we need update (or in this case create) a *project.json* file containing the dependencies:
 
-* Save [this file](/labs/functions/project.json) file to your local machine as **project.json**
+* Save <a href="/labs/functions/project.json.txt" target="_blank">this file</a> file to your local machine as **project.json**
 
 * Click on the **View Files** option on the right of the window
 
