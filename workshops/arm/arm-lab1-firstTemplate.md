@@ -260,7 +260,9 @@ Once you have updated the template then it should look similar to this:
             }
         }
     },
-    "variables": {},
+    "variables": {
+        "storageAccount": "[toLower(concat(parameters('storageAccountPrefix'),uniqueString(subscription().subscriptionId)))]"
+    },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",

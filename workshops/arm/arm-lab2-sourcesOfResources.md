@@ -89,7 +89,7 @@ Let's copy out the template and parameter file into lab2a folder of our project 
 
 Examine the resources.  You'll notice that both are newer than the snippets, but whilst the App Service plan (serverfarm) is up to date, the Web App (sites) is a little out.  You will also notice that pretty much everything is parameterised.
 
-Here are example inital files: 
+Here are example initial files: 
 
 ```json
 {
@@ -278,7 +278,7 @@ You will also see implicit dependencies, where resource properties in one resour
 
 It is possible to export a whole resource group definition as ARM JSON.  This is very verbose and it will hardcode many of the property values.  However, it is useful to compare the files before and after a manual change to see how that can be driven using ARM.
 
-1. Open up the blade for the resource group once it has succesafully deployed 
+1. Open up the blade for the resource group once it has successfully deployed 
 1. Click on Automation Script in the Settings section
 1. Copy out the JSON into a new file within vscode
 1. Open up the Web App blade

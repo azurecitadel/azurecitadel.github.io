@@ -105,6 +105,7 @@ It should only take a few seconds to create. Once deployed:
 * Go into the _Access policies_ area in the Setting area
   * Open up the advanced access policies
   * Enable access to Azure Resource Manager for template deployment
+  * Save
 * Select _Secrets_ in the Settings blade area
   * Add a secret
   * Manual upload
@@ -118,13 +119,13 @@ As you have access (as the principal under the access policy), you will be able 
 
 ### Create the template
 
-Time to roll up the sleeves.  I'll give you a few pointers and then a few requirement and leave you to your own devices for a while.  Use the Ubuntu VM template and parameters file from the previous lab2c that we downloaded from Azure quickstart templates as the base, copying the files into a new lab3a area.  
+OK, time to roll up your sleeves.  I'll give you a few pointers and then a few requirements and leave you to your own devices for a while.  Use the Ubuntu VM template and parameters file from the previous lab2c that we downloaded from Azure quickstart templates as the base, copying the files into a new lab3a area.  
 
 Pointers:
 * With the current (Dec 2017) functionality and schema format you cannot use dynamic key vault names unless you use nested templates
 * Search for the information online on how to configure static keyVault names when passing in secrets
 * Use commands or the resource explorer to find the id for your key vault
-* Your configuration in this labe for keyvaults and secrets should only affect the parameters file, not the main   
+* Your configuration in this lab for keyvaults and secrets should only affect the parameters file, not the main   
 
 Requirements:
 1.  Make sure the adminPassword is set with a reference to the secret from the keyVault rather than a cleartext value 
