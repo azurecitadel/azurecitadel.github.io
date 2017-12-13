@@ -109,7 +109,7 @@ It should only take a few seconds to create. Once deployed:
 * Select _Secrets_ in the Settings blade area
   * Add a secret
   * Manual upload
-  * Name: **windowsDefaultPassword**
+  * Name: **ubuntuDefaultPassword**
   * Value: Enter in a suitable password for the Windows VM we'll create 
   * You don't need to set an activation or expiry date
   * Create
@@ -125,7 +125,7 @@ Pointers:
 * With the current (Dec 2017) functionality and schema format you cannot use dynamic key vault names unless you use nested templates
 * Search for the information online on how to configure static keyVault names when passing in secrets
 * Use commands or the resource explorer to find the id for your key vault
-* Your configuration in this lab for keyvaults and secrets should only affect the parameters file, not the main   
+* Your configuration in this lab for keyvaults and secrets should only affect the parameters file, not the main template  
 
 Requirements:
 1.  Make sure the adminPassword is set with a reference to the secret from the keyVault rather than a cleartext value 
