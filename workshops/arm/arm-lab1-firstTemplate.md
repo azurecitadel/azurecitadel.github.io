@@ -83,7 +83,7 @@ Let's add a simple storage account resource into the empty list:
 3. Change the value used for the storage account name (as it needs to be globally unique) and the display text
 4. CRTL-S to save
 
-> The snippet is setup to automatically select both instances of StorageAccount1 using the Select All Occurrences mode (CTRL-F2) is automatically switchd on.  This accelrates the refactoring.  Pressing ESC untoggles the Select All Occurrences mode. Feel free to search the json.json user snippet file and find the ${StorageAccount1} strings.
+> The snippet is setup to automatically select both instances of StorageAccount1 using the Select All Occurrences mode (CTRL-F2) is automatically switched on.  This accelerates the refactoring.  Pressing ESC untoggles the Select All Occurrences mode. Feel free to search the json.json user snippet file and find the ${StorageAccount1} strings.
 
 Your ARM template should now look something like this, but with a different (and hopefully unique) storage account name.
 
@@ -168,7 +168,8 @@ Browse the [deployment operations](https://docs.microsoft.com/en-us/azure/azure-
 
 Let's move that storage account name up into the parameters section.
 
-1. Add the `arm-parameters` snippet into the parameters object
+1. Add the `arm-parameter` snippet into the parameters object
+   * Use CTRL-SPACE to bring up the snippets
 1. Change the name to 'storageAccount'
 1. Select the unique storage account resource name 
 1. Press CTRL-F2 to select both occurences (as per the status bar)
@@ -251,12 +252,12 @@ Once you have updated the template then it should look similar to this:
            "allowedValues": [
                "Standard_LRS",
                "Premium_LRS",
-               "Standard_RAGRS",
+               "Standard_RAGRS"
            ],
            "metadata": {
                 "description": "SKU Type"
+                }
             }
-        }
         }
     },
     "variables": {},
