@@ -7,11 +7,11 @@ tags: [authoring, arm, workshop, hackathon, lab, template]
 comments: true
 author: Richard_Cheney
 previous:
-  url: ../arm-lab1-firstTemplate
-  title: Creating your first template
+  url: ../arm-lab2-sourceOfResources
+  title: Other places to find ARM resources
 next:
-  url: ../arm-lab3-moreComplex
-  title: Utilising more complex functions 
+  url: http://aka.ms/armtemplates
+  title: Placeholder - links to GitHub templates  
 ---
 
 {% include toc.html %}
