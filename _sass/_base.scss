@@ -11,6 +11,35 @@ body {
 	color: $text-color;
 	@include font-size(16);
 }
+.info, .success, .warning, .error, .validation {
+	border: 1px solid;
+	margin: 10px 0px;
+	padding:15px 10px 15px 50px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	}
+	.info {
+	color: darken($info-color, 10);
+	background-color: lighten($info-color, 40);
+	border-left: 6px solid $info-color;
+	}
+	.success {
+	color: darken($success-color, 10);
+	background-color: lighten($success-color, 40);
+	border-left: 6px solid $success-color;
+	}
+	.warning {
+	color: darken($warning-color, 10);
+	background-color: lighten($warning-color, 40);
+	border-left: 6px solid $warning-color;
+	}
+	.error {
+	color: darken($danger-color, 10);
+	background-color: lighten($danger-color, 40);
+	border-left: 6px solid $danger-color;
+	}
+
+
 
 p {
 	@include font-size(18,yes,28);
