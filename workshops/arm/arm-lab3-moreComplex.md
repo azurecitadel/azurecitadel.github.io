@@ -1,7 +1,7 @@
 ---
 layout: article
 title: 'ARM Lab 3: More complex functions'
-date: 2017-11-17
+date: 2017-12-12
 categories: null
 tags: [authoring, arm, workshop, hackathon, lab, template]
 comments: true
@@ -10,8 +10,8 @@ previous:
   url: ../arm-lab2-sourceOfResources
   title: Other places to find ARM resources
 next:
-  url: http://aka.ms/armtemplates
-  title: Placeholder - links to GitHub templates  
+  url: ../arm-lab4-nesting
+  title: Nesting templates 
 ---
 
 {% include toc.html %}
@@ -447,7 +447,7 @@ In the parameters file, add in new virtualNetworkName and subnetName and set the
 
 ### Submitting using both parameter files and inline parameters
 
-Once you have done that then redeploy the template **twice** into a new lab3b.  Look carefully at the commands below.  
+Once you have done that then redeploy the template **twice** into a new lab3b resource group.  Look carefully at the commands below.  
 
 The first deployment is using purely the parameter file, whereas the second one is using the `--parameters` switch twice, first to pull in the parameters file, and then with some inline name=value pairs to override those in the parameters file.  This will come in very handy later.
 
@@ -479,7 +479,7 @@ We could rename the storage account used solely for the boot diagnostics, but th
 
 Instead, let's change the template so that that the PIP (and associated DNS label) are not created if the dnsLabelPrefix parameter is empty.  This will make our Ubuntu virtual machine building block template useful in a far wider number of scenarios.  
 
-OK, make the dnsLabelPrefix parameter empty in the parameter file.  And remove the vmName as we'll specufy that as an inline from now on:
+OK, make the dnsLabelPrefix parameter empty in the parameter file.  And remove the vmName as we'll specify that as an inline parameter from now on:
 
 ```json
 {
@@ -1394,4 +1394,4 @@ Clear up your resource groups and start to define your own building block templa
 
 ### What's next
 
-In the next section we will concentrate on how to orchestrate and store the building blocks templates.  We'll look at nested templates and using blob storage with SAS tokens, before finishing off with a discussion of CI/CD pipelines and alternative higher level orchestration options such as Terraform, Chef, Puppet, Ansible, Salt and also the Azure Building Blocks (azbb).
+In the next section we will concentrate on how to nest templates, and use complex objects as variables to help standardise further and make the building block templates very flexible.

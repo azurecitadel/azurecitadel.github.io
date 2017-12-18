@@ -11,8 +11,8 @@ image:
   feature: 
   teaser: Education.jpg
   thumb: 
+excerpt: Learn how to use Infrastructure as Code with Azure Resource Manager template deployments.
 ---
-**WORK IN PROGRESS**
 
 {% include toc.html %}
 
