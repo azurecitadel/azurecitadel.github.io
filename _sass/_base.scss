@@ -131,14 +131,14 @@ tt, code, kbd, samp, pre {
 pre {
 	overflow-x: auto; // add scrollbars to wide code blocks
 }
+
 p code,
 li code {
 	@include font-size(16,no);
 	color: $text-color;
 	font-family: $code-font;
-	color: $code-color;
-	background-color: $code-background-color;
-	// background-color: lighten($primary-color, 95);
+	//background-color: $code-background-color;
+	background-color: lighten($primary-color, 95);
 	white-space: nowrap;
 	margin: 0 2px;
 	padding: 2px 5px 2px 5px;
