@@ -54,7 +54,8 @@ li {
 h1, h2, h3, h4, h5, h6 {
 	font-family: $heading-font;
 	text-rendering: optimizeLegibility; // Fix the character spacing for headings
-	color: darken($slate, 4);
+	//color: darken($slate, 4);
+	color: rgb(0, 120, 215); // Use Azure blue
 }
 h1 {
 	@include font-size(36);
