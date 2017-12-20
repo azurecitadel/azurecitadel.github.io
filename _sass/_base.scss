@@ -134,7 +134,7 @@ pre {
 
 p code,
 li code {
-	@include font-size(16,no);
+	@include font-size(18,no);
 	color: $text-color;
 	font-family: $code-font;
 	//background-color: $code-background-color;
