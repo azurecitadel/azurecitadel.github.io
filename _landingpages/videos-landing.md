@@ -1,12 +1,12 @@
 ---
 layout: archive
-permalink: /guides/
-title: "Guides"
+permalink: /videos/
+title: "Videos"
 ---
 
 <div class="tiles">
 	{% for page in site.pages  %}
-		{% if page.categories == "guides" %}
+		{% if page.categories == "videos" %}
 			{% include page-grid.html %}
 		{% endif %} 
 	{% endfor %}

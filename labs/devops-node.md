@@ -23,4 +23,4 @@ The scenario will cover:
 
 You do not need to be an Node.js or JavaScript expert for the coding part but you will need to make basic changes to a JS file. Likewise no prior experience with VSTS and Azure is required (but obviously beneficial).
 
-## [![link](/images/icons/link.svg) Access the full lab on my GitHib](https://github.com/benc-uk/azure-node-docker-paas)
+## [![link](/images/icons/link.svg) Access the full lab on my GitHub](https://github.com/benc-uk/azure-node-docker-paas)

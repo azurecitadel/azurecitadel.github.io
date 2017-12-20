@@ -24,4 +24,4 @@ You do not need to be an .NET expert for the coding part but you will need to ma
 
 > Note. The scenario purposely does not use Azure Container Service, for this learning scenario Docker Machine presents a simpler & more lightweight way to get started with Docker running in Azure
 
-## [![link](/images/icons/link.svg) Access the full lab on my GitHib](https://github.com/benc-uk/azure-devops-core-docker)
+## [![link](/images/icons/link.svg) Access the full lab on my GitHub](https://github.com/benc-uk/azure-devops-core-docker)
