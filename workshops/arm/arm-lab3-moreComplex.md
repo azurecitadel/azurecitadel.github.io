@@ -21,25 +21,16 @@ next:
 
 You should now be fairly comfortable working with JSON templates and parameter files, leveraging the various sources of ARM template, and refactoring variables and parameters and resources to customise the files for your requirements.
 
-We'll now step through some of the functions available to ARM templates, and how they can be used.  This will not cover all of them, as the [documentation](https://aka.ms/armfunctions) for the templates is pretty good, so if you need to understand something trivial like how to trim a string with whitespace then dive in to that area and dig out the information.
+We will be looking at a few of the more complex areas and use cases for those, such as
+* referencing information 
+    * for the current deployment
+    * for resources that already exist
+* handling secrets with securetext
+* using loops
+* using conditionals
+* and nesting templates
 
-The functions are split into seven groups: 
-1. **[Array and object](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-array)**: used to manipulate or test JSON arrays and objects
-1. **[Comparison](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-comparison)**: which are a group of test operators used by the **condition** function
-1. **[Deployment](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-deployment)**: which covers those related to the deployment job, e.g. the parameters and variables functions
-1. **[Logical](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-logical)**: which are a group used in logical expressions, such as _if_,  _and_ and _or_, or converting strings to booleans
-1. **[Numerical](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-numeric)**: the group providing integer and floating point arithmetic operators
-1. **[Resource](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource)**: a very useful set for working with Azure Resource Manager constructs, such as info and IDs for the subscription, resource group, resources and providers, plus keys of resources, and references to a resources current state
-1. **[Strings](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-string)**: and the final set provides a large set of functions to manipulate and test strings
-
-Browse through the section to understand the breadth of functions available.  
-
-Another way of thinking about functions is to split them into those used to:
-* get 
-* manipulate
-* test   
-
-We will be looking at the more complex areas and use cases for those, such as referencing information in the current deployment and of existing resources; handling secrets with securetext; using loops; using conditionals; and nesting templates.
+These are all fairly common as you get more ambitious with your own templates or start using some of the more complex templates that are on the GitHub repository.
 
 ## Getting information
 

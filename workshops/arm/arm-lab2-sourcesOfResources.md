@@ -28,11 +28,43 @@ In this lab we will create templates from some of the other major sources of res
 1. We will then use the semi-hidden ARM template editor in the portal
 1. Finally we will leverage some of the IP on the Azure quickstart templates on GitHub
 
+But before we start moving through those areas, let's take a few moments to look at the wealth of functions that are available to the ARM templates.
+
+## ARM Template Functions
+
+The documentation for the ARM template functions is one of those areas that you will visit often, and the short url **https://aka.ms/armfunc** will take you straight there.   
+
+We'll now step through some of the functions available to ARM templates, and how they can be used.  This will not cover all of them, as the [documentation](https://aka.ms/armfunctions) for the templates is pretty good, so if you need to understand something trivial like how to trim a string with whitespace then dive in to that area and dig out the information.
+
+The functions are split into seven groups: 
+1. **[Array and object](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-array)**: used to manipulate or test JSON arrays and objects
+1. **[Comparison](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-comparison)**: which are a group of test operators used by the **condition** function
+1. **[Deployment](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-deployment)**: which covers those related to the deployment job, e.g. the parameters and variables functions
+1. **[Logical](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-logical)**: which are a group used in logical expressions, such as _if_,  _and_ and _or_, or converting strings to booleans
+1. **[Numerical](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-numeric)**: the group providing integer and floating point arithmetic operators
+1. **[Resource](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource)**: a very useful set for working with Azure Resource Manager constructs, such as info and IDs for the subscription, resource group, resources and providers, plus keys of resources, and references to a resources current state
+1. **[Strings](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-string)**: and the final set provides a large set of functions to manipulate and test strings
+
+Browse through the section to understand the breadth of functions available.  
+
+Another way of thinking about functions is to split them into those used to:
+* get 
+* manipulate
+* test   
+
+You will see many of these functions used by some of the more complex templates that we will come across as we continue to work through the labs. 
+
 ## Exporting templates from the portal
 
-This is a good lab to talk about API versions and the reference documentation.  
+We'll now look at different places to source templates and we'll start with exporting templates directly out of the Azure portal itself.  There are a couple of ways of doing this:
+1. viewing the _automation options_ prior to resource deployment
+1. creating a full export of a whole resource group
 
-We'll see that the snippets are outdated and missing certain new capabilities.  We will use the export to get a more up to date version, and in combination with the reference material we will then update the template to create the parameterisation options that we want for our standardised deployment.
+Both have their benefits and limitations and the labs will hopefully illustrate this.  This is also a good lab to talk about API versions and to start utilising the reference documentation.  
+
+We'll see that the snippets we've been using can be a little  outdated and missing certain new capabilities.  We will use the export to get a more up to date version, and in combination with the reference material we will then update the template to create the parameterisation options that we want for our standardised deployment.
+
+We'll then show how you can use the full resource group export to compare before and after template definitions to capture manual changes to a resource and then represent that in your template.  The template reference documentation does not often provide examples of the expected property values, so this can be a useful tool.
 
 ### Comparing snippets against the reference documentation
 
@@ -51,7 +83,9 @@ Look at the apiVersion property for the two resource and you will notice that th
 Microsoft.Web/serverfarms | 2014-06-01
 Microsoft.Web/site | 2015-08-01
 
-If you search on "arm template reference" then the top link will have the information onhow to access reference materials on the resource types.  The pathing is  https://docs.microsoft.com/en-gb/azure/templates/_resource.provider_/_type_, so for the two resources it would be:
+If you search on "arm template reference" then the top link will have the information on how to access reference materials on the resource types.  You will find yourself returning to this page quite often, so it is useful that someone has set up another short url to take you straight to the page: **https://aka.ms/armref**.  That is another short url that is worth memorising if you end up spending a lot of time working on templates.
+
+The full pathing to take you direct to individual resource type pages is  https://docs.microsoft.com/en-gb/azure/templates/_resource.provider_/_type_, so for the two resources in our template it would be:
 
 **Resource.Provider/type** | **Snippet apiVersion** 
 [Microsoft.Web/serverfarms](https://docs.microsoft.com/en-gb/azure/templates/Microsoft.Web/serverfarms) | 2016-09-01
@@ -275,6 +309,8 @@ And the corresponding azuredeploy.parameters.json:
 Note the 'dependsOn' property.  This is an explicit dependency.
 
 You will also see implicit dependencies, where resource properties in one resource are derived from the properties of another resources.  Again, the Azure Resource Manager layer will intelligently understand the implicit relationship and will order the resource creation accordingly.    
+
+### Exporting a whole resource group definition
 
 It is possible to export a whole resource group definition as ARM JSON.  This is very verbose and it will hardcode many of the property values.  However, it is useful to compare the files before and after a manual change to see how that can be driven using ARM.
 
