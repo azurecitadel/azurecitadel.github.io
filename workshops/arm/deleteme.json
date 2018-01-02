@@ -1,0 +1,69 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmSize": {
+           "type": "string",
+           "allowedValues": [
+               "small",
+               "medium",
+               "large"
+           ],
+           "defaultValue": "small",
+           "metadata": {
+                "description": "T-shirt sizes for virtual machines"
+            }
+        }
+    },
+    "variables": {
+        "vmSizeSmall": {
+          "vm": "Standard_B1s",
+          "diskSize": 200,
+          "diskCount": 1,
+          "nicCount": 1,
+          "defaultSubnets": [ "production" ]
+        },
+        "vmSizeMedium": {
+          "vm": "Standard_A1",
+          "diskSize": 1023,
+          "diskCount": 2,
+          "nicCount": 1,
+          "defaultSubnets": [ "production" ]
+        },
+        "vmSizeLarge": {
+          "vm": "Standard_A4",
+          "diskSize": 1023,
+          "diskCount": 4,
+          "nicCount": 2,
+          "defaultSubnets": [ "production", "database" ]
+        },
+        "vmSize": "[variables(concat('vmSize', parameters('vmSize')))]"
+    },
+    "resources": [],
+    "outputs": {
+        "size": {
+            "type": "string",
+            "value": "[parameters('vmSize')]"
+          },
+          "vm": {
+              "type": "object",
+              "value": "[variables('vmSize')]"
+          },
+          "diskSize": {
+              "type": "int",
+              "value": "[variables('vmSize').diskSize]"
+          },
+          "vmImage": {
+              "type": "string",
+              "value": "[variables('vmSize').vm]"
+          },
+          "vmSubnets": {
+              "type": "array",
+              "value": "[variables('vmSize').defaultSubnets]"
+          },
+          "firstSubnet": {
+              "type": "string",
+              "value": "[variables('vmSize').defaultSubnets[0]"
+          }
+    }
+}
