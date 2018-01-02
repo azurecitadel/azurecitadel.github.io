@@ -14,9 +14,9 @@
   url: /guides
   img: icons/guide.svg
 
-- title: BLOG
-  url: /blog
-  img: icons/blog.svg
+- title: VIDEOS
+  url: /videos
+  img: icons/video.svg
 
 - title: TAGS
   url: /tags

@@ -2,7 +2,7 @@
 layout: article
 title: Build a Company In A Day
 date: 2017-12-06
-categories: demos
+categories: videos
 tags: [azure, dan, azuredan, build, company, day, cloud, proud]
 comments: true
 author: Dan_Baker

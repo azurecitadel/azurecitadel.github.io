@@ -43,12 +43,12 @@
   &.slide {
     background: $danger-color;
     transform: translateX(0); /* don't slide close button on small screens only */
-    @include media($medium) {
-      transform: translateX(em(-600)); /* reset slide position */
-    }
-    @include media($large) {
-      transform: translateX(em(-900)); /* reset slide position */
-    }
+    //@include media($medium) {
+    //  transform: translateX(em(-600)); /* reset slide position */
+    //}
+    //@include media($large) {
+    //  transform: translateX(em(-900)); /* reset slide position */
+    //}
   }
 }
 
@@ -65,12 +65,12 @@
   backface-visibility: hidden;
   text-align: left;
   @include size(100% 100%);
-  @include media($small) {
-    width: em(600);
-  }
-  @include media($large) {
-    width: em(900);
-  }
+  /*@include media($small) {
+    width: 20vw;
+  }*/
+  //@include media($large) {
+    width: 30vw;
+  //}
   transform: translateX(100%);
   transition: $sliding-menu-animation;
   background: $sliding-menu-background;
@@ -94,9 +94,9 @@
     }
     span {
       display: block;
-      @include font-size(32,no,1);
+      @include font-size(22,no,1);
       @include media($small) {
-        @include font-size(48,no,1);
+        @include font-size(38,no,1);
       }
       font-family: $base-font;
       text-transform: uppercase;
@@ -145,21 +145,21 @@
     }
     .title {
       display: block;
-      margin-left: 60px;
+      margin-left: 10px;
       font-family: $alt-font;
       @include font-size(24,no);
       font-weight: 700;
       @include media($small) {
-        margin-left: 170px;
+        margin-left: 10px;
         @include font-size(32,no);
       }
     }
     .excerpt {
       margin-top: 0;
-      margin-left: 60px;
+      margin-left: 10px;
       @include font-size(14,no);
       @include media($small) {
-        margin-left: 170px;
+        margin-left: 10px;
         @include font-size(16,no);
       }
     }

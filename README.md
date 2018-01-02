@@ -6,11 +6,12 @@ This is the Github repo for the site, which is based on Jekyll and the [Skinny B
 ### The site is published here - [https://azurecitadel.github.io/](https://azurecitadel.github.io/)
 
 # Contributing Guidelines
-There are four main locations for content (pages)
+There are five main locations for content (pages)
 - demos
 - labs
 - workshops
 - guides
+- videos
 
 These exist as folders at the top level of this repo and for each folder, pages within should be assigned a **single** matching category in their front matter
 

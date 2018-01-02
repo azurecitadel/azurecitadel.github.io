@@ -54,7 +54,8 @@ li {
 h1, h2, h3, h4, h5, h6 {
 	font-family: $heading-font;
 	text-rendering: optimizeLegibility; // Fix the character spacing for headings
-	color: darken($slate, 4);
+	//color: darken($slate, 4);
+	color: rgb(0, 120, 215); // Use Azure blue
 }
 h1 {
 	@include font-size(36);
@@ -131,14 +132,14 @@ tt, code, kbd, samp, pre {
 pre {
 	overflow-x: auto; // add scrollbars to wide code blocks
 }
+
 p code,
 li code {
-	@include font-size(16,no);
+	@include font-size(18,no);
 	color: $text-color;
 	font-family: $code-font;
-	color: $code-color;
-	background-color: $code-background-color;
-	// background-color: lighten($primary-color, 95);
+	//background-color: $code-background-color;
+	background-color: lighten($primary-color, 95);
 	white-space: nowrap;
 	margin: 0 2px;
 	padding: 2px 5px 2px 5px;
