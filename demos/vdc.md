@@ -17,9 +17,10 @@ For the full lab guide, head over to https://github.com/araffe/vdc-networking-la
 
 ----------
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=P3jYQCadKmM&feature=youtu.be" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P3jYQCadKmM" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 ----------
 
 Follow Adam Raffe on Twitter: @adamraffe
+
 Follow Azure Dan on Twitter: @azuredan
