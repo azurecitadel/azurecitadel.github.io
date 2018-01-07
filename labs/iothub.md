@@ -25,22 +25,21 @@ Login using the account for your Azure subscription.
 IoT Hub is the cloud gateway, which is the entrypoint for your devices or field gateways to 
 send messages to the Cloud.
 
-- Click on "+ create a resource" in the top left corner of the portal
-- Select on Internet of Things in the newly opened blade
-- Select "IoT Hub"
-- Give a unique name for your IoT hub for e.g., iothubpractice (you can give the name of your choice)
-- Select the pricing tier, you can choose the F1 Free tier
+- Click on **+ create a resource** in the top left corner of the portal
+- Select on **Internet of Things** in the newly opened blade
+- Select **IoT Hub**
+- Give a unique name for your IoT hub for e.g., **iothubpractice** (you can give the name of your choice)
+- Select the pricing tier, you can choose the **F1 Free tier**
 - Under IoT Hub Units enter 1 as units which determines the number of messages in your daily quota
 - For Device to Cloud partitions select 4 partitions - your messages will be divided into the configured number
 or partitions in the IoT Hub
-- Select your free subscription
-- Resource Group - A resource group is a logical grouping of the resources which helps to easily manage the related resources. You can use any existing resource group or create a new one for e.g., iot_hub_labs_rg (this should be unique)
-- Select the location as "WEST EUROPE" and click on create button - this may take few minutes to initialize your IoT Instance
-- Congrats! you have now setup your IoT Hub instance  
-
-    - You can navigate to the IoT Hub instance:
+- Select your subscription, in my case it is **Microsoft Azure Internal Subscription** (Note: You might have a different subscription)
+- Resource Group - A resource group is a logical grouping of the resources which helps to easily manage the related resources. You can use any existing resource group or create a new one for e.g., **iot_hub_labs_rg** 
+- Select the location as **WEST EUROPE** and click on create button - this may take few minutes to initialize your IoT Instance
+    - **You can navigate to the IoT Hub instance once created:**
     - Notification bell is on the top right corner which shows the status of the IoT Hub setup, once completed;
-    - Click on notification bell and click on "Go to resource" button
+    - Click on notification bell and click on **Go to resource** button
+- Congrats! you have now setup your IoT Hub instance  
 
 ![](/labs/iothub/images/iothub-creation-page.png)
 
@@ -63,16 +62,16 @@ Link | Description
 ## Setup a device identity
 
 -   Access the IoT Hub instance through the portal
-    - Click on "All Resources" - this will list all the resources under your subscription
-    - Select the IoT Hub instance created in previous step for e.g., iothubpractice
--   Scroll through the options in the newly opened blade and select "IoT Devices"
+    - Click on **All Resources** - this will list all the resources under your subscription
+    - Select the IoT Hub instance created in previous step for e.g., **iothubpractice**
+-   Scroll through the options in the newly opened blade and select **IoT Devices**
 -   Click on **+ Add** button
--   Give a unique device id say "iot-practice-dev"
+-   Give a unique device id say **iot-practice-dev**
 -   Select authentication type as **Symmettric Key**
 -   Check the Auto Generate Keys
 -   Check the Enable under **Connect device to IoT Hub**
 -   Click on save
 
-## Simulate a device on your machine and send messages to your IoT Hub instance
+## (Optional) Simulate a device on your machine and send messages to your IoT Hub instance
 
--   Pre-Requisites:
+-   Pre-Requisites: (TBD)
