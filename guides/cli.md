@@ -27,3 +27,5 @@ Page | Link | Description
 2 | <a href="/guides/cli/cli-2-firststeps" target="_self">First Steps</a> | Orientation and simple commands 
 3 | <a href="/guides/cli/cli-3-jmespath" target="_self">JMESPATH queries</a> | Using JMESPATH queries to filter and define the output
 4 | <a href="/guides/cli/cli-4-bash" target="_self">Bash Scripting with CLI 2.0</a> | Common ways to integrate with Bash scripting 
+
+[![Launch Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "Launch Cloud Shell")](https://shell.azure.com)
