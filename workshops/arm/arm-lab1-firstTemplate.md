@@ -1,7 +1,7 @@
 ---
 layout: article
 title: 'ARM Lab 1: First Template and Deployment'
-date: 2017-11-17
+date: 2018-01-08
 categories: null
 tags: [authoring, arm, workshop, hackathon, lab, template]
 comments: true
@@ -668,4 +668,4 @@ Remove-AzureRmResourceGroup -Name lab1
 
 ## What's up next
 
-Creating templates from scratch using empty templates and snippets is only one or the possible ways.  In the next lab we will leverage some of the export functionality in the portal in combination with the ARM resource type reference documentation.  
+Creating templates from scratch using empty templates and snippets is only one or the possible ways.  In the next lab we will leverage some of the export functionality in the portal in combination with the ARM resource type reference documentation.  We will also take a look at the rich set of functions available to use. 

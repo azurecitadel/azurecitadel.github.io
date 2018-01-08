@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Authoring ARM Templates
-date: 2017-10-03
+date: 2018-01-08
 categories: workshops
 tags: [authoring, arm, workshop, hackathon, lab, template]
 comments: true
@@ -36,9 +36,13 @@ For the labs we will be using Visual Studio Code, configured as per the [VS Code
 
 ## Index
 
-Section | Description
-<a href="/workshops/arm/theoryARM/" target="_blank">ARM Theory</a> | A short theory session on Azure Resource Manager
-<a href="/workshops/arm/theoryTemplates/" target="_blank">ARM Templates</a> | Overview of the ARM template schema and options for creating and deploying 
-<a href="/workshops/arm/arm-lab1-firstTemplate/" target="_blank">Lab #1</a> | Create a simple template, factor in parameters, and deploy using CLI or PowerShell
-<a href="/workshops/arm/arm-lab2-sourcesOfResources" target="_blank">Lab #2</a> | Other sources for resources
-<a href="/workshops/arm/arm-lab3-moreComplex" target="_blank">Lab #3</a> | Build up a VM building block using more complex features
+Lab | Section | Description
+| [Azure Resource Manager](/workshops/arm/theoryARM/) | A short theory session on Azure Resource 
+| [ARM Templates](/workshops/arm/theoryTemplates/) | Template structure overview, options for creating and deploying 
+1 | [First Template](/workshops/arm/arm-lab1-firstTemplate/) | Create a simple template, factor parameters, and deploy using the CLIs
+2 | [Sources of Resources](/workshops/arm/arm-lab2-sourcesOfResources) | Overview of functions plus sources for resources
+3 | [References and Secrets](/workshops/arm/arm-lab3-referencesAndSecrets) | Reference resources, and how to handle secrets
+4 | [Conditional Resources](/workshops/arm/arm-lab4-conditionalResources) | Using conditions to selectively deploy resources
+5 | [Using Copy](/workshops/arm/arm-lab5-usingCopy) | Use the copy property to create multiple resources
+6 | [Objects and Arrays](/workshops/arm/arm-lab6-objectsAndArrays) | More complex parameters, variables and outputs
+7 | [Nesting Templates](/workshops/arm/arm-lab7-nestingTemplates) | Nesting templates inline and with linked templates

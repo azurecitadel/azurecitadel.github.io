@@ -1,17 +1,17 @@
 ---
 layout: article
-title: 'ARM Lab 2: Parameter files, resources'
-date: 2017-11-17
+title: 'ARM Lab 2: Functions & sources of template information'
+date: 2018-01-08
 categories: null
-tags: [authoring, arm, workshop, hackathon, lab, template]
+tags: [authoring, arm, workshop, hackathon, lab, template, functions]
 comments: true
 author: Richard_Cheney
 previous:
   url: ../arm-lab1-firstTemplate
   title: Creating your first template
 next:
-  url: ../arm-lab3-moreComplex
-  title: Utilising more complex functions 
+  url: ../arm-lab3-referencesAndSecrets
+  title: Referencing resource properties and using secrets 
 ---
 
 {% include toc.html %}

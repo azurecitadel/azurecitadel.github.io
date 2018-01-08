@@ -11,7 +11,7 @@ previous:
   url: ../theoryARM
   title: Azure Resource Manager
 next:
-  url: ../arm-lab1-firstTemplates
+  url: ../arm-lab1-firstTemplate
   title: 'Lab 1: First Template and Deployment'
 ---
 
