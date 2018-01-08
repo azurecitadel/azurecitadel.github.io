@@ -502,59 +502,7 @@ Okay, so we have created an empty template, and added a basic resource snippet, 
 
 This process is fairly common, and is how you would work through the options to determine which should be hardcoded, which should be parameterised, and how flexible you will allow that parameterisation to be.
 
-Here is the final template for this lab:
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageAccountPrefix": {
-           "type": "string",
-           "maxLength": 11,
-           "defaultValue": "richeneysa",
-           "metadata": {
-                "description": "Storage Account Prefix"
-            }
-        },
-        "accountType": {
-           "type": "string",
-           "defaultValue": "Standard_LRS",
-           "allowedValues": [
-               "Standard_LRS",
-               "Premium_LRS",
-               "Standard_RAGRS"
-           ],
-           "metadata": {
-                "description": "SKU Type"
-            }
-        }
-    },
-    "variables": {
-        "storageAccount": "[toLower(concat(parameters('storageAccountPrefix'),uniqueString(subscription().subscriptionId)))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccount')]",
-            "apiVersion": "2015-06-15",
-            "location": "[resourceGroup().location]",
-            "tags": {
-                "displayName": "[variables('storageAccount')]"
-            },
-            "properties": {
-                "accountType": "[parameters('accountType')]"
-            }
-        }
-    ],
-    "outputs": {
-        "storageAccount": {
-            "type": "string",
-            "value": "[variables('storageAccount')]"
-        }
-    }
-}}
-```
+**Here is the final azuredeploy.json file for this lab:**  https://github.com/
 
 Compare it against yours. Visual Studio Code can help with comparing files. If you create a new file (CTRL-N), and paste in the contents then you can open up the Command Palette (CTRL-SHIFT-P) and type 'compare' to bring up "File: Compare Active File With...".  Select this and then the unsaved Untitled-1 file that you just created.  Visual Studio Code will highlight differing lines with red and green highlighting.
 
