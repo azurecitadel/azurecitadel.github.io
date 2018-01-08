@@ -502,7 +502,7 @@ Okay, so we have created an empty template, and added a basic resource snippet, 
 
 This process is fairly common, and is how you would work through the options to determine which should be hardcoded, which should be parameterised, and how flexible you will allow that parameterisation to be.
 
-**Here is the final azuredeploy.json file for this lab:**  https://github.com/
+**Here is the final azuredeploy.json file for this lab:**  https://raw.githubusercontent.com/richeney/arm/master/lab1/azuredeploy.json
 
 Compare it against yours. Visual Studio Code can help with comparing files. If you create a new file (CTRL-N), and paste in the contents then you can open up the Command Palette (CTRL-SHIFT-P) and type 'compare' to bring up "File: Compare Active File With...".  Select this and then the unsaved Untitled-1 file that you just created.  Visual Studio Code will highlight differing lines with red and green highlighting.
 
@@ -602,6 +602,20 @@ $storageAccount = (New-AzureRmResourceGroupDeployment -Name $job -TemplateParame
 
 OK, that is the end of Lab 1.  Whilst it may seem that we have done a lot of work around a simple resource type such as storage account, it is a useful process to follow so that you have good knowledge of the template and parameter file structure and how to move resource elements up into variables and parameters to control the level of user flexibility.  And we have deployed via either PowerShell and Bash as we moved through the lab so that you are familiar with that side as well.
 
+If you want to see what the final pair of files looks like, then click on the following links:
+
+###### Lab 1 Files:
+<div class="success">
+    <b>
+        <li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab1/azuredeploy.json" target="_blank">azuredeploy.json</a>
+        </li><li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab1/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
+        </li>
+    </b>
+</div>
+
+The files can be copied into vscode if you want to compare them against your existing template files.
 You probably have a few storage accounts now in your lab1 resource group.   You can remove them all by deteing the lab1 resource group using the portal, or by running either of these commands:
 
 ##### Bash

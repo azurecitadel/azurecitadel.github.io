@@ -183,4 +183,17 @@ Let's take a look at how those two building blocks could be used by a master tem
     * master templates to match reference architectures and application patterns
 1. a review of some of the excellent resources available online
 
+## Final files
+
+This lab uses a collection of files, so it is more useful to see them as a set:
+
+###### Lab 7 Files:
+<div class="success">
+    <b>
+        <li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab5/azuredeploy.parameters.json" target="_blank">Azure Resource Manager Workshop Lab 7 files</a>
+        </li>
+    </b>
+</div>
+
 

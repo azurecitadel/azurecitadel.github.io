@@ -234,81 +234,20 @@ job=job.$(date --utc +"%Y%m%d.%H%M")
 az group deployment create --name $job --parameters "@$parms" --template-file $template --resource-group $rg
 ```
 
-Here is my final azuredeploy.json file:
+### Final lab2a files
 
-```json
-{
-    "parameters": {
-        "name": {
-            "type": "string"
-        }  
-    },
-    "variables": {
-        "hostingPlanName": "[concat(parameters('name'), '-plan')]",
-        "hostingEnvironment": "",
-        "location": "[resourceGroup().location]",
-        "sku": "Free",
-        "skuCode": "F1",
-        "workerSize": "0",
-        "serverFarmResourceGroup": "[resourceGroup().name]",
-        "subscriptionId": "[subscription().subscriptionId]"
-    },
-    "resources": [
-        {
-            "apiVersion": "2016-03-01",
-            "name": "[parameters('name')]",
-            "type": "Microsoft.Web/sites",
-            "properties": {
-                "name": "[parameters('name')]",
-                "serverFarmId": "[concat('/subscriptions/', variables('subscriptionId'),'/resourcegroups/', variables('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
-                "hostingEnvironment": "[variables('hostingEnvironment')]"
-            },
-            "location": "[variables('location')]",
-            "tags": {
-                "[concat('hidden-related:', '/subscriptions/', variables('subscriptionId'),'/resourcegroups/', variables('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty"
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
-            ]
-        },
-        {
-            "apiVersion": "2016-09-01",
-            "name": "[variables('hostingPlanName')]",
-            "type": "Microsoft.Web/serverfarms",
-            "location": "[variables('location')]",
-            "properties": {
-                "name": "[variables('hostingPlanName')]",
-                "workerSizeId": "[variables('workerSize')]",
-                "reserved": false,
-                "numberOfWorkers": "1",
-                "hostingEnvironment": "[variables('hostingEnvironment')]"
-            },
-            "sku": {
-                "Tier": "[variables('sku')]",
-                "Name": "[variables('skuCode')]"
-            }
-        }
-    ],
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0"
-}
-```
+###### Lab 2a Files:
+<div class="success">
+    <b>
+        <li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab2a/azuredeploy.json" target="_blank">azuredeploy.json</a>
+        </li><li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab2a/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
+        </li>
+    </b>
+</div>
 
-And the corresponding azuredeploy.parameters.json:
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "name": {
-            "value": "richeneyarm"
-        }
-    }
-}
-```
-
-Note the 'dependsOn' property.  This is an explicit dependency.
+Note the 'dependsOn' property in the main azuredeploy.json.  This is an explicit dependency.
 
 You will also see implicit dependencies, where resource properties in one resource are derived from the properties of another resources.  Again, the Azure Resource Manager layer will intelligently understand the implicit relationship and will order the resource creation accordingly.    
 
@@ -528,7 +467,20 @@ This is a very quick way of creating some of the most commonly used template res
 
 On the negative side, be aware that the OS disks in this template are the older storage account version, rather than Managed Disks, and that the API versions are all from the middle of 2015.
 
-As soon as you click on the Save button then you will be taken to the dialog blade where, as a user, you can enter the parameters expected by the template.  This then gives you the opportunity to edit and copy out bnoth the template and the parameters file.  And once you have them in vscode then you can refactor the parameters and variables to meet your requirements, or update a resources sections to a newer API version.  
+As soon as you click on the Save button then you will be taken to the dialog blade where, as a user, you can enter the parameters expected by the template.  This then gives you the opportunity to edit and copy out both the template and the parameters file.  
+
+###### Lab 2b Files:
+<div class="success">
+    <b>
+        <li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab2b/azuredeploy.json" target="_blank">azuredeploy.json</a>
+        </li><li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab2b/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
+        </li>
+    </b>
+</div>
+
+And once you have them in vscode then you can refactor the parameters and variables to meet your requirements, or update a resources sections to a newer API version.  
 
 Note the cleartext password in the parameter file.  This does not follow our best practices for secure strings when you are deploying using parameter files.  More in that in lab 3. 
 
@@ -548,6 +500,17 @@ You will find the azuredeploy.json and azuredeploy.parameters.json as expected. 
 1. **readme.md** is a readme file in markdown format.  Click on the raw format to see how the markdown is written and rendered into the static HTML that you see when browsing the GitHub repo itself.
 
 Copy out the azuredeploy.json and azuredeploy.parameters.json out into new files in a lab2c folder. This is easier when looking at the raw versions.
+
+###### Lab 2c Files:
+<div class="success">
+    <b>
+        <li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab2c/azuredeploy.json" target="_blank">azuredeploy.json</a>
+        </li><li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab2c/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
+        </li>
+    </b>
+</div>
 
 The 101-vm-simple-linux template is one of the simpler templates, but it gives us an opportunity to see how a virtual machine is constructed, and some of the common practices when developing templates.
 
@@ -727,6 +690,7 @@ $sshCommand = $Outputs.sshCommand.Value
 ```
 
 ## Finishing up
+
 
 If you have been testing out your templates by deploying them then feel free to delete those test resource group(s) as you did in the last lab.
 
