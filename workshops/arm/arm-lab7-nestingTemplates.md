@@ -78,7 +78,7 @@ Alternatively you can replace either of these with links to an external URI, usi
 
 ```json
     "templateLink": {
-       "uri":"https://raw.githubusercontent.com/richeney/arm/master/vnet-spoke.json",
+       "uri":"https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-spoke.json",
        "contentVersion":"1.0.0.0"
     },
 ```  
@@ -95,7 +95,7 @@ You'll also notice the optional 'resourceGroup' string. This permits us to have 
 
 For larger organisations a [hub and spoke topology](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) is a recommended virtual data centre architecture to provide service isolation, network traffic control, billing and role based access control (RBAC).
 
-Use CTRL+O in vscode and open up the `https://raw.githubusercontent.com/richeney/arm/master/vnet-spoke.json` file.
+Use CTRL+O in vscode and open up the `https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-spoke.json` file.
 
 The vnet-spoke.json will create a spoke vNet, and will also create a vNet peering back to a pre-existing hub vNet.  For that peering to work, the Microsoft.Network/virtualNetworks/virtualNetworkPeerings resource type needs to be created at both ends to create the connection.  Therefore the vNet peering from the hub to the spoke needs to be created in the hub's resource group.  
 
@@ -165,7 +165,7 @@ The second peering, however, is a nested inline template deployment (`Microsoft.
 
 Taking this approach has made the vnet-spoke.json building block more functional and neat and tidy.
 
-There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/vnet-hub.json` file for creating the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP.  Notice that the IP address for the VPN gateway's public IP is being returned in the outputs section. 
+There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-hub.json` file for creating the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP.  Notice that the IP address for the VPN gateway's public IP is being returned in the outputs section. 
 
 Let's take a look at how those two building blocks could be used by a master template.
 

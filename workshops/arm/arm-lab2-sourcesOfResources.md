@@ -28,7 +28,7 @@ In this lab we will create templates from some of the other major sources of res
 1. We will then use the semi-hidden ARM template editor in the portal
 1. Finally we will leverage some of the IP on the Azure quickstart templates on GitHub
 
-But before we start moving through those areas, let's take a few moments to look at the wealth of functions that are available to the ARM templates.
+But before we start moving through those areas, let's take a few moments to look at the wealth of functions that are available to the ARM templates.  We'll start to see more of thenm as we work through the various sections of the lab so it is worth spending some time to understand that range of capability.
 
 ## ARM Template Functions
 
@@ -54,6 +54,8 @@ Another way of thinking about functions is to split them into those used to:
 
 You will see many of these functions used by some of the more complex templates that we will come across as we continue to work through the labs. 
 
+------------------
+
 ## Exporting templates from the portal
 
 We'll now look at different places to source templates and we'll start with exporting templates directly out of the Azure portal itself.  There are a couple of ways of doing this:
@@ -62,7 +64,7 @@ We'll now look at different places to source templates and we'll start with expo
 
 Both have their benefits and limitations and the labs will hopefully illustrate this.  This is also a good lab to talk about API versions and to start utilising the reference documentation.  
 
-We'll see that the snippets we've been using can be a little  outdated and missing certain new capabilities.  We will use the export to get a more up to date version, and in combination with the reference material we will then update the template to create the parameterisation options that we want for our standardised deployment.
+We'll see that the snippets we've been using can be a little outdated and missing certain new capabilities.  We will use the export to get a more up to date version, and in combination with the reference material we will then update the template to create the parameterisation options that we want for our standardised deployment.
 
 We'll then show how you can use the full resource group export to compare before and after template definitions to capture manual changes to a resource and then represent that in your template.  The template reference documentation does not often provide examples of the expected property values, so this can be a useful tool.
 
@@ -327,6 +329,10 @@ It is possible to export a whole resource group definition as ARM JSON.  This is
 
 ![Compare](/workshops/arm/images/lab2-3-compareRgExports.png)
 
+If you take a look at the [web app reference page](https://docs.microsoft.com/en-gb/azure/templates/microsoft.web/sites) then you'll find the CORS property and you will also see that it is comparatively well described.  This is not always the case for some of the other resource properties, so this before and after comparison is a handy way of checking the format of the string, array or object that is expected.  
+
+-----------
+
 ## Template editor in the Azure portal
 
 The second way of getting resources is to use the Azure Resource Manager template editor that is built into the portal itself.  The Templates area in the portal allows you to save templates you use repeatedly, and the portal is one of the many possible deployment types.  
@@ -518,15 +524,23 @@ Here is the resulting template:
 }
 ```
 
-This is a very quick way of creating some of the most commonly used template resources, and it is nice in that it creates a mix of resources, variables and parameters. Note that the OS disks in this template are the older storage account version, rather than Managed Disks.
+This is a very quick way of creating some of the most commonly used template resources, and it is nice in that it creates a mix of resources, variables and parameters. 
 
-You'll also notice the lack of a parameters file.  This is because it is intended for you to deploy interactively in the portal.  However, as soon as you save you can edit both the template and the parameters file, and that gives you an opportunity to save them both out and then refactor as you see fit. Note the cleartext password in the parameter file.  This does not follow our best practices for secure strings when you are deploying using parameter files.  More in that in lab 3. 
+On the negative side, be aware that the OS disks in this template are the older storage account version, rather than Managed Disks, and that the API versions are all from the middle of 2015.
+
+As soon as you click on the Save button then you will be taken to the dialog blade where, as a user, you can enter the parameters expected by the template.  This then gives you the opportunity to edit and copy out bnoth the template and the parameters file.  And once you have them in vscode then you can refactor the parameters and variables to meet your requirements, or update a resources sections to a newer API version.  
+
+Note the cleartext password in the parameter file.  This does not follow our best practices for secure strings when you are deploying using parameter files.  More in that in lab 3. 
+
+-----------------------------------
 
 ## Azure Quickstart templates
 
-In the previous section we were working in the portal, and you may have noticed the "Load a GitHub quickstart template" option.  There is a GitHub repo that has a wide selection of ARM templates that have been contributed by both Microsoft employees and by the wider community.  You can find it by searching for "Azure quickstart templates", which will find both the main [Azure Quickstart GitHub repo](https://github.com/Azure/azure-quickstart-templates) and the [Azure Quickstart Templates portal](https://azure.microsoft.com/en-gb/resources/templates/) site that helps to navigate some of the content.  
+In the previous section we were working in the portal, and you may have noticed the "Load a GitHub quickstart template" option.  There is a GitHub repo that has a wide selection of ARM templates that have been contributed by both Microsoft employees and by the wider community.  You can find it by searching for "Azure quickstart templates", which will find both the main [Azure Quickstart GitHub repo](https://github.com/Azure/azure-quickstart-templates) and the [Azure Quickstart Templates portal](https://azure.microsoft.com/en-gb/resources/templates/) site that helps to navigate some of the content.
 
-Go via either route and search for "deploy a simple linux VM".  You'll find a number of templates, but we'll take a look at the "201-multi-vm-lb-zones" template that has been contributed by Brian Moore, one of the Microsoft employees based in Fargo.  If you have gone through the Microsoft Azure route, then select the  Browse on GitHub button.  You should now be [here](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux).
+There is yet another short url to take you straight through to the GitHub repo, which is https://aka.ms/armtemplates.  
+
+Go via either route and search for "deploy a simple linux VM".  You'll find a number of templates, but we'll take a look at the "101-vm-simple-linux" template that has been contributed by Brian Moore, one of the Microsoft employees based in Fargo.  If you have gone through the Microsoft Azure route, then select the  Browse on GitHub button.  You should now be [here](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux).
 
 You will find the azuredeploy.json and azuredeploy.parameters.json as expected.  There are also a couple of other files that are there for the repo to work as expected:
 
@@ -692,7 +706,7 @@ echo "sshCommand is $sshCommand"
 
 This works, but is a little risky when values can include spaces, as indeed the sshCommand does.
 
-Another approach is to output JSON and read that into a variable as multi-line text.  And then we can use jq to run JMESPOATH queries against that.  You can install jq on  Ubuntu by typing `sudo get-apt update && sudo apt-get install jq`.  Once that is there then we can do this instead:
+Another approach is to output JSON and read that into a variable as multi-line text.  And then we can use jq to run JMESPATH queries against that.  You can install jq on  Ubuntu by typing `sudo get-apt update && sudo apt-get install jq`.  Once that is there then we can do this instead:
 
 ```bash
 outputs=$(az group deployment create --name $job --parameters "@$parms" --template-file $template --resource-group $rg --query properties.outputs --output tsv)
