@@ -156,6 +156,7 @@ You now have both the origin (to your fork) and the upstream (to the azurecitade
 ### 4. Run Jekyll locally
 
 It is highly recommended to also locally install Jekyll within Bash on Ubuntu 
+* Note that your version of Ruby should be no newer than 2.4
 * Install [Jekyll](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/) locally
 
 Once installed then you can run Jekyll as a local process.  As you make changes then the static HTML files will be regenerated locally and you can view them in the browser.
@@ -163,7 +164,11 @@ Once installed then you can run Jekyll as a local process.  As you make changes 
     * `cd /mnt/c/Users/userid/azurecitadel.github.io`
 2.  run Jekyll
     * `bundler exec jekyll serve --config _config.yml,_config_local.yml --incremental`
+    * if you get a timezone error on Windows then add the following line to your Gemfile
+    `a.	gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`(for 64 bit Ruby - see the [tzinfo help page](http://tzinfo.github.io/datasourcenotfound) for other versions
 3.  Open https://localhost:4000
+    * Note that some of the landing pages do not currently update locally, e.g. https://localhost:4000/labs/
+    * You can fully path to a lab or guide within a section e.g. https://localhost:4000/guides/citadel  
 
 >It is useful to have an alias in your Bash profile to run this quickly:
 >```bash
