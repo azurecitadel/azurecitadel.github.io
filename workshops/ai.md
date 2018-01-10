@@ -1,7 +1,7 @@
 ---
 layout: article
 title: ai
-categories: labs
+categories: workshops
 date: 2018-01-08
 tags: [azure, ai, ml, dl, ds, data science, deep learning, machine learning, congnitive computing]
 comments: true

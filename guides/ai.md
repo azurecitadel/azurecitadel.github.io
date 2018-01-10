@@ -1,7 +1,7 @@
 ---
 layout: article
 title: ai
-categories: labs
+categories: guides
 date: 2018-01-08
 tags: [azure, ai, ml, dl, ds, data science, deep learning, machine learning, congnitive computing]
 comments: true
@@ -11,6 +11,7 @@ image:
   teaser: coming-soon.jpg
   thumb: 
 excerpt: coming soon.
+published: false
 ---
 {% include toc.html %}
 
