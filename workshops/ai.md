@@ -10,7 +10,8 @@ image:
   feature: 
   teaser: coming-soon.jpg
   thumb: 
-excerpt: coming soon.
+excerpt: Coming soon.
+published: false
 ---
 {% include toc.html %}
 
