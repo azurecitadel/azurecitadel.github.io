@@ -50,9 +50,9 @@ Please read the licence carefully when using this data.
 
 ### Data Ingest Options Flow Chart (Whitepaper)
 
-The original white paper mentioned in the video is here (V2) [Azure Data Platform Ingest Options V2.pdf](./Azure Data Platform Ingest Options V2.pdf) to download and read. The main flowchart will take you through the choices you will need to make. This document contains a large number of considerations about where the data will go after ingest that might be useful.
+The original white paper mentioned in the video is here (V2) [Azure Data Platform Ingest Options V2.pdf](./AzureDataPlatformIngestOptionsV2.pdf) to download and read. The main flowchart will take you through the choices you will need to make. This document contains a large number of considerations about where the data will go after ingest that might be useful.
 
-As the world of cloud is ever changing to bring great new features to everyone the original paper will likely need updating on an ongoing basis. For example [Data Ingest Flowchart V3 Draft.pdf](./Data Ingest Flowchart V3 Draft.pdf) is the current iteration of the flow chart. 
+As the world of cloud is ever changing to bring great new features to everyone the original paper will likely need updating on an ongoing basis. For example [Data Ingest Flowchart V3 Draft.pdf](./DataIngestFlowchartV3Draft.pdf) is the current iteration of the flow chart. 
 
 Because of this I will be converting the document to a Citadel page so it is easier to keep up to date.
 
