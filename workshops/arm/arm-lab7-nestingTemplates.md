@@ -78,7 +78,7 @@ Alternatively you can replace either of these with links to an external URI, usi
 
 ```json
     "templateLink": {
-       "uri":"https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-spoke.json",
+       "uri":"https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/vnet-spoke.json",
        "contentVersion":"1.0.0.0"
     },
 ```  
@@ -95,7 +95,7 @@ You'll also notice the optional 'resourceGroup' string. This permits us to have 
 
 For larger organisations a [hub and spoke topology](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) is a recommended virtual data centre architecture to provide service isolation, network traffic control, billing and role based access control (RBAC).
 
-Use CTRL+O in vscode and open up the `https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-spoke.json` file.
+Use CTRL+O in vscode and open up the `https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/vnet-spoke.json` file.
 
 The vnet-spoke.json will create a spoke vNet, and will also create a vNet peering back to a pre-existing hub vNet.  For that peering to work, the Microsoft.Network/virtualNetworks/virtualNetworkPeerings resource type needs to be created at both ends to create the connection.  Therefore the vNet peering from the hub to the spoke needs to be created in the hub's resource group.  
 
@@ -165,13 +165,9 @@ The second peering, however, is a nested inline template deployment (`Microsoft.
 
 Taking this approach has made the vnet-spoke.json building block more functional and rather neat and tidy.
 
-There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-hub.json` file for creating the hub, and it creates the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP. As the public IP is dynamically allocated we want to be able to determine the value.
+There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/vnet-hub.json` file for creating the hub, and it creates the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP. As the public IP is dynamically allocated we ideally want to be able to determine the value and output that at the end.
 
-However, this brings up an interesting problem with public IPs in that the dynamic IP address is only allocated once the NIC is online, i.e.
-en the gateway itself is up.  As the reference() function show the current runtime state of the resource, then trying to return `"[referenc
-ariables('gatewayPipId')).ipAddress]` would fail first time round as the IP address isn't allocated, but will work for a redeployment. So
-'ll avoid that by returning just the resource ID instead, as it is a simple one line CLI command to find out the IP address once you have that
-resource ID:  
+However, this brings up an interesting problem with public IPs in that the dynamic IP address is only allocated once the NIC is online, i.e.when the gateway itself is up.  As the reference() function show the current runtime state of the resource, then trying to return `"[reference(variables('gatewayPipId')).ipAddress]` would fail first time round as the IP address isn't allocated, but will work for a redeployment. So we'll avoid that by returning just the resource ID instead, as it is a simple one line CLI command to find out the IP address once you have that resource ID:  
 
 ```json
   "outputs": {
@@ -186,7 +182,7 @@ OK, let's take a look at how those two building blocks could be used by a master
 
 ### Example of a master template calling linked templates
 
-Open up the `https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.json` master template, and the corresponding `https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.parameters.json` parameters file.
+Open up the `https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/azuredeploy.json` master template, and the corresponding `https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/azuredeploy.parameters.json` parameters file.
 
 The template will create:
 * a single hub vNet, containing a number of subnets, and the GatewaySubnet can also include an optional VPN Gateway and public IP address
@@ -344,19 +340,99 @@ There are a few interesting points for this section.
 
 1. The resource deployment has a copy, based on the number of members in that spoke parameter array.  Therefore if the parameters has, say, six spokes, then there will be six deployments, all individually named with the spoke number and suffixed by the vNet name for that spoke.  We have a dependency on the hub deployment (as we are peering to it) and the copy overrides the default parallel mode to deploy the spokes one by one.  Tha main reason for that is that the two way vNet peering resources in the spoke template can throw up a conflict if multiple jobs are peppering the hub vNet at the same time.  Running them sequentially avoids that scenario.
 2. The parameter section is more of a passthrough than the section we saw earlier for the hub linked template.  The format of the hub parameter closely matches what is expected by the spoke linked template.  In this way, using objects is much more flexible.  There are some elements of the main hub parameter object that are not used by the spoke linked template, but that does not matter; the spoke template just expects an object to be passed.  Therefore this proves a little more extensible.
-3. The spokes parameter for the master template is an array.  The spoke parameter we pass through to the spoke linked template is the individual member spoke object within that array, basede on the copyIndex().  
+3. The spokes parameter for the master template is an array.  However we are not passing that full array through to the linked template.  Instead the spoke parameter is the individual member spoke object within that array, based on the copyIndex(), and matches the object expected by the parameters section in that template.  
+
+The last thing we want the master template to do for us is to surface the resource ID for the VPN gateway's public IP.  If you remember, the output section of the vnet-hub.json template looked like this:
+
+###### Outputs section for vnet-hub.json 
+```json
+  "outputs": {
+    "gatewayPipId": {
+      "type": "string",
+      "value": "[variables('gatewayPipId')]"    
+    }
+  }
+```
+
+We can use the reference() function against the hub deployment resource itself to pull out the gatewayPipID string that the linked template will put in its output section.
+
+###### Outputs section for vnet-hub.json 
+```json
+  "outputs": {
+    "vpnGatewayPipId": {
+        "type": "string",
+        "value": "[reference(variables('hubDeploymentName')).outputs.gatewayPipId.value]"
+    }
+  }
+``` 
+
+Here are a few lines selected from an example [deploy.sh](https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/deploy.sh) script to show how the resource ID is pulled from the deployment and then the single az command is used to output the VPN gateway IP address which will have been allocated by that point:
+
+###### deploy.sh (partial)
+```json
+templateUri="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.json"
+parametersUri="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.parameters.json"
+parameters=$(curl --silent "$parametersUri?$(date +%s)" | jq .parameters)
+query="properties.outputs.vpnGatewayPipId.value"
+
+vpnGatewayPipId=$(az group deployment create --resource-group $hubrg --template-uri $templateUri --query $query --output tsv --parameters "$parameters" --verbose)
+az network public-ip show --ids $vpnGatewayPipId --query ipAddress --output tsv
+```
+
+The full script includes some good descriptive comments, but you can see from these commands that we are pulling out the PIP ID from the outputs of the master template, and then using that with a short JMESPATH query to grab the IP address. (For more information on using JMESPATH queries then look at the [CLI guide](https://azurecitadel.github.io/guides/cli/).) 
+
+## Lab to dynamically handle key vault and secret names
+
+OK, do you remember first using key vault secrets back in lab3? If you remember, the adminPassword's type in the [azuredeploy.json](https://raw.githubusercontent.com/richeney/arm/master/lab3/azuredeploy.json) template is set to securetext as per normal.  This ensures that the deployment logs never include the password.  In the parameter file, [azuredeploy.parameters.json](https://raw.githubusercontent.com/richeney/arm/master/lab3/azuredeploy.parameters.json) used the reference() function to grab the value of secret held in the key vault so that it wasn't shown as plaintext in that file as well.  However the values for both the key vault name and the secret name were hardcoded as the parameters file does not support any of the functions that we can use in the main ARM templates.
+
+This lab will make use of nested templates to make the key vault name and the secret name dynamic.  Labs 4 and 5 improved on our lab 3 virtual machine templates so we'll use lab 5 as the base for lab 7.
+
+
+Here is a loose guide of what to do, rather than a set of explicit instructions.  
+
+1. Create a lab7 folder
+1. Copy the lab5 [azuredeploy.json](https://raw.githubusercontent.com/richeney/arm/master/lab5/azuredeploy.json) into lab7 as vm.json
+1. Create a new azuredeploy.json file. 
+1. The parameters section should be consistent with vm.json, with the following changes:
+    * remove adminPassword
+    * add strings for keyVaultName and secretName
+1. In your variables section, derive the uri for the vm.json file 
+1. Create a deployment resource to use that uri as a linked template
+1. Ensure the parameters section for the deployment resource passes through adminPassword to the linked template
+1. Create a new parameters file, based on the lab5 [azuredeploy.parameters.json](https://raw.githubusercontent.com/richeney/arm/master/lab5/azuredeploy.parameters.json), but with the required changes
+1. Feel free to create additional key vaults and/or secrets and then test your new template
+
+For bonus points, feel free to incorporate complex parameter objects and/or variable objects for the t-shirt sizes. 
 
 ## Final files
 
-This lab uses a collection of files, so it is more useful to see them as a set:
+There are many ways of completing that lab, so if you got it to work then it's all good.  If you want to see my files then here you go:
 
 ###### Lab 7 Files:
 <div class="success">
     <b>
         <li>
-          <a href="https://github.com/richeney/arm/tree/master/lab7" target="_blank">Azure Resource Manager Workshop Lab 7 files</a>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.json" target="_blank">azuredeploy.json</a>
+        </li><li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
+        </li><li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab7/vm.json" target="_blank">vm.json</a>
+        </li>
+    </b>
+</div>
+```
+
+This lab also used a collection of files to describe how to use nested templates.  If you would like to see the full set then here is the directory within my GitHub repository:
+
+###### Nested Template Files:
+<div class="success">
+    <b>
+        <li>
+          <a href="https://github.com/richeney/arm/tree/master/nestedTemplates" target="_blank">Azure Resource Manager Workshop Nested Template files</a>
         </li>
     </b>
 </div>
 
+## Summary
 
+We have worked through a lot of labs, and hopefully you have built up a wealth of capability and knowledge of the resources available to you.  For the larger deployments then 
