@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Shakespeare! Data Lake Analytics and Cognitive Services.
-categories: labs
+categories: videos
 date: 2018-01-10
 tags: [azure, cognitive services, ai, data, data lake,data lake analytcs, lab, portal, resource, group]
 comments: true
