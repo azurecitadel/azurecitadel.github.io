@@ -1,0 +1,631 @@
+0|0|0|0|0|0|1|1|FIRST WITCH|When shall we three meet again? In thunder, lightning, or in rain?
+1|0.0016|1|0.0084|1|0.125|1|1|SECOND WITCH|When the hurlyburly's done, When the battle's lost and won.
+2|0.0032|2|0.0168|2|0.25|1|1|THIRD WITCH|That will be ere the set of sun.
+3|0.0048|3|0.0252|3|0.375|1|1|FIRST WITCH|Where the place?
+4|0.0063|4|0.0336|4|0.5|1|1|SECOND WITCH|Upon the heath.
+5|0.0079|5|0.042|5|0.625|1|1|THIRD WITCH|There to meet with Macbeth.
+6|0.0095|6|0.0504|6|0.75|1|1|FIRST WITCH|I come, Graymalkin.
+7|0.0111|7|0.0588|7|0.875|1|1|ALL|Paddock calls. Anon! Fair is foul, and foul is fair. Hover through the fog and filthy air.
+8|0.0127|8|0.0672|0|0|1|2|DUNCAN|What bloody man is that? He can report, As seemeth by his plight, of the revolt The newest state.
+9|0.0143|9|0.0756|1|0.0556|1|2|MALCOLM|This is the sergeant Who like a good and hardy soldier fought Say to the King the knowledge of the broil As thou didst leave it.
+10|0.0158|10|0.084|2|0.1111|1|2|SERGEANT|Doubtful it stood, As two spent swimmers that do cling together And choke their art. The merciless Macdonwald- Worthy to be a rebel, for to that The multiplying villainies of nature Do swarm upon him -from the Western Isles Of kerns and gallowglasses is supplied; And Fortune, on his damned quarrel smiling, Show'd like a rebel's whore. But all's too weak; For brave Macbeth -well he deserves that name- Disdaining Fortune, with his brandish'd steel, Which smoked with bloody execution, Like Valor's minion carved out his passage Till he faced the slave, Which ne'er shook hands, nor bade farewell to him, Till he unseam'd him from the nave to the chaps, And fix'd his head upon our battlements.
+11|0.0174|11|0.0924|3|0.1667|1|2|DUNCAN|O valiant cousin! Worthy gentleman!
+12|0.019|12|0.1008|4|0.2222|1|2|SERGEANT|As whence the sun 'gins his reflection Shipwrecking storms and direful thunders break, So from that spring whence comfort seem'd to come Discomfort swells. Mark, King of Scotland, mark. No sooner justice had, with valor arm'd, Compell'd these skipping kerns to trust their heels, But the Norweyan lord, surveying vantage, With furbish'd arms and new supplies of men, Began a fresh assault.
+13|0.0206|13|0.1092|5|0.2778|1|2|DUNCAN|Dismay'd not this Our captains, Macbeth and Banquo.?
+14|0.0222|14|0.1176|6|0.3333|1|2|SERGEANT|Yes, As sparrows eagles, or the hare the lion. If I say sooth, I must report they were As cannons overcharged with double cracks, So they Doubly redoubled strokes upon the foe. Except they meant to bathe in reeking wounds, Or memorize another Golgotha, I cannot tell- But I am faint; my gashes cry for help.
+15|0.0238|15|0.1261|7|0.3889|1|2|DUNCAN|So well thy words become thee as thy wounds; They smack of honor both. Go get him surgeons. Exit Sergeant, attended. Who comes here? Enter Ross.
+16|0.0254|16|0.1345|8|0.4444|1|2|MALCOLM|The worthy Thane of Ross.
+17|0.0269|17|0.1429|9|0.5|1|2|LENNOX|What a haste looks through his eyes! So should he look That seems to speak things strange.
+18|0.0285|18|0.1513|10|0.5556|1|2|ROSS|God save the King!
+19|0.0301|19|0.1597|11|0.6111|1|2|DUNCAN|Whence camest thou, worthy Thane?
+20|0.0317|20|0.1681|12|0.6667|1|2|ROSS|From Fife, great King, Where the Norweyan banners flout the sky And fan our people cold. Norway himself, with terrible numbers, Assisted by that most disloyal traitor The Thane of Cawdor, began a dismal conflict, Till that Bellona's bridegroom, lapp'd in proof, Confronted him with self-comparisons, Point against point rebellious, arm 'gainst arm, Curbing his lavish spirit; and, to conclude, The victory fell on us.
+21|0.0333|21|0.1765|13|0.7222|1|2|DUNCAN|Great happiness!
+22|0.0349|22|0.1849|14|0.7778|1|2|ROSS|That now Sweno, the Norways' king, craves composition; Nor would we deign him burial of his men Till he disbursed, at Saint Colme's Inch, Ten thousand dollars to our general use.  
+23|0.0365|23|0.1933|15|0.8333|1|2|DUNCAN|No more that Thane of Cawdor shall deceive Our bosom interest. Go pronounce his present death, And with his former title greet Macbeth.
+24|0.038|24|0.2017|16|0.8889|1|2|ROSS|I'll see it done.
+25|0.0396|25|0.2101|17|0.9444|1|2|DUNCAN|What he hath lost, noble Macbeth hath won. 
+26|0.0412|26|0.2185|0|0|1|3|FIRST WITCH|Where hast thou been, sister?
+27|0.0428|27|0.2269|1|0.0196|1|3|SECOND WITCH|Killing swine.
+28|0.0444|28|0.2353|2|0.0392|1|3|THIRD WITCH|Sister, where thou?
+29|0.046|29|0.2437|3|0.0588|1|3|FIRST WITCH|A sailor's wife had chestnuts in her lap, And mounch'd, and mounch'd, and mounch'd. Give me, quoth I. Her husband's to Aleppo gone, master the Tiger; But in a sieve I'll thither sail, And, like a rat without a tail, I'll do, I'll do, and I'll do.
+30|0.0475|30|0.2521|4|0.0784|1|3|SECOND WITCH|I'll give thee a wind.
+31|0.0491|31|0.2605|5|0.098|1|3|FIRST WITCH|Thou'rt kind.
+32|0.0507|32|0.2689|6|0.1176|1|3|THIRD WITCH|And I another.
+33|0.0523|33|0.2773|7|0.1373|1|3|FIRST WITCH|I myself have all the other, And the very ports they blow, All the quarters that they know I' the shipman's card. I will drain him dry as hay: Sleep shall neither night nor day Hang upon his penthouse lid; He shall live a man forbid. Weary se'nnights nine times nine Shall he dwindle, peak, and pine; Though his bark cannot be lost, Yet it shall be tempest-toss'd. Look what I have.
+34|0.0539|34|0.2857|8|0.1569|1|3|SECOND WITCH|Show me, show me.
+35|0.0555|35|0.2941|9|0.1765|1|3|FIRST WITCH|Here I have a pilot's thumb, Wreck'd as homeward he did come. within.
+36|0.0571|36|0.3025|10|0.1961|1|3|THIRD WITCH|A drum, a drum! Macbeth doth come.
+37|0.0586|37|0.3109|11|0.2157|1|3|ALL|The weird sisters, hand in hand, Posters of the sea and land, Thus do go about, about, Thrice to thine, and thrice to mine, And thrice again, to make up nine. Peace! The charm's wound up. Enter Macbeth and Banquo.
+38|0.0602|38|0.3193|12|0.2353|1|3|MACBETH|So foul and fair a day I have not seen.
+39|0.0618|39|0.3277|13|0.2549|1|3|BANQUO|How far is't call'd to Forres? What are these So wither'd and so wild in their attire, That look not like the inhabitants o' the earth, And yet are on't? Live you? or are you aught That man may question? You seem to understand me, By each at once her choppy finger laying Upon her skinny lips. You should be women, And yet your beards forbid me to interpret That you are so.
+40|0.0634|40|0.3361|14|0.2745|1|3|MACBETH|Speak, if you can. What are you?
+41|0.065|41|0.3445|15|0.2941|1|3|FIRST WITCH|All hail, Macbeth, hail to thee, Thane of Glamis!
+42|0.0666|42|0.3529|16|0.3137|1|3|SECOND WITCH|All hail, Macbeth, hail to thee, Thane of Cawdor!
+43|0.0681|43|0.3613|17|0.3333|1|3|THIRD WITCH|All hail, Macbeth, that shalt be King hereafter!
+44|0.0697|44|0.3697|18|0.3529|1|3|BANQUO|Good sir, why do you start, and seem to fear Things that do sound so fair? I' the name of truth, Are ye fantastical or that indeed Which outwardly ye show? My noble partner You greet with present grace and great prediction Of noble having and of royal hope, That he seems rapt withal. To me you speak not. If you can look into the seeds of time, And say which grain will grow and which will not, Speak then to me, who neither beg nor fear Your favors nor your hate.
+45|0.0713|45|0.3782|19|0.3725|1|3|FIRST WITCH|Hail!
+46|0.0729|46|0.3866|20|0.3922|1|3|SECOND WITCH|Hail!
+47|0.0745|47|0.395|21|0.4118|1|3|THIRD WITCH|Hail!
+48|0.0761|48|0.4034|22|0.4314|1|3|FIRST WITCH|Lesser than Macbeth, and greater.
+49|0.0777|49|0.4118|23|0.451|1|3|SECOND WITCH|Not so happy, yet much happier.
+50|0.0792|50|0.4202|24|0.4706|1|3|THIRD WITCH|Thou shalt get kings, though thou be none. So all hail, Macbeth and Banquo!
+51|0.0808|51|0.4286|25|0.4902|1|3|FIRST WITCH|Banquo and Macbeth, all hail!
+52|0.0824|52|0.437|26|0.5098|1|3|MACBETH|Stay, you imperfect speakers, tell me more. By Sinel's death I know I am Thane of Glamis; But how of Cawdor? The Thane of Cawdor lives, A prosperous gentleman; and to be King Stands not within the prospect of belief, No more than to be Cawdor. Say from whence You owe this strange intelligence, or why Upon this blasted heath you stop our way With such prophetic greeting? Speak, I charge you. Witches vanish.
+53|0.084|53|0.4454|27|0.5294|1|3|BANQUO|The earth hath bubbles as the water has, And these are of them. Whither are they vanish'd?
+54|0.0856|54|0.4538|28|0.549|1|3|MACBETH|Into the air, and what seem'd corporal melted As breath into the wind. Would they had stay'd!
+55|0.0872|55|0.4622|29|0.5686|1|3|BANQUO|Were such things here as we do speak about? Or have we eaten on the insane root That takes the reason prisoner?
+56|0.0887|56|0.4706|30|0.5882|1|3|MACBETH|Your children shall be kings.
+57|0.0903|57|0.479|31|0.6078|1|3|BANQUO|You shall be King.
+58|0.0919|58|0.4874|32|0.6275|1|3|MACBETH|And Thane of Cawdor too. Went it not so?
+59|0.0935|59|0.4958|33|0.6471|1|3|BANQUO|To the selfsame tune and words. Who's here? Enter Ross and Angus.
+60|0.0951|60|0.5042|34|0.6667|1|3|ROSS|The King hath happily received, Macbeth, The news of thy success; and when he reads Thy personal venture in the rebels' fight, His wonders and his praises do contend Which should be thine or his. Silenced with that, In viewing o'er the rest o' the selfsame day, He finds thee in the stout Norweyan ranks, Nothing afeard of what thyself didst make, Strange images of death. As thick as hail Came post with post, and every one did bear Thy praises in his kingdom's great defense, And pour'd them down before him.
+61|0.0967|61|0.5126|35|0.6863|1|3|ANGUS|We are sent To give thee, from our royal master, thanks; Only to herald thee into his sight, Not pay thee.
+62|0.0983|62|0.521|36|0.7059|1|3|ROSS|And for an earnest of a greater honor, He bade me, from him, call thee Thane of Cawdor. In which addition, hail, most worthy Thane, For it is thine.  
+63|0.0998|63|0.5294|37|0.7255|1|3|BANQUO|What, can the devil speak true?
+64|0.1014|64|0.5378|38|0.7451|1|3|MACBETH|The Thane of Cawdor lives. Why do you dress me In borrow'd robes?
+65|0.103|65|0.5462|39|0.7647|1|3|ANGUS|Who was the Thane lives yet, But under heavy judgement bears that life Which he deserves to lose. Whether he was combined With those of Norway, or did line the rebel With hidden help and vantage, or that with both He labor'd in his country's wreck, I know not; But treasons capital, confess'd and proved, Have overthrown him.
+66|0.1046|66|0.5546|40|0.7843|1|3|MACBETH|Glamis, and Thane of Cawdor! The greatest is behind. Thanks for your pains. Do you not hope your children shall be kings, When those that gave the Thane of Cawdor to me Promised no less to them?
+67|0.1062|67|0.563|41|0.8039|1|3|BANQUO|That, trusted home, Might yet enkindle you unto the crown, Besides the Thane of Cawdor. But 'tis strange; And oftentimes, to win us to our harm, The instruments of darkness tell us truths, Win us with honest trifles, to betray's In deepest consequence- Cousins, a word, I pray you.
+68|0.1078|68|0.5714|42|0.8235|1|3|MACBETH|Two truths are told, As happy prologues to the swelling act Of the imperial theme-I thank you, gentlemen. This supernatural soliciting Cannot be ill, cannot be good. If ill, Why hath it given me earnest of success, Commencing in a truth? I am Thane of Cawdor. If good, why do I yield to that suggestion Whose horrid image doth unfix my hair And make my seated heart knock at my ribs, Against the use of nature? Present fears Are less than horrible imaginings: My thought, whose murther yet is but fantastical, Shakes so my single state of man that function Is smother'd in surmise, and nothing is But what is not.
+69|0.1094|69|0.5798|43|0.8431|1|3|BANQUO|Look, how our partner's rapt.
+70|0.1109|70|0.5882|44|0.8627|1|3|MACBETH|If chance will have me King, why, chance may crown me Without my stir.
+71|0.1125|71|0.5966|45|0.8824|1|3|BANQUO|New honors come upon him, Like our strange garments, cleave not to their mould But with the aid of use.
+72|0.1141|72|0.605|46|0.902|1|3|MACBETH|Come what come may, Time and the hour runs through the roughest day.
+73|0.1157|73|0.6134|47|0.9216|1|3|BANQUO|Worthy Macbeth, we stay upon your leisure.
+74|0.1173|74|0.6218|48|0.9412|1|3|MACBETH|Give me your favor; my dull brain was wrought With things forgotten. Kind gentlemen, your pains Are register'd where every day I turn The leaf to read them. Let us toward the King. Think upon what hath chanced, and at more time, The interim having weigh'd it, let us speak Our free hearts each to other.
+75|0.1189|75|0.6303|49|0.9608|1|3|BANQUO|Very gladly.
+76|0.1204|76|0.6387|50|0.9804|1|3|MACBETH|Till then, enough. Come, friends.
+77|0.122|77|0.6471|0|0|1|4|DUNCAN|Is execution done on Cawdor? Are not Those in commission yet return'd?
+78|0.1236|78|0.6555|1|0.0909|1|4|MALCOLM|My liege, They are not yet come back. But I have spoke With one that saw him die, who did report That very frankly he confess'd his treasons, Implored your Highness' pardon, and set forth A deep repentance. Nothing in his life Became him like the leaving it; he died As one that had been studied in his death, To throw away the dearest thing he owed As 'twere a careless trifle.
+79|0.1252|79|0.6639|2|0.1818|1|4|DUNCAN|There's no art To find the mind's construction in the face: He was a gentleman on whom I built An absolute trust. Enter Macbeth, Banquo, Ross, and Angus. O worthiest cousin! The sin of my ingratitude even now Was heavy on me. Thou art so far before, That swiftest wing of recompense is slow To overtake thee. Would thou hadst less deserved, That the proportion both of thanks and payment Might have been mine! Only I have left to say, More is thy due than more than all can pay.
+80|0.1268|80|0.6723|3|0.2727|1|4|MACBETH|The service and the loyalty lowe, In doing it, pays itself. Your Highness' part Is to receive our duties, and our duties Are to your throne and state, children and servants, Which do but what they should, by doing everything Safe toward your love and honor.
+81|0.1284|81|0.6807|4|0.3636|1|4|DUNCAN|Welcome hither. I have begun to plant thee, and will labor To make thee full of growing. Noble Banquo, That hast no less deserved, nor must be known No less to have done so; let me infold thee And hold thee to my heart.
+82|0.13|82|0.6891|5|0.4545|1|4|BANQUO|There if I grow, The harvest is your own.
+83|0.1315|83|0.6975|6|0.5455|1|4|DUNCAN|My plenteous joys, Wanton in fullness, seek to hide themselves In drops of sorrow. Sons, kinsmen, thanes, And you whose places are the nearest, know We will establish our estate upon Our eldest, Malcolm, whom we name hereafter The Prince of Cumberland; which honor must Not unaccompanied invest him only, But signs of nobleness, like stars, shall shine On all deservers. From hence to Inverness, And bind us further to you.
+84|0.1331|84|0.7059|7|0.6364|1|4|MACBETH|The rest is labor, which is not used for you. I'll be myself the harbinger, and make joyful The hearing of my wife with your approach; So humbly take my leave.  
+85|0.1347|85|0.7143|8|0.7273|1|4|DUNCAN|My worthy Cawdor!
+86|0.1363|86|0.7227|9|0.8182|1|4|MACBETH|The Prince of Cumberland! That is a step On which I must fall down, or else o'erleap, For in my way it lies. Stars, hide your fires; Let not light see my black and deep desires. The eye wink at the hand; yet let that be Which the eye fears, when it is done, to see.
+87|0.1379|87|0.7311|10|0.9091|1|4|DUNCAN|True, worthy Banquo! He is full so valiant, And in his commendations I am fed; It is a banquet to me. Let's after him, Whose care is gone before to bid us welcome. It is a peerless kinsman. 
+88|0.1395|88|0.7395|0|0|1|5|LADY MACBETH|They met me in the day of success, and I have learned by the perfectest report they have more in them than mortal knowledge. When I burned in desire to question them further, they made themselves air, into which they vanished. Whiles I stood rapt in the wonder of it, came missives from the King, who all-hailed me 'Thane of Cawdor'; by which title, before, these weird sisters saluted me and referred me to the coming on of time with 'Hail, King that shalt be!' This have I thought good to deliver thee, my dearest partner of greatness, that thou mightst not lose the dues of rejoicing, by being ignorant of what greatness is promised thee. Lay it to thy heart, and farewell. Glamis thou art, and Cawdor, and shalt be What thou art promised. Yet do I fear thy nature. It is too full o' the milk of human kindness To catch the nearest way. Thou wouldst be great; Art not without ambition, but without The illness should attend it. What thou wouldst highly, That wouldst thou holily; wouldst not play false, And yet wouldst wrongly win. Thou'ldst have, great Glamis, That which cries, Thus thou must do, if thou have it; And that which rather thou dost fear to do Than wishest should be undone. Hie thee hither, That I may pour my spirits in thine ear, And chastise with the valor of my tongue All that impedes thee from the golden round, Which fate and metaphysical aid doth seem To have thee crown'd withal. Enter a Messenger. What is your tidings?
+89|0.141|89|0.7479|1|0.0909|1|5|MESSENGER|The King comes here tonight.
+90|0.1426|90|0.7563|2|0.1818|1|5|LADY MACBETH|Thou'rt mad to say it! Is not thy master with him? who, were't so, Would have inform'd for preparation.  
+91|0.1442|91|0.7647|3|0.2727|1|5|MESSENGER|So please you, it is true; our Thane is coming. One of my fellows had the speed of him, Who, almost dead for breath, had scarcely more Than would make up his message.
+92|0.1458|92|0.7731|4|0.3636|1|5|LADY MACBETH|Give him tending; He brings great news. Messenger. The raven himself is hoarse That croaks the fatal entrance of Duncan Under my battlements. Come, you spirits That tend on mortal thoughts, unsex me here And fill me from the crown to the toe top-full Of direst cruelty! Make thick my blood, Stop up the access and passage to remorse, That no compunctious visitings of nature Shake my fell purpose nor keep peace between The effect and it! Come to my woman's breasts, And take my milk for gall, your murthering ministers, Wherever in your sightless substances You wait on nature's mischief! Come, thick night, And pall thee in the dunnest smoke of hell That my keen knife see not the wound it makes Nor heaven peep through the blanket of the dark To cry, Hold, hold! Enter Macbeth. Great Glamis! Worthy Cawdor! Greater than both, by the all-hail hereafter! Thy letters have transported me beyond This ignorant present, and I feel now The future in the instant.
+93|0.1474|93|0.7815|5|0.4545|1|5|MACBETH|My dearest love, Duncan comes here tonight.
+94|0.149|94|0.7899|6|0.5455|1|5|LADY MACBETH|And when goes hence?
+95|0.1506|95|0.7983|7|0.6364|1|5|MACBETH|Tomorrow, as he purposes.
+96|0.1521|96|0.8067|8|0.7273|1|5|LADY MACBETH|O, never Shall sun that morrow see! Your face, my Thane, is as a book where men May read strange matters. To beguile the time, Look like the time; bear welcome in your eye, Your hand, your tongue; look like the innocent flower, But be the serpent under it. He that's coming Must be provided for; and you shall put This night's great business into my dispatch, Which shall to all our nights and days to come Give solely sovereign sway and masterdom.
+97|0.1537|97|0.8151|9|0.8182|1|5|MACBETH|We will speak further.
+98|0.1553|98|0.8235|10|0.9091|1|5|LADY MACBETH|Only look up clear; To alter favor ever is to fear. Leave all the rest to me.
+99|0.1569|99|0.8319|0|0|1|6|DUNCAN|This castle hath a pleasant seat; the air Nimbly and sweetly recommends itself Unto our gentle senses.
+100|0.1585|100|0.8403|1|0.1429|1|6|BANQUO|This guest of summer, The temple-haunting martlet, does approve By his loved mansionry that the heaven's breath Smells wooingly here. No jutty, frieze, Buttress, nor coign of vantage, but this bird Hath made his pendant bed and procreant cradle; Where they most breed and haunt, I have observed The air is delicate. Enter Lady Macbeth.
+101|0.1601|101|0.8487|2|0.2857|1|6|DUNCAN|See, see, our honor'd hostess! The love that follows us sometime is our trouble, Which still we thank as love. Herein I teach you How you shall bid God 'ield us for your pains, And thank us for your trouble.
+102|0.1616|102|0.8571|3|0.4286|1|6|LADY MACBETH|All our service In every point twice done, and then done double, Were poor and single business to contend Against those honors deep and broad wherewith Your Majesty loads our house. For those of old, And the late dignities heap'd up to them, We rest your hermits.
+103|0.1632|103|0.8655|4|0.5714|1|6|DUNCAN|Where's the Thane of Cawdor? We coursed him at the heels and had a purpose To be his purveyor; but he rides well, And his great love, sharp as his spur, hath holp him To his home before us. Fair and noble hostess, We are your guest tonight.
+104|0.1648|104|0.8739|5|0.7143|1|6|LADY MACBETH|Your servants ever Have theirs, themselves, and what is theirs, in compt, To make their audit at your Highness' pleasure, Still to return your own.  
+105|0.1664|105|0.8824|6|0.8571|1|6|DUNCAN|Give me your hand; Conduct me to mine host. We love him highly, And shall continue our graces towards him. By your leave, hostess.
+106|0.168|106|0.8908|0|0|1|7|MACBETH|If it were done when 'tis done, then 'twere well It were done quickly. If the assassination Could trammel up the consequence, and catch, With his surcease, success; that but this blow Might be the be-all and the end-all -here, But here, upon this bank and shoal of time, We'ld jump the life to come. But in these cases We still have judgement here, that we but teach Bloody instructions, which being taught return To plague the inventor. This even-handed justice Commends the ingredients of our poison'd chalice To our own lips. He's here in double trust: First, as I am his kinsman and his subject, Strong both against the deed; then, as his host, Who should against his murtherer shut the door, Not bear the knife myself. Besides, this Duncan Hath borne his faculties so meek, hath been So clear in his great office, that his virtues Will plead like angels trumpet-tongued against The deep damnation of his taking-off, And pity, like a naked new-born babe Striding the blast, or heaven's cherubin horsed Upon the sightless couriers of the air, Shall blow the horrid deed in every eye, That tears shall drown the wind. I have no spur To prick the sides of my intent, but only Vaulting ambition, which o'erleaps itself And falls on the other. Enter Lady Macbeth. How now, what news?
+107|0.1696|107|0.8992|1|0.0714|1|7|LADY MACBETH|He has almost supp'd. Why have you left the chamber?
+108|0.1712|108|0.9076|2|0.1429|1|7|MACBETH|Hath he ask'd for me?
+109|0.1727|109|0.916|3|0.2143|1|7|LADY MACBETH|Know you not he has?  
+110|0.1743|110|0.9244|4|0.2857|1|7|MACBETH|We will proceed no further in this business: He hath honor'd me of late, and I have bought Golden opinions from all sorts of people, Which would be worn now in their newest gloss, Not cast aside so soon.
+111|0.1759|111|0.9328|5|0.3571|1|7|LADY MACBETH|Was the hope drunk Wherein you dress'd yourself? Hath it slept since? And wakes it now, to look so green and pale At what it did so freely? From this time Such I account thy love. Art thou afeard To be the same in thine own act and valor As thou art in desire? Wouldst thou have that Which thou esteem'st the ornament of life And live a coward in thine own esteem, Letting I dare not wait upon I would Like the poor cat i' the adage?
+112|0.1775|112|0.9412|6|0.4286|1|7|MACBETH|Prithee, peace! I dare do all that may become a man; Who dares do more is none.
+113|0.1791|113|0.9496|7|0.5|1|7|LADY MACBETH|What beast wast then That made you break this enterprise to me? When you durst do it, then you were a man, And, to be more than what you were, you would Be so much more the man. Nor time nor place Did then adhere, and yet you would make both. They have made themselves, and that their fitness now Does unmake you. I have given suck and know How tender 'tis to love the babe that milks me- I would, while it was smiling in my face, Have pluck'd my nipple from his boneless gums And dash'd the brains out had I so sworn as you Have done to this.
+114|0.1807|114|0.958|8|0.5714|1|7|MACBETH|If we should fail?
+115|0.1823|115|0.9664|9|0.6429|1|7|LADY MACBETH|We fail? But screw your courage to the sticking-place And we'll not fail. When Duncan is asleep- Whereto the rather shall his day's hard journey Soundly invite him- his two chamberlains Will I with wine and wassail so convince That memory, the warder of the brain, Shall be a fume and the receipt of reason A limbeck only. When in swinish sleep Their drenched natures lie as in a death, What cannot you and I perform upon The unguarded Duncan? What not put upon His spongy officers, who shall bear the guilt Of our great quell?
+116|0.1838|116|0.9748|10|0.7143|1|7|MACBETH|Bring forth men-children only, For thy undaunted mettle should compose Nothing but males. Will it not be received, When we have mark'd with blood those sleepy two Of his own chamber and used their very daggers, That they have done't?
+117|0.1854|117|0.9832|11|0.7857|1|7|LADY MACBETH|Who dares receive it other, As we shall make our griefs and clamor roar Upon his death?
+118|0.187|118|0.9916|12|0.8571|1|7|MACBETH|I am settled and bend up Each corporal agent to this terrible feat. Away, and mock the time with fairest show: False face must hide what the false heart doth know. 
+119|0.1886|0|0|0|0|2|1|BANQUO|How goes the night, boy?
+120|0.1902|1|0.0097|1|0.0625|2|1|FLEANCE|The moon is down; I have not heard the clock.
+121|0.1918|2|0.0194|2|0.125|2|1|BANQUO|And she goes down at twelve.
+122|0.1933|3|0.0291|3|0.1875|2|1|FLEANCE|I take't 'tis later, sir.
+123|0.1949|4|0.0388|4|0.25|2|1|BANQUO|Hold, take my sword. There's husbandry in heaven, Their candles are all out. Take thee that too. A heavy summons lies like lead upon me, And yet I would not sleep. Merciful powers, Restrain in me the cursed thoughts that nature Gives way to in repose! Enter Macbeth and a Servant with a torch. Give me my sword. Who's there?
+124|0.1965|5|0.0485|5|0.3125|2|1|MACBETH|A friend.
+125|0.1981|6|0.0583|6|0.375|2|1|BANQUO|What, sir, not yet at rest? The King's abed. He hath been in unusual pleasure and Sent forth great largess to your offices. This diamond he greets your wife withal, By the name of most kind hostess, and shut up In measureless content.
+126|0.1997|7|0.068|7|0.4375|2|1|MACBETH|Being unprepared, Our will became the servant to defect, Which else should free have wrought.
+127|0.2013|8|0.0777|8|0.5|2|1|BANQUO|All's well. I dreamt last night of the three weird sisters: To you they have show'd some truth.
+128|0.2029|9|0.0874|9|0.5625|2|1|MACBETH|I think not of them; Yet, when we can entreat an hour to serve, We would spend it in some words upon that business, If you would grant the time.
+129|0.2044|10|0.0971|10|0.625|2|1|BANQUO|At your kind'st leisure.
+130|0.206|11|0.1068|11|0.6875|2|1|MACBETH|If you shall cleave to my consent, when 'tis, It shall make honor for you.
+131|0.2076|12|0.1165|12|0.75|2|1|BANQUO|So I lose none In seeking to augment it, but still keep My bosom franchised and allegiance clear, I shall be counsel'd.
+132|0.2092|13|0.1262|13|0.8125|2|1|MACBETH|Good repose the while.
+133|0.2108|14|0.1359|14|0.875|2|1|BANQUO|Thanks, sir, the like to you. Exeunt Banquo. and Fleance.
+134|0.2124|15|0.1456|15|0.9375|2|1|MACBETH|Go bid thy mistress, when my drink is ready, She strike upon the bell. Get thee to bed. Servant. Is this a dagger which I see before me, The handle toward my hand? Come, let me clutch thee. I have thee not, and yet I see thee still. Art thou not, fatal vision, sensible To feeling as to sight? Or art thou but A dagger of the mind, a false creation, Proceeding from the heat-oppressed brain? I see thee yet, in form as palpable As this which now I draw. Thou marshal'st me the way that I was going, And such an instrument I was to use. Mine eyes are made the fools o' the other senses, Or else worth all the rest. I see thee still, And on thy blade and dudgeon gouts of blood, Which was not so before. There's no such thing: It is the bloody business which informs Thus to mine eyes. Now o'er the one half-world Nature seems dead, and wicked dreams abuse The curtain'd sleep; witchcraft celebrates Pale Hecate's offerings; and wither'd Murther, Alarum'd by his sentinel, the wolf, Whose howl's his watch, thus with his stealthy pace, With Tarquin's ravishing strides, towards his design Moves like a ghost. Thou sure and firm-set earth, Hear not my steps, which way they walk, for fear Thy very stones prate of my whereabout, And take the present horror from the time, Which now suits with it. Whiles I threat, he lives; Words to the heat of deeds too cold breath gives. A bell rings. I go, and it is done; the bell invites me. Hear it not, Duncan, for it is a knell That summons thee to heaven, or to hell.
+135|0.2139|16|0.1553|0|0|2|2|LADY MACBETH|That which hath made them drunk hath made me bold; What hath quench'd them hath given me fire. Hark! Peace! It was the owl that shriek'd, the fatal bellman, Which gives the stern'st good night. He is about it: The doors are open, and the surfeited grooms Do mock their charge with snores. I have drugg'd their possets That death and nature do contend about them, Whether they live or die.
+136|0.2155|17|0.165|1|0.0769|2|2|MACBETH|Who's there' what, ho!
+137|0.2171|18|0.1748|2|0.1538|2|2|LADY MACBETH|Alack, I am afraid they have awaked And 'tis not done. The attempt and not the deed Confounds us. Hark! I laid their daggers ready; He could not miss 'em. Had he not resembled My father as he slept, I had done't. Enter Macbeth, My husband!
+138|0.2187|19|0.1845|3|0.2308|2|2|MACBETH|I have done the deed. Didst thou not hear a noise?
+139|0.2203|20|0.1942|4|0.3077|2|2|LADY MACBETH|I heard the owl scream and the crickets cry. Did not you speak?
+140|0.2219|21|0.2039|5|0.3846|2|2|MACBETH|When?
+141|0.2235|22|0.2136|6|0.4615|2|2|LADY MACBETH|Now.
+142|0.225|23|0.2233|7|0.5385|2|2|MACBETH|As I descended?
+143|0.2266|24|0.233|8|0.6154|2|2|LADY MACBETH|Ay.
+144|0.2282|25|0.2427|9|0.6923|2|2|MACBETH|Hark! Who lies i' the second chamber?
+145|0.2298|26|0.2524|10|0.7692|2|2|LADY MACBETH|Donalbain.
+146|0.2314|27|0.2621|11|0.8462|2|2|MACBETH|This is a sorry sight. I hear knocking At the south entry. Retire we to our chamber. A little water clears us of this deed. How easy is it then! Your constancy Hath left you unattended. Hark, more knocking. Get on your nightgown, lest occasion call us And show us to be watchers. Be not lost So poorly in your thoughts.
+147|0.233|28|0.2718|12|0.9231|2|2|MACBETH|To know my deed, 'twere best not know myself. Knocking within. Wake Duncan with thy knocking! I would thou couldst! 
+148|0.2345|29|0.2816|0|0|2|3|PORTER|Here's a knocking indeed! If a man were porter of Hell Gate, he should have old turning the key. Knock, knock, knock! Who's there, i' the name of Belzebub? Here's a farmer that hanged himself on th' expectation of plenty. Come in time! Have napkins enow about you; here you'll sweat fort. Knock, knock! Who's there, in th' other devil's name? Faith, here's an equivocator that could swear in both the scales against either scale, who committed treason enough for God's sake, yet could not equivocate to heaven. O, come in, equivocator. Knock, knock, knock! Who's there? Faith, here's an English tailor come hither, for stealing out of a French hose. Come in, tailor; here you may roast your goose. Knock, knock! Never at quiet! What are you? But this place is too cold for hell. I'll devil-porter it no further. I had thought to have let in some of all professions, that go the primrose way to the everlasting bonfire. Anon, anon! I pray you, remember the porter. Opens the gate. Enter Macduff and Lennox.
+149|0.2361|30|0.2913|1|0.0189|2|3|MACDUFF|Was it so late, friend, ere you went to bed, That you do lie so late?
+150|0.2377|31|0.301|2|0.0377|2|3|PORTER|Faith, sir, we were carousing till the second cock; and drink, sir, is a great provoker of three things.
+151|0.2393|32|0.3107|3|0.0566|2|3|MACDUFF|What three things does drink especially provoke?
+152|0.2409|33|0.3204|4|0.0755|2|3|PORTER|Marry, sir, nose-painting, sleep, and urine. Lechery, sir, it provokes and unprovokes: it provokes the desire, but it takes away the performance. Therefore much drink may be said to be an equivocator with lechery: it makes him, and it mars him; it sets him on, and it takes him off; it persuades him and disheartens him; makes him stand to and not stand to; in conclusion, equivocates him in a sleep, and giving him the lie, leaves him.
+153|0.2425|34|0.3301|5|0.0943|2|3|MACDUFF|I believe drink gave thee the lie last night.
+154|0.2441|35|0.3398|6|0.1132|2|3|PORTER|That it did, sir, i' the very throat on me; but requited him for his lie, and, I think, being too strong for him, though he took up my legs sometime, yet I made shift to cast him.
+155|0.2456|36|0.3495|7|0.1321|2|3|MACDUFF|Is thy master stirring? Enter Macbeth. Our knocking has awaked him; here he comes.
+156|0.2472|37|0.3592|8|0.1509|2|3|LENNOX|Good morrow, noble sir.
+157|0.2488|38|0.3689|9|0.1698|2|3|MACBETH|morrow, both.
+158|0.2504|39|0.3786|10|0.1887|2|3|MACDUFF|Is the King stirring, worthy Thane?
+159|0.252|40|0.3883|11|0.2075|2|3|MACBETH|Not yet.
+160|0.2536|41|0.3981|12|0.2264|2|3|MACDUFF|He did command me to call timely on him; I have almost slipp'd the hour.
+161|0.2552|42|0.4078|13|0.2453|2|3|MACBETH|I'll bring you to him.
+162|0.2567|43|0.4175|14|0.2642|2|3|MACDUFF|I know this is a joyful trouble to you, But yet 'tis one.
+163|0.2583|44|0.4272|15|0.283|2|3|MACBETH|The labor we delight in physics pain. This is the door.
+164|0.2599|45|0.4369|16|0.3019|2|3|MACDUFF|I'll make so bold to call, For 'tis my limited service.
+165|0.2615|46|0.4466|17|0.3208|2|3|LENNOX|Goes the King hence today?  
+166|0.2631|47|0.4563|18|0.3396|2|3|MACBETH|He does; he did appoint so.
+167|0.2647|48|0.466|19|0.3585|2|3|LENNOX|The night has been unruly. Where we lay, Our chimneys were blown down, and, as they say, Lamentings heard i' the air, strange screams of death, And prophesying with accents terrible Of dire combustion and confused events New hatch'd to the woeful time. The obscure bird Clamor'd the livelong night. Some say the earth Was feverous and did shake.
+168|0.2662|49|0.4757|20|0.3774|2|3|MACBETH|'Twas a rough fight.
+169|0.2678|50|0.4854|21|0.3962|2|3|LENNOX|My young remembrance cannot parallel A fellow to it. Re-enter Macduff.
+170|0.2694|51|0.4951|22|0.4151|2|3|MACDUFF|O horror, horror, horror! Tongue nor heart Cannot conceive nor name thee.
+171|0.271|52|0.5049|23|0.434|2|3|MACBETH|LENNOX. What's the matter?
+172|0.2726|53|0.5146|24|0.4528|2|3|MACDUFF|Confusion now hath made his masterpiece. Most sacrilegious murther hath broke ope The Lord's anointed temple and stole thence The life o' the building.
+173|0.2742|54|0.5243|25|0.4717|2|3|MACBETH|What is't you say? the life?
+174|0.2758|55|0.534|26|0.4906|2|3|LENNOX|Mean you his Majesty?
+175|0.2773|56|0.5437|27|0.5094|2|3|MACDUFF|Approach the chamber, and destroy your sight With a new Gorgon. Do not bid me speak; See, and then speak yourselves. Exeunt Macbeth and Lennox. Awake, awake! Ring the alarum bell. Murther and treason! Banquo and Donalbain! Malcolm, awake! Shake off this downy sleep, death's counterfeit, And look on death itself! Up, up, and see The great doom's image! Malcolm! Banquo! As from your graves rise up, and walk like sprites To countenance this horror! Ring the bell. rings. Enter Lady Macbeth.
+176|0.2789|57|0.5534|28|0.5283|2|3|LADY MACBETH|What's the business, That such a hideous trumpet calls to parley The sleepers of the house? Speak, speak!
+177|0.2805|58|0.5631|29|0.5472|2|3|MACDUFF|O gentle lady, The repetition in a woman's ear Would murther as it fell. Enter Banquo. O Banquo, Banquo! Our royal master's murther'd.
+178|0.2821|59|0.5728|30|0.566|2|3|LADY MACBETH|Woe, alas! What, in our house?
+179|0.2837|60|0.5825|31|0.5849|2|3|BANQUO|Too cruel anywhere. Dear Duff, I prithee, contradict thyself, And say it is not so. Re-enter Macbeth and Lennox, with Ross.
+180|0.2853|61|0.5922|32|0.6038|2|3|MACBETH|Had I but died an hour before this chance, I had lived a blessed time, for from this instant There's nothing serious in mortality. All is but toys; renown and grace is dead, The wine of life is drawn, and the mere lees Is left this vault to brag of. Enter Malcolm and Donalbain.
+181|0.2868|62|0.6019|33|0.6226|2|3|DONALBAIN|What is amiss?
+182|0.2884|63|0.6117|34|0.6415|2|3|MACBETH|You are, and do not know't. The spring, the head, the fountain of your blood Is stopped, the very source of it is stopp'd.
+183|0.29|64|0.6214|35|0.6604|2|3|MACDUFF|Your royal father's murther'd. MALCOLM. O, by whom?
+184|0.2916|65|0.6311|36|0.6792|2|3|LENNOX|Those of his chamber, as it seem'd, had done't. Their hands and faces were all badged with blood; So were their daggers, which unwiped we found Upon their pillows. They stared, and were distracted; no man's life Was to be trusted with them.  
+185|0.2932|66|0.6408|37|0.6981|2|3|MACBETH|O, yet I do repent me of my fury, That I did kill them.
+186|0.2948|67|0.6505|38|0.717|2|3|MACDUFF|Wherefore did you so?
+187|0.2964|68|0.6602|39|0.7358|2|3|MACBETH|Who can be wise, amazed, temperate and furious, Loyal and neutral, in a moment? No man. The expedition of my violent love Outrun the pauser reason. Here lay Duncan, His silver skin laced with his golden blood, And his gash'd stabs look'd like a breach in nature For ruin's wasteful entrance; there, the murtherers, Steep'd in the colors of their trade, their daggers Unmannerly breech'd with gore. Who could refrain, That had a heart to love, and in that heart Courage to make 's love known?
+188|0.2979|69|0.6699|40|0.7547|2|3|LADY MACBETH|Help me hence, ho!
+189|0.2995|70|0.6796|41|0.7736|2|3|MACDUFF|Look to the lady.
+190|0.3011|71|0.6893|42|0.7925|2|3|MALCOLM|Why do we hold our tongues, That most may claim this argument for ours?
+191|0.3027|72|0.699|43|0.8113|2|3|DONALBAIN|What should be spoken here, where our fate, Hid in an auger hole, may rush and seize us? Let's away, Our tears are not yet brew'd.
+192|0.3043|73|0.7087|44|0.8302|2|3|MALCOLM|Nor our strong sorrow Upon the foot of motion.
+193|0.3059|74|0.7184|45|0.8491|2|3|BANQUO|Look to the lady. Lady Macbeth is carried out. And when we have our naked frailties hid, That suffer in exposure, let us meet And question this most bloody piece of work To know it further. Fears and scruples shake us. In the great hand of God I stand, and thence Against the undivulged pretense I fight Of treasonous malice.
+194|0.3074|75|0.7282|46|0.8679|2|3|MACDUFF|And so do I.
+195|0.309|76|0.7379|47|0.8868|2|3|ALL|So all.
+196|0.3106|77|0.7476|48|0.9057|2|3|MACBETH|Let's briefly put on manly readiness And meet i' the hall together.
+197|0.3122|78|0.7573|49|0.9245|2|3|ALL|Well contented. Exeunt all but Malcolm and Donalbain.  
+198|0.3138|79|0.767|50|0.9434|2|3|MALCOLM|What will you do? Let's not consort with them. To show an unfelt sorrow is an office Which the false man does easy. I'll to England.
+199|0.3154|80|0.7767|51|0.9623|2|3|DONALBAIN|To Ireland, I; our separated fortune Shall keep us both the safer. Where we are There's daggers in men's smiles; the near in blood, The nearer bloody.
+200|0.317|81|0.7864|52|0.9811|2|3|MALCOLM|This murtherous shaft that's shot Hath not yet lighted, and our safest way Is to avoid the aim. Therefore to horse; And let us not be dainty of leave-taking, But shift away. There's warrant in that theft Which steals itself when there's no mercy left. 
+201|0.3185|82|0.7961|0|0|2|4|OLD MAN|Threescore and ten I can remember well, Within the volume of which time I have seen Hours dreadful and things strange, but this sore night Hath trifled former knowings.
+202|0.3201|83|0.8058|1|0.0455|2|4|ROSS|Ah, good father, Thou seest the heavens, as troubled with man's act, Threaten his bloody stage. By the clock 'tis day, And yet dark night strangles the traveling lamp. Is't night's predominance, or the day's shame, That darkness does the face of earth entomb, When living light should kiss it?
+203|0.3217|84|0.8155|2|0.0909|2|4|OLD MAN|'Tis unnatural, Even like the deed that's done. On Tuesday last A falcon towering in her pride of place Was by a mousing owl hawk'd at and kill'd.
+204|0.3233|85|0.8252|3|0.1364|2|4|ROSS|And Duncan's horses-a thing most strange and certain- Beauteous and swift, the minions of their race, Turn'd wild in nature, broke their stalls, flung out, Contending 'gainst obedience, as they would make War with mankind.
+205|0.3249|86|0.835|4|0.1818|2|4|OLD MAN|'Tis said they eat each other.
+206|0.3265|87|0.8447|5|0.2273|2|4|ROSS|They did so, to the amazement of mine eyes That look'd upon't. Enter Macduff. Here comes the good Macduff. How goes the world, sir, now?
+207|0.3281|88|0.8544|6|0.2727|2|4|MACDUFF|Why, see you not?
+208|0.3296|89|0.8641|7|0.3182|2|4|ROSS|Is't known who did this more than bloody deed?
+209|0.3312|90|0.8738|8|0.3636|2|4|MACDUFF|Those that Macbeth hath slain.
+210|0.3328|91|0.8835|9|0.4091|2|4|ROSS|Alas, the day! What good could they pretend?
+211|0.3344|92|0.8932|10|0.4545|2|4|MACDUFF|They were suborn'd: Malcolm and Donalbain, the King's two sons, Are stol'n away and fled, which puts upon them Suspicion of the deed.  
+212|0.336|93|0.9029|11|0.5|2|4|ROSS|'Gainst nature still! Thriftless ambition, that wilt ravin up Thine own life's means! Then 'tis most like The sovereignty will fall upon Macbeth.
+213|0.3376|94|0.9126|12|0.5455|2|4|MACDUFF|He is already named, and gone to Scone To be invested.
+214|0.3391|95|0.9223|13|0.5909|2|4|ROSS|Where is Duncan's body?
+215|0.3407|96|0.932|14|0.6364|2|4|MACDUFF|Carried to Colmekill, The sacred storehouse of his predecessors And guardian of their bones.
+216|0.3423|97|0.9417|15|0.6818|2|4|ROSS|Will you to Scone?
+217|0.3439|98|0.9515|16|0.7273|2|4|MACDUFF|No, cousin, I'll to Fife.
+218|0.3455|99|0.9612|17|0.7727|2|4|ROSS|Well, I will thither.
+219|0.3471|100|0.9709|18|0.8182|2|4|MACDUFF|Well, may you see things well done there. Adieu, Lest our old robes sit easier than our new!
+220|0.3487|101|0.9806|19|0.8636|2|4|ROSS|Farewell, father.
+221|0.3502|102|0.9903|20|0.9091|2|4|OLD MAN|God's benison go with you and with those That would make good of bad and friends of foes! 
+222|0.3518|0|0|0|0|3|1|BANQUO|Thou hast it now: King, Cawdor, Glamis, all, As the weird women promised, and I fear Thou play'dst most foully for't; yet it was said It should not stand in thy posterity, But that myself should be the root and father Of many kings. If there come truth from them Why, by the verities on thee made good, May they not be my oracles as well And set me up in hope? But hush, no more. Sennet sounds. Enter Macbeth as King, Lady Macbeth as Queen, Lennox, Ross, Lords, Ladies, and Attendants.
+223|0.3534|1|0.0078|1|0.0312|3|1|MACBETH|Here's our chief guest.
+224|0.355|2|0.0156|2|0.0625|3|1|LADY MACBETH|If he had been forgotten, It had been as a gap in our great feast And all thing unbecoming.
+225|0.3566|3|0.0234|3|0.0938|3|1|MACBETH|Tonight we hold a solemn supper, sir, And I'll request your presence.
+226|0.3582|4|0.0312|4|0.125|3|1|BANQUO|Let your Highness Command upon me, to the which my duties Are with a most indissoluble tie Forever knit.
+227|0.3597|5|0.0391|5|0.1562|3|1|MACBETH|Ride you this afternoon?
+228|0.3613|6|0.0469|6|0.1875|3|1|BANQUO|Ay, my good lord.
+229|0.3629|7|0.0547|7|0.2188|3|1|MACBETH|We should have else desired your good advice, Which still hath been both grave and prosperous In this day's council; but we'll take tomorrow. Is't far you ride'!
+230|0.3645|8|0.0625|8|0.25|3|1|BANQUO|As far, my lord, as will fill up the time I must become a borrower of the night For a dark hour or twain.
+231|0.3661|9|0.0703|9|0.2812|3|1|MACBETH|Fail not our feast.
+232|0.3677|10|0.0781|10|0.3125|3|1|BANQUO|My lord, I will not.
+233|0.3693|11|0.0859|11|0.3438|3|1|MACBETH|We hear our bloody cousins are bestow'd In England and in Ireland, not confessing Their cruel parricide, filling their hearers With strange invention. But of that tomorrow, When therewithal we shall have cause of state Craving us jointly. Hie you to horse; adieu, Till you return at night. Goes Fleance with you?
+234|0.3708|12|0.0938|12|0.375|3|1|BANQUO|Ay, my good lord. Our time does call upon 's.
+235|0.3724|13|0.1016|13|0.4062|3|1|MACBETH|I wish your horses swift and sure of foot, And so I do commend you to their backs. Farewell. Banquo. Let every man be master of his time Till seven at night; to make society The sweeter welcome, we will keep ourself Till supper time alone. While then, God be with you! Exeunt all but Macbeth and an Attendant. Sirrah, a word with you. Attend those men Our pleasure?
+236|0.374|14|0.1094|14|0.4375|3|1|ATTENDANT|They are, my lord, without the palace gate.
+237|0.3756|15|0.1172|15|0.4688|3|1|MACBETH|Bring them before us. Attendant. To be thus is nothing, But to be safely thus. Our fears in Banquo. Stick deep, and in his royalty of nature Reigns that which would be fear'd. 'Tis much he dares, And, to that dauntless temper of his mind, He hath a wisdom that doth guide his valor To act in safety. There is none but he Whose being I do fear; and under him My genius is rebuked, as it is said Mark Antony's was by Caesar. He chid the sisters When first they put the name of King upon me And bade them speak to him; then prophet-like They hail'd him father to a line of kings. Upon my head they placed a fruitless crown And put a barren sceptre in my gripe, Thence to be wrench'd with an unlineal hand, No son of mine succeeding. If't be so, For Banquo's issue have I filed my mind, For them the gracious Duncan have I murther'd, Put rancors in the vessel of my peace Only for them, and mine eternal jewel Given to the common enemy of man, To make them kings -the seed of Banquo kings! Rather than so, come, Fate, into the list, And champion me to the utterance! Who's there? Re-enter Attendant, with two Murtherers. Now go to the door, and stay there till we call. Exit Attendant. Was it not yesterday we spoke together?
+238|0.3772|16|0.125|16|0.5|3|1|FIRST MURTHERER|It was, so please your Highness.
+239|0.3788|17|0.1328|17|0.5312|3|1|MACBETH|Well then, now Have you consider'd of my speeches? Know That it was he in the times past which held you So under fortune, which you thought had been Our innocent self? This I made good to you In our last conference, pass'd in probation with you: How you were borne in hand, how cross'd, the instruments, Who wrought with them, and all things else that might To half a soul and to a notion crazed Say, Thus did Banquo.
+240|0.3803|18|0.1406|18|0.5625|3|1|FIRST MURTHERER|You made it known to us.
+241|0.3819|19|0.1484|19|0.5938|3|1|MACBETH|I did so, and went further, which is now Our point of second meeting. Do you find Your patience so predominant in your nature, That you can let this go? Are you so gospel'd, To pray for this good man and for his issue, Whose heavy hand hath bow'd you to the grave And beggar'd yours forever?
+242|0.3835|20|0.1562|20|0.625|3|1|FIRST MURTHERER|We are men, my liege.
+243|0.3851|21|0.1641|21|0.6562|3|1|MACBETH|Ay, in the catalogue ye go for men, As hounds and greyhounds, mongrels, spaniels, curs, Shoughs, waterrugs, and demi-wolves are clept All by the name of dogs. The valued file Distinguishes the swift, the slow, the subtle, The housekeeper, the hunter, every one According to the gift which bounteous nature Hath in him closed, whereby he does receive Particular addition, from the bill That writes them all alike; and so of men. Now if you have a station in the file, Not i' the worst rank of manhood, say it, And I will put that business in your bosoms Whose execution takes your enemy off, Grapples you to the heart and love of us, Who wear our health but sickly in his life, Which in his death were perfect.
+244|0.3867|22|0.1719|22|0.6875|3|1|SECOND MURTHERER|I am one, my liege, Whom the vile blows and buffets of the world Have so incensed that I am reckless what I do to spite the world.
+245|0.3883|23|0.1797|23|0.7188|3|1|FIRST MURTHERER|And I another So weary with disasters, tugg'd with fortune, That I would set my life on any chance, To mend it or be rid on't.
+246|0.3899|24|0.1875|24|0.75|3|1|MACBETH|Both of you Know Banquo was your enemy.
+247|0.3914|25|0.1953|25|0.7812|3|1|BOTH MURTHERERS|True, my lord.
+248|0.393|26|0.2031|26|0.8125|3|1|MACBETH|So is he mine, and in such bloody distance That every minute of his being thrusts Against my near'st of life; and though I could With barefaced power sweep him from my sight And bid my will avouch it, yet I must not, For certain friends that are both his and mine, Whose loves I may not drop, but wail his fall Who I myself struck down. And thence it is That I to your assistance do make love, Masking the business from the common eye For sundry weighty reasons.
+249|0.3946|27|0.2109|27|0.8438|3|1|SECOND MURTHERER|We shall, my lord, Perform what you command us.
+250|0.3962|28|0.2188|28|0.875|3|1|FIRST MURTHERER|Though our lives-
+251|0.3978|29|0.2266|29|0.9062|3|1|MACBETH|Your spirits shine through you. Within this hour at most I will advise you where to plant yourselves, Acquaint you with the perfect spy o' the time, The moment on't; fort must be done tonight And something from the palace (always thought That I require a clearness); and with him- To leave no rubs nor botches in the work- Fleance his son, that keeps him company, Whose absence is no less material to me Than is his father's, must embrace the fate Of that dark hour. Resolve yourselves apart; I'll come to you anon.
+252|0.3994|30|0.2344|30|0.9375|3|1|BOTH MURTHERERS|We are resolved, my lord.
+253|0.401|31|0.2422|31|0.9688|3|1|MACBETH|I'll call upon you straight. Abide within. Exeunt Murtherers. It is concluded: Banquo, thy soul's flight, If it find heaven, must find it out tonight.
+254|0.4025|32|0.25|0|0|3|2|LADY MACBETH|Is Banquo gone from court?
+255|0.4041|33|0.2578|1|0.0714|3|2|SERVANT|Ay, madam, but returns again tonight.
+256|0.4057|34|0.2656|2|0.1429|3|2|LADY MACBETH|Say to the King I would attend his leisure For a few words.
+257|0.4073|35|0.2734|3|0.2143|3|2|SERVANT|Madam, I will.
+258|0.4089|36|0.2812|4|0.2857|3|2|LADY MACBETH|Nought's had, all's spent, Where our desire is got without content. Than by destruction dwell in doubtful joy. Enter Macbeth. How now, my lord? Why do you keep alone, Of sorriest fancies your companions making, Using those thoughts which should indeed have died With them they think on? Things without all remedy Should be without regard. What's done is done.  
+259|0.4105|37|0.2891|5|0.3571|3|2|MACBETH|We have scotch'd the snake, not kill'd it. She'll close and be herself, whilst our poor malice Remains in danger of her former tooth. But let the frame of things disjoint, both the worlds suffer, Ere we will eat our meal in fear and sleep In the affliction of these terrible dreams That shake us nightly. Better be with the dead, Whom we, to gain our peace, have sent to peace, Than on the torture of the mind to lie In restless ecstasy. Duncan is in his grave; After life's fitful fever he sleeps well. Treason has done his worst; nor steel, nor poison, Malice domestic, foreign levy, nothing, Can touch him further.
+260|0.412|38|0.2969|6|0.4286|3|2|LADY MACBETH|Come on, Gentle my lord, sleek o'er your rugged looks; Be bright and jovial among your guests tonight.
+261|0.4136|39|0.3047|7|0.5|3|2|MACBETH|So shall I, love, and so, I pray, be you. Let your remembrance apply to Banquo; Present him eminence, both with eye and tongue: Unsafe the while, that we Must lave our honors in these flattering streams, And make our faces vizards to our hearts, Disguising what they are.
+262|0.4152|40|0.3125|8|0.5714|3|2|LADY MACBETH|You must leave this.
+263|0.4168|41|0.3203|9|0.6429|3|2|MACBETH|O, full of scorpions is my mind, dear wife! Thou know'st that Banquo and his Fleance lives.
+264|0.4184|42|0.3281|10|0.7143|3|2|LADY MACBETH|But in them nature's copy's not eterne.
+265|0.42|43|0.3359|11|0.7857|3|2|MACBETH|There's comfort yet; they are assailable. Then be thou jocund. Ere the bat hath flown His cloister'd flight, ere to black Hecate's summons The shard-borne beetle with his drowsy hums Hath rung night's yawning peal, there shall be done A deed of dreadful note.
+266|0.4216|44|0.3438|12|0.8571|3|2|LADY MACBETH|What's to be done?
+267|0.4231|45|0.3516|13|0.9286|3|2|MACBETH|Be innocent of the knowledge, dearest chuck, Till thou applaud the deed. Come, seeling night, Scarf up the tender eye of pitiful day, And with thy bloody and invisible hand Cancel and tear to pieces that great bond Which keeps me pale! Light thickens, and the crow Makes wing to the rooky wood; Good things of day begin to droop and drowse, Whiles night's black agents to their preys do rouse. Thou marvel'st at my words, but hold thee still: Things bad begun make strong themselves by ill. So, prithee, go with me.
+268|0.4247|46|0.3594|0|0|3|3|FIRST MURTHERER|But who did bid thee join with us?
+269|0.4263|47|0.3672|1|0.05|3|3|THIRD MURTHERER|Macbeth.
+270|0.4279|48|0.375|2|0.1|3|3|SECOND MURTHERER|He needs not our mistrust, since he delivers Our offices and what we have to do To the direction just.
+271|0.4295|49|0.3828|3|0.15|3|3|FIRST MURTHERER|Then stand with us. The west yet glimmers with some streaks of day; Now spurs the lated traveler apace To gain the timely inn, and near approaches The subject of our watch.
+272|0.4311|50|0.3906|4|0.2|3|3|THIRD MURTHERER|Hark! I hear horses.
+273|0.4326|51|0.3984|5|0.25|3|3|BANQUO|Give us a light there, ho!
+274|0.4342|52|0.4062|6|0.3|3|3|SECOND MURTHERER|Then 'tis he; the rest That are within the note of expectation Already are i' the court.
+275|0.4358|53|0.4141|7|0.35|3|3|FIRST MURTHERER|His horses go about.
+276|0.4374|54|0.4219|8|0.4|3|3|THIRD MURTHERER|Almost a mile, but he does usually- So all men do -from hence to the palace gate Make it their walk.
+277|0.439|55|0.4297|9|0.45|3|3|SECOND MURTHERER|A light, a light! Enter Banquo, and Fleance with a torch.
+278|0.4406|56|0.4375|10|0.5|3|3|THIRD MURTHERER|'Tis he.
+279|0.4422|57|0.4453|11|0.55|3|3|FIRST MURTHERER|Stand to't.
+280|0.4437|58|0.4531|12|0.6|3|3|BANQUO|It will be rain tonight.
+281|0.4453|59|0.4609|13|0.65|3|3|FIRST MURTHERER|Let it come down. They set upon Banquo.
+282|0.4469|60|0.4688|14|0.7|3|3|BANQUO|O, treachery! Fly, good Fleance, fly, fly, fly! Thou mayst revenge. O slave! Fleance escapes.
+283|0.4485|61|0.4766|15|0.75|3|3|THIRD MURTHERER|Who did strike out the light?
+284|0.4501|62|0.4844|16|0.8|3|3|FIRST MURTHERER|Wast not the way?
+285|0.4517|63|0.4922|17|0.85|3|3|THIRD MURTHERER|There's but one down; the son is fled.
+286|0.4532|64|0.5|18|0.9|3|3|SECOND MURTHERER|We have lost Best half of our affair.
+287|0.4548|65|0.5078|19|0.95|3|3|FIRST MURTHERER|Well, let's away and say how much is done. 
+288|0.4564|66|0.5156|0|0|3|4|MACBETH|You know your own degrees; sit down. At first And last the hearty welcome.
+289|0.458|67|0.5234|1|0.0189|3|4|LORDS|Thanks to your Majesty.
+290|0.4596|68|0.5312|2|0.0377|3|4|MACBETH|Ourself will mingle with society And play the humble host. Our hostess keeps her state, but in best time We will require her welcome.
+291|0.4612|69|0.5391|3|0.0566|3|4|LADY MACBETH|Pronounce it for me, sir, to all our friends, For my heart speaks they are welcome. Enter first Murtherer to the door.
+292|0.4628|70|0.5469|4|0.0755|3|4|MACBETH|See, they encounter thee with their hearts' thanks. Both sides are even; here I'll sit i' the midst. Be large in mirth; anon we'll drink a measure The table round. There's blood upon thy face.
+293|0.4643|71|0.5547|5|0.0943|3|4|MURTHERER|'Tis Banquo's then.
+294|0.4659|72|0.5625|6|0.1132|3|4|MACBETH|'Tis better thee without than he within. Is he dispatch'd?
+295|0.4675|73|0.5703|7|0.1321|3|4|MURTHERER|My lord, his throat is cut; that I did for him.
+296|0.4691|74|0.5781|8|0.1509|3|4|MACBETH|Thou art the best o' the cut-throats! Yet he's good That did the like for Fleance. If thou didst it, Thou art the nonpareil.
+297|0.4707|75|0.5859|9|0.1698|3|4|MURTHERER|Most royal sir, Fleance is 'scaped.
+298|0.4723|76|0.5938|10|0.1887|3|4|MACBETH|Then comes my fit again. I had else been perfect, Whole as the marble, founded as the rock, As broad and general as the casing air; But now I am cabin'd, cribb'd, confin'd, bound in To saucy doubts and fears -But Banquo's safe?
+299|0.4739|77|0.6016|11|0.2075|3|4|MURTHERER|Ay, my good lord. Safe in a ditch he bides, With twenty trenched gashes on his head, The least a death to nature.
+300|0.4754|78|0.6094|12|0.2264|3|4|MACBETH|Thanks for that. There the grown serpent lies; the worm that's fled Hath nature that in time will venom breed, No teeth for the present. Get thee gone. Tomorrow We'll hear ourselves again. Exit Murtherer.
+301|0.477|79|0.6172|13|0.2453|3|4|LADY MACBETH|My royal lord, You do not give the cheer. The feast is sold That is not often vouch'd, while 'tis amaking, From thence the sauce to meat is ceremony; Meeting were bare without it.
+302|0.4786|80|0.625|14|0.2642|3|4|MACBETH|Sweet remembrancer! Now good digestion wait on appetite, And health on both!
+303|0.4802|81|0.6328|15|0.283|3|4|LENNOX|May't please your Highness sit. The Ghost of Banquo enters and sits in Macbeth's place.
+304|0.4818|82|0.6406|16|0.3019|3|4|MACBETH|Here had we now our country's honor roof'd, Were the graced person of our Banquo present, Who may I rather challenge for unkindness Than pity for mischance!
+305|0.4834|83|0.6484|17|0.3208|3|4|ROSS|His absence, sir, Lays blame upon his promise. Please't your Highness To grace us with your royal company?
+306|0.4849|84|0.6562|18|0.3396|3|4|MACBETH|The table's full.
+307|0.4865|85|0.6641|19|0.3585|3|4|LENNOX|Here is a place reserved, sir.
+308|0.4881|86|0.6719|20|0.3774|3|4|MACBETH|Where?
+309|0.4897|87|0.6797|21|0.3962|3|4|LENNOX|Here, my good lord. What is't that moves your Highness?
+310|0.4913|88|0.6875|22|0.4151|3|4|MACBETH|Which of you have done this?
+311|0.4929|89|0.6953|23|0.434|3|4|LORDS|What, my good lord?
+312|0.4945|90|0.7031|24|0.4528|3|4|MACBETH|Thou canst not say I did it; never shake Thy gory locks at me.
+313|0.496|91|0.7109|25|0.4717|3|4|ROSS|Gentlemen, rise; his Highness is well.
+314|0.4976|92|0.7188|26|0.4906|3|4|LADY MACBETH|Sit, worthy friends; my lord is often thus, And hath been from his youth. Pray you, keep seat. The fit is momentary; upon a thought He will again be well. If much you note him, You shall offend him and extend his passion. Feed, and regard him not-Are you a man?
+315|0.4992|93|0.7266|27|0.5094|3|4|MACBETH|Ay, and a bold one, that dare look on that Which might appal the devil.
+316|0.5008|94|0.7344|28|0.5283|3|4|LADY MACBETH|O proper stuff! This is the very painting of your fear; This is the air-drawn dagger which you said Led you to Duncan. O, these flaws and starts, Impostors to true fear, would well become A woman's story at a winter's fire, Authorized by her grandam. Shame itself! Why do you make such faces? When all's done, You look but on a stool.
+317|0.5024|95|0.7422|29|0.5472|3|4|MACBETH|Prithee, see there! Behold! Look! Lo! How say you? Why, what care I? If thou canst nod, speak too. If charnel houses and our graves must send Those that we bury back, our monuments Shall be the maws of kites. Ghost.
+318|0.504|96|0.75|30|0.566|3|4|LADY MACBETH|What, quite unmann'd in folly?
+319|0.5055|97|0.7578|31|0.5849|3|4|MACBETH|If I stand here, I saw him.
+320|0.5071|98|0.7656|32|0.6038|3|4|LADY MACBETH|Fie, for shame!
+321|0.5087|99|0.7734|33|0.6226|3|4|MACBETH|Blood hath been shed ere now, i' the olden time, Ere humane statute purged the gentle weal; Ay, and since too, murthers have been perform'd Too terrible for the ear. The time has been, That, when the brains were out, the man would die, And there an end; but now they rise again, With twenty mortal murthers on their crowns, And push us from our stools. This is more strange Than such a murther is.
+322|0.5103|100|0.7812|34|0.6415|3|4|LADY MACBETH|My worthy lord, Your noble friends do lack you.
+323|0.5119|101|0.7891|35|0.6604|3|4|MACBETH|I do forget. Do not muse at me, my most worthy friends. I have a strange infirmity, which is nothing To those that know me. Come, love and health to all; Then I'll sit down. Give me some wine, fill full. I drink to the general joy o' the whole table, And to our dear friend Banquo, whom we miss. Would he were here! To all and him we thirst, And all to all.
+324|0.5135|102|0.7969|36|0.6792|3|4|LORDS|Our duties and the pledge. Re-enter Ghost.
+325|0.5151|103|0.8047|37|0.6981|3|4|MACBETH|Avaunt, and quit my sight! Let the earth hide thee! Thy bones are marrowless, thy blood is cold; Thou hast no speculation in those eyes Which thou dost glare with.
+326|0.5166|104|0.8125|38|0.717|3|4|LADY MACBETH|Think of this, good peers, But as a thing of custom. 'Tis no other, Only it spoils the pleasure of the time.
+327|0.5182|105|0.8203|39|0.7358|3|4|MACBETH|What man dare, I dare. Approach thou like the rugged Russian bear, The arm'd rhinoceros, or the Hyrcan tiger; Take any shape but that, and my firm nerves Shall never tremble. Or be alive again, And dare me to the desert with thy sword. If trembling I inhabit then, protest me The baby of a girl. Hence, horrible shadow! Unreal mockery, hence! Ghost. Why, so, being gone, I am a man again. Pray you sit still.  
+328|0.5198|106|0.8281|40|0.7547|3|4|LADY MACBETH|You have displaced the mirth, broke the good meeting, With most admired disorder.
+329|0.5214|107|0.8359|41|0.7736|3|4|MACBETH|Can such things be, And overcome us like a summer's cloud, Without our special wonder? You make me strange Even to the disposition that I owe When now I think you can behold such sights And keep the natural ruby of your cheeks When mine is blanch'd with fear.
+330|0.523|108|0.8438|42|0.7925|3|4|ROSS|What sights, my lord?
+331|0.5246|109|0.8516|43|0.8113|3|4|LADY MACBETH|I pray you, speak not; he grows worse and worse; Question enrages him. At once, good night. Stand not upon the order of your going, But go at once.
+332|0.5261|110|0.8594|44|0.8302|3|4|LENNOX|Good night, and better health Attend his Majesty!
+333|0.5277|111|0.8672|45|0.8491|3|4|LADY MACBETH|A kind good night to all! Exeunt all but Macbeth and Lady Macbeth.
+334|0.5293|112|0.875|46|0.8679|3|4|MACBETH|will have blood; they say blood will have blood. Stones have been known to move and trees to speak; Augures and understood relations have By maggot pies and choughs and rooks brought forth The secret'st man of blood. What is the night?
+335|0.5309|113|0.8828|47|0.8868|3|4|LADY MACBETH|Almost at odds with morning, which is which.
+336|0.5325|114|0.8906|48|0.9057|3|4|MACBETH|How say'st thou, that Macduff denies his person At our great bidding?
+337|0.5341|115|0.8984|49|0.9245|3|4|LADY MACBETH|Did you send to him, sir?
+338|0.5357|116|0.9062|50|0.9434|3|4|MACBETH|I hear it by the way, but I will send. There's not a one of them but in his house I keep a servant feed. I will tomorrow, And betimes I will, to the weird sisters. More shall they speak; for now I am bent to know, By the worst means, the worst. For mine own good All causes shall give way. I am in blood Stepp'd in so far that, should I wade no more, Returning were as tedious as go o'er. Strange things I have in head that will to hand, Which must be acted ere they may be scann'd.
+339|0.5372|117|0.9141|51|0.9623|3|4|LADY MACBETH|You lack the season of all natures, sleep.
+340|0.5388|118|0.9219|52|0.9811|3|4|MACBETH|Come, we'll to sleep. My strange and self-abuse Is the initiate fear that wants hard use. We are yet but young in deed.
+341|0.5404|119|0.9297|0|0|3|5|FIRST WITCH|Why, how now, Hecate? You look angerly.
+342|0.542|120|0.9375|1|0.3333|3|5|HECATE|Have I not reason, beldams as you are, Saucy and overbold? How did you dare To trade and traffic with Macbeth In riddles and affairs of death, And I, the mistress of your charms, The close contriver of all harms, Was never call'd to bear my part, Or show the glory of our art? And, which is worse, all you have done Hath been but for a wayward son, Spiteful and wrathful, who, as others do, Loves for his own ends, not for you. But make amends now. Get you gone, And at the pit of Acheron Meet me i' the morning. Thither he Will come to know his destiny. Your vessels and your spells provide, Your charms and everything beside. I am for the air; this night I'll spend Unto a dismal and a fatal end. Great business must be wrought ere noon: Upon the corner of the moon There hangs a vaporous drop profound; I'll catch it ere it come to ground. And that distill'd by magic sleights Shall raise such artificial sprites As by the strength of their illusion Shall draw him on to his confusion. He shall spurn fate, scorn death, and bear His hopes 'bove wisdom, grace, and fear. And you all know security Is mortals' chiefest enemy. Music and a song within, Hark! I am call'd; my little spirit, see, Sits in a foggy cloud and stays for me.  
+343|0.5436|121|0.9453|2|0.6667|3|5|FIRST WITCH|Come, let's make haste; she'll soon be back again. 
+344|0.5452|122|0.9531|0|0|3|6|LENNOX|My former speeches have but hit your thoughts, Which can interpret farther; only I say Thing's have been strangely borne. The gracious Duncan Was pitied of Macbeth; marry, he was dead. And the right valiant Banquo walk'd too late, Whom, you may say, if't please you, Fleance kill'd, For Fleance fled. Men must not walk too late. Who cannot want the thought, how monstrous It was for Malcolm and for Donalbain To kill their gracious father? Damned fact! How it did grieve Macbeth! Did he not straight, In pious rage, the two delinquents tear That were the slaves of drink and thralls of sleep? Was not that nobly done? Ay, and wisely too, For 'twould have anger'd any heart alive To hear the men deny't. So that, I say, He has borne all things well; and I do think That, had he Duncan's sons under his key- As, an't please heaven, he shall not -they should find What 'twere to kill a father; so should Fleance. But, peace! For from broad words, and 'cause he fail'd His presence at the tyrant's feast, I hear, Macduff lives in disgrace. Sir, can you tell Where he bestows himself?
+345|0.5468|123|0.9609|1|0.1429|3|6|LORD|The son of Duncan, From whom this tyrant holds the due of birth, Lives in the English court and is received Of the most pious Edward with such grace That the malevolence of fortune nothing Takes from his high respect. Thither Macduff Is gone to pray the holy King, upon his aid To wake Northumberland and warlike Siward; That by the help of these, with Him above To ratify the work, we may again Give to our tables meat, sleep to our nights, Free from our feasts and banquets bloody knives, Do faithful homage, and receive free honors- All which we pine for now. And this report Hath so exasperate the King that he Prepares for some attempt of war.
+346|0.5483|124|0.9688|2|0.2857|3|6|LENNOX|Sent he to Macduff?
+347|0.5499|125|0.9766|3|0.4286|3|6|LORD|He did, and with an absolute Sir, not I, The cloudy messenger turns me his back, And hums, as who should say, You'll rue the time That clogs me with this answer.
+348|0.5515|126|0.9844|4|0.5714|3|6|LENNOX|And that well might Advise him to a caution, to hold what distance His wisdom can provide. Some holy angel Fly to the court of England and unfold His message ere he come, that a swift blessing May soon return to this our suffering country Under a hand accursed!
+349|0.5531|127|0.9922|5|0.7143|3|6|LORD|I'll send my prayers with him. 
+350|0.5547|0|0|0|0|4|1|FIRST WITCH|Thrice the brinded cat hath mew'd.
+351|0.5563|1|0.0063|1|0.0189|4|1|SECOND WITCH|Thrice and once the hedge-pig whined.
+352|0.5578|2|0.0126|2|0.0377|4|1|THIRD WITCH|Harpier cries, 'Tis time, 'tis time.
+353|0.5594|3|0.0189|3|0.0566|4|1|FIRST WITCH|Round about the cauldron go; In the poison'd entrails throw. Toad, that under cold stone Days and nights has thirty-one Swelter'd venom sleeping got, Boil thou first i' the charmed pot.
+354|0.561|4|0.0252|4|0.0755|4|1|ALL|Double, double, toil and trouble; Fire burn and cauldron bubble.
+355|0.5626|5|0.0314|5|0.0943|4|1|SECOND WITCH|Fillet of a fenny snake, In the cauldron boil and bake; Eye of newt and toe of frog, Wool of bat and tongue of dog, Adder's fork and blind-worm's sting, Lizard's leg and howlet's wing, For a charm of powerful trouble, Like a hell-broth boil and bubble.
+356|0.5642|6|0.0377|6|0.1132|4|1|ALL|Double, double, toil and trouble; Fire burn and cauldron bubble.
+357|0.5658|7|0.044|7|0.1321|4|1|THIRD WITCH|Scale of dragon, tooth of wolf, Witch's mummy, maw and gulf Of the ravin'd salt-sea shark, Root of hemlock digg'd i' the dark, Liver of blaspheming Jew, Gall of goat and slips of yew Sliver'd in the moon's eclipse, Nose of Turk and Tartar's lips, Finger of birth-strangled babe Ditch-deliver'd by a drab, Make the gruel thick and slab. Add thereto a tiger's chawdron, For the ingredients of our cawdron.
+358|0.5674|8|0.0503|8|0.1509|4|1|ALL|Double, double, toil and trouble; Fire burn and cauldron bubble.
+359|0.5689|9|0.0566|9|0.1698|4|1|SECOND WITCH|Cool it with a baboon's blood, Then the charm is firm and good. Enter Hecate to the other three Witches.
+360|0.5705|10|0.0629|10|0.1887|4|1|HECATE|O, well done! I commend your pains, And everyone shall share i' the gains. And now about the cauldron sing, Like elves and fairies in a ring, Enchanting all that you put in. Music and a song, Black spirits. Hecate retires.
+361|0.5721|11|0.0692|11|0.2075|4|1|SECOND WITCH|By the pricking of my thumbs, Something wicked this way comes. Open, locks, Whoever knocks! Enter Macbeth.
+362|0.5737|12|0.0755|12|0.2264|4|1|MACBETH|How now, you secret, black, and midnight hags? What is't you do?
+363|0.5753|13|0.0818|13|0.2453|4|1|ALL|A deed without a name.  
+364|0.5769|14|0.0881|14|0.2642|4|1|MACBETH|I conjure you, by that which you profess Though you untie the winds and let them fight Against the churches, though the yesty waves Confound and swallow navigation up, Though bladed corn be lodged and trees blown down, Though castles topple on their warders' heads, Though palaces and pyramids do slope Their heads to their foundations, though the treasure Of nature's germaines tumble all together Even till destruction sicken, answer me To what I ask you.
+365|0.5784|15|0.0943|15|0.283|4|1|FIRST WITCH|Speak.
+366|0.58|16|0.1006|16|0.3019|4|1|SECOND WITCH|Demand.
+367|0.5816|17|0.1069|17|0.3208|4|1|THIRD WITCH|We'll answer.
+368|0.5832|18|0.1132|18|0.3396|4|1|FIRST WITCH|Say, if thou'dst rather hear it from our mouths, Or from our masters'?
+369|0.5848|19|0.1195|19|0.3585|4|1|MACBETH|Call 'em, let me see 'em.
+370|0.5864|20|0.1258|20|0.3774|4|1|FIRST WITCH|Pour in sow's blood that hath eaten Her nine farrow; grease that's sweaten From the murtherer's gibbet throw Into the flame.
+371|0.588|21|0.1321|21|0.3962|4|1|ALL|Come, high or low; Thyself and office deftly show! Thunder. First Apparition: an armed Head.
+372|0.5895|22|0.1384|22|0.4151|4|1|MACBETH|Tell me, thou unknown power-
+373|0.5911|23|0.1447|23|0.434|4|1|FIRST WITCH|He knows thy thought: Hear his speech, but say thou nought.
+374|0.5927|24|0.1509|24|0.4528|4|1|FIRST APPARITION|Macbeth! Macbeth! Macbeth! Beware Macduff, Beware the Thane of Fife. Dismiss me. Enough. Descends.
+375|0.5943|25|0.1572|25|0.4717|4|1|MACBETH|Whate'er thou art, for thy good caution, thanks; Thou hast harp'd my fear aright. But one word more-
+376|0.5959|26|0.1635|26|0.4906|4|1|FIRST WITCH|He will not be commanded. Here's another, More potent than the first. Thunder. Second Apparition: a bloody Child.
+377|0.5975|27|0.1698|27|0.5094|4|1|SECOND APPARITION|Macbeth! Macbeth! Macbeth!
+378|0.599|28|0.1761|28|0.5283|4|1|MACBETH|Had I three ears, I'd hear thee.
+379|0.6006|29|0.1824|29|0.5472|4|1|SECOND APPARITION|Be bloody, bold, and resolute: laugh to scorn The power of man, for none of woman born Shall harm Macbeth.
+380|0.6022|30|0.1887|30|0.566|4|1|MACBETH|Then live, Macduff. What need I fear of thee? But yet I'll make assurance double sure, And take a bond of fate: thou shalt not live, That I may tell pale-hearted fear it lies, And sleep in spite of thunder. Thunder. Third Apparition: a Child crowned, with a tree in his hand. What is this, That rises like the issue of a king, And wears upon his baby brow the round And top of sovereignty?
+381|0.6038|31|0.195|31|0.5849|4|1|ALL|Listen, but speak not to't.
+382|0.6054|32|0.2013|32|0.6038|4|1|THIRD APPARITION|Be lion-mettled, proud, and take no care Who chafes, who frets, or where conspirers are. Macbeth shall never vanquish'd be until Great Birnam Wood to high Dunsinane Hill Shall come against him.
+383|0.607|33|0.2075|33|0.6226|4|1|MACBETH|That will never be. Who can impress the forest, bid the tree Unfix his earth-bound root? Sweet bodements, good! Rebellion's head, rise never till the Wood Of Birnam rise, and our high-placed Macbeth Shall live the lease of nature, pay his breath To time and mortal custom. Yet my heart Throbs to know one thing: tell me, if your art Can tell so much, shall Banquo's issue ever Reign in this kingdom?
+384|0.6086|34|0.2138|34|0.6415|4|1|ALL|Seek to know no more.
+385|0.6101|35|0.2201|35|0.6604|4|1|MACBETH|I will be satisfied! Deny me this, And an eternal curse fall on you! Let me know. Why sinks that cauldron, and what noise is this? Hautboys.
+386|0.6117|36|0.2264|36|0.6792|4|1|FIRST WITCH|Show!  
+387|0.6133|37|0.2327|37|0.6981|4|1|SECOND WITCH|Show!
+388|0.6149|38|0.239|38|0.717|4|1|THIRD|WITCH. Show!
+389|0.6165|39|0.2453|39|0.7358|4|1|ALL|Show his eyes, and grieve his heart; Come like shadows, so depart! A show of eight Kings, the last with a glass in his hand; Banquo's Ghost following.
+390|0.6181|40|0.2516|40|0.7547|4|1|MACBETH|Thou are too like the spirit of Banquo Down! Thy crown does sear mine eyeballs. And thy hair, Thou other gold-bound brow, is like the first. A third is like the former. Filthy hags! Why do you show me this? A fourth! Start, eyes! What, will the line stretch out to the crack of doom? Another yet! A seventh! I'll see no more! And yet the eighth appears, who bears a glass Which shows me many more; and some I see That twofold balls and treble sceptres carry. Horrible sight! Now I see 'tis true; For the blood-bolter'd Banquo smiles upon me, And points at them for his. What, is this so?
+391|0.6197|41|0.2579|41|0.7736|4|1|FIRST WITCH|Ay, sir, all this is so. But why Stands Macbeth thus amazedly? Come,sisters, cheer we up his sprites, And show the best of our delights. I'll charm the air to give a sound, While you perform your antic round, That this great King may kindly say Our duties did his welcome pay. Music. The Witches dance and then vanish with Hecate.
+392|0.6212|42|0.2642|42|0.7925|4|1|MACBETH|are they? Gone? Let this pernicious hour Stand ay accursed in the calendar! Come in, without there! Enter Lennox.
+393|0.6228|43|0.2704|43|0.8113|4|1|LENNOX|What's your Grace's will?
+394|0.6244|44|0.2767|44|0.8302|4|1|MACBETH|Saw you the weird sisters?
+395|0.626|45|0.283|45|0.8491|4|1|LENNOX|No, my lord.  
+396|0.6276|46|0.2893|46|0.8679|4|1|MACBETH|Came they not by you?
+397|0.6292|47|0.2956|47|0.8868|4|1|LENNOX|No indeed, my lord.
+398|0.6307|48|0.3019|48|0.9057|4|1|MACBETH|Infected be the 'air whereon they ride, And damn'd all those that trust them! I did hear The galloping of horse. Who wast came by?
+399|0.6323|49|0.3082|49|0.9245|4|1|LENNOX|'Tis two or three, my lord, that bring you word Macduff is fled to England.
+400|0.6339|50|0.3145|50|0.9434|4|1|MACBETH|Fled to England?
+401|0.6355|51|0.3208|51|0.9623|4|1|LENNOX|Ay, my good lord.
+402|0.6371|52|0.327|52|0.9811|4|1|MACBETH|Time, thou anticipatest my dread exploits. The flighty purpose never is o'ertook Unless the deed go with it. From this moment The very firstlings of my heart shall be The firstlings of my hand. And even now, To crown my thoughts with acts, be it thought and done: The castle of Macduff I will surprise, Seize upon Fife, give to the edge o' the sword His wife, his babes, and all unfortunate souls That trace him in his line. No boasting like a fool; This deed I'll do before this purpose cool. But no more sights! -Where are these gentlemen? Come, bring me where they are.
+403|0.6387|53|0.3333|0|0|4|2|LADY MACDUFF|What had he done, to make him fly the land?
+404|0.6403|54|0.3396|1|0.0244|4|2|ROSS|You must have patience, madam.
+405|0.6418|55|0.3459|2|0.0488|4|2|LADY MACDUFF|He had none; His flight was madness. When our actions do not, Our fears do make us traitors.
+406|0.6434|56|0.3522|3|0.0732|4|2|ROSS|You know not Whether it was his wisdom or his fear.
+407|0.645|57|0.3585|4|0.0976|4|2|LADY MACDUFF|Wisdom? To leave his wife, to leave his babes, His mansion, and his titles, in a place From whence himself does fly? He loves us not; He wants the natural touch; for the poor wren, The most diminutive of birds, will fight, Her young ones in her nest, against the owl. All is the fear and nothing is the love; As little is the wisdom, where the flight So runs against all reason.
+408|0.6466|58|0.3648|5|0.122|4|2|ROSS|My dearest coz, I pray you, school yourself. But for your husband, He is noble, wise, Judicious, and best knows The fits o' the season. I dare not speak much further; But cruel are the times when we are traitors And do not know ourselves; when we hold rumor From what we fear, yet know not what we fear, But float upon a wild and violent sea Each way and move. I take my leave of you; Shall not be long but I'll be here again. Things at the worst will cease or else climb upward To what they were before. My pretty cousin, Blessing upon you!
+409|0.6482|59|0.3711|6|0.1463|4|2|LADY MACDUFF|Father'd he is, and yet he's fatherless.
+410|0.6498|60|0.3774|7|0.1707|4|2|ROSS|I am so much a fool, should I stay longer, It would be my disgrace and your discomfort. I take my leave at once.
+411|0.6513|61|0.3836|8|0.1951|4|2|LADY MACDUFF|Sirrah, your father's dead. And what will you do now? How will you live?
+412|0.6529|62|0.3899|9|0.2195|4|2|SON|As birds do, Mother.
+413|0.6545|63|0.3962|10|0.2439|4|2|LADY MACDUFF|What, with worms and flies?  
+414|0.6561|64|0.4025|11|0.2683|4|2|SON|With what I get, I mean; and so do they.
+415|0.6577|65|0.4088|12|0.2927|4|2|LADY MACDUFF|Poor bird! Thou'ldst never fear the net nor lime, The pitfall nor the gin.
+416|0.6593|66|0.4151|13|0.3171|4|2|SON|Why should I, Mother? Poor birds they are not set for. My father is not dead, for all your saying.
+417|0.6609|67|0.4214|14|0.3415|4|2|LADY MACDUFF|Yes, he is dead. How wilt thou do for father?
+418|0.6624|68|0.4277|15|0.3659|4|2|SON|Nay, how will you do for a husband?
+419|0.664|69|0.434|16|0.3902|4|2|LADY MACDUFF|Why, I can buy me twenty at any market.
+420|0.6656|70|0.4403|17|0.4146|4|2|SON|Then you'll buy 'em to sell again.
+421|0.6672|71|0.4465|18|0.439|4|2|LADY MACDUFF|Thou speak'st with all thy wit, and yet, i' faith, With wit enough for thee.
+422|0.6688|72|0.4528|19|0.4634|4|2|SON|Was my father a traitor, Mother?
+423|0.6704|73|0.4591|20|0.4878|4|2|LADY MACDUFF|Ay, that he was.
+424|0.6719|74|0.4654|21|0.5122|4|2|SON|What is a traitor?
+425|0.6735|75|0.4717|22|0.5366|4|2|LADY MACDUFF|Why one that swears and lies.
+426|0.6751|76|0.478|23|0.561|4|2|SON|And be all traitors that do so?
+427|0.6767|77|0.4843|24|0.5854|4|2|LADY MACDUFF|Everyone that does so is a traitor and must be hanged.
+428|0.6783|78|0.4906|25|0.6098|4|2|SON|And must they all be hanged that swear and lie?
+429|0.6799|79|0.4969|26|0.6341|4|2|LADY MACDUFF|Everyone.  
+430|0.6815|80|0.5031|27|0.6585|4|2|SON|Who must hang them?
+431|0.683|81|0.5094|28|0.6829|4|2|LADY MACDUFF|Why, the honest men.
+432|0.6846|82|0.5157|29|0.7073|4|2|SON|Then the liars and swearers are fools, for there are liars and swearers enow to beat the honest men and hang up them.
+433|0.6862|83|0.522|30|0.7317|4|2|LADY MACDUFF|Now, God help thee, poor monkey! But how wilt thou do for a father?
+434|0.6878|84|0.5283|31|0.7561|4|2|SON|If he were dead, you'ld weep for him; if you would not, it were a good sign that I should quickly have a new father.
+435|0.6894|85|0.5346|32|0.7805|4|2|LADY MACDUFF|Poor prattler, how thou talk'st! Enter a Messenger.
+436|0.691|86|0.5409|33|0.8049|4|2|MESSENGER|Bless you, fair dame! I am not to you known, Though in your state of honor I am perfect. I doubt some danger does approach you nearly. If you will take a homely man's advice, Be not found here; hence, with your little ones. To fright you thus, methinks I am too savage; To do worse to you were fell cruelty, Which is too nigh your person. Heaven preserve you! I dare abide no longer.
+437|0.6926|87|0.5472|34|0.8293|4|2|LADY MACDUFF|Whither should I fly? I have done no harm. But I remember now I am in this earthly world, where to do harm Is often laudable, to do good sometime Accounted dangerous folly. Why then, alas, Do I put up that womanly defense, To say I have done no harm -What are these faces? Enter Murtherers.
+438|0.6941|88|0.5535|35|0.8537|4|2|FIRST MURTHERER|Where is your husband?
+439|0.6957|89|0.5597|36|0.878|4|2|LADY MACDUFF|I hope, in no place so unsanctified Where such as thou mayst find him.
+440|0.6973|90|0.566|37|0.9024|4|2|FIRST MURTHERER|He's a traitor.
+441|0.6989|91|0.5723|38|0.9268|4|2|SON|Thou liest, thou shag-ear'd villain!
+442|0.7005|92|0.5786|39|0.9512|4|2|FIRST MURTHERER|What, you egg! Stabs him. Young fry of treachery!
+443|0.7021|93|0.5849|40|0.9756|4|2|SON|He has kill'd me, Mother. Run away, I pray you! Exit Lady Macduff, crying Murther! Exeunt Murtherers, following her.
+444|0.7036|94|0.5912|0|0|4|3|MALCOLM|Let us seek out some desolate shade and there Weep our sad bosoms empty.
+445|0.7052|95|0.5975|1|0.0152|4|3|MACDUFF|Let us rather Hold fast the mortal sword, and like good men Bestride our downfall'n birthdom. Each new morn New widows howl, new orphans cry, new sorrows Strike heaven on the face, that it resounds As if it felt with Scotland and yell'd out Like syllable of dolor.
+446|0.7068|96|0.6038|2|0.0303|4|3|MALCOLM|What I believe, I'll wall; What know, believe; and what I can redress, As I shall find the time to friend, I will. What you have spoke, it may be so perchance. This tyrant, whose sole name blisters our tongues, Was once thought honest. You have loved him well; He hath not touch'd you yet. I am young, but something You may deserve of him through me, and wisdom To offer up a weak, poor, innocent lamb To appease an angry god.
+447|0.7084|97|0.6101|3|0.0455|4|3|MACDUFF|I am not treacherous.
+448|0.71|98|0.6164|4|0.0606|4|3|MALCOLM|But Macbeth is. A good and virtuous nature may recoil In an imperial charge. But I shall crave your pardon; That which you are, my thoughts cannot transpose. Angels are bright still, though the brightest fell. Though all things foul would wear the brows of grace, Yet grace must still look so.
+449|0.7116|99|0.6226|5|0.0758|4|3|MACDUFF|I have lost my hopes.
+450|0.7132|100|0.6289|6|0.0909|4|3|MALCOLM|Perchance even there where I did find my doubts. Why in that rawness left you wife and child, Those precious motives, those strong knots of love, Without leave-taking? I pray you, Let not my jealousies be your dishonors, But mine own safeties. You may be rightly just, Whatever I shall think.
+451|0.7147|101|0.6352|7|0.1061|4|3|MACDUFF|Bleed, bleed, poor country! Great tyranny, lay thou thy basis sure, For goodness dare not check thee. Wear thou thy wrongs; The title is affeer'd. Fare thee well, lord. I would not be the villain that thou think'st For the whole space that's in the tyrant's grasp And the rich East to boot.
+452|0.7163|102|0.6415|8|0.1212|4|3|MALCOLM|Be not offended; I speak not as in absolute fear of you. I think our country sinks beneath the yoke; It weeps, it bleeds, and each new day a gash Is added to her wounds. I think withal There would be hands uplifted in my right; And here from gracious England have I offer Of goodly thousands. But for all this, When I shall tread upon the tyrant's head, Or wear it on my sword, yet my poor country Shall have more vices than it had before, More suffer and more sundry ways than ever, By him that shall succeed.
+453|0.7179|103|0.6478|9|0.1364|4|3|MACDUFF|What should he be?
+454|0.7195|104|0.6541|10|0.1515|4|3|MALCOLM|It is myself I mean, in whom I know All the particulars of vice so grafted That, when they shall be open'd, black Macbeth Will seem as pure as snow, and the poor state Esteem him as a lamb, being compared With my confineless harms.
+455|0.7211|105|0.6604|11|0.1667|4|3|MACDUFF|Not in the legions Of horrid hell can come a devil more damn'd In evils to top Macbeth.
+456|0.7227|106|0.6667|12|0.1818|4|3|MALCOLM|I grant him bloody, Luxurious, avaricious, false, deceitful, Sudden, malicious, smacking of every sin That has a name. But there's no bottom, none, In my voluptuousness. Your wives, your daughters, Your matrons, and your maids could not fill up The cestern of my lust, and my desire All continent impediments would o'erbear That did oppose my will. Better Macbeth Than such an one to reign.
+457|0.7242|107|0.673|13|0.197|4|3|MACDUFF|Boundless intemperance In nature is a tyranny; it hath been The untimely emptying of the happy throne, And fall of many kings. But fear not yet To take upon you what is yours. You may Convey your pleasures in a spacious plenty And yet seem cold, the time you may so hoodwink. We have willing dames enough; there cannot be That vulture in you to devour so many As will to greatness dedicate themselves, Finding it so inclined.
+458|0.7258|108|0.6792|14|0.2121|4|3|MALCOLM|With this there grows In my most ill-composed affection such A stanchless avarice that, were I King, I should cut off the nobles for their lands, Desire his jewels and this other's house, And my more-having would be as a sauce To make me hunger more, that I should forge Quarrels unjust against the good and loyal, Destroying them for wealth.
+459|0.7274|109|0.6855|15|0.2273|4|3|MACDUFF|This avarice Sticks deeper, grows with more pernicious root Than summer-seeming lust, and it hath been The sword of our slain kings. Yet do not fear; Scotland hath foisons to fill up your will Of your mere own. All these are portable, With other graces weigh'd.
+460|0.729|110|0.6918|16|0.2424|4|3|MALCOLM|But I have none. The king-becoming graces, As justice, verity, temperance, stableness, Bounty, perseverance, mercy, lowliness, Devotion, patience, courage, fortitude, I have no relish of them, but abound In the division of each several crime, Acting it many ways. Nay, had I power, I should Pour the sweet milk of concord into hell, Uproar the universal peace, confound All unity on earth.
+461|0.7306|111|0.6981|17|0.2576|4|3|MACDUFF|O Scotland, Scotland!
+462|0.7322|112|0.7044|18|0.2727|4|3|MALCOLM|If such a one be fit to govern, speak. I am as I have spoken.
+463|0.7338|113|0.7107|19|0.2879|4|3|MACDUFF|Fit to govern? No, not to live. O nation miserable! With an untitled tyrant bloody-scepter'd, When shalt thou see thy wholesome days again, Since that the truest issue of thy throne By his own interdiction stands accursed And does blaspheme his breed? Thy royal father Was a most sainted king; the queen that bore thee, Oftener upon her knees than on her feet, Died every day she lived. Fare thee well! These evils thou repeat'st upon thyself Have banish'd me from Scotland. O my breast, Thy hope ends here!
+464|0.7353|114|0.717|20|0.303|4|3|MALCOLM|Macduff, this noble passion, Child of integrity, hath from my soul Wiped the black scruples, reconciled my thoughts To thy good truth and honor. Devilish Macbeth By many of these trains hath sought to win me Into his power, and modest wisdom plucks me From over-credulous haste. But God above Deal between thee and me! For even now I put myself to thy direction and Unspeak mine own detraction; here abjure The taints and blames I laid upon myself, For strangers to my nature. I am yet Unknown to woman, never was forsworn, Scarcely have coveted what was mine own, At no time broke my faith, would not betray The devil to his fellow, and delight No less in truth than life. My first false speaking Was this upon myself. What I am truly Is thine and my poor country's to command. Whither indeed, before thy here-approach, Old Siward, with ten thousand warlike men Already at a point, was setting forth. Now we'll together, and the chance of goodness Be like our warranted quarrel! Why are you silent?
+465|0.7369|115|0.7233|21|0.3182|4|3|MACDUFF|Such welcome and unwelcome things at once Enter a Doctor.
+466|0.7385|116|0.7296|22|0.3333|4|3|MALCOLM|Well, more anon. Comes the King forth, I pray you?
+467|0.7401|117|0.7358|23|0.3485|4|3|DOCTOR|Ay, sir, there are a crew of wretched souls That stay his cure. Their malady convinces The great assay of art, but at his touch, Such sanctity hath heaven given his hand, They presently amend.
+468|0.7417|118|0.7421|24|0.3636|4|3|MALCOLM|I thank you, Doctor. Doctor.
+469|0.7433|119|0.7484|25|0.3788|4|3|MACDUFF|What's the disease he means?
+470|0.7448|120|0.7547|26|0.3939|4|3|MALCOLM|'Tis call'd the evil: A most miraculous work in this good King, Which often, since my here-remain in England, I have seen him do. How he solicits heaven, Himself best knows; but strangely-visited people, All swol'n and ulcerous, pitiful to the eye, The mere despair of surgery, he cures, Hanging a golden stamp about their necks Put on with holy prayers; and 'tis spoken, To the succeeding royalty he leaves The healing benediction. With this strange virtue He hath a heavenly gift of prophecy, And sundry blessings hang about his throne That speak him full of grace. Enter Ross.
+471|0.7464|121|0.761|27|0.4091|4|3|MACDUFF|See, who comes here?
+472|0.748|122|0.7673|28|0.4242|4|3|MALCOLM|My countryman, but yet I know him not.
+473|0.7496|123|0.7736|29|0.4394|4|3|MACDUFF|My ever gentle cousin, welcome hither.
+474|0.7512|124|0.7799|30|0.4545|4|3|MALCOLM|I know him now. Good God, betimes remove The means that makes us strangers!
+475|0.7528|125|0.7862|31|0.4697|4|3|ROSS|Sir, amen.
+476|0.7544|126|0.7925|32|0.4848|4|3|MACDUFF|Stands Scotland where it did?
+477|0.7559|127|0.7987|33|0.5|4|3|ROSS|Alas, poor country, Almost afraid to know itself! It cannot Be call'd our mother, but our grave. Where nothing, But who knows nothing, is once seen to smile; Where sighs and groans and shrieks that rend the air, Are made, not mark'd; where violent sorrow seems A modern ecstasy. The dead man's knell Is there scarce ask'd for who, and good men's lives Expire before the flowers in their caps, Dying or ere they sicken.
+478|0.7575|128|0.805|34|0.5152|4|3|MACDUFF|O, relation Too nice, and yet too true!
+479|0.7591|129|0.8113|35|0.5303|4|3|MALCOLM|What's the newest grief?
+480|0.7607|130|0.8176|36|0.5455|4|3|ROSS|That of an hour's age doth hiss the speaker; Each minute teems a new one.
+481|0.7623|131|0.8239|37|0.5606|4|3|MACDUFF|How does my wife?
+482|0.7639|132|0.8302|38|0.5758|4|3|ROSS|Why, well.
+483|0.7655|133|0.8365|39|0.5909|4|3|MACDUFF|And all my children?
+484|0.767|134|0.8428|40|0.6061|4|3|ROSS|Well too.
+485|0.7686|135|0.8491|41|0.6212|4|3|MACDUFF|The tyrant has not batter'd at their peace?
+486|0.7702|136|0.8553|42|0.6364|4|3|ROSS|No, they were well at peace when I did leave 'em.
+487|0.7718|137|0.8616|43|0.6515|4|3|MACDUFF|Be not a niggard of your speech. How goest?
+488|0.7734|138|0.8679|44|0.6667|4|3|ROSS|When I came hither to transport the tidings, Which I have heavily borne, there ran a rumor Of many worthy fellows that were out, Which was to my belief witness'd the rather, For that I saw the tyrant's power afoot. Now is the time of help; your eye in Scotland Would create soldiers, make our women fight, To doff their dire distresses.
+489|0.775|139|0.8742|45|0.6818|4|3|MALCOLM|Be't their comfort We are coming thither. Gracious England hath Lent us good Siward and ten thousand men; An older and a better soldier none That Christendom gives out.
+490|0.7765|140|0.8805|46|0.697|4|3|ROSS|Would I could answer This comfort with the like! But I have words That would be howl'd out in the desert air, Where hearing should not latch them.
+491|0.7781|141|0.8868|47|0.7121|4|3|MACDUFF|What concern they? The general cause? Or is it a fee-grief Due to some single breast?
+492|0.7797|142|0.8931|48|0.7273|4|3|ROSS|No mind that's honest But in it shares some woe, though the main part Pertains to you alone.
+493|0.7813|143|0.8994|49|0.7424|4|3|MACDUFF|If it be mine, Keep it not from me, quickly let me have it.
+494|0.7829|144|0.9057|50|0.7576|4|3|ROSS|Let not your ears despise my tongue forever, Which shall possess them with the heaviest sound That ever yet they heard.
+495|0.7845|145|0.9119|51|0.7727|4|3|MACDUFF|Humh! I guess at it.
+496|0.7861|146|0.9182|52|0.7879|4|3|ROSS|Your castle is surprised; your wife and babes Savagely slaughter'd. To relate the manner Were, on the quarry of these murther'd deer, To add the death of you.
+497|0.7876|147|0.9245|53|0.803|4|3|MALCOLM|Merciful heaven! What, man! Neer pull your hat upon your brows; Give sorrow words. The grief that does not speak Whispers the o'erfraught heart, and bids it break.
+498|0.7892|148|0.9308|54|0.8182|4|3|MACDUFF|My children too?
+499|0.7908|149|0.9371|55|0.8333|4|3|ROSS|Wife, children, servants, all That could be found.
+500|0.7924|150|0.9434|56|0.8485|4|3|MACDUFF|And I must be from thence! My wife kill'd too?
+501|0.794|151|0.9497|57|0.8636|4|3|ROSS|I have said.
+502|0.7956|152|0.956|58|0.8788|4|3|MALCOLM|Be comforted. Let's make us medicines of our great revenge, To cure this deadly grief.  
+503|0.7971|153|0.9623|59|0.8939|4|3|MACDUFF|He has no children. All my pretty ones? Did you say all? O hell-kite! All? What, all my pretty chickens and their dam At one fell swoop?
+504|0.7987|154|0.9686|60|0.9091|4|3|MALCOLM|Dispute it like a man.
+505|0.8003|155|0.9748|61|0.9242|4|3|MACDUFF|I shall do so, But I must also feel it as a man. I cannot but remember such things were That were most precious to me. Did heaven look on, And would not take their part? Sinful Macduff, They were all struck for thee! Naught that I am, Not for their own demerits, but for mine, Fell slaughter on their souls. Heaven rest them now!
+506|0.8019|156|0.9811|62|0.9394|4|3|MALCOLM|Be this the whetstone of your sword. Let grief Convert to anger; blunt not the heart, enrage it.
+507|0.8035|157|0.9874|63|0.9545|4|3|MACDUFF|O, I could play the woman with mine eyes And braggart with my tongue! But, gentle heavens, Cut short all intermission; front to front Bring thou this fiend of Scotland and myself; Within my sword's length set him; if he 'scape, Heaven forgive him too!
+508|0.8051|158|0.9937|64|0.9697|4|3|MALCOLM|This tune goes manly. Come, go we to the King; our power is ready, Our lack is nothing but our leave. Macbeth Is ripe for shaking, and the powers above Put on their instruments. Receive what cheer you may, The night is long that never finds the day.
+509|0.8067|0|0|0|0|5|1|DOCTOR|I have two nights watched with you, but can perceive no truth in your report. When was it she last walked?
+510|0.8082|1|0.0082|1|0.0312|5|1|GENTLEWOMAN|Since his Majesty went into the field, have seen her rise from her bed, throw her nightgown upon her, unlock her closet, take forth paper, fold it, write upon't, read it, afterwards seal it, and again return to bed; yet all this while in a most fast sleep.
+511|0.8098|2|0.0164|2|0.0625|5|1|DOCTOR|A great perturbation in nature, to receive at once the benefit of sleep and do the effects of watching! In this slumbery agitation, besides her walking and other actual performances, what, at any time, have you heard her say?
+512|0.8114|3|0.0246|3|0.0938|5|1|GENTLEWOMAN|That, sir, which I will not report after her.
+513|0.813|4|0.0328|4|0.125|5|1|DOCTOR|You may to me, and 'tis most meet you should.
+514|0.8146|5|0.041|5|0.1562|5|1|GENTLEWOMAN|Neither to you nor anyone, having no witness to confirm my speech. Enter Lady Macbeth with a taper. Lo you, here she comes! This is her very guise, and, upon my life, fast asleep. Observe her; stand close.
+515|0.8162|6|0.0492|6|0.1875|5|1|DOCTOR|How came she by that light?
+516|0.8177|7|0.0574|7|0.2188|5|1|GENTLEWOMAN|Why, it stood by her. She has light by her continually; 'tis her command.
+517|0.8193|8|0.0656|8|0.25|5|1|DOCTOR|You see, her eyes are open.
+518|0.8209|9|0.0738|9|0.2812|5|1|GENTLEWOMAN|Ay, but their sense is shut.
+519|0.8225|10|0.082|10|0.3125|5|1|DOCTOR|What is it she does now? Look how she rubs her hands.
+520|0.8241|11|0.0902|11|0.3438|5|1|GENTLEWOMAN|It is an accustomed action with her, to seem thus washing her hands. I have known her continue in this a quarter of an hour.
+521|0.8257|12|0.0984|12|0.375|5|1|LADY MACBETH|Yet here's a spot.
+522|0.8273|13|0.1066|13|0.4062|5|1|DOCTOR|Hark, she speaks! I will set down what comes from her, to satisfy my remembrance the more strongly.
+523|0.8288|14|0.1148|14|0.4375|5|1|LADY MACBETH|Out, damned spot! Out, I say! One- two -why then 'tis time to do't. Hell is murky. Fie, my lord, fie! A soldier, and afeard? What need we fear who knows it, when none can call our power to account? Yet who would have thought the old man to have had so much blood in him?  
+524|0.8304|15|0.123|15|0.4688|5|1|DOCTOR|Do you mark that?
+525|0.832|16|0.1311|16|0.5|5|1|LADY MACBETH|The Thane of Fife had a wife; where is she now? What, will these hands neer be clean? No more o' that, my lord, no more o' that. You mar all with this starting.
+526|0.8336|17|0.1393|17|0.5312|5|1|DOCTOR|Go to, go to; you have known what you should not.
+527|0.8352|18|0.1475|18|0.5625|5|1|GENTLEWOMAN|She has spoke what she should not, I am sure of that. Heaven knows what she has known.
+528|0.8368|19|0.1557|19|0.5938|5|1|LADY MACBETH|Here's the smell of the blood still. All the perfumes of Arabia will not sweeten this little hand. Oh, oh, oh!
+529|0.8384|20|0.1639|20|0.625|5|1|DOCTOR|What a sigh is there! The heart is sorely charged.
+530|0.8399|21|0.1721|21|0.6562|5|1|GENTLEWOMAN|I would not have such a heart in my bosom for the dignity of the whole body.
+531|0.8415|22|0.1803|22|0.6875|5|1|DOCTOR|Well, well, well-
+532|0.8431|23|0.1885|23|0.7188|5|1|GENTLEWOMAN|Pray God it be, sir.
+533|0.8447|24|0.1967|24|0.75|5|1|DOCTOR|This disease is beyond my practice. Yet I have known those which have walked in their sleep who have died holily in their beds.
+534|0.8463|25|0.2049|25|0.7812|5|1|LADY MACBETH|Wash your hands, put on your nightgown, look not so pale. I tell you yet again, Banquo's buried; he cannot come out on's grave.  
+535|0.8479|26|0.2131|26|0.8125|5|1|DOCTOR|Even so?
+536|0.8494|27|0.2213|27|0.8438|5|1|LADY MACBETH|To bed, to bed; there's knocking at the gate. Come, come, come, come, give me your hand.What's done cannot be undone. To bed, to bed, to bed.
+537|0.851|28|0.2295|28|0.875|5|1|DOCTOR|Will she go now to bed?
+538|0.8526|29|0.2377|29|0.9062|5|1|GENTLEWOMAN|Directly.
+539|0.8542|30|0.2459|30|0.9375|5|1|DOCTOR|Foul whisperings are abroad. Unnatural deeds Do breed unnatural troubles; infected minds To their deaf pillows will discharge their secrets. More needs she the divine than the physician. God, God, forgive us all! Look after her; Remove from her the means of all annoyance, And still keep eyes upon her. So good night. My mind she has mated and amazed my sight. I think, but dare not speak.
+540|0.8558|31|0.2541|31|0.9688|5|1|GENTLEWOMAN|Good night, good doctor. 
+541|0.8574|32|0.2623|0|0|5|2|MENTEITH|The English power is near, led on by Malcolm, His uncle Siward, and the good Macduff. Revenges burn in them, for their dear causes Would to the bleeding and the grim alarm Excite the mortified man.
+542|0.859|33|0.2705|1|0.1|5|2|ANGUS|Near Birnam Wood Shall we well meet them; that way are they coming.
+543|0.8605|34|0.2787|2|0.2|5|2|CAITHNESS|Who knows if Donalbain be with his brother?
+544|0.8621|35|0.2869|3|0.3|5|2|LENNOX|For certain, sir, he is not; I have a file Of all the gentry. There is Seward's son And many unrough youths that even now Protest their first of manhood.
+545|0.8637|36|0.2951|4|0.4|5|2|MENTEITH|What does the tyrant?
+546|0.8653|37|0.3033|5|0.5|5|2|CAITHNESS|Great Dunsinane he strongly fortifies. Some say he's mad; others, that lesser hate him, Do call it valiant fury; but, for certain, He cannot buckle his distemper'd cause Within the belt of rule.
+547|0.8669|38|0.3115|6|0.6|5|2|ANGUS|Now does he feel His secret murthers sticking on his hands, Now minutely revolts upbraid his faith-breach; Those he commands move only in command, Nothing in love. Now does he feel his title Hang loose about him, like a giant's robe Upon a dwarfish thief.
+548|0.8685|39|0.3197|7|0.7|5|2|MENTEITH|Who then shall blame His pester'd senses to recoil and start, When all that is within him does condemn Itself for being there?
+549|0.87|40|0.3279|8|0.8|5|2|CAITHNESS|Well, march we on To give obedience where 'tis truly owed. Meet we the medicine of the sickly weal, And with him pour we, in our country's purge, Each drop of us.
+550|0.8716|41|0.3361|9|0.9|5|2|LENNOX|Or so much as it needs To dew the sovereign flower and drown the weeds. Make we our march towards Birnam. marching.
+551|0.8732|42|0.3443|0|0|5|3|MACBETH|Bring me no more reports; let them fly all! Till Birnam Wood remove to Dunsinane I cannot taint with fear. What's the boy Malcolm? Was he not born of woman? The spirits that know All mortal consequences have pronounced me thus: Shall e'er have power upon thee. Then fly, false Thanes, And mingle with the English epicures! The mind I sway by and the heart I bear Shall never sag with doubt nor shake with fear. Enter a Servant. The devil damn thee black, thou cream-faced loon! Where got'st thou that goose look?
+552|0.8748|43|0.3525|1|0.05|5|3|SERVANT|There is ten thousand-
+553|0.8764|44|0.3607|2|0.1|5|3|MACBETH|Geese, villain?  
+554|0.878|45|0.3689|3|0.15|5|3|SERVANT|Soldiers, sir.
+555|0.8796|46|0.377|4|0.2|5|3|MACBETH|Go prick thy face and over-red thy fear, Thou lily-liver'd boy. What soldiers, patch? Death of thy soul! Those linen cheeks of thine Are counselors to fear. What soldiers, whey-face?
+556|0.8811|47|0.3852|5|0.25|5|3|SERVANT|The English force, so please you.
+557|0.8827|48|0.3934|6|0.3|5|3|MACBETH|Take thy face hence. Servant. Seyton-I am sick at heart, When I behold- Seyton, I say!- This push Will cheer me ever or disseat me now. I have lived long enough. My way of life Is fall'n into the sear, the yellow leaf, And that which should accompany old age, As honor, love, obedience, troops of friends, I must not look to have; but in their stead, Curses, not loud but deep, mouth-honor, breath, Which the poor heart would fain deny and dare not. Seyton! Enter Seyton.  
+558|0.8843|49|0.4016|7|0.35|5|3|SEYTON|What's your gracious pleasure?
+559|0.8859|50|0.4098|8|0.4|5|3|MACBETH|What news more?
+560|0.8875|51|0.418|9|0.45|5|3|SEYTON|All is confirm'd, my lord, which was reported.
+561|0.8891|52|0.4262|10|0.5|5|3|MACBETH|I'll fight, 'til from my bones my flesh be hack'd. Give me my armor.
+562|0.8906|53|0.4344|11|0.55|5|3|SEYTON|'Tis not needed yet.
+563|0.8922|54|0.4426|12|0.6|5|3|MACBETH|I'll put it on. Send out more horses, skirr the country round, Hang those that talk of fear. Give me mine armor. How does your patient, doctor?
+564|0.8938|55|0.4508|13|0.65|5|3|DOCTOR|Not so sick, my lord, As she is troubled with thick-coming fancies, That keep her from her rest.
+565|0.8954|56|0.459|14|0.7|5|3|MACBETH|Cure her of that. Canst thou not minister to a mind diseased, Pluck from the memory a rooted sorrow, Raze out the written troubles of the brain, And with some sweet oblivious antidote Cleanse the stuff'd bosom of that perilous stuff Which weighs upon the heart?
+566|0.897|57|0.4672|15|0.75|5|3|DOCTOR|Therein the patient Must minister to himself.
+567|0.8986|58|0.4754|16|0.8|5|3|MACBETH|Throw physic to the dogs, I'll none of it. Come, put mine armor on; give me my staff. Seyton, send out. Doctor, the Thanes fly from me. Come, sir, dispatch. If thou couldst, doctor, cast The water of my land, find her disease And purge it to a sound and pristine health, I would applaud thee to the very echo, That should applaud again. Pull't off, I say. What rhubarb, cyme, or what purgative drug Would scour these English hence? Hearst thou of them?
+568|0.9002|59|0.4836|17|0.85|5|3|DOCTOR|Ay, my good lord, your royal preparation Makes us hear something.
+569|0.9017|60|0.4918|18|0.9|5|3|MACBETH|Bring it after me. I will not be afraid of death and bane Till Birnam Forest come to Dunsinane.
+570|0.9033|61|0.5|19|0.95|5|3|DOCTOR|Were I from Dunsinane away and clear, Profit again should hardly draw me here.
+571|0.9049|62|0.5082|0|0|5|4|MALCOLM|Cousins, I hope the days are near at hand That chambers will be safe.
+572|0.9065|63|0.5164|1|0.1|5|4|MENTEITH|We doubt it nothing.
+573|0.9081|64|0.5246|2|0.2|5|4|SIWARD|What wood is this before us?
+574|0.9097|65|0.5328|3|0.3|5|4|MENTEITH|The Wood of Birnam.
+575|0.9113|66|0.541|4|0.4|5|4|MALCOLM|Let every soldier hew him down a bough, And bear't before him; thereby shall we shadow The numbers of our host, and make discovery Err in report of us.
+576|0.9128|67|0.5492|5|0.5|5|4|SOLDIERS|It shall be done.
+577|0.9144|68|0.5574|6|0.6|5|4|SIWARD|We learn no other but the confident tyrant Keeps still in Dunsinane and will endure Our setting down before't.
+578|0.916|69|0.5656|7|0.7|5|4|MALCOLM|'Tis his main hope; For where there is advantage to be given, Both more and less have given him the revolt, And none serve with him but constrained things Whose hearts are absent too.
+579|0.9176|70|0.5738|8|0.8|5|4|MACDUFF|Let our just censures Attend the true event, and put we on Industrious soldiership.
+580|0.9192|71|0.582|9|0.9|5|4|SIWARD|The time approaches That will with due decision make us know What we shall say we have and what we owe. Thoughts speculative their unsure hopes relate, But certain issue strokes must arbitrate. Towards which advance the war. Exeunt Marching.
+581|0.9208|72|0.5902|0|0|5|5|MACBETH|Hang out our banners on the outward walls; The cry is still, They come! Our castle's strength Will laugh a siege to scorn. Here let them lie Till famine and the ague eat them up. Were they not forced with those that should be ours, We might have met them dareful, beard to beard, And beat them backward home. A cry of women within. What is that noise?
+582|0.9223|73|0.5984|1|0.0909|5|5|SEYTON|It is the cry of women, my good lord.
+583|0.9239|74|0.6066|2|0.1818|5|5|MACBETH|I have almost forgot the taste of fears: The time has been, my senses would have cool'd To hear a night-shriek, and my fell of hair Would at a dismal treatise rouse and stir As life were in't. I have supp'd full with horrors; Direness, familiar to my slaughterous thoughts, Cannot once start me. Re-enter Seyton. Wherefore was that cry?
+584|0.9255|75|0.6148|3|0.2727|5|5|SEYTON|The Queen, my lord, is dead.
+585|0.9271|76|0.623|4|0.3636|5|5|MACBETH|She should have died hereafter; There would have been a time for such a word. Tomorrow, and tomorrow, and tomorrow Creeps in this petty pace from day to day To the last syllable of recorded time; And all our yesterdays have lighted fools The way to dusty death. Out, out, brief candle! Life's but a walking shadow, a poor player That struts and frets his hour upon the stage And then is heard no more. It is a tale Told by an idiot, full of sound and fury, Signifying nothing. Enter a Messenger. Thou comest to use thy tongue; thy story quickly.  
+586|0.9287|77|0.6311|5|0.4545|5|5|MESSENGER|Gracious my lord, I should report that which I say I saw, But know not how to do it.
+587|0.9303|78|0.6393|6|0.5455|5|5|MACBETH|Well, say, sir.
+588|0.9319|79|0.6475|7|0.6364|5|5|MESSENGER|As I did stand my watch upon the hill, I look'd toward Birnam, and anon, methought, The Wood began to move.
+589|0.9334|80|0.6557|8|0.7273|5|5|MACBETH|Liar and slave!
+590|0.935|81|0.6639|9|0.8182|5|5|MESSENGER|Let me endure your wrath, if't be not so. Within this three mile may you see it coming; I say, a moving grove.
+591|0.9366|82|0.6721|10|0.9091|5|5|MACBETH|If thou speak'st false, Upon the next tree shalt thou hang alive, Till famine cling thee; if thy speech be sooth, I care not if thou dost for me as much. I pull in resolution and begin To doubt the equivocation of the fiend That lies like truth. Fear not, till Birnam Wood Do come to Dunsinane, and now a wood Comes toward Dunsinane. Arm, arm, and out! If this which he avouches does appear, There is nor flying hence nor tarrying here. I 'gin to be aweary of the sun And wish the estate o' the world were now undone. Ring the alarum bell! Blow, wind! Come, wrack! At least we'll die with harness on our back.
+592|0.9382|83|0.6803|0|0|5|6|MALCOLM|Now near enough; your leavy screens throw down, And show like those you are. You, worthy uncle, Shall with my cousin, your right noble son, Lead our first battle. Worthy Macduff and we Shall take upon 's what else remains to do, According to our order.
+593|0.9398|84|0.6885|1|0.3333|5|6|SIWARD|Fare you well. Do we but find the tyrant's power tonight, Let us be beaten if we cannot fight.
+594|0.9414|85|0.6967|2|0.6667|5|6|MACDUFF|Make all our trumpets speak, give them all breath, Those clamorous harbingers of blood and death. 
+595|0.9429|86|0.7049|0|0|5|7|MACBETH|They have tied me to a stake; I cannot fly, But bear-like I must fight the course. What's he That was not born of woman? Such a one Am I to fear, or none. Enter young Siward.
+596|0.9445|87|0.7131|1|0.0769|5|7|YOUNG SIWARD|What is thy name?
+597|0.9461|88|0.7213|2|0.1538|5|7|MACBETH|Thou'lt be afraid to hear it.
+598|0.9477|89|0.7295|3|0.2308|5|7|YOUNG SIWARD|No, though thou call'st thyself a hotter name Than any is in hell.
+599|0.9493|90|0.7377|4|0.3077|5|7|MACBETH|My name's Macbeth.
+600|0.9509|91|0.7459|5|0.3846|5|7|YOUNG SIWARD|The devil himself could not pronounce a title More hateful to mine ear.
+601|0.9525|92|0.7541|6|0.4615|5|7|MACBETH|No, nor more fearful.
+602|0.954|93|0.7623|7|0.5385|5|7|YOUNG SIWARD|O Thou liest, abhorred tyrant; with my sword I'll prove the lie thou speak'st. They fight, and young Seward is slain.
+603|0.9556|94|0.7705|8|0.6154|5|7|MACBETH|Thou wast born of woman. But swords I smile at, weapons laugh to scorn, Brandish'd by man that's of a woman born. Alarums. Enter Macduff.
+604|0.9572|95|0.7787|9|0.6923|5|7|MACDUFF|That way the noise is. Tyrant, show thy face! If thou best slain and with no stroke of mine, My wife and children's ghosts will haunt me still. I cannot strike at wretched kerns, whose arms Are hired to bear their staves. Either thou, Macbeth, Or else my sword, with an unbatter'd edge, I sheathe again undeeded. There thou shouldst be; By this great clatter, one of greatest note Seems bruited. Let me find him, Fortune! And more I beg not. Alarums. Enter Malcolm and old Siward.
+605|0.9588|96|0.7869|10|0.7692|5|7|SIWARD|This way, my lord; the castle's gently render'd. The tyrant's people on both sides do fight, The noble Thanes do bravely in the war, The day almost itself professes yours, And little is to do.
+606|0.9604|97|0.7951|11|0.8462|5|7|MALCOLM|We have met with foes That strike beside us.
+607|0.962|98|0.8033|12|0.9231|5|7|SIWARD|Enter, sir, the castle.  Alarum.
+608|0.9635|99|0.8115|0|0|5|8|MACBETH|Why should I play the Roman fool and die On mine own sword? Whiles I see lives, the gashes Do better upon them. Enter Macduff.
+609|0.9651|100|0.8197|1|0.1111|5|8|MACDUFF|Turn, hell hound, turn!
+610|0.9667|101|0.8279|2|0.2222|5|8|MACBETH|Of all men else I have avoided thee. But get thee back, my soul is too much charged With blood of thine already.
+611|0.9683|102|0.8361|3|0.3333|5|8|MACDUFF|I have no words. My voice is in my sword, thou bloodier villain Than terms can give thee out! fight.
+612|0.9699|103|0.8443|4|0.4444|5|8|MACBETH|Thou losest labor. As easy mayst thou the intrenchant air With thy keen sword impress as make me bleed. Let fall thy blade on vulnerable crests; I bear a charmed life, which must not yield To one of woman born.
+613|0.9715|104|0.8525|5|0.5556|5|8|MACDUFF|Despair thy charm, And let the angel whom thou still hast served Tell thee, Macduff was from his mother's womb Untimely ripp'd.
+614|0.9731|105|0.8607|6|0.6667|5|8|MACBETH|Accursed be that tongue that tells me so, For it hath cow'd my better part of man! And be these juggling fiends no more believed That patter with us in a double sense, That keep the word of promise to our ear And break it to our hope. I'll not fight with thee.
+615|0.9746|106|0.8689|7|0.7778|5|8|MACDUFF|Then yield thee, coward, And live to be the show and gaze o' the time. We'll have thee, as our rarer monsters are, Painted upon a pole, and underwrit,
+616|0.9762|107|0.877|8|0.8889|5|8|MACBETH|I will not yield, To kiss the ground before young Malcolm's feet, And to be baited with the rabble's curse. Though Birnam Wood be come to Dunsinane, And thou opposed, being of no woman born, Yet I will try the last. Before my body I throw my warlike shield! Lay on, Macduff, And damn'd be him that first cries, Hold, enough! Exeunt fighting. Alarums.
+617|0.9778|108|0.8852|0|0|5|9|MALCOLM|I would the friends we miss were safe arrived.
+618|0.9794|109|0.8934|1|0.0667|5|9|SIWARD|Some must go off, and yet, by these I see, So great a day as this is cheaply bought.
+619|0.981|110|0.9016|2|0.1333|5|9|MALCOLM|Macduff is missing, and your noble son.
+620|0.9826|111|0.9098|3|0.2|5|9|ROSS|Your son, my lord, has paid a soldier's debt. He only lived but till he was a man, The which no sooner had his prowess confirm'd In the unshrinking station where he fought, But like a man he died.
+621|0.9842|112|0.918|4|0.2667|5|9|SIWARD|Then he is dead?
+622|0.9857|113|0.9262|5|0.3333|5|9|ROSS|Ay, and brought off the field. Your cause of sorrow Must not be measured by his worth, for then It hath no end.
+623|0.9873|114|0.9344|6|0.4|5|9|SIWARD|Had he his hurts before?
+624|0.9889|115|0.9426|7|0.4667|5|9|ROSS|Ay, on the front.
+625|0.9905|116|0.9508|8|0.5333|5|9|SIWARD|Why then, God's soldier be he! Had I as many sons as I have hairs, I would not wish them to a fairer death. And so his knell is knoll'd.
+626|0.9921|117|0.959|9|0.6|5|9|MALCOLM|He's worth more sorrow, And that I'll spend for him.
+627|0.9937|118|0.9672|10|0.6667|5|9|SIWARD|He's worth no more: They say he parted well and paid his score, And so God be with him! Here comes newer comfort. Re-enter Macduff, with Macbeth's head.
+628|0.9952|119|0.9754|11|0.7333|5|9|MACDUFF|Hail, King, for so thou art. Behold where stands The usurper's cursed head. The time is free. I see thee compass'd with thy kingdom's pearl That speak my salutation in their minds, Whose voices I desire aloud with mine- Hail, King of Scotland!
+629|0.9968|120|0.9836|12|0.8|5|9|ALL|Hail, King of Scotland!
+630|0.9984|121|0.9918|13|0.8667|5|9|MALCOLM|We shall not spend a large expense of time Before we reckon with your several loves And make us even with you. My Thanes and kinsmen, Henceforth be Earls, the first that ever Scotland In such an honor named. What's more to do, Which would be planted newly with the time, As calling home our exiled friends abroad That fled the snares of watchful tyranny, Producing forth the cruel ministers Of this dead butcher and his fiend-like queen, Who, as 'tis thought, by self and violent hands Took off her life; this, and what needful else That calls upon us, by the grace of Grace We will perform in measure, time, and place. So thanks to all at once and to each one, Whom we invite to see us crown'd at Scone. Flourish. 
