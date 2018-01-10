@@ -165,13 +165,92 @@ The second peering, however, is a nested inline template deployment (`Microsoft.
 
 Taking this approach has made the vnet-spoke.json building block more functional and neat and tidy.
 
-There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-hub.json` file for creating the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP.  Notice that the IP address for the VPN gateway's public IP is being returned in the outputs section. 
+There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-hub.json` file for creating the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP.  Notice that the IP address for the VPN gateway's public IP is being returned in the outputs section:
 
-Let's take a look at how those two building blocks could be used by a master template.
+```json
+  "outputs": {
+    "vpnGatewayIpAddress": {
+      "type": "string",
+      "value": "[reference(variables('gatewayPublicIpName')).ipAddress]"
+    },
+    "pip": {
+      "type": "object",
+      "value": "[reference(variables('gatewayPublicIpName'))]"
+    }
+  }
+```
+
+This is really the key value that we want to know about following deployment as it is not specified in the azuredeploy.parameters.json file. 
+
+OK, let's take a look at how those two building blocks could be used by a master template.
 
 ### Example of a master template calling linked templates
 
-<<<YOU ARE HERE>>>
+Open up the `https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.json` master template, and the corresponding `https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.parameters.json` parameters file.
+
+The template will create:
+* a single hub vNet, containing a number of subnets, and the GatewaySubnet can also include an optional VPN Gateway and public IP address
+* one or more spoke vNets, also containing a number of subnets, with a vNet peering back to the hub vNet
+
+First of all, take a look at the parameters.  The main template has defaults, which are pretty much there for testing and to describe the expected parameter objects.  Below are the ones from the parameters file:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "hub": {
+            "value": {
+                "resourceGroup": "shared",
+                "vnet": { "name": "shared", "addressPrefixes": [ "10.0.0.0/16" ] },
+                "subnets": [
+                    { "name": "GatewaySubnet", "addressPrefix": "10.0.0.0/24" },
+                    { "name": "outside", "addressPrefix": "10.0.1.0/24" },
+                    { "name": "inside", "addressPrefix": "10.0.2.0/24" },
+                    { "name": "shared", "addressPrefix": "10.0.3.0/24" }
+                ],
+                "createGateway": true,
+                "gatewaySku": "VpnGw1"
+            }
+        },
+        "spokes": {
+            "value": [
+                {
+                    "resourceGroup": "erp",
+                    "vnet": { "name": "erp", "addressPrefixes": [ "10.1.0.0/16"  ] },
+                    "subnets": [
+                        { "name": "presentation", "addressPrefix": "10.1.0.0/24" },
+                        { "name": "application", "addressPrefix": "10.1.1.0/24" },
+                        { "name": "business", "addressPrefix": "10.1.2.0/24" },
+                        { "name": "data", "addressPrefix": "10.1.3.0/24" }
+                    ]
+                },
+                {
+                    "resourceGroup": "test",
+                    "vnet": { "name": "test", "addressPrefixes": [ "10.76.0.0/16" ] },
+                    "subnets": [
+                        { "name": "test1", "addressPrefix": "10.76.0.0/24" },
+                        { "name": "test2", "addressPrefix": "10.76.1.0/24" }
+                    ]
+                },
+                {
+                    "resourceGroup": "dev",
+                    "vnet": { "name": "dev", "addressPrefixes": [ "10.77.0.0/16" ] },
+                    "subnets": [
+                        { "name": "dev", "addressPrefix": "10.77.0.0/16" }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```   
+
+The hub parameter object specifies the resource group, vNet name and address space, plus the array of subnets.  It also has controls for whether a VPN Gateway is created and if so, with which SKU.
+
+The spokes parameter is actually an array, and each member of the array (i.e. each spoke) is an object which is structurally very similar to the hub object, except with no gateway properties.  Some level of consistency is usually a good idea.
+
+Let's take a look at how the master templates is calling the 
 
 1. an example of an inline template
 1. an example of a master template calling linked templates
@@ -191,7 +270,7 @@ This lab uses a collection of files, so it is more useful to see them as a set:
 <div class="success">
     <b>
         <li>
-          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab5/azuredeploy.parameters.json" target="_blank">Azure Resource Manager Workshop Lab 7 files</a>
+          <a href="https://github.com/richeney/arm/tree/master/lab7" target="_blank">Azure Resource Manager Workshop Lab 7 files</a>
         </li>
     </b>
 </div>
