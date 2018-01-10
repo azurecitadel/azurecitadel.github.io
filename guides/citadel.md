@@ -163,7 +163,7 @@ Once installed then you can run Jekyll as a local process.  As you make changes 
 1.  cd to the local repo directory
     * `cd /mnt/c/Users/userid/azurecitadel.github.io`
 2.  run Jekyll
-    * `bundler exec jekyll serve --config _config.yml,_config_local.yml --incremental`
+    * `bundler exec jekyll serve --config _config.yml,_config_local.yml --incremental --unpublished`
     * if you get a timezone error on Windows then add the following line to your Gemfile
     `a.	gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`(for 64 bit Ruby - see the [tzinfo help page](http://tzinfo.github.io/datasourcenotfound) for other versions
 3.  Open https://localhost:4000
