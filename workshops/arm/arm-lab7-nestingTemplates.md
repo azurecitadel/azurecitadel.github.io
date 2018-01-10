@@ -14,8 +14,6 @@ next:
   title: Placeholder - links to GitHub templates
 ---
 
-<div class="warning">WARNING: This page is a work in progress</div>
-
 {% include toc.html %}
 
 ## Introduction
