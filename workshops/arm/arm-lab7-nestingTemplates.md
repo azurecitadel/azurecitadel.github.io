@@ -104,7 +104,7 @@ The hub vNet name and resource group are part of the expected parameters, but le
 ```json
     {
       "condition": "[parameters('peer')]",
-      "name": "[concat(parameters('spoke').vnet.name, '/to-', parameters('hub').vnet.name)]",
+      "name": "[concat(parameters('spoke').vnet.name, '/peering-to-', parameters('hub').vnet.name)]",
       "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
       "apiVersion": "2017-10-01",
       "location": "[resourceGroup().location]",
@@ -123,7 +123,7 @@ The hub vNet name and resource group are part of the expected parameters, but le
     },
     {
       "condition": "[parameters('peer')]",
-      "name": "nestedTemplateForHubToSpokeVnetPeering",
+      "name": "[concat('peer-', parameters('hub').vnet.name, '-to-', parameters('spoke').vnet.name)]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2017-05-10",
       "resourceGroup": "[parameters('hub').resourceGroup]",
@@ -141,7 +141,7 @@ The hub vNet name and resource group are part of the expected parameters, but le
               {
                 "apiVersion": "2017-10-01",
                 "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-                "name": "[concat(parameters('hub').vnet.name, '/to-', parameters('spoke').vnet.name)]",
+                "name": "[concat(parameters('hub').vnet.name, '/peering-to-', parameters('spoke').vnet.name)]",
                 "location": "[resourceGroup().location]",
                 "properties": {
                     "allowVirtualNetworkAccess": true,
@@ -163,24 +163,24 @@ The first peering resource is a straightforward `Microsoft.Network/virtualNetwor
 
 The second peering, however, is a nested inline template deployment (`Microsoft.Resources/deployments`) which gives us the flexibility to deploy into a different resource group.   We have the embedded inline template deploying the peering into the hub vNet and into the hub's resource group. Once both ends are in place then the 
 
-Taking this approach has made the vnet-spoke.json building block more functional and neat and tidy.
+Taking this approach has made the vnet-spoke.json building block more functional and rather neat and tidy.
 
-There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-hub.json` file for creating the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP.  Notice that the IP address for the VPN gateway's public IP is being returned in the outputs section:
+There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/lab7/vnet-hub.json` file for creating the hub, and it creates the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP. As the public IP is dynamically allocated we want to be able to determine the value.
+
+However, this brings up an interesting problem with public IPs in that the dynamic IP address is only allocated once the NIC is online, i.e.
+en the gateway itself is up.  As the reference() function show the current runtime state of the resource, then trying to return `"[referenc
+ariables('gatewayPipId')).ipAddress]` would fail first time round as the IP address isn't allocated, but will work for a redeployment. So
+'ll avoid that by returning just the resource ID instead, as it is a simple one line CLI command to find out the IP address once you have that
+resource ID:  
 
 ```json
   "outputs": {
-    "vpnGatewayIpAddress": {
+    "gatewayPipId": {
       "type": "string",
-      "value": "[reference(variables('gatewayPublicIpName')).ipAddress]"
-    },
-    "pip": {
-      "type": "object",
-      "value": "[reference(variables('gatewayPublicIpName'))]"
+      "value": "[variables('gatewayPipId')]"    
     }
   }
 ```
-
-This is really the key value that we want to know about following deployment as it is not specified in the azuredeploy.parameters.json file. 
 
 OK, let's take a look at how those two building blocks could be used by a master template.
 
@@ -194,6 +194,7 @@ The template will create:
 
 First of all, take a look at the parameters.  The main template has defaults, which are pretty much there for testing and to describe the expected parameter objects.  Below are the ones from the parameters file:
 
+###### parameters
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -250,17 +251,100 @@ The hub parameter object specifies the resource group, vNet name and address spa
 
 The spokes parameter is actually an array, and each member of the array (i.e. each spoke) is an object which is structurally very similar to the hub object, except with no gateway properties.  Some level of consistency is usually a good idea.
 
-Let's take a look at how the master templates is calling the 
+Before we move onto the resources themselves, take a look at the first two variables:
 
-1. an example of an inline template
-1. an example of a master template calling linked templates
-1. a quick lab to revisit our key vault, and make that static parameter into a dynamic one using nesting
-1. a discussion on a sensible structure for an SI or ISV partner creating IP 
-    * defining your building blocks
-    * t-shirt sizes
-    * default parameterisation
-    * master templates to match reference architectures and application patterns
-1. a review of some of the excellent resources available online
+###### variables section
+```json
+  "variables": {
+    "hubUrl": "[uri(deployment().properties.templateLink.uri, 'vnet-hub.json')]",
+    "spokeUrl": "[uri(deployment().properties.templateLink.uri, 'vnet-spoke.json')]",
+    "hubDeploymentName": "[concat('deployHub-', parameters('hub').vnet.name)]"
+  },
+```
+
+Using a combination of the uri() and deployment() functions is a great way of determining the path for the master template and deriving the linked template names from it.  These files are in the same directory as the master template and parameters file, but you will often see the linked templates in a subdirectory, e.g. `"spokeUrl": "[uri(deployment().properties.templateLink.uri, '/nested/vnet-spoke.json')]"`.
+
+OK, here is the hub deployment.  Note how we are sending all of the parameters individually:
+
+###### hub resource
+```json
+  "resources": [
+    {
+      "name": "[variables('hubDeploymentName')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2017-05-10",
+      "resourceGroup": "[parameters('hub').resourceGroup]",
+      "properties": {
+        "mode": "Incremental",
+        "parameters": {
+          "vnetName": {
+              "value": "[parameters('hub').vnet.name]"
+          },
+          "vNetAddressPrefixes": {
+              "value": "[parameters('hub').vnet.addressPrefixes]"
+          },
+          "subnets": {
+              "value": "[parameters('hub').subnets]"
+          },
+          "createGateway": {
+              "value": "[parameters('hub').createGateway]"
+          },
+          "gatewaySku": {
+              "value": "[parameters('hub').gatewaySku]"
+          }
+        },
+        "templateLink": {
+          "uri": "[variables('hubUrl')]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    }, ...
+```
+We are pulling out a number of elements from our main hub parameter object.  The .vnet.name and .gatewaySku are strings, .createGateway is a boolean, and both .vnet.addressPrefixes and .subnets are arrays, and these match the parameter types expected by the parameters section of the vnet-hub.json template.
+
+###### spoke resources
+```json
+    ...,
+    {
+        "name": "[concat('deploySpoke', copyIndex(1), '-', parameters('spokes')[copyIndex()].vnet.name)]",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2017-05-10",
+        "resourceGroup": "[parameters('spokes')[copyIndex()].resourceGroup]",
+        "dependsOn": [
+            "[concat('Microsoft.Resources/deployments/', variables('hubDeploymentName'))]"
+        ],
+        "copy": {
+            "name": "spokecopy",
+            "count": "[length(parameters('spokes'))]",
+            "mode": "Serial",
+            "batchSize": 1
+        },
+        "properties": {
+          "mode": "Incremental",
+          "parameters": {
+            "peer": {
+                "value": true
+            },
+            "hub": {
+                "value": "[parameters('hub')]"
+            },
+            "spoke": {
+                "value": "[parameters('spokes')[copyIndex()]]"
+            }
+          },
+          "templateLink": {
+            "uri": "[variables('spokeUrl')]",
+            "contentVersion": "1.0.0.0"
+          }
+        }
+      }
+```
+
+There are a few interesting points for this section.  
+
+1. The resource deployment has a copy, based on the number of members in that spoke parameter array.  Therefore if the parameters has, say, six spokes, then there will be six deployments, all individually named with the spoke number and suffixed by the vNet name for that spoke.  We have a dependency on the hub deployment (as we are peering to it) and the copy overrides the default parallel mode to deploy the spokes one by one.  Tha main reason for that is that the two way vNet peering resources in the spoke template can throw up a conflict if multiple jobs are peppering the hub vNet at the same time.  Running them sequentially avoids that scenario.
+2. The parameter section is more of a passthrough than the section we saw earlier for the hub linked template.  The format of the hub parameter closely matches what is expected by the spoke linked template.  In this way, using objects is much more flexible.  There are some elements of the main hub parameter object that are not used by the spoke linked template, but that does not matter; the spoke template just expects an object to be passed.  Therefore this proves a little more extensible.
+3. The spokes parameter for the master template is an array.  The spoke parameter we pass through to the spoke linked template is the individual member spoke object within that array, basede on the copyIndex().  
 
 ## Final files
 
