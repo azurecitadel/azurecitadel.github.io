@@ -369,7 +369,7 @@ We can use the reference() function against the hub deployment resource itself t
 Here are a few lines selected from an example [deploy.sh](https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/deploy.sh) script to show how the resource ID is pulled from the deployment and then the single az command is used to output the VPN gateway IP address which will have been allocated by that point:
 
 ###### deploy.sh (partial)
-```json
+```bash
 templateUri="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.json"
 parametersUri="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.parameters.json"
 parameters=$(curl --silent "$parametersUri?$(date +%s)" | jq .parameters)
@@ -435,4 +435,16 @@ This lab also used a collection of files to describe how to use nested templates
 
 ## Summary
 
-We have worked through a lot of labs, and hopefully you have built up a wealth of capability and knowledge of the resources available to you.  For the larger deployments then 
+We have worked through a lot of labs, and hopefully you have built up a wealth of capability and knowledge of the resources available to you.  For the larger deployments then making use of the various constructs makes sense.  From the partner perspective there are a number of ways of leveraging them, but the following is one way of doing it:
+
+1. Invest the time to create flexible and functionally rich building blocks that meet as many scenarios as possible
+1. Incorporate t-shirt sizes to group properties together and standardise
+1. Create master templates to fit different architectural standards or application patterns with sensible default parameter values
+1. Use parameter files to define the customer's default values
+1. Override as required on submission
+
+One key thing to remember is that all of this only makes sense if you know that you will have sufficient reuse of the templates to justify the time investment. However, defining ARM templates as one of the ways that help you to define your Azure offering and most customers will prefer using proven IP to designing a bespoke (and arguably less supportable) design from a blank piece of paper.
+
+Now that you have some idea of the capabilities then it is a great time to take a look at some of the excellent information provided by the Azure Customer Advisory Team (AzureCAT).  There is a great Azure documentation page on [best practices for complex designs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/best-practices-resource-manager-design-templates), and that includes a link to a fuller whitepaper.  This information has been pulled together with some of the design learning gained from deployments with large enterprises, service integrators and ISVs, including some of the largest open source software.  
+
+This is highly recommended reading before you go from here and start producing your own world class Azure templates.  Good luck!
