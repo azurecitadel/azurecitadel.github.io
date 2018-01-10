@@ -11,7 +11,8 @@ previous:
   title: Using objects and arrays as parameters or resources 
 next:
   url: http://aka.ms/armtemplates
-  title: Placeholder - links to GitHub templates  
+  title: Placeholder - links to GitHub templates
+published: false 
 ---
 
 <div class="warning">WARNING: This page is a work in progress</div>
