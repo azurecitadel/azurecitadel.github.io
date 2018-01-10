@@ -12,7 +12,6 @@ previous:
 next:
   url: http://aka.ms/armtemplates
   title: Placeholder - links to GitHub templates
-published: false 
 ---
 
 <div class="warning">WARNING: This page is a work in progress</div>
@@ -260,6 +259,8 @@ Before we move onto the resources themselves, take a look at the first two varia
 ```
 
 Using a combination of the uri() and deployment() functions is a great way of determining the path for the master template and deriving the linked template names from it.  These files are in the same directory as the master template and parameters file, but you will often see the linked templates in a subdirectory, e.g. `"spokeUrl": "[uri(deployment().properties.templateLink.uri, '/nested/vnet-spoke.json')]"`.
+
+<div class="warning">WARNING: Using deployment().properties.templateLink.uri will only return a value if the --template-uri switch is used. The deployment will fail validation if --template-file is used.</div>
 
 OK, here is the hub deployment.  Note how we are sending all of the parameters individually:
 
