@@ -1,7 +1,9 @@
-![banner](images/AzureCitadelBanner.png)
+![banner](images/banner.png)
 
 # OCP CSA Site - aka Azure Citadel
 This is the Github repo for the site, which is based on Jekyll and the [Skinny Bones](https://github.com/mmistakes/skinny-bones-jekyll) theme. Do not link to this page but to the published site!
+
+Note. This is a **live site**, keep that in mind when creating content and submitting changes. See the section on "Drafts & WIP" when creating your content that is not finished.
 
 ### The site is published here - [https://azurecitadel.github.io/](https://azurecitadel.github.io/)
 
@@ -33,7 +35,6 @@ This top level page should have a category set in the front matter e.g. `categor
 - Do not put more than one category in the `categories` list
 - Do not put a permalink in your front-matter
 
-
 Any sub-pages are placed in a sub folder with the **same name** as the .md. These sub pages **should not** have category assigned (so they don't show up on the auto index) you link to these from the parent .md  
 In this example the prepguide sub-page would be linked to from the main page as follows: `[Prep Guide][./prepguide]`
 and has the following full URL `https://azurecitadel.github.io/labs/cheese-lab/prepguide/`
@@ -60,6 +61,10 @@ The grid of icons and links is populated from [hometiles.yml in the data folder]
 Further customization can be carried out, by modifying [home.html in the _layouts folder](_layouts/home.html)
 
 # Drafts & WIP
+
+#### *!REMEMBER THIS IS A LIVE PUBLIC SITE - PARTERS AND CUSTOMERS ARE LOOKING AT THESE PAGES!*
+#### *Do not stick up test or half finished content, it makes the site look unprofessional*
+
 - If you want to work on something and not have it published **at all**, then place it into `_drafts` folder
 - If you want to work on something as a work in progress and have it published but hidden, put your page(s) into the `unpub` folder and **don't assign a category**. You can then view it on the site, but it will not appear under any of the sections
 
