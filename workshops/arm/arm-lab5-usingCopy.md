@@ -171,7 +171,16 @@ Note that we won't be able to do four data disks against our tiddly Standard_ B1
 
 ### Deploy the new VM
 
-Submit the VM, specifying the name and number of disks:
+Before we deploy the template, let's remove that default value for the vmName. We'll continue to do that as an inline parameter in this lab so:
+* In the azuredeploy.json, change the parameter definition for vmName
+    * remove the default value
+    * find out any length restrictions for virtual machine names
+    * set a minimum length and maximum length (to make sure that vmName does get specified at some point)
+* Remove the vmName parameter from azuredeploy.parameters.json
+
+If you fail to specify the vmName parameter inline then you should now fail validation with a meaningful error message. 
+
+OK, now submit the VM, specifying the name and number of disks:
 
 ```bash
 rg=lab5
