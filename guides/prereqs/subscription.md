@@ -69,7 +69,7 @@ The [FAQ](https://azure.microsoft.com/en-gb/free/free-account-faq/) includes det
 ## Azure Pass
 
 If you are a partner working with Microsoft's One Commercial Partner group and the session is being hosted by a Cloud Solution Architect (CSA), then they may provide you with an **Azure Pass** subscription.  
-   * Open a private browser session, go to http://signup.live.com and create a clean new  Microsoft account in  **_labname.firstname.lastname_@outlook.com** format 
+   * Open a private browser session, go to http://signup.live.com and create a clean new Microsoft account in  **_labname.firstname.lastname_@outlook.com** format 
     * Go to https://www.microsoftazurepass.com and follow the instructions to redeem the code and activate your Azure Pass
 
 ## Common Pitfalls to Avoid
