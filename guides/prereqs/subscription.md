@@ -2,7 +2,7 @@
 layout: article
 title: Workshop Pre-Requisites
 date: 2017-07-04
-tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
+tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, subscription]
 comments: true
 author: Richard_Cheney
 image:
@@ -10,7 +10,10 @@ image:
   teaser: Education.jpg
   thumb: 
 ---
-All of the workshops require a working Azure subscription.  Ensure that you have one of the following options enabled and verified:
+
+{% include toc.html %}
+
+All of the workshops require a working Azure subscription.  Ensure that you have one of the following options enabled and verified.
 * Visual Studio Subscription
 * Internal User Rights
 * Azure Free
@@ -77,4 +80,6 @@ If you are a partner working with Microsoft's One Commercial Partner group and t
 
 ## Verification 
 
-Once the account is enabled, prove that it is working correctly by logging into the portal at [http://portal.azure.com](http://portal.azure.com).
+Once the account is enabled, prove that it is working correctly by 
+* logging into the portal at [http://portal.azure.com](http://portal.azure.com) 
+* create a Resource Group called 'Azure101IaaS' in West Europe
