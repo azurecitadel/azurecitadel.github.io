@@ -2,7 +2,6 @@
 layout: article
 title: Postman instructions for testing the HTTP endpoint
 date: 2017-12-07
-categories: guides
 tags: [logic, app, postman, test, http, endpoint, json, payload]
 comments: true
 author: Richard_Cheney
