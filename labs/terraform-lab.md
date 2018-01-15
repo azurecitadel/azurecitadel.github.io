@@ -9,6 +9,7 @@ image:
   teaser: Education.jpg
   thumb: 
 comments: true
+published: false
 ---
 
 {% include toc.html %}
