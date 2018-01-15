@@ -72,6 +72,7 @@ Link | Description
 -   Check the Enable under **Connect device to IoT Hub**
 -   Click on save
 
-## (Optional) Simulate a device on your machine and send messages to your IoT Hub instance
+## (Next Steps - Optional) Simulate a device on your machine and send messages to your IoT Hub instance
 
--   Pre-Requisites: (TBD)
+- Refer to below link for simulating a device and sending messages to IoT Hub in your preferred lanugage,
+[Simulate Device and Send messages to IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-get-started-simulated)
