@@ -76,6 +76,43 @@ Sometimes the contributors have content on separate blog sites or GitHub repos, 
 
 Feel free to explore the existing files to see how they are named and structured.
 
+## Front Matter
+
+The [Front Matter](https://jekyllrb.com/docs/frontmatter/) is the small section of YAML at the start of the articles.  Here is the Front Matter for this file:
+
+```yaml
+---
+layout: article
+title: Contributing to Azure Citadel
+date: 2018-01-08
+categories: guides
+tags: [citadel, markdown, git, github, jekyll]
+comments: true
+author: Richard_Cheney
+image:
+  teaser: cloud-tools.png
+excerpt: Want to contribute content to Azure Citadel?  Read our guide. 
+---
+```
+
+Here is a quick rundown of the properties:
+
+Property | Description
+layout | The type of HTML layout to be used - leave as article
+title | The H1 header used at the top of the page
+date | The article date. If set to a future date then the page will not be rendered until that date is reached.
+categories | These dictate the landing page that the article appears on.  Choose from workshops, demos, labs, guides or videos.
+tags | A list (or array) or tags to be used in searches.  (Search is not yet implemented.) 
+author | Key for the /_data/authors.yml file.  You will need a section in here and a mugshot in /images/authors.
+image: | Three image sizes can be used - feature, teaser and logo.  You only need to specify teaser for the picture used on the grid landing pages, and these images will be located in /images.
+excerpt: | This is the brief descriptive text shown under the teaser image and title on the landing pages
+
+The easiest thing to do is to copy one of the existing articles as a starting point.
+
+You can also prevent your articles being published by setting `published: false`.  And if you are doing a series of linked pages, then there is some additional Front Matter that you can use to add in to manually set previous and next links at the bottom of the pages.  See the /workshops/arm/*.md files. 
+
+Finally, you will also see some articles using small pieces of Liquid text, denoted by curly braces and percentage signs.  The most common example is `{% include toc.html %}`, which will automatically insert a table of contents.    
+
 ## Markdown
 
 Markdown is an internet standard designed to be very simple to use when creating internet documentation.
@@ -99,6 +136,8 @@ az group create --name myRG --location westeurope
 az group deployment create --name job1 --resource-group myRG --template-file azuredeploy.json
 ```                                                                                                   <- Closing triple backticks
 ```
+
+Note that the images for your individual article are usually stored alongside, i.e. the /labs/cosmosdb.md file uses images in /labs/cosmosdb/images/. 
 
 The system also supports syntax highlighting for a number of languages.  You can add the language or format name (i.e. html, bash, powershell, json) immediately after the opening triple backticks.  If supported then the Rouge plugin will apply colour highlighting based on the syntax.
 
@@ -163,7 +202,7 @@ Once installed then you can run Jekyll as a local process.  As you make changes 
 1.  cd to the local repo directory
     * `cd /mnt/c/Users/userid/azurecitadel.github.io`
 2.  run Jekyll
-    * `bundler exec jekyll serve --config _config.yml,_config_local.yml --incremental --unpublished`
+    * `bundler exec jekyll serve --config _config.yml,_config_local.yml --incremental --unpublished --future`
     * if you get a timezone error on Windows then add the following line to your Gemfile
     `a.	gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`(for 64 bit Ruby - see the [tzinfo help page](http://tzinfo.github.io/datasourcenotfound) for other versions
 3.  Open https://localhost:4000
