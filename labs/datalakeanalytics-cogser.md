@@ -10,6 +10,8 @@ image:
   teaser: cloud-lab.png
 excerpt: A walk through video of how to use the Text Analytics Cognitive Service in Data Lake Analytics using Shakespeare as an example.
 ---
+![Header Image](/labs/datalakeanalytics-cogser/images/Header.png "Header Image")
+
 {% include toc.html %}
 
 ## Introduction
@@ -92,3 +94,21 @@ The schema of these files is
 The script used in the video is [Analysis3.usql](./Analysis3.usql) and can be used with the files in the section above.
 
 [This](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-cognitive) is a great place to start understanding the cognitive capabilities of Data Lake Analytics.
+
+### Power BI
+Please sign up for [PowerBI](https://powerbi.microsoft.com/en-us/) to be able to use this service and/or download the desktop application.
+
+To load data from Azure Data Lake store [this](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-power-bi) guide will help you get started.
+
+
+### The Results
+Here are some examples of the results in Power BI.
+Do they fit what you remember of the plays?
+![Macbeth](/labs/datalakeanalytics-cogser/images/Macbeth.png "Macbeth Results")
+
+![Romeo And Juliet](/labs/datalakeanalytics-cogser/images/RomeoAndJuliet.png "Romeo and Juliet Results")
+
+Using various charts you can explore the interactions of certain characters.
+For example Helena and Hermia in 'A Midsummer Nights Dream' and their love confusion.
+
+![Helena And Hermia](/labs/datalakeanalytics-cogser/images/HelenaAndHermia.png "Helena And Hermia Results")
