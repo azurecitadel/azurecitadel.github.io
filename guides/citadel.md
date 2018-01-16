@@ -111,7 +111,7 @@ The easiest thing to do is to copy one of the existing articles as a starting po
 
 You can also prevent your articles being published by setting `published: false`.  And if you are doing a series of linked pages, then there is some additional Front Matter that you can use to add in to manually set previous and next links at the bottom of the pages.  See the /workshops/arm/*.md files. 
 
-Finally, you will also see some articles using small pieces of Liquid text, denoted by curly braces and percentage signs.  The most common example is `\{\% include toc.html \%\}`, which will automatically insert a table of contents.    
+Finally, you will also see some articles using small pieces of Liquid text, denoted by curly braces and percentage signs.  The most common example is ```{% include toc.html %}```, which will automatically insert a table of contents.    
 
 ## Markdown
 
