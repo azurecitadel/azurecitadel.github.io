@@ -149,7 +149,7 @@ az group deployment create --name job1 --resource-group lab1 --template-file /mn
 ##### PowerShell
 ```powershell
 New-AzureRmResourceGroup -Name lab1 -Location "West Europe"
-New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile c:\\myTemplates\\lab1\\azuredeploy.json
+New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile c:\myTemplates\lab1\azuredeploy.json
 ```
 
 ## Validating a deployment
