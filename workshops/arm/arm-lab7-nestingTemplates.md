@@ -420,7 +420,6 @@ There are many ways of completing that lab, so if you got it to work then it's a
         </li>
     </b>
 </div>
-```
 
 This lab also used a collection of files to describe how to use nested templates.  If you would like to see the full set then here is the directory within my GitHub repository:
 
