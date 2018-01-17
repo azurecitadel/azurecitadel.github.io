@@ -10,7 +10,7 @@ image:
   teaser: cloud-lab.png
 excerpt: A walk through video of how to use the Text Analytics Cognitive Service in Data Lake Analytics using Shakespeare as an example.
 ---
-![Header Image](/labs/datalakeanalytics-cogser/images/Header.PNG "Header Image")
+![Header Image](/videos/datalakeanalytics-cogser/images/Header.png "Header Image")
 
 {% include toc.html %}
 
@@ -60,14 +60,14 @@ Because of this I will be converting the document to a Citadel page so it is eas
 
 ### Regular Expression Documentation
 
-In the video we mention the Regular Expressions documentation available on docs.microsoft.com there are <a href="https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions" target="_blank">a great starting point</a> to learn and refer back to. Regular Expressions, like any skill, need to be practiced to develop comfort and ability. Extracting the plays of Shakespeare would make good practice indeed!
+In the video we mention the Regular Expressions documentation available on docs.microsoft.com and they're are <a href="https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions" target="_blank">a great starting point</a> to learn and refer back to. Regular expressions, like any skill, need to be practiced to develop comfort and ability. Extracting the plays of Shakespeare would make good practice indeed!
 
-### FSharp Scripts
+### F\# Scripts
 
-There are 2 script files in [scripts.zip](./scripts.zip) that are presented for learning purposes. They are presented without warrenty or guarantee. As commented on in the video they are not examples of good code. They do work on my machine though.
+There are 2 script files in [scripts.zip](./scripts.zip) that are presented for learning purposes. They are presented without warranty or guarantee. As commented on in the video they are not examples of good code. They do work on my machine though.
 
-GetPlay.fsx is used to extract one play from the complete works file.
-process2.fsx is used to turn the extracted play into the data files provided below.
+* getPlay.fsx is used to extract one play from the complete works file
+* process2.fsx is used to turn the extracted play into the data files provided below
 
 Once processed each line of the output files should conform to the schema given in the next sections and to this regular expression: `([^\|]+?\|){8}[\w\s,&]+?\|[^\|]+$`. If they don't conform to this regular expression the U-SQL script will throw and error.
 
@@ -104,11 +104,12 @@ To load data from Azure Data Lake store [this](https://docs.microsoft.com/en-us/
 ### The Results
 Here are some examples of the results in Power BI.
 Do they fit what you remember of the plays?
-![Macbeth](/labs/datalakeanalytics-cogser/images/Macbeth.PNG "Macbeth Results")
 
-![Romeo And Juliet](/labs/datalakeanalytics-cogser/images/RomeoAndJuliet.PNG "Romeo and Juliet Results")
+[![Macbeth](/videos/datalakeanalytics-cogser/images/Macbeth.png "Macbeth Results")](/videos/datalakeanalytics-cogser/images/Macbeth.png)
+
+[![Romeo And Juliet](/videos/datalakeanalytics-cogser/images/RomeoAndJuliet.png "Romeo and Juliet Results")](/videos/datalakeanalytics-cogser/images/RomeoAndJuliet.png)
 
 Using various charts you can explore the interactions of certain characters.
 For example Helena and Hermia in 'A Midsummer Nights Dream' and their love confusion.
 
-![Helena And Hermia](/labs/datalakeanalytics-cogser/images/HelenaAndHermia.PNG "Helena And Hermia Results")
+[![Helena And Hermia](/videos/datalakeanalytics-cogser/images/HelenaAndHermia.png "Helena And Hermia Results")](/videos/datalakeanalytics-cogser/images/HelenaAndHermia.png)
