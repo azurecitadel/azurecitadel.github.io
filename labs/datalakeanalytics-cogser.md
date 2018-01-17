@@ -10,7 +10,7 @@ image:
   teaser: cloud-lab.png
 excerpt: A walk through video of how to use the Text Analytics Cognitive Service in Data Lake Analytics using Shakespeare as an example.
 ---
-![Header Image](/labs/datalakeanalytics-cogser/images/Header.png "Header Image")
+![Header Image](/labs/datalakeanalytics-cogser/images/Header.PNG "Header Image")
 
 {% include toc.html %}
 
@@ -104,11 +104,11 @@ To load data from Azure Data Lake store [this](https://docs.microsoft.com/en-us/
 ### The Results
 Here are some examples of the results in Power BI.
 Do they fit what you remember of the plays?
-![Macbeth](/labs/datalakeanalytics-cogser/images/Macbeth.png "Macbeth Results")
+![Macbeth](/labs/datalakeanalytics-cogser/images/Macbeth.PNG "Macbeth Results")
 
-![Romeo And Juliet](/labs/datalakeanalytics-cogser/images/RomeoAndJuliet.png "Romeo and Juliet Results")
+![Romeo And Juliet](/labs/datalakeanalytics-cogser/images/RomeoAndJuliet.PNG "Romeo and Juliet Results")
 
 Using various charts you can explore the interactions of certain characters.
 For example Helena and Hermia in 'A Midsummer Nights Dream' and their love confusion.
 
-![Helena And Hermia](/labs/datalakeanalytics-cogser/images/HelenaAndHermia.png "Helena And Hermia Results")
+![Helena And Hermia](/labs/datalakeanalytics-cogser/images/HelenaAndHermia.PNG "Helena And Hermia Results")
