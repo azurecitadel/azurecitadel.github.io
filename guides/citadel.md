@@ -206,8 +206,9 @@ Once installed then you can run Jekyll as a local process.  As you make changes 
     * if you get a timezone error on Windows then add the following line to your Gemfile
     `a.	gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`(for 64 bit Ruby - see the [tzinfo help page](http://tzinfo.github.io/datasourcenotfound) for other versions
 3.  Open https://localhost:4000
-    * Note that some of the landing pages do not currently update locally, e.g. https://localhost:4000/labs/
+    * Note that some of the landing pages do not update locally if you have previously generated, e.g. https://localhost:4000/labs/
     * You can fully path to a lab or guide within a section e.g. https://localhost:4000/guides/citadel  
+    * Or you can remove the _site directory (which should be greyed out), and the `jekyll serve` will regenerate it correctly
 
 >It is useful to have an alias in your Bash profile to run this quickly:
 >```bash
