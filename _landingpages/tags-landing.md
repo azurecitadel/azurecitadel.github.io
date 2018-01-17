@@ -4,6 +4,8 @@ permalink: /tags/
 title: "All Content Tags"
 ---
 
+<!-- THIS PAGE IS NO LONGER USED (BenC 17th Jan 2018) -->
+
 {% assign rawtags = "" %}
 {% for p in site.pages %}
 	{% assign ttags = p.tags | join:'|' | append:'|' %}

@@ -18,9 +18,9 @@
   url: /videos
   img: icons/video.svg
 
-- title: TAGS
-  url: /tags
-  img: icons/tags.svg
+- title: SEARCH
+  url: /search
+  img: icons/search.svg
 
 - title: CONTRIBUTORS
   url: /contrib
