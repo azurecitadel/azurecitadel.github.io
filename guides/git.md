@@ -1,16 +1,21 @@
 ---
 layout: article
-title: Workshop Pre-Requisites
-date: 2017-10-13
+title: Installing Git for Windows or Mac
+date: 2018-01-23
+categories: guides
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
 author: John_Duckmanton
+excerpt: Install Git client software for Windows or Mac.
 image:
   feature: 
-  teaser: Education.jpg
+  teaser: cloud-lab.png
   thumb: 
 ---
-Install Git for Windows or Git for Mac
+
+The following instructions are for installing Git for Windows or Git for Mac client software.  
+
+If you are installing Git into a Linux distro (including the Windows subsystem for Linux) then use the standard module install commands for the distribution.  For example, the commands for Ubuntu would be `sudo apt-get update && sudo apt-get install git`. 
 
 ## Download & Install the Git software
 
@@ -19,15 +24,15 @@ Install Git for Windows or Git for Mac
 
         1. Select **Ensure the following options are selected**
 
-        ![Git setup image](../images/git/git-installer-1.png)
+        ![Git setup image](./git/images/git-installer-1.png)
 
         2. Ensure **Use Git for the Windows command Prompt** is selected
 
-        ![Git setup image](../images/git/git-installer-2.png)
+        ![Git setup image](./git/images/git-installer-2.png)
 
         3. Ensure **Enable Git Credential Manager** is selected
 
-        ![Git setup image](../images/git/git-installer-3.png)
+        ![Git setup image](./git/images/git-installer-3.png)
 
 ## Verify the Installation
 

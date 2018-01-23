@@ -37,7 +37,7 @@ files hosted on GitHub and pushing those into a Web App in Azure using Git.
 
 ### Select your console
 
-If the [Bash and CLI 2.0 prereqs]({{ site.url }}/guides/prereqs/wsl) have been followed then those Windows 10  users will have installed the Linux subsystem, and then installed both CLI 2.0 and Git into that subsystem.  If that is so then open a Command Prompt and then type ``bash``.  Type in ``az login`` and follow the instructions. This will be your console.
+If the [Bash and CLI 2.0 prereqs]({{ site.url }}/guides/wsl) have been followed then those Windows 10  users will have installed the Linux subsystem, and then installed both CLI 2.0 and Git into that subsystem.  If that is so then open a Command Prompt and then type ``bash``.  Type in ``az login`` and follow the instructions. This will be your console.
 
 Everyone else may use the Cloud Shell (**>_**) shown at the top of the Azure Portal.  This will create some local storage the first time you use it.  There is no need to login to Azure as it is done automatically for you.  (Note that we will not be using the permanent storage folder clouddrive as it does not support the file permissions required by git commands, so the clone of the Github repo will be transient.)  This will be your console.
 

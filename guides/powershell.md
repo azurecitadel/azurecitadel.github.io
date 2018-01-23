@@ -1,13 +1,15 @@
 ---
 layout: article
-title: Workshop Pre-Requisites
-date: 2017-07-04
+title: Azure PowerShell Module
+date: 2018-01-23
+categories: guides
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
 author: Richard_Cheney
+excerpt: Instructions to update PowerShell and add in the AzureRM module.
 image:
   feature: 
-  teaser: Education.jpg
+  teaser: cloud-builder.png
   thumb: 
 ---
 

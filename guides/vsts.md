@@ -1,13 +1,15 @@
 ---
 layout: article
-title: Workshop Pre-Requisites
-date: 2017-10-13
-tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
+title: Visual Studio Team Services
+date: 2018-01-23
+categories: guides
+tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, vsts]
 comments: true
 author: John_Duckmanton
+excerpt: Set up your VSTS account.
 image:
   feature: 
-  teaser: Education.jpg
+  teaser: cloud-lab.png
   thumb: 
 ---
 

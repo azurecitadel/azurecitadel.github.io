@@ -1,13 +1,14 @@
 ---
 layout: article
-title: Workshop Pre-Requisites
-date: 2017-07-04
-tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
+title: Visual Studio Code
+date: 2018-01-23
+categories: guides
+tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, vscode]
 comments: true
 author: Richard_Cheney
 image:
   feature: 
-  teaser: Education.jpg
+  teaser: code.jpg
   thumb: 
 excerpt: Install and configure the lightweight VScode app for JSON authoring
 ---
@@ -35,11 +36,11 @@ Here is a summary:
     * Remove all Explorer integrations, file associations, and use Command Prompt as the shell
     * Check  `git` works in PowerShell (or Command Prompt) 
     * If successful then Git should be the integrated SCM in Visual Studio Code
-1. <a href="/guides/prereqs/powershell" target="_blank">PowerShell</a>
+1. <a href="/guides/powershell" target="_blank">PowerShell</a>
     * Install the [Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)
     * Install the [Azure CLI installer (MSI)](https://aka.ms/InstallAzureCliWindows)
     * Check `az` works within PowerShell
-1. <a href="/guides/prereqs/wsl" target="_blank">Bash</a> (Windows 10 only)
+1. <a href="/guides/wsl" target="_blank">Bash</a> (Windows 10 only)
     * install Ubuntu into the Windows subsystem for Linux  
     * follow the instructions to add both git and the Azure CLI into the subsystem
 1. [Visual Studio Code Extensions](#recommended-extensions-for-visual-studio-code)
@@ -90,8 +91,8 @@ Type `az login` and follow the instructions to
 ## Recommended Extensions for Visual Studio Code 
 
 Use Case | Logo | Extension | Search 
-ARM | ![](/guides/prereqs/images/vscode/armLogo.png) | <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-vscode-extension" target="_vscode">Azure Resource Manager Tools</a> | "Azure Resource Manager Tools"
-Docker | ![](/guides/prereqs/images/vscode/dockerLogo.png) | <a href="https://code.visualstudio.com/docs/languages/dockerfile" target="_vscode">Docker extension</a> |  docker publisher:microsoft 
+ARM | ![](/guides/vscode/images/armLogo.png) | <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-vscode-extension" target="_vscode">Azure Resource Manager Tools</a> | "Azure Resource Manager Tools"
+Docker | ![](/guides/vscode/images/dockerLogo.png) | <a href="https://code.visualstudio.com/docs/languages/dockerfile" target="_vscode">Docker extension</a> |  docker publisher:microsoft 
 
 Installing extensions via shortcuts
 * Press `Ctrl+P` 
@@ -126,9 +127,9 @@ To override the defaults, you can manually configure the settings.json.  Open up
 You can override the shell used by Windows in the integrated console by setting the **terminal.integrated.shell.windows** value:
 
 Shell Location | Notes
-"C:\\\\Windows\\\\sysnative\\\\cmd.exe" | 64-bit Command Prompt if available, if not 32-bit
-"C:/Windows/sysnative/WindowsPowerShell/v1.0/powershell.exe" | 64-bit PowerShell if available, if not 32-bit
-"C:/Windows/sysnative/bash.exe" | [Bash on Ubuntu]({{ site.url }}/guides/prereqs/wsl) (Windows Subsystem for Linux (WSL) on Windows 10)
+"C:\\\\Windows\\\\System32\\\\cmd.exe" | Command Prompt
+"C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" | 64-bit PowerShell if available, if not 32-bit
+"C:/Windows/System32/bash.exe" | [Bash on Ubuntu]({{ site.url }}/guides/wsl) (Windows Subsystem for Linux (WSL) on Windows 10)
 "C:/Program Files/Git/bin/bash.exe" | Git Bash
 
 > The Git  Bash shell is installed as part of Git for Windows, and is an option for WIndows 7/8.x users to use bash, but installation of the Azure CLI into Git Bash is sometimes problematic.  For Windows 10 users the Windows Subsystem for Linux (WSL) is a much cleaner implementation and is highly recommended.  There are no issues with having Git Bash and WSL co-existing, with the former used by VS Code solely for the git operations, and the latter used to provide a better standard of bash integrated console. 
@@ -160,7 +161,7 @@ For reference, here is an example settings.json user override area:
 
 It is possible to open multiple terminal sessions by clicking on the *+* icon, and this is the reason that this settings file includes the commented fields with the additional shell paths.  If you change the terminal.integrated.shell.windows then you can open up sessions using different shells, as shown in the screenshot below:
 
-![](/guides/prereqs/images/vscode/multipleShells.png) 
+![](/guides/vscode/images/multipleShells.png) 
 
 Personalising VS Code using the menu options will also change this configuration file.
 
@@ -172,7 +173,7 @@ The settings cog at the bottom left allows you to select colour and icon themes,
 
 I also hide the menu bar (which can be toggled back on temporarily using ALT), and I have disabled the minimap by default.
 
-![](/guides/prereqs/images/vscode/personalised.png) 
+![](/guides/vscode/images/personalised.png) 
 
 > Windows 10 also allows you to set custom colours for Windows' title bars in the Color Settings area.  Mine is set to 59, 66, 82, which is the same as the Nord background colour for the status bar. 
 

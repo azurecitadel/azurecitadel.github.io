@@ -168,7 +168,7 @@ You will need to create your own [GitHub](https://github.com/join) ID if you do 
 
 ### 2. Clone within vscode
 
-You will need to have met the core [vscode prereqs](/guides/prereqs/vscode) to be able to upload:
+You will need to have met the core [vscode prereqs](/guides/vscode) to be able to upload:
 * Visual Studio Code
 * Git
 * Bash on Ubuntu configured as the Integrated Console
@@ -209,15 +209,16 @@ Once installed then you can run Jekyll as a local process.  As you make changes 
     * Note that some of the landing pages do not update locally if you have previously generated, e.g. https://localhost:4000/labs/
     * You can fully path to a lab or guide within a section e.g. https://localhost:4000/guides/citadel  
     * Or you can remove the _site directory (which should be greyed out), and the `jekyll serve` will regenerate it correctly
+    * Or you can remove the --incremental switch to do a full regeneration each time rather than the faster partial regen
 
 >It is useful to have an alias in your Bash profile to run this quickly:
 >```bash
->echo "alias jk='cd /mnt/c/Users/yourId/azurecitadel.github.io; bundler exec jekyll serve --config _config.yml,_config_local.yml --incremental'" >> ~/.bashrc
+>echo "alias jk='cd /mnt/c/Users/yourId/azurecitadel.github.io; bundler exec jekyll serve --config _config.yml,_config_local.yml --incremental --unpublished --future'" >> ~/.bashrc
 >```
 >You can then type `jk` to kick off the local Jekyll process.
 
 This will allow you to view your content locally by refreshing the browser as you make and save changes.  
-
+w
 ### 5. Stage and commit and push your changes to GitHub
 
 Once you are happy with the new content then you can stage and commit them to the local copy of the repo:

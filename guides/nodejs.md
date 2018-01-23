@@ -1,13 +1,13 @@
 ---
 layout: article
-title: Workshop Pre-Requisites
-date: 2017-10-13
+title: Node-js
+date: 2018-01-23
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
 author: John_Duckmanton
 image:
   feature: 
-  teaser: Education.jpg
+  teaser: code.png
   thumb: 
 ---
 Perform a global install of Node.js on your local workstation

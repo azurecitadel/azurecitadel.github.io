@@ -28,10 +28,10 @@ Allow five hours for a full session including all of the labs.
 The workshop requires the following
 
 Pre-req | Required | Comment
-<a href="/guides/prereqs/subscription" target="_blank">Azure Subscription</a> | Required | 
-<a href="/guides/prereqs/wsl" target="_blank">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
-<a href="/guides/prereqs/powershell" target="_blank">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
-<a href="/guides/prereqs/vscode" target="_blank">Visual Studio Code</a> | Optional | 
+<a href="/guides/subscription" target="_blank">Azure Subscription</a> | Required | 
+<a href="/guides/wsl" target="_blank">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
+<a href="/guides/powershell" target="_blank">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
+<a href="/guides/vscode" target="_blank">Visual Studio Code</a> | Optional | 
 A Twitter account | Optional | 
 <a href="https://www.getpostman.com" target="_blank">Postman</a> | Required | Used in the Logic Apps lab to post JSON
 

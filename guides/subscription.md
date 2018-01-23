@@ -1,13 +1,15 @@
 ---
 layout: article
-title: Workshop Pre-Requisites
-date: 2017-07-04
+title: Azure Subscriptions
+date: 2018-01-23
+categories: guides
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, subscription]
 comments: true
 author: Richard_Cheney
+excerpt: If you are working through labs then you'll need a subscription.  Here are your options!
 image:
   feature: 
-  teaser: Education.jpg
+  teaser: cloud-city.png
   thumb: 
 ---
 

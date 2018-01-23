@@ -1,17 +1,16 @@
 ---
 layout: article
-title: Workshop Pre-Requisites
-date: 2017-07-04
-tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
+title: Windows Subsystem for Linux
+date: 2018-01-23
+tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, ubuntu, wsl, lxss]
 comments: true
+excerpt: Set up Ubuntu, OpenSUSE or SLES as your Windows subsystem for Linux (WSL).
 author: Richard_Cheney
 image:
   feature: 
-  teaser: Education.jpg
+  teaser: cloud-tools.png
   thumb: 
 ---
-
-Windows 10 is able to run a Windows Subsytem for Linux.
 
 ## Install Windows Subsystem for Linux
 

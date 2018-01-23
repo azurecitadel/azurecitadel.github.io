@@ -31,7 +31,7 @@ Pass-through Authentication will be used and we will not be synchronizing passwo
 
 ## Pre-requisites
 The workshop requires the following:
-* [Azure Subscription](/guides/prereqs/prereqSubscription.md)
+* [Azure Subscription](/guides/prereqSubscription.md)
 * Some of these steps will require a public domain (e.g. microsoft.com) with the ability to edit the DNS settings so we can match our on premise identities to the cloud. If you do not own one you can skip certain steps and still use AD Connect but it wouldn't be a great user experience in a production environment.
 
 ## Labs

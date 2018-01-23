@@ -39,12 +39,12 @@ Lab | Description
 To complete this workshop you will need the following:
 
 Pre-req | Required | Comment
-<a href="/guides/prereqs/subscription" target="_new">Azure Subscription</a> | Required | 
-<a href="/guides/prereqs/vsts" target="_new">Visual Studio Team Services</a> | Required | 
-<a href="/guides/prereqs/git" target="_new">Git</a> | Required | 
-<a href="/guides/prereqs/nodejs" target="_new">Node.js</a> | Required |
-<a href="/guides/prereqs/vscode" target="_new">Visual Studio Code</a> | Required | 
-<a href="/guides/prereqs/docker" target="_new">Docker</a> | Required | Required for Lab 2 only
+<a href="/guides/subscription" target="_new">Azure Subscription</a> | Required | 
+<a href="/guides/vsts" target="_new">Visual Studio Team Services</a> | Required | 
+<a href="/guides/git" target="_new">Git</a> | Required | 
+<a href="/guides/nodejs" target="_new">Node.js</a> | Required |
+<a href="/guides/vscode" target="_new">Visual Studio Code</a> | Required | 
+<a href="/guides/docker" target="_new">Docker</a> | Required | Required for Lab 2 only
 
 ### Content
 

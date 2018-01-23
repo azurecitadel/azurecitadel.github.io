@@ -1,13 +1,13 @@
 ---
 layout: article
-title: Workshop Pre-Requisites
-date: 2017-10-13
+title: Docker
+date: 2018-01-23
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
 author: John_Duckmanton
 image:
   feature: 
-  teaser: Education.jpg
+  teaser: cloud-builder.png
   thumb: 
 ---
 Install Docker for Windows or Docker for Mac
@@ -24,7 +24,7 @@ Install Docker for Windows or Docker for Mac
   You may be prompted to log out and back in. 
   You may be prompted to enable Hyper-V:
   
-  ![Hyper-V Message](../images/docker/hyper-v-message.png)
+  ![Hyper-V Message](./docker/images/hyper-v-message.png)
 
   in which case, click **OK** and your system will reboot.
 
@@ -43,5 +43,3 @@ You should have a Docker "whale" icon in the systray and see a popup saying “D
 > * Right-click on *whale* icon 
 > * Select **Settings > General**
 > * Untick **Start Docker when you log in**
-
-

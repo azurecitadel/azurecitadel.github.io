@@ -26,9 +26,9 @@ The lab will make use of the storage account resources, which is one of the simp
 
 Before we start, let's check your configuration.
 
-First of all you will need a working [Azure subscription](/guides/prereqs/subscription).
+First of all you will need a working [Azure subscription](/guides/subscription).
 
-For this lab we will be using Visual Studio Code, and it is assumed that you have configured it as per the [VS Code prereqs](/guides/prereqs/vscode) page:
+For this lab we will be using Visual Studio Code, and it is assumed that you have configured it as per the [VS Code prereqs](/guides/vscode) page:
 * Visual Studio Code
 * Git working in Command Prompt
 * Either CLI 2.0 (az) installed in Windows, or Azure PowerShell Modules (or both) 

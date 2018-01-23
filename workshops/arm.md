@@ -30,9 +30,9 @@ The comments section has been enabled and feedback is always welcome.
  
 ## Pre-requisites
 
-You will need a working [Azure subscription](/guides/prereqs/subscription).
+You will need a working [Azure subscription](/guides/subscription).
 
-For the labs we will be using Visual Studio Code, configured as per the [VS Code](/guides/prereqs/vscode) prereqs page.
+For the labs we will be using Visual Studio Code, configured as per the [VS Code](/guides/vscode) prereqs page.
 
 ## Index
 
