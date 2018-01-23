@@ -2,6 +2,7 @@
 layout: article
 title: Windows Subsystem for Linux
 date: 2018-01-23
+categories: guides
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, ubuntu, wsl, lxss]
 comments: true
 excerpt: Set up Ubuntu, OpenSUSE or SLES as your Windows subsystem for Linux (WSL).

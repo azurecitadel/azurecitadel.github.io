@@ -4,6 +4,7 @@ title: Node-js
 date: 2018-01-23
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
+categories: guides
 author: John_Duckmanton
 image:
   feature: 
