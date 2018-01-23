@@ -8,7 +8,7 @@ categories: guides
 author: John_Duckmanton
 image:
   feature: 
-  teaser: code.png
+  teaser: code.jpg
   thumb: 
 ---
 Perform a global install of Node.js on your local workstation
