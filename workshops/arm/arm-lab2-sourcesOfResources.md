@@ -7,10 +7,10 @@ tags: [authoring, arm, workshop, hackathon, lab, template, functions]
 comments: true
 author: Richard_Cheney
 previous:
-  url: ../arm-lab1-firstTemplate
+  URL: ../arm-lab1-firstTemplate
   title: Creating your first template
 next:
-  url: ../arm-lab3-referencesAndSecrets
+  URL: ../arm-lab3-referencesAndSecrets
   title: Referencing resource properties and using secrets 
 ---
 
@@ -22,17 +22,17 @@ The snippets we used in lab 1 are very useful and easy to use.  They meet most b
 * They are not actively maintained and therefore do not include all of the new functionality
 * They do not cover all of the services available on Azure
 
-In this lab we will create templates from some of the other major sources of resource type information to speed up the templating process and enable us to deply infrastructure as code for some of the higher value services available on the Azure platform, or to make use of newer functionality.
+In this lab we will create templates from some of the other major sources of resource type information to speed up the templating process and enable us to deploy infrastructure as code for some of the higher value services available on the Azure platform, or to make use of newer functionality.
 
 1. First we will use the export functionality from the portal immediately prior to submission
 1. We will then use the semi-hidden ARM template editor in the portal
 1. Finally we will leverage some of the IP on the Azure quickstart templates on GitHub
 
-But before we start moving through those areas, let's take a few moments to look at the wealth of functions that are available to the ARM templates.  We'll start to see more of thenm as we work through the various sections of the lab so it is worth spending some time to understand that range of capability.
+But before we start moving through those areas, let's take a few moments to look at the wealth of functions that are available to the ARM templates.  We'll start to see more of them as we work through the various sections of the lab so it is worth spending some time to understand that range of capability.
 
 ## ARM Template Functions
 
-The documentation for the ARM template functions is one of those areas that you will visit often, and the short url **https://aka.ms/armfunc** will take you straight there.   
+The documentation for the ARM template functions is one of those areas that you will visit often, and the short URL **https://aka.ms/armfunc** will take you straight there.   
 
 We'll now step through some of the functions available to ARM templates, and how they can be used.  This will not cover all of them, as the [documentation](https://aka.ms/armfunctions) for the templates is pretty good, so if you need to understand something trivial like how to trim a string with whitespace then dive in to that area and dig out the information.
 
@@ -85,7 +85,7 @@ Look at the apiVersion property for the two resource and you will notice that th
 Microsoft.Web/serverfarms | 2014-06-01
 Microsoft.Web/site | 2015-08-01
 
-If you search on "arm template reference" then the top link will have the information on how to access reference materials on the resource types.  You will find yourself returning to this page quite often, so it is useful that someone has set up another short url to take you straight to the page: **https://aka.ms/armref**.  That is another short url that is worth memorising if you end up spending a lot of time working on templates.
+If you search on "arm template reference" then the top link will have the information on how to access reference materials on the resource types.  You will find yourself returning to this page quite often, so it is useful that someone has set up another short URL to take you straight to the page: **https://aka.ms/armref**.  That is another short URL that is worth memorising if you end up spending a lot of time working on templates.
 
 The full pathing to take you direct to individual resource type pages is  https://docs.microsoft.com/en-gb/azure/templates/_resource.provider_/_type_, so for the two resources in our template it would be:
 
@@ -125,7 +125,7 @@ Let's copy out the template and parameter file into lab2a folder of our project 
 
 Examine the resources.  You'll notice that both are newer than the snippets, but whilst the App Service plan (serverfarm) is up to date, the Web App (sites) is a little out.  You will also notice that pretty much everything is parameterised.
 
-Here are example initial files: 
+Here are the example initial files: 
 
 ```json
 {
@@ -199,7 +199,7 @@ Here are example initial files:
 }
 ```
 
-Configure vscode to have both the azuredeploy.json and the azuredeploy.parameters.json side by side.
+Configure VS Code to have both the azuredeploy.json and the azuredeploy.parameters.json side by side.
 
 ![vscode](/workshops/arm/images/lab2-1-vscode.png)
 
@@ -217,7 +217,7 @@ Quick guide:
 1. Strip down the parameters file to only the required parameter values
 1. Test
 
-Here is a video that shows example files being edited.  (Note the use of CTRL-F2 in vscode to Change All Occurrences.)
+Here is a video that shows example files being edited.  (Note the use of CTRL-F2 in VS Code to Change All Occurrences.)
 
 <video video width="800" height="600" controls autoplay muted>
   <source type="video/mp4" src="/workshops/arm/images/lab2-2-refactoringExport.mp4"></source>
@@ -257,13 +257,13 @@ It is possible to export a whole resource group definition as ARM JSON.  This is
 
 1. Open up the blade for the resource group once it has successfully deployed 
 1. Click on Automation Script in the Settings section
-1. Copy out the JSON into a new file within vscode
+1. Copy out the JSON into a new file within VS Code
 1. Open up the Web App blade
 1. Select CORS in the API section
 1. Enter in a valid origin site and port, e.g. `http://azurecitadel.github.io:1976`
 1. Click on Save
 1. Go back up to the resource group and click on Automation Script again
-1. Copy out the "after" version of the JSON and paste it into another new file in vscode
+1. Copy out the "after" version of the JSON and paste it into another new file in VS Code
 1. Use the 'File: Compare Active File With...' to see the difference
 
 ![Compare](/workshops/arm/images/lab2-3-compareRgExports.png)
@@ -480,7 +480,7 @@ As soon as you click on the Save button then you will be taken to the dialog bla
     </b>
 </div>
 
-And once you have them in vscode then you can refactor the parameters and variables to meet your requirements, or update a resources sections to a newer API version.  
+And once you have them in VS Code then you can refactor the parameters and variables to meet your requirements, or update a resources sections to a newer API version.  
 
 Note the cleartext password in the parameter file.  This does not follow our best practices for secure strings when you are deploying using parameter files.  More in that in lab 3. 
 
@@ -490,7 +490,7 @@ Note the cleartext password in the parameter file.  This does not follow our bes
 
 In the previous section we were working in the portal, and you may have noticed the "Load a GitHub quickstart template" option.  There is a GitHub repo that has a wide selection of ARM templates that have been contributed by both Microsoft employees and by the wider community.  You can find it by searching for "Azure quickstart templates", which will find both the main [Azure Quickstart GitHub repo](https://github.com/Azure/azure-quickstart-templates) and the [Azure Quickstart Templates portal](https://azure.microsoft.com/en-gb/resources/templates/) site that helps to navigate some of the content.
 
-There is yet another short url to take you straight through to the GitHub repo, which is https://aka.ms/armtemplates.  
+There is yet another short URL to take you straight through to the GitHub repo, which is https://aka.ms/armtemplates.  
 
 Go via either route and search for "deploy a simple linux VM".  You'll find a number of templates, but we'll take a look at the "101-vm-simple-linux" template that has been contributed by Brian Moore, one of the Microsoft employees based in Fargo.  If you have gone through the Microsoft Azure route, then select the  Browse on GitHub button.  You should now be [here](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux).
 
@@ -540,19 +540,19 @@ The storage account, public IP (PIP) and vNet are created first as they have no 
 
 The NIC is then created.  Pay attention to the dependsOn array, which contains the resourceId function for both the vNet and the PIP.  These cannot be predefined as a variable as those resources are not available at the time of interpretation.  But ARM will see those and make the appropriate dependencies, taking the ID from those resources once they have been created.
 
-And finally we have the virtual machine utself which has dependencies on both the NIC and the storage account.  You will see all of these resources when you look at the resource group after a successful deployment.  
+And finally we have the virtual machine itself which has dependencies on both the NIC and the storage account.  You will see all of these resources when you look at the resource group after a successful deployment.  
 
 It is worth taking a moment to look at the [virtual machines reference](https://docs.microsoft.com/en-gb/azure/templates/microsoft.compute/virtualmachines) area as a virtual machine is actually one of the most complicated resources within Azure.  This template is only using a small subset of the number of possible properties in this resource type.  We will be using one of those in the next lab, in order to use a password that has been stored as a secret in Key Vault and pass that through as securetext.
 
 Also take a look at the sub-resource type that you can have within virtual machines, the [virtual machines extensions reference](https://docs.microsoft.com/en-gb/azure/templates/microsoft.compute/virtualmachines/extensions) area. This is how you can extend the virtual machines to automatically add in virtual machine agents such as antimalware, Operations Management Suite (OMS), diagnostics, Desired State Configuration (DSC) and third party extensions such as the plugin for Chef.
 
-When defining your building block standards for key resource types such as virtual machines then use the documentation available in the Azure Docs area.  For example, there is some fantastic information on the site for both [Windows]{https://docs.microsoft.com/en-us/azure/virtual-machines/windows/} and [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/) virtual machines to enable you to customise your standard build and build up your own IP.
+When defining your building block standards for key resource types such as virtual machines, use the documentation available in the Azure Docs area.  For example, there is some fantastic information on the site for both [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/) and [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/) virtual machines to enable you to customise your standard build and build up your own IP.
 
 #### Outputs 
 
 The last section is probably the most optional out of all of the ARM template sections, but you will start to make more and more use of it if you start to nest templates, or wrap them up in other scripting.  
 
-If you have been deploying the templates using the bash CLi with the standard JSON output, then you will see that you have some standard JSON information outputted by each deployment.  You can customise that output using the output section.  In this template it is adding in both the server's hostname, and the ssh connection string to connect to a terminal session.
+If you have been deploying the templates using the bash CLI with the standard JSON output, then you will see that you have some standard JSON information outputted by each deployment.  You can customise that output using the output section.  In this template it is adding in both the server's hostname, and the ssh connection string to connect to a terminal session.
 
 Check the truncated JSON output below from a test deployment and find the outputs object:
 
@@ -659,7 +659,7 @@ sshCommand=$(az group deployment create --name $job --parameters "@$parms" --tem
 echo $sshCommand
 ```  
 
-But we have two variables that we want, which is more of a challenge.  We can change the JMESPATH to output an array with both variables in order, and use the output as a here string to the read inbuilt command:
+But we have two variables that we want, which is more of a challenge.  We can change the JMESPATH to output an array with both variables in order, and use the output as an input string to the 'read' inbuilt command:
 ```bash
 query='[properties.outputs.hostname.value, properties.outputs.sshCommand.value]'
 read hostName sshCommand <<< $(az group deployment create --name $job --parameters "@$parms" --template-file $template --resource-group $rg --query $query --output tsv)
