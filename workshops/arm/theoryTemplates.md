@@ -25,13 +25,13 @@ Azure Resource Manager (ARM) templates are used to deploy resources into resourc
 
 The format is very flexible and enables the configuration of multiple resources and the dependencies between them.
 
-The form of the templates is **declaritive**, i.e. it *describes* the desired state of the resources to be added into the resource group. This is fundamentally different to the **imperative** form of PowerShell or Bash scripts, that tell the ARM layer exactly what to do.  With the declarative form the ARM layer will interpret the template and the current configuration of resources within the resource group and will then make the required additions or modifications.
+The form of the templates is **declarative**, i.e. it *describes* the desired state of the resources to be added into the resource group. This is fundamentally different to the **imperative** form of PowerShell or Bash scripts, that tell the ARM layer exactly what to do.  With the declarative form the ARM layer will interpret the template and the current configuration of resources within the resource group and will then make the required additions or modifications.
 
 The declarative form is a safer approach, and may be used repeatedly to provide consistent deployments.
 
 **Idempotency** is another term used with ARM templates.  As a property, it means that subsequent deployments of the same template using the same parameters will always result in the same configuration. It is common to iteratively change one of the resources in a template and redeploy, safe in the knowledge that the other resources will be unaffected.  
 
-> Note that the default deployment mode is **incremental**.  With this mode the deployment will not affect resources in that resource group that are not described in the template.  WIth this mode it is safe to submit multiple templates into the same resource group.  The other mode is **complete** and will remove any resources that are not described in the template, and therefore this mode should be used with caution.
+> Note that the default deployment mode is **incremental**.  With this mode the deployment will not affect resources in that resource group that are not described in the template.  With this mode, it is safe to submit multiple templates into the same resource group.  The other mode is **complete** and will remove any resources that are not described in the template, and therefore this mode should be used with caution.
 
 ## Templates and Parameter Files
 
@@ -135,7 +135,7 @@ The theme of choice continues when it comes to deployment.  There are a number o
 
 #### Azure Portal
 
-The <a href="https://portal.azure.com/#create/Microsoft.Template" target="_new">Deploy a Custom Template</a> screen may also be used for submission.  It is part of the preview Templates service within the portal, which may be found in More Services area.  This provides an area for templates to be stored within Azure, but this is an area where the options are covered in more depth later.
+The <a href="https://portal.azure.com/#create/Microsoft.Template" target="_new">Deploy a Custom Template</a> screen may also be used for submission.  It is part of the preview templates service within the portal, which may be found in the 'More Services' area.  This provides an area for templates to be stored within Azure, but this is an area where the options are covered in more depth later.
 
 #### PowerShell
 
