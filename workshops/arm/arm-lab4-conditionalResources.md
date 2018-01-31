@@ -33,7 +33,7 @@ If you look at the resources that have been spun up in resource group lab3 from 
 
 ![lab3 resources](/workshops/arm/images/lab3Resources.png)
 
-* The vNet (and subnet) are fixed variables for both the name and the address space, so additional VMs deoployed to this resource group using this template would share the same networking.  This is fine, but let's make them parameters with defauilts so that they can be overriden if need be
+* The vNet (and subnet) are fixed variables for both the name and the address space, so additional VMs deployed to this resource group using this template would share the same networking.  This is fine, but let's make them parameters with defaults so that they can be overriden if need be.
 * This template creates first level Managed Disks for the OS (30GB) and the data disk (1023GB), with unique names prefixed with the vmName.  
 * The PIP and NIC are fixed names and would conflict if a second was added 
 
@@ -158,13 +158,13 @@ Save that.  If you were to submit now, your deployment should fail.
 
 OK, let's tweak the public IP resource so that it only gets created if the dnsLabelPrefix parameter is defined.   
 
-Let's introduce the condition statement now.  It is good practice to put it right at the top of the resource block for readability.  When you include it then  the resource will only be created of the condition test returns true.  If you remember the various [functions](https://aka.ms/armfunctions) we looked at in the earlier lab then a lot more of these become useful to us now. 
+Let's introduce the condition statement now.  It is good practice to put it right at the top of the resource block for readability.  When you include it, the resource will only be created if the condition test returns true.  If you remember the various [functions](https://aka.ms/armfunctions) we looked at in the earlier lab then a lot more of these become useful to us now. 
 
 In terms of additional reading there is a great [Azure blog post](https://azure.microsoft.com/en-gb/blog/create-flexible-arm-templates-using-conditions-and-logical-functions/) that is worth looking at as it gives some real examples on how these can be used.  Also Sam Cogan (who wrote our snippets) has a nice [blog post](https://samcogan.com/conditions-in-arm-templates-the-right-way/) on this subject as well, linking to the presentation from [//Build](https://channel9.msdn.com/Events/Build/2017/B8107) back in May 2017.
 
 OK, let's do this in sections and take it step by step.  There is a lot to get right with conditions and plenty that can go wrong, so move slowly and make sure you take in any implications as you go through.  
 
-First oif all, let's make a new variable based on whether the dnsLabelPrefix is set:
+First of all, let's make a new variable based on whether the dnsLabelPrefix is set:
 
 ```json
   "variables": {
@@ -260,7 +260,7 @@ myTemplates$ az group deployment create --name $job --parameters "@$parms" --par
 Deployment template validation failed: 'The resource 'Microsoft.Network/networkInterfaces/lab3bUbuntuVm3-nic' at line '1' and column '2996' is defined multiple times in a template. Please see https://aka.ms/arm-template/#resources for usage details.'.
 ```
 
-Even though certain resources won't be created as part of the deployment, they are still included in the validation.  The NIC name property is mentioned twice with the same value.  There isn't enough intelligence in the validation to take the inputs and see that the sections that meed to conditions will be valid upon execution.  This is a real pain, but we can work around it, and hopefully the product team will change this in the future.
+Even though certain resources won't be created as part of the deployment, they are still included in the validation.  The NIC name property is mentioned twice with the same value. There isn't enough intelligence in the validation to take the inputs and see that the sections that meet the conditions will be valid upon execution. This is a real pain, but we can work around it, and hopefully the product team will change this in the future.
 
 So we'll replace the nicName variable with two variables, privateNicName and publicNicName.  And we'll move up as many of the resourceID() commands up into those new variables sections.  Here is the full variables section after I've shuffled the variables around into sensible groupings:
 
