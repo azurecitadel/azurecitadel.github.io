@@ -96,7 +96,7 @@ Hard coding the number of copies is valid for many scenarios, but you will often
 
 It is then up to the user to define an array with as many valid Azure regions as they deem necessary.  
 
-The count in the copy object is based on the length of that array, and the copyIndex is used purely to pull out the correct array element which is then used to define both the name and region for theweb app deployment.
+The count in the copy object is based on the length of that array, and the copyIndex is used purely to pull out the correct array element which is then used to define both the name and region for the web app deployment.
 
 ### Creating multiple disks
 
