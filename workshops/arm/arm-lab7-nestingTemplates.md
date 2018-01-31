@@ -85,9 +85,9 @@ The URI must be an http or https file.  You cannot use FTP or local files.  A Gi
 
 For the URI itself, you can hardcode them, but it is more common to [use variables](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-linked-templates#using-variables-to-link-templates) to define them dynamically. The `deployment().properties.templateLink.uri` function can be used to return the base URL for the current template, and the uri() function.  The [functions](https://aka.ms/armfunc) area goes into more detail on the usage.
 
-The contentVersion string is not required.  So far we have not been versioning our templates as we have modified them, but using linked templates is a good reason to consider doing so. When you specify the contentVersion string then the deployment will check that the contentVersion is a direct match.  For example, imagine you substantially change a building block template to the point that the parameters change.  If you were  that template is linked to by a number of master templates then this would fail.  An update to the master templates with a correctly configured parameters section and an updated contentVersion string would be required before the deployment would go through successfully.
+The contentVersion string is not required.  So far we have not been versioning our templates as we have modified them, but using linked templates is a good reason to consider doing so. When you specify the contentVersion string then the deployment will check that the contentVersion is a direct match.  For example, imagine you substantially change a building block template to the point that the parameters change.  If that template is linked to by a number of master templates then this would fail.  An update to the master templates with a correctly configured parameters section and an updated contentVersion string would be required before the deployment would go through successfully.
 
-You'll also notice the optional 'resourceGroup' string. This permits us to have templates that deploy to differrent resource groups.  Let's take a look at an example of that.
+You'll also notice the optional 'resourceGroup' string. This permits us to have templates that deploy to different resource groups.  Let's take a look at an example of that.
 
 ### Example of an inline template
 
@@ -159,13 +159,13 @@ The hub vNet name and resource group are part of the expected parameters, but le
 
 The first peering resource is a straightforward `Microsoft.Network/virtualNetworks/virtualNetworkPeerings` sub-resource type and naturally it goes straight into the resource group we are deploying to as part of the `az group deployment create` command, once the spoke vNet has been created.
 
-The second peering, however, is a nested inline template deployment (`Microsoft.Resources/deployments`) which gives us the flexibility to deploy into a different resource group.   We have the embedded inline template deploying the peering into the hub vNet and into the hub's resource group. Once both ends are in place then the 
+The second peering, however, is a nested inline template deployment (`Microsoft.Resources/deployments`) which gives us the flexibility to deploy into a different resource group.   We have the embedded inline template deploying the peering into the hub vNet and into the hub's resource group. Once both ends are in place then the peering is established.
 
 Taking this approach has made the vnet-spoke.json building block more functional and rather neat and tidy.
 
 There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/vnet-hub.json` file for creating the hub, and it creates the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP. As the public IP is dynamically allocated we ideally want to be able to determine the value and output that at the end.
 
-However, this brings up an interesting problem with public IPs in that the dynamic IP address is only allocated once the NIC is online, i.e.when the gateway itself is up.  As the reference() function show the current runtime state of the resource, then trying to return `"[reference(variables('gatewayPipId')).ipAddress]` would fail first time round as the IP address isn't allocated, but will work for a redeployment. So we'll avoid that by returning just the resource ID instead, as it is a simple one line CLI command to find out the IP address once you have that resource ID:  
+However, this brings up an interesting problem with public IPs in that the dynamic IP address is only allocated once the NIC is online, i.e.when the gateway itself is up.  As the reference() function shows the current runtime state of the resource, trying to return `"[reference(variables('gatewayPipId')).ipAddress]` would fail first time round as the IP address isn't allocated, but will work for a redeployment. So we'll avoid that by returning just the resource ID instead, as it is a simple one line CLI command to find out the IP address once you have that resource ID:  
 
 ```json
   "outputs": {
@@ -188,7 +188,7 @@ The template will create:
 
 First of all, take a look at the parameters.  The main template has defaults, which are pretty much there for testing and to describe the expected parameter objects.  Below are the ones from the parameters file:
 
-###### parameters
+###### Parameters
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -247,7 +247,7 @@ The spokes parameter is actually an array, and each member of the array (i.e. ea
 
 Before we move onto the resources themselves, take a look at the first two variables:
 
-###### variables section
+###### Variables Section
 ```json
   "variables": {
     "hubUrl": "[uri(deployment().properties.templateLink.uri, 'vnet-hub.json')]",
@@ -262,7 +262,7 @@ Using a combination of the uri() and deployment() functions is a great way of de
 
 OK, here is the hub deployment.  Note how we are sending all of the parameters individually:
 
-###### hub resource
+###### Hub Resource
 ```json
   "resources": [
     {
@@ -298,7 +298,7 @@ OK, here is the hub deployment.  Note how we are sending all of the parameters i
 ```
 We are pulling out a number of elements from our main hub parameter object.  The .vnet.name and .gatewaySku are strings, .createGateway is a boolean, and both .vnet.addressPrefixes and .subnets are arrays, and these match the parameter types expected by the parameters section of the vnet-hub.json template.
 
-###### spoke resources
+###### Spoke Resources
 ```json
     ...,
     {
@@ -338,7 +338,7 @@ We are pulling out a number of elements from our main hub parameter object.  The
 
 There are a few interesting points for this section.  
 
-1. The resource deployment has a copy, based on the number of members in that spoke parameter array.  Therefore if the parameters has, say, six spokes, then there will be six deployments, all individually named with the spoke number and suffixed by the vNet name for that spoke.  We have a dependency on the hub deployment (as we are peering to it) and the copy overrides the default parallel mode to deploy the spokes one by one.  Tha main reason for that is that the two way vNet peering resources in the spoke template can throw up a conflict if multiple jobs are peppering the hub vNet at the same time.  Running them sequentially avoids that scenario.
+1. The resource deployment has a copy, based on the number of members in that spoke parameter array.  Therefore if the parameters have, say six spokes, then there will be six deployments, all individually named with the spoke number and suffixed by the vNet name for that spoke.  We have a dependency on the hub deployment (as we are peering to it) and the copy overrides the default parallel mode to deploy the spokes one by one.  The main reason is that the two way vNet peering resources in the spoke template can throw up a conflict if multiple jobs are peppering the hub vNet at the same time.  Running them sequentially avoids that scenario.
 2. The parameter section is more of a passthrough than the section we saw earlier for the hub linked template.  The format of the hub parameter closely matches what is expected by the spoke linked template.  In this way, using objects is much more flexible.  There are some elements of the main hub parameter object that are not used by the spoke linked template, but that does not matter; the spoke template just expects an object to be passed.  Therefore this proves a little more extensible.
 3. The spokes parameter for the master template is an array.  However we are not passing that full array through to the linked template.  Instead the spoke parameter is the individual member spoke object within that array, based on the copyIndex(), and matches the object expected by the parameters section in that template.  
 
@@ -434,7 +434,7 @@ This lab also used a collection of files to describe how to use nested templates
 
 ## Summary
 
-We have worked through a lot of labs, and hopefully you have built up a wealth of capability and knowledge of the resources available to you.  For the larger deployments then making use of the various constructs makes sense.  From the partner perspective there are a number of ways of leveraging them, but the following is one way of doing it:
+We have worked through a lot of labs, and hopefully you have built up a wealth of capability and knowledge of the resources available to you.  For the larger deployments, making use of the various constructs makes sense.  From the partner perspective there are a number of ways of leveraging them, but the following is one way of doing it:
 
 1. Invest the time to create flexible and functionally rich building blocks that meet as many scenarios as possible
 1. Incorporate t-shirt sizes to group properties together and standardise
@@ -442,7 +442,7 @@ We have worked through a lot of labs, and hopefully you have built up a wealth o
 1. Use parameter files to define the customer's default values
 1. Override as required on submission
 
-One key thing to remember is that all of this only makes sense if you know that you will have sufficient reuse of the templates to justify the time investment. However, defining ARM templates as one of the ways that help you to define your Azure offering and most customers will prefer using proven IP to designing a bespoke (and arguably less supportable) design from a blank piece of paper.
+One key thing to remember is that all of this only makes sense if you know that you will have sufficient reuse of the templates to justify the time investment. However, defining ARM templates is one of the ways that will help you to define your Azure offering and most customers will prefer using proven IP to designing a bespoke (and arguably less supportable) design from a blank piece of paper.
 
 Now that you have some idea of the capabilities then it is a great time to take a look at some of the excellent information provided by the Azure Customer Advisory Team (AzureCAT).  There is a great Azure documentation page on [best practices for complex designs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/best-practices-resource-manager-design-templates), and that includes a link to a fuller whitepaper.  This information has been pulled together with some of the design learning gained from deployments with large enterprises, service integrators and ISVs, including some of the largest open source software.  
 
