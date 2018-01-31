@@ -51,7 +51,7 @@ When you call resourceId(), you can specify just the resourceType and resourceNa
 },
 ```
 
-Note that the subnet is a child resource for the virtual network, which is why the concenation makes sense.  You can use [Resource Explorer](https://resources.azure.com/) to browse the resources within your subscription you can see the resourceIds for your existing resources.  
+Note that the subnet is a child resource for the virtual network, which is why the concatenation makes sense.  You can use [Resource Explorer](https://resources.azure.com/) to browse the resources within your subscription, where you can see the resourceIds for your existing resources.  
 
 You will often see the resourceId used in the variables section to simplfy the resources section as much as possible.
 
@@ -61,7 +61,7 @@ We have no specific lab section for this, but you will see the resource function
 
 ## Handling securetext passwords with Key Vault
 
-OK, time to get a little self-reliant! You should now be comfortable with accessing the various resources and documentation area and capable of being more self sufficient, so I will stop detailing all of the steps.  This one wil lbe for you to find your own way rather than be guided.  
+OK, time to get a little self-reliant! You should now be comfortable accessing the various resources and documentation area and capable of being more self sufficient, so I will stop detailing all of the steps.  This one will be for you to find your own way rather than be guided.  
 
 I'll help you create a key vault with a new secret called ubuntuDefaultPassword.  After that you will create your own template and parameter files in a **lab3** sub-directory, configuring an Ubuntu VM template that will use the secret in place of a cleartext one in the parameters file.
 
@@ -71,13 +71,13 @@ All of the templates that include a password field, or any other property that c
 
 If we are using a script to prompt a user to enter a password as part of the deployment then again, that would be transient and there should be nothing to see if it is prompted for interactively in the right way, such as with `read -s -p "Enter password: " password` to ensure that the `-s` switch prevents characters being echoed to the terminal.
 
-So the real issue is avoiding scripts and parameter files from containing cleartext password if the location and access permissions would allow them to be viewed.  This is where specifying key vault secrets makes perfect sense.
+So the real issue is avoiding scripts and parameter files from containing cleartext password if the location and access permissions would allow them to be viewed.  This is where the use of key vault secrets makes perfect sense.
 
 ### Creating a Key Vault
 
 OK, let's begin by creating a lab3a folder and an empty azuredeploy.json and azuredeploy.parameters.json file.  
 
-We'll also need a key vault if you haven't got one.  I have shown below how to make one manually to save time. Or you can use a couple of CLI or PowerShell commands.  Try searching for the Azure documentation page that can help with that.  Or if you wish you can take a look at the [201-key-vault-secret-create](https://github.com/Azure/azure-quickstart-templates/tree/master/201-key-vault-secret-create) quickstart template and use that to automate the creation if you know that this is something you wil lbe doing repeatedly. 
+We'll also need a key vault if you haven't got one.  I have shown below how to make one manually to save time. Or you can use a couple of CLI or PowerShell commands.  Try searching for the Azure documentation page that can help with that.  Or if you wish you can take a look at the [201-key-vault-secret-create](https://github.com/Azure/azure-quickstart-templates/tree/master/201-key-vault-secret-create) quickstart template and use that to automate the creation if you know that this is something you will be doing repeatedly. 
 
 Here are the manual instructions:
 
@@ -98,7 +98,7 @@ It should only take a few seconds to create. Once deployed:
   * Add a secret
   * Manual upload
   * Name: **ubuntuDefaultPassword**
-  * Value: Enter in a suitable password for the Windows VM we'll create 
+  * Value: Enter in a suitable password for the VM we'll create 
   * You don't need to set an activation or expiry date
   * Create
 
