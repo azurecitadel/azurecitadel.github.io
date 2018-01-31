@@ -213,10 +213,10 @@ Note the syntax of the parameters function.  Functions are within square bracket
 
 ### accountType
 
-Let's also do the same with the accountType, and introduce a couple more parameter controls at the same time.  You should now be getting used to vscode, so I'll be less explicit. The Azure Docs area is an excellent resource and that especially so for the ARM templates.  If you search on "azure docs ARM template parameters" then the top hit will take you to the <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates#parameters" target="_ docs">authoring templates</a> page.  Use this as a reference as you define the parameter section.
+Let's also do the same with the accountType, and introduce a couple more parameter controls at the same time.  You should now be getting used to VS Code, so I'll be less explicit. The Azure Docs area is an excellent resource and that especially so for the ARM templates.  If you search on "azure docs ARM template parameters" then the top hit will take you to the <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates#parameters" target="_ docs">authoring templates</a> page.  Use this as a reference as you define the parameter section.
 
 1. Add the accountType to the parameters section, and use the parameter value in the resource section.
-1. Set the only allowed values to be Standard\_LRS, Premium\_LRS, or Standard\_RAGRS
+1. Set the allowed values to be Standard\_LRS, Premium\_LRS, or Standard\_RAGRS
 1. Set the default value to be Standard\_LRS
 
 Note that the parameter type is from a fixed list:
@@ -301,7 +301,7 @@ Note that the inline parameters may be either space delimited NAME=VALUE pairs, 
 parms="storageAccount=richeneysa3 accountType=Premium_LRS"
 parms='{ "storageAccount": { "value": "richeneysa4" }, "accountType": { "value": "Standard_RAGRS" } }'
 ```
-We'll look at the parameters JSON format more in the next lab.
+We'll look at the parameters JSON format in more detail in the next lab.
 
 ##### PowerShell
 ```powershell
@@ -316,7 +316,7 @@ The inline parameters for PowerShell deployments are very slick, and effectively
 
 ## Using variables
 
-Okay, our template is now looking pretty good.  The major issue with it is that it does not ensure that the storageAccount will be unique and therefore the success of the deployment cannot be assured.  Let's fix that.  A quick search on "azure storage account naming conventions" takes us to the <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions" target="docs">naming conventions</a> page in the best practices area.  The storage account name has to be lower case alphanumerics with 3-24 characters, and it recommends using a standard prefix.
+OK, our template is now looking pretty good.  The major issue with it is that it does not ensure that the storageAccount will be unique and therefore the success of the deployment cannot be assured.  Let's fix that.  A quick search on "azure storage account naming conventions" takes us to the <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions" target="docs">naming conventions</a> page in the best practices area.  The storage account name has to be lower case alphanumerics with 3-24 characters, and it recommends using a standard prefix.
 
 1. Change the storageAccount user parameter to storageAccountPrefix 
 1. Add in a default for the new parameter
@@ -331,13 +331,13 @@ Work through the steps and modify your template.  Please do this without skippin
 
 If you need more information on the syntax of uniqueString() etc. then search on "arm functions" and it will will bring up the documentation for the various <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource" target="docs">functions</a>.  The subscription ID information can be found in the Resource functions area.  This area is constantly expanding as the functionality grows.
 
-Explore the functions available.  Some of them will be introduced as we work through different 
+Explore the functions available.  Some of them will be introduced as we work through different labs.
 
 ## Testing template file validity
 
-As you get more complex with JSON templates, you will start to appreciate the intellisense that is built into vscode and the Azure Resource Manager Tools extension.
+As you get more complex with JSON templates, you will start to appreciate the intellisense that is built into VS Code and the Azure Resource Manager Tools extension.
 
-Errors will get wavy red underlines, and warnings will have yellow.  Hover over one of these and the tooltip will give good information on what needs to be addressed. 
+Errors will be shown as wavy red underlines, and warnings will have yellow.  Hover over one of these and the tooltip will give good information on what needs to be addressed. 
 
 The scrollbar on the right hand side will also show where there are issues to be resolved so that you can scroll quickly from one to the other. 
 
@@ -359,7 +359,7 @@ You can use the `az storage account list --resource-group lab1 --output table` o
 
 The last section is probably the most optional out of all of the ARM template sections, but you will start to make more and more use of it if you start to nest templates, or wrap them up in other scripting.  
 
-If you have been deploying the templates using the bash CLi with the standard JSON output, then you will see that you have some standard JSON information outputted by each deployment.  You can customise that output using the output section.  We are going to use it to output the unique storage account name that has been generated.
+If you have been deploying the templates using the bash CLI with the standard JSON output, then you will see that you have some standard JSON information outputted by each deployment.  You can customise that output using the output section.  We are going to use it to output the unique storage account name that has been generated.
 
 ### Configuring the outputs section in the template
 
@@ -484,7 +484,7 @@ $storageAccount = (New-AzureRmResourceGroupDeployment -Name $job -storageAccount
 echo $storageAccount
 ```
 
-And here we are doing exactly the same logic in PowerShell.  Note how the command is wrapped in parentheses and then we are pulling out the sub-value.  
+And here we are using exactly the same logic in PowerShell.  Note how the command is wrapped in parentheses and then we are pulling out the sub-value.  
 
 ### More on outputs
 
@@ -498,7 +498,7 @@ Finally, check out the section in the fourth lab on nesting templates.
 
 ## Final azuredeploy.json template
 
-Okay, so we have created an empty template, and added a basic resource snippet, before slowly iterating on the template file until we have a more useful and robust template that we can use.  As you moved through the lab you made more use of both vscode's functionality and also some of the available Azure documentation.
+Okay, so we have created an empty template, and added a basic resource snippet, before slowly iterating on the template file until we have a more useful and robust template that we can use.  As you moved through the lab you made more use of both VS Code's functionality and also some of the available Azure documentation.
 
 This process is fairly common, and is how you would work through the options to determine which should be hardcoded, which should be parameterised, and how flexible you will allow that parameterisation to be.
 
@@ -544,7 +544,7 @@ Let's create a parameter file in our lab1 folder.
   <p>Your browser does not support the video element.</p>
 </video>
 
-1. Open vscode
+1. Open VS Code
 1. Create a new file, 'azuredeploy.parameters.json', in the lab1 folder
 1. Type in `armp!` to bring up the snippet for the parameter file
 1. Break open the parameters object
@@ -553,9 +553,9 @@ Let's create a parameter file in our lab1 folder.
 
 The arm-paramvalue snippet is designed to highlight the parameter name, so you can type straight away, and then you can tab to the second placeholder to start typing the value.
 
-You can use the split editor mode in vscode to see both files at the same time (CTRL-\, or View \| Split Editor).  You can also save some screen estate by toggling the side bar (CTRL-B, or View \| Toggle Side Bar).
+You can use the split editor mode in VS Code to see both files at the same time (CTRL-\, or View \| Split Editor).  You can also save some screen estate by toggling the side bar (CTRL-B, or View \| Toggle Side Bar).
 
-Don't forget that the two parameters will need to seperated by a comma.  You will see a syntax error flagged up by vscode until you do.
+Don't forget that the two parameters will need to seperated by a comma.  You will see a syntax error flagged up by VS Code until you do.
 
 Once you have created your parameter file it should look similar to this:
 
@@ -576,7 +576,7 @@ Once you have created your parameter file it should look similar to this:
 
 ## Deploying with a parameter file
 
-We will continue to use variables for the deployment name and the resource group, but we'l switch the parm variable to our new parameter file.  
+We will continue to use variables for the deployment name and the resource group, but we'll switch the parm variable to our new parameter file.  
 
 ##### Bash
 ```bash
@@ -615,8 +615,8 @@ If you want to see what the final pair of files looks like, then click on the fo
     </b>
 </div>
 
-The files can be copied into vscode if you want to compare them against your existing template files.
-You probably have a few storage accounts now in your lab1 resource group.   You can remove them all by deteing the lab1 resource group using the portal, or by running either of these commands:
+The files can be copied into VS Code if you want to compare them against your existing template files.
+You probably have a few storage accounts now in your lab1 resource group.   You can remove them all by deleting the lab1 resource group using the portal, or by running either of these commands:
 
 ##### Bash
 ```bash
@@ -630,4 +630,4 @@ Remove-AzureRmResourceGroup -Name lab1
 
 ## What's up next
 
-Creating templates from scratch using empty templates and snippets is only one or the possible ways.  In the next lab we will leverage some of the export functionality in the portal in combination with the ARM resource type reference documentation.  We will also take a look at the rich set of functions available to use. 
+Creating templates from scratch using empty templates and snippets is only one of the possible methods.  In the next lab we will leverage some of the export functionality in the portal in combination with the ARM resource type reference documentation.  We will also take a look at the rich set of functions available to use. 
