@@ -194,7 +194,7 @@ Let's review each of those in order:
 
 The last version is commonly seen when pulling information to be used as variables in scripts.  More on that in the next post.
 
-Compound tests can also be created, using && for a logical AND, and || for a logical OR.  For example `--query "[?tags.env == 'test' || tags.env == 'dev']`.
+Compound tests can also be created, using && for a logical AND, and \|\| for a logical OR.  For example `--query "[?tags.env == 'test' || tags.env == 'dev']`.
 
 ## Pipes
 
