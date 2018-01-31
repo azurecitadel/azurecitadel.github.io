@@ -78,7 +78,7 @@ As the boolean itself returns either true or false then it shortens the conditio
 "deployPip": "[if(greater(length(parameters('dnsLabelPrefix')), 0), bool('true'), bool('false')]"
 ``` 
 
-Look again at the parameters section and the JSON objects for both "hub" and "spoke".  You can see the nesting of strings, objects and arrays.  And much as resourceGroup().location pulls out a single value within the object returned by resourceGroup(), you can see the same happening with the second line in that example condition statement section:
+Look again at the parameters section and the JSON objects for both "hub" and "spoke".  You can see the nesting of strings, objects and arrays.  And just as resourceGroup().location pulls out a single value within the object returned by resourceGroup(), you can see the same happening with the second line in that example condition statement section:
 
 ```json
    {
@@ -140,7 +140,7 @@ Also notice the addressPrefixes value.  This is returning an array rather than a
 
 As we start using complex objects and arrays in both the parameter section and the variables section, you may need to troubleshoot syntactical errors which are less obvious than before.  One useful way of doing this is to use an ARM template with no resources.  Let's build one:
 
-1. Create a new templates called 'noresources.json' in a new lab6 directory
+1. Create a new template called 'noresources.json' in a new lab6 directory
 1. Add in the empty ARM template structure
 1. Copy in the example parameters section from the top of the lab
 1. Leave the variables object and the resources array empty
@@ -162,9 +162,9 @@ Adding more complexity into the variables section can paradoxically simplify the
 
 ## Using variables to define t-shirt sizes
 
-This section is key to start defining the standards that you want to incororate into your designs.  We are starting to create building block templates that provide a great deal of flexibility, but the danger there is that as a business or as a sertvice provider that flexibility leads to a lack of standardisation that can impact your ongoing support of provisioned systems.  Therefore creating sensible groupings can help here.  There are commonly called t-shirt sizes.  The Azure platform itself does this.  When you provision a [DSv3](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general#dsv3-series-sup1sup) virtual machine, you select from various sizes.  As you go up the sizes you have more vCPUs, more memory, larger temp storage, more storage IOPS and network bandwidth, and a higher number of possible data disks and NICs.  You do not have full flexibility on selecting a server with, for instance, a low number of vCPUs but a large amount of memory.  (You'll find other VM series that offer different rations, but you get the point.) 
+This section is key to start defining the standards that you want to incorporate into your designs.  We are starting to create building block templates that provide a great deal of flexibility, but the danger there is that as a business or as a service provider, that flexibility leads to a lack of standardisation that can impact your ongoing support of provisioned systems.  Therefore creating sensible groupings can help here.  There are commonly called t-shirt sizes.  The Azure platform itself does this.  When you provision a [DSv3](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general#dsv3-series-sup1sup) virtual machine, you select from various sizes.  As you go up the sizes you have more vCPUs, more memory, larger temp storage, more storage IOPS and network bandwidth, and a higher number of possible data disks and NICs.  You do not have full flexibility on selecting a server with, for instance, a low number of vCPUs but a large amount of memory.  (You'll find other VM series that offer different ratios, but you get the point.) 
 
-You can do the same sort of thing for your deployments.  Here is an examples:
+You can do the same sort of thing for your deployments.  Here is an example:
 
 #### VM t-shirts
 
@@ -257,7 +257,7 @@ If you wish to make the template a little more succinct and readable then you ca
 
 Try creating a new variable called simply 'vmSize', and then set it to the right object.  Take a look at the 'vm' output in the example above if you are struggling with the syntax. 
 
-You can then change the outputs, so that rather than having `variables(concat('vmSize', parameters('vmSize')))`, they are set as `variables('vmSize')`.  (Don't forget that you can use CTRL+F2 in vscode to Change All Occurences of your selected text.) 
+You can then change the outputs, so that rather than having `variables(concat('vmSize', parameters('vmSize')))`, they are set as `variables('vmSize')`.  (Don't forget that you can use CTRL+F2 in VS Code to Change All Occurences of your selected text.) 
 
 A couple of additional things to note:
 * There is no issue with having parameters and variables with the same name.  We only ever reference them with the explicit _parameters_ and _variables_ functions so there are no problems there.
@@ -446,7 +446,7 @@ The subnets array pulls out the name and IP address prefix directly from the par
 As you start working with more complex templates with parameter and variable arrays and objects, and multiple resources, then you will inevitably come across validation and deployment errors.  So here are a few tips for you:
 
 1. Start simple with small and hardcoded templates, and then iterate to add in the flexibility and complexity that you need
-1. Use the intellisense within vscode to check for syntactical errors
+1. Use the intellisense within VS Code to check for syntactical errors
 1. Use the `Test-AzureRmResourceGroupDeployment` and `az group deployment validate` commands
 1. Use the outputs section to check your parameters and variables function calls that you are using in your resources section.  If you are not getting the right output in the outputs section then it can help to explain why your resources are not working properly.
 1. If you have multiple resources and you cannot determine which is causing your problem then select them all, and then cut and paste them into a temporary file. Check that the template deploys with no resources, and then slowly re-add the resources one by one and this will help to identify the problematic resource.
