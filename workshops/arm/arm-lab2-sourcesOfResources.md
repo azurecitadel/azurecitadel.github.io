@@ -7,10 +7,10 @@ tags: [authoring, arm, workshop, hackathon, lab, template, functions]
 comments: true
 author: Richard_Cheney
 previous:
-  URL: ../arm-lab1-firstTemplate
+  url: ../arm-lab1-firstTemplate
   title: Creating your first template
 next:
-  URL: ../arm-lab3-referencesAndSecrets
+  url: ../arm-lab3-referencesAndSecrets
   title: Referencing resource properties and using secrets 
 ---
 
