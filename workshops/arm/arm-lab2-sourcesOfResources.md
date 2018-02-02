@@ -696,4 +696,4 @@ If you have been testing out your templates by deploying them then feel free to 
 
 ## What's up next
 
-In the next section we'll start to use some of the more complex functions that you can make use of in ARM templates.
+In the next section we will start to use some of the more complex functions that you can make use of in ARM templates.
