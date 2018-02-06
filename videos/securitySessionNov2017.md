@@ -21,4 +21,4 @@ In this episode we look at securing information with Azure Information Protectio
 
 ----------
 
-Follow Azure Tom on Twitter: @wilde_it
+Follow Tom on Twitter: @wilde_it

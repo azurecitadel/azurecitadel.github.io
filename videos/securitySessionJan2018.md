@@ -21,4 +21,4 @@ In this episode we look at adding and using compliance features built into Offic
 
 ----------
 
-Follow Azure Tom on Twitter: @wilde_it
+Follow Tom on Twitter: @wilde_it
