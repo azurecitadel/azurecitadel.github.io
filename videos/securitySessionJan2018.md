@@ -1,9 +1,9 @@
 ---
 layout: article
-title: Security Session - November 2017 - AIP
-date: 2017-11-30
+title: Security Session - January 2018 - O365 Compliance
+date: 2018-02-06
 categories: videos
-tags: [azure information protection, aip, security, security session]
+tags: [office, o365, 365, compliance, adg, advanced data governance, e-discovery, security, security session]
 comments: true
 author: Tom_Wilde
 image:
@@ -13,11 +13,11 @@ excerpt: Security Sessions is where you can hear about the latest Microsoft secu
 
 Tom Wilde takes you through various Microsoft security technologies to help secure infrastructure, devices, applications and information.
 
-In this episode we look at securing information with Azure Information Protection.
+In this episode we look at adding and using compliance features built into Office 365, with demos on Data Governance and e-Discovery.
 
 ----------
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UNN6FdDehVo" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BdPF3PZ2ufM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ----------
 
