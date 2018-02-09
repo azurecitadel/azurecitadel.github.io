@@ -4,7 +4,7 @@
 * [Azure Docs](https://docs.microsoft.com/en-us/azure/) and [Subscription Limits](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)
 * [Architecture](https://docs.microsoft.com/en-us/azure/index#pivot=architecture) and [SLAs](https://azure.microsoft.com/en-gb/support/legal/sla/)
 * [Azure Interactives](http://azureinteractives.azurewebsites.net/)
-* [Learning Paths](https://azure.microsoft.com/en-us/documentation/learning-paths/)
+* [Learning Paths](https://aka.ms/azure/learning-paths/)
 * Azure [Resource Explorer](https://resources.azure.com/) and [Storage Explorer](http://storageexplorer.com/)
 * Azure [Price Calculator](https://azure.microsoft.com/en-us/pricing/calculator/) and [TCO Calculator](https://www.tco.microsoft.com/)
 
@@ -19,12 +19,12 @@
 
 ### Training Resources
 
-* [Guided Learning Paths](https://azure.microsoft.com/en-us/training/) with access to the free Pluralsight courses
+* [Guided Learning Paths](https://aka.ms/azure/training/) with access to a few Hands On Labs and free Pluralsight courses
 * [Azure Training and Certification](https://www.microsoft.com/en-us/learning/azure-training-certification.aspx) 
 * [OCP Learning Portal](https://learningportal.microsoft.com/) with exam offer and direct links through to FY17's OpenEdx MOOC courses
-* [Azure Citadel](http://aka.ms/citadel) and [Hand On Labs](https://www.microsoft.com/handsonlabs) 
+* [Azure Citadel](http://aka.ms/citadel) and more than 500 [Hand On Labs](https://www.microsoft.com/handsonlabs) 
 * [Channel9](https://channel9.msdn.com/) and [Microsoft Virtual Academy](https://mva.microsoft.com/product-training/microsoft-azure)
-* Prep guides for [70-533](https://mva.microsoft.com/en-US/training-courses/certification-exam-overview-70-533-implementing-microsoft-azure-infrastructure-solutions-17405) and [70-534](https://mva.microsoft.com/en-us/training-courses/certification-exam-overview-70-534-architecting-microsoft-azure-solutions-17406)
+* Prep guides for [70-533](https://aka.ms/certification/70-533) and [70-534](https://aka.ms/certification/70-533)
 
 ### Keeping Up To Date
 

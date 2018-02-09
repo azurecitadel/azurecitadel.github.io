@@ -1,0 +1,6 @@
+## Internal Links
+
+* [Cloud & Enterprise Readiness](https://microsoft.sharepoint.com/teams/CEReadinessTeam/SitePages/Home.aspx)
+    * [Cloud Workshops](https://microsoft.sharepoint.com/sites/Infopedia_G01/pages/cards/microsoft-cloud-workshop.aspx)
+    * [Partner Practice Enablement](https://microsoft.sharepoint.com/sites/Infopedia_G01/Pages/Readiness.aspx#Partner%20Practice%20Enablement)
+    
