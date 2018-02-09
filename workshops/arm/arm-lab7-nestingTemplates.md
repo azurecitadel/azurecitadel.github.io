@@ -370,11 +370,24 @@ Here are a few lines selected from an example [deploy.sh](https://raw.githubuser
 
 ###### deploy.sh (partial)
 ```bash
-templateUri="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.json"
-parametersUri="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.parameters.json"
-parameters=$(curl --silent "$parametersUri?$(date +%s)" | jq .parameters)
-query="properties.outputs.vpnGatewayPipId.value"
+templateUri="https://raw.githubusercontent.com/richeney/arm/master/nestedTeamples/azuredeploy.json"
+parametersUri="https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/azuredeploy.parameters.json"
 
+# Pull out parameters into a multi line variable
+parameters=$(curl --silent "$parametersUri?$(date +%s)" | jq .parameters)
+
+# Determine the resource groups from the parameters variable
+hubrg=$(jq --raw-output .hub.value.resourceGroup <<< $parameters)
+spokergs=$(jq --raw-output .spokes.value[].resourceGroup <<< $parameters)
+
+# Create the resource groups is they do not exist
+echo "Checking or creating resource groups:" >&2
+for rg in $hubrg $spokergs
+do az group create --location $loc --name $rg --output tsv --query name | sed 's/^/- /1'
+done 
+
+# Deploy the templates and find out the gateway's PIP
+query="properties.outputs.vpnGatewayPipId.value"
 vpnGatewayPipId=$(az group deployment create --resource-group $hubrg --template-uri $templateUri --query $query --output tsv --parameters "$parameters" --verbose)
 az network public-ip show --ids $vpnGatewayPipId --query ipAddress --output tsv
 ```
