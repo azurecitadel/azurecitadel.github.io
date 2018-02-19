@@ -24,15 +24,15 @@ Each lab will always include links to the JSON templates at the start and end so
 
 It is up to you how far through the labs you need to go.  The labs go through to a level of detail and complexity and leverage a number of the features within the Azure Resource Manager (ARM) templates that provide the power required for more complicated enterprise Infrastructure as Code deployments. 
 
-However the advice would always be to keep it as simple as possible and maximise supportability.  Therefore the recommendation is to stop at the earliest point where you can meet the business requirements.  
+However the advice would always be to keep it as simple as possible and maximise supportability.  Therefore the recommendation is to stop at the earliest point where you can meet the business requirements.
 
-The comments section has been enabled and feedback is always welcome.  
- 
+The comments section has been enabled and feedback is always welcome.
+
 ## Pre-requisites
 
-You will need a working [Azure subscription](/guides/subscription).
+You will need a working [Azure subscription](/guides/subscription). Test that the subscription is active by logging onto the [portal](http://portal.azure.com) and creating an resource group.
 
-For the labs we will be using Visual Studio Code, configured as per the [VS Code](/guides/vscode) prereqs page.
+For the labs we will be using Visual Studio Code, configured as per the [VS Code](/guides/vscode) prereqs page.  Please follow all of those configuration steps to make sure you are ready to begin the labs.
 
 ## Index
 
