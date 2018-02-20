@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Microservices App Architecture - Smilr
-date: 2017-09-28
+date: 2018-02-20
 categories: demos
 tags: [microservices]
 comments: true
@@ -40,4 +40,4 @@ This application supports a range of demonstration, and learning scenarios, such
  - RESTful API design 
 
 
-## [![link](/images/icons/link.svg) Full details, docs and source code is on GitHub](https://github.com/benc-uk/microservices-demoapp) 
+## [![link](/images/icons/link.svg) Full details, docs, deployment guides and source code is on GitHub](https://github.com/benc-uk/microservices-demoapp) 
