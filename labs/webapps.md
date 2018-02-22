@@ -45,7 +45,7 @@ For those of you who have completed the [Bash and CLI 2.0 prereqs]({{ site.url }
 
 **1. Clone the HTML files from Github**
 
-We will use some bash variables to make this section work well.  First of all we'll create a couple of variables for yourr first and last name.  For example:
+We will use some bash variables to make this section work well.  First of all we'll create a couple of variables for your first and last name.  For example:
 
 ```bash
 first=Richard
