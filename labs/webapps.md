@@ -37,22 +37,24 @@ files hosted on GitHub and pushing those into a Web App in Azure using Git.
 
 ### Select your console
 
-If the [Bash and CLI 2.0 prereqs]({{ site.url }}/guides/wsl) have been followed then those Windows 10  users will have installed the Linux subsystem, and then installed both CLI 2.0 and Git into that subsystem.  If that is so then open a Command Prompt and then type ``bash``.  Type in ``az login`` and follow the instructions. This will be your console.
+The instructions are from the point of the Cloud Shell  (**>_**) shown at the top of the Azure Portal.  This will create some local storage the first time you use it.  There is no need to login to Azure as it is done automatically for you.  (Note that we will not be using the permanent storage folder clouddrive as it does not support the file permissions required by git commands, so the clone of the Github repo will be transient.)  This is the default  console for this lab.
 
-Everyone else may use the Cloud Shell (**>_**) shown at the top of the Azure Portal.  This will create some local storage the first time you use it.  There is no need to login to Azure as it is done automatically for you.  (Note that we will not be using the permanent storage folder clouddrive as it does not support the file permissions required by git commands, so the clone of the Github repo will be transient.)  This will be your console.
+For those of you who have completed the [Bash and CLI 2.0 prereqs]({{ site.url }}/guides/wsl), you will have installed the Linux subsystem, and then installed both CLI 2.0 and Git into that subsystem.  If that is so then open a Command Prompt and then type ``bash``.  Type in ``az login`` and follow the instructions. You can then use this as your console.
 
 ### Instructions
 
 **1. Clone the HTML files from Github**
 
-We will use some bash variables to make this section work well.  Set the _first_ and _last_ variables to match your given name and family name.  
+We will use some bash variables to make this section work well.  First of all we'll create a couple of variables for yourr first and last name.  For example:
 
 ```bash
-first=Firstname
-last=Lastname
+first=Richard
+last=Cheney
 ```
 
-This will help to ensure that the variables set in the following section are likely to be unique, notably the app name (which has to be globally unique) and the username (that has to be unique within the subscription). 
+Set the _first_ and _last_ variables to match your given name and family name rather than mine.
+
+Setting these will help to ensure that the variables set in the following section are likely to be unique, notably the app name (which has to be globally unique) and the username (that has to be unique within the subscription). 
 
 Type (or copy and paste) the following commands into the console:
 
@@ -85,9 +87,9 @@ If you have installed full bash on Windows 10 then you may double click the _ind
 
 If you are in the Cloud Shell then `cat index.html` will display the raw html.  
 
-**2. Log in to Azure using the CLI 2.0 and create the deployment user**
+**2. Create the deployment user**
 
-Create the deployment user:
+Run the following command to create the deployment user:
 
 ```
 az webapp deployment user set --user-name $user --password $pwd
