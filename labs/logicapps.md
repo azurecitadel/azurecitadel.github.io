@@ -125,7 +125,7 @@ Note that the JSON describes the keys in order to give them titles such as _emai
 * Use the default HTTP status code of 200
 * Add a header, with **ID** as the key
 * Click in the value field for the ID key and then select **_id_** from the selection of dynamic content
-* Body: Set to **Feedback from _name_ has been successfuly received** (followed by a newline), again making use of the dynamic content 
+* Body: Set to **Feedback from _name_ has been successfully received** (followed by a newline), again making use of the dynamic content 
 
 Once you have completed the configuration then your Logic App should look something like the picture below.
 
