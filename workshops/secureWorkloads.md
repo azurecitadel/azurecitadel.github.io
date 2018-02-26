@@ -20,7 +20,7 @@ Ovewview and pre-requisites for the Azure infrastructure workshop.
 
 ## Introduction
 
-This workshop walks the user through a scenario where a fictional organisation (Contoso) have migrated a number of reources to Azure. That migrated environment has not been secured correctly - the lab will walk through the application of a number of security best practices.    
+This workshop walks the user through a scenario where a fictional organisation (Contoso) have migrated a number of resources to Azure. This migrated environment has not been secured correctly - the lab will walk through the application of a number of security best practices.    
 
 ## Workshop Topics
 * Deploy the security lab environment 
