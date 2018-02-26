@@ -27,6 +27,10 @@ John_And_Ben:
     email: ignore@microsoft.com
     name: John Duckmanton & Ben Coleman
     avatar: authors/bcdj.jpg
+Adam_And_Tom:
+    email: ignore@microsoft.com
+    name: Adam Raffe & Tom Wilde
+    avatar: authors/artw.jpg
 Dan_Baker:
     name: Azure Dan
     email: dan.baker@microsoft.com
