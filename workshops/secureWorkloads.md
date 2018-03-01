@@ -36,6 +36,7 @@ This workshop walks the user through a scenario where a fictional organisation (
 ## Prerequisites
 
 The workshop requires the following:
+
 * **[Azure Subscription]({{ site.url }}/guides/subscription)**
   * If your workshop is being hosted by a Microsoft Cloud Solution Architect (CSA) then you will be provided with a code for an **Azure Pass** subscription
 
@@ -44,7 +45,7 @@ The workshop requires the following:
 * **Office 365 / EMS License**
   * Your subscription will need to be licensed for Office 365 and Enterprise Mobility and Security; details on how to sign up for a free trial are provided in the main lab guide.
 
-## Azure Infrastructure Security Workshop 
+## Azure Infrastructure Security Workshop
 
 The main Azure security workshop guide may be found here:
 **[https://github.com/Araffe/azure-security-lab](https://github.com/Araffe/azure-security-lab)**.
