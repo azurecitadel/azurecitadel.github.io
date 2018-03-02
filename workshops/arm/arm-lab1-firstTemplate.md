@@ -248,21 +248,21 @@ Once you have updated the template then it should look similar to this:
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccount": {
-           "type": "string",
-           "metadata": {
+            "type": "string",
+            "metadata": {
                 "description": "Storage Account Name - must be unique"
-            },
+            }
+        },
         "accountType": {
-           "type": "string",
-           "defaultValue": "Standard_LRS",
-           "allowedValues": [
-               "Standard_LRS",
-               "Premium_LRS",
-               "Standard_RAGRS"
-           ],
-           "metadata": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Premium_LRS",
+                "Standard_RAGRS"
+            ],
+            "metadata": {
                 "description": "SKU Type"
-                }
             }
         }
     },
