@@ -5,7 +5,8 @@ title: "Demos"
 ---
 
 <div class="tiles">
-	{% for page in site.pages  %}
+	{% assign sorted_pages = site.pages | sort:"date" | reverse %}
+	{% for page in sorted_pages %}
 		{% if page.categories == "demos" %}
 			{% include page-grid.html %}
 		{% endif %} 
