@@ -151,4 +151,4 @@ In the emulator if you type *hello* there will be no error, but you won't get a 
 
 Kill the app in the terminal – **CTRL-C**.
 
-Next: [Node development] (./development)
+Next: [Node development](./development)

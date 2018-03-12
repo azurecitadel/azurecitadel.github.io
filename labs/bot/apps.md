@@ -72,11 +72,11 @@ This allows you to run Node locally – if you think you may have this already, 
 
 Check the install.
 Open the Command Prompt – **type CMD in the W10 search box** , bottom left. In the terminal:
- `node –version`
+ `node --version`
 Check the Node Package Manager (NPM) install:
- `npm –version`
+ `npm --version`
 Finally, install Nodemon:
- `npm install -g nodemon`
+ `npm install --g nodemon`
 
 **Git**
 
@@ -90,13 +90,13 @@ Enable  &quot;Git Credential Manager&quot;
 
 Check in CMD again:
 
- `git –version`
+ `git --version`
 
 And set variables, to track changes – this is more relevant when working on joint projects – by typing:
 
- `git config –global user.email &quot;alias@email.com&quot;`
+ `git config --global user.email "alias@email.com"`
 
- `git config –global user.name &quot;Your Name&quot;`
+ `git config --global user.name "Your Name"`
 
 **Cognitive Services**
 
@@ -114,4 +114,4 @@ Go to the URL above and sing in using your **Azure account credentials** , or, i
 
 Create a new app using the obvious blue button, giving it a relevant name.
 
-Next: [Initial setup – end to end environment] (./environment)
+Next: [Initial setup – end to end environment](./environment)
