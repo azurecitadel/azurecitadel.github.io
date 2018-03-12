@@ -274,4 +274,4 @@ var bot = new builder.UniversalBot(connector, [
 
 A note on the above, you will keep getting the same message each time you reload the bot, but in a real-world application, this will happen a lot less, as most clients will persist the conversation.
 
-Next: [Cognitive Services](./cognitive)
+Next: [Cognitive Services](./cognitive.md)

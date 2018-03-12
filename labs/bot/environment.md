@@ -97,7 +97,7 @@ It should look like: https://matt.visualstudio.com/\_git/citadelbot
 
 Back in the terminal type:
 
-`git remote add origin https://<YOUR_ACCOUNT>.visualstudio.com/_git/&lt;BOT_NAME;`
+`git remote add origin https://<YOUR_ACCOUNT>.visualstudio.com/_git/<BOT_NAME>`
 
 We are now going to push the code from VS Code (locally) to VSTS. You can do this from the command line (and is well documented) but we will use VS Code tooling – I use this method as I like to use just one terminal instance and may want to commit while it is running another task, that will make more sense in a little while.
 
@@ -151,4 +151,4 @@ In the emulator if you type *hello* there will be no error, but you won't get a 
 
 Kill the app in the terminal – **CTRL-C**.
 
-Next: [Node development](./development)
+Next: [Node development](./development.md)

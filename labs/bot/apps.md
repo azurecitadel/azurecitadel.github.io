@@ -71,11 +71,17 @@ Enter the following between the brackets {} – if there is a line of code alrea
 This allows you to run Node locally – if you think you may have this already, skip the check below. If you need to install, use the link and select the **LTS version** (the more stable).
 
 Check the install.
+
 Open the Command Prompt – **type CMD in the W10 search box** , bottom left. In the terminal:
+
  `node --version`
+
 Check the Node Package Manager (NPM) install:
+
  `npm --version`
+
 Finally, install Nodemon:
+
  `npm install --g nodemon`
 
 **Git**
@@ -114,4 +120,4 @@ Go to the URL above and sing in using your **Azure account credentials** , or, i
 
 Create a new app using the obvious blue button, giving it a relevant name.
 
-Next: [Initial setup – end to end environment](./environment)
+Next: [Initial setup – end to end environment](./environment.md)
