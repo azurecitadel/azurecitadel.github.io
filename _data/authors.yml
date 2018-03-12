@@ -31,6 +31,10 @@ Adam_And_Tom:
     email: ignore@microsoft.com
     name: Adam Raffe & Tom Wilde
     avatar: authors/artw.jpg
+Dan_And_Tom:
+    email: ignore@microsoft.com
+    name: Dan Baker & Tom Wilde
+    avatar: authors/artw.jpg
 Dan_Baker:
     name: Azure Dan
     email: dan.baker@microsoft.com
