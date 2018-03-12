@@ -24,12 +24,12 @@ This workshop walks the user through a scenario where a fictional organisation (
 
 ## Workshop Topics
 
-*Auto-Shutdown
-*Backup
-*Disaster Recovery
-*Update Management
-*Inventory
-*Change Tracking.
+* Auto-Shutdown
+* Backup
+* Disaster Recovery
+* Update Management
+* Inventory
+* Change Tracking.
 
 ## Prerequisites
 
