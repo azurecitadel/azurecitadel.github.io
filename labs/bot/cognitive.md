@@ -138,9 +138,9 @@ Responses from Luis are handled individually, that is a message from a user call
 
 ```
 // direct to QnA
-intents.matches(&#39;qna&#39;, [
+intents.matches('qna', [
     function (session, args, next) {
-        var answerEntity = builder.EntityRecognizer.findEntity(args.entities, &#39;answer&#39;);
+        var answerEntity = builder.EntityRecognizer.findEntity(args.entities, 'answer');
         session.send(answerEntity.entity);
     }
 ]);
