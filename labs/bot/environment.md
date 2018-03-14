@@ -12,7 +12,7 @@ image:
   thumb: 
 ---
 
-**Initial Setup**
+# Initial Setup
 
 Once the prerequisites are installed it is time to setup the development, and production environments.
 
@@ -93,7 +93,7 @@ You should see a message to say the repository has been initialised and see a ch
 
 Go back into **Team Services** and the Project you created for this bot, you should land in the code page. Copy the **HTTPS link** - **https:<YOUR_ACCOUNT>.visualstudio.com/\_git/<BOT_NAME>**
 
-It should look like: https://matt.visualstudio.com/\_git/citadelbot
+It should look like: `https://matt.visualstudio.com/\_git/citadelbot`
 
 Back in the terminal type:
 

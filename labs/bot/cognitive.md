@@ -12,7 +12,7 @@ image:
   thumb: 
 ---
 
-**Cognitive Services**
+# Cognitive Services
 
 The bot now has some swagger but is still a little stupid, so we are going to add in two Cognitive Services; QnA Maker and LUIS. But first, change the original waterfall, from earlier, to stop it picking up the conversations by either changing the name from / to GetInfo, or commenting it out / deleting it:
 
@@ -79,10 +79,8 @@ Ocp-Apim-Subscription-Key: **&lt;QnASubscriptionKey&gt;**
 
 In the Azure portal add the key as below and the values used above, also copy each one into the dev.env file in VS Code.
 
- QnAKnowledgebaseId
+ QnAKnowledgebaseId  
  QnASubscriptionKey
-
-**Screenshot**
 
 Next are the Luis key values. Prepare the following in the .env file:
 
@@ -94,8 +92,8 @@ process.env.LuisAPIHostName='';
 
 And in the Azure portal:
 
-LuisAPIKey
-LuisAppId
+LuisAPIKey  
+LuisAppId  
 LuisAPIHostName
 
 In the luis.ai portal open the app and the Publish page, scroll down to &#39;Resources and Keys&#39;. Extracting the information as detailed below, copy into the dev.env file and the Azure portal application settings.

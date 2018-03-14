@@ -12,7 +12,7 @@ image:
   thumb: 
 ---
 
-**Node development**
+# Node development
 
 Before we begin, the obvious; whenever you make changes to a file, save it. If you see a white dot on a tab in VS Code it means there are unsaved changes.
 
@@ -95,15 +95,15 @@ In my experience, if something works in Azure and not locally, as in this instan
 
 In the Azure portal open the **bot resource group** - if you are currently in the bot blade, go to the Overview, as below, and click on the Resource group link. You should see a list similar to the one below.
 
-&lt;img&gt; resourcegroup
+![](./images/resourcegroup.png)
 
 Select the **Storage account**. The bot data is stored in **Tables**. From the SETTINGS menu click on **Access keys**. This will display key1 and key2. Copy the **Connection String for key1**.
 
-&lt;img&gt; Access keys
+![](./images/StorageKeys.png)
 
 This key has added to the bot service when the bot was deployed, but, for completeness it can be found by going back to the Web Bot App blade. Under SETTINGS click on Application settings. In the Application Settings the top entry should be &#39;AzureWebJobsStorage&#39;, with the entry of the connection string.
 
-&lt;img&gt; app settings
+![](./images/ApplicationSettings.png)
 
 If you have connection strings, secrets, keys, that you need for your application, add them here or in Key Vault to keep them from being coded into the application, only users with admin access to the app or Key Vault will be able to see the keys.
 
@@ -111,7 +111,7 @@ While you have the keys, now might be a convenient time **to set up the Azure St
 
 Go back to **VS Code**. As we do not want the connection string stored in the code we need to create a file for the environment options. In the root document tree, ie, not in one of the folders, right click &#39;New File&#39;, call the file dev.env – I could have called it .env, that would work too. Type the following line:
 
-`process.env.AzureWebJobsStorage=&#39;&lt;ConnectionString&gt;&#39;`
+`process.env.AzureWebJobsStorage='<ConnectionString&gt>;`
 
 As we want to keep this information private we need to stop this file from being uploaded to git repositories.
 Click on the **.gitignore** file and **add \*.env**
@@ -121,8 +121,8 @@ The final step, we need to tell the application to use the _dev.env_ file when t
 
 ```
 // Setup for the Dev Environment
-if (process.env.NODE\_ENV == &#39;development&#39;) {
-     var env = require(&#39;./dev.env&#39;);
+if (process.env.NODE\_ENV == 'development') {
+     var env = require('./dev.env');
 }
 ```
 
@@ -132,7 +132,7 @@ If your application is running, stop it with CTRL-C.
 
 Run the application using nodemon – this restarts the service automatically every time the application is saved, as mentioned, if you run using _node app.js_ you will need to stop and restart every time you update the app - type the following:
 
- nodemon app.js
+`nodemon app.js`
 
 The application should now run, and echo back.
 
@@ -149,8 +149,8 @@ We now have a bot that works, but it&#39;s a little dull. We are not going to ad
 First, we need to comment out the Bot dialog, **highlight the code below** and press **CTRL-/** to comment the code out, alternatively you can just delete it.
 
 ```
-bot.dialog(&#39;/&#39;, function (session) {
-      session.send(&#39;You said &#39; + session.message.text);
+bot.dialog('/', function (session) {
+      session.send('You said ' + session.message.text);
 });
 ```
 
@@ -164,17 +164,17 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.userData.name = results.response;
-        builder.Prompts.number(session, &quot;So, &quot; + results.response + &quot;, how many years have you believed in spirit animals?&quot;);
+        builder.Prompts.number(session, 'So, ' + results.response + ', how many years have you believed in spirit animals?');
     },
     function (session, results) {
         session.userData.coding = results.response;
-        builder.Prompts.choice(session, &quot;What spirit animal would you prefer?&quot;, [&quot;tiger&quot;, &quot;lion&quot;, &quot;frog&quot;]);
+        builder.Prompts.choice(session, 'What spirit animal would you prefer?', ["tiger", "lion", "frog"]);
     },
     function (session, results) {
         session.userData.animal = results.response.entity;
-        session.send(&quot;Got it... &quot; + session.userData.name +
-                    &quot;, you&#39;ve been in the spirit animal game for &quot; + session.userData.coding +
-                    &quot; years and quite fancy yourself a &quot; + session.userData.animal + &quot;.&quot;);
+        session.send('Got it... ' + session.userData.name +
+                    ', you\'ve been in the spirit animal game for ' + session.userData.coding +
+                    ' years and quite fancy yourself a ' + session.userData.animal + '.');
         session.endDialog();
     }
 ]);
@@ -198,11 +198,11 @@ The bot.on method is triggered by conversationUpdate, a change to the conversati
 
 ```
 // detect new users
-bot.on(&#39;conversationUpdate&#39;, function (message) {
+bot.on('conversationUpdate', function (message) {
     if (message.membersAdded) {
         message.membersAdded.forEach(function (identity) {
             if (identity.id === message.address.bot.id) {
-                bot.beginDialog(message.address, &#39;greet&#39;);
+                bot.beginDialog(message.address, 'greet');
             }
         });
     }
@@ -213,9 +213,9 @@ There are a number of variations on the above, this one simply loops through eac
 
 ```
 // dialog to send a greeting
-bot.dialog(&#39;greet&#39;, [
+bot.dialog('greet', [
     function (session, args) {
-        session.send(&#39;Spirit animals, baby, that\&#39;s what this bot\&#39;s all about!&#39;);
+        session.send('Spirit animals, baby, that\&#39;s what this bot\'s all about!');
         session.endDialog();
     }
 ]);
@@ -228,22 +228,22 @@ Use the Azure Storage Explorer if you want to see how the data is stored – ins
 Let&#39;s now have the bot collect some data from the user using a slightly more advanced waterfall. Where the initial waterfall collected information about the user and stored that individually, we will create a Profile object to handle the user&#39;s details, and use next() to skip ahead if the data has already been collected.
 
 ```
-bot.dialog(&#39;ensureProfile&#39;, [
+bot.dialog('ensureProfile', [
     function (session, args, next) {
         session.dialogData.profile = args || {}; // Set the profile or create the object.
         if (!session.dialogData.profile.name) {
-            builder.Prompts.text(session, &quot;Hello. What&#39;s your name?&quot;);
+            builder.Prompts.text(session, 'Hello. What\'s your name?');
         } else {
             next(); // Skip if we already have this info.
         }
     },
     function (session, results, next) {
         if (results.response) {
-            // Save user&#39;s name if we asked for it.
+            // Save user's name if we asked for it.
             session.dialogData.profile.name = results.response;
         }
         if (!session.dialogData.profile.animal) {
-            builder.Prompts.choice(session, &quot;What spirit animal would you prefer?&quot;, [&quot;tiger&quot;, &quot;lion&quot;, &quot;frog&quot;]);
+            builder.Prompts.choice(session, 'What spirit animal would you prefer?', ["tiger", "lion", "frog"]);
         } else {
             next(); // Skip if we already have this info.
         }
@@ -263,13 +263,13 @@ The dialog, _ensureprofile_, won&#39;t do anything until it is called – we can
 ```
 var bot = new builder.UniversalBot(connector, [
     function (session) {
-        session.beginDialog(&#39;ensureProfile&#39;, session.userData.profile);
+        session.beginDialog('ensureProfile', session.userData.profile);
     },
     function (session, results) {
         session.userData.profile = results.response; // Save user profile.
         session.send(`Great, ${session.userData.profile.name}! I love ${session.userData.profile.company}s!`);
     }
-]).set(&#39;storage&#39;, tableStorage);
+]).set('storage', tableStorage);
 ```
 
 A note on the above, you will keep getting the same message each time you reload the bot, but in a real-world application, this will happen a lot less, as most clients will persist the conversation.

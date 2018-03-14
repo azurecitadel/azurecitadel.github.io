@@ -12,9 +12,9 @@ image:
   thumb: 
 ---
 
-**Prerequisites**
+# Prerequisites
 
-**Azure**
+## Azure
 
 You will need access to an Azure account, either your own subscription, MSDN or a free account.
 
@@ -27,7 +27,7 @@ Install locally:
 
 Setup of the above will be handled in the lab.
 
-**Team Services - VSTS**
+## Team Services - VSTS
 
 [https://www.visualstudio.com/team-services/](https://www.visualstudio.com/team-services/)
 
@@ -45,7 +45,7 @@ You will be asked for a name to host your projects, **<something>.visualstudio.c
 
 Go to the **Azure portal** , click **All Services** and **search &quot;Team&quot;** , from there select _Team Services accounts_ and link to your VSTS account – if you have used Team Services previously, it will be setup. My account was in place when this service was released, so I do not have a walkthrough, but there is a link to a how to, if you get stuck.
 
-**VS Code**
+## VS Code
 
 [https://code.visualstudio.com/](https://code.visualstudio.com/)
 
@@ -56,7 +56,7 @@ Hopefully you have this already – it&#39;s a great, lightweight text editor, b
 - Visual Studio Team Services
 - Node.js Modules Intellisense
 
-Click **CTRL-';** to open the terminal window. If the dropdown to the right does not read &#39;1: bash&#39; click on the **settings icon** , the cog, bottom left. In the right panel there are two options, USER SETTINGS and WORKPLACE SETTINGS, if you want Bash as your default for all projects use USER pane, if you just want Bash for this project use the WORKPLACE pane – you can start with WORKPLACE and change the USER settings later.
+Click **CTRL-'** to open the terminal window. If the dropdown to the right does not read &#39;1: bash&#39; click on the **settings icon** , the cog, bottom left. In the right panel there are two options, USER SETTINGS and WORKPLACE SETTINGS, if you want Bash as your default for all projects use USER pane, if you just want Bash for this project use the WORKPLACE pane – you can start with WORKPLACE and change the USER settings later.
 
 Enter the following between the brackets {} – if there is a line of code already, enter a comma at the end of that line.
 
@@ -64,7 +64,7 @@ Enter the following between the brackets {} – if there is a line of code alrea
 \"terminal.integrated.shell.windows\": \"C:\\Program Files\\Git\\bin\\bash.exe\" 
 ```
 
-**Node.js**
+## Node.js
 
 [https://nodejs.org/en/](https://nodejs.org/en/)
 
@@ -84,7 +84,7 @@ Finally, install Nodemon:
 
  `npm install --g nodemon`
 
-**Git**
+## Git
 
 [https://git-scm.com/download/win](https://git-scm.com/download/win)
 This if your local source repository.
@@ -103,17 +103,18 @@ And set variables, to track changes – this is more relevant when working on jo
  `git config --global user.email "alias@email.com"`
 
  `git config --global user.name "Your Name"`
+   
 
-**Cognitive Services**
+## Cognitive Services
 
-**QnA Maker**
+### QnA Maker
 
 [https://qnamaker.ai](https://qnamaker.ai)
 Go to the URL above and sing in using your **Azure account credentials** , or, if you have an account already, using those credentials.
 
 If you do not have a service listed, create a new service using the link on the ribbon. Call it something relevant.
 
-**LUIS – Language Understanding**
+### LUIS – Language Understanding
 
 [https://eu.luis.ai](https://eu.luis.ai) – this is the European region service
 Go to the URL above and sing in using your **Azure account credentials** , or, if you have an account already, using those credentials.
