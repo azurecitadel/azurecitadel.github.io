@@ -46,7 +46,6 @@ Let's start turning this template into a more useful building block.  Copy your 
   * virtualNetworkPrefix, defaulting to "10.0.0.0/16"
   * subnetName, defaulting to "Subnet"
   * subnetPrefix, defaulting to "10.0.0.0/24"
-    * if you want to try out a few new functions then set  
 1. Remove the corresponding variables
 1. Remove the default for the vmName
 1. Change the value for the publicIPAddressName variable to be the vmName with '-pip' at the end
