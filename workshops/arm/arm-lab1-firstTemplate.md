@@ -596,6 +596,7 @@ template=/mnt/c/myTemplates/lab1/azuredeploy.json
 parms=/mnt/c/myTemplates/lab1/azuredeploy.parameters.json
 query='properties.outputs.storageAccount.value'
 storageAccount=$(az group deployment create --parameters "@$parms" --template-file $template --query "$query" --output tsv --name $job --resource-group $rg)
+echo "Storage account $storageAccount has been created."
 ```
 
 Note the **@** sign just before the parms variable in the --parameters switch.
@@ -608,6 +609,7 @@ $job = 'job.' + ((Get-Date).ToUniversalTime()).tostring("MMddyy.HHmm")
 $template="C:\myTemplates\lab1\azuredeploy.json"
 $parms="c:\myTemplates\lab1\azuredeploy.parameters.json"
 $storageAccount = (New-AzureRmResourceGroupDeployment -Name $job -TemplateParameterFile $parms -TemplateFile $template -ResourceGroupName $rg).Outputs.storageAccount.Value
+echo "Storage account $storageAccount has been created."
 ```
 
 ## Finishing Up
