@@ -47,7 +47,10 @@ Here is a quick overview of the lab:
 * Optional Challenge: **Automate ACI Integration**
 
 Proctors:
-  [Justin Davies](@justindavies), [Richard Cheney](@RichCheneyAzure) and [Nic Jackson](@sheriffjackson) from Hashicorp.
+
+* Justin Davies (@justindavies)
+* Richard Cheney (@RichCheneyAzure)
+* Nic Jackson (@sheriffjackson) from Hashicorp
 
 Useful links
 
@@ -78,7 +81,7 @@ Type `terraform` and you'll see the command help.
 
 #### Terraform in the Windows Subsystem for Linux
 
-The following have been tested on the Ubuntu version of WSL. 
+The following have been tested on the Ubuntu version of WSL.
 
 Install the Azure CLI from <https://aka.ms/GetTheAzureCli>.
 
@@ -87,22 +90,21 @@ Install Terraform.  Either:
 1. Download the zip from <https://www.terraform.io/downloads.html> and extract the terraform executable to somewhere within your path such as /usr/local/bin
 2. Or if you are feeling trusting then run the following code block:
 
-    ```bash
-    curl --output terraform.zip     https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.   3_linux_amd64.zip
-
-    sudo bash <<"EOF"
-    apt-get --assume-yes install zip
-    unzip -o terraform.zip terraform -d /usr/local/bin && rm terraform.zip
-    chown root:root /usr/local/bin/terraform
-    chmod 755 /usr/local/bin/terraform
-    EOF
-    ```
+```bash
+curl --output terraform.zip https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip
+sudo bash <<"EOF"
+apt-get --assume-yes install zip
+unzip -o terraform.zip terraform -d /usr/local/bin && rm terraform.zip
+chown root:root /usr/local/bin/terraform
+chmod 755 /usr/local/bin/terraform
+EOF
+```
 
 You may also want to install jq: `sudo apt-get --assume-yes install jq`
 
 ### Service Principal
 
-Making use of a Service Principal for the authentication make sense if it is embedded into another automation framework, such as a CI/CD pipeline.
+Making use of a Service Principal for the authentication is the nmost appropriate route if embedded into another automation framework such as a CI/CD pipeline.
 
 It make uses of a set of variables or environment variables. If the  variables are separated out into their own .tf file(s) then they may be customised for the customer or project and therefore the other .tf files are more portable. The same applies to using environment variables, which may then be exported in config files.
 
@@ -123,7 +125,7 @@ tenantId=$(jq -r .tenant <<< $spout)
 az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId --output json
 ```
 
-Check that the login is successful using any CLI command such as `az account list-locations --output table` or `az account show --output jsonc`. 
+Check that the login is successful using any CLI command such as `az account list-locations --output table` or `az account show --output jsonc`.
 
 Create a provider.tf file with the information:
 
