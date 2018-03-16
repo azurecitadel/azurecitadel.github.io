@@ -25,7 +25,7 @@ For cognitive Services need two additional Node modules, similar to the ones dis
 
 ```
 // Added for congnitive services - add to package
-var builder\_cognitiveservices = require('botbuilder-cognitiveservices');
+var builder_cognitiveservices = require('botbuilder-cognitiveservices');
 var request = require('request');
 ```
 
@@ -44,7 +44,7 @@ Add the follow code to configure the QnA and Luis services – this sets up the 
 
 ```
 // QnA Builder
-var qnarecognizer = new builder\_cognitiveservices.QnAMakerRecognizer({
+var qnarecognizer = new builder_cognitiveservices.QnAMakerRecognizer({
     knowledgeBaseId: process.env.QnAKnowledgebaseId,
     subscriptionKey: process.env.QnASubscriptionKey});
 
@@ -473,7 +473,7 @@ intents.matches('spiritMeaning', [
 
 For trying to keep this lab simple to follow, the bot is not complex, but brings together a few of the key principles of user identity, conversation flow, and cognitive services and that is as much as we are going to do with this walkthrough. You have a basic bot that will run in the Azure portal, or in a web page iFrame. If you want to use on Skype or other channels, go to Channels in the Azure portal and follow the instructions – if you want to try the bot in Skype (personal), open the client, and click the icon to add the bot as a contact.
 
-IMAGE
+![](./images/skypetiger.png)
 
 As a follow up to this introduction, explore the additional functionality of Luis building more complex entities and how to handle those in the bot - even if you build a service around the QnA Maker you need to add code to handle actions that fall outside of the QnA, it becomes very frustrating to the user if questions outside those in the QnA pairs are not handled. Although that applies to whatever bot you make. There is a lot of documentation on the Azure website to help with your next steps, hopefully you have an idea of how it all fits together now.
 
