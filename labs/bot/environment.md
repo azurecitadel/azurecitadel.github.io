@@ -130,7 +130,7 @@ You now have source control for your Bot app locally, with Git, pushing to Team 
 
 Finally, we can setup the Bot Framework Emulator. Open the application. It should look like:
 
-![imageproblem](/labs/bot/images/botemulator.png)
+![](/labs/bot/images/botemulator.png)
 
 Enter your endpoint URL:
 
