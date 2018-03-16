@@ -86,7 +86,7 @@ References tableStorage…
 
 References azureTableClient…
 
-var azureTableClient = new botbuilder\_azure.AzureTableClient(tableName, process.env['AzureWebJobsStorage']);
+`var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['AzureWebJobsStorage']);`
 
 azureTableClient references the environment variable **process.env['AzureWebJobsStorage']**, which does not exist locally.
 
