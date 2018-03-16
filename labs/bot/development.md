@@ -53,8 +53,8 @@ Configure the connection to the table store, this handles the conversation histo
 
 ```
 var tableName = 'botdata';
-var azureTableClient = new botbuilder\_azure.AzureTableClient(tableName, process.env['AzureWebJobsStorage']);
-var tableStorage = new botbuilder\_azure.AzureBotStorage({ gzipData: false }, azureTableClient);
+var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['AzureWebJobsStorage']);
+var tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azureTableClient);
 ```
 
 Create the bot and then set the storage configured above:
@@ -107,11 +107,11 @@ This key has added to the bot service when the bot was deployed, but, for comple
 
 If you have connection strings, secrets, keys, that you need for your application, add them here or in Key Vault to keep them from being coded into the application, only users with admin access to the app or Key Vault will be able to see the keys.
 
-While you have the keys, now might be a convenient time **[to set up the Azure Storage Explorer]**(./storageexplorer.md), if not, come back to that when you need it.
+While you have the keys, now might be a convenient time **[to set up the Azure Storage Explorer](./storageexplorer.md)**, if not, come back to that when you need it.
 
 Go back to **VS Code**. As we do not want the connection string stored in the code we need to create a file for the environment options. In the root document tree, ie, not in one of the folders, right click &#39;New File&#39;, call the file dev.env – I could have called it .env, that would work too. Type the following line:
 
-`process.env.AzureWebJobsStorage='<ConnectionString&gt>;`
+`process.env.AzureWebJobsStorage='<ConnectionString>'`
 
 As we want to keep this information private we need to stop this file from being uploaded to git repositories.
 Click on the **.gitignore** file and **add \*.env**
@@ -121,7 +121,7 @@ The final step, we need to tell the application to use the _dev.env_ file when t
 
 ```
 // Setup for the Dev Environment
-if (process.env.NODE\_ENV == 'development') {
+if (process.env.NODE_ENV == 'development') {
      var env = require('./dev.env');
 }
 ```
@@ -215,7 +215,7 @@ There are a number of variations on the above, this one simply loops through eac
 // dialog to send a greeting
 bot.dialog('greet', [
     function (session, args) {
-        session.send('Spirit animals, baby, that\&#39;s what this bot\'s all about!');
+        session.send('Spirit animals, baby, that\'s what this bot\'s all about!');
         session.endDialog();
     }
 ]);
