@@ -143,7 +143,7 @@ The above is one way to set the environment as development, that I use, there ar
 
 It took a little while to get here, but you should now have everything set up correctly, and the bot is working. Go to the source control icon, write the comment at the top and commit the changes. Click the Synchronize Changes icon at the bottom to push to Team Services, and Azure. You can check in Azure that all is working as it should – just note, it can take a little while for the changes to sync across – you can confirm the status in the portal, in the Build, Continuous Deployment blade. Or make subtle changes to the bot text when you edit the code.
 
-We now have a bot that works, but it&#39;s a little dull. We are not going to add a few more features, starting with the basics.
+We now have a bot that works, but it&#39;s a little dull. We are going to add a few more features, starting with the basics.
 
 First, we need to comment out the Bot dialog, **highlight the code below** and press **CTRL-/** to comment the code out, alternatively you can just delete it.
 
@@ -222,7 +222,7 @@ bot.dialog('greet', [
 
 If you run the bot it will give the welcome message, which is nice, and also prompts a user action.
 
-Use the Azure Storage Explorer if you want to see how the data is stored – instructions **here**. Delete your user data to be forgotten and begin again. You will be listed as &#39;Default User&#39;, from the emulator, if you were using a client such as Skype or Facebook Messenger, with a fixed address, this will have a unique id.
+Use the Azure Storage Explorer if you want to see how the data is stored – instructions **[here](./storageexplorer.md)** if you have need them. Delete your user data to be forgotten and begin again. You will be listed as &#39;Default User&#39;, from the emulator, if you were using a client such as Skype or Facebook Messenger, with a fixed address, this will have a unique id.
 
 Let&#39;s now have the bot collect some data from the user using a slightly more advanced waterfall. Where the initial waterfall collected information about the user and stored that individually, we will create a Profile object to handle the user&#39;s details, and use next() to skip ahead if the data has already been collected.
 
@@ -266,7 +266,7 @@ var bot = new builder.UniversalBot(connector, [
     },
     function (session, results) {
         session.userData.profile = results.response; // Save user profile.
-        session.send(`Great, ${session.userData.profile.name}! I love ${session.userData.profile.company}s!`);
+        session.send(`Great, ${session.userData.profile.name}! I love ${session.userData.profile.animal}s!`);
     }
 ]).set('storage', tableStorage);
 ```
