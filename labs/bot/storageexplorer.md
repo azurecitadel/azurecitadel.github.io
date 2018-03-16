@@ -2,7 +2,6 @@
 layout: article
 title: Azure Storage Explorer
 date: 2018-02-28
-categories: labs
 tags: [Azure, Storage Explorer]
 comments: true
 author: Matt_Biggs
