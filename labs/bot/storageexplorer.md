@@ -3,7 +3,7 @@ layout: article
 title: Azure Storage Explorer
 date: 2018-02-28
 categories: labs
-tags: [azure, storage explorer]
+tags: [Azure, Storage Explorer]
 comments: true
 author: Matt_Biggs
 image:
@@ -12,7 +12,7 @@ image:
   thumb: 
 ---
 
-**Azure Storage Explorer**
+#Azure Storage Explorer
 
 The Azure Storage Explorer is a local application that allows you to connect to and browse Azure storage accounts, including CosmosDB. I find it very useful for development to check if data is being written to the cloud correctly, and it allows the inspection and deletion of session / state data.
 

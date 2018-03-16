@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Azure Node Bot
+title: Starting with the Azure Bot Service
 date: 2018-02-28
 categories: labs
 tags: [bot, node, team services]
@@ -8,9 +8,11 @@ comments: true
 author: Matt_Biggs
 image:
   feature: 
-  teaser: 
+  teaser: BotIntro.png
   thumb: 
+excerpt: An introduction to the Azure Bot service, building a basic Node web bot to adding Congnitive Services. 
 ---
+
 
 # Overview
 The session is an introduction to the Azure Bot Service, Node JS, and Azure Cognitive Services for people with little or no experience of any of it.
