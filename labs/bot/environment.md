@@ -53,7 +53,7 @@ Step 2: **Extract the .zip file** to a local directory – I just use my user di
 
 You should now see the Node application as follows:
 
-![](./images/VSCode_newBot.png)
+![](/labs/bot/images/VSCode_newBot.png)
 
 The reason for downloading the basic Bot from Azure is that it builds out the application and saves time. Your bot runs in the _app.js_ file, I will explain a few other bits as we go.
 
@@ -130,7 +130,7 @@ You now have source control for your Bot app locally, with Git, pushing to Team 
 
 Finally, we can setup the Bot Framework Emulator. Open the application. It should look like:
 
-![imageproblem](./images/botemulator.png)
+![imageproblem](/labs/bot/images/botemulator.png)
 
 Enter your endpoint URL:
 
