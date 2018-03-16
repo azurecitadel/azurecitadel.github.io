@@ -63,11 +63,11 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer, qnarecognizer
 
 You will notice we have more process.envs to handle, these will need to be added to dev.env file and the Azure portal, in the bot application settings (where the storage key was set) - for ease keep that blade open until all of the keys are entered.
 
-Add the following to the dev.env file:
+Add the following to the dev.env file taking and swapping in the &lt; values &gt; where indicated:
 
 ```
-process.env.QnAKnowledgebaseId='';
-process.env.QnASubscriptionKey='';
+process.env.QnAKnowledgebaseId='<QnAKnowledgebaseId>';
+process.env.QnASubscriptionKey='<QnASubscriptionKey>';
 ```
 
 To get the keys open the qnamaker.ai, select the service created for this application (if you missed it, create one now) and go to settings, take the following from the URL.
@@ -76,7 +76,7 @@ POST /knowledgebases/ **&lt; QnAKnowledgebaseId&gt;** /generateAnswer
 Host: https://westus.api.cognitive.microsoft.com/qnamaker/v2.0
 Ocp-Apim-Subscription-Key: **&lt;QnASubscriptionKey&gt;**
 
-In the Azure portal add the key as below and the values used above, also copy each one into the dev.env file in VS Code.
+In the Azure portal add the key names as below and the values used above, also copy each one into the dev.env file in VS Code.
 
  QnAKnowledgebaseId  
  QnASubscriptionKey
@@ -84,12 +84,12 @@ In the Azure portal add the key as below and the values used above, also copy ea
 Next are the Luis key values. Prepare the following in the .env file:
 
 ```
-process.env.LuisAPIKey='';
-process.env.LuisAppId='';
-process.env.LuisAPIHostName='';
+process.env.LuisAPIKey='<Key String value>';
+process.env.LuisAppId='<LuisAPIHostName>';
+process.env.LuisAPIHostName='<LuisAppId>';
 ```
 
-And in the Azure portal:
+And in the Azure portal use the key names below:
 
 LuisAPIKey  
 LuisAppId  
