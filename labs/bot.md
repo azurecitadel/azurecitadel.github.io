@@ -28,7 +28,7 @@ The walkthrough is written using Windows 10 and associated tools, the main one b
 I use Team Services to familiarise myself with the tool and the environment setup. If you want to bypass that you can download the file and use azure-publish, or even edit in the online tool if you want to skip right to Node, you can use the online editor!
 
 # List of Activities  
-* [1. Prerequisites – software](./apps)
-* [2. Initial setup – end to end environment](./environment)
-* [3. Node development](./development)
-* [4. Cognitive services](./cognitive)
+* [1. Prerequisites – software](./bot/apps)
+* [2. Initial setup – end to end environment](./bot/environment)
+* [3. Node development](./bot/development)
+* [4. Cognitive services](./bot/cognitive)
