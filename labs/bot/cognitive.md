@@ -111,7 +111,7 @@ Add the following code for the dialog _start_, which will listen for intents, th
 
 ```
 // start to run Intents
-bot.dialog('start';, intents);
+bot.dialog('start', intents);
 ```
 
 The code listens and then routes through welcome message, and/or the Ensure Profile waterfall, the conversation needs to be directed from that opening to the new _start_ dialog. Edit the following to add:
@@ -129,9 +129,9 @@ var bot = new builder.UniversalBot(connector, [
 ]).set('storage', tableStorage);
 ```
 
-By adding the above you are capturing the route into the bot conversations and, when done, sending it to _start_ listen for intents.
+By adding the above you are capturing the route into the bot conversations and, when done, sending it to _start_ to listen for intents.
 
-Responses from Luis are handled individually, that is a message from a user calls Luis and that returns an intent that is handled on a one-to-one basis (will make more sense in a moment), whereas the QnA Maker returns a single result, a set answer to a set question, add the code below to handle this QnA response – essentially it takes the entity (object) returned from the QnA service and provides the _answer_.
+Responses from Luis are handled individually, that is a message from a user calls Luis and that returns an intent that is handled on a one-to-one basis (will make more sense in a moment), whereas the QnA Maker returns a single result, it returns the result from the service itself. Add the code below to handle the QnA Maker response – essentially it takes the entity (object) returned from the QnA service and provides the _answer_.
 
 ```
 // direct to QnA
@@ -147,7 +147,7 @@ For this to work the Cognitive Services needs some content, the QnA Maker is emp
 
 The QnA Maker works by serving up answers using Q&amp;A pairs, these can be entered manually, uploaded as a file, or taken from a web page that has Q&amp;As.
 
-In **qnamaker.ai** go to the **settings** page and, in the URLs section, enter the following URL – for want of something better, a page about eating one&#39;s spirit animal:
+In **qnamaker.ai** go to the **settings** page and, in the URLs section, enter the following URL – for want of something better, a page about eating one&#39;s spirit animal (something I found on a search engine when looking for FAQ pages):
 
 [https://www.mcsweeneys.net/articles/eating-your-spirit-animal-an-faq](https://www.mcsweeneys.net/articles/eating-your-spirit-animal-an-faq)
 
@@ -159,25 +159,25 @@ Click the green **Save and retrain** button and when it&#39;s done go to the Kno
 
 Click **Save and retrain** and then **Publish** , review the changes and then **Publish**. There is the option to train the application, and refine the results to any question, which you can do if you would like, but won&#39;t cover here.
 
-Next, train some basic Intents in Luis. In eu.luis.ai, in the app you created, go to the Build tab. Sticking with the spirit animal theme, click **Create new intent** , and call it _findSpirit_. In the box at the top type in some utterances, ie, what a user would type to trigger this action.
+Next, train some basic Intents in Luis. In [eu.luis.ai](eu.luis.ai), in the app you created, go to the Build tab. Sticking with the spirit animal theme, click **Create new intent** , and call it _findSpirit_. In the box at the top type in some utterances, ie, what a user would type to trigger this action.
 
-I want to locate my spirit animal
-where is my spirit animal
+I want to locate my spirit animal  
+where is my spirit animal  
 I want to find my spirit animal
 
 Create a new Intent called _spiritMeaning_ with the following utterances:
 
- why is my spirit animal a tiger?
- what does it mean having a spirit animal?
- my spirit animal is a lion, what does it mean?
- frog spirit animal meaning
- what does my spirit animal mean?
+ why is my spirit animal a tiger?  
+ what does it mean having a spirit animal?  
+ my spirit animal is a lion, what does it mean?  
+ frog spirit animal meaning  
+ what does my spirit animal mean?  
 
-In a couple of these utterances there are animals, to extract that information needs an entity. Click on Entities under App Assets and **Create new entity** , create a simple entity called _animal_. When done go back into the _spiritMeaning_ intent. On the utterances click on the word _tiger_ and select animal, repeat for _lion,_ and _frog_.
+In a couple of these utterances there are animals, to extract that information needs an entity. Click on Entities under App Assets and **Create new entity** , create a simple entity called _animal_. When done go back into the _spiritMeaning_ intent. On the utterances click on the word _tiger_ and select animal, repeat for _lion_, and _frog_.
 
-Click the **Train** button. Open the **Publish** tab and click **Publish to production slot**. It is important to note that the results are limited due to the very limited training of the Luis app, the service can become quite granular with the right detail around intents and entities, and proper training.
+Click the **Train** button. Open the **Publish** tab and click **Publish to production slot**. It is important to note that the results are limited due to the lack of proper training of the Luis app, the service can become quite granular with the right detail around intents and entities, and proper training.
 
-To see how Luis works click on the endpoint URL, in the browser go to the end of the URL and add:
+To see how Luis works click on the endpoint URL, when this opens in the address bar go to the end of the URL and add:
 
 I want to find my spirit animal
 
@@ -185,11 +185,11 @@ This will display the JSON returned by the app, note findSpirit as the top scori
 
 Run the bot to see the QnA working, after the intro ask &#39;are you a bot?&#39;. If you try slight variations they should work as well, the service will even allow for some mis-spellings. Also try one of the nonsense eating spirit animal questions:
 
-Do I have to kill my spirit animal myself?
-Is my spirit animal tied to my consciousness?
+Do I have to kill my spirit animal myself?  
+Is my spirit animal tied to my consciousness?  
 How can I kill it if it can see what I see?
 
-If you try any of the intents you created in Luis that won&#39;t work as there is no logic to handle the response, the object you saw when entering the Luis URL in the browser.
+If you try any of the intents you created in Luis that won&#39;t work as there is no logic to handle the response, that being the data object you saw when entering the Luis URL in the browser.
 
 Add the following code:
 
@@ -220,9 +220,9 @@ intents.matches('spiritMeaning',  [
 ]);
 ```
 
-The _if_ statement is used to determine a response path, based on whether there is an entity present –_!spiritEntity_ is the response for the absence of a value, else it sends a glib response about the suggested animal. Test with the following to see each version:
+The _if_ statement is used to determine a response path, based on whether there is an entity present – _!spiritEntity_ is the response for the absence of a value, else it sends a glib response about the suggested animal. Test with the following to see each version:
 
- What does my spirit animal mean
+ What does my spirit animal mean  
  why is my spirit animal a tiger
 
 Finally, we will finish by tidying up the responses, replace the code above with the following to steer the conversation and get the information we need:
@@ -286,7 +286,7 @@ bot.dialog(&#39;frogMeaning&#39;, […..
 
 This could be a single function to create and send the response, using a data source to get the content. For this example we will create a JSON file in the app, but it could use an external database. The data will be referenced using the animal name.
 
-Comment out ( **CTRL-/** ) the animal meaning intent (i_ntents.matches(&#39;spiritMeaning&#39;)_) and dialogs mentioned above (_bot.dialog(&#39;&lt;animal&gt;Meaning&#39;)_). Creating the longhand version was mostly to illustrate the wrong way, also it can be useful to create the full script to see the format, commonality, and then cut it down.
+Comment out ( **CTRL-/** ) the animal meaning intent ( _intents.matches(&#39;spiritMeaning&#39;)_ ) and dialogs mentioned above (_bot.dialog(&#39;&lt;animal&gt;Meaning&#39;)_). Creating the longhand version was mostly to illustrate the wrong way, also it can be useful to create the full script to see the format, commonality, and then cut it down.
 
 In the Documents pane in VS Code create a file called **animals.json** – where you created the dev.env file earlier. Then click on the empty file and paste the following JSON – very basic, animal and meaning:
 
@@ -427,7 +427,7 @@ This is in once where the entity contains the intent animal, and once where the 
 
 In the top section of _spiritMeaning_, highlight the code to build the message with the hero card – as above, **do not include the var sanimal**. As shown below, you will see a light bulb icon appear, hover over this and click, **Extract to function in global scope**. Change the name to **spiritCard**.
 
-IMAGE
+![](./images/Extract_to_function.png)
 
 You should now see a new function created:
 
@@ -444,7 +444,7 @@ function spiritCard(session, sanimal) {
 }
 ```
 
-And code you highlighted in _spiritMeaning_ is replaced with – the uses the new spiritCard function, passing in the _sanimal_ variable:
+And code you highlighted in _spiritMeaning_ is replaced with the new spiritCard function  (if you ended up with something called newFunction you can change the name manually, for neatness, just get both references), passing in the _sanimal_ variable:
 
 `var msg = spiritCard(session, sanimal);`
 
@@ -470,10 +470,12 @@ intents.matches('spiritMeaning', [
 ]);
 ```
 
-For trying to keep this lab simple to follow, the bot is not complex, but brings together a few of the key principles of user identity, conversation flow, and cognitive services and that is as much as we are going to do with this walkthrough. You have a basic bot that will run in the Azure portal, or in a web page iFrame. If you want to use on Skype or other channels, go to Channels in the Azure portal and follow the instructions – if you want to try the bot in Skype (personal), open the client, and click the icon to add the bot as a contact.
+For trying to keep this lab simple to follow, the bot is not complex, but brings together a few of the key principles of user identity, conversation flow, and cognitive services and that is as much as we are going to do with this lab. You have a basic bot that will run in the Azure portal, or in a web page iFrame. If you want to use on Skype or other channels, go to Channels in the Azure portal and follow the instructions – if you want to try the bot in Skype (personal version), open the client, and click the icon to add the bot as a contact.
 
 ![](./images/skypetiger.png)
 
-As a follow up to this introduction, explore the additional functionality of Luis building more complex entities and how to handle those in the bot - even if you build a service around the QnA Maker you need to add code to handle actions that fall outside of the QnA, it becomes very frustrating to the user if questions outside those in the QnA pairs are not handled. Although that applies to whatever bot you make. There is a lot of documentation on the Azure website to help with your next steps, hopefully you have an idea of how it all fits together now.
+It's that easy!
 
-If you want to look at a functions bot the code should work the same, although I have not tested this. The main difference will be the file structure the modules are not in the root folder, so setup git in the root folder of the project but navigate to the folder with the index.js file to run the bot.
+As a follow up to this introduction, explore the additional functionality of Luis and try building more complex entities and how to handle those in the bot - even if you build a bot service around the QnA Maker you need to add code to handle actions that fall outside of the QnA, it becomes very frustrating to the user if questions outside those in the QnA pairs are not handled, although that applies to whatever bot you make. There is a lot of documentation on the Azure website to help with your next steps, hopefully you have an idea of how it all fits together now.
+
+If you want to look at a functions bot the code should work the same this web bot, although I have not tested this. The main difference will be the file structure, the modules are not in the root folder, so setup git in the root folder of the project but navigate to the folder with the index.js file to run the bot.
