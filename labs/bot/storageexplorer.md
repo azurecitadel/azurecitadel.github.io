@@ -34,9 +34,11 @@ Follow the usual sign in process
 2.	Add a specific Storage Account
 There are two methods that are very similar, **Use a connection string**… or **Use a storage account name and key** – select the one that you want to use and click **Next**.
 In the Azure portal navigate to the storage account that you want to connect to, if this is one that has been created as part of a deployment process, eg, a Bot Service, the easiest method is to go to the Resource Group for that deployment and select the **Storage account**.  
-![](./labs/bot/images/resourcegroup.png)   
+![0](/labs/bot/images/resourcegroup.png)   
 From the menu select **Access keys**.  
-![](./labs/bot/images/StorageKeys.png)   
+![1](./labs/bot/images/StorageKeys.png)   
+![2](./bot/images/StorageKeys.png)   
+![3](/bot/images/StorageKeys.png)   
 Depending on the connection method selected above, copy across either the Connection string (I use the Storage account name as the label, but that can be anything you want) or Key and storage account name. 
 Click **Next**.  
 Check your workings, click **Connect**.  
