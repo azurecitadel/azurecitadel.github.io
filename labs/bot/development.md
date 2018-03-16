@@ -107,7 +107,7 @@ This key has added to the bot service when the bot was deployed, but, for comple
 
 If you have connection strings, secrets, keys, that you need for your application, add them here or in Key Vault to keep them from being coded into the application, only users with admin access to the app or Key Vault will be able to see the keys.
 
-While you have the keys, now might be a convenient time **to set up the Azure Storage Explorer** , if not, come back to that when you need it.
+While you have the keys, now might be a convenient time **[to set up the Azure Storage Explorer]**(./storageexplorer.md), if not, come back to that when you need it.
 
 Go back to **VS Code**. As we do not want the connection string stored in the code we need to create a file for the environment options. In the root document tree, ie, not in one of the folders, right click &#39;New File&#39;, call the file dev.env – I could have called it .env, that would work too. Type the following line:
 
@@ -138,7 +138,7 @@ The application should now run, and echo back.
 
 If the app is not working it is likely that the application is not running in development mode. CTRL-C to stop the app. In the terminal type the following.
 
-`export NODE_ENV=&#39;development&#39;`
+`export NODE_ENV='development'`
 
 The above is one way to set the environment as development, that I use, there are others. Note: if you restart VS Code you will need to set this again.
 
