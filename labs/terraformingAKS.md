@@ -49,6 +49,8 @@ Useful links
 
 ## Connecting with the Terraform Azure Provider
 
+There are three options for connecting to Azure with the Terraform AzureRM provider. Each is described below with the most appropriate use case.
+
 ### Option 1: Azure CLI
 
 If you are logged in with the Azure CLI then it will use that authentication by default.
