@@ -167,7 +167,251 @@ There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to
 
 ### **SETUP: Spin up a Terraform VM**
 
-Spin up a B1s Terraform VM in your subscription and configure it.
+Spin up a B1s Terraform VM in your subscription. This will take around 15 minutes to deploy, so a good time to get a coffee.
+
+```bash
+terraform$ az vm list-ip-addresses --name Terraform --resource-group terraform --output table
+VirtualMachine    PublicIPAddresses    PrivateIPAddresses
+----------------  -------------------  --------------------
+Terraform         52.174.86.74         10.0.0.4
+```
+
+Check that you can SSH to the machine using Putty, WSL Ubuntu or Cloud Shell.  Don't forget to run the one off script to add the contributor permissions for the subscription as per the <https://aka.ms/aztfdocs>.
+
+By default you'll be in your home directory, and checking the `/etc/passwd` and `/etc/group` files will show your default group.
+
+#### Optional group setting configuration
+
+You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group (and optionally change the default group for your ID), and a shared area for the Terraform files. E.g.:
+
+```bash
+$ sudo addgroup terraform
+Adding group 'terraform' (GID 1001) ...
+$ sudo usermod --group terraform richeney
+$ sudo mkdir --mode 2775 /terraform
+$ sudo chgrp terraform /terraform
+$ ll -d /terraform
+drwxrwsr-x 2 root terraform 4096 Mar 19 11:19 /terraform/
+```
+
+Only members of the terraform group can create files in this /terraform folder and the setgid on the group ensures that all files will get terraform as the group. You may need to log back in to refl
+
+### **SETUP: Test the Terraform flow**
+
+We'll check your configuration with a test deployment. Make a directory called deleteme and copy in the remoteState.tf file. (Don't `cd /terraform` if you didn't do the optional group work above.)
+
+```bash
+umask 002
+cd /terraform
+cp ~/tfTemplate/remoteState.tf .
+cp ~/tfTemplate/azureProviderAndCreds.tf .
+```
+
+Create a file called deleteme.tf using the editor of your choice (e.g. nano or vi) and paste in the following section:
+
+```yaml
+resource "azurerm_resource_group" "deleteme" {
+  name     = "deleteme"
+  location = "West Europe"
+
+  tags {
+    environment = "test"
+  }
+}
+```
+
+Initialise the directory for Terraform by running `terraform init`:
+
+```bash
+richeney@Terraform:/terraform$ terraform init
+
+Initializing the backend...
+
+Successfully configured the backend "azurerm"! Terraform will automatically
+use this backend unless the backend configuration changes.
+
+Initializing provider plugins...
+- Checking for available provider plugins on https://releases.hashicorp.com...
+- Downloading plugin for provider "azurerm" (1.3.0)...
+
+The following providers do not have any version constraints in configuration,
+so the latest version was installed.
+
+To prevent automatic upgrades to new major versions that may contain breaking
+changes, it is recommended to add version = "..." constraints to the
+corresponding provider blocks in configuration, with the constraint strings
+suggested below.
+
+* provider.azurerm: version = "~> 1.3"
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
+This configures the .terraform sub-directory containing the plugins for the providers in your various *.tf files and the terraform.tfstate file.
+
+See the execution plan by running `terraform plan`:
+
+```bash
+richeney@Terraform:/terraform$ terraform plan
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  + azurerm_resource_group.deleteme
+      id:               <computed>
+      location:         "westeurope"
+      name:             "deleteme"
+      tags.%:           "1"
+      tags.environment: "test"
+
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+```
+
+OK, that looks fine. Run `terraform apply` to deploy the resource group.
+
+```bash
+richeney@Terraform:/terraform$ terraform apply
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  + azurerm_resource_group.deleteme
+      id:               <computed>
+      location:         "westeurope"
+      name:             "deleteme"
+      tags.%:           "1"
+      tags.environment: "Technical Depth"
+
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+azurerm_resource_group.deleteme: Creating...
+  location:         "" => "westeurope"
+  name:             "" => "deleteme"
+  tags.%:           "" => "1"
+  tags.environment: "" => "Technical Depth"
+azurerm_resource_group.deleteme: Creation complete after 1s (ID: /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/deleteme)
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
+Not the most exciting first deployment, but we're off an running. And more importantly if you check your storage accounts in the resource group for your terraform VM then you can see that the state is being backed up:
+
+![state backed up to blob](/labs/terraformingAKS/images/blob.png)
+
+You have a choice for tidying up before moving on to the challenges.  You could either:
+
+* delete the deleteme.tf file and then rerun both the plan and apply commands
+* run `terraform destroy` and then `rm deleteme.tf`
 
 --------------
 
+## Challenge 1: **Spin up a standard VM of your choice**
+
+Use Terraform to deploy a virtual machine into a new resource group.
+
+* Create a variables.tf file for the resource group name and the virtual machine name
+* Define the resource group in a resourceGroups.tf file
+* Define a diagnostics storage account with randomly text in the name
+* Define the networking (virtual network, subnet, NSG) in a network.tf file
+* Define the VM (including NIC and PIP) in a vm.tf file
+* Use the virtual machine name that to create the PIP and NIC names (e.g. `<vmname>-nic`)
+
+Also add in tags for environment = 'test' and description = 'Technical Depth'. (In fact do this for all of the challenges.)
+
+--------------
+
+## Challenge 2: **Terraform Outputs and Variables**
+
+JUSTIN TO DEFINE
+
+--------------
+
+## Challenge 3: **Spin up a Cosmos DB and ACI**
+
+Create a new resource group containing a Cosmos DB and an ACI deployment.
+
+Cosmos DB:
+
+* Set the APIto `MongoDB`
+* Set consistency level to `Session`
+* Make West Europe the primary region, with failover to East US
+* Calculate a random 8 byte code for the FQDN
+
+_Question: which consistency level is not currently supported by the Terraform provider?_
+
+ACI
+
+* Public IP
+* Linux container
+* 0.5 CPU, 1.5 Memory, port 80
+* For the container image on DockerHub, use either of the following:
+  * Microsoft's [aci-helloworld](https://hub.docker.com/r/microsoft/aci-helloworld/) image
+    * In the environment variables section set `"NODE_ENV" = "testing"`
+    * Note that this will not make use of your CosmosDB
+  * Justin's [iexcompanies](https://hub.docker.com/r/inklin/iexcompanies) image
+    * The environment variable section needs `"COSMOSDB"="mongodb://cosmosdbname:cosmosdbprimarykey@cosmosdbname.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"`
+    * You should be able to use reference variables for  both cosmosdbname and cosmosdbprimarykey to generate that variable dynamically
+* Also run the aci-tutorial-sidecar
+  * Same size
+  * This container starts watchdog.sh which runs `watch -n 3 curl -I http://localhost:80`
+  * No need to open any ports
+
+--------------
+
+## Challenge 4: **Spin up an AKS cluster with a single B series for the afternoon**
+
+Remove the ACI deployment from the previous challenge.
+
+Add a subnet to the existing vNet and call it aks. 
+
+Create a new resource group for the AKS cluster to use.
+
+AKS needs a separate Service Principal to run correctly. There is an [enhancement request](https://github.com/terraform-providers/terraform-provider-azurerm/issues/16) to add this in to the provider, but in the meantime you'll have to do it via the Azure CLI. However, you should be able to to the RBAC role assignment to the new resource group.
+
+Add in an AKS cluster:
+
+* Single node
+* Set the size to B1ms VM
+* 30 GiB SSD
+
+--------------
+
+## Optional Challenge: **Automate ACI Integration**
+
+JUSTIN TO DEFINE
+
+--------------
