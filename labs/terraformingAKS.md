@@ -131,22 +131,17 @@ Your Azure Provider section then only needs to contain `provider "azurerm" { }`.
 
 ### Option 3: Managed Service Identity
 
-Managed Service Identity is perfect for allowing code run on a virtual machine to have an automatically managed identity for logging into Azure without passing in credentials in the code.
+Managed Service Identity is perfect for allowing code to run on a virtual machine.  You have an automatically managed identity for logging into Azure without passing credentials in the code.
 
 Once configured you can set the `use_msi` provider option in Terraform to `true` and the virtual machine will retrieve a token to access the Azure API.  In this context MSI allows all users on that trusted machine to share the same authentication mechanism when running Terraform.
 
-Terraform can also configure virtual machines with managed service identities.
+Be aware that Terraform is also capable of deploying virtual machines that are configured with their own managed service identities.
 
 ## Spin up a Terraform VM from the Marketplace
 
-Azure support for Terraform is already strong, but is now available as a free offering in the Marketplace, with only the underlying VM hardware resource costs passed through:
+Support for Terraform in Azure is already strong, but has been strengthened further with the addition of Terraform VM in the Marketplace.  This is ideal for customers who want to use a single Terraform instance across multiple team members, multiple automation scenarios and shared environments.
 
-* Shared remote state with locking, backed off to Azure Storage
-* Shared identity using MSI and RBAC
-
-This is ideal for customers who want to use a single Terraform instance across multiple team members, multiple automation scenarios and shared environments.
-
-The offering is at <https://aka.ms/aztf>. The Ubuntu VM will have the following preconfigured:
+The offering is at <https://aka.ms/aztf> and is free except for the underlying VM hardware resource costs. The Ubuntu VM will have the following preconfigured:
 
 * Terraform (latest)
 * Azure CLI 2.0
@@ -154,6 +149,11 @@ The offering is at <https://aka.ms/aztf>. The Ubuntu VM will have the following 
 * Unzip
 * JQ
 * apt-transport-https
+
+It features:
+
+* Shared remote state with locking, backed off to Azure Storage
+* Shared identity using MSI and RBAC
 
 There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to access and configure the Terraform VM.
 
@@ -164,7 +164,7 @@ There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to
 Spin up a B1s Terraform VM in your subscription. This will take around 15 minutes to deploy, so a good time to get a coffee.
 
 ```bash
-terraform$ az vm list-ip-addresses --name Terraform --resource-group terraform --output table
+$ az vm list-ip-addresses --name Terraform --resource-group terraform --output table
 VirtualMachine    PublicIPAddresses    PrivateIPAddresses
 ----------------  -------------------  --------------------
 Terraform         52.174.86.74         10.0.0.4
@@ -172,11 +172,11 @@ Terraform         52.174.86.74         10.0.0.4
 
 Check that you can SSH to the machine using Putty, WSL Ubuntu or Cloud Shell.  Don't forget to run the one off script to add the contributor permissions for the subscription as per the <https://aka.ms/aztfdocs>.
 
-By default you'll be in your home directory, and checking the `/etc/passwd` and `/etc/group` files will show your default group.
+By default you'll be in your home directory.  You can check the `/etc/passwd` and `/etc/group` files to show your default group.
 
 #### Optional group setting configuration
 
-You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group (and optionally change the default group for your ID), and a shared area for the Terraform files. E.g.:
+You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group and a shared area for the Terraform files. (And optionally change the default group for your ID.) E.g.:
 
 ```bash
 $ sudo addgroup terraform
@@ -188,7 +188,7 @@ $ ll -d /terraform
 drwxrwsr-x 2 root terraform 4096 Mar 19 11:19 /terraform/
 ```
 
-Only members of the terraform group can create files in this /terraform folder and the setgid on the group ensures that all files will get terraform as the group. You may need to log back in to refl
+Only members of the new terraform group can create files in the /terraform folder.  The setgid permission ensures that all new files will automatically be assigned terraform as the group rather than the user's default group. You may need to log back in to reflect the usermod change to the /etc/passwd file.
 
 ### SETUP: Test the Terraform flow
 
@@ -249,7 +249,7 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-This configures the .terraform sub-directory containing the plugins for the providers in your various *.tf files and the terraform.tfstate file.
+This configures the .terraform sub-directory, automatically downloading the plugins for the providers in your various *.tf files and initialising the terraform.tfstate file.
 
 See the execution plan by running `terraform plan`:
 
@@ -285,7 +285,7 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
 
-OK, that looks fine. Run `terraform apply` to deploy the resource group.
+That looks fine. Run `terraform apply` to deploy the resource group.
 
 ```bash
 richeney@Terraform:/terraform$ terraform apply
@@ -331,20 +331,26 @@ You have a choice for tidying up before moving on to the challenges.  You could 
 * delete the deleteme.tf file and then rerun both the plan and apply commands
 * run `terraform destroy` and then `rm deleteme.tf`
 
+OK, once you have cleaned up then you should be good to head into the challenges. Don't forget those useful links:
+
+* [Terraform docs for AzureRM provider](https://aka.ms/terraform)
+* [Azure Docs hub for Terraform](https://docs.microsoft.com/en-gb/azure/terraform/)
+* [Terraform page in Linux VM area](https://aka.ms/terraformdocs) (useful one pager)
+
 --------------
 
 ## Challenge 1: Spin up a standard VM of your choice
 
 Use Terraform to deploy a virtual machine into a new resource group.
 
+Add in the following tags: environment = 'test' and description = 'Technical Depth'. (In fact please do this for all of the challenges.)
+
 * Create a variables.tf file for the resource group name and the virtual machine name
 * Define the resource group in a resourceGroups.tf file
-* Define a diagnostics storage account with randomly text in the name
+* Define a diagnostics storage account with randomly generated text in the name
 * Define the networking (virtual network, subnet, NSG) in a network.tf file
 * Define the VM (including NIC and PIP) in a vm.tf file
 * Use the virtual machine name that to create the PIP and NIC names (e.g. `<vmname>-nic`)
-
-Also add in tags for environment = 'test' and description = 'Technical Depth'. (In fact do this for all of the challenges.)
 
 --------------
 
@@ -360,9 +366,9 @@ Create a new resource group containing a Cosmos DB and an ACI deployment.
 
 Cosmos DB:
 
-* Set the APIto `MongoDB`
+* Set the API to `MongoDB`
 * Set consistency level to `Session`
-* Make West Europe the primary region, with failover to East US
+* Make `West Europe` the primary region, with failover to `East US`
 * Calculate a random 8 byte code for the FQDN
 
 _Question: which consistency level is not currently supported by the Terraform provider?_
@@ -371,16 +377,16 @@ ACI
 
 * Public IP
 * Linux container
-* 0.5 CPU, 1.5 Memory, port 80
+* 0.5 CPU, 1.5 memory, port 80
 * For the container image on DockerHub, use either of the following:
   * Microsoft's [aci-helloworld](https://hub.docker.com/r/microsoft/aci-helloworld/) image
     * In the environment variables section set `"NODE_ENV" = "testing"`
-    * Note that this will not make use of your CosmosDB
-  * Justin's [iexcompanies](https://hub.docker.com/r/inklin/iexcompanies) image
+    * Note that this container image will not make use of your CosmosDB
+  * Justin's more interesting [iexcompanies](https://hub.docker.com/r/inklin/iexcompanies) image
     * The environment variable section needs `"COSMOSDB"="mongodb://cosmosdbname:cosmosdbprimarykey@cosmosdbname.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"`
-    * You should be able to use reference variables for  both cosmosdbname and cosmosdbprimarykey to generate that variable dynamically
+    * You should be able to use reference variables for both cosmosdbname and cosmosdbprimarykey to generate that environment variable dynamically
 * Also run the aci-tutorial-sidecar
-  * Same size
+  * Same size - 0.5 CPUs and 1.5 memory
   * This container starts watchdog.sh which runs `watch -n 3 curl -I http://localhost:80`
   * No need to open any ports
 
