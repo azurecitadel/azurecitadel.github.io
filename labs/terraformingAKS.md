@@ -21,36 +21,25 @@ This three hour lab will get you set up to run Terraform to orchestrate Azure re
 
 This cluster may then be used to host containers deployed from the container image created within the App Dev track which will also include concepts covered in the morning session on app modernisation using disaggregation technologies such as Event Grid.
 
-Here is a quick overview of the lab:
-
-* **Theory**
-  * Terraform and the AzureRM provider
-  * Terraform workflow (init -> plan -> apply)
-  * Terraform state (build, change, destroy)
-  * Implicit and explicit resource dependencies and terraform graph
-  * Input and output variables, list and maps (defined, file, switch, 
-  * Modules and the Terraform Registry
-    * alicloud 4/4
-    * aws 13/268
-    * azurerm 15/26
-    * google 9/22
-    * opc 2/2
-  * Custom ARM deployments triggered by Terraform
-* **Connecting with the Terraform Azure Provider**
-* **Spin up a Terraform VM from the Marketplace**
-  * Shared remote state with locking, backed off to Azure Storage
-  * Shared identity using MSI and RBAC
-* Challenge 1: **Spin up a standard VM of your choice**
-* Challenge 2: **Terraform Outputs and Variable**
-* Challenge 3: **Spin up a Cosmos DB and ACI (temporarily)**
-* Challenge 4: **Spin up an AKS cluster with a single B series for the afternoon**
-* Optional Challenge: **Automate ACI Integration**
-
 Proctors:
 
 * Justin Davies (@justindavies)
 * Richard Cheney (@RichCheneyAzure)
 * Nic Jackson (@sheriffjackson) from Hashicorp
+
+## Prereqs
+
+You'll need an Azure subscription.
+
+Before starting you should have a read through of the Terraform [intro](https://www.terraform.io/intro/index.html) and [AzureRM provider](https://aka.ms/terraform) areas so that you have some familiarity with the following:
+
+* Terraform and the AzureRM provider
+* Terraform workflow (init -> plan -> apply)
+* Terraform state (build, change, destroy)
+* Implicit and explicit resource dependencies and terraform graph
+* Input and output variables, list and maps (defined, file, switch, variables, environment variables)
+* Modules and the Terraform Registry
+* Custom ARM deployments triggered by Terraform
 
 Useful links
 
@@ -58,17 +47,15 @@ Useful links
 * [Azure Docs hub for Terraform](https://docs.microsoft.com/en-gb/azure/terraform/)
 * [Terraform page in Linux VM area](https://aka.ms/terraformdocs) (useful one pager)
 
-## Prereqs
-
 ## Connecting with the Terraform Azure Provider
 
-### Azure CLI
+### Option 1: Azure CLI
 
 If you are logged in with the Azure CLI then it will use that authentication by default.
 
 This is only really suitable for single user environments, so personal test and dev and for demonstration purposes.
 
-#### Terraform in the Cloud Shell
+#### Using Terraform in Cloud Shell
 
 If you are using the Cloud Shell then you will already be logged into Azure, although you may want to use `az account list` and `az account set --subscription <subscriptionId>` to change your default subscription.
 
@@ -76,11 +63,11 @@ Both az and terraform are maintained packages in the bash Cloud Shell container 
 
 Type `terraform` and you'll see the command help.
 
-#### Terraform in the Windows Subsystem for Linux
+#### Adding Terraform to Windows Subsystem for Linux
 
 The following have been tested on the Ubuntu version of WSL.
 
-Install the Azure CLI from <https://aka.ms/GetTheAzureCli>.
+Install the Azure CLI from <https://aka.ms/GetTheAzureCli> if you haven't done so already.
 
 Install Terraform.  Either:
 
@@ -99,7 +86,7 @@ EOF
 
 You may also want to install jq: `sudo apt-get --assume-yes install jq`
 
-### Service Principal
+### Option 2: Service Principal
 
 Making use of a Service Principal for the authentication is the nmost appropriate route if embedded into another automation framework such as a CI/CD pipeline.
 
@@ -140,9 +127,9 @@ Alternatively, export ARM_SUBSCRIPTION_ID, ARM_CLIENT_ID, ARM_CLIENT_SECRET and 
 
 Your Azure Provider section then only needs to contain `provider "azurerm" { }`.
 
-### Managed Service Identity
+### Option 3: Managed Service Identity
 
-Managed Service Identity is perfect for allowing code run on a virtual machine to have an automatically managed identity for logging into Azure without passing in credentials in the code.   
+Managed Service Identity is perfect for allowing code run on a virtual machine to have an automatically managed identity for logging into Azure without passing in credentials in the code.
 
 Once configured you can set the `use_msi` provider option in Terraform to `true` and the virtual machine will retrieve a token to access the Azure API.  In this context MSI allows all users on that trusted machine to share the same authentication mechanism when running Terraform.
 
@@ -150,7 +137,12 @@ Terraform can also configure virtual machines with managed service identities.
 
 ## Spin up a Terraform VM from the Marketplace
 
-Azure support for Terraform is already strong, but is now available as a free offering in the Marketplace, with only the underlying VM hardware resource costs passed through. This is ideal for customers who want to use a single Terraform instance across multiple team members, multiple automation scenarios and shared environments.
+Azure support for Terraform is already strong, but is now available as a free offering in the Marketplace, with only the underlying VM hardware resource costs passed through:
+
+* Shared remote state with locking, backed off to Azure Storage
+* Shared identity using MSI and RBAC
+
+This is ideal for customers who want to use a single Terraform instance across multiple team members, multiple automation scenarios and shared environments.
 
 The offering is at <https://aka.ms/aztf>. The Ubuntu VM will have the following preconfigured:
 
@@ -165,7 +157,7 @@ There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to
 
 --------------
 
-### **SETUP: Spin up a Terraform VM**
+### SETUP: Spin up a Terraform VM
 
 Spin up a B1s Terraform VM in your subscription. This will take around 15 minutes to deploy, so a good time to get a coffee.
 
@@ -196,7 +188,7 @@ drwxrwsr-x 2 root terraform 4096 Mar 19 11:19 /terraform/
 
 Only members of the terraform group can create files in this /terraform folder and the setgid on the group ensures that all files will get terraform as the group. You may need to log back in to refl
 
-### **SETUP: Test the Terraform flow**
+### SETUP: Test the Terraform flow
 
 We'll check your configuration with a test deployment. Make a directory called deleteme and copy in the remoteState.tf file. (Don't `cd /terraform` if you didn't do the optional group work above.)
 
@@ -339,7 +331,7 @@ You have a choice for tidying up before moving on to the challenges.  You could 
 
 --------------
 
-## Challenge 1: **Spin up a standard VM of your choice**
+## Challenge 1: Spin up a standard VM of your choice
 
 Use Terraform to deploy a virtual machine into a new resource group.
 
@@ -354,13 +346,13 @@ Also add in tags for environment = 'test' and description = 'Technical Depth'. (
 
 --------------
 
-## Challenge 2: **Terraform Outputs and Variables**
+## Challenge 2: Terraform Outputs and Variables
 
 JUSTIN TO DEFINE
 
 --------------
 
-## Challenge 3: **Spin up a Cosmos DB and ACI**
+## Challenge 3: Spin up a Cosmos DB and ACI
 
 Create a new resource group containing a Cosmos DB and an ACI deployment.
 
@@ -392,7 +384,7 @@ ACI
 
 --------------
 
-## Challenge 4: **Spin up an AKS cluster with a single B series for the afternoon**
+## Challenge 4: Spin up an AKS cluster with a single B series for the afternoon
 
 Remove the ACI deployment from the previous challenge.
 
@@ -402,7 +394,7 @@ Create a new resource group for the AKS cluster to use.
 
 AKS needs a separate Service Principal to run correctly. There is an [enhancement request](https://github.com/terraform-providers/terraform-provider-azurerm/issues/16) to add this in to the provider, but in the meantime you'll have to do it via the Azure CLI. However, you should be able to to the RBAC role assignment to the new resource group.
 
-Add in an AKS cluster:
+Add in a single node AKS cluster:
 
 * Single node
 * Set the size to B1ms VM
@@ -410,7 +402,7 @@ Add in an AKS cluster:
 
 --------------
 
-## Optional Challenge: **Automate ACI Integration**
+## Optional Challenge: Automate ACI Integration
 
 JUSTIN TO DEFINE
 
