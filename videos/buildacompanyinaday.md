@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Build a Company In A Day
-date: 2017-12-06
+date: 2018-03-13
 categories: videos
 tags: [azure, dan, azuredan, build, company, day, cloud, proud]
 comments: true
@@ -13,13 +13,13 @@ excerpt: Want to see the power of the Azure public cloud and how you can build a
 
 Let Azure Dan take you through some of the key business outcomes that organisations benefit from when moving workloads to the cloud especially when those companies modernise their applications in tandem with their development and operational processes.
 
-This 2h20 video will take you through a whistle stop tour of key Azure services, and you can watch as Dan uses a selection of those to create a company in the cloud.
+This updated 2h 40m video will take you through a whistle stop tour of key Azure services, and you can watch as Dan uses a selection of those to create a company in the cloud.
 
-Grab your [Azure free](https://azure.microsoft.com/en-gb/free/) subscription and join Dan on this fantastic introduction to what can be achieved on a hyperscale cloud, and gain an insight into some of the interfaces that will help you to gain control over cloud infrastructure and platform services. 
+Grab your [Azure free](https://azure.microsoft.com/en-gb/free/) subscription and join Dan on this fantastic introduction to what can be achieved on a hyperscale cloud, and gain an insight into some of the interfaces that will help you to gain control over cloud infrastructure and platform services.
 
 ----------
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/D9182vBuj2M" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://youtu.be/0GvMwCFhk08" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 ----------
 
