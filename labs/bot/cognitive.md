@@ -474,7 +474,7 @@ For trying to keep this lab simple to follow, the bot is not complex, but brings
 
 ![](/azurecitadel.github.io/labs/bot/images/skypetiger.PNG) 
 
-It's that easy!
+It's that easy! 
 
 As a follow up to this introduction, explore the additional functionality of Luis and try building more complex entities and how to handle those in the bot - even if you build a bot service around the QnA Maker you need to add code to handle actions that fall outside of the QnA, it becomes very frustrating to the user if questions outside those in the QnA pairs are not handled, although that applies to whatever bot you make. There is a lot of documentation on the Azure website to help with your next steps, hopefully you have an idea of how it all fits together now.
 

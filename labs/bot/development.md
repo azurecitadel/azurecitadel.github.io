@@ -94,15 +94,15 @@ In my experience, if something works in Azure and not locally, as in this instan
 
 In the Azure portal open the **bot resource group** - if you are currently in the bot blade, go to the Overview, as below, and click on the Resource group link. You should see a list similar to the one below.
 
-![](/labs/bot/images/resourcegroup.png)
+![](/labs/bot/images/resourcegroup.PNG)
 
 Select the **Storage account**. The bot data is stored in **Tables**. From the SETTINGS menu click on **Access keys**. This will display key1 and key2. Copy the **Connection String for key1**.
 
-![](/labs/bot/images/StorageKeys.png)
+![](/labs/bot/images/StorageKeys.PNG)
 
 This key has added to the bot service when the bot was deployed, but, for completeness it can be found by going back to the Web Bot App blade. Under SETTINGS click on Application settings. In the Application Settings the top entry should be &#39;AzureWebJobsStorage&#39;, with the entry of the connection string.
 
-![](/labs/bot/images/ApplicationSettings.png)
+![](/labs/bot/images/ApplicationSettings.PNG)
 
 If you have connection strings, secrets, keys, that you need for your application, add them here or in Key Vault to keep them from being coded into the application, only users with admin access to the app or Key Vault will be able to see the keys.
 
