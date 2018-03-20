@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Azure Node Bot Prerequisites
+title: Azure Node Bot
 date: 2018-02-28
 tags: [bot, node, team services]
 comments: true
@@ -13,12 +13,7 @@ image:
 
 # Cognitive Services
 
-The bot now has some swagger but is still a little stupid, so we are going to add in two Cognitive Services; QnA Maker and LUIS. But first, change the original waterfall, from earlier, to stop it picking up the conversations by either changing the name from / to GetInfo, or commenting it out / deleting it:
-
-```
-// Waterfall Get info
-bot.dialog('GetInfo', [
-```
+The bot now has some swagger but is still a little stupid, so we are going to add in two Cognitive Services; QnA Maker and LUIS. 
 
 For cognitive Services need two additional Node modules, similar to the ones discussed earlier, add the following code toward the top, below var botbuilder\_azure:
 
@@ -57,7 +52,7 @@ const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v2.0/apps/' + luisApp
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
 var intents = new builder.IntentDialog({ recognizers: [recognizer, qnarecognizer] })
 .onDefault((session) => {
-    session.send(Sorry, I did not understand \'%s\'.');
+    session.send('Sorry, I did not understand \'%s\'.', session.message.text);
 });
 ```
 
@@ -235,7 +230,7 @@ intents.matches('spiritMeaning',  [
             if (!spiritEntity) {
                 builder.Prompts.choice(session, 'You need to tell me what your spirit animal is first:', ';tiger|lion|frog', { listStyle: 4 });
             } else {
-                session.beginDialog(spiritEntit.entity + 'Meaning');
+                session.beginDialog(spiritEntity.entity + 'Meaning');
             }
         },
     function (session, results) {
@@ -363,13 +358,13 @@ intents.matches('spiritMeaning', [
     function (session, args) {
         var spiritEntity = builder.EntityRecognizer.findEntity(args.entities, 'animal');
             if (!spiritEntity) {
-            builder.Prompts.choice(session, 'You need to give me a recognised spirit animal:', "tiger|lion|frog";, { listStyle: 4 });
+            builder.Prompts.choice(session, 'You need to give me a recognised spirit animal:', "tiger|lion|frog", { listStyle: 4 });
             } else {
             var sanimal = spiritEntity.entity;
             var msg = new builder.Message(session)
             msg.attachments([
                 new builder.HeroCard(session)
-                .title(results.response.entity)
+                .title(sanimal)
                 .text(spiritanimal[sanimal].meaning)
                 .images([builder.CardImage.create(session, spiritanimal[sanimal].image)])
             ]);
