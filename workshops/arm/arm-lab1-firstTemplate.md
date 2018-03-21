@@ -489,7 +489,8 @@ The JMESPATH queries are hugely flexible and powerful, but here we are simply se
 $rg="lab1"
 $job = 'job.' + ((Get-Date).ToUniversalTime()).tostring("MMddyy.HHmm")
 $template="C:\myTemplates\lab1\azuredeploy.json"
-$storageAccount = (New-AzureRmResourceGroupDeployment -Name $job -storageAccount $storageAccount -TemplateFile $template -ResourceGroupName $rg).Outputs.storageAccount.Value
+$storageAccountPrefix = "richeneysa"
+$storageAccount = (New-AzureRmResourceGroupDeployment -Name $job -storageAccountPrefix $storageAccountPrefix -TemplateFile $template -ResourceGroupName $rg).Outputs.storageAccount.Value
 echo $storageAccount
 ```
 
