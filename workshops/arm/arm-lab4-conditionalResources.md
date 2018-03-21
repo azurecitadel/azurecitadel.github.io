@@ -103,11 +103,13 @@ parms=$dir/azuredeploy.parameters.json
 az group create --name $rg --location westeurope
 
 job=job.$(date --utc +"%Y%m%d.%H%M%S")
-az group deployment create --parameters "@$parms" --template-file $template --resource-group $rg --name $job
+az group deployment create --parameters "@$parms" --template-file $template --resource-group $rg --name $job --no-wait
 
 job=job.$(date --utc +"%Y%m%d.%H%M%S")
-az group deployment create --parameters "@$parms" --parameters vmName=lab4UbuntuVm2 dnsLabelPrefix=richeneylab4b --template-file $template --resource-group $rg --name $job
+az group deployment create --parameters "@$parms" --parameters vmName=lab4UbuntuVm2 dnsLabelPrefix=richeneylab4b --template-file $template --resource-group $rg --name $job --no-wait
 ```
+
+The deployment lines also have the `--no-wait` switch at the end so that the deployments go in faster.
 
 Whilst they are deploying, take a look at the documentation for the burstable B-series VMs if you are not familiar with them. 
 
