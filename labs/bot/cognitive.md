@@ -109,7 +109,7 @@ Add the following code for the dialog _start_, which will listen for intents, th
 bot.dialog('start', intents);
 ```
 
-The code listens and then routes through welcome message, and/or the Ensure Profile waterfall, the conversation needs to be directed from that opening to the new _start_ dialog. Edit the following to add:
+The code listens and then routes through welcome message (_profile.welcomed_ is used to track if a user is new or returning) and/or the Ensure Profile waterfall, the conversation needs to be directed from that opening to the new _start_ dialog. Edit the following to add:
 
 ```
 var bot = new builder.UniversalBot(connector, [
@@ -117,8 +117,13 @@ var bot = new builder.UniversalBot(connector, [
         session.beginDialog('ensureProfile', session.userData.profile);
     },
     function (session, results) {
+        if (!session.userData.profile.welcomed) {
         session.userData.profile = results.response; // Save user profile.
-        session.send(`Great, ${session.userData.profile.name}! I love ${session.userData.profile.animal}s!`);
+        session.userData.profile.welcomed = 'yes';
+        session.send(`Great, ${session.userData.profile.name}, I love ${session.userData.profile.animal}s!`);
+        } else {
+        session.send(`Welcome back, ${session.userData.profile.name}, spirit friend.`); 
+        }
         session.beginDialog('start');
     }
 ]).set('storage', tableStorage);
@@ -368,7 +373,7 @@ intents.matches('spiritMeaning', [
                 .text(spiritanimal[sanimal].meaning)
                 .images([builder.CardImage.create(session, spiritanimal[sanimal].image)])
             ]);
-            session.send(msg).endDialog();
+            session.send(msg);
             }
         },
     function (session, results) {
@@ -380,7 +385,7 @@ intents.matches('spiritMeaning', [
             .text(spiritanimal[sanimal].meaning)
             .images([builder.CardImage.create(session, spiritanimal[sanimal].image)])
         ]);
-        session.send(msg).endDialog();
+        session.send(msg);
         }
 ]);
 ```
@@ -454,13 +459,13 @@ intents.matches('spiritMeaning', [
             } else {
             var sanimal = spiritEntity.entity;
             var msg = spiritCard(session, sanimal);
-            session.send(msg).endDialog();     
+            session.send(msg);     
             }
         },
     function (session, results) {
         var sanimal = results.response.entity;
         var msg = spiritCard(session, sanimal);
-        session.send(msg).endDialog();     
+        session.send(msg);     
         }
 ]);
 ```
