@@ -314,7 +314,7 @@ We'll look at the parameters JSON format in more detail in the next lab.
 
 ```powershell
 $rg="lab1"
-$template="/mnt/c/myTemplates/lab1/azuredeploy.json"
+$template="C:\myTemplates\lab1\azuredeploy.json"
 $job="job2"
 $storageAccount="richeneysa2"
 New-AzureRmResourceGroupDeployment -Name $job -storageAccount $storageAccount -TemplateFile $template -ResourceGroupName $rg
