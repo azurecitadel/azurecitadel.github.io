@@ -89,21 +89,21 @@ In the parameters file, add in new virtualNetworkName and subnetName and set the
 
 ### Submitting using both parameter files and inline parameters
 
-Once you have done that then redeploy the template **twice** into a new lab4 resource group.  Look carefully at the commands below.  
+Once you have done that then redeploy the template **twice** into a new lab4 resource group.  Look carefully at the commands below.
 
 The first deployment is using purely the parameter file, whereas the second one is using the `--parameters` switch twice, first to pull in the parameters file, and then with some inline name=value pairs to override those in the parameters file.  This will come in very handy later.
 
 ```bash
 rg=lab4
 
-dir=/mnt/c/myTemplates/$rg
+dir=$(pwd)
 template=$dir/azuredeploy.json
-parameters=$dir/azuredeploy.parameters.json
+parms=$dir/azuredeploy.parameters.json
 
 az group create --name $rg --location westeurope
 
 job=job.$(date --utc +"%Y%m%d.%H%M%S")
-az group deployment create --parameters "@$parms" --template-file $template --resource-group $rg --name $job 
+az group deployment create --parameters "@$parms" --template-file $template --resource-group $rg --name $job
 
 job=job.$(date --utc +"%Y%m%d.%H%M%S")
 az group deployment create --parameters "@$parms" --parameters vmName=lab4UbuntuVm2 dnsLabelPrefix=richeneylab4b --template-file $template --resource-group $rg --name $job
