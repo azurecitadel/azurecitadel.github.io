@@ -1,6 +1,6 @@
 ---
 layout: article
-title: DevOps on Azure
+title: DevOps with Microsoft and Azure
 date: 2018-03-21
 categories: videos
 tags: [azure, devops, vsts, devtest, insights, projects]
