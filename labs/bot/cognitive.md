@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Azure Node Bot Prerequisites
+title: Azure Node Bot
 date: 2018-02-28
 tags: [bot, node, team services]
 comments: true
@@ -13,12 +13,7 @@ image:
 
 # Cognitive Services
 
-The bot now has some swagger but is still a little stupid, so we are going to add in two Cognitive Services; QnA Maker and LUIS. But first, change the original waterfall, from earlier, to stop it picking up the conversations by either changing the name from / to GetInfo, or commenting it out / deleting it:
-
-```
-// Waterfall Get info
-bot.dialog('GetInfo', [
-```
+The bot now has some swagger but is still a little stupid, so we are going to add in two Cognitive Services; QnA Maker and LUIS. 
 
 For cognitive Services need two additional Node modules, similar to the ones discussed earlier, add the following code toward the top, below var botbuilder\_azure:
 
@@ -57,7 +52,7 @@ const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v2.0/apps/' + luisApp
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
 var intents = new builder.IntentDialog({ recognizers: [recognizer, qnarecognizer] })
 .onDefault((session) => {
-    session.send(Sorry, I did not understand \'%s\'.');
+    session.send('Sorry, I did not understand \'%s\'.', session.message.text);
 });
 ```
 
@@ -114,7 +109,7 @@ Add the following code for the dialog _start_, which will listen for intents, th
 bot.dialog('start', intents);
 ```
 
-The code listens and then routes through welcome message, and/or the Ensure Profile waterfall, the conversation needs to be directed from that opening to the new _start_ dialog. Edit the following to add:
+The code listens and then routes through welcome message (_profile.welcomed_ is used to track if a user is new or returning) and/or the Ensure Profile waterfall, the conversation needs to be directed from that opening to the new _start_ dialog. Edit the following to add:
 
 ```
 var bot = new builder.UniversalBot(connector, [
@@ -122,8 +117,13 @@ var bot = new builder.UniversalBot(connector, [
         session.beginDialog('ensureProfile', session.userData.profile);
     },
     function (session, results) {
+        if (!session.userData.profile.welcomed) {
         session.userData.profile = results.response; // Save user profile.
-        session.send(`Great, ${session.userData.profile.name}! I love ${session.userData.profile.animal}s!`);
+        session.userData.profile.welcomed = 'yes';
+        session.send(`Great, ${session.userData.profile.name}, I love ${session.userData.profile.animal}s!`);
+        } else {
+        session.send(`Welcome back, ${session.userData.profile.name}, spirit friend.`); 
+        }
         session.beginDialog('start');
     }
 ]).set('storage', tableStorage);
@@ -235,7 +235,7 @@ intents.matches('spiritMeaning',  [
             if (!spiritEntity) {
                 builder.Prompts.choice(session, 'You need to tell me what your spirit animal is first:', ';tiger|lion|frog', { listStyle: 4 });
             } else {
-                session.beginDialog(spiritEntit.entity + 'Meaning');
+                session.beginDialog(spiritEntity.entity + 'Meaning');
             }
         },
     function (session, results) {
@@ -363,17 +363,17 @@ intents.matches('spiritMeaning', [
     function (session, args) {
         var spiritEntity = builder.EntityRecognizer.findEntity(args.entities, 'animal');
             if (!spiritEntity) {
-            builder.Prompts.choice(session, 'You need to give me a recognised spirit animal:', "tiger|lion|frog";, { listStyle: 4 });
+            builder.Prompts.choice(session, 'You need to give me a recognised spirit animal:', "tiger|lion|frog", { listStyle: 4 });
             } else {
             var sanimal = spiritEntity.entity;
             var msg = new builder.Message(session)
             msg.attachments([
                 new builder.HeroCard(session)
-                .title(results.response.entity)
+                .title(sanimal)
                 .text(spiritanimal[sanimal].meaning)
                 .images([builder.CardImage.create(session, spiritanimal[sanimal].image)])
             ]);
-            session.send(msg).endDialog();
+            session.send(msg);
             }
         },
     function (session, results) {
@@ -385,7 +385,7 @@ intents.matches('spiritMeaning', [
             .text(spiritanimal[sanimal].meaning)
             .images([builder.CardImage.create(session, spiritanimal[sanimal].image)])
         ]);
-        session.send(msg).endDialog();
+        session.send(msg);
         }
 ]);
 ```
@@ -459,13 +459,13 @@ intents.matches('spiritMeaning', [
             } else {
             var sanimal = spiritEntity.entity;
             var msg = spiritCard(session, sanimal);
-            session.send(msg).endDialog();     
+            session.send(msg);     
             }
         },
     function (session, results) {
         var sanimal = results.response.entity;
         var msg = spiritCard(session, sanimal);
-        session.send(msg).endDialog();     
+        session.send(msg);     
         }
 ]);
 ```

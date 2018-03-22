@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Azure Node Bot Development
+title: Azure Node Bot
 date: 2018-02-28
 tags: [bot, node, team services]
 comments: true
@@ -224,6 +224,13 @@ If you run the bot it will give the welcome message, which is nice, and also pro
 
 Use the Azure Storage Explorer if you want to see how the data is stored – instructions **[here](./storageexplorer.md)** if you have need them. Delete your user data to be forgotten and begin again. You will be listed as &#39;Default User&#39;, from the emulator, if you were using a client such as Skype or Facebook Messenger, with a fixed address, this will have a unique id.
 
+Change the original waterfall, from earlier, to stop it picking up the conversations by either changing the name from / to GetInfo, or commenting it out / deleting it:
+
+```
+// Waterfall Get info
+bot.dialog('GetInfo', [
+```
+
 Let&#39;s now have the bot collect some data from the user using a slightly more advanced waterfall. Where the initial waterfall collected information about the user and stored that individually, we will create a Profile object to handle the user&#39;s details, and use next() to skip ahead if the data has already been collected.
 
 ```
@@ -249,15 +256,15 @@ bot.dialog('ensureProfile', [
     },
     function (session, results) {
         if (results.response) {
-            // Save company name if we asked for it.
-            session.dialogData.profile.animal = results.response;
+            // Save animal name if we asked for it.
+            session.dialogData.profile.animal = results.response.entity;
         }
         session.endDialogWithResult({ response: session.dialogData.profile });
     }
 ]);
 ```
 
-The dialog, _ensureprofile_, won&#39;t do anything until it is called – we can do this from the bot setup, update the var bot to the code below:
+The dialog, _ensureprofile_, won&#39;t do anything until it is called – we can do this from the bot setup, update the var bot (and bot.set(&#39;storage&#39;... line) to the code below:
 
 ```
 var bot = new builder.UniversalBot(connector, [
