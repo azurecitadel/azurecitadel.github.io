@@ -170,7 +170,7 @@ VirtualMachine    PublicIPAddresses    PrivateIPAddresses
 Terraform         52.174.86.74         10.0.0.4
 ```
 
-Check that you can SSH to the machine using Putty, WSL Ubuntu or Cloud Shell.  Don't forget to run the one off script to add the contributor permissions for the subscription as per the <https://aka.ms/aztfdocs>.
+Check that you can SSH to the machine using Putty, WSL Ubuntu or Cloud Shell.  Don't forget to run the one off script to add the contributor permissions for the subscription as per the <https://aka.ms/aztfdoc>.
 
 By default you'll be in your home directory.  You can check the `/etc/passwd` and `/etc/group` files to show your default group.
 
@@ -395,8 +395,6 @@ ACI
 ## Challenge 4: Spin up an AKS cluster with a single B series for the afternoon
 
 Remove the ACI deployment from the previous challenge.
-
-Add a subnet to the existing vNet and call it aks. 
 
 Create a new resource group for the AKS cluster to use.
 
