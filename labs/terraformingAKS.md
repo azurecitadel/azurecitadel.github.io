@@ -354,9 +354,15 @@ Add in the following tags: environment = 'test' and description = 'Technical Dep
 
 --------------
 
-## Challenge 2: Terraform Outputs and Variables
+## Challenge 2: Terraform Outputs 
 
-JUSTIN TO DEFINE
+Modify your Challenge 1 Terraform scripts to output the IP address of the VM you created.  Call the variable *ip*.  Test this work by calling 
+
+```console
+terraform output ip
+```
+
+after you have applied the updated Terraform script.
 
 --------------
 
@@ -412,6 +418,4 @@ Add in a single node AKS cluster:
 
 ## Optional Challenge: Automate ACI Integration
 
-JUSTIN TO DEFINE
-
---------------
+If you have time, automate the deployment of the ACI connector without any manual steps.  As a helping hand, this [script](terraformingAKS/init_aci_connector.sh) is would need to be passed the AKS cluster name and resource group to carry out this task.
