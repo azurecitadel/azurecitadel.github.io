@@ -185,9 +185,9 @@ OK, now submit the VM, specifying the name and number of disks:
 ```bash
 rg=lab5
 
-dir=/mnt/c/myTemplates/$rg
+dir=$(pwd)
 template=$dir/azuredeploy.json
-parameters=$dir/azuredeploy.parameters.json
+parms=$dir/azuredeploy.parameters.json
 
 az group create --name $rg --location westeurope
 
