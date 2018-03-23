@@ -9,7 +9,7 @@ categories: guides
 author: Ben_Coleman
 image:
   feature: 
-  teaser: cloud-builder.png
+  teaser: containers.png
   thumb: 
 ---
 
