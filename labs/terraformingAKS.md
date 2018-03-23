@@ -188,7 +188,7 @@ $ ll -d /terraform
 drwxrwsr-x 2 root terraform 4096 Mar 19 11:19 /terraform/
 ```
 
-Only members of the new terraform group can create files in the /terraform folder.  The setgid permission ensures that all new files will automatically be assigned terraform as the group rather than the user's default group. You may need to log back in to reflect the usermod change to the /etc/passwd file.
+Only members of the new terraform group can create files in the /terraform folder.  The setgid permission ensures that all new files will automatically be assigned terraform as the group rather than the user's default group. You may need to log out of the Terraform VM and then log back in again to reflect the usermod change to the /etc/passwd file.
 
 ### SETUP: Test the Terraform flow
 
