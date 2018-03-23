@@ -2,7 +2,7 @@
 layout: article
 title: Lab Terraforming Azure Kubernetes Service (AKS)
 date: 2018-03-15
-categories: 
+categories: labs
 author: Richard_Cheney
 image:
   feature: 
@@ -17,15 +17,11 @@ published: true
 
 ## Introduction
 
-This three hour lab will get you set up to run Terraform to orchestrate Azure resources using infrastructure (and more) as code, and then set you a number of challenges to increase your familiarity with the product and how it works.  The end result of the session will be a working AKS cluster.
+This self serve lab will get you set up to run Terraform to orchestrate Azure resources using infrastructure (and more) as code, and then set you a number of challenges to increase your familiarity with the product and how it works.
 
-This cluster may then be used to host containers deployed from the container image created within the App Dev track which will also include concepts covered in the morning session on app modernisation using disaggregation technologies such as Event Grid.
+This lab is provided as an intentionally challenging hackathon style lab, as a little pain tends to make the learning stick.  It is also a placeholder whilst we work on a fuller set of labs to mirror the depth of the ARM workshop.
 
-Proctors:
-
-* Justin Davies (@justindavies)
-* Richard Cheney (@RichCheneyAzure)
-* Nic Jackson (@sheriffjackson) from Hashicorp
+The short URL for this page is <https://aka.ms/citadel/terraform>.
 
 ## Prereqs
 
@@ -352,6 +348,10 @@ Add in the following tags: environment = 'test' and description = 'Technical Dep
 * Define the VM (including NIC and PIP) in a vm.tf file
 * Use the virtual machine name that to create the PIP and NIC names (e.g. `<vmname>-nic`)
 
+Don't forget to look at the useful links (and some of the surrounding pages in those areas) to find "inspiration".
+
+And if you get really stuck then feel free to look at some example files [here](https://github.com/azurecitadel/terraform/tree/master/challenge1).
+
 --------------
 
 ## Challenge 2: Terraform Outputs 
@@ -388,13 +388,15 @@ ACI
   * Microsoft's [aci-helloworld](https://hub.docker.com/r/microsoft/aci-helloworld/) image
     * In the environment variables section set `"NODE_ENV" = "testing"`
     * Note that this container image will not make use of your CosmosDB
-  * Justin's more interesting [iexcompanies](https://hub.docker.com/r/inklin/iexcompanies) image
+  * Justin Davies' more interesting [iexcompanies](https://hub.docker.com/r/inklin/iexcompanies) image
     * The environment variable section needs `"COSMOSDB"="mongodb://cosmosdbname:cosmosdbprimarykey@cosmosdbname.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"`
     * You should be able to use reference variables for both cosmosdbname and cosmosdbprimarykey to generate that environment variable dynamically
 * Also run the aci-tutorial-sidecar
   * Same size - 0.5 CPUs and 1.5 memory
   * This container starts watchdog.sh which runs `watch -n 3 curl -I http://localhost:80`
   * No need to open any ports
+
+Again, if you get stuck then feel free to look at some example files [here](https://github.com/azurecitadel/terraform/tree/master/challenge3).
 
 --------------
 
@@ -412,8 +414,12 @@ Add in a single node AKS cluster:
 * Set the size to B1ms VM
 * 30 GiB SSD
 
+The final set of example files for this challenge are [here](https://github.com/azurecitadel/terraform/tree/master/challenge4).
+
 --------------
 
 ## Optional Challenge: Automate ACI Integration
 
-If you have time, automate the deployment of the ACI connector without any manual steps.  As a helping hand, this [script](terraformingAKS/init_aci_connector.sh) is would need to be passed the AKS cluster name and resource group to carry out this task.
+If you have time, automate the deployment of the ACI connector (using the virtual kubelet) without any manual steps.
+
+As a helping hand, this [script](terraformingAKS/init_aci_connector.sh) would need to be passed the AKS cluster name and resource group to carry out this task.
