@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Setting up Docker locally
-date: 2018-01-23
+title: Setting up Docker Locally
+date: 2018-03-22
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
 categories: guides
@@ -13,20 +13,20 @@ image:
 ---
 
 ## Download & Install the Docker software
-Install Docker for Windows or Docker for Mac
+Install *Docker for Windows* or *Docker for Mac*
 
-#### Windows
+### Windows
 
 * Navigate to the Docker download page [Docker for Windows](https://www.docker.com/docker-windows)
 * Select **Download from Docker store**
 * Click **Get Docker CE for Windows (stable)**
 * When running the installer, accept all the defaults
   * You may be prompted to log out and back in. 
-  * You may be prompted to enable Hyper-V:  
+  * You may be prompted to enable Hyper-V  
   ![Hyper-V Message](./docker/images/hyper-v-message.png)  
   in which case, click **OK** and your system will reboot.
 
-#### Mac
+### Mac
 * Navigate to the Docker download page [Docker for Mac](https://www.docker.com/docker-mac)
 * Select **Download from Docker store**
 * Select **Get Docker**
