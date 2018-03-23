@@ -53,9 +53,11 @@ By default you will be able to run Docker commands such as `docker`, `docker-com
 However If you are using WSL bash as your main terminal rather than PowerShell there are some extra steps before you can connect
 
 ### 1. Install the Docker client tools
-You only need the client tools installed **not the full Docker engine**. Do not try to install *Docker CE* (e.g. by running `apt install docker-ce`) as this will try to install the Docker engine in WSL and this will fail
+You can run the Docker tools that are installed "externally" in Windows (e.g. **C:\\Program Files\\Docker\\**) by just running the `.exe` version (e.g. `docker.exe` rather than `docker`), however this will make running Docker command examples quite tedious. Therefore it is recommend to install the tool binaries properly in WSL
 
-You can install the client tools this by running the following command snippet in WSL bash. It's safe to copy and paste/run the whole snippet
+Under WSL bash you only need the client tools installed **not the full Docker engine**. Do not try to install *Docker CE* (e.g. by running `apt install docker-ce`) as this will try to install the Docker engine in WSL and this will fail
+
+You can install the client tools; **docker**, **docker-compose** & **docker-machine**, by running the following snippet of commands in WSL bash. It's safe to copy and paste/run the whole snippet
 ```
 curl -L https://download.docker.com/linux/static/stable/x86_64/docker-17.12.1-ce.tgz -o /tmp/docker.tgz
 tar -zxvf /tmp/docker.tgz docker/docker
