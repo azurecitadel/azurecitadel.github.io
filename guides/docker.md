@@ -3,20 +3,25 @@ layout: article
 title: Setting up Docker Locally
 excerpt: Install & setup Docker on your machine for local development
 date: 2018-03-22
-tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
+tags: [docker, containers, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
 categories: guides
 author: Ben_Coleman
 image:
-  feature: 
   teaser: containers.png
-  thumb: 
 ---
 
-## Download & Install the Docker software
-Install *Docker for Windows* or *Docker for Mac*
+This simple guide runs through how to install and set up a working Docker environment on your local machine. Having Docker on your machine allows you to to work with containers, and carry our tasks such as:
+* Running & testing containers
+* Build your own images
+* Use *Docker Compose* to create multi-container apps
+* Push your images to container registry such as *Azure Container Registry*
 
-### Windows
+Having Docker set up on your machine is a pre-req for many other guides and labs on this site. 
+
+## Download & Install the Docker software
+
+### Install Docker for Windows
 
 * Navigate to the Docker download page [Docker for Windows](https://www.docker.com/docker-windows)
 * Select **Download from Docker store**
@@ -27,7 +32,7 @@ Install *Docker for Windows* or *Docker for Mac*
   ![Hyper-V Message](./docker/images/hyper-v-message.png)  
   in which case, click **OK** and your system will reboot.
 
-### Mac
+### Install Docker for Mac
 * Navigate to the Docker download page [Docker for Mac](https://www.docker.com/docker-mac)
 * Select **Download from Docker store**
 * Select **Get Docker**
