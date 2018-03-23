@@ -358,7 +358,7 @@ Add in the following tags: environment = 'test' and description = 'Technical Dep
 
 Modify your Challenge 1 Terraform scripts to output the IP address of the VM you created.  Call the variable *ip*.  Test this work by calling 
 
-```console
+```bash
 terraform output ip
 ```
 
