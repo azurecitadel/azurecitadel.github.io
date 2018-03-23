@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Setting up Docker Locally
+excerpt: Install & setup Docker on your machine for local development
 date: 2018-03-22
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
