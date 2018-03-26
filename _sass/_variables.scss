@@ -40,10 +40,10 @@ $border-color                	: #5B3266;
 $link-color                  	: darken(#5E81AC, 1);
 
 $primary-color               	: $black;
-$success-color               	: #2ecc71;
-$warning-color               	: #f1c40f;
-$danger-color                	: #e74c3c;
-$info-color                  	: #3498db;
+$success-color               	: rgb(16, 124, 16); 
+$warning-color               	: rgb(255, 185, 0);
+$danger-color                	: rgb(232, 17, 35); 
+$info-color                  	: rgb(0, 120, 215); 
 
 $table-border-color          	: $border-color;
 $table-border                	: 1px solid $table-border-color;
