@@ -57,12 +57,13 @@ defaults:
 
 # Site owner
 owner:
-  name: Adam Bohle
-  email: adam.bohle@microsoft.com
-  twitter: https://twitter.com/adambohle
+  name: Richard Cheney
+  email: richard.cheney@microsoft.com
+  twitter: https://twitter.com/RichCheneyAzure
   bio:
-  avatar: abohle-bio.jpg # 160x160 px image for author byline
-  disqus-shortname: https-ukpducim-github-io
+  avatar: /images/authors/rich-c.jpg # 160x160 px image for author byline
+  disqus-shortname: azurecitadel
+
 
 include:
   - .htaccess
