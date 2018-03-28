@@ -354,9 +354,9 @@ And if you get really stuck then feel free to look at some example files [here](
 
 --------------
 
-## Challenge 2: Terraform Outputs 
+## Challenge 2: Terraform Outputs
 
-Modify your Challenge 1 Terraform scripts to output the IP address of the VM you created.  Call the variable *ip*.  Test this work by calling 
+Modify your Challenge 1 Terraform scripts to output the IP address of the VM you created.  Call the variable *ip*.  Test this work by calling
 
 ```bash
 terraform output ip
