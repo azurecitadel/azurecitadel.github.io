@@ -37,7 +37,7 @@ When you define a copy property the ARM deployment will create a small loop and 
 
 Let's look at how it looks at the resource level first.
 
-## Resource copy
+## Resource copies
 
 At the property level it looks a little like the following JSON block:
 
@@ -65,7 +65,7 @@ Note that there are two other possible properties within the copy object, **mode
 
 You can set the **mode** to _Serial_ and also set the **batchSize**.  If you do this then ARM will create a dependsOn on the fly, so that a resource later in the loop array will be dependant on an earlier one.  Usually batchSize is set to 1, but you can increase that if it makes sense for the resource deployment.
 
-## Resource copy using an array
+## Resource copies using an array
 
 Hard coding the number of copies is valid for many scenarios, but you will often using functions to calculate the value for copy.   Take a look at this example which would create web apps in multiple regions, making use of a parameter like this:
 
@@ -97,7 +97,7 @@ It is then up to the user to define an array with as many valid Azure regions as
 
 The count in the copy object is based on the length of that array, and the copyIndex is used purely to pull out the correct array element which is then used to define both the name and region for the web app deployment.
 
-## Property Copy
+## Property copies
 
 Let's do it at the property level against the managed disks used for data.  These use a slightly different structure, creating small arrays of objects on the fly.  They can only be used in places where property arrays are already used, e.g. data disks, NICs, etc.  (Look for the square brackets!)
 
@@ -169,7 +169,7 @@ At deployment this will be expanded by resource manager so, if we were to submit
 
 Note that we won't be able to do four data disks against our tiddly Standard_ B1s as the maximum number of data disks that will take is 2. Don't forget to save.
 
-## Deploy the new VM
+## Deploy your new VM template
 
 Before we deploy the template, let's remove that default value for the vmName. We'll continue to do that as an inline parameter in this lab so:
 
