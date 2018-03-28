@@ -4,7 +4,7 @@ title: Partner Training Events Calendar
 date: 2018-03-20
 comments: true
 author: Richard_Cheney
-image: /images/MSlogo.jpg
+image: /images/MSLogo.jpg
 excerpt: https://www.microsoft.com/uk/partner/training/
 ---
 
