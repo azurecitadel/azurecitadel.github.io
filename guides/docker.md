@@ -6,7 +6,7 @@ date: 2018-03-22
 tags: [docker, containers, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
 categories: guides
-author: Ben_Coleman
+author: John_And_Ben
 image:
   teaser: containers.png
 ---
