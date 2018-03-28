@@ -16,3 +16,5 @@ Browse the catalogue using the default tile view, or use the calendar and map vi
 Make use of the filters based on the practices you are building and the products that you are taking to market.  You can also filter based on the audience (Education, Licensing, Sales and Technical) and level (Get Started, Grow, Optimise) and you can sort the results either based on date or alphabetically.
 
 There are some fantastic sessions, and some of them make use of the materials we have generated for the Citadel site.  Sessions are delivered by Microsoft employees, including Azure technical specialists, plus some of our key partners in training, distribution and elsewhere in the channel.
+
+![Partner Training](https://www.microsoft.com/uk/partner/training/images/header_3.jpg)
