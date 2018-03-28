@@ -1,7 +1,7 @@
 ---
 layout: article
 title: DevOps Partner Portal
-date: 2018-02-12
+date: 2018-03-21
 comments: true
 tags: [partner, training, devops]
 author: Richard_Cheney
