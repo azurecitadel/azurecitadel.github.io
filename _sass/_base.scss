@@ -58,7 +58,8 @@ h1, h2, h3, h4, h5, h6 {
 	color: rgb(0, 120, 215); // Use Azure blue
 }
 h1 {
-	@include font-size(36);
+	@include font-size(40);
+	border-bottom: 3px solid #ddd;
 }
 h2 {
 	@include font-size(32);
@@ -108,7 +109,10 @@ blockquote {
   padding-left: $gutter;
   padding-right: $gutter;
   /* border-left: 6px solid $info-color; */
-  border-left: 6px solid $slate;
+	border-left: 3px solid #777;
+	background: #ddd;
+	padding-top: 2px;
+	padding-bottom: 2px;
   p {
     font-family: $alt-font;
 		// @include font-size(24);

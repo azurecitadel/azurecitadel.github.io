@@ -15,11 +15,14 @@
   }
   font-family: $alt-font;
   ul {
-    margin-top: $gutter;
-    margin-bottom: $gutter;
+    margin-top: 3px;
+    margin-bottom: 10px;
     border: 1px solid $border-color;
     @include media($medium) {
       border-radius: $border-radius;
+    }
+    ul {
+      margin-left: 30px;
     }
   }
   li {

@@ -6,7 +6,7 @@ date: 2018-03-22
 tags: [docker, containers, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
 categories: guides
-author: Ben_Coleman
+author: John_And_Ben
 image:
   teaser: containers.png
 ---
@@ -47,6 +47,8 @@ You might want to stop Docker auto-starting on your workstation at boot:
 * Right-click on *whale* icon 
 * Select **Settings > General**
 * Untick **Start Docker when you log in**
+
+---
 
 ## Use with Windows Subsystem For Linux (WSL)
 By default you will be able to run Docker commands such as `docker`, `docker-compose` and `docker-machine` from Windows PowerShell.  
