@@ -16,7 +16,7 @@ image:
 Now we know how to create deployments and services, we can pick up the pace a little, and get the frontend microservice up and running 
 
 ## Deploy Frontend
-For the frontend we can start with the service, it doesn't matter that the pods for it don't exist yet, that is what the selector is for, it will pick them up when they are created. This service also needs to be a `LoadBalancer` as we want to access it externally.
+For the frontend we can start with the service, it doesn't matter that the pods for it don't exist yet, that is what the selector is for, it will pick them up when they are created. This service also needs to be a `LoadBalancer` as we clearly want to access it externally.
 
 Create a new file called **frontend.svc.yaml** and paste the following YAML contents, save the file and then run run `kubectl apply -f frontend.svc.yaml`
 ```yaml
@@ -67,7 +67,7 @@ spec:
 ```
 Check the frontend pod is running with `kubectl get pods`. 
 
-By now the `frontend-svc` should have an external IP, get this IP using `kubectl get svc/data-api-svc` and copy and paste it into your browser. 
+By now the `frontend-svc` should have an external IP, get this IP using `kubectl get svc/frontend-svc` and copy and paste it into your browser. 
 
 The Smilr app client UI should load and look something like this, (here I've opened the browser console with F12 to check some of the log messages output by the app)
 
@@ -89,14 +89,14 @@ kubectl exec -it {pod_name} bash
 ```
 You should see a linux command prompt, as this will drop us into a bash shell session right inside the running container in the pod. Run the `ls` command and have a look about, and running `ps -ef` you will see the node process which is the microservice data-api app running inside the container 
 
-**💬 Note.**  The `-it` part of the kubectl command tells Docker to give us an interactive session, and we run `bash` as it the Smilr images are based on Linux. Not all Linux containers have bash installed and sometimes you need to fall back to plain `sh`. If this was a Windows container you would use `powershell` or the new `pwsh` command to start PowerShell Core
+**💬 Note.**  The `-it` part of the kubectl command tells Docker to give us an interactive terminal session, and we run `bash` as the Smilr images are based on Linux. Not all Linux containers have bash installed and sometimes you need to fall back to plain `sh`. If this was a Windows container you would use `powershell` or the new `pwsh` command to start PowerShell Core
 
 To run the script we need in the container:
 ```
 cd demoData
 node demoData.js
 ```
-This will connect to MongoDB, and inject some demo data (events and feedback) you should see some messages confirming what it has done.
+This script will connect to MongoDB, and inject some demo data (events and feedback) you should see some messages confirming what it has done. Type `exit` to leave the bash session 
 
 Now refresh the Smilr app in your browser, and check there are events on the home screen, and go into te reports view to validate there is example feedback in the database.
 

@@ -48,6 +48,8 @@ You might want to stop Docker auto-starting on your workstation at boot:
 * Select **Settings > General**
 * Untick **Start Docker when you log in**
 
+---
+
 ## Use with Windows Subsystem For Linux (WSL)
 By default you will be able to run Docker commands such as `docker`, `docker-compose` and `docker-machine` from Windows PowerShell.  
 However If you are using WSL bash as your main terminal rather than PowerShell there are some extra steps before you can connect

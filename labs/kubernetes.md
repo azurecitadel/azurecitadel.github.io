@@ -47,12 +47,12 @@ Some important notes on the configuration of the Smilr app:
 
 
 ### Assumptions & Scope
-This lab does not require any Kubernetes skills or knowledge, however being familiar with some of the concepts, and what Kubernetes is for; would be clearly be advantageous 
+This lab does not require any Kubernetes skills or knowledge, however being familiar with some of the concepts, and what Kubernetes is for; would clearly be advantageous 
 
 [📘 What is Kubernetes?](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/){:target="_blank" class="btn-info"} 
 
 However a baseline level of knowledge is assumed in two main areas:
-- **Standard use of Azure:** resource groups, subscriptions, etc. 
+- **Standard use of Azure:** resource groups, subscriptions, Azure CLI, etc. 
 - **Docker basics:** What are images & containers, tags, container registries etc. If you need to get up to speed quickly, try reading the [Containers Tech Primer](/guides/tech-primer-containers)
 
 
@@ -61,7 +61,7 @@ However a baseline level of knowledge is assumed in two main areas:
 We will deploy an Azure Container Service (AKS) cluster however this is not necessarily an expensive service, and could easily run for several weeks using the £150 of credit in either a free Azure account or Azure Pass 
 
 - [**Docker installed locally**](/guides/docker)  
-This is optional and can be skipped if we leave out the use of *Azure Container Registry* (Module 2) and use public images directly from Dockerhub
+This is only required to populate the *Azure Container Registry* with private copies of the Smilr images (using docker pull and push). This is optional and can be skipped if we leave out the use of *Azure Container Registry* (Module 2) and use public images directly from Dockerhub
 
 - [💻 Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest){:target="_blank" class="btn-info"}  
 You can install the Azure CLI under Windows (i.e. run from PowerShell terminal) or within WSL bash. Using WSL bash is **strongly recommended**  
@@ -73,7 +73,7 @@ We will not be writing code other than YAML config files, so you can use other t
 ---
 
 ## Lab Contents
-As this lab is quite long, it has been broken into several modules:
+As this lab is quite long, it has been split into several modules:
 
 - [Module 1 - Deploying Kubernetes](part1){: .btn-success}  
 - [Module 2 - Azure Container Registry (ACR)](part2){: .btn-success}  

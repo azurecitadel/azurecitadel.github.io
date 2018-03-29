@@ -124,8 +124,8 @@ kubectl logs -l app=data-api
 ```
 Check the output for log messages confirming the app has connected to MonogDB OK and has started listening on port 4000
 
-## Access Smilr Data API with proxy
-Now how do we access the Smilr Data API? One way is to use port forwarding to create a 'tunnel' into the cluster using `kubectl port-forward`.
+## Access Smilr Data API
+Now how do we access the Smilr Data API? One quick way is to use port forwarding to create a 'tunnel' into the cluster using `kubectl port-forward`.
 
 First get the name of of the Data API pod with:
 ```
@@ -136,13 +136,13 @@ Then start the port forwarding tunnel from localhost port 8080 to the container 
 ```
 kubectl port-forward {data_api_pod_name} 8080:4000
 ```
-Now access the Data API in your browser by visiting `http://localhost:8080/api/info` this should return some system & status information from the Smilr API as JSON. Use `Ctrl+C` to stop the `kubectl port-forward` command and close the tunnel.
+Now access the Data API in your browser by visiting `http://localhost:8080/api/info` this should return some system & status information from the Smilr API as JSON. You can now use `Ctrl+C` to stop the `kubectl port-forward` command and close the tunnel.
 
 ## End of Module 3
 What we have have at this stage in Kubernetes can be represented as follows
 ![Application Architecture Diagram](/labs/kubernetes/images/part3.png)
 
-Now this is not a great configuration for a lot of reasons, and in the next module we will examine why, and rectify it
+Now this is not a recommended configuration for a lot of reasons, and in the next module we will examine why, and start to rectify it
 
 ---
 

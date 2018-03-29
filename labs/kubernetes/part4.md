@@ -15,10 +15,10 @@ image:
 ## Overview
 In the previous module we connected directly to our data API pod using port forwarding and we also linked that service to a MonogDB database using the IP address of the pod it was running in. **Both these approaches are bad practice, and should not be used when deploying real apps in production scenarios.**
 
-Why? In Kubernetes IP addresses and pod names are never fixed, pods are both ***fungible*** and also ***mortal**, they should be considered effectively ephemeral. Here are some reasons:
+Why? In Kubernetes IP addresses and pod names are never fixed, pods are both ***fungible*** and also ***mortal***, they should be considered effectively ephemeral. Here are some reasons:
 - When scaling deployments to multiple replicas, how can we know the IP address or name of the pod? As there will be many
-- Pods can move (be re-scheduled) between nodes, due to node failures or resource scheduling. This will result in the pod being destroyed and re-created, and likely an IP address change
-- Rolling updates. When applying a change (e.g. updating the container image from **myapp:v1** to **myapp:v2**) in a deployment, Kubernetes employs a rolling update strategy, where each replica pod is updated in turn. This also results in it being destroyed and re-created
+- Pods can move (be re-scheduled) between nodes, due to failures, resource scheduling or other reasons. This will result in the pod being destroyed and re-created on a different machine, and it is likely the IP address will change
+- Rolling updates. When applying a change (e.g. updating the container image from **myapp:v1** to **myapp:v2**) to a running deployment, Kubernetes employs a rolling update strategy, where each replica pod is updated in turn. This also results in it being destroyed and re-created
 
 The analogy used here is 'pets vs cattle'. Traditional static infrastructure such as VMs are considered "pets", they have fixed names/IPs, considered permanent and they will be patched & maintained. On the other hand pods & containers are considered "cattle", they are not given unique names, they are identical, managed en-mass and are replaceable  
 [🖼️ Pets vs Cattle](/labs/kubernetes/images/pets-cattle.png){:target="_blank" class="btn-info"}
@@ -50,7 +50,15 @@ spec:
   selector:
     app: mongodb
 ```
-This will create a service mapped to all pods labelled with `app=mongodb`, and associate port 27017 (used my Mongo) on the service endpoint to port 27107 on the containers. You can view the service(s) you have with `kubectl get service`. This new service will have a virtual IP inside the cluster, but also an internal DNS entry. How Kubernetes assigns DNS records to pods and services is a topic for another day, but any pod in the cluster can address our new service using any of:
+This will create a service mapped to all pods labelled with `app=mongodb`, and associate port 27017 (used by Mongo) on the service endpoint to port 27107 on the containers. 
+
+Create the new service with:
+```
+kubectl apply -f mongo.svc.yaml
+```
+You can view the service(s) you have by running `kubectl get service`. Check the `mongodb-svc` is there.
+
+This new service will have a virtual IP inside the cluster, but Kubernetes also gives it an internal DNS name. How Kubernetes assigns DNS records to pods and services is a topic for another day, but any pod in the cluster can address our new service using any of:
 - `mongodb-svc.default.svc.cluster.local`
 - `mongodb-svc.default`
 - `mongodb-svc`
@@ -72,14 +80,14 @@ Then update the deployment by re-running:
 kubectl apply -f data-api.deploy.yaml
 ```
 
-This will tell Kubernetes to do an update to the existing deployment, it will kill off the old pod(s) and create new one(s) with the updated connection string set. Check the status as before, and the logs of the pod with:
+The use of `kubectl apply` tells Kubernetes to perform an update to the existing deployment, it will kill off the old pod(s) and create new one(s) with the updated connection string set. Check the status as before, and the logs of the pod with:
 ```
 kubectl logs -l app=data-api
 ```
 
 
 ## Create Service for Data API
-Next create a service for our Smilr app Data API database. This service we do want to access outside of the cluster, so we use type `LoadBalancer`. A LoadBalancer in Kubernetes provides an external public IP address with load balanced access to each of the pods in the service. A Kubernetes LoadBalancer is actually instantiated by the cloud provider where the cluster resides, in our case Azure - but all of this is handled automatically for us
+Next create a service for our Smilr Data API. This service we do want to access outside of the cluster (as the Smilr client app communicates with it), so we use type `LoadBalancer`. A LoadBalancer in Kubernetes provides an external public IP address with load balanced access to each of the pods in the service. A Kubernetes LoadBalancer is actually instantiated by the cloud provider where the cluster resides, in our case Azure - but all of this is handled automatically for us
 
 Create a new file called **data-api.svc.yaml** and paste the following YAML contents, save the file then run `kubectl apply -f data-api.svc.yaml`
 ```yaml
@@ -99,7 +107,7 @@ spec:
 
 When you run `kubectl get service` you will see the column **EXTERNAL-IP** and the `data-api-svc` will have **\<pending\>** as the status. It can take 5-10 minutes for the service to get an external IP the first time; as Azure is deploying an Azure LoadBalancer and Public IP, and setting up NAT rules
 
-Keep checking `kubectl get service` and once the service has an external IP, you can access it with your browser and check the info API as before, with: `http://{external_ip}/api/info`. 
+Keep checking `kubectl get service` and once the service has an external IP, you can access it with your browser and call the info API as before, with: `http://{external_ip}/api/info`. 
 
 Make a note of the Data API IP as we'll use it in the next module.
 

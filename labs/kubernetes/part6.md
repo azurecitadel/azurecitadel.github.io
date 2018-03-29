@@ -93,7 +93,7 @@ Persisting data with Docker containers (not just in Kubernetes) is done through 
 
 
 We'll change the MongoDB deployment to use a *StatefulSet*. Create new file called **mongo.stateful.yaml** and paste the following YAML into the file:
-```
+```yaml
 kind: StatefulSet
 apiVersion: apps/v1
 metadata:
