@@ -2,15 +2,14 @@
 layout: article
 title: "Kubernetes: Hands On With Microservices"
 categories: labs
-date: 2018-03-24
+date: 2018-03-22
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
 image:
   feature: kube.png
   teaser: containers.png
-  thumb:
-excerpt: Designed for beginners to get started with Kubernetes going from zero to deploying a real working microservices application, with clustering, scaling and persistence 
+excerpt: Designed for people wanting to learn Kubernetes; going from basics to deploying a real working microservices application, with clustering, scaling and persistence 
 ---
 
 {% include toc.html %}

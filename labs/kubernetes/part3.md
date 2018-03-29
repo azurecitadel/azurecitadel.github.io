@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Kubernetes: Module 3 - Deploying the Data Layer"
-date: 2018-03-24
+date: 2018-03-22
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
