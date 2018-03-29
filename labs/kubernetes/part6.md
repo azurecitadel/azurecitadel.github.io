@@ -38,10 +38,10 @@ You should see three pods, all named with the same **data-api-** prefix and thos
 
 The *Service* we placed in front of the Data API was a *LoadBalancer*, so that will automatically start to distribute requests across the three pods. Because we specified a selector (`app=data-api`) the new pods are matched against this selector and automatically picked up. There's nothing we need to do, this highlights some of the power and ease of scaling that Kubernetes provides.
 
-### Optional - Validate Loadbalancing
+### Optional - Validate Load Balancing
 Demonstrating the load balancing is really happening is a little tricky, you can access the Data API info URL:  
 `http://{data-api-svc_external_ip}/api/info`  
-And look at the hostname returned, it should change as you make multiple requests (F5) but sometimes your browser or the Azure Loadbalancer will decide to stick you to a single host. Another way to see it in action is running the following command repeatedly and observing the hostname returned
+And look at the hostname returned, it should change as you make multiple requests (F5) but sometimes your browser or the Azure Load Balancer will decide to stick you to a single host. Another way to see it in action is running the following command repeatedly and observing the hostname returned
 
 ```
 wget -q -O- http://{data-api-svc_external_ip}/api/info | jq '.hostname'
@@ -73,9 +73,9 @@ Kubernetes does provide a feature called *StatefulSets* which greatly helps with
 
 *StatefulSets* are not a magic wand however - any stateful components such as a database (e.g. MongoDB), still needs to be made aware it is running in multiple places and handle the data synchronization/replication. This [can be done with MongoDB](https://github.com/cvallance/mongo-k8s-sidecar) but is deemed too complex for this lab, and is left for an optional exercise
 
-**💬 Note.** The `ClusterIP` service we created will quite happily "round-robin" between multiple replicas inside the cluster so our choice of service is not the issue here. 
+**💬 Note.** The `ClusterIP` service we created will quite happily "round-robin" between multiple replicas inside the cluster. It's not quite true load balancing, but close enough, this means our choice of service is not the issue here. 
 
-There's also a second more fundamental problem with our MongoDB instance - **it lacks persistence**. Pods (and therefore containers) are by default are ephemeral so any data they write is lost when they are destroyed or re-secheduled
+There's also a second more fundamental problem with our MongoDB instance - **it lacks persistence**. Pods (and therefore containers) are by default are ephemeral so any data they write is lost when they are destroyed or re-scheduled
 
 You can test this out by deleting the MonogDB pod, the deployment (*ReplicaSet*) will then immediately re-create it, so it's effectively a restart
 ```
@@ -88,7 +88,7 @@ After about 30 seconds, reload the Smilr UI and you'll see you've lost all the d
 Let's fix our data loss problem. This next part will introduce a lot of new topics, but ends up being quite simple in the end.
 
 Persisting data with Docker containers (not just in Kubernetes) is done through *Volumes*, these are logical chunks of data much a bit like disks. These volumes are managed by the Docker engine, and mounted into a running container at a mount point on the container's internal file system   
-[📘 Optional Reading - Docker Storage](https://docs.docker.com/storage/){:target="_blank" class="btn-info"}
+[📘 Docker Storage](https://docs.docker.com/storage/){:target="_blank" class="btn-info"}
 
 
 

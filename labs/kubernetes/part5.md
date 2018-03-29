@@ -101,7 +101,7 @@ This script will connect to MongoDB, and inject some demo data (events and feedb
 Now refresh the Smilr app in your browser, and check there are events on the home screen, and go into te reports view to validate there is example feedback in the database.
 
 ## End of Module 5
-What we have have at this stage in Kubernetes is our desired state
+What we have at this stage in Kubernetes is our desired state
 ![Application Architecture Diagram](/labs/kubernetes/images/arch.png)
 
 But there's a few final improvements we need to make our app more robust

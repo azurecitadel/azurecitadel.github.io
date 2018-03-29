@@ -57,18 +57,23 @@ However a baseline level of knowledge is assumed in two main areas:
 
 
 ### Pre-Reqs
-- [**An Azure subscription**](/guides/subscription/)  
-We will deploy an Azure Container Service (AKS) cluster however this is not necessarily an expensive service, and could easily run for several weeks using the £150 of credit in either a free Azure account or Azure Pass 
+There are a number of things you will need before starting this lab:
 
-- [**Docker installed locally**](/guides/docker)  
-This is only required to populate the *Azure Container Registry* with private copies of the Smilr images (using docker pull and push). This is optional and can be skipped if we leave out the use of *Azure Container Registry* (Module 2) and use public images directly from Dockerhub
+- [**An Azure Subscription**](/guides/subscription)  
+Either an existing Azure subscription you have access to (with 'contributor' rights) or Azure Pass or free account.  
+We will deploy an Azure Container Service (AKS) cluster however this is not necessarily an expensive service, and could easily run for several weeks in the credit provided by an Azure Pass  
+***Note On Permissions*** - If using an existing subscription you will need rights to create a service principal in the Azure AD tenant you use. This is a pre-req to deploying AKS. ***If you activate an Azure Pass do not use your company/work email address***
+
+- [**Docker Installed Locally**](/guides/docker)  
+Having Docker installed is preferred, however this is only required to populate the *Azure Container Registry* with private copies of the Smilr images (using docker pull and push). This is optional and can be skipped if the use of *Azure Container Registry* (Module 2) is omitted, and instead public images used directly from Dockerhub.
 
 - [💻 Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest){:target="_blank" class="btn-info"}  
-You can install the Azure CLI under Windows (i.e. run from PowerShell terminal) or within WSL bash. Using WSL bash is **strongly recommended**  
+You will need at least **version 2.0.27** of the CLI installed. You can install the Azure CLI under Windows (i.e. run from PowerShell terminal) or within WSL bash.  
+An alternative is to use [Azure Cloud Shell](https://shell.azure.com/) (which has everything installed we need). Using bash either from WSL or the Cloud Shell is the preferred option.  
 Use of the legacy Windows CMD prompt is not advised, and use of alternative bash systems (gitbash or cygwin) is discouraged
 
 - [💻 Visual Studio Code](https://code.visualstudio.com/){:target="_blank" class="btn-info"}  
-We will not be writing code other than YAML config files, so you can use other text editors if you wish (but not Notepad!). VS Code has good support for YAML and the [Kubernetes extension](https://marketplace.visualstudio.com/items?itemName=brendandburns.vs-kubernetes) can be very useful for seeing what is going on 
+We will not be writing real code but there will be significant editing of YAML files. You can use other text editors if you wish (but not Notepad!). VS Code has good support for YAML and the [Kubernetes extension](https://marketplace.visualstudio.com/items?itemName=brendandburns.vs-kubernetes) can be extremely useful for working with Kubernetes 
 
 ---
 
