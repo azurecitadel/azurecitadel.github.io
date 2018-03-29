@@ -93,6 +93,9 @@ To access the dashboard go to [http://127.0.0.1:8001](http://127.0.0.1:8001) in 
 
 **💬 Note 2.**  It is fairly common for the proxy to drop after short periods of inactivity, so be prepared to re-start the `az aks browse` command if the dashboard stops responding
 
+## End of Module 1
+With an AKS cluster deployed and operational we're in a position to start using it, next we'll prepare the images we need and then look at deploying them to Kubernetes 
+
 ---
 
 [🡸 Lab Index](..){: .btn-success}  

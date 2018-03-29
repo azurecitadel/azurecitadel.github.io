@@ -135,7 +135,7 @@ This looks a lot like the *Deployment* object we created in module 3, but there'
 
 > **📕 Kubernetes Glossary.** A *PersistentVolume* (PV) is a piece of storage in the cluster that has been provisioned by an administrator. It is a resource in the cluster just like a node is a cluster resource. A *PersistentVolumeClaim* (PVC) is a request for storage by a user. A *StorageClass* provides a way for administrators to describe the “classes” of storage they offer.  
 
-[📘 Optional Reading - Kubernetes Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#introduction){:target="_blank" class="btn-info"}
+[📘 Kubernetes Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#introduction){:target="_blank" class="btn-info"}
 
 **💬 Note.** With AKS two *StorageClasses* are provided out of the box, both are backed by Azure Managed Disks
 

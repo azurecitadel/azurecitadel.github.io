@@ -58,10 +58,10 @@ However a baseline level of knowledge is assumed in two main areas:
 
 ### Pre-Reqs
 - [**An Azure subscription**](/guides/subscription/)  
-We will deploy an Azure Container Service (AKS) cluster however this is not expensive and can easily run for several weeks using the £150 of credit in a free Azure account or Azure Pass 
+We will deploy an Azure Container Service (AKS) cluster however this is not necessarily an expensive service, and could easily run for several weeks using the £150 of credit in either a free Azure account or Azure Pass 
 
 - [**Docker installed locally**](/guides/docker)  
-This is optional if you want to skip want to skip using *Azure Container Registry* (Part 2) and use public images directly from Dockerhub
+This is optional and can be skipped if we leave out the use of *Azure Container Registry* (Module 2) and use public images directly from Dockerhub
 
 - [💻 Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest){:target="_blank" class="btn-info"}  
 You can install the Azure CLI under Windows (i.e. run from PowerShell terminal) or within WSL bash. Using WSL bash is **strongly recommended**  

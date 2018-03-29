@@ -68,6 +68,9 @@ docker tag smilr/frontend {acr_name}.azurecr.io/smilr/frontend
 docker push {acr_name}.azurecr.io/smilr/frontend
 ```
 
+## End of Module 2
+We now have the images we need in a private registry and also have the authorization in place to get AKS to pull/run images from it - we can proceed to look at deployments 
+
 ---
 
 [🡸 Module 1: Deploying Kubernetes](../part1){: .btn-success}  
