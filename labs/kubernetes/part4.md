@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Kubernetes: Module 4 - Services & Networking"
-date: 2018-03-22
+date: 2018-03-23
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
@@ -10,8 +10,10 @@ image:
   teaser: containers.png
 ---
 
+{% include toc.html %}
+
 ## Overview
-In the previous module we connected directly to our data API pod using port forwarding and we also linked that service to a MonogDB database using the IP address of the pod it was running in. **Both these approaches are extremely bad practice, and should not be used when working with Kubernetes.**
+In the previous module we connected directly to our data API pod using port forwarding and we also linked that service to a MonogDB database using the IP address of the pod it was running in. **Both these approaches are bad practice, and should not be used when deploying real apps in production scenarios.**
 
 Why? In Kubernetes IP addresses and pod names are never fixed, pods are both ***fungible*** and also ***mortal**, they should be considered effectively ephemeral. Here are some reasons:
 - When scaling deployments to multiple replicas, how can we know the IP address or name of the pod? As there will be many

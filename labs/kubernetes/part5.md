@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Kubernetes: Module 5 - Deploying the Frontend"
-date: 2018-03-22
+date: 2018-03-23
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
@@ -9,6 +9,8 @@ image:
   feature: kube.png
   teaser: containers.png
 ---
+
+{% include toc.html %}
 
 ## Overview
 Now we know how to create deployments and services, we can pick up the pace a little, and get the frontend microservice up and running 
@@ -106,5 +108,5 @@ But there's a few final improvements we need to make our app more robust
 
 ---
 
-[🡸 Module 3: Deploying the Data Layer](../part3){: .btn-success}  
-[🡺 Module 5: Deploying the Frontend](../part5){: .btn-success}
+[🡸 Module 4: Services & Networking](../part4){: .btn-success}  
+[🡺 Module 6: Scaling & Persistence](../part6){: .btn-success}

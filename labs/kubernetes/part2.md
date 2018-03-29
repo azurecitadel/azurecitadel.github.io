@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Kubernetes: Module 2 - Azure Container Registry (ACR)"
-date: 2018-03-22
+date: 2018-03-23
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
@@ -9,6 +9,8 @@ image:
   feature: kube.png
   teaser: containers.png
 ---
+
+{% include toc.html %}
 
 ## Overview
 This part can be skipped entirely and you can run through the lab simply using images stored publicly on Dockerhub, this shortens and simplifies the exercise. However using a private registry such as *Azure Container Registry* represents a much secure and more real-world use case. If you wish to skip this jump straight to [Lab Module 3 - Deploying the Data Layer](../part3)

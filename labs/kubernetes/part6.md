@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Kubernetes: Module 6 - Scaling & Persistence"
-date: 2018-03-24
+date: 2018-03-23
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
@@ -9,6 +9,8 @@ image:
   feature: kube.png
   teaser: containers.png
 ---
+
+{% include toc.html %}
 
 ## Overview
 In this final module we will look at ways to make our app resilient and performant through the use of pod scaling and volume persistence

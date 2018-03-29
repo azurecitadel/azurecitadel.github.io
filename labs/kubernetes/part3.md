@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Kubernetes: Module 3 - Deploying the Data Layer"
-date: 2018-03-22
+date: 2018-03-23
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
@@ -9,6 +9,8 @@ image:
   feature: kube.png
   teaser: containers.png
 ---
+
+{% include toc.html %}
 
 ## Overview
 With our AKS Kubernetes cluster in place we're now ready to start using it, we'll do this by creating some Kubernetes *Pods* and *Deployments* via configurations

@@ -2,7 +2,7 @@
 layout: article
 title: "Kubernetes: Hands On With Microservices"
 categories: labs
-date: 2018-03-22
+date: 2018-03-23
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
