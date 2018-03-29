@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Security Session - Azure ATP (Advanced Threat Protection)
+title: Security Session - Protecting identities with Azure ATP
 date: 2018-03-29
 categories: videos
 tags: [Windows, identity, protection, compliance, post breach, ATP, Active Directory, security, security session]
