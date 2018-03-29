@@ -79,7 +79,7 @@ kubectl logs -l app=data-api
 
 
 ## Create Service for Data API
-Next create a service for our Smlir app Data API database. This service we do want to access outside of the cluster, so we use type `LoadBalancer`. A LoadBalancer in Kubernetes provides an external public IP address with load balanced access to each of the pods in the service. A Kubernetes LoadBalancer is actually instantiated by the cloud provider where the cluster resides, in our case Azure - but all of this is handled automatically for us
+Next create a service for our Smilr app Data API database. This service we do want to access outside of the cluster, so we use type `LoadBalancer`. A LoadBalancer in Kubernetes provides an external public IP address with load balanced access to each of the pods in the service. A Kubernetes LoadBalancer is actually instantiated by the cloud provider where the cluster resides, in our case Azure - but all of this is handled automatically for us
 
 Create a new file called **data-api.svc.yaml** and paste the following YAML contents, save the file then run `kubectl apply -f data-api.svc.yaml`
 ```yaml

@@ -71,7 +71,7 @@ By now the `frontend-svc` should have an external IP, get this IP using `kubectl
 
 The Smilr app client UI should load and look something like this, (here I've opened the browser console with F12 to check some of the log messages output by the app)
 
-![smlir-app](/labs/kubernetes/images/smilr1.png)
+![smilr-app](/labs/kubernetes/images/smilr1.png)
 
 We have a functioning app! Well mostly, wouldn't it be great to have some data in the app to look at. We could use the admin screens to manually create some events, but there is another way and we'll use another feature of Kubernetes to do it
 

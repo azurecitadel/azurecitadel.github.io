@@ -81,7 +81,7 @@ You can test this out by deleting the MonogDB pod, the deployment (*ReplicaSet*)
 ```
 kubectl delete pod -l app=mongodb
 ```
-After about 30 seconds, reload the Smlir UI and you'll see you've lost all the demo data you had loaded!
+After about 30 seconds, reload the Smilr UI and you'll see you've lost all the demo data you had loaded!
 
 
 ### Persisting data with StatefulSets and VolumeClaims

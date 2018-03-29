@@ -37,7 +37,7 @@ This is a simplified view of the Smilr application:
 
 This is what we will be standing up and deploying piece by to Kubernetes over the course of this lab
 
-Some important notes on the configuration of the Smlir app:
+Some important notes on the configuration of the Smilr app:
 - The frontend listens for HTTP traffic on port **3000** and is stateless
 - The frontend passes the API endpoint to the Angular client, this is set via an environmental variable called `API_ENDPOINT`
 - The frontend makes no connection to the data-api, it only serves the Angular client app. This is a common architectural pattern for [*Single Page Applications*](https://medium.com/@NeotericEU/single-page-application-vs-multiple-page-application-2591588efe58){:target="_blank"}. This is different from traditional 3-tier applications you might be familiar with
