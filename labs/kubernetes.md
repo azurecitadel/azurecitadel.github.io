@@ -6,6 +6,7 @@ date: 2018-03-22
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
+featured: true
 image:
   feature: kube.png
   teaser: containers.png
@@ -80,3 +81,4 @@ As this lab is quite long, it has been broken into several modules:
 - [Module 4 - Services & Networking](part4){: .btn-success}
 - [Module 5 - Deploying the Frontend](part5){: .btn-success}
 - [Module 6 - Scaling & Persistence](part6){: .btn-success}
+- [Extra - Optional Exercises](extra){: .btn-success}
