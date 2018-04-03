@@ -47,16 +47,16 @@ Some important notes on the configuration of the Smilr app:
 
 
 ### Assumptions & Scope
-This lab does not require any Kubernetes skills or knowledge, however being familiar with some of the concepts, and what Kubernetes is for; would clearly be advantageous 
+This lab does not require any prior Kubernetes skills or knowledge, however being familiar with some of the concepts and what Kubernetes does, would clearly be advantageous 
 
 [📘 What is Kubernetes?](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/){:target="_blank" class="btn-info"} 
 
-However a baseline level of knowledge is assumed in two main areas:
-- **Standard use of Azure:** resource groups, subscriptions, Azure CLI, etc. 
-- **Docker basics:** What are images & containers, tags, container registries etc. If you need to get up to speed quickly, try reading the [Containers Tech Primer](/guides/tech-primer-containers)
+As Kubernetes is build on top of containers and Docker, and we'll be using Azure, baseline level of knowledge is assumed in two main areas:
+- **Standard use of Azure:** - Azure CLI, Resource groups, subscriptions, etc. 
+- **Docker basics:** - What are images & containers, tags, container registries etc. If you need to get up to speed quickly, you can try reading the [Containers Tech Primer](/guides/tech-primer-containers)
 
 
-### Pre-Reqs
+## Pre-Reqs
 There are several things you will need before starting this lab:
 
 - [**An Azure Subscription**](/guides/subscription)  
