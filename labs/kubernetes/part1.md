@@ -15,8 +15,14 @@ image:
 ## Deploying AKS
 We will begin by deploying Kubernetes using [*Azure Container Service (AKS)*](https://azure.microsoft.com/en-us/services/container-service/) (for the rest of the document we will simply refer to it as AKS)
 
-**💬 Note.** At the time of writing (Mar 2018) AKS is in preview and the only regions where AKS can be deployed are: **westeurope, westus2, eastus, centralus, canadacentral** & **canadaeast**   
-> Pick a location and use it for everything you create in this lab. We will use **westeurope**, but you can use one of the other regions listed above if you wish
+**💬 Note.** At the time of writing (Mar 2018) AKS is in preview and the only Azure regions where AKS can be deployed are: 
+- westeurope
+- eastus
+- centralus
+- canadacentral
+- canadaeast  
+
+> Pick a location and use it for everything you create in this lab. We will use **westeurope**, but you can use one of the other regions listed above if you wish. If using an Azure Pass or Internal Use subscription, you might be limited to westeurope and eastus
 
 Using the Azure CLI creating an AKS cluster is easy. First create a resource group:
 ```
@@ -39,7 +45,7 @@ However you will probably want to customize your cluster, some common options ar
 
 A recommended cluster configuration for this lab is as follows:
 ```
-az aks create -g kube-lab -n aks-cluster -l westeurope --node-count 3 --node-vm-size Standard_B4ms --kubernetes-version 1.9.2
+az aks create -g kube-lab -n aks-cluster -l westeurope --node-count 3 --node-vm-size Standard_B2ms --kubernetes-version 1.9.2
 ```
 This is a three node cluster, running Kubernetes 1.9.2 using B-Series burstable VMs to minimize costs
 

@@ -22,7 +22,7 @@ We didn't provide Kubernetes with any information about how much memory or CPU o
 
 - **Auto Scaling**  
 We manually scaled our deployments, however there are many cases where you want the scaling up & down to be done automatically. This can be done with the *Horizontal Pod Autoscaler*  
-[📘 Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/){:target="_blank" class="btn-info"}
+[📘 Auto Scaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/){:target="_blank" class="btn-info"}
 
 - **Initialisation**  
 Rather than manually running the demoData script we could have used an *InitContainer* to run the script before starting the rest of the containers in the data-api pod   
