@@ -51,7 +51,7 @@ This lab does not require any prior Kubernetes skills or knowledge, however bein
 
 [📘 What is Kubernetes?](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/){:target="_blank" class="btn-info"} 
 
-As Kubernetes is build on top of containers and Docker, and we'll be using Azure, baseline level of knowledge is assumed in two main areas:
+As Kubernetes is built on top of containers and Docker, and we'll be using Azure, baseline level of knowledge is assumed in two main areas:
 - **Standard use of Azure:** - Azure CLI, Resource groups, subscriptions, etc. 
 - **Docker basics:** - What are images & containers, tags, container registries etc. If you need to get up to speed quickly, you can try reading the [Containers Tech Primer](/guides/tech-primer-containers)
 
