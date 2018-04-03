@@ -37,7 +37,7 @@ The MongoDB instance could quite easily be replaced with Cosmos DB, it has a Mon
 
 ## Advanced
 - **MonogDB Replication**  
-We skipped over this in the main lab, but it can be investigated as an extra task, it requires a "sidecar" container and the use of the StatefulSet we already set up. The sidecar container does some of the Mongo configuration for us 
+We skipped over this in the main lab, but it can be investigated as an extra task, it requires a "sidecar" container and the use of the StatefulSet we already set up. The sidecar container does some of the Mongo configuration for us  
 [📘 Kubernetes sidecar for Mongo](https://github.com/cvallance/mongo-k8s-sidecar){:target="_blank" class="btn-info"}
 
 - **Helm Chart**  

@@ -15,9 +15,9 @@ image:
 
 {% include toc.html %}
 
-All of the workshops require a working Azure subscription.  Ensure that you have one of the following options enabled and verified.
-* Visual Studio Subscription
-* Internal User Rights
+Many of the workshops & labs require a working Azure subscription.  Ensure that you have one of the following options enabled and verified.
+* Visual Studio Subscription (aka MSDN Subscription)
+* Internal Usage Rights
 * Azure Free
 * Azure Pass
 
@@ -49,10 +49,10 @@ Silver |$6,100
 Gold | $12,100
 
 The internal usage rights ([IUR](http://aka.ms/iur)) credits may be used for 
-* internal business use
-* customer demo
-* internal development and testing
-* internal training for employees and customers 
+* Internal business use
+* Customer demos
+* Internal development and testing
+* Internal training for employees and customers 
 
 The internal usage rights may be activated at [http://aka.ms/ActivateIUR](http://aka.ms/ActivateIUR).  
 
@@ -71,14 +71,15 @@ The [FAQ](https://azure.microsoft.com/en-gb/free/free-account-faq/) includes det
 ## Azure Pass
 
 If you are a partner working with Microsoft's One Commercial Partner group and the session is being hosted by a Cloud Solution Architect (CSA), then they may provide you with an **Azure Pass** subscription.  
-   * Open a private browser session, go to http://signup.live.com and create a clean new Microsoft account in  **_labname.firstname.lastname_@outlook.com** format 
-    * Go to https://www.microsoftazurepass.com and follow the instructions to redeem the code and activate your Azure Pass
+* Open a private browser session, go to http://signup.live.com and create a clean new Microsoft account in  **_labname.firstname.lastname_@outlook.com** format 
+* Go to https://www.microsoftazurepass.com and follow the instructions to redeem the code and activate your Azure Pass
 
 ## Common Pitfalls to Avoid
 
-* Free Trial accounts may have a CPU quota that is insufficient for the lab environment deployment to successfully complete
+* ***When redeeming an Azure Pass - Do not use a work/company email address*** Many companies have their Azure AD tenant set up preventing normal users write access to the directory and therefore you cannot register apps, create service principals, users or groups - *this will prevent you from completing many of the labs & workshops here*
 * Redeeming an Azure Pass code against an email address previously used for a trial will succeed, but the activation will fail
-* Using a work email may mean that you do not have write access to the company's directory and therefore you cannot create users and groups
+* Free Trial accounts may have a CPU quota that is insufficient for the lab environment deployment to successfully complete
+
 
 ## Verification 
 
