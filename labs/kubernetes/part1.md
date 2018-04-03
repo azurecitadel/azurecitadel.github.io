@@ -79,9 +79,9 @@ kubectl get all -n kube-system
 
 
 ## Access Kubernetes Dashboard 
-Accessing the Kubernetes dashboard is entirely optional, but if it's your first time using Kubernetes it can help provide visibility into what is going on. 
+Accessing the Kubernetes dashboard is optional, but if it's your first time using Kubernetes it can help provide visibility into what is going on. 
 
-For the lab we will use the command line for everything, however it is nice to be able to sanity check and see what is going on using the dashboard
+For the lab we will use the command line for everything, however it is useful to be able to sanity check and see what is going on using the dashboard. It's a matter of personal choice if you want to use the dashboard, but it's worth having to hand for triaging problems and investigation.
 
 The dashboard is accessed via a proxy tunnel into the Kubernetes cluster itself. To create this proxy:
 ```
@@ -98,5 +98,5 @@ With an AKS cluster deployed and operational we're in a position to start using 
 
 ---
 
-[🡸 Lab Index](..){: .btn-success}  
+[🡸 Main Lab Index](..){: .btn-success}  
 [🡺 Module 2: Azure Container Registry (ACR)](../part2){: .btn-success}

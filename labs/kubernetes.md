@@ -57,7 +57,7 @@ However a baseline level of knowledge is assumed in two main areas:
 
 
 ### Pre-Reqs
-There are a number of things you will need before starting this lab:
+There are several things you will need before starting this lab:
 
 - [**An Azure Subscription**](/guides/subscription)  
 Either an existing Azure subscription you have access to (with 'contributor' rights) or Azure Pass or free account.  
