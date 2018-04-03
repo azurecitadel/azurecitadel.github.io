@@ -113,12 +113,16 @@ Pointers:
 * With the current (Dec 2017) functionality and schema format you cannot use dynamic key vault names unless you use nested templates
 * Search for the information online on how to configure static keyVault names when passing in secrets
 * Use commands or the resource explorer to find the id for your key vault
-* Your configuration in this lab for keyvaults and secrets should only affect the parameters file, not the main template  
+* Your configuration in this lab for keyvaults and secrets should only affect the parameters file, not the main template
 
 Requirements:
-1.  Make sure the adminPassword is set with a reference to the secret from the keyVault rather than a cleartext value 
-1.  Move the vmName variable up into the parameters section and default it to the current value
-1.  Update the list of allowed Ubuntu versions in your main template to the current 14.x and 16.x LTS versions available on the platform and the default to the 16.x version.  (And feel free to add a few newer ones.)
+
+1. Make sure the adminPassword is set with a reference to the secret from the keyVault rather than a cleartext value
+1. Move the vmName variable up into the parameters section and default it to the current value
+1. Update the list of allowed Ubuntu versions in your main template to the current 14.x and 16.x LTS versions available on the platform and the default to the 16.x version.  (And feel free to add a few newer ones.)
+1. Update the parameters file as well:
+  * Set the adminUsername to your username
+  * Set the dnsLabelPrefix to something that will be unique for the FQDN
 
 Once you have completed your files and have successfully submitted then please see how yours compare to the ones below.
 

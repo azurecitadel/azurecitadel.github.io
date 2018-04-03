@@ -33,7 +33,7 @@ Microsoft Readiness – Formally known as the Microsoft Readiness app. Provides 
 
 Marketing Concierge - Evolve your marketing and offer the best possible service to your customers through our vast range of marketing and sales services.
 
-* Offering ready-to-go packages to help drive customer product usage to then ensure repeatable business and most importantly, contribute to retaining customer loyalty 
+* Offering ready-to-go packages to help drive customer product usage to then ensure repeatable business and most importantly, contribute to retaining customer loyalty
 * Contact: ukmc@microsoft.com
 
 A lot of work has gone in to the site based on your feedback and areas for self serve. Please feel free to give your feedback on the changes in the Disqus area below!
