@@ -43,17 +43,22 @@ Useful links
 * [Azure Docs hub for Terraform](https://docs.microsoft.com/en-gb/azure/terraform/)
 * [Terraform page in Linux VM area](https://aka.ms/terraformdocs) (useful one pager)
 
-## Connecting with the Terraform Azure Provider
+## Connection options for the Terraform Azure Provider
 
 There are three options for connecting to Azure with the Terraform AzureRM provider. Each is described below with the most appropriate use case.
 
-### Option 1: Azure CLI
+Connection Type | Use case scenario
+Azure CLI | Single user for demo or test/dev
+Managed Service Identity | VM level trust and authentication.  Designed for team use within a subscription.
+Service Principal | Credentials for subscription included in Terraform files.  Centralised systems for multi-tenancy / subscriptions, automation platforms such as CI/CD pipelines and other orchestration tools.
+
+## Terraform provider authenticated with the Azure CLI
 
 If you are logged in with the Azure CLI then it will use that authentication by default.
 
 This is only really suitable for single user environments, so personal test and dev and for demonstration purposes.
 
-#### Using Terraform in Cloud Shell
+### Terraform provider authenticated with the Azure CLI - Cloud Shell
 
 If you are using the Cloud Shell then you will already be logged into Azure, although you may want to use `az account list` and `az account set --subscription <subscriptionId>` to change your default subscription.
 
@@ -61,11 +66,13 @@ Both az and terraform are maintained packages in the bash Cloud Shell container 
 
 Type `terraform` and you'll see the command help.
 
-#### Adding Terraform to Windows Subsystem for Linux
+### Terraform provider authenticated with the Azure CLI - Windows Subsystem for Linux
 
 The following have been tested on the Ubuntu version of WSL.
 
 Install the Azure CLI from <https://aka.ms/GetTheAzureCli> if you haven't done so already.
+
+You may also want to install jq: `sudo apt-get --assume-yes install jq`.
 
 Install Terraform.  Either:
 
@@ -82,9 +89,21 @@ chmod 755 /usr/local/bin/terraform
 EOF
 ```
 
-You may also want to install jq: `sudo apt-get --assume-yes install jq`
+Use `az login` and `az account set --subscription <subscriptionId>` to login to the correct subscription.
 
-### Option 2: Service Principal
+Run the `terraform` command.
+
+## Terraform provider authenticated with Managed Service Identity
+
+Managed Service Identity (MSI) is perfect for allowing code to run on a virtual machine.  You have an automatically managed identity for logging into Azure without passing credentials in the code.
+
+Once configured you can set the `use_msi` provider option in Terraform to `true` and the virtual machine will retrieve a token to access the Azure API.  In this context MSI allows all users on that trusted machine to share the same authentication mechanism when running Terraform.
+
+MSI is the authentication mechanism used by the Terraform offering in the Azure Marketplace. See the section below for information on the offering and how to spin it iup within your subscription.
+
+Be aware that Terraform is also capable of deploying virtual machines that are configured with their own managed service identities.
+
+## Terraform provider authenticated with a Service Principal
 
 Making use of a Service Principal for the authentication is the most appropriate route if embedded into another automation framework such as a CI/CD pipeline.
 
@@ -104,12 +123,12 @@ clientId=$(jq -r .appId <<< $spout)
 clientSecret=$(jq -r .password <<< $spout)
 tenantId=$(jq -r .tenant <<< $spout)
 
-az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId --output json
+az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
 ```
 
 Check that the login is successful using any CLI command such as `az account list-locations --output table` or `az account show --output jsonc`.
 
-Create a provider.tf file with the information:
+Create a azureProviderAndCreds.tf file with the information:
 
 ```bash
 echo "provider \"azurerm\" {
@@ -118,20 +137,12 @@ echo "provider \"azurerm\" {
   client_secret   = \"$clientSecret\"
   tenant_id       = \"$tenantId\"
 }
-" > provider.tf && chmod 750 provider.tf
+" > azureProviderAndCreds.tf && chmod 640 azureProviderAndCreds.tf
 ```
 
 Alternatively, export ARM_SUBSCRIPTION_ID, ARM_CLIENT_ID, ARM_CLIENT_SECRET and ARM_TENANT_ID.
 
 Your Azure Provider section then only needs to contain `provider "azurerm" { }`.
-
-### Option 3: Managed Service Identity
-
-Managed Service Identity is perfect for allowing code to run on a virtual machine.  You have an automatically managed identity for logging into Azure without passing credentials in the code.
-
-Once configured you can set the `use_msi` provider option in Terraform to `true` and the virtual machine will retrieve a token to access the Azure API.  In this context MSI allows all users on that trusted machine to share the same authentication mechanism when running Terraform.
-
-Be aware that Terraform is also capable of deploying virtual machines that are configured with their own managed service identities.
 
 ## Spin up a Terraform VM from the Marketplace
 
@@ -332,6 +343,48 @@ OK, once you have cleaned up then you should be good to head into the challenges
 * [Terraform docs for AzureRM provider](https://aka.ms/terraform)
 * [Azure Docs hub for Terraform](https://docs.microsoft.com/en-gb/azure/terraform/)
 * [Terraform page in Linux VM area](https://aka.ms/terraformdocs) (useful one pager)
+
+## Manually configuring Terraform remote state
+
+One of the nice features of the Terraform VM Marketplace offering is that it will automatically back off the local terraform.tfstate to blob storage, with locking based on blob storage leases. It also creates a remoteState.tf file for you in your home directory. The remoteState.tf has the following format:
+
+```json
+terraform {
+ backend "azurerm" {
+  storage_account_name = "storestatelkbfjngsqkyiim"
+  container_name       = "terraform-state"
+  key                  = "prod.terraform.tfstate"
+  access_key           = "6Wbo0IfW3YKRbsjeF9LFxyvlA2dJ8cJQF+ys6ZHIkW8GdBemXB20MGv66E+Nxx5Wi5KjeCXuVF7BcMo1OPAZYw=="
+  }
+}
+```
+
+Note that the "key" is the name of the blob that will be created in the terraform-state container.
+
+You can also set up your own for directories using Service Principal for the provider authentication. First of all, log into Azure using the Service Principal for that terraform directory using `az login --service-principal --username <clientId> --password <clientSecret> --tenant <tenantId>`. The details should be in your azureProviderAndCreds.tf file.
+
+The commands below will then create a new resource group and storage account within the subscription and will create a new remoteState.tf file to configure the Azure backend correctly.  If you already have a remoteState.tf then it will overwrite so use the following commands carefully.
+
+```bash
+subscriptionId=$(az account show --output tsv --query id)
+az group create --name "terraform" --location "westeurope"
+saName=terraformstate$(tr -dc "[:lower:]" < /dev/urandom | head -c 10)
+az storage account create --name $saName --kind BlobStorage --access-tier hot --sku Standard_LRS --resource-group terraform --location westeurope
+saKey=$(az storage account keys list --account-name $saName --resource-group terraform --query "[1].value" --output tsv)
+az storage container create --name tfstate --account-name $saName --account-key $saKey
+
+echo "terraform {
+  backend \"azurerm\" {
+  storage_account_name = \"$saName\"
+  container_name       = \"tfstate\"
+  key                  = \"$subscriptionId.terraform.tfstate\"
+  access_key           = \"$saKey\"
+  }
+}
+" > remoteState.tf && chmod 640 remoteState.tf
+```
+
+In this example I have included the subscriptionId in the naming convention for the blob storage.
 
 --------------
 
