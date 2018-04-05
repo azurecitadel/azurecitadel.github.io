@@ -144,6 +144,29 @@ Alternatively, export ARM_SUBSCRIPTION_ID, ARM_CLIENT_ID, ARM_CLIENT_SECRET and 
 
 Your Azure Provider section then only needs to contain `provider "azurerm" { }`.
 
+If you also want to back off your terraform.tfstate file to blob storage then you can run the commands below to create a new resource group and storage account within the subscription and then a new remoteState.tf file to configure the Azure backend correctly.  The commands follow on naturally from the commands above, i.e. they assume that you are logged in with the Service Principal. Oh, and if you already have a remoteState.tf then these commands _will_ merrily overwrite it.
+
+```bash
+subscriptionId=$(az account show --output tsv --query id)
+az group create --name "terraform" --location "westeurope"
+saName=terraformstate$(tr -dc "[:lower:]" < /dev/urandom | head -c 10)
+az storage account create --name $saName --kind BlobStorage --access-tier hot --sku Standard_LRS --resource-group terraform --location westeurope
+saKey=$(az storage account keys list --account-name $saName --resource-group terraform --query "[1].value" --output tsv)
+az storage container create --name tfstate --account-name $saName --account-key $saKey
+
+echo "terraform {
+  backend \"azurerm\" {
+  storage_account_name = \"$saName\"
+  container_name       = \"tfstate\"
+  key                  = \"$subscriptionId.terraform.tfstate\"
+  access_key           = \"$saKey\"
+  }
+}
+" > remoteState.tf && chmod 640 remoteState.tf
+```
+
+In this example I have included the subscriptionId in the naming convention for the storage blob.
+
 ## Spin up a Terraform VM from the Marketplace
 
 Support for Terraform in Azure is already strong, but has been strengthened further with the addition of Terraform VM in the Marketplace.  This is ideal for customers who want to use a single Terraform instance across multiple team members, multiple automation scenarios and shared environments.
@@ -162,8 +185,6 @@ It features:
 * Shared remote state with locking, backed off to Azure Storage
 * Shared identity using MSI and RBAC
 
-There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to access and configure the Terraform VM.
-
 --------------
 
 ### SETUP: Spin up a Terraform VM
@@ -177,13 +198,30 @@ VirtualMachine    PublicIPAddresses    PrivateIPAddresses
 Terraform         52.174.86.74         10.0.0.4
 ```
 
-Check that you can SSH to the machine using Putty, WSL Ubuntu or Cloud Shell.  Don't forget to run the one off script to add the contributor permissions for the subscription as per the <https://aka.ms/aztfdoc>.
+Check that you can SSH to the machine using Putty, WSL Ubuntu or Cloud Shell.  
 
-By default you'll be in your home directory.  You can check the `/etc/passwd` and `/etc/group` files to show your default group.
+There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to access and configure the Terraform VM by running the `~/tfEnv.sh` script. Note that if you have multiple subscriptions then myou should make sure that you are in the correct one (using `az account list --output table` and `az account set --subscription <subscriptionId>`) and then run just the role assignment command within the `tfEnv.sh` file.
+
+One of the nice features of the Terraform VM Marketplace offering is that it will automatically back off the local terraform.tfstate to blob storage, with locking based on blob storage leases. It also creates a remoteState.tf file for you in your home directory. The remoteState.tf has the following format:
+
+```json
+terraform {
+ backend "azurerm" {
+  storage_account_name = "storestatelkbfjngsqkyiim"
+  container_name       = "terraform-state"
+  key                  = "prod.terraform.tfstate"
+  access_key           = "6Wbo0IfW3YKRbsjeF9LFxyvlA2dJ8cJQF+ys6ZHIkW8GdBemXB20MGv66E+Nxx5Wi5KjeCXuVF7BcMo1OPAZYw=="
+  }
+}
+```
+
+Note that the "key" is the name of the blob that will be created in the terraform-state container.
 
 #### Optional group setting configuration
 
-You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group and a shared area for the Terraform files. (And optionally change the default group for your ID.) E.g.:
+By default you'll be in your home directory.  You can check the `/etc/passwd` and `/etc/group` files to show your default group.
+
+You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group of admins and a shared area for the Terraform files. (And optionally change the default group for your ID.) E.g.:
 
 ```bash
 $ sudo addgroup terraform
@@ -195,7 +233,7 @@ $ ll -d /terraform
 drwxrwsr-x 2 root terraform 4096 Mar 19 11:19 /terraform/
 ```
 
-Only members of the new terraform group can create files in the /terraform folder.  The setgid permission ensures that all new files will automatically be assigned terraform as the group rather than the user's default group. You may need to log out of the Terraform VM and then log back in again to reflect the usermod change to the /etc/passwd file.
+Only members of the new terraform group will be able to create files in the /terraform folder.  The setgid permission ensures that all new files will automatically be assigned terraform as the group rather than the user's default group. You may need to log out of the Terraform VM and then log back in again to reflect the usermod change to the /etc/passwd file.
 
 ### SETUP: Test the Terraform flow
 
@@ -343,48 +381,6 @@ OK, once you have cleaned up then you should be good to head into the challenges
 * [Terraform docs for AzureRM provider](https://aka.ms/terraform)
 * [Azure Docs hub for Terraform](https://docs.microsoft.com/en-gb/azure/terraform/)
 * [Terraform page in Linux VM area](https://aka.ms/terraformdocs) (useful one pager)
-
-## Manually configuring Terraform remote state
-
-One of the nice features of the Terraform VM Marketplace offering is that it will automatically back off the local terraform.tfstate to blob storage, with locking based on blob storage leases. It also creates a remoteState.tf file for you in your home directory. The remoteState.tf has the following format:
-
-```json
-terraform {
- backend "azurerm" {
-  storage_account_name = "storestatelkbfjngsqkyiim"
-  container_name       = "terraform-state"
-  key                  = "prod.terraform.tfstate"
-  access_key           = "6Wbo0IfW3YKRbsjeF9LFxyvlA2dJ8cJQF+ys6ZHIkW8GdBemXB20MGv66E+Nxx5Wi5KjeCXuVF7BcMo1OPAZYw=="
-  }
-}
-```
-
-Note that the "key" is the name of the blob that will be created in the terraform-state container.
-
-You can also set up your own for directories using Service Principal for the provider authentication. First of all, log into Azure using the Service Principal for that terraform directory using `az login --service-principal --username <clientId> --password <clientSecret> --tenant <tenantId>`. The details should be in your azureProviderAndCreds.tf file.
-
-The commands below will then create a new resource group and storage account within the subscription and will create a new remoteState.tf file to configure the Azure backend correctly.  If you already have a remoteState.tf then it will overwrite so use the following commands carefully.
-
-```bash
-subscriptionId=$(az account show --output tsv --query id)
-az group create --name "terraform" --location "westeurope"
-saName=terraformstate$(tr -dc "[:lower:]" < /dev/urandom | head -c 10)
-az storage account create --name $saName --kind BlobStorage --access-tier hot --sku Standard_LRS --resource-group terraform --location westeurope
-saKey=$(az storage account keys list --account-name $saName --resource-group terraform --query "[1].value" --output tsv)
-az storage container create --name tfstate --account-name $saName --account-key $saKey
-
-echo "terraform {
-  backend \"azurerm\" {
-  storage_account_name = \"$saName\"
-  container_name       = \"tfstate\"
-  key                  = \"$subscriptionId.terraform.tfstate\"
-  access_key           = \"$saKey\"
-  }
-}
-" > remoteState.tf && chmod 640 remoteState.tf
-```
-
-In this example I have included the subscriptionId in the naming convention for the blob storage.
 
 --------------
 
