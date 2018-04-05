@@ -6,7 +6,7 @@ categories: labs
 author: Richard_Cheney
 image:
   feature: 
-  teaser: cloud-builder.jpg
+  teaser: cloud-builder.png
   thumb: 
 comments: true
 excerpt: Use Terraform's AzureRM provider to drive Infrastructure as Code.
@@ -86,7 +86,7 @@ You may also want to install jq: `sudo apt-get --assume-yes install jq`
 
 ### Option 2: Service Principal
 
-Making use of a Service Principal for the authentication is the nmost appropriate route if embedded into another automation framework such as a CI/CD pipeline.
+Making use of a Service Principal for the authentication is the most appropriate route if embedded into another automation framework such as a CI/CD pipeline.
 
 It make uses of a set of variables or environment variables. If the  variables are separated out into their own .tf file(s) then they may be customised for the customer or project and therefore the other .tf files are more portable. The same applies to using environment variables, which may then be exported in config files.
 
