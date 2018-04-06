@@ -122,7 +122,7 @@ A better picture can be found using `kubectl logs` to view the stdout & stderr i
 ```
 kubectl logs -l app=data-api
 ```
-Check the output for log messages confirming the app has connected to MonogDB OK and has started listening on port 4000
+Check the output for log messages confirming the app has connected to MongoDB OK and has started listening on port 4000
 
 ## Access Smilr Data API
 Now how do we access the Smilr Data API? One quick way is to use port forwarding to create a 'tunnel' into the cluster using `kubectl port-forward`.
