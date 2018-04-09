@@ -64,7 +64,14 @@ az aks install-cli
 ```
 If you get an error try running with `sudo` or by specifying the output file and path e.g. `az aks install-cli --install-location /home/blah/kubectl` If you do this, it is your responsibility to add the `kubectl` binary to your path
 
-The `kubectl` command works off a set of cached credentials, held in the **.kube** directory your user profile/homedir. The Azure CLI makes getting these credentials for your AKS instance easy. This command effectively "logs you in" to Kubernetes:
+**💬 Advice.** (April 2018) The default is to download the latest version of `kubectl`, which is currently version 1.10. This has a "feature" where the output of certain commands is missing helpful information. You can install an older version by adding `--client-version 1.9.3` to the command
+
+Test the command has been installed and is in your path by simply running
+```
+kubectl version
+```
+
+In order to access and manage Kubernetes `kubectl` command works off a set of cached credentials, held in the **.kube** directory your user profile/homedir. The Azure CLI makes getting these credentials for your AKS instance easy. This command effectively "logs you in" to Kubernetes:
 ```
 az aks get-credentials -g kube-lab -n aks-cluster
 ```
