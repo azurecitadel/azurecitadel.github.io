@@ -75,7 +75,7 @@ Kubernetes does provide a feature called *StatefulSets* which greatly helps with
 
 **💬 Note.** The `ClusterIP` service we created will quite happily "round-robin" between multiple replicas inside the cluster. It's not quite true load balancing, but close enough, this means our choice of service is not the issue here. 
 
-There's also a second more fundamental problem with our MongoDB instance - **it lacks persistence**. Pods (and therefore containers) are by default are ephemeral so any data they write is lost when they are destroyed or re-scheduled
+There's also a second more fundamental problem with our MongoDB instance - **it lacks persistence**. Pods (and therefore containers) are by default ephemeral, so any data they write is lost when they are destroyed or re-scheduled
 
 You can test this out by deleting the MongoDB pod, the deployment (*ReplicaSet*) will then immediately re-create it, so it's effectively a restart
 ```
