@@ -20,7 +20,7 @@ To create a *Azure Container Registry* (ACR) instance, pick a name for your ACR,
 
 Run these commands substituting your ACR name:
 ```
-az acr create -n {acr_name} -g kube-lab -l westeurope --sku Standard --admin-enabled true
+az acr create -n {acr_name} -g kube-lab -l eastus --sku Standard --admin-enabled true
 ```
 
 ## Configure Kubernetes to use ACR

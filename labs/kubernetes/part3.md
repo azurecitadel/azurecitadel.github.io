@@ -77,8 +77,9 @@ kubectl describe pod -l app=mongodb
 ```
 You can find the IP in the output (it will be a 10.244.x.x address), make a note of it, we'll use it in the next step
 
-**💬 Note.** If you are using WSL you can use `jq` to filter output and fetch just the IP with 
-`kubectl get pod -o json -l app=mongodb | jq ".items[].status.podIP"`
+**💬 Note.** The kubectl command supports a number of different output formats, including JSON, YAML and a syntax called [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) which allows you to filter and query the output. So in order to just get the IP address we could also have run:
+
+`kubectl get pod -l app=mongodb -o=jsonpath='{.items[0].status.podIP}{"\n"}'`
 
 ## Deploy Data API
 Create a new file called **data-api.deploy.yaml** and paste the contents below in it. You will need to replace **{acr_name}** and **{mongo_ip}** with their real values.
