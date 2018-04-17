@@ -222,7 +222,7 @@ or
 
 Finally, remove the outputs section.  We will come back to that later but for the moment it is another complication as it is currently referencing a resource that we might not be deploying.
 
-### Final lab4 template and parameter files
+## Final lab4 template and parameter files
 
 It is good to have choices!  Hopefully your files look something similar to these files:
 
@@ -238,7 +238,7 @@ It is good to have choices!  Hopefully your files look something similar to thes
     </b>
 </div>
 
-### What's next
+## What's next
 
 In the next section we will look at using the copy property to create multiple of a resource, or of a property (such as managed disks) within a resource.
 

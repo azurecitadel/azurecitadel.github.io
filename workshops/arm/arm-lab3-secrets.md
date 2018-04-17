@@ -255,7 +255,7 @@ The deployment lines also have the `--no-wait` switch at the end so that the dep
 
 Combining parameter files and inline parameters in this way can be very useful, particularly in multi-tenancy environments.
 
-### Final lab3 template and parameter files
+## Final lab3 template and parameter files
 
 ###### Lab 3 Files
 
@@ -271,7 +271,7 @@ Combining parameter files and inline parameters in this way can be very useful, 
 
 If yours aren't quite right then use the compare tool from the Command Palette.
 
-### What's next
+## What's next
 
 In the next section we will look at using the copy property to create multiple of a resource, or of a property (such as managed disks) within a resource.
 
