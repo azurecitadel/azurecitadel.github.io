@@ -685,4 +685,4 @@ Remove-AzureRmResourceGroup -Name lab1
 
 Creating templates from scratch using empty templates and snippets is only one of the possible methods.  In the next lab we will look at different sources.
 
-[▲ Index](../#index){: .btn-subtle} [Lab 2: Sources ►](../arm-lab2-sources){: .btn-success}
+[◄ Theory: Templates](../theoryTemplates){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 2: Sources ►](../arm-lab2-sources){: .btn-success}
