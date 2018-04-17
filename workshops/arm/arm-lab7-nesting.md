@@ -420,9 +420,13 @@ Here is a loose guide of what to do, rather than a set of explicit instructions.
 
 For bonus points, feel free to incorporate complex parameter objects and/or variable objects for the t-shirt sizes.
 
+## Submitting
+
+You won't be able to submit that nested templates with --template-file switch.  You have to use the --template-uri switch as otherwise the uri() function will fail validation. You can either push the files up to a GitHub repo (or somewhere else where they are accessible of http/https), or you can hardcode the vmUri to `"https://raw.githubusercontent.com/richeney/arm/master/lab7/vm.json"`.
+
 ## Final files
 
-There are many ways of completing that lab, so if you got it to work then it's all good.  If you want to see my files then here you go:
+There are a few ways of completing that lab, so if you got it to work then well done. If you want to see my files then here you go:
 
 ###### Lab 7 Files
 
@@ -437,6 +441,8 @@ There are many ways of completing that lab, so if you got it to work then it's a
         </li>
     </b>
 </div>
+
+I have duplicated the vmUri assignment in the azuredeploy.json in case you needed to see the hardcoded version mentioned in the section about submission.
 
 This lab also used a collection of files to describe how to use nested templates.  If you would like to see the full set then here is the directory within my GitHub repository:
 
