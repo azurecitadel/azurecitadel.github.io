@@ -211,4 +211,4 @@ For more background information on JSON templates and how they are deployed usin
 
 * [Template Sections](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)
 
-[◄ Theory: ARM](../theoryARM){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 1: Basics ►](../arm-lab3-secrets){: .btn-success}
+[◄ Theory: ARM](../theoryARM){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 1: Basics ►](../arm-lab1-basics){: .btn-success}
