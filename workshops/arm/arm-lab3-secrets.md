@@ -24,7 +24,6 @@ In this lab we will look at:
 
 These are all fairly common as you get more ambitious with your own templates or start using some of the more complex templates that are on the GitHub repository.
 
-
 ## ARM Functions
 
 But before we start moving through those areas, let's take a deeper look at the wealth of functions that are available to the ARM templates.  We'll start to see more of them as we work through the various sections of the lab so it is worth spending some time to understand that range of capability.
