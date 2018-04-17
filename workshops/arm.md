@@ -28,6 +28,10 @@ However the advice would always be to keep it as simple as possible and maximise
 
 The comments section has been enabled and feedback is always welcome.
 
+The short URL to get back to this page is:
+
+[**aka.ms/citadel/arm**](https://aka.ms/citadel/arm){:target="_blank" class="btn-info"}
+
 ## Pre-requisites
 
 You will need a working [Azure subscription](/guides/subscription). Test that the subscription is active by logging onto the [portal](http://portal.azure.com) and creating an resource group.
