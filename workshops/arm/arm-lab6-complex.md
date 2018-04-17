@@ -1,17 +1,11 @@
 ---
 layout: article
 title: 'ARM Lab 6: Using objects and arrays'
-date: 2018-01-08
+date: 2018-04-17
 categories: null
 tags: [authoring, arm, workshop, hackathon, lab, template, objects, arrays]
 comments: true
 author: Richard_Cheney
-previous:
-  url: ../arm-lab5-usingCopy
-  title: Using copy to create multiple resources 
-next:
-  url: ../arm-lab7-nestingTemplates
-  title: Nesting templates  
 ---
 
 {% include toc.html %}
@@ -76,7 +70,7 @@ As the boolean itself returns either true or false then it shortens the conditio
 
 ```json
 "deployPip": "[if(greater(length(parameters('dnsLabelPrefix')), 0), bool('true'), bool('false')]"
-``` 
+```
 
 Look again at the parameters section and the JSON objects for both "hub" and "spoke".  You can see the nesting of strings, objects and arrays.  And just as resourceGroup().location pulls out a single value within the object returned by resourceGroup(), you can see the same happening with the second line in that example condition statement section:
 
@@ -86,9 +80,10 @@ Look again at the parameters section and the JSON objects for both "hub" and "sp
       "name": "[concat(parameters('spoke').vnet.name, '/to-', parameters('hub').vnet.name)]",
 ```
 
-The concat command is pulling out the name of the spoke vnet and the name of the hub vnet.  This is very readable.  
+The concat command is pulling out the name of the spoke vnet and the name of the hub vnet.  This is very readable.
 
 One of the other benefits is the ability to use copy elements with arrays.  The subnets array within the spoke object is a good example.  Here is a reminder on how that looks:
+
 ```json
     "spoke": {
       "type": "object",
@@ -107,7 +102,9 @@ One of the other benefits is the ability to use copy elements with arrays.  The 
       }
     }
 ```
+
 This structure allows us to pass in an object that has only one subnet or flexibly allowed multiple subnets within that spoke's vNet.  And this works well with the copy section in the main virtual network resource:
+
 ```json
   "resources": [
     {
@@ -132,11 +129,12 @@ This structure allows us to pass in an object that has only one subnet or flexib
       }
     },
 ```
-The copy section loops through the array, using the length of the array as the count, and then input section pulls in the name and the addressPrefix.  
+
+The copy section loops through the array, using the length of the array as the count, and then input section pulls in the name and the addressPrefix.
 
 Also notice the addressPrefixes value.  This is returning an array rather than a string, which is exactly what is required for the addressSpace.addressPrefixes property.  It is very rare to have more than one address prefix in the address space, but it is possible if a customer has a requirement for a discontiguous address space, and this template is ready for that.
 
-## Using empty resource arrays to test 
+## Using empty resource arrays to test
 
 As we start using complex objects and arrays in both the parameter section and the variables section, you may need to troubleshoot syntactical errors which are less obvious than before.  One useful way of doing this is to use an ARM template with no resources.  Let's build one:
 
@@ -153,20 +151,21 @@ As we start using complex objects and arrays in both the parameter section and t
 
 We will use this technique a little more as we work through the variables section and start delving into the reference function a little more.
 
-## Object and array variables 
+## Object and array variables
 
 Adding more complexity into the variables section can paradoxically simplify the templates.  We will look at three areas:
+
 1. Using 't-shirt' variable objects to standardise on grouped values
 1. Using 'pointer' variables to shorten expressions in the resources section
 1. Creating arrays using copy
 
 ## Using variables to define t-shirt sizes
 
-This section is key to start defining the standards that you want to incorporate into your designs.  We are starting to create building block templates that provide a great deal of flexibility, but the danger there is that as a business or as a service provider, that flexibility leads to a lack of standardisation that can impact your ongoing support of provisioned systems.  Therefore creating sensible groupings can help here.  There are commonly called t-shirt sizes.  The Azure platform itself does this.  When you provision a [DSv3](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general#dsv3-series-sup1sup) virtual machine, you select from various sizes.  As you go up the sizes you have more vCPUs, more memory, larger temp storage, more storage IOPS and network bandwidth, and a higher number of possible data disks and NICs.  You do not have full flexibility on selecting a server with, for instance, a low number of vCPUs but a large amount of memory.  (You'll find other VM series that offer different ratios, but you get the point.) 
+This section is key to start defining the standards that you want to incorporate into your designs.  We are starting to create building block templates that provide a great deal of flexibility, but the danger there is that as a business or as a service provider, that flexibility leads to a lack of standardisation that can impact your ongoing support of provisioned systems.  Therefore creating sensible groupings can help here.  There are commonly called t-shirt sizes.  The Azure platform itself does this.  When you provision a [DSv3](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general#dsv3-series-sup1sup) virtual machine, you select from various sizes.  As you go up the sizes you have more vCPUs, more memory, larger temp storage, more storage IOPS and network bandwidth, and a higher number of possible data disks and NICs.  You do not have full flexibility on selecting a server with, for instance, a low number of vCPUs but a large amount of memory.  (You'll find other VM series that offer different ratios, but you get the point.)
 
 You can do the same sort of thing for your deployments.  Here is an example:
 
-#### VM t-shirts
+## - VM t-shirts
 
 ```json
 {
@@ -239,13 +238,13 @@ You can do the same sort of thing for your deployments.  Here is an example:
 }
 ```
 
-Let's walk through this one quickly.  
+Let's walk through this one quickly.
 
 In terms of parameters, there is only one.  The vmSize parameters can be set to either small, medium or large.
 
-In the variable section we define the three variable objects, and each contains the same collection of named integers, strings and arrays, but set to different values.   
+In the variable section we define the three variable objects, and each contains the same collection of named integers, strings and arrays, but set to different values.
 
-The output section then shows a few example ways of using our variables.  The 'vm' output returns the whole object, and the 'vmSubnets' returns the array within it.  The other outputs return individual integers or strings. 
+The output section then shows a few example ways of using our variables.  The 'vm' output returns the whole object, and the 'vmSubnets' returns the array within it.  The other outputs return individual integers or strings.
 
 Copy the template above into a new template file, and then submit using `az group deployment create --template-file <template.json> --query properties.outputs --resource-group <resourceGroup> --output jsonc` to see the output json.
 
@@ -255,11 +254,12 @@ As you can see from the template above, it can get a little verbose when so many
 
 If you wish to make the template a little more succinct and readable then you can dynamically set a variable and reference that throughout the template instead.
 
-Try creating a new variable called simply 'vmSize', and then set it to the right object.  Take a look at the 'vm' output in the example above if you are struggling with the syntax. 
+Try creating a new variable called simply 'vmSize', and then set it to the right object.  Take a look at the 'vm' output in the example above if you are struggling with the syntax.
 
-You can then change the outputs, so that rather than having `variables(concat('vmSize', parameters('vmSize')))`, they are set as `variables('vmSize')`.  (Don't forget that you can use CTRL+F2 in VS Code to Change All Occurences of your selected text.) 
+You can then change the outputs, so that rather than having `variables(concat('vmSize', parameters('vmSize')))`, they are set as `variables('vmSize')`.  (Don't forget that you can use CTRL+F2 in VS Code to Change All Occurences of your selected text.)
 
 A couple of additional things to note:
+
 * There is no issue with having parameters and variables with the same name.  We only ever reference them with the explicit _parameters_ and _variables_ functions so there are no problems there.
 * The functions and values are case insensitive. Note that the vmSize parameter in the example is all lower case.  The concat in the variables section will therefore return 'vmSizesmall', whereas the variable object is actually named 'vmSizeSmall', with the additional medial capital.  Again, this is not a problem as we are not case sensitive.  (The same is true for the function names as well.)
 
@@ -337,7 +337,7 @@ Once you have made those changes then your template should look a little like th
 }
 ```
 
-One other point to make is that pulling out sub-objects with a dynamic name does not work.  If, for instance, we had a vmSize variable as a  multi-level object with small, medium and large as named objects at the first level, then you could think that a function call like `"[variables('vmSize).parameters('vmSize').diskSize]"` might evaluate to `"[variables(.vmSize.).small.disksize]"`, but unfortunately it will cause an error.  This is why we only dynamically manipulate using the top level variable name.     
+One other point to make is that pulling out sub-objects with a dynamic name does not work.  If, for instance, we had a vmSize variable as a  multi-level object with small, medium and large as named objects at the first level, then you could think that a function call like `"[variables('vmSize).parameters('vmSize').diskSize]"` might evaluate to `"[variables(.vmSize.).small.disksize]"`, but unfortunately it will cause an error.  This is why we only dynamically manipulate using the top level variable name.
 
 ## Copy objects
 
@@ -429,7 +429,7 @@ The subnets array pulls out the name and IP address prefix directly from the par
 ```json
 [
   {
-    "name": "subnet1", 
+    "name": "subnet1",
     "addressPrefix": "10.99.0.0/24",
     "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/testSpoke/providers/Microsoft.Network/virtualNetworks/Spoke/subnets/subnet1"
   },
@@ -450,10 +450,12 @@ As you start working with more complex templates with parameter and variable arr
 1. Use the `Test-AzureRmResourceGroupDeployment` and `az group deployment validate` commands
 1. Use the outputs section to check your parameters and variables function calls that you are using in your resources section.  If you are not getting the right output in the outputs section then it can help to explain why your resources are not working properly.
 1. If you have multiple resources and you cannot determine which is causing your problem then select them all, and then cut and paste them into a temporary file. Check that the template deploys with no resources, and then slowly re-add the resources one by one and this will help to identify the problematic resource.
-1. Read the error messages! There are times that they are not particularly informative, but often they will give a useful pointer to help you troubleshoot the offending statement. 
+1. Read the error messages! There are times that they are not particularly informative, but often they will give a useful pointer to help you troubleshoot the offending statement.
 
 ## What's next
 
-This lab contains some really useful information for those of you creating more complex templates, and will help to coalesce some of the thinking that can make nested templates.  
+This lab contains some really useful information for those of you creating more complex templates, and will help to coalesce some of the thinking that can make nested templates.
 
 In the next lab we will take a look at an example of nested deployments using both inline and linked templates.  And then you will take a look at key vaults again and use a nested deployments to work around the hardcoded key vault and secret names that we had to use in the earlier lab.
+
+[◄ Lab 5: Copies](../arm-lab5-copies){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 7: Nesting ►](../arm-lab7-nesting){: .btn-success}

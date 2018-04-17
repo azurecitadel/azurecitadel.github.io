@@ -1,17 +1,11 @@
 ---
 layout: article
 title: 'ARM Lab 5: Create multiple resources using copy'
-date: 2018-01-08
+date: 2018-04-17
 categories: null
 tags: [authoring, arm, workshop, hackathon, lab, template, copy]
 comments: true
 author: Richard_Cheney
-previous:
-  url: ../arm-lab4-conditionalResources
-  title: Using conditions
-next:
-  url: ../arm-lab6-objectsAndArrays
-  title: Using objects and arrays
 ---
 
 {% include toc.html %}
@@ -174,9 +168,9 @@ Note that we won't be able to do four data disks against our tiddly Standard_ B1
 Before we deploy the template, let's remove that default value for the vmName. We'll continue to do that as an inline parameter in this lab so:
 
 * In the azuredeploy.json, change the parameter definition for vmName
-  * remove the default value
-  * find out any length restrictions for virtual machine names
-  * set a minimum length and maximum length (to make sure that vmName does get specified at some point)
+    * remove the default value
+    * find out any length restrictions for virtual machine names
+    * set a minimum length and maximum length (to make sure that vmName does get specified at some point)
 * Remove the vmName parameter from azuredeploy.parameters.json
 
 If you fail to specify the vmName parameter inline then you should now fail validation with a meaningful error message.
@@ -221,3 +215,5 @@ OK, our virtual machine building block is looking a lot more flexible and capabl
 The scenario you are looking to avoid is having lots of similar but slightly different templates that you use for different purposes. What you will find over time is that you will need to tweak, change and update your templates as the Azure platform moves forward and the business requirements change.  Having flexible templates simplifies that ongoing work.
 
 In the next section we will look at the benefits of using more complex objects and arrays in the parameters, variables and outputs sections.
+
+[◄ Lab 4: Conditions](../arm-lab4-conditions){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 6: Complex ►](../arm-lab6-complex){: .btn-success}
