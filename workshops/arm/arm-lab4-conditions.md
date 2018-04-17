@@ -154,7 +154,7 @@ The difference in the dependsOn list is unimportant. The resourceId() function i
 
 The difference in the properties.ipConfigurations.publicIpAddress is a little more challenging. In the first example it is 
 
-
+### UPDATING ###
 
 ```bash
 dir=$(pwd)

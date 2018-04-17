@@ -43,16 +43,14 @@ JSON Tools | Erik Lynd | [eriklynd.json-tools](https://marketplace.visualstudio.
 
 Use `CTRL+SHIFT+X` to open the extensions sidebar.  You can search and install the extensions from within there.
 
-## Add the Snippets for Azure Resource Manager
-
-Do not install the third party Azure Resource Manager Snippets extension availble in the gallery.  This only has a subset of the snippets that you will find in the [GitHub repository](https://github.com/sam-cogan/azure-xplat-arm-tooling/blob/master/VSCode/armsnippets.json), and so we will copy those snippets straight from the repo into the User Snippets within VS Code.
+Finally, add the snippets for Azure Resource Manager. 
 
 1. Browse to the [snippets file](https://raw.githubusercontent.com/sam-cogan/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) and copy the contents
 2. In VS Code, go to File -> Preferences -> User Snippets -> JSON
 3. Paste in the contents before the last curly brace
 4. Ensure the JSON file has no syntax errors and save
 
-> You can create your own snippets.  Many of the snippets in the file have been contributed back to the repo by users.
+**💬 Note.** Do not install the third party Azure Resource Manager Snippets extension available in the gallery.  This only has a subset of the snippets that you will find in Sam Cogan's [GitHub repository](https://github.com/sam-cogan/azure-xplat-arm-tooling/blob/master/VSCode/armsnippets.json).
 
 ## Index
 
