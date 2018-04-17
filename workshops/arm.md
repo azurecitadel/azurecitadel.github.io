@@ -61,10 +61,10 @@ Finally, add the snippets for Azure Resource Manager.
 Lab | Section | Description
 | [Azure Resource Manager](/workshops/arm/theoryARM/) | A short theory session on Azure Resource
 | [ARM Templates](/workshops/arm/theoryTemplates/) | Template structure overview, options for creating and deploying
-1 | [First Template](/workshops/arm/arm-lab1-firstTemplate/) | Create a simple template, factor parameters, and deploy using the CLIs
-2 | [Sources of Resources](/workshops/arm/arm-lab2-sourcesOfResources) | Overview of functions plus sources for resources
-3 | [References and Secrets](/workshops/arm/arm-lab3-referencesAndSecrets) | Reference resources, and how to handle secrets
-4 | [Conditional Resources](/workshops/arm/arm-lab4-conditionalResources) | Using conditions to selectively deploy resources
-5 | [Using Copy](/workshops/arm/arm-lab5-usingCopy) | Use the copy property to create multiple resources
-6 | [Objects and Arrays](/workshops/arm/arm-lab6-objectsAndArrays) | More complex parameters, variables and outputs
-7 | [Nesting Templates](/workshops/arm/arm-lab7-nestingTemplates) | Nesting templates inline and with linked templates
+1 | [First Template](/workshops/arm/arm-lab1-basics/) | Create a simple template, factor parameters, and deploy using the CLIs
+2 | [Sources of Resources](/workshops/arm/arm-lab2-sources) | Different sources of templates
+3 | [References and Secrets](/workshops/arm/arm-lab3-secrets) | Functions, references, and how to handle secrets
+4 | [Conditional Resources](/workshops/arm/arm-lab4-conditions) | Using conditions to selectively deploy resources
+5 | [Using Copy](/workshops/arm/arm-lab5-copies) | Use the copy property to create multiple resources
+6 | [Objects and Arrays](/workshops/arm/arm-lab6-complex) | More complex parameters, variables and outputs
+7 | [Nesting Templates](/workshops/arm/arm-lab7-nesting) | Nesting templates inline and with linked templates
