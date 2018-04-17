@@ -150,11 +150,64 @@ And the same block if we have no public IP:
     },
 ```
 
-The difference in the dependsOn list is unimportant. The resourceId() function is great in that it successfully returns an empty string if the resource is not found.  So specifying the dependency on a potentially non-existent public IP address is not a problem.
+The difference in the dependsOn list is seemingly unimportant. The resourceId() function will always return the resource ID. It is essentially concatenating subscription().subscriptionId and resourceGroup().name plus a few strings to generate the ID. At deployment the Resource Manager evaluates the dependencies between the resources, but only for those defined in the template. At that point my understanding is that it knows it is not creating the public IP and therefore ignores it in the dependsOn. The upshot is that specifying both the subnet ID and the pip ID in the dependsOn list is not a problem.
 
-The difference in the properties.ipConfigurations.publicIpAddress is a little more challenging. In the first example it is 
+The difference in the properties.ipConfigurations[0].properties area is a little more challenging. In the first example it contains the following name:object pair:
 
-### UPDATING ###
+```json
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('pipName'))]"
+              },
+```
+
+In the non-pip version it does not appear, but the good news is that it is valid to have the following:
+
+```json
+              "publicIPAddress": null,
+```
+
+So, all we need to do is create a new object in the variables section and then add an if() function against the publicIPAddress.  First of all the variable:
+
+```json
+        "pipObject": {
+            "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('pipName'))]"
+        },
+```
+
+In the NIC section we can then define it as follows:
+
+```json
+        {
+            "name": "[variables('nicName')]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2017-04-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses/', variables('pipName'))]",
+                "[variables('vnetID')]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": "[if(variables('pip?'), variables('pipObject'), json('null'))]",
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+```
+
+The publicIPAddress section will insert the object we just defined, or will generate a null JSON object.  (The json() function is really useful and could be used to generate the pipObject inline, but that would look more unwieldy.)
+
+## Test the template
+
+Deploy a couple of VMs, one with a public IP and one without.  Make sure you are in your lab4 directory if using the following commands, and don't forget to pick your own dnsLabelPrefix.
 
 ```bash
 dir=$(pwd)
@@ -166,61 +219,130 @@ az group create --name $rg --location westeurope
 
 job=job.$(date --utc +"%Y%m%d.%H%M%S")
 az group deployment create --parameters "@$parms" --parameters vmName=lab4UbuntuVm1 --template-file $template --resource-group $rg --name $job --no-wait
+
+job=job.$(date --utc +"%Y%m%d.%H%M%S")
+az group deployment create --parameters "@$parms" --parameters vmName=lab4UbuntuVm2 dnsLabelPrefix=richeneylab4vm2 --template-file $template --resource-group $rg --name $job --no-wait
 ```
 
-At this point I want you to save the templates and then deploy with an inline override of `--parameters vmName-lab4UbuntuVm3` to highlight something about how the templates get verified as part of the deployment.
+## Alternatives
 
-If you do this then you should see this error message:
+Substituting in variables or null in this way is the simplest way to handle condtional properties.
 
-```bash
-myTemplates$ az group deployment create --name $job --parameters "@$parms" --parameters vmName=lab3bUbuntuVm3 --template-file $template --resource-group $rg
-Deployment template validation failed: 'The resource 'Microsoft.Network/networkInterfaces/lab3bUbuntuVm3-nic' at line '1' and column '2996' is defined multiple times in a template. Please see https://aka.ms/arm-template/#resources for usage details.'.
-```
+However, you may find that there are more substantial differences.  In that case you have a couple more options, either using alternate resources, or building up your properties.
 
-Even though certain resources won't be created as part of the deployment, they are still included in the validation.  The NIC name property is mentioned twice with the same value. There isn't enough intelligence in the validation to take the inputs and see that the sections that meet the conditions will be valid upon execution. This is a real pain, but we can work around it, and hopefully the product team will change this in the future.
+The following section is extremely optional and gets a little more technical.  If you think that the above information on conditions is more than sufficient then feel to skip to the [end of the lab](#final-lab4-template-and-parameter-files).
 
-So we'll replace the nicName variable with two variables, privateNicName and publicNicName.  And we'll move up as many of the resourceID() commands up into those new variables sections.  Here is the full variables section after I've shuffled the variables around into sensible groupings:
+## - Duplicated resources
+
+You can duplicate the resource, and make the required properties differences between the blocks. A few things to remember:
+
+* You will need different condition at the top of each resource, e.g.
+    * Boolean inverse
+        * `"condition": "[variables('pip?')]",`
+        * `"condition": "[not(variables('pip?'))]",`
+    * Any valid condition expression
+        * `"condition": "[equals(variables('env'), 'prod']",`
+        * `"condition": "[or(equals(variables('vmSize'), 'dev'), equals(variables('vmSize'), 'test'))]",`
+* Ensure that logically only one of each duplicated resource will ever get created per deployment
+* Ensure that each has a unique resource name (and therefore resourceId), e.g.
+    * `"name": "[concat(variables('nicName'), '-public')]"`
+    * If not then the template will fail validation with the follwoing error message: "The resource '_\<resourcetype-name\>_' is defined multiple times in a template."
+
+It is often easier to create additional variables, e.g.:
 
 ```json
-  "variables": {
-    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
-    "subnetRef": "[concat(variables('vnetID'), '/subnets/', parameters('subnetName'))]",
-    "publicIPAddressName": "[concat(parameters('vmName'), '-pip')]",
-    "publicIPAddressType": "Dynamic",
-    "nicType": "[if(greater(length(parameters('dnsLabelPrefix')), 0), 'public', 'private')]",
-    "privateNicName": "[concat(parameters('vmName'), '-nic')]",
-    "publicNicName": "[concat(parameters('vmName'), '-nic-public')]",
-    "privateNicID": "[resourceId('Microsoft.Network/networkInterfaces/', variables('privateNicName'))]",
-    "publicNicID": "[resourceId('Microsoft.Network/networkInterfaces/', variables('publicNicName'))]",
-    "nicId": "[if(equals(variables('nicType'), 'private'), variables('privateNicID'), variables('publicNicID'))]",
-    "vmSize": "Standard_B1s",
-    "imagePublisher": "Canonical",
-    "imageOffer": "UbuntuServer",
-    "storageAccountType": "Standard_LRS",
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'salinuxvm')]",
-    "storageAccountID": "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
-  },
+      "privateNicName": "[concat(parameters('vmName'), '-nic')]",
+      "publicNicName": "[concat(parameters('vmName'), '-nic-public')]",
+      "privateNicID": "[resourceId('Microsoft.Network/networkInterfaces/', variables('privateNicName'))]",
+      "publicNicID": "[resourceId('Microsoft.Network/networkInterfaces/', variables('publicNicName'))]",
+      "nicId": "[if(equals(variables('nicType'), 'private'), variables('privateNicID'), variables('publicNicID'))]",
 ```
 
-Notice the nicID variable.  I could have embedded the if statement multiple times in the resources section, but this makes it a little easier to read.
+The last variable, nicId, is similar to a pointer. We reference nicId a couple of times in the main virtual machine resource block, and having a pointer variable simplifies the expressions in the main resources area so that you don't have lots of verbose if() functions littering the template.
 
-You resources section should now use those variables wherever possible. And don't forget to rework the two NIC resources to publicNicName and privateNicName.
-
-You will have noticed that the publicNicName has an additional '-public' on the end.  The validation is clever enough to resolve the names that it can, so will throw up an error if they are both set to '_vmName_-nic'.
-
-The virtual machine resource references the NIC ID twice - once in the dependsOn array, and again in the networkProfile.networkInterfaces area.  These can use the nicID variable, or could have the full if statement instead, e.g.:
+Rather than having multiples of this:
 
 ```json
 "id": "[if(equals(variables('nicType'), 'private'), variables('privateNicID'), variables('publicNicID'))]"
 ```
 
-or
+We can just use:
 
 ```json
 "id": "[variables('nicID')]
 ```
 
-Finally, remove the outputs section.  We will come back to that later but for the moment it is another complication as it is currently referencing a resource that we might not be deploying.
+If we didn't have all of those variables then we would end up with horrific and yet valid expressions like this:
+
+```json
+"id": "[if(greater(length(parameters('dnsLabelPrefix')), 0), resourceId('Microsoft.Network/networkInterfaces/', concat(parameters('vmName'), '-nic-public')), resourceId('Microsoft.Network/networkInterfaces/', concat(parameters('vmName'), '-nic')))]"
+```
+
+Having verbose expressions is one of the reasons that the JSON templates can quickly become unreadable, so make use of variables to prevent that from happening.
+
+## - Building Properties Objects
+
+The other method is more complex but can be useful where the template requires a lot of flexibility.  The idea is to create a number of small objects in the variables section, and then use the union() function to combine them as required dependent on the parameters that the user has chosen.
+
+Using the NIC properties from earlier, here is an example that includes a load balancer backend pool and NAT rule. I'll only keep the pertinent lines:
+
+```json
+  "variables": {
+        "lb?": "[bool(equals(parameters('env'), 'prod'))]",
+        "pip?": "[bool(parameters('dnsLabelPrefix'))]",
+        "lbName": "loadBalancer",
+        "lbID": "[resourceId('Microsoft.Network/loadBalancers',variables('lbName'))]",
+        "pipObject": {
+            "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('pipName'))]"
+            }
+        },
+        "bepoolObject": {
+            "loadBalancerBackendAddressPools": [
+                {
+                    "id": "[concat(variables('lbID'), '/backendAddressPools/BackendPool1')]"
+                },
+            ],
+            "loadBalancerInboundNatRules": [
+                {
+                    "id": "[concat(variables('lbID'),'/inboundNatRules/ssh')]"
+                }
+            ]
+        },
+        "ipObject0": {
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": {
+                "id": "[variables('subnetRef')]"
+            }
+        },
+        "ipObject1": "[if(variables('pip?'), union(variables('ipObject0'), variables('pipObject')),    variables('ipObject0'))]",
+        "ipObject":  "[if(variables('lb?'),  union(variables('ipObject1'), variables('bepoolObject')), variables('ipObject1'))]",
+  },
+  "resources": [
+    {
+        "name": "[variables('nicName')]",
+        "type": "Microsoft.Network/networkInterfaces",
+        "apiVersion": "2017-04-01",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [
+            "[resourceId('Microsoft.Network/publicIPAddresses/', variables('pipName'))]",
+            "[variables('vnetID')]"
+        ],
+        "properties": {
+            "ipConfigurations": [
+                {
+                    "name": "ipconfig1",
+                    "properties": "[variables('ipObject')]"
+                }
+            ]
+        }
+    },
+  ]
+```
+
+Note how it rolls from ipObject0 through ipObject1 to ipObject, merging in additional properties as per the booleans.  Also note that each object is at the same nesting level.  For example the pipObject is a level up from the one in the simpler lab section earlier.
+
+We will cover the use of `copy` in the next lab, and this can be worked into these dynamically constructed sections to add in flexibility for arrays as well as objects.
 
 ## Final lab4 template and parameter files
 
@@ -242,4 +364,4 @@ It is good to have choices!  Hopefully your files look something similar to thes
 
 In the next section we will look at using the copy property to create multiple of a resource, or of a property (such as managed disks) within a resource.
 
-[◄ Lab 3: Secrets](../arm-lab3-secrets){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 5: Copies ►](../arm-lab5-copies){: .btn-success}
+[◄ Lab 3: Secrets](../arm-lab3-secrets){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 5: Copies ►](../arm-lab5-copies){: .btn-success}G

@@ -178,11 +178,10 @@ If you fail to specify the vmName parameter inline then you should now fail vali
 OK, now submit the VM, specifying the name and number of disks:
 
 ```bash
-rg=lab5
-
 dir=$(pwd)
 template=$dir/azuredeploy.json
 parms=$dir/azuredeploy.parameters.json
+rg=$(basename $dir)
 
 az group create --name $rg --location westeurope
 
