@@ -364,4 +364,4 @@ It is good to have choices!  Hopefully your files look something similar to thes
 
 In the next section we will look at using the copy property to create multiple of a resource, or of a property (such as managed disks) within a resource.
 
-[◄ Lab 3: Secrets](../arm-lab3-secrets){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 5: Copies ►](../arm-lab5-copies){: .btn-success}G
+[◄ Lab 3: Secrets](../arm-lab3-secrets){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 5: Copies ►](../arm-lab5-copies){: .btn-success}
