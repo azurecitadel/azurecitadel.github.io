@@ -56,9 +56,11 @@ Or you could use other comparative functions such as greater(), and use 1 or 0 w
         "pip?": "[if(greater(length(parameters('dnsLabelPrefix')), 0), bool(1), bool(0))]",
 ```
 
+Either way will set our new boolean correctly.
+
 ## Conditions
 
-Conditions themselves are fairly simple.  It is another keyword that can be used in a resource object.  It is usual to place it above the required set of four keywords: name, type, apiVersion and location.  This is to make it more obvious when reading.
+Condition is an optional keyword that can be used in any of your resource objects.  It is usual to place a condition above the other required set of four keywords: name, type, apiVersion and location.  This is to make it more obvious when reading.
 
 Add the condition to the top of your public IP resource object.
 
