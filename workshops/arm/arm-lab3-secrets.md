@@ -183,6 +183,8 @@ If you look at the resources that have been spun up in resource group lab3 from 
 * This template creates first level Managed Disks for the OS (30GB) and the data disk (1023GB), with unique names prefixed with the vmName.
 * The PIP and NIC are fixed names and would conflict if a second was added
 
+----------
+
 ## Refactoring the networking parameters and variables
 
 OK, we've addressed the password.  Let's start turning the template itself into a more useful building block by refactoring a few things.
