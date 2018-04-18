@@ -50,19 +50,11 @@ We can use the empty() function to test whether dnsLabelPrefix has been specifie
         "pip?": "[if(empty(parameters('dnsLabelPrefix')), bool('false'), bool('true'))]",
 ```
 
-Or you could use other comparative functions such as greater():
+Or you could use other comparative functions such as greater(), and use 1 or 0 with bool() for true and false:
 
 ```json
-        "pip?": "[if(greater(length(parameters('dnsLabelPrefix')), 0), bool('true'), bool('false'))]",
+        "pip?": "[if(greater(length(parameters('dnsLabelPrefix')), 0), bool(1), bool(0))]",
 ```
-
-The bool() function will return false for empty strings and zero integers, so if you are a fan of brevity then you could use this form instead:
-
-```json
-        "pip?": "[bool(parameters('dnsLabelPrefix'))]",
-```
-
-Whichever path you take you'll end up with the same result for the new boolean value.
 
 ## Conditions
 
