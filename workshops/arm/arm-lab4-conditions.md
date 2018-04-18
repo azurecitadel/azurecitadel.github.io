@@ -42,21 +42,21 @@ There are a number of [functions](https://aka.ms/armfunc) available that output 
 
 For example, `"condition": "[equals(variables('env'), 'prod')]",` would only create the resource if the env variable was set to prod.
 
-I often prefer to use boolean variables as they make the expressions shorter later in the template.  One nice thing is that you can use question marks within variable names and so I use that as a standard to denote booleans.
+I often prefer to use boolean variables as they make the expressions shorter later in the template.  The bool() function takes a string or value and returns it as either boolean true or false.  One nice thing is that you can use question marks within variable names and so I use that as a standard to denote booleans.
 
-As an empty string is considered false and one with one or more characters is considered true then we can use that when setting our variable.  Add the following variable in to your template:
+We can use the empty() function to test whether dnsLabelPrefix has been specified and then set our boolean to false or true:
 
 ```json
-        "pip?": "[if(parameters('dnsLabelPrefix'), bool('true'), bool('false'))]",
+        "pip?": "[if(empty(parameters('dnsLabelPrefix')), bool('false'), bool('true'))]",
 ```
 
-The bool function takes a string or value and returns it as either boolean true or false.  If you think that expression doesn't read well then you could always use a longer form version such as:
+Or you could use other comparative functions such as greater():
 
 ```json
         "pip?": "[if(greater(length(parameters('dnsLabelPrefix')), 0), bool('true'), bool('false'))]",
 ```
 
-Or of you are a fan of brevity then feel free to shorten the function as much as possible:
+The bool() function will return false for empty strings and zero integers, so if you are a fan of brevity then you could use this form instead:
 
 ```json
         "pip?": "[bool(parameters('dnsLabelPrefix'))]",
