@@ -596,7 +596,7 @@ Let's create a parameter file in our lab1 folder.
 
 The arm-paramvalue snippet is designed to highlight the parameter name, so you can type straight away, and then you can tab to the second placeholder to start typing the value.
 
-You can use the split editor mode in VS Code to see both files at the same time (CTRL-\, or View \| Split Editor).  You can also save some screen estate by toggling the side bar (CTRL-B, or View \| Toggle Side Bar).
+You can use the split editor mode in VS Code to see both files at the same time (use CTRL-ALT-LEFT or CTRL-ALT-RIGHT to move tabs between groups).  You can also save some screen estate by toggling the side bar (CTRL-B, or View \| Toggle Side Bar).
 
 Don't forget that the two parameters will need to seperated by a comma.  You will see a syntax error flagged up by VS Code until you do.
 
