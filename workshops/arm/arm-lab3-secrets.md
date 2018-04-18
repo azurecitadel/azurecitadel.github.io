@@ -161,8 +161,6 @@ Requirements:
     * Set the adminUsername to your username
     * Set the dnsLabelPrefix to something that will be unique for the FQDN
 
-Once you have completed your files and have successfully submitted then please see how yours compare to the ones below.
-
 If you have time then work out the commands in either PowerShell or Bash to see the available Ubuntu virtual machine images from Canonical. (Hint: the publisher is Canonical.)
 
 We will return to key vaults and secrets when we look at the nesting.
@@ -190,11 +188,13 @@ If you look at the resources that have been spun up in resource group lab3 from 
 OK, we've addressed the password.  Let's start turning the template itself into a more useful building block by refactoring a few things.
 
 1. Create parameters for the following:
-    * virtualNetworkName with no default
-    * virtualNetworkPrefix, defaulting to "10.0.0.0/16"
+    * vnetName with no default
+    * vnetPrefix, defaulting to "10.0.0.0/16"
     * subnetName, defaulting to "Subnet"
     * subnetPrefix, defaulting to "10.0.0.0/24"
 1. Remove the corresponding variables
+    * vnetName is replacing virtualNetworkName
+    * vnetPrefix is replacing addressPrefix
 1. Remove the default for the vmName
 1. Change the value for the nicName variable to be the vmName with '-nic' at the end
 1. Change the publicIPAddressName variable to pipName

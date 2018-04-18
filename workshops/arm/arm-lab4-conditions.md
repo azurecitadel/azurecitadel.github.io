@@ -59,7 +59,7 @@ The bool function takes a string or value and returns it as either boolean true 
 Or of you are a fan of brevity then feel free to shorten the function as much as possible:
 
 ```json
-        "pip?": "[bool(parameters('dnsLabelPrefix')))]",
+        "pip?": "[bool(parameters('dnsLabelPrefix'))]",
 ```
 
 Whichever path you take you'll end up with the same result for the new boolean value.
