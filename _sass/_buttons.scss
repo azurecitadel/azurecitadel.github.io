@@ -109,6 +109,21 @@
 	}
 }
 
+.btn-subtle {
+	@extend .btn;
+	background-color: $white;
+	color: $success-color;
+	border: 1px solid $success-color !important;
+	&:visited {
+		color: $success-color;
+	}
+	&:hover {
+		background-color:lighten($success-color, 10);
+		color: $white
+	}
+
+}
+
 /*
    Social media buttons
    ========================================================================== */
