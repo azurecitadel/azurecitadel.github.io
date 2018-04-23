@@ -111,7 +111,7 @@ Keep checking `kubectl get service` and once the service has an external IP, you
 
 Make a note of the Data API IP as we'll use it in the next module.
 
-**💬 Note.**  Assigning DNS records to the external public IP is [possible](https://github.com/kubernetes-incubator/external-dns) but outside the scope of this lab. Quick solution is to find the Azure Public IP in the **MC_kube-lab_aks-cluster_eastus** resource group and assign it a DNS prefix
+**💬 Note.**  Assigning DNS records to the external public IP is [possible](https://github.com/kubernetes-incubator/external-dns) but outside the scope of this lab. Quick solution is to find the Azure Public IP in the **MC_kube-lab_aks-cluster_westeurope** resource group and assign it a DNS prefix
 
 ## End of Module 4
 What we have have at this stage in Kubernetes can be represented as follows
