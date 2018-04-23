@@ -76,7 +76,7 @@ OK, let's export an example template and parameters file.
     * App Name: **\<yourname>arm** (has to be unique)
     * Resource Group: Create New, called **lab2a**
     * App Service Plan / Location: Click on the **>** arrow
-        * Create new
+        * Create new called **\<yourname>arm-plan**
         * App Service Plan: **Free**
         * Location: **West Europe**
         * Pricing tier: **F1 Free**
@@ -179,6 +179,7 @@ Quick guide:
     1. Derive the values where possible
 1. Remove parameters that are no longer required
 1. Change the appropriate parameter calls in the resources section to variable calls
+1. Rename the 'name' parameters to webAppName
 1. Add in default values and allowed values for remaining parameters
 1. Strip down the parameters file to only the required parameter values
 1. Test
@@ -189,6 +190,8 @@ Here is a video that shows example files being edited.  (Note the use of CTRL-F2
   <source type="video/mp4" src="/workshops/arm/images/lab2-2-refactoringExport.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
+
+> Note that the "name" parameter as generated from the portal would cause a problem for PowerShell submissions.  This is because the PowerShell New-AzureRmResourceGroupDeployment cmdlet automatically creates new switches on the fly based on the parameter names, but these must not clash with existing switches.  As `-name` is one of those switches you will see an error.  Changing it to 'webAppName' avoids this.
 
 Here is the resulting azuredeploy.json:
 
