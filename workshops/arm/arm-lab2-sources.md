@@ -126,7 +126,7 @@ Here are the example initial files:
     },
     "resources": [
         {
-            "apiVersion": "2016-03-01",
+            "apiVersion": "2016-08-01",
             "name": "[parameters('name')]",
             "type": "Microsoft.Web/sites",
             "properties": {
@@ -160,10 +160,12 @@ Here are the example initial files:
             }
         }
     ],
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0"
 }
 ```
+
+> You may find that the portal has created the template based on the `2014-04-01-preview` version of the ARM schema.  If this is the case then change it to `2015-01-01` (as above). You may also want to change the API version of the `Microsoft.Web/sites` resource to `2016-08-01` which is the current API version at the time of writing.  This will remove any of the "problems" as triggered by the ARM Tools extension.
 
 Configure VS Code to have both the azuredeploy.json and the azuredeploy.parameters.json side by side.
 
