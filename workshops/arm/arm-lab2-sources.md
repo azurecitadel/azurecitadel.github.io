@@ -12,7 +12,7 @@ author: Richard_Cheney
 
 ## Overview
 
-The snippets we used in lab 1 are useful and easy to use.  Howeber they are looking a little dated now, and aren't covering all of the new services or new functionality in existing services.  Whilst they were useful for the first lab, the truth is that you will only rarely build a template from scratch.
+The snippets we used in lab 1 are useful and easy to use.  However they are looking a little dated now, and aren't covering all of the new services or new functionality in existing services.  Whilst they were useful for the first lab, the truth is that you will only rarely build a template from scratch.
 
 So let's look at how we can make use of:
 
