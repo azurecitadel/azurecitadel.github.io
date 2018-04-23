@@ -672,7 +672,7 @@ You probably have a few storage accounts now in your lab1 resource group.   You 
 ##### Bash
 
 ```bash
-az group delete --resource-group lab1 --yes --no-wait
+az group delete --name lab1 --yes --no-wait
 ```
 
 ##### PowerShell
