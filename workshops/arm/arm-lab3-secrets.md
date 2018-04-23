@@ -109,9 +109,11 @@ So the real issue is avoiding scripts and parameter files from containing cleart
 
 ## Creating a Key Vault
 
-OK, let's begin by creating a lab3a folder and an empty azuredeploy.json and azuredeploy.parameters.json file.
+OK, let's begin by creating a lab3 folder and an empty azuredeploy.json and azuredeploy.parameters.json file.
 
-We'll also need a key vault if you haven't got one.  I have shown below how to make one manually to save time. Or you can use a couple of CLI or PowerShell commands.  Try searching for the Azure documentation page that can help with that.  Or if you wish you can take a look at the [201-key-vault-secret-create](https://github.com/Azure/azure-quickstart-templates/tree/master/201-key-vault-secret-create) quickstart template and use that to automate the creation if you know that this is something you will be doing repeatedly.
+We'll also need a key vault if you haven't got one.  We'll create that in a **keyVaults** resource group as we'll be using that for several of the labs.
+
+There are manual steps shown below for the key vault creation. (If you wish you can use a couple of CLI or PowerShell commands.  Try searching for the Azure documentation page that can help with that.  Or if you like you can take a look at the [201-key-vault-secret-create](https://github.com/Azure/azure-quickstart-templates/tree/master/201-key-vault-secret-create) quickstart template and use that to automate the creation if you know that this is something you will be doing repeatedly.)
 
 Here are the manual instructions:
 
