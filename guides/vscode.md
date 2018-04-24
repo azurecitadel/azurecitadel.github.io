@@ -101,9 +101,8 @@ Shell Location | Notes
 "C:\\\\Windows\\\\System32\\\\cmd.exe" | Command Prompt
 "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" | 64-bit PowerShell if available, if not 32-bit
 "C:/Windows/System32/bash.exe" | [Bash on Ubuntu](/guides/wsl) (Windows Subsystem for Linux (WSL) on Windows 10)
-"C:/Program Files/Git/bin/bash.exe" | Git Bash
 
-> The Git  Bash shell is installed as part of Git for Windows, and is an option for WIndows 7/8.x users to use bash, but installation of the Azure CLI into Git Bash is sometimes problematic.  For Windows 10 users the Windows Subsystem for Linux (WSL) is a much cleaner implementation and is highly recommended.  There are no issues with having Git Bash and WSL co-existing, with the former used by VS Code solely for the git operations, and the latter used to provide a better standard of bash integrated console.
+> Note that you should set the shell location to "C:/Windows/*sysnative*/bash.exe" for the 32 bit version of Visual Studio Code.
 
 Note that pathing may use either forward or backslashes in the settings.json file, but backslashes will need to be escaped (i.e. \\\\).  The exception is Command Prompt which requires backslashes as shown.
 
@@ -115,8 +114,8 @@ For reference, here is an example settings.json user override area:
 
 ```json
 {
-    "terminal.integrated.shell.windows": "C:/Windows/sysnative/bash.exe",
-    // "terminal.integrated.shell.windows": "C:/Windows/sysnative/WindowsPowerShell/v1.0/powershell.exe",
+    "terminal.integrated.shell.windows": "C:/Windows/system32/bash.exe",
+    // "terminal.integrated.shell.windows": "C:/Windows/system32/WindowsPowerShell/v1.0/powershell.exe",
     "editor.minimap.enabled": false,
     "window.zoomLevel": 1,
     "workbench.panel.location": "bottom",
