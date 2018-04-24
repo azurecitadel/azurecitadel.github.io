@@ -22,16 +22,16 @@ We will begin by deploying Kubernetes using [*Azure Container Service (AKS)*](ht
 - canadacentral
 - canadaeast  
 
-> Pick a location and use it for everything you create in this lab. We will use **eastus**, but you can use one of the other regions listed above if you wish. If using an Azure Pass or Internal Use subscription, you will be limited to westeurope and eastus
+> Pick a location and use it for everything you create in this lab. We will use **westeurope**, but you can use one of the other regions listed above if you wish. If using an Azure Pass or Internal Use subscription, you will be limited to westeurope and eastus
 
 Using the Azure CLI creating an AKS cluster is easy. First create a resource group:
 ```
-az group create -n kube-lab -l eastus
+az group create -n kube-lab -l westeurope
 ```
 
 The most basic form of the AKS create command using all the defaults is simply:
 ```
-az aks create -g kube-lab -n aks-cluster -l eastus
+az aks create -g kube-lab -n aks-cluster -l westeurope
 ```
 
 However you will probably want to customize your cluster, some common options are:
@@ -45,7 +45,7 @@ However you will probably want to customize your cluster, some common options ar
 
 A recommended cluster configuration for this lab is as follows:
 ```
-az aks create -g kube-lab -n aks-cluster -l eastus --node-count 3 --node-vm-size Standard_B2ms --kubernetes-version 1.9.6
+az aks create -g kube-lab -n aks-cluster -l westeurope --node-count 3 --node-vm-size Standard_B2ms --kubernetes-version 1.9.6 --verbose
 ```
 This is a three node cluster, running Kubernetes 1.9.6 using B-Series burstable VMs to minimize costs  
 
@@ -53,7 +53,7 @@ This is a three node cluster, running Kubernetes 1.9.6 using B-Series burstable 
 
 **💬 Note 2.** The `az aks create` command uses your default SSH keys located in **~/.ssh/id_rsa.pub** to provision the cluster nodes. If these keys don't exist then a SSH key pair will be created for you. If you have your own SSH keys you wish to use, then add the `--ssh-key-value` parameter and provide the key public contents as a string
 
-**💬 Note 3.** To save costs you can optionally enable auto-shutdown on the node VMs. Find the resource group named **MC_kube-lab_aks-cluster_eastus** this will contain your cluster's nodes and other Azure resources. Click on each of the VMs and switch on the auto shutdown feature. You will need to manually start them again when you want to use your cluster, which might take around 5 mins, but having the nodes shutdown you can keep your AKS cluster deployed indefinitely for essentially zero cost
+**💬 Note 3.** To save costs you can optionally enable auto-shutdown on the node VMs. Find the resource group named **MC_kube-lab_aks-cluster_westeurope** this will contain your cluster's nodes and other Azure resources. Click on each of the VMs and switch on the auto shutdown feature. You will need to manually start them again when you want to use your cluster, which might take around 5 mins, but having the nodes shutdown you can keep your AKS cluster deployed indefinitely for essentially zero cost
 
 
 ## Get Kubectl and Credentials
