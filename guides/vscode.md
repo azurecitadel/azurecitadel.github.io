@@ -102,7 +102,7 @@ Shell Location | Notes
 "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" | 64-bit PowerShell if available, if not 32-bit
 "C:/Windows/System32/bash.exe" | [Bash on Ubuntu](/guides/wsl) (Windows Subsystem for Linux (WSL) on Windows 10)
 
-> Note that you should set the shell location to "C:/Windows/*sysnative*/bash.exe" for the 32 bit version of Visual Studio Code.
+> Note that you should set the shell location to "C:/Windows/*sysnative*/bash.exe" for the 32 bit version of Visual Studio Code.  Or uninstall the 32 bit version and install the 64 bit version - your user settings, extensions, etc. will still be retained.
 
 Note that pathing may use either forward or backslashes in the settings.json file, but backslashes will need to be escaped (i.e. \\\\).  The exception is Command Prompt which requires backslashes as shown.
 
