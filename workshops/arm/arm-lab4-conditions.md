@@ -34,7 +34,9 @@ Copy the lab3 directory and paste it into a blank area of the Explorer.  Visual 
 
 Clear the outputs object.  We'll cover the reason why later.  It should be set to `"outputs": {}`
 
-Default the dnsLabelPrefix parameter to an empty string (`""`) in the main template and save it.  If you were to submit now, your deployment should fail. (Feel free to test that.)
+Default the dnsLabelPrefix parameter to an empty string (`""`) in the main template and save it.  Also remove the whole object from your parameters file so that you only have the adminUsername string and the adminPassword key vault reference remaining.
+
+If you were to submit now, your deployment should fail as your template requires a valid dnsLabelPrefix. Let's make the changes to add in the conditions.
 
 ## Creating booleans
 
