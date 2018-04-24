@@ -141,10 +141,6 @@ As we start using complex objects and arrays in both the parameter section and t
 1. Create a new template called 'noresources.json' in a new lab6 directory
 1. Add in the empty ARM template structure
 1. Copy in the example parameters section from the top of the lab
-1. Create a new string variable called 'description'
-    * If peer is set to true then set the variable to "Peering new Spoke vnet to Core"
-    * If not then it set to "Creating Spoke vNet without a peering connection"
-    * Pull in those vnet names from the parameters rather than hardcoding!
 1. Leave the resources array empty
 1. Add in some outputs into the output section:
     * Output a boolean, i.e. the peer value
@@ -152,7 +148,7 @@ As we start using complex objects and arrays in both the parameter section and t
     * Output an array, e.g. the spoke vnet's address space, or the list of subnets for the spoke vnet
     * Output an object, e.g. the whole of the hub object
     * Output an integer called numberOfSubnets based on the spoke's subnet array
-    * Output your description
+    * Output a short description, e.g. "Peering to vnet <hubVnetName>" or "Not peering" (**optional**)
 1. Run a "deployment" against the noresources.json file.  You shouldn't need to specify any parameters.  You will have to specify an existing  resource group even through no resources will be deployed.
 
 We will use this technique a little more as we work through the variables section and start delving into the reference function a little more.
