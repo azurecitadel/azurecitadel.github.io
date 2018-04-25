@@ -91,4 +91,5 @@ As this lab is quite long, it has been split into several modules:
 ---
 
 ## Supporting Slides
-- [Azure Container Strategy & Orchestration with Kubernetes](https://1drv.ms/b/s!AhEX99ErZbKGg1n8wQOPvgtQoYsl)
+- [Azure Container Strategy & Orchestration with Kubernetes](https://1drv.ms/b/s!AhEX99ErZbKGg1n8wQOPvgtQoYsl){:target="_blank" class="btn-info"}
+
