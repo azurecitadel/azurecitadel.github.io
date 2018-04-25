@@ -62,7 +62,7 @@ owner:
   twitter: https://twitter.com/RichCheneyAzure
   bio:
   avatar: /images/authors/rich-c.jpg # 160x160 px image for author byline
-  disqus-shortname: azurecitadel
+  disqus-shortname: https-ukpducim-github-io # Do not change - matches against https://https-ukpducim-github-io.disqus.com/admin/settings/general/
 
 
 include:
