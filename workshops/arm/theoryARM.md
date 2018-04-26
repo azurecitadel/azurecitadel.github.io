@@ -34,7 +34,7 @@ The Azure Resource Manager (ARM) layer sits between
     * Microsoft.Storage
     * ...
 
-The ARM layer takes requests from users and executes them against the various resource providers and therefore works as an extensible abstraction layer.
+The ARM layer takes requests from users and executes them against the various Resource Providers and therefore works as an extensible abstraction layer.
 
 The resources that are then created, modified, listed and deleted by those Resource Providers are managed in the context of Resource Groups.
 
