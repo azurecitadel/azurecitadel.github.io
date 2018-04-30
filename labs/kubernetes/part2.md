@@ -16,7 +16,7 @@ image:
 *Azure Container Registry* is a secure fully hosted private Docker registry which we will use to both build & store our application container images
 
 ## Deploying Azure Container Registry 
-To create a *Azure Container Registry* (ACR) instance, pick a name for your ACR, this has to be globally DNS unique (e.g. pick something with your name and the year). We will set this in a variable as we'll be using it a lot
+To create a *Azure Container Registry* (ACR) instance, pick a name for your ACR, this has to be globally DNS unique (e.g. pick something with your name and the year). We will set this in a Bash variable as we'll be using it a lot
 
 ```
 ACR_NAME="change-this-to-your-unique-acr-name"
@@ -45,7 +45,7 @@ We will use this secret later on
 
 > **📕 Kubernetes Glossary.** A *Secret* is a Kubernetes object that holds any sensitive information, such as passwords, connection strings or API keys. Setting up *Secrets* lets us refer to them by name in our deployments and avoids having sensitive details held in plain text
 
-## Populate ACR with images
+## Build container images with ACR
 
 For this section we will be using a brand new feature of *Azure Container Registry*  called "ACR Build", this allows us to build container images in Azure without need access to a Docker host or having Docker installed locally. It also pushes the resulting images directly into your registry.
 
