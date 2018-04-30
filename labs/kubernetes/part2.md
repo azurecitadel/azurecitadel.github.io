@@ -13,63 +13,72 @@ image:
 {% include toc.html %}
 
 ## Overview
-This part can be skipped entirely and you can run through the lab simply using images stored publicly on Dockerhub, this shortens and simplifies the exercise. However using a private registry such as *Azure Container Registry* represents a much secure and more real-world use case. If you wish to skip this jump straight to [Lab Module 3 - Deploying the Data Layer](../part3)
+*Azure Container Registry* is a secure fully hosted private Docker registry which we will use to both build & store our application container images
 
 ## Deploying Azure Container Registry 
-To create a *Azure Container Registry* (ACR) instance, pick a name for your ACR, this has to be globally DNS unique (e.g. pick something with your name and the year). We will refer to this name later on. 
+To create a *Azure Container Registry* (ACR) instance, pick a name for your ACR, this has to be globally DNS unique (e.g. pick something with your name and the year). We will set this in a variable as we'll be using it a lot
 
-Run these commands substituting your ACR name:
 ```
-az acr create -n {acr_name} -g kube-lab -l westeurope --sku Standard --admin-enabled true
+ACR_NAME="change-this-to-your-unique-acr-name"
+az acr create -n $ACR_NAME -g kube-lab -l westeurope --sku Standard --admin-enabled true
 ```
+
+**💬 Note. April 2018.**  We will be using a preview feature called *ACR Build* and this is only available in **westeurope** and **eastus**, so make sure you create your registry in either of those regions. 
+
 
 ## Configure Kubernetes to use ACR
-Get the ACR login password and make a note of it, we will use it in the next command
+Get the ACR login password and set it in a Bash variable 
 ```
-az acr credential show -n {acr_name} -g kube-lab
+ACR_PWD=`az acr credential show -n $ACR_NAME -g kube-lab --query "passwords[0].value" -o tsv`
 ```
 
-In order for the Kubernetes nodes to authenticate with ACR we will set up a *Secret* in Kubernetes which holds the login details for our ACR. There are other ways to authenticate between AKS and ACR however they are slightly more complex, so we'll not use them in this lab.  
+As a sanity check you can display the value of the password using `echo $ACR_PWD` 
+
+In order for the Kubernetes nodes to authenticate with ACR we will set up a *Secret* in Kubernetes which holds the login details for our registry. There are other ways to authenticate between AKS and ACR however they are slightly more complex, so we'll not use them in this lab.  
 [📘 ACR and AKS Authentication](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks){:target="_blank" class="btn-info"}
 
-Create secret called **acr-auth** with this command:
+Create a secret called **acr-auth** with this command:
 ```
-kubectl create secret docker-registry acr-auth --docker-server {acr_name}.azurecr.io --docker-username {acr_name} --docker-password {acr_password} --docker-email ignore@dummy.com
+kubectl create secret docker-registry acr-auth --docker-server $ACR_NAME.azurecr.io --docker-username $ACR_NAME --docker-password $ACR_PWD --docker-email ignore@dummy.com
 ```
 We will use this secret later on
 
 > **📕 Kubernetes Glossary.** A *Secret* is a Kubernetes object that holds any sensitive information, such as passwords, connection strings or API keys. Setting up *Secrets* lets us refer to them by name in our deployments and avoids having sensitive details held in plain text
 
 ## Populate ACR with images
-The Smilr images used for this lab are publicly available on Dockerhub:
-- https://hub.docker.com/r/smilr/data-api
-- https://hub.docker.com/r/smilr/frontend
 
-To get the images into our ACR we will pull them from Dockerhub, tag them and push to ACR. This step requires that you have Docker installed and running or have configured the `docker` client to work with a remote Docker host (e.g. Docker Machine in Azure)
+For this section we will be using a brand new feature of *Azure Container Registry*  called "ACR Build", this allows us to build container images in Azure without need access to a Docker host or having Docker installed locally. It also pushes the resulting images directly into your registry.
 
-First login to ACR (so you can push images), The Azure CLI has a helper command to do this. Note. this is the same as running `docker login $acrName.azurecr.io -u $acrName -p $acrPwd`
+This feature is not part of the Azure CLI yet, so needs to be installed as an extension
 ```
-az acr login -n {acr_name} -g kube-lab
+az extension add --source https://acrbuild.blob.core.windows.net/cli/acrbuildext-0.0.4-py2.py3-none-any.whl -y
 ```
 
-### Pull, re-tag and push **Data API** image
-This effectively copies the smilr/data-api image from public Dockerhub to your private ACR 
+We will build our images from source, to do that we'll get the Smilr application source code from Github using git
 ```
-docker pull smilr/data-api
-docker tag smilr/data-api {acr_name}.azurecr.io/smilr/data-api
-docker push {acr_name}.azurecr.io/smilr/data-api
+git clone https://github.com/benc-uk/microservices-demoapp.git
+cd microservices-demoapp
 ```
 
-
-### Pull, re-tag and push **Frontend** image
+Now we'll use ACR Build to run our Docker build task in Azure. The first image we'll build is for the Smilr data API component, the source Dockerfile is in the **node/data-api** sub-directory and we'll tag the resulting image `smilr/data-api`
 ```
-docker pull smilr/frontend
-docker tag smilr/frontend {acr_name}.azurecr.io/smilr/frontend
-docker push {acr_name}.azurecr.io/smilr/frontend
+az acr build --registry $ACR_NAME -g kube-lab --context . --file node/data-api/Dockerfile --image smilr/data-api 
+```
+**💬 Note.**  If you are familiar with the Docker command line and the `docker build` command you notice some similarity in syntax and approach
+
+That should take about a minute or two to run. After that we'll build the frontend, the command will be very similar just with a different source file image tag
+```
+az acr build --registry $ACR_NAME -g kube-lab --context . --file node/frontend/Dockerfile --image smilr/frontend
+```
+This will take slightly longer but should complete in 3-5 minutes
+
+If you want to double check the images have been built and stored in your registry you can run
+```
+az acr repository list -g kube-labs --name $ACR_NAME -o table
 ```
 
 ## End of Module 2
-We now have the images we need in a private registry and also have the authorization in place to get AKS to pull/run images from it - we can proceed to look at deployments 
+We now have the application images we need built & stored in a private registry. We also have the authorization in place to get AKS to pull/run our images, so we can proceed to look at deploying our microservices into Kubernetes 
 
 ---
 

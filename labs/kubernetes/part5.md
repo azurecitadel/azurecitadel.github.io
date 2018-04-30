@@ -83,20 +83,20 @@ First get the name of the data-api pod with:
 kubectl get pods -l app=data-api
 ```
 
-Next we execute a command directly on one of the pods, in this case the bash shell 
+Next we execute a command directly on one of the pods, in this case the Bash shell 
 ```
 kubectl exec -it {pod_name} bash
 ```
-You should see a linux command prompt, as this will drop us into a bash shell session right inside the running container in the pod. Run the `ls` command and have a look about, and running `ps -ef` you will see the node process which is the microservice data-api app running inside the container 
+You should see a linux command prompt, as this will drop us into a Bash shell session right inside the running container in the pod. Run the `ls` command and have a look about, and running `ps -ef` you will see the node process which is the microservice data-api app running inside the container 
 
-**💬 Note.**  The `-it` part of the kubectl command tells Docker to give us an interactive terminal session, and we run `bash` as the Smilr images are based on Linux. Not all Linux containers have bash installed and sometimes you need to fall back to plain `sh`. If this was a Windows container you would use `powershell` or the new `pwsh` command to start PowerShell Core
+**💬 Note.**  The `-it` part of the kubectl command tells Docker to give us an interactive terminal session, and we run `bash` as the Smilr images are based on Linux. Not all Linux containers have Bash installed and sometimes you need to fall back to plain `sh`. If this was a Windows container you would use `powershell` or the new `pwsh` command to start PowerShell Core
 
 To run the script we need in the container:
 ```
 cd demoData
 node demoData.js
 ```
-This script will connect to MongoDB, and inject some demo data (events and feedback) you should see some messages confirming what it has done. Type `exit` to leave the bash session 
+This script will connect to MongoDB, and inject some demo data (events and feedback) you should see some messages confirming what it has done. Type `exit` to leave the Bash session 
 
 Now refresh the Smilr app in your browser, and check there are events on the home screen, and go into te reports view to validate there is example feedback in the database.
 

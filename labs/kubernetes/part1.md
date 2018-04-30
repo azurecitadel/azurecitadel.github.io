@@ -49,28 +49,26 @@ az aks create -g kube-lab -n aks-cluster -l westeurope --node-count 3 --node-vm-
 ```
 This is a three node cluster, running Kubernetes 1.9.6 using B-Series burstable VMs to minimize costs  
 
-**💬 Note 1.** The command might take some time to complete, around 30 mins is normal, but in some cases up to an hour.
+**💬 Note 1.** The `az aks create` command uses your default SSH keypair located in **~/.ssh/id_rsa.pub** to provision the cluster nodes. If these keys don't exist (likely if you've never used WSL Bash or the Cloud Shell before) then you must add `--generate-ssh-keys` to the command. If you have your own SSH keys you wish to use, then add the `--ssh-key-value` parameter and provide the key public contents as a string
 
-**💬 Note 2.** The `az aks create` command uses your default SSH keys located in **~/.ssh/id_rsa.pub** to provision the cluster nodes. If these keys don't exist then a SSH key pair will be created for you. If you have your own SSH keys you wish to use, then add the `--ssh-key-value` parameter and provide the key public contents as a string
+**💬 Note 2.** The command might take some time to complete, around 30 mins is normal, but in some cases up to an hour.
 
 **💬 Note 3.** To save costs you can optionally enable auto-shutdown on the node VMs. Find the resource group named **MC_kube-lab_aks-cluster_westeurope** this will contain your cluster's nodes and other Azure resources. Click on each of the VMs and switch on the auto shutdown feature. You will need to manually start them again when you want to use your cluster, which might take around 5 mins, but having the nodes shutdown you can keep your AKS cluster deployed indefinitely for essentially zero cost
 
 
-## Get Kubectl and Credentials
+## Get Kubectl CLI tool (WSL Bash Only)
 To access the Kubernetes system you will be using the standard Kubernetes `kubectl` command line tool. We will be using this command a lot and it allows complete control and administration of a Kubernetes cluster.  
+
+If you are using *Azure Cloud Shell* you can skip this part as `kubectl` is already installed, so you can jump to **Accessing your Cluster**
+
 To download the `kubectl` binary run:
 ```
-az aks install-cli
-```
-If you get an error try running with `sudo` or by specifying the output file and path e.g. `az aks install-cli --install-location /home/blah/kubectl` If you do this, it is your responsibility to add the `kubectl` binary to your path
-
-**💬 Advice.** (April 2018) The default is to download the latest version of `kubectl`, which is currently version 1.10. This has a "feature" where the output of certain commands is missing helpful information. You can install an older version by adding `--client-version 1.9.3` to the command
-
-Test the command has been installed and is in your path by simply running
-```
-kubectl version
+sudo az aks install-cli --client-version 1.9.6
 ```
 
+Test the command has been installed and is in your path by simply running `kubectl`
+
+## Accessing your Cluster
 In order to access and manage Kubernetes `kubectl` command works off a set of cached credentials, held in the **.kube** directory your user profile/homedir. The Azure CLI makes getting these credentials for your AKS instance easy. This command effectively "logs you in" to Kubernetes:
 ```
 az aks get-credentials -g kube-lab -n aks-cluster
@@ -79,9 +77,10 @@ az aks get-credentials -g kube-lab -n aks-cluster
 ## Sanity Check Kubernetes and AKS
 It is recommended run the following to check your cluster is up and operational.
 ```
+kubectl cluster-info
 kubectl get nodes
 ```
-You should see each of the nodes you requested when you built the cluster (e.g. three) and their status, which should be **Ready**
+You should see information about your cluster and then information about each of the nodes you requested when you built the cluster (e.g. three) and their status, which should be **Ready**
 
 
 Another good check to run is listing all the pods running, in the `kube-system` namespace:
@@ -92,11 +91,12 @@ kubectl get all -n kube-system
 
 
 ## Access Kubernetes Dashboard 
-Accessing the Kubernetes dashboard is optional, but if it's your first time using Kubernetes it can help provide visibility into what is going on. 
+Accessing the Kubernetes dashboard is optional, but if it's your first time using Kubernetes it can help provide a lot of visibility into what is going on. 
 
-For the lab we will use the command line for everything, however it is useful to be able to sanity check and see what is going on using the dashboard. It's a matter of personal choice if you want to use the dashboard, but it's worth having to hand for triaging problems and investigation.
+For the lab we will use the command line for everything, and all commands will be provided. However it is useful to be able to sanity check and see what is going on using the dashboard. It's a matter of personal choice if you want to use the dashboard, but it's worth having to hand for triaging problems and investigation.
 
-The dashboard is accessed via a proxy tunnel into the Kubernetes cluster itself. To create this proxy:
+### Option 1 - Using WSL Bash 
+If using WSL Bash on your local machine, the dashboard can be accessed via a proxy tunnel into the Kubernetes cluster itself. To create this proxy:
 ```
 az aks browse -g kube-lab -n aks-cluster
 ```
@@ -105,6 +105,32 @@ To access the dashboard go to [http://127.0.0.1:8001](http://127.0.0.1:8001) in 
 **💬 Note 1.** This command doesn't return to the prompt when executed, so run it in a new window or terminal
 
 **💬 Note 2.**  It is fairly common for the proxy to drop after short periods of inactivity, so be prepared to re-start the `az aks browse` command if the dashboard stops responding
+
+### Option 2 - Using Cloud Shell
+If you are using the Azure Cloud Shell `az aks browse` will not work as it creates a tunnel to localhost. Your only option is to expose the dashboard publicly. **Normally this is not a recommend approach** as there is *no authentication on the dashboard*, however for a lab and short term use it will suffice. 
+
+We will limit access to just your current public IP address, with a firewall (Azure NSG) to prevent it being completely open to the entire internet. This is a very brittle configuration but provides some degree of security
+
+Visit http://whatismyip.host/ and get your IPv4 address
+
+Then run the following Bash snippet, but modify the section `put-your-ip-here` with the real IP address
+```
+kubectl expose deployment kubernetes-dashboard --port=80 --target-port=9090 --type=LoadBalancer --name dash-external -n kube-system --overrides='{ "apiVersion": "v1", "spec": { "loadBalancerSourceRanges" : ["put-your-ip-here/32"] } }'
+```
+This will expose your dashboard on a new public IP, and configure the firewall 
+
+To get the assigned IP to access your dashboard run the command  
+```
+kubectl get svc/dash-external -n kube-system
+```
+Check the output for the EXTERNAL-IP. If you have just created your AKS cluster it could take around 5 minutes before the external IP address is assigned. Keep running the command and checking.
+
+Once the IP is assigned, access the dashboard by simply going to that IP in your browser.
+
+**💬 Note.**  Should your public IP change for what ever reason or you want to open up the firewall to other IPs/ranges you will need to run `KUBE_EDITOR="nano" kubectl edit svc/dash-external -n kube-system` and you can modify the **loadBalancerSourceRanges** section 
+
+Later in the lab we will explain in more detail about exposed services like this, and what they are doing, but for now we can move on.
+
 
 ## End of Module 1
 With an AKS cluster deployed and operational we're in a position to start using it, next we'll prepare the images we need and then look at deploying them to Kubernetes 
