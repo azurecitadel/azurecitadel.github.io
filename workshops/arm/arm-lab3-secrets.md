@@ -162,6 +162,9 @@ Requirements:
 1. Update the parameters file as well:
     * Set the adminUsername to your username
     * Set the dnsLabelPrefix to something that will be unique for the FQDN
+1. Fix any problems (`CTRL-SHIFT-M`)
+    * update any API versions for resources triggering problems
+    * remove the spurious storageAccountID variable
 
 If you have time then work out the commands in either PowerShell or Bash to see the available Ubuntu virtual machine images from Canonical. (Hint: the publisher is Canonical.)
 
@@ -222,7 +225,7 @@ In the parameters file, add in new virtualNetworkName and subnetName parameters 
         "secretName": "ubuntuDefaultPassword"
       }
     },
-    "virtualNetworkName": {
+    "vnetName": {
         "value": "ubuntuVnet"
     },
     "subnetName": {
