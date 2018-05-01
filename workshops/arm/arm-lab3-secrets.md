@@ -207,7 +207,7 @@ OK, we've addressed the password.  Let's start turning the template itself into 
 1. Change the publicIPAddressType variable to pipType
 1. Change the value for the vmSize variable to "Standard_B1s"
 
-In the parameters file, add in new virtualNetworkName and subnetName parameters and **remove** both vmName and dnsLabelPrefix. Here is an example:
+In the parameters file, add in new vnetName and subnetName parameters and **remove** both vmName and dnsLabelPrefix. Here is an example:
 
 ```json
 {
