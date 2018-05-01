@@ -34,7 +34,6 @@ Pre-req | Required | Comment
 <a href="/guides/wsl" target="_blank">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
 <a href="/guides/powershell" target="_blank">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
 <a href="/guides/vscode" target="_blank">Visual Studio Code</a> | Optional |
-A Twitter account | Optional |
 
 Please confirm that your Azure subscription is working correctly _before_ the session:
 
