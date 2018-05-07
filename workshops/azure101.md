@@ -16,40 +16,39 @@ image:
 {% include toc.html %}
 
 ## Introduction
+
 The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.
 
 The aim is to familiarise the student with some of the most commonly used IaaS and PaaS services in Azure, and the portal and CLI interfaces available to drive them.
 
 In terms of orientation, the trainer may use slides to help give an overview of some of the other services available within Azure, and the training will also make the student aware of some of the documentation and training resources available to them as they continue to explore.
 
-Allow five hours for a full session including all of the labs.  
+Allow five hours for a full session including all of the labs.
 
 ## Pre-requisites
+
 The workshop requires the following
 
 Pre-req | Required | Comment
-<a href="/guides/subscription" target="_blank">Azure Subscription</a> | Required | 
+<a href="/guides/subscription" target="_blank">Azure Subscription</a> | Required |
 <a href="/guides/wsl" target="_blank">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
 <a href="/guides/powershell" target="_blank">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
-<a href="/guides/vscode" target="_blank">Visual Studio Code</a> | Optional | 
-A Twitter account | Optional | 
-<a href="https://www.getpostman.com" target="_blank">Postman</a> | Required | Used in the Logic Apps lab to post JSON
+<a href="/guides/vscode" target="_blank">Visual Studio Code</a> | Optional |
 
 Please confirm that your Azure subscription is working correctly _before_ the session:
+
 * Browse to [Azure Portal](http://portal.azure.com)
 * Authenticate to confirm your credentials are working correctly
 * Click on the '**+ New**' in the left hand pane
 * Search for 'Resource Group' and select it
 * Click Create and use the following parameters
     * Resource Group Name: **Azure101IaaS**
-       * The name should show a green tick once you move way from the text box
+        * The name should show a green tick once you move way from the text box
     * Subscription: \<your subscription name>
     * Resource Group Location: **West Europe**
-* Click on Create 
+* Click on Create
 
 If the resource group is successfuly deployed then your subscription has sufficient permissions for the Azure 101 workshop.
-
-
 
 ## Cloud Infrastructure and Apps track
 
@@ -62,7 +61,9 @@ Lab | Description
 <a href="/labs/logicapps" target="_blank">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
 
 ### Content
+
 The below sections are [PowerPoint](/workshops/azure101/azure101InfraAndAppsPresenterDeck.pptx) content unless specified otherwise
+
 1. Azure Intro
     * Cloud drivers and key Azure principles
     * Scale and compliancy

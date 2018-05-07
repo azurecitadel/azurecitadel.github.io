@@ -93,11 +93,9 @@ The count in the copy object is based on the length of that array, and the copyI
 
 ## Property copies
 
-Let's do it at the property level against the managed disks used for data.  These use a slightly different structure, creating small arrays of objects on the fly.  They can only be used in places where property arrays are already used, e.g. data disks, NICs, etc.  (Look for the square brackets!)
+You can also use the `"copy"` keyword within resources. Using copy within a resource uses a slightly different structure, extrapolating small arrays of objects on the fly.  They can only be used in places where property arrays are already used, e.g. data disks, NICs, etc.  (Look for the square brackets!) The example below extrapolates out the managed disks used for data.
 
-Create a lab5 and copy in the files from lab4. Create a new parameter in the azuredeploy.json file for numberOfDataDisks, defaulting to 1.  We'll set inline at submission.  (Hint: should it be a string type?)
-
-Find the managed data disk area, which should be in the virtual machine as properties.storageProfile.dataDisks, and is, of course, an array:
+Find the managed data disk area which is in the virtual machine resource as properties.storageProfile.dataDisks. It is, of course, an array:
 
 ```json
           "dataDisks": [
@@ -109,9 +107,9 @@ Find the managed data disk area, which should be in the virtual machine as prope
           ]
 ```
 
-We'll replace this whole section with a copy property.  The copy element at the property level is an array, not an object, and it contains a single property containing:
+These _name:array_ sections can be replaced with a copy property.  The copy when used at the property level is itself an array so that it can support multiple extrapolations.  Each element in the array contains the following:
 
-* **name**: which has to match the name of the property it is replacing, in this case 'dataDisks'
+* **name**: which has to match the name of the property it is generating, in this case 'dataDisks'
 * **count**: the number of values to create in the array
 * **input**: which defines the object that will be injected
 
@@ -129,9 +127,9 @@ Change the dataDisks section to look like the following:
           }]
 ```
 
-Note that the input section is a dead ringer for the previous object, just replacing the lun number with the one that is generated.
+Note that the input section is a dead ringer for the previous object, just replacing the LUN number with the one that is generated using copyIndex.  Note that copyIndex here is named, again to support multiple extrapolations.
 
-At deployment this will be expanded by resource manager so, if we were to submit with numberOfDataDisks=4, that it wil actually be submitted looking like this:
+At deployment this will be expanded by Resource Manager.  If we were to submit with numberOfDataDisks=4, then it would effectively generate an array like the one below:
 
 ```json
         "storageProfile": {
@@ -161,11 +159,24 @@ At deployment this will be expanded by resource manager so, if we were to submit
         }
 ```
 
-Note that we won't be able to do four data disks against our tiddly Standard_ B1s as the maximum number of data disks that will take is 2. Don't forget to save.
+## Lab to create multiple disks
+
+OK, let's update the VM template to take advantage of resource property copies so that we can parameterise the number of data disks. Create a lab5 resource group and copy and paste the lab4 folder in the VS Code explorer to autocreate a lab5 folder.
+
+Create a new parameter in your lab5 azuredeploy.json file for numberOfDataDisks, defaulting to 1.  We'll set this inline at submission.  (Hint: should it be a string type or something else?)
+
+You can use the previous section as inspiration, but let's also tidy up the naming convention for our disks.  Configure your templates so that the following names are adopted:
+
+    * **OS Disk**: \<vmname>-osDisk
+    * **Data Disks: \<vmname>-dataDisk01, where 1 is the LUN number
+
+Note that we won't be able to do four data disks against our tiddly Standard_ B1s as the maximum number of data disks that will permit is 2. Feel free to add a maxValue to your new parameter.
+
+Don't forget to save!
 
 ## Deploy your new VM template
 
-Before we deploy the template, let's remove that default value for the vmName. We'll continue to do that as an inline parameter in this lab so:
+Before we deploy the template, let's remove that default value for the vmName if you have not done so already. We'll continue to do that as an inline parameter in this lab so:
 
 * In the azuredeploy.json, change the parameter definition for vmName
     * remove the default value
