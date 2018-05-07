@@ -12,6 +12,17 @@ image:
 
 {% include toc.html %}
 
+## Registering Providers
+
+As AKS is in preview you might need to register the `Microsoft.ContainerService` provider in your subscription. Additionally if this is a new subscription created from an Azure Pass or trial, the core `Network`, `Storage` & `Compute` providers may not be registered.  
+Run the following commands to ensure all four providers are enabled:
+```
+az provider register -n Microsoft.Network
+az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.ContainerService
+```
+
 ## Deploying AKS
 We will begin by deploying Kubernetes using [*Azure Container Service (AKS)*](https://azure.microsoft.com/en-us/services/container-service/) (for the rest of the document we will simply refer to it as AKS)
 
