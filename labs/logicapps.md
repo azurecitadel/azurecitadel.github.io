@@ -83,7 +83,7 @@ We'll create a REST API point, using the sample payload in the code block below.
 1. the HTTP request, i.e. what we are sending in, and the expected format or schema for it, followed by
 2. the HTTP response sent back to confirm success
 
-Here is our sample JSON payload for you to copy out.
+Here is a sample JSON payload:
 
 ```json
 {
@@ -111,7 +111,21 @@ The video shows the creation of the two steps in the Logic App Designer.  Again,
 ### Request
 
 * Search for **http request** and select the trigger
-* Use the sample payload to generate a JSON schema for the endpoint
+* Copy the sample payload below
+* Click on the 'Use sample payload to generate schema' link
+* Paste the sample payload in there
+* Clicking done will generate the JSON schema for the endpoint, which describes the expected format for the JSON
+
+```json
+{
+    "id": 1504522921969,
+    "name": "Joe Bloggs",
+    "email": "joe.bloggs@outlook.com",
+    "feedback": "Your website crashes when I add items to my Wish List.  Shocking.",
+    "rating": 2,
+    "source": "webapp"
+}
+```
 
 ![request](/labs/logicapps/images/httpRequest.png)
 
