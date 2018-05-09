@@ -25,7 +25,7 @@ These will speed up the template creation process and deploy some of the higher 
 In this lab we will
 
 1. generate a template in the portal immediately prior to deployment
-1. use the resource group export to see how a configuration changes should look in the template
+1. use the resource group export to see how a configuration change should look in the template
 1. make use of the wide range of Azure quickstart templates on GitHub
 
 Before we do that, let's take a look at API versions, as these are important and this is a good time to get to know about them.
@@ -342,7 +342,7 @@ These will both be covered in future labs.
 
 There are a large number of variables.  There is always the option to refactor some of these up into the parameters section, such as vmName, vmSize, subnet names etc.
 
-Using good variable names makes the main resource section much easier to read and understand, especially if it means that you avoid length concat functions for the resource IDs.
+Using good variable names makes the main resource section much easier to read and understand, especially if it means that you avoid lengthy concat functions for the resource IDs.
 
 ## - Resources
 
