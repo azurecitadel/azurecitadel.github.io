@@ -39,10 +39,10 @@ We won't be using the Cosmos DB until the end of the lab, but we'll kick off the
 
 * Click **Add** in the Azure101PaaS resource group
 * Add Azure Cosmos DB
-  * ID: **\<yourname>cosmosdb**
-  * API: **SQL** (this is essentially DocumentDB, or NoSQL)
-  * Resource Group: **Azure101PaaS**
-  * Location: **West Europe**
+    * ID: **\<yourname>cosmosdb**
+    * API: **SQL** (this is essentially DocumentDB, or NoSQL)
+    * Resource Group: **Azure101PaaS**
+    * Location: **West Europe**
 
 #### CLI 2.0
 
@@ -68,11 +68,11 @@ OK, let's create an empty Logic App in the Azure101PaaS resource group.  The vid
   <p>Your browser does not support the video element.</p>
 </video>
 
-* Click on **New** or **Add** 
+* Click on **New** or **Add**
 * Find _Logic App_ and click on **Create**
-  * Name: **feedbackLogicApp**
-  * Resource Group: **Azure101PaaS**
-  * Location: **West Europe**
+    * Name: **feedbackLogicApp**
+    * Resource Group: **Azure101PaaS**
+    * Location: **West Europe**
 * Click into the new Logic App once deployed
 * Select **Blank Logic App** in the Logic Apps Designer screen
 
@@ -128,21 +128,21 @@ Note that the JSON describes the keys in order to give them titles such as _emai
 * Use the default HTTP status code of 200
 * Add a header, with **ID** as the key
 * Click in the value field for the ID key and then select **_id_** from the selection of dynamic content
-* Body: Set to **Feedback from _name_ has been successfully received** (followed by a newline), again making use of the dynamic content 
+* Body: Set to **Feedback from _name_ has been successfully received** (followed by a newline), again making use of the dynamic content
 
 Once you have completed the configuration then your Logic App should look something like the picture below.
 
-![](/labs/logicapps/images/httpRequestResponse.png)
+![HTTP Response](/labs/logicapps/images/httpRequestResponse.png)
 
 Don't forget to **Save** your Logic App's new HTTP endpoint before we test that it works in the next step.
 
-> In the steps above we generated the JSON schema on the fly, but you can also create proper schemas outside of the portal and then paste those in.  As an example, I also generated a [JSON schema](/labs/logicapps/schema.json) using the excellent https://jsonschema.net website and then modified to customise the variable titles, descriptions, etc.  The schema describes the expected format.
+> In the steps above we generated the JSON schema on the fly, but you can also create proper schemas outside of the portal and then paste those in.  As an example, I also generated a [JSON schema](/labs/logicapps/schema.json) using the excellent <https://jsonschema.net> website and then modified to customise the variable titles, descriptions, etc.  The schema describes the expected format.
 
 ### Test the endpoint
 
 OK, let's test the endpoint.  You can test this using the bash Cloud Shell using the curl command below. Curl is a fantastic and powerful command line tool, and we will use it to POST data to our REST API.
 
-However, if you have downloaded the [Postman](https://www.getpostman.com/) application (which was an optional prereq) then you may use this instead of curl if you are not a fan of command line interfaces. If that is what you would prefer then just open up the [Postman instructions](/labs/logicapps/postman) and follow those instead for the http endpoint test.
+However, if you have downloaded the [Postman](https://www.getpostman.com/) application then you may use this instead of curl if you are not a fan of command line interfaces. If that is what you would prefer then just open up the [Postman instructions](/labs/logicapps/postman) and follow those instead for the http endpoint test.
 
 For those using curl, then first copy the HTTP POST URL from the Request step in the workflow.
 
@@ -172,7 +172,8 @@ curl -X POST $endpoint \
     "rating": 2,
     "source": "webapp"
 }'
-``` 
+```
+
 The `--include` switch returns the headers in addition to the body of the HTTP response.
 
 The output should look something like this:
@@ -213,20 +214,20 @@ Date: Thu, 07 Dec 2017 23:08:46 GMT
 Feedback from Joe Bloggs has been successfully received.
 ```
 
-Note the successful HTTP response code `HTTP/1.1 200 OK` in the headers.  There are also a number of headers relating to the Logic App itself, plus our custom ID header with the value from the JSON payload.  
+Note the successful HTTP response code `HTTP/1.1 200 OK` in the headers.  There are also a number of headers relating to the Logic App itself, plus our custom ID header with the value from the JSON payload.
 
 This endpoint looks as if it is working nicely.
 
 ### Checking the Logic App run
 
-Logic Apps also has some really nice functionality to trace both successful and failed runs.  Let's take a look: 
+Logic Apps also has some really nice functionality to trace both successful and failed runs.  Let's take a look:
 
 * Go to the Overview area of the Logic App
 * Check that there is a new entry in the Trigger History
 * Click on the new **Runs History** entry to view the details
-  * Open up the individual steps to view the inputs and outputs
+    * Open up the individual steps to view the inputs and outputs
 
-![](/labs/logicapps/images/logicAppRun.png)
+![Logic App Run](/labs/logicapps/images/logicAppRun.png)
 
 This is useful to see the values as it steps through the workflow. Our workflow is simple, but this is invaluable for more complex workflows.
 
@@ -234,9 +235,9 @@ This is useful to see the values as it steps through the workflow. Our workflow 
 
 ## Send an email if feedback rating is poor
 
-We will now add a conditional action that will email us as an alert if the feedback rating is less than three.  
+We will now add a conditional action that will email us as an alert if the feedback rating is less than three.
 
-PR departments proactively monitor for comments on social media platforms, notably Facebook and Twitter, that have a negative sentiment.  They then quickly respond to those in order to minimise any brand damage.  What we are doing here is in a similar vein. 
+PR departments proactively monitor for comments on social media platforms, notably Facebook and Twitter, that have a negative sentiment.  They then quickly respond to those in order to minimise any brand damage.  What we are doing here is in a similar vein.
 
 ### Create the conditional action
 
@@ -249,30 +250,31 @@ Another video, followed by the steps:
 
 * Return to the Logic App, and re-open the Logic App Designer
 * Click on **+New Step** and then **Add a condition**
-  * Value:  **_rating_**
-  * Operator: **is less than**
-  * Value: **3**
+    * Value:  **_rating_**
+    * Operator: **is less than**
+    * Value: **3**
 * In the "If true" branch, add an action
 * Search for "_email_" and choose a platform.  The steps below are for Office 365 Outlook.
-  * Click on the **Send an Email** action
-  * Sign in to create the connection
-  * To: **yourEmailAddress**
-  * Subject: **Feedback from _name_**
-  * Body: Add in all of the useful information from the JSON payload to create the body of the email.  The screenshot below gives an example.
+    * Click on the **Send an Email** action
+    * Sign in to create the connection
+    * To: **yourEmailAddress**
+    * Subject: **Feedback from _name_**
+    * Body: Add in all of the useful information from the JSON payload to create the body of the email.  The screenshot below gives an example.
 
-![](/labs/logicapps/images/logicAppEmail.png)
+![Logic App Email](/labs/logicapps/images/logicAppEmail.png)
 
 * Click on **Save**
 
 ### Retest the Logic App
 
-Either 
+Either
+
 * rerun the curl command (you can use the up arrow in bash to recall previously submitted commands), or
 * go back to Postman and click on the blue POST button
 
 You can then check the inbox for the email tool you selected to see if the email has been successfully received.
 
-![](/labs/logicapps/images/logicAppEmailTest.png)
+![Logic App Email Test](/labs/logicapps/images/logicAppEmailTest.png)
 
 ----------
 
@@ -280,21 +282,23 @@ You can then check the inbox for the email tool you selected to see if the email
 
 We will now insert a step to retain the submitted feedback JSON documents, and store them.  Cosmos DB is a globally distributed multi-model database, and the model type selected earlier in the lab was SQL (Document DB), which is perfect for storing JSON documents.
 
-We'll now add a collection called production into our feedback database, and we'll partition it based on the source.  Then we'll add the step into the Logic App to add the document to the database.   
+We'll now add a collection called production into our feedback database, and we'll partition it based on the source.  Then we'll add the step into the Logic App to add the document to the database.
 
 ### Define the collection
 
 * Go into the Cosmos DB resource
 * Click on **Add Collection** in the Overview
-  * Database id: **main**
-  * Collection Id: **feedback**
-  * Storage Capacity: **Fixed (10GB)**
-  * Initial Throughput Capacity (RU/s): **400**
+    * Database id: **main**
+    * Collection Id: **feedback**
+    * Storage Capacity: **Fixed (10GB)**
+    * Initial Throughput Capacity (RU/s): **400**
 
 ![Cosmos DB Connection](/labs/logicapps/images/workflow-3-cosmosDbCollection.png)
 
-* In the Cosmos DB Overview area, copy the URI
-  * The URI is in the form **https://_\<ID>_.documents.azure.com:443/**
+* In the Cosmos DB Overview area
+    * Copy the URI
+
+The URI is in the form `https://<ID>.documents.azure.com:443`
 
 ![Cosmos DB Connection](/labs/logicapps/images/workflow-3-cosmosDbEndpoint.png)
 
@@ -310,8 +314,8 @@ Final video, followed by the steps:
 * Open up a new tab and go back into your Logic App
 * Click on **Edit** to re-open the Logic App Designer
 * Add a new action between Response and the Condition
-  * Hover the mouse over the arrow under Response and a **+** sign will appear
-  * Click on it and then select 'Add an action'
+    * Hover the mouse over the arrow under Response and a **+** sign    will appear
+    * Click on it and then select 'Add an action'
 * Search on 'Cosmos DB' and select _Create or update document_
 * Paste in the connection string `https://<yourname>cosmosdb.documents.azure.com:443/`
 * Select the Cosmos DB and click on Create
@@ -326,7 +330,7 @@ Set the parameters for the _Create or update document_ action:
 * **Collection ID**: Select _feedback_ from the drop down
 * **Document**: Enter the following, replacing `varname` with the relevant dynamic content:
 
-```
+```json
 {
   "email": "email",
   "feedback": "feedback",
@@ -336,7 +340,7 @@ Set the parameters for the _Create or update document_ action:
   "rating": "rating"
 }
 ```
-  
+
 * Set **IsUpsert** to _Yes_, which allows both updates and inserts
 * Do not set up a partition key.  These are only used for the unlimited size Cosmos DBs where the partition key is import for sharding.
 
@@ -352,12 +356,12 @@ Below is an example of the _Create or update document_ logic
 * Check the Run History and view the outputs
 * Go into Cosmos DB and use the Data Explorer to verify that the feedback is beeing collected successfully
 
-![](/labs/logicapps/images/cosmosDbDocumentTest.png)  
+![Cosmos DB Document Test](/labs/logicapps/images/cosmosDbDocumentTest.png)
 
 ## Final notes
 
 * Note that the logic app also allows drag and drop reordering of steps
-  * Prove this by moving the Cosmos DB document step above the HTTP Response
+    * Prove this by moving the Cosmos DB document step above the HTTP Response
 * It is also possible to cosmetically rename the steps
 * If you have time then explore the other inbuilt connectors offered by Logic Apps
 * Note that Functions can also be integrated into Logic Apps for full flexibility
