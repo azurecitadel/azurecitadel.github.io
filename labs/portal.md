@@ -102,7 +102,7 @@ If you have already created a resource group called Azure101IaaS as part of the 
 -   **Subnet address range:** _10.4.1.0/24_
 
 Once created, click on the new VNet in the Azure101IaaS resource group
--   THis will open up the "blade"
+-   This will open up the "blade"
 -   Scroll down the pane and find Subnets in the Settings area
 -   Add _dbSubnet_ (10.4.2.0/24)
 
