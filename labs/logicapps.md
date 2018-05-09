@@ -170,7 +170,7 @@ Set an variable in bash called `$endpoint` to the URL wrapped in single quotes. 
 endpoint='https://prod-59.westus.logic.azure.com:443/workflows/1de1cef274314f3f9b689e3129b3d417/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Q2uyR5uipJsbzjkNdvY46v8VmFERVQnldlQuRHUmqCo'
 ```
 
-The URL in the example aboce is for my Logic App, so make sure you set it to your URL instead!
+The URL in the example above is for my Logic App, so make sure you set it to your URL instead!
 
 Once you have done that then you can copy the following curl command and run that in the Cloud Shell to test the endpoint works:
 
