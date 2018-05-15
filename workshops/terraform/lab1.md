@@ -23,15 +23,32 @@ There are three ways of authenticating the Terraform provider to Azure:
 
 This will use the simplest of them, which is the Azure CLI authentication. We will move through the others during the course of the labs and will discuss the use cases for each.
 
-Once you have started your Cloud Shell session you will be automatically logged in to Azure so Terraform will piggy back off that and you'll be good to go.
+Once you have started your Cloud Shell session you will be automatically logged in to Azure.  Terraform makes use of that authentication and context, so you will be good to go.
 
 ## Getting started
 
 Open up an Azure Cloud Shell.  You can do this from within the portal by clicking on the **`>_`** icon at the top, but for an (almost) full screen Cloud Shell session then open up a new tab and go to <https://shell.azure.com>.
 
-If you have multiple subscriptions then make sure you are logged into the right one, using `az account show`, `az account list --output table` and `az account set --subscription <subscriptionId>`.
+You can show the account details for the subscription using `az account show`:
 
-  **💬 Note.** If you find yourself switching between subscriptions regularly then add an alias to the bottom of your `~/.bashrc` file.  I have done this for my Visual Studio subscription, e.g. `alias vs='az account set --subscription <subscriptionId>; az account show'`.
+```bash
+richard@Azure:~$ az account show --output jsonc
+{
+  "environmentName": "AzureCloud",
+  "id": "2d31be49-d999-4415-bb65-8aec2c90ba62",
+  "isDefault": true,
+  "name": "Visual Studio Enterprise",
+  "state": "Enabled",
+  "tenantId": "76f988bf-86f1-41af-91ab-2d7cd011db47",
+  "user": {
+    "cloudShellID": true,
+    "name": "richeney@microsoft.com",
+    "type": "user"
+  }
+}
+```
+
+If you have multiple subscriptions then you can switch using `az account list --output table` and `az account set --subscription <subscriptionId>`.  If you are doing that regularly then you may want to add an alias to the bottom of your `~/.bashrc` file, e.g. `alias vs='az account set --subscription <subscriptionId>; az account show'`.
 
 Type `terraform` to see the main help page:
 
@@ -77,15 +94,17 @@ All other commands:
 
 Terraform uses its own file format, called HCL (Hashicorp Configuration Language).  This is very similar to YAML.  We'll create a main.tf file with a resource group and storage account:
 
+* Copy the text from the codeblock below
 * Create a lab1 directory in your clouddrive (`mkdir clouddrive/lab1`)
 * Change to the new directory (`cd clouddrive/lab1`)
 * Create a main.tf file using either nano or vi (`nano main.tf`)
-* Copy in the text from the codeblock below
+* Paste in the contents of the clipboard
 * Change the storage account name ('richeneysa1976') to something unique
-    * Storage is a PaaS service with a public endpoint and the name forms part of the FQDN
+    * Storage is a PaaS service with a public endpoint 
+    * The storage account name forms part of the FQDN, which needs to be globally unique
 * Save the file (`CTRL-X` in nano)
 
-    **💬 Note.** If you are using vi then the default colour scheme in Cloud Shell isn't great.  Type `ESC+:`, and then `colo delek` and that will activate one of the more readable colour schemes.
+> **💬 Note.** If you are using vi then the default colour scheme in Cloud Shell isn't great.  Type `ESC :`, and then `colo delek` and that will activate one of the more readable colour schemes.
 
 ```yaml
 resource "azurerm_resource_group" "lab1" {
@@ -106,19 +125,21 @@ resource "azurerm_storage_account" "sa" {
 }
 ```
 
-Let's look more closely at the resource block for the storage account.
+Let's look more closely at the resource block (or stanza) for the storage account.
 
-The Terraform top level keyword is `resource`. We'll cover the various top level keywords as we go through the labs.
+The Terraform top level **keyword** is `resource`. We'll cover the various top level keywords as we go through the labs.
 
-The next value, `azurerm_resource_group`, is the type of resource.  Resource types are always prefixed with the provider, which is azurerm in this case. You can have multiple resources of the same type in a Terraform configuration, and they can make use different providers.
+The next value, `azurerm_resource_group`, is the **resource type**.  Resource types are always prefixed with the provider, which is azurerm in this case. You can have multiple resources of the same type in a Terraform configuration, and they can make use of different providers.
 
-The next value, `sa`, is the Terraform identifier (id) of the resource. These are used within Terraform's graph database of dependencies, and so the combination of resource type and id (`azurerm_storage_account.sa`) must be unique.  The ids can be comprised of alphanumerics, underscores or dashes.
+The next value, `sa`, is the Terraform **resource id**. These are used within Terraform's graph database of dependencies, and so the combination of resource type and id (`azurerm_storage_account.sa`) must be unique.  Therefore if you had multiple Azure storage accounts then they would require different ids.  If you had different resource types then they could have the same id shortnames as the resource type and id combination would still be unique. The ids can be comprised of alphanumerics, underscores or dashes.
 
-The key-value pairs within the curly braces are the arguments. Note that the indentation is very important in HCL.  A list of  key-value pairs is called a map.  (You may be used to calling them dictionaries, hashes or objects depending on your point of reference.) Note the lack of commas in the list - again this is not required in standard HCL.
+The key-value pairs within the curly braces are the arguments. Note that the indentation is very important in HCL.  A list of key-value pairs is called a map.  (You may be used to calling them dictionaries, hashes or objects, depending on your point of reference.) Note the lack of commas in the list - again this is not required in standard HCL.
 
-Most of the values are standard strings, except for the storage account resource group name.  This uses interpolation, and will evaluate everything in between the dollar and curly braces: `${ ... }`.  Using `"${azurerm_resource_group.lab1.name}"` will set the value to the name of the resource group above, i.e. 'terraformLab1'.
+Most of the values are standard strings, except for the storage account resource group name.  This uses interpolation, and will evaluate everything in between the dollar and curly braces: `${ ... }`.
 
-It also sets an implicit dependency, so that Terraform understands that the storage account will only be created once the resource group exists.
+Using `"${azurerm_resource_group.lab1.name}"` will set the value of the resource group name to match the resource group resource stanza above, i.e. 'terraformLab1'.
+
+Using the reference to the other resource also sets an implicit dependency, so that Terraform understands that the storage account should only be created once the resource group exists.
 
 ## The Terraform workflow
 
@@ -227,7 +248,7 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
 
-This is a dry run and shows which actions will be made. This will be more interesting as we move through the labs.
+This is a dry run and shows which actions will be made.  THis allows manual verification of the changes before going aheading and running the apply step.
 
 ## - terraform apply
 
@@ -334,6 +355,8 @@ Destroy complete! Resources: 2 destroyed.
 ```
 
 [**WARNING** If there are other resources in a Terraform managed resource group then the destroy will remove these as well.](){: .btn-warning}
+
+Clean up the folder in the Cloud Shell using `rm -fR ~/clouddrive/lab1`.
 
 ## End of Lab 1
 
