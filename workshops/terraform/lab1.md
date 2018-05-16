@@ -96,7 +96,7 @@ Terraform uses its own file format, called HCL (Hashicorp Configuration Language
 
 * Copy the text from the codeblock below
 * Create a basics directory in your clouddrive (`mkdir clouddrive/basics`)
-* Change to the new directory (`cd clouddrive/basicsbasics`)
+* Change to the new directory (`cd clouddrive/basics`)
 * Create a main.tf file using either nano or vi (`nano main.tf`)
 * Paste in the contents of the clipboard
 * Change the storage account name ('richeneysa1976') to something unique
@@ -108,7 +108,7 @@ Terraform uses its own file format, called HCL (Hashicorp Configuration Language
 
 ```yaml
 resource "azurerm_resource_group" "basics" {
-  name     = "terraformbasics"
+  name     = "terraformBasics"
   location = "West Europe"
 
   tags {
@@ -137,7 +137,7 @@ The key-value pairs within the curly braces are the arguments. Note that the ind
 
 Most of the values are standard strings, except for the storage account resource group name.  This uses interpolation, and will evaluate everything in between the dollar and curly braces: `${ ... }`.
 
-Using `"${azurerm_resource_group.basics.name}"` will set the value of the resource group name to match the resource group resource stanza above, i.e. 'terraformbasics'.
+Using `"${azurerm_resource_group.basics.name}"` will set the value of the resource group name to match the resource group resource stanza above, i.e. 'terraformBasics'.
 
 Using the reference to the other resource also sets an implicit dependency, so that Terraform understands that the storage account should only be created once the resource group exists.
 
@@ -205,7 +205,7 @@ Terraform will perform the following actions:
   + azurerm_resource_group.basics
       id:                               <computed>
       location:                         "westeurope"
-      name:                             "terraformbasics"
+      name:                             "terraformBasics"
       tags.%:                           "1"
       tags.environment:                 "Training"
 
@@ -228,7 +228,7 @@ Terraform will perform the following actions:
       primary_location:                 <computed>
       primary_queue_endpoint:           <computed>
       primary_table_endpoint:           <computed>
-      resource_group_name:              "terraformbasics"
+      resource_group_name:              "terraformBasics"
       secondary_access_key:             <computed>
       secondary_blob_connection_string: <computed>
       secondary_blob_endpoint:          <computed>
@@ -268,10 +268,10 @@ Do you want to perform these actions?
 
 azurerm_resource_group.basics: Creating...
   location:         "" => "westeurope"
-  name:             "" => "terraformbasics"
+  name:             "" => "terraformBasics"
   tags.%:           "" => "1"
   tags.environment: "" => "Training"
-azurerm_resource_group.basics: Creation complete after 1s (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics)
+azurerm_resource_group.basics: Creation complete after 1s (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformBasics)
 azurerm_storage_account.sa: Creating...
   access_tier:                      "" => "<computed>"
   account_encryption_source:        "" => "Microsoft.Storage"
@@ -290,7 +290,7 @@ azurerm_storage_account.sa: Creating...
   primary_location:                 "" => "<computed>"
   primary_queue_endpoint:           "" => "<computed>"
   primary_table_endpoint:           "" => "<computed>"
-  resource_group_name:              "" => "terraformbasics"
+  resource_group_name:              "" => "terraformBasics"
   secondary_access_key:             "" => "<computed>"
   secondary_blob_connection_string: "" => "<computed>"
   secondary_blob_endpoint:          "" => "<computed>"
@@ -308,10 +308,10 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 The resource group and the storage account have been successfully deployed.
 
 ```yaml
-richard@Azure:~/clouddrive/basics$ az resource list --resource-group terraformbasics --output table
+richard@Azure:~/clouddrive/basics$ az resource list --resource-group terraformBasics --output table
 Name               ResourceGroup    Location    Type                               Status
 -----------------  ---------------  ----------  ---------------------------------  --------
-richeneysa1976     terraformbasics    westeurope  Microsoft.Storage/storageAccounts
+richeneysa1976     terraformBasics    westeurope  Microsoft.Storage/storageAccounts
 ```
 
 ## - terraform destroy
@@ -320,7 +320,7 @@ Clean up the resources by using the `terraform destroy` command.  The command wi
 
 ```yaml
 richard@Azure:~/clouddrive/basics$ terraform destroy
-azurerm_resource_group.basics: Refreshing state... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics)
+azurerm_resource_group.basics: Refreshing state... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformBasics)
 azurerm_storage_account.sa: Refreshing state... (ID: /subscriptions/2d31be49-d999-4415-bb65-...Storage/storageAccounts/richeneysa1976)
 
 An execution plan has been generated and is shown below.
@@ -344,11 +344,11 @@ Do you really want to destroy?
 
 azurerm_storage_account.sa: Destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-...Storage/storageAccounts/richeneysa1976)
 azurerm_storage_account.sa: Destruction complete after 1s
-azurerm_resource_group.basics: Destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics)
-azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics, 10s elapsed)
-azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics, 20s elapsed)
-azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics, 30s elapsed)
-azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics, 40s elapsed)
+azurerm_resource_group.basics: Destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformBasics)
+azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformBasics, 10s elapsed)
+azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformBasics, 20s elapsed)
+azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformBasics, 30s elapsed)
+azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformBasics, 40s elapsed)
 azurerm_resource_group.basics: Destruction complete after 46s
 
 Destroy complete! Resources: 2 destroyed.
