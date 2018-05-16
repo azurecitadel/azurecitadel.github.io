@@ -95,20 +95,20 @@ All other commands:
 Terraform uses its own file format, called HCL (Hashicorp Configuration Language).  This is very similar to YAML.  We'll create a main.tf file with a resource group and storage account:
 
 * Copy the text from the codeblock below
-* Create a lab1 directory in your clouddrive (`mkdir clouddrive/lab1`)
-* Change to the new directory (`cd clouddrive/lab1`)
+* Create a basics directory in your clouddrive (`mkdir clouddrive/basics`)
+* Change to the new directory (`cd clouddrive/basicsbasics`)
 * Create a main.tf file using either nano or vi (`nano main.tf`)
 * Paste in the contents of the clipboard
 * Change the storage account name ('richeneysa1976') to something unique
-    * Storage is a PaaS service with a public endpoint 
+    * Storage is a PaaS service with a public endpoint
     * The storage account name forms part of the FQDN, which needs to be globally unique
 * Save the file (`CTRL-X` in nano)
 
 > **💬 Note.** If you are using vi then the default colour scheme in Cloud Shell isn't great.  Type `ESC :`, and then `colo delek` and that will activate one of the more readable colour schemes.
 
 ```yaml
-resource "azurerm_resource_group" "lab1" {
-  name     = "terraformLab1"
+resource "azurerm_resource_group" "basics" {
+  name     = "terraformbasics"
   location = "West Europe"
 
   tags {
@@ -118,7 +118,7 @@ resource "azurerm_resource_group" "lab1" {
 
 resource "azurerm_storage_account" "sa" {
   name                     = "richeneysa1976"
-  resource_group_name      = "${azurerm_resource_group.lab1.name}"
+  resource_group_name      = "${azurerm_resource_group.basics.name}"
   location                 = "westeurope"
   account_tier             = "Standard"
   account_replication_type = "LRS"
@@ -137,7 +137,7 @@ The key-value pairs within the curly braces are the arguments. Note that the ind
 
 Most of the values are standard strings, except for the storage account resource group name.  This uses interpolation, and will evaluate everything in between the dollar and curly braces: `${ ... }`.
 
-Using `"${azurerm_resource_group.lab1.name}"` will set the value of the resource group name to match the resource group resource stanza above, i.e. 'terraformLab1'.
+Using `"${azurerm_resource_group.basics.name}"` will set the value of the resource group name to match the resource group resource stanza above, i.e. 'terraformbasics'.
 
 Using the reference to the other resource also sets an implicit dependency, so that Terraform understands that the storage account should only be created once the resource group exists.
 
@@ -154,7 +154,7 @@ Let's step through it.
 The `terraform init` command looks through all of the *.tf files in the current working directory and automatically downloads any of the providers required for them.  Run it now.
 
 ```yaml
-richard@Azure:~/clouddrive/lab1$ terraform init
+richard@Azure:~/clouddrive/basics$ terraform init
 
 Initializing provider plugins...
 - Checking for available provider plugins on https://releases.hashicorp.com...
@@ -188,7 +188,7 @@ As you can see it has downloaded the provider.azurerm which we specified in out 
 Run the `terraform plan`.
 
 ```yaml
-richard@Azure:~/clouddrive/lab1$ terraform plan
+richard@Azure:~/clouddrive/basics$ terraform plan
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
@@ -202,10 +202,10 @@ Resource actions are indicated with the following symbols:
 
 Terraform will perform the following actions:
 
-  + azurerm_resource_group.lab1
+  + azurerm_resource_group.basics
       id:                               <computed>
       location:                         "westeurope"
-      name:                             "terraformLab1"
+      name:                             "terraformbasics"
       tags.%:                           "1"
       tags.environment:                 "Training"
 
@@ -228,7 +228,7 @@ Terraform will perform the following actions:
       primary_location:                 <computed>
       primary_queue_endpoint:           <computed>
       primary_table_endpoint:           <computed>
-      resource_group_name:              "terraformLab1"
+      resource_group_name:              "terraformbasics"
       secondary_access_key:             <computed>
       secondary_blob_connection_string: <computed>
       secondary_blob_endpoint:          <computed>
@@ -266,12 +266,12 @@ Do you want to perform these actions?
 
   Enter a value: yes
 
-azurerm_resource_group.lab1: Creating...
+azurerm_resource_group.basics: Creating...
   location:         "" => "westeurope"
-  name:             "" => "terraformLab1"
+  name:             "" => "terraformbasics"
   tags.%:           "" => "1"
   tags.environment: "" => "Training"
-azurerm_resource_group.lab1: Creation complete after 1s (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformLab1)
+azurerm_resource_group.basics: Creation complete after 1s (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics)
 azurerm_storage_account.sa: Creating...
   access_tier:                      "" => "<computed>"
   account_encryption_source:        "" => "Microsoft.Storage"
@@ -290,7 +290,7 @@ azurerm_storage_account.sa: Creating...
   primary_location:                 "" => "<computed>"
   primary_queue_endpoint:           "" => "<computed>"
   primary_table_endpoint:           "" => "<computed>"
-  resource_group_name:              "" => "terraformLab1"
+  resource_group_name:              "" => "terraformbasics"
   secondary_access_key:             "" => "<computed>"
   secondary_blob_connection_string: "" => "<computed>"
   secondary_blob_endpoint:          "" => "<computed>"
@@ -308,10 +308,10 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 The resource group and the storage account have been successfully deployed.
 
 ```yaml
-richard@Azure:~/clouddrive/lab1$ az resource list --resource-group terraformLab1 --output table
+richard@Azure:~/clouddrive/basics$ az resource list --resource-group terraformbasics --output table
 Name               ResourceGroup    Location    Type                               Status
 -----------------  ---------------  ----------  ---------------------------------  --------
-richeneysa1976     terraformLab1    westeurope  Microsoft.Storage/storageAccounts
+richeneysa1976     terraformbasics    westeurope  Microsoft.Storage/storageAccounts
 ```
 
 ## - terraform destroy
@@ -319,8 +319,8 @@ richeneysa1976     terraformLab1    westeurope  Microsoft.Storage/storageAccount
 Clean up the resources by using the `terraform destroy` command.  The command will let you know what you are about to remove and then prompt you for confirmation.
 
 ```yaml
-richard@Azure:~/clouddrive/lab1$ terraform destroy
-azurerm_resource_group.lab1: Refreshing state... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformLab1)
+richard@Azure:~/clouddrive/basics$ terraform destroy
+azurerm_resource_group.basics: Refreshing state... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics)
 azurerm_storage_account.sa: Refreshing state... (ID: /subscriptions/2d31be49-d999-4415-bb65-...Storage/storageAccounts/richeneysa1976)
 
 An execution plan has been generated and is shown below.
@@ -329,7 +329,7 @@ Resource actions are indicated with the following symbols:
 
 Terraform will perform the following actions:
 
-  - azurerm_resource_group.lab1
+  - azurerm_resource_group.basics
 
   - azurerm_storage_account.sa
 
@@ -344,19 +344,19 @@ Do you really want to destroy?
 
 azurerm_storage_account.sa: Destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-...Storage/storageAccounts/richeneysa1976)
 azurerm_storage_account.sa: Destruction complete after 1s
-azurerm_resource_group.lab1: Destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformLab1)
-azurerm_resource_group.lab1: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformLab1, 10s elapsed)
-azurerm_resource_group.lab1: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformLab1, 20s elapsed)
-azurerm_resource_group.lab1: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformLab1, 30s elapsed)
-azurerm_resource_group.lab1: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformLab1, 40s elapsed)
-azurerm_resource_group.lab1: Destruction complete after 46s
+azurerm_resource_group.basics: Destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics)
+azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics, 10s elapsed)
+azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics, 20s elapsed)
+azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics, 30s elapsed)
+azurerm_resource_group.basics: Still destroying... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformbasics, 40s elapsed)
+azurerm_resource_group.basics: Destruction complete after 46s
 
 Destroy complete! Resources: 2 destroyed.
 ```
 
 [**WARNING** If there are other resources in a Terraform managed resource group then the destroy will remove these as well.](){: .btn-warning}
 
-Clean up the folder in the Cloud Shell using `rm -fR ~/clouddrive/lab1`.
+Clean up the folder in the Cloud Shell using `rm -fR ~/clouddrive/basics`.
 
 ## End of Lab 1
 
