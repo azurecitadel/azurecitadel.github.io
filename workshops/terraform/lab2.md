@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 2: Variables"
 categories: null
-date: 2018-05-01
+date: 2018-06-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -29,12 +29,16 @@ As you move through the lab you will start to make use of variables and multiple
 
 ## Visual Studio Code
 
-Before we start using variables etc., let's get vscode working for us.  We'll create a folder for our workspace and set the workspace to default to linux friendly LF line endings.
+Before we start using variables etc., let's spend a little time getting vscode configured for us.  In this section we'll create a folder for our workspace and then set the workspace to default to linux friendly LF line endings for the Bash based Cloud Shell.
 
 * Open Visual Studio Code
-* Click on the Explorer (or use CTRL+SHIFT+E)
-* Open Folder
-* Create and then open a new local folder for your lab files, e.g. C:\terraform\lab2
+* Open Folder, by either:
+    * clicking on the 'Open folder...' link in the Start section of the Welcome page,
+    * clicking on File -> Open Folder, or
+    * using the CTRL-K, CTRL-O keyboard shortcut chord
+* Use the dialog box to create a new local folder for your lab files
+    * This lab assumes C:\terraform\citadel as your local workspace
+* Select the folder
 * Type `CTRL+,` to open Settings:
 
 ![eol](/workshops/terraform/images/eol.png)
@@ -42,19 +46,23 @@ Before we start using variables etc., let's get vscode working for us.  We'll cr
 All of the available and defaulted settings are shown on the left, and they can then be overriden at the user or workspace level.
 
 1. Click on Workspace Settings
+    * As soon as you do then you will notice a .vscode/settings.json file is created in your workspace
 1. Search for `eol`
 1. Hover over the "files.eol" setting, click on the pen to edit it and select "\n"
 1. Type `CTRL+S` to save your new workspace settings
 
 OK, the area is ready.  Let's quickly recreate the main.tf file from the last lab with a new resource group name.
 
-* Create a new file in the folder called main.tf
-    * Hover over the lab2 bar in the explorer sidebar for the New File icon
+## Create the main.tf and push to Cloud Shell
+
+* Create a new file in the root of the workspace called main.tf
+    * Hover over the citadel bar in the explorer sidebar for the New File icon
+    * if you accidentally created the main.tf file in the vscode subfolder then you can drag it into the blank area to move it up
 * Paste in the contents of the codebox below
 
 ```yaml
-resource "azurerm_resource_group" "lab1" {
-  name      = "terraformLab2"
+resource "azurerm_resource_group" "citadel" {
+  name      = "terraformCitadelWorkshop"
   location  = "West Europe"
 
   tags {
@@ -64,14 +72,14 @@ resource "azurerm_resource_group" "lab1" {
 
 resource "azurerm_storage_account" "sa" {
   name                     = "richeneysa1976"
-  resource_group_name      = "${azurerm_resource_group.lab1.name}"
+  resource_group_name      = "${azurerm_resource_group.citadel.name}"
   location                 = "westeurope"
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 ```
 
-This is the same file as we used in the last lab.  Don't forget to change your storage account name again.
+This is the same file as we used in the last lab except that we have a new resource group name.  Don't forget to change your storage account name again.
 
 Now that we are using vscode with the various plugins, we have a multitude of productivity gains, such as linting, intellisense, snippets, auto-complete. The .tf extension is automatically associated with Terraform.
 
@@ -88,16 +96,13 @@ Let's push it up to the Cloud Shell:
 * Select the directory if your ID is linked to multiple tenancies
 * Bash in Cloud Shell will open in the Integrated Console
 * You will be prompted to confirm the push of project files from the current workspace to the Cloud Shell
-* The files will be pushed up into a new ~/clouddrive/lab2 directory in the Cloud Shell
+* The files will be pushed up into a new ~/clouddrive/citadel directory in the Cloud Shell
     * Subsequent pushes will be much quicker
-* In the Cloud Shell `cd clouddrive/lab2` and then `ls -l`
+* In the Cloud Shell `cd clouddrive/citadel` and then `ls -l`
 
 ![Post push](/workshops/terraform/images/postpush.png)
 
-You can now run through the terraform init, plan and apply workflow using either
-
-* the normal commands within the Integrated Console (which is toggled with CTRL+'), or
-* using the Command Palette (CTRL+SHIFT+P) and then searching on init, plan and apply to find the commands from the Azure Terraform extension
+You can now run through the terraform init, plan and apply workflow using the Command Palette (CTRL+SHIFT+P).  If you search on init, plan and apply you will find the commands from the Azure Terraform extension.  Running these also syncs the files up to Cloud Shell first.
 
 Confirm that the services are up by checking in the portal of using the CLI.
 
@@ -105,13 +110,13 @@ Confirm that the services are up by checking in the portal of using the CLI.
 
 One thing that is very useful in Terraform is to make use of multiple .tf files.  The terraform commands will look at all *.tf files in the current working directory.  (Note that by design it does _not_ recursively move through sub-directories.)
 
-So let's create a variables.tf file in the lab2 directory and define some of the key variables in there.
+So let's create a variables.tf file in the citadel directory and define some of the key variables in there.
 
 Create the variables.tf file in vscode and paste in the following:
 
 ```yaml
 variable "rg" {
-    default = "terraformLab2"
+    default = "terraformCitadelWorkshop"
 }
 
 variable "loc" {
@@ -127,13 +132,11 @@ variable "tags" {
 }
 ```
 
-Browse to the <https://aka.ms/terraform/docs> area, and navigateto the [variables](https://www.terraform.io/docs/configuration/variables.html) section.
+Browse to the <https://aka.ms/terraform/docs> area, and navigate to the [variables](https://www.terraform.io/docs/configuration/variables.html) section.  You'll see that there are different ways to define the variables.  There are three types of valid variables, which are string, list or map.
 
-You'll see that there are different ways to define the variables.  There are three types of valid variables, which are string, list or map.
+> **💬 Note.** If you are familiar with ARM template then the Terraform variables are roughly synonymous with the parameters in ARM templates, and are used to declare what the user can specify.  They can also be used to define variables that can be used globally by all *.tf files in the current working directory (cwd).
 
-    **💬 Note.** If you are familiar with ARM template then the Terraform variables are synonymous with the parameters in ARM templates, but can also be used to define variables that can be used globally by all *.tf files in the current working directory (cwd).
-
-The most commonly used variable argument is `default`. Terraform will infer the variable type from the default value.  If you do not have a default then it will default to string so if you want a list or map then you have to specify the `type` argument. 
+The most commonly used variable argument is `default`. Terraform will infer the variable type from the default value.  If you do not have a default then it will default to string so if you want a list or map then you have to specify the `type` argument.
 
 The `description` argument is optional but recommended, particularly when you are creating reusable modules in the later labs.
 
@@ -144,18 +147,78 @@ Let's edit our existing main.tf file and make use of the variables. The interpol
 1. Change the resource group's name to use `"${var.rg}"`
 1. Change the resource group's location to make use of the new `loc` variable
 1. Change the location for the storage account and link it to the resource group's location
-1. Save your files and then push them into the Cloud Shell
+1. Save your files locally
 1. Run a `terraform plan`
 
+We may have introduced some simple string variables, but nothing that results in a required change.
 
+## Using lists
 
+Lists are simple arrays.  Here is a simple example declaration:
+
+```yaml
+variable "webAppLocations" {
+    default = [ "francecentral", "canadaeast", "brazilsouth", "japanwest", "australiacentral" ]
+}
+```
+
+Terraform will interpolate `"${var.webAppLocations[2]}"` as `brazilsouth`. (The index starts at zero.)
+
+[text]()
+[Lab 3: Outputs ►](../lab3){: .btn-success}
+
+For resources that can have multiple  
+
+## Using maps
+
+There is a 'tags' variable in the variables.tf that is defined as a map.
+
+```yaml
+variable "tags" {
+    type = "map"
+    default = {
+        environment = "training"
+        source      = "citadel"
+    }
+}
+```
+
+We can pull out individual values.  For instance `"${var.tags['source']}"` would be evaluated as `citadel`.
+
+Or we can use the full map using `"${var.tags}"`, which will be resolved to:
+
+```json
+{
+    environment = "training"
+    source      = "citadel"
+}
+```
+
+Let's use the tags for our resources:
+
+* Change the tags for the resource group to use the variable map
+* Set the tags on the storage account to inherit the tags of the resource group
+* Prefix the storage account name with the value of the source tag
+* Rerun the `terraform plan`
+
+You should notice that the plan now shows some changes to be applied:
+
+![Plan after tagging](/workshops/terraform/images/tagplan.png)
+
+This is when the plan stage becomes very useful, to see the impact of a change or addition.  Doing something trivial such as modifying tags can be managed as a simple update, whereas a rename of a resource group or resource will require a more disruptive re-creation as the cosmetic names form part of each resource's unique Azure id. The same is true for other changes that cannot be handled by the Azure Resource Manager layer as an update.
+
+![planSymbols](/workshops/terraform/images/planSymbols.png)
+
+The plan stage removes the guess work in managing a system through infrastructure as code, not only showing you what will happen, and the order and dependencies of those changes, but also the reasons for certain actions such a re-create.
+
+In the Cloud Shell, type `terraform --help plan`.  You will see a `--out` switch, that can be used to create a file of the plan. This may be used as a record of the change for change management systems, and may also be an input for the `terraform apply` stage.  The `terraform apply` will run the plan first by default, except when it is fed a serialised plan file.
 
 ## End of Lab 2
 
-CHANGE ME
-
 We have reached the end of the lab. You have learned some basics about Terraform HCL files, and gone through the standard Terraform workflow for creating and destroying Azure resources.
 
-In the next lab we will introduce variables, use multiple .tf files, and we'll add and modify to our resources. Click on the right arrow to move to the next lab.
+Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab2>.
+
+In the next lab we will start to create the core of a more substantial Azure environment.
 
 [◄ Lab 1: Basics](../lab1){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 3: Outputs ►](../lab3){: .btn-success}

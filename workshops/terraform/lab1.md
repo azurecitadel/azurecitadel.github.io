@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 1: Basics"
 categories: null
-date: 2018-05-01
+date: 2018-06-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -361,6 +361,8 @@ Clean up the folder in the Cloud Shell using `rm -fR ~/clouddrive/basics`.
 ## End of Lab 1
 
 We have reached the end of the lab. You have learned some basics about Terraform HCL files, and gone through the standard Terraform workflow for creating and destroying Azure resources.
+
+Your main.tf file should look similar to the main.tf file in <https://github.com/richeney/terraform-lab1>.
 
 In the next lab we will introduce variables, use multiple .tf files, and we'll add and modify to our resources. Click on the right arrow to move to the next lab.
 
