@@ -37,7 +37,16 @@ body {
 	color: darken($danger-color, 10);
 	background-color: lighten($danger-color, 40);
 	border-left: 6px solid $danger-color;
-	}
+    }
+    .answer {
+    color: $white;
+    border: 1px solid #f4f4f4;
+    font-family: $code-font;
+    padding-left: 30px;
+    &:hover {
+        color: $text-color;
+	    }
+    }
 
 
 

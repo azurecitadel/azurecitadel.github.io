@@ -158,16 +158,23 @@ Lists are simple arrays.  Here is a simple example declaration:
 
 ```yaml
 variable "webAppLocations" {
-    default = [ "francecentral", "canadaeast", "brazilsouth", "japanwest", "australiacentral" ]
+    default = [ "francecentral", "canadaeast", "brazilsouth", "japanwest" ]
 }
 ```
 
 Terraform will interpolate `"${var.webAppLocations[2]}"` as `brazilsouth`. (The index starts at zero.)
 
-[text]()
-[Lab 3: Outputs ►](../lab3){: .btn-success}
+**Question**:
 
-For resources that can have multiple  
+What would be the interpolation syntax to return the number of Web App locations in the array?  (Search the [Terraform Docs](https://www.terraform.io/docs/index.html) area for an example.)
+
+**Answer**:
+
+<div class="answer">
+    <p>"${length(var.webAppLocations)}"</p>
+</div>
+
+We will use use lists actively in the next lab when defining multiple subnets in our virtual network.
 
 ## Using maps
 
@@ -215,7 +222,7 @@ In the Cloud Shell, type `terraform --help plan`.  You will see a `--out` switch
 
 ## End of Lab 2
 
-We have reached the end of the lab. You have learned some basics about Terraform HCL files, and gone through the standard Terraform workflow for creating and destroying Azure resources.
+We have reached the end of the lab. You have started to use variables and functions, and we are now working nicely with Visual Studio Code.
 
 Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab2>.
 
