@@ -17,7 +17,7 @@ One of the attractions of using the Azure Cloud Shell is that there is little co
 
 ## Cloud Shell Background
 
-You can access the Cloud Shell from 
+You can access the Cloud Shell from:
 
 * the Azure portal (**>_**)
 * <https://shell.azure.com>
