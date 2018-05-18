@@ -67,3 +67,5 @@ dircolors -p > ~/.dircolors
 You may then edit the new ~/.dircolors file using vi or nano and change the `STICKY_OTHER_WRITABLE` and `OTHER_WRITABLE` values to something like `01;33` which will be bold yellow on black.
 
 If you want to customise it differently then the .dircolors file includes the various codes and their impact.
+
+You will see the change take effect the next time you log in.  Or you can type `source ~/.bashrc` to make it take effect immediately.
