@@ -9,8 +9,8 @@ author: Richard_Cheney
 featured: true
 published: false
 image:
-  feature: 
-  teaser: 
+  feature: terraform.svg
+  teaser: terraform.png
 excerpt: Series of labs for Terraform on Azure 
 ---
 
@@ -93,4 +93,14 @@ A background knowledge of Terraform is advised. The button below will take you t
 
 As this workshop is quite long, it has been split into several labs:
 
-[Lab 1 - Basics](lab1){: .btn-success}
+**Lab** | **Name** | **Description**
+1 | [Basics](lab1) | Use the basic Terraform workflow in Cloud Shell
+2 | [Variables](lab2) | Provision from within VS Code and start to use variables
+3 | [Core Environment](lab3) | Use a GitHub repo and provision a core environment
+4 | [Meta Parameters](lab4) | Make use of copy and other meta parameters
+5 | [Modules](lab5) | Learn about modules, converting your .tf files, Terraform Registry
+6 | [State](lab6) | Configuring remote state
+7 | [Multi Tenancy](lab7) | Service Principals and read only state in split environments
+8 | [Extending with other Providers](lab8) | Use other providers to configure and customise an AKS Kubernetes cluster
+9 | [Provisioners](lab9) | Leverage provisioners to customise your virtual machine deployments
+10 | [Packer](lab10) | Make use of Packer to create custom images for virtual machine deployments
