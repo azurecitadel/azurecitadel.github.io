@@ -106,7 +106,7 @@ Terraform uses its own file format, called HCL (Hashicorp Configuration Language
 
 > **💬 Note.** If you are using vi then the default colour scheme in Cloud Shell isn't great.  Type `ESC :`, and then `colo delek` and that will activate one of the more readable colour schemes.
 
-```yaml
+```ruby
 resource "azurerm_resource_group" "basics" {
   name     = "terraformBasics"
   location = "West Europe"
@@ -307,7 +307,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
 The resource group and the storage account have been successfully deployed.
 
-```yaml
+```bash
 richard@Azure:~/clouddrive/basics$ az resource list --resource-group terraformBasics --output table
 Name               ResourceGroup    Location    Type                               Status
 -----------------  ---------------  ----------  ---------------------------------  --------
