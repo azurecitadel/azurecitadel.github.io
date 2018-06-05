@@ -16,7 +16,7 @@ title: "About Azure Citadel"
 
 The content on this site is created and maintained by members of the **Cloud Solution Architect community** at Microsoft UK.
 
-The main objective of this site is to provide resources to support Microsoft Partners who are either looking for both introductory and deep technical information on [Microsoft Azure](https://azure.microsoft.com), or are looking to gain hands-on experience of usng Azure capabilities. 
+The main objective of this site is to provide resources to support Microsoft Partners who are either looking for both introductory and deep technical information on [Microsoft Azure](https://azure.microsoft.com), or are looking to gain hands-on experience of using Azure capabilities. 
 
 On the site you can find:
 
