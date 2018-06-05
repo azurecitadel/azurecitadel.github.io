@@ -173,7 +173,7 @@ What would be the interpolation syntax to return the number of Web App locations
 **Answer**:
 
 <div class="answer">
-    <p>"${length(var.webAppLocations)}"</p>
+    <p>"${length(var.webapplocs)}"</p>
 </div>
 
 That's our first function. It won't be our last.
