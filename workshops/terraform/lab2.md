@@ -238,7 +238,7 @@ We will use the random_id provider type to create an eight character random code
 
 ## Defining unique names using random_id
 
-Those who have done the [ARM workshop](https://aka.ms/citadel/arm) will remember that the storage account names need to be unique as it forms part iof the external FQDN of the public endpoint.  The shortname needs to be 3-24 characters of lowercase alphanumerics. We'll quickly cover how to do that as it introduces a couple of key concepts.
+Those who have done the [ARM workshop](https://aka.ms/citadel/arm) will remember that the storage account names need to be unique as it forms part of the external FQDN of the public endpoint.  The shortname needs to be 3-24 characters of lowercase alphanumerics. We'll quickly cover how to do that as it introduces a couple of key concepts.
 
 OK, let's add that into our configuration and use it in our storage account name. There will be a little less hand holding in this section:
 

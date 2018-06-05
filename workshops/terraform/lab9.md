@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 9: Provisioners"
 categories: null
-date: 2018-06-01
+date: 2018-08-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -25,4 +25,4 @@ Your .tf files should look similar to those in <https://github.com/richeney/terr
 
 In the next lab we will look at one of the other Hashicorp products that complements this area, and how you can use Packer to programmatically create custom images to underpin your Azure virtual machine deployments.
 
-[◄ Lab 9: Provisioners](../lab9){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle}
+[◄ Lab 8: Extending](../lab8){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 10: Packer ►](../lab10){: .btn-success}

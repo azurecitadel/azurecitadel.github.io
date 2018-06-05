@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Terraform on Azure"
-categories: workshops
+categories: null
 date: 2018-06-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
@@ -104,3 +104,5 @@ As this workshop is quite long, it has been split into several labs:
 8 | [Extending with other Providers](lab8) | Use other providers to configure and customise an AKS Kubernetes cluster
 9 | [Provisioners](lab9) | Leverage provisioners to customise your virtual machine deployments
 10 | [Packer](lab10) | Make use of Packer to create custom images for virtual machine deployments
+
+**💬 Note.** The labs are currently being built and will become available over the coming month.

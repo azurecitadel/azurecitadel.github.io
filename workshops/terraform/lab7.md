@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 7: Multi Tenancy"
 categories: null
-date: 2018-06-01
+date: 2018-08-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney

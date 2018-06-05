@@ -254,7 +254,7 @@ resource "azurerm_network_security_rule" "AllowHTTPS" {
 }
 ```
 
-Note that 
+Steps:
 
 * Save the file
 * Push to Cloud Shell
@@ -268,28 +268,162 @@ AllowRDP | TCP | 3389
 
 * Rerun the plan -> apply workflow
 
+## Core networking
+
+OK, time for you to get a little self sufficient and create a coreNetwork.tf file for our core networking.  You will need to find the right resouirce types in the <https://aka.ms/terraform> documentation area. You may also make use of the snippets that came with one of the modules. Type `CTRL-SPACE` and then type tf-azurerm_resource_group to get an example snippet copied into your file.  The snippets do not cover all resource types - for instance the azurerm_virtual_network_gateway is not currently in the set - but can be useful in quickly creating .tf files.
+
+* Create a coreNetwork.tf file containing:
+    * Resource Group
+        * Name: **core**
+        * Location: use the **loc** variable
+        * Tags: use the **tags** variable
+    * _Match the Terraform id to the ARM resource name unless specified otherwise_
+    * _Ensure all following resources are in this resource group and inherit the tags and location_
+    * Public IP
+        * Name: **vpnGatewayPublicIp**
+        * Dynamically allocated
+    * Virtual Network
+        * Name: **core**
+        * Address space: **10.0.0.0/16**
+        * DNS servers: **1.1.1.1** & **1.0.0.1** (the Cloudflare public DNS servers)
+    * Subnets
+        * GatewaySubnet: **10.0.0.0/24**
+        * training: **10.0.1.0/24**
+        * dev: **10.0.2.0/24**
+    * VPN Gateway
+        * Name: **vpnGateway**
+        * Route based VPN on the basic SKU
+        * BGP should be enabled
+        * IP Configuration:
+            * Name: **vpnGwConfig1**
+            * Use the Public IP
+            * Use a dynamically allocated private IP
+        * Use the GatewaySubnet
+
+If you get stuck then the bottom of this lab has a link to a set of files that you can reference.  Visual Studio Code also has a very good compare tool.
+
+* Run through the terraform init, plan and apply workflow
+* Save and commit your files
+
+Note that the VPN gateway will take several minutes to build, especially on free accounts that have a lower execution priority. A good opportunity for a coffee...
+
 ## Azure Key Vault
 
-We will also hard code the default key vault.  There are a few core services that we want to be able to assume when we are creating the more flexible Terraform files in the later labs.
+We will also hard code a default key vault.  There are a few core services that we want to be able to assume when we are creating the more flexible Terraform files in the later labs, amd Key Vault is one of them.  It also give us an opportunity to introduce service principals, role assigments and scopes.
 
-* Create a keyvaults.tf
-* Add in the resource group stanza 
-    * Name: **KeyVaults**
-    * Use the variables for location and tags
+> Note that if you are an organisation looking to centralise your key and secret management whilst using multiple Terraform cloud providers then  Hashicorp has an excellent product called [Vault](https://www.vaultproject.io/).  Use of Vault is outside the scope of these labs.
 
-It is up to you how you do that.  You may either:
+We're going to need a service principal (sp) that has permissions to read the Azure Key Vault.  If you look at the [azurerm_key_vault](https://www.terraform.io/docs/providers/azurerm/r/key_vault.html) page then you'll see we need to specify a tenant_id and an object_id.
 
-* Copy out an example resource group stanza from the <https://aka.ms/terraform> documentation
-* Copy and modify the resource group stanza from your nsgs.tf file
-* Use the snippets from the extension - type "tf-azurerm_res..." and then use cursor keys and tab to use the right snippet
+The creation of service principals from Terraform is a current [enhancement request](https://github.com/terraform-providers/terraform-provider-azurerm/issues/16), so in the meantime we'll create the service principal via the CLI and use the tenant ID and object ID values in a couple of new Terraform variables.  
 
-YOU ARE HERE - ADD IN THE KEY VAULT AS THAT IS MORE COMPLICATED THAN I THOUGHT
+Note that by default, service principals are created with Contributor role assigned to the root of the subscription, which is far more generous than we want.  We'll therefore initially set it to no role assignment.  We'll then use Terraform to assign a valid role against the keyVaults resource group once that has been created.
+
+### Create a service principal
+
+* Create a service principal with no role assignment
+
+```bash
+az ad sp create-for-rbac --name "terraformKeyVaultReader" --skip-assignment
+```
+
+Note that the service principal (or sp) name must be unique within the tenancy for this command to succeed.  You can also specify a password using `--password`, but if not then the command will generate one for you and show it in the output.  Note in the output that the sp name is prefixed with `http://`, so if you were to delete the sp then the command would be `az ad sp delete --id "http://terraformKeyVaultReader"`.
+
+If you run the following command it will query the new sp and give us the values we need for our variables.
+
+```bash
+az ad sp show --id "http://terraformKeyVaultReader" --output jsonc --query "{tenant_id:appOwnerTenantId, object_id:objectId}"
+{
+  "object_id": "6aee7885-a16d-4448-aeca-3788aafda778",
+  "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}
+```
+
+* Create the two new variables in the variables.tf file
+    * **object_id**
+    * **tenant_id**
+
+We'll now use these new variables when creating the Key Vault.
+
+### Create the keyvaults.tf
+
+* Create a new keyVaults.tf file
+
+```bash
+resource "azurerm_resource_group" "keyvaults" {
+    name        = "keyVaults"
+    location    = "${var.loc}"
+    tags        = "${var.tags}"
+}
+
+resource "azurerm_role_assignment" "keyVaultReader" {
+  role_definition_name = "Reader"
+  scope                = "${azurerm_resource_group.keyvaults.id}"
+  principal_id         = "${var.object_id}"
+}
+
+resource "azurerm_key_vault" "default" {
+    name                = "keyVault"
+    resource_group_name = "${azurerm_resource_group.keyvaults.name}"
+    location            = "${azurerm_resource_group.keyvaults.location}"
+    tags                = "${azurerm_resource_group.keyvaults.tags}"
+
+    depends_on          = [ "azurerm_role_assignment.keyVaultReader" ]
+
+    sku {
+        name = "standard"
+    }
+
+    tenant_id = "${var.tenant_id}"
+
+    access_policy {
+      tenant_id             = "${var.tenant_id}"
+      object_id             = "${var.object_id}"
+      key_permissions       = [ "get" ]
+      secret_permissions    = [ "get" ]
+    }
+    enabled_for_deployment          = false # Azure Virtual Machines permitted to retrieve certs?
+    enabled_for_template_deployment = false # ARM deployments allowed to pull secrets?
+    enabled_for_disk_encryption     = true  # Azure Disk Encryptions permitted to grab secrets and unwrap keys ?
+}
+```
+
+* Run through the terraform init, plan and apply workflow
+
+The apply should fail on the keyvault resource as the keyVault name is already in use.  The key vault service creates a public endpoint, such as <https://{vault-name}.vault.azure.net> for the public cloud, and therefore the shortname needs to be unique.
+
+* Create a new **rndstr** resource using the random_string provider type
+    * 12 characters
+    * lowercase alphanumberics
+* Append the result to the key vault name
+* Rerun through the terraform init, plan and apply workflow to create the key vault
+
+There are a few new things to note here:
+
+1. There are implicit dependencies on the keyVaults resource group from both the role assigment and key vault resources
+1. There is an explicit dependency on the role assignment from the key vault, using a **depends_on** array
+1. There are comments against some of the key vault booleans
+
+There are a couple of ways of commenting in HCL:
+
+```tf
+# This is a single line comment
+
+/* And this is a multi line
+comment */
+```
+
+Use the Azure [portal](http://portal.azure.com) to check the keyVaults resource group.  You should see the new key vault within it, but look at the Access Control (IAM) in the blade.  It should show the new service principal with the Reader role, similar to the filtered output below:
+
+![Access Control](/workshops/terraform/images/accessControl.png)
+
+Note that the Reader role is one of many inbuilt roles available.  You can also create custom roles via either the [CLI](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-cli#custom-roles) or [Terraform](https://www.terraform.io/docs/providers/azurerm/r/role_definition.html).
 
 ## End of Lab 3
 
-We have reached the end of the lab. You have started to use GitHub and work with multiple resource groups, resources and .tf files.
+We have reached the end of the lab. You have started to use GitHub and work with multiple resource groups, resources and .tf files. We also have a set of core resources that we will leverage in the following labs.
 
-Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab3>, although you may have spread your Terraform stanzas across your .tf files differently dependent on how you have it organised.
+Your .tf files should look somewhat similar to those in <https://github.com/richeney/terraform-lab3>, although you may have spread your Terraform stanzas across your .tf files differently dependent on how you have it organised.
 
 In the next lab we will look at some of the meta parameters that you can use in Terraform to gain richer functionality.
 
