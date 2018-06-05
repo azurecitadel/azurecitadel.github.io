@@ -139,11 +139,11 @@ nsgs.tf
 variables.tf
 ```
 
-The Core resource group will contain our core networking, i.e. the virtual network, three subnets (inside, outside and GatewaySubnet) and VPN gateway.
+The Core resource group will contain our core networking, i.e. the virtual network, three subnets (training, dev and GatewaySubnet) and a VPN gateway.
 
 The NSGs resource group will contain a group of simple predefined NSGs:
 
-NSG Name | Protocol | Port
+**NSG Name** | **Protocol** | **Port**
 AllowSSH | TCP | 22
 AllowHTTP | TCP | 80
 AllowHTTPS | TCP | 443
@@ -311,7 +311,7 @@ Note that the VPN gateway will take several minutes to build, especially on free
 
 We will also hard code a default key vault.  There are a few core services that we want to be able to assume when we are creating the more flexible Terraform files in the later labs, amd Key Vault is one of them.  It also give us an opportunity to introduce service principals, role assigments and scopes.
 
-> Note that if you are an organisation looking to centralise your key and secret management whilst using multiple Terraform cloud providers then  Hashicorp has an excellent product called [Vault](https://www.vaultproject.io/).  Use of Vault is outside the scope of these labs.
+> Note that if you are an organisation looking to centralise your key and secret management whilst using multiple Terraform cloud providers then  Hashicorp has a cloud agnostic product named [Vault](https://www.vaultproject.io/).  Use of Vault is outside the scope of these labs.
 
 We're going to need a service principal (sp) that has permissions to read the Azure Key Vault.  If you look at the [azurerm_key_vault](https://www.terraform.io/docs/providers/azurerm/r/key_vault.html) page then you'll see we need to specify a tenant_id and an object_id.
 
@@ -394,7 +394,7 @@ The apply should fail on the keyvault resource as the keyVault name is already i
 
 * Create a new **rndstr** resource using the random_string provider type
     * 12 characters
-    * lowercase alphanumberics
+    * lowercase alphanumerics
 * Append the result to the key vault name
 * Rerun through the terraform init, plan and apply workflow to create the key vault
 
@@ -407,10 +407,12 @@ There are a few new things to note here:
 There are a couple of ways of commenting in HCL:
 
 ```tf
+
 # This is a single line comment
 
 /* And this is a multi line
 comment */
+
 ```
 
 Use the Azure [portal](http://portal.azure.com) to check the keyVaults resource group.  You should see the new key vault within it, but look at the Access Control (IAM) in the blade.  It should show the new service principal with the Reader role, similar to the filtered output below:
