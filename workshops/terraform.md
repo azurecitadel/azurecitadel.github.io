@@ -7,7 +7,7 @@ tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
 featured: true
-published: false
+published: true
 image:
   feature: terraform.svg
   teaser: terraform.png
