@@ -174,11 +174,25 @@ resource "azurerm_app_service" "citadel" {
 
 The stanza for the app service plans is unchanged.  The count for the app service plans is still based on the number of regions.
 
-The app_service stanza is very different.  For starters, the count for the web apps is now the number of regions multiplied by the webappsperloc local.
+The app_service stanza is very different.  For starters, the count for the web apps is now the number of regions multiplied by the webappsperloc local:
+
+```ruby
+"${ length(var.webapplocs) * local.webappsperloc }"
+```
 
 The location makes use of element to loop round the locations.  So if there are five locations (0-4), then location 0 would be used when count.index is 0, 5 and 10.
 
+```ruby
+"${element(var.webapplocs, count.index)}"
+```
+
 And the naming has been formatted better, to include the count index which has been incremented by one (to be more natural for us humans) and zero filled.  Again we are now using element for the region shortname suffix.
+
+```ruby
+"${format("webapp-%s-%02d-%s", random_string.webapprnd.result, count.index + 1, element(var.webapplocs, count.index))}"
+```
+
+And here is the end result after running through the workflow:
 
 ![Multiple Web Apps in multiple locations](/workshops/terraform/images/webappsperloc.png)
 
