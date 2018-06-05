@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 3: Core Environment"
 categories: null
-date: 2018-06-01
+date: 2018-06-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
