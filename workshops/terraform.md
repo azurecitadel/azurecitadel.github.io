@@ -99,8 +99,8 @@ A background knowledge of Terraform is advised. The button below will take you t
 5 | [Modules](lab5) | Learn about modules, converting your .tf files, Terraform Registry
 6 | [State](lab6) | Configuring remote state
 7 | [Multi Tenancy](lab7) | Service Principals and read only state in split environments
-8 | [Extending with other Providers](lab8) | Use other providers to configure and customise an AKS Kubernetes cluster
+8 | [Extending with other Providers](lab8) | Use other providers to configure an AKS Kubernetes cluster
 9 | [Provisioners](lab9) | Leverage provisioners to customise your virtual machine deployments
-10 | [Packer](lab10) | Make use of Packer to create custom images for virtual machine deployments
+10 | [Packer](lab10) | Use Packer to create custom images for virtual machine deployments
 
 **💬 Note.** The labs are currently being built and will become available over the coming month.
