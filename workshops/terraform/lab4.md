@@ -6,7 +6,7 @@ date: 2018-06-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
-published: false
+published: true
 ---
 
 {% include toc.html %}
@@ -169,6 +169,7 @@ resource "azurerm_app_service" "citadel" {
     app_service_plan_id = "${element(azurerm_app_service_plan.free.*.id, count.index)}"
 }
 ```
+
 That could be a little by using format to set leading zeros for a better naming convention, but proves the point:
 
 ![Multiple Web Apps in multiple locations](/workshops/terraform/images/webappsperloc.png)
