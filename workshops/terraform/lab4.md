@@ -138,6 +138,8 @@ If you run the terraform plan at this point then it should error, saying that it
     * `echo "azurerm_app_service_plan.free.*.id" | terraform console`
     * `echo "azurerm_app_service.citadel.*.default_site_hostname" | terraform console`
 
+## Multiple web apps per location
+
 One really nice feature of the element() function is that it automatically wraps, acting like a mod operator.  So if you wanted to have a number of web apps at each location you could create a new variable, multiply up the count and use the index directly in the naming convention. Here is an example of the two stanzas plus a local variable:
 
 ```ruby
@@ -161,7 +163,7 @@ resource "azurerm_app_service_plan" "free" {
 
 resource "azurerm_app_service" "citadel" {
     count               = "${ length(var.webapplocs) * local.webappsperloc }"
-    name                = "webapp-${random_string.webapprnd.result}-${element(var.webapplocs, count.index)}-${count.index + 1}"
+    name                = "${format("webapp-%s-%02d-%s", random_string.webapprnd.result, count.index + 1, element(var.webapplocs, count.index))}"
     location            = "${element(var.webapplocs, count.index)}"
     resource_group_name = "${azurerm_resource_group.webapps.name}"
     tags                = "${azurerm_resource_group.webapps.tags}"
@@ -170,7 +172,13 @@ resource "azurerm_app_service" "citadel" {
 }
 ```
 
-That could be a little by using format to set leading zeros for a better naming convention, but proves the point:
+The stanza for the app service plans is unchanged.  The count for the app service plans is still based on the number of regions.
+
+The app_service stanza is very different.  For starters, the count for the web apps is now the number of regions multiplied by the webappsperloc local.
+
+The location makes use of element to loop round the locations.  So if there are five locations (0-4), then location 0 would be used when count.index is 0, 5 and 10.
+
+And the naming has been formatted better, to include the count index which has been incremented by one (to be more natural for us humans) and zero filled.  Again we are now using element for the region shortname suffix.
 
 ![Multiple Web Apps in multiple locations](/workshops/terraform/images/webappsperloc.png)
 
