@@ -1,13 +1,13 @@
 ---
 layout: article
 title: "Terraform on Azure"
-categories: null
+categories: workshops
 date: 2018-06-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
 featured: true
-published: true
+published: false
 image:
   feature: terraform.svg
   teaser: terraform.png
