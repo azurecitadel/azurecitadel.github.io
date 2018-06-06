@@ -20,6 +20,8 @@ As developers, we all know that to get your application in the hands of your cus
 
 *Azure DevOps Projects* looks to simplify this process by automating these setup tasks with just a few clicks, whether you're starting a new project from scratch, or bringing your codebase with you. Creating a DevOps Project provisions Azure resources and comes with a Git code repository, Application Insights integration and a continuous delivery pipeline setup to deploy to Azure. The DevOps Project dashboard lets you monitor code commits, builds, and deployments from a single view in the Azure portal.
 
+**💬 Note.** As at the time of authoring this lab (June 2018) Azure DevOps Projects in in Public Preview, so some of the information given may be subject to change.
+
 ### Key benefits of a DevOps Project:
 
 - Get up and running with a new app and a full DevOps pipeline in just a few minutes
