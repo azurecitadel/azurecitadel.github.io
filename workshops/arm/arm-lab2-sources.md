@@ -74,7 +74,7 @@ OK, let's export an example template and parameters file.
 * Search for "Web App"
 * Select and click on Create
     * App Name: **\<yourname>arm** (has to be unique)
-    * Resource Group: Create New, called **lab2a**
+    * Resource Group: Create New, called **lab2**
     * App Service Plan / Location: Click on the **>** arrow
         * Create new called **\<yourname>arm-plan**
         * App Service Plan: **Free**
@@ -200,7 +200,7 @@ Here is the resulting azuredeploy.json:
 ```json
 {
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0"
+    "contentVersion": "1.0.0.0",
     "parameters": {
         "name": {
             "type": "string"
@@ -296,6 +296,7 @@ It is possible to export a whole resource group definition as ARM JSON.  This is
 1. Click on Save
 1. Go back up to the resource group and click on Automation Script again
 1. Copy out the "after" version of the JSON and paste it into another new file in VS Code
+1. Type `CTRL-SHIFT-P` to bring up the Command Palette
 1. Use the 'File: Compare Active File With...' to see the difference
 
 ![Compare](/workshops/arm/images/lab2-3-compareRgExports.png)
