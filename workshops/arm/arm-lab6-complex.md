@@ -454,6 +454,16 @@ As you start working with more complex templates with parameter and variable arr
 1. If you have multiple resources and you cannot determine which is causing your problem then select them all, and then cut and paste them into a temporary file. Check that the template deploys with no resources, and then slowly re-add the resources one by one and this will help to identify the problematic resource.
 1. Read the error messages! There are times that they are not particularly informative, but often they will give a useful pointer to help you troubleshoot the offending statement.
 
+###### Lab 6 File
+
+<div class="success">
+    <b>
+        <li>
+          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab6/noresources.json" target="_blank">noresources.json</a>
+        </li>
+    </b>
+</div>
+
 ## What's next
 
 This lab contains some really useful information for those of you creating more complex templates, and will help to coalesce some of the thinking that can make nested templates.
