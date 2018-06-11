@@ -275,6 +275,24 @@ output "network_interface_ids" {
 ### Final lab work
 
 * Add an output to your webapps.tf to list out the ids for all of your webapps
+* Run the terraform plan and apply workflow
+
+You should see output similar to the following:
+
+```ruby
+
+Apply complete! Resources: 0 added, 5 changed, 0 destroyed.
+
+Outputs:
+
+webappids = [
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-westeurope,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-centralindia,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-westus2,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-australiaeast,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-brazilsouth
+]
+```
 
 ## End of Lab 4
 
