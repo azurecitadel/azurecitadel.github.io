@@ -128,7 +128,7 @@ We can then reference `${count.index}` in the stanzas.  Remember that we can sli
     * Change the resource name to use the same region shortname as a suffix, replacing `${var.loc}`
 * Save the webapps.tf file
 
-Again, if you are struggling then you can 
+Again, if at any point you find yourself struggling then you can always take a look at the lab files in the link at the bottom of the page.
 
 If you run the terraform plan at this point then it should error, saying that it can no longer find `azurerm_app_service_plan.free.id`.  Now that we are using count for the app service plans, we are creating a list of resources. This introduces a special variable form called the splat. Rather then the single `azurerm_app_service_plan.free.id`, we now have `azurerm_app_service_plan.free.*.id`. And you can pull out a single element from that list using the `element()` function.
 
@@ -180,6 +180,8 @@ The app_service stanza is very different.  For starters, the count for the web a
 "${ length(var.webapplocs) * local.webappsperloc }"
 ```
 
+(We'll cover locals a little further down in this lab.)
+
 The location makes use of element to loop round the locations.  So if there are five locations (0-4), then location 0 would be used when count.index is 0, 5 and 10.
 
 ```ruby
@@ -210,11 +212,73 @@ Terraform and Microsoft have been actively working together to improve the azure
 
 ## Variables
 
-ADD IN INFO ABOUT VARIABLES, LOCALS AND OUTPUTS
+The [variable](https://www.terraform.io/docs/configuration/variables.html) page is your one stop reference for how to feed in variables.  So far we have used the `variable` keyword along with default values, and this is common.
+
+Let's take the example of our `loc` variable and see a few ways of setting it to UK South.
+
+You may use environment variables for your .tf files.  All variables names must be prefixed with `TF_VAR_`, so if your variable name is `loc` then the environment variable setting would look like this:
+
+```bash
+export TF_VAR_loc=uksouth
+terraform apply
+```
+
+Or you may set it for the duration of that single command line, e.g. `TF_VAR_loc=uksouth terraform apply`.
+
+You can also set the parameters inline, e.g. `terraform apply -var 'loc=uksouth'`.  You may use -var multiple times.
+
+If you have a lot of variables then you can place them in a file.  By convention these are suffixed with `.ftvars`.  Each line should be of the straighforward `loc=uksouth` format.  You can then use `-var-file varfilename` as a switch.  However if your variable file is called `terraform.tfvars` or `.auto.tfvars` then it will be loaded automatically.
+
+You can use multiple of these.  One approach is to use environment variables for sensitive connectivity information (such as the service principal information we'll see in a later lab), to have standard customer variables in a terraform.tfvars file and then use -var switches as overrides.
+
+You will be prompted to interactively enter any variable values if they are have not been defined using any of these mechanisms.
+
+## Locals
+
+Taking the 'infrastructure as code' analogy a little further, you can think of normal variables as being the equivalent of global variables, and locals as being the local variables in a sub-routine or similar.
+
+[Locals](https://www.terraform.io/docs/configuration/locals.html) are variables that are scoped to the .tf that they are stated in. The formatting is essentially a map of name value pairs for each local variable. Here is an example setting and usage, using the web app example stanza:
+
+```ruby
+locals {
+    app_regions     = [ "eastus2", "uksouth", "centralindia" ]
+    default_prefix  = "webapp-${var.tags["env"]}"
+    app_prefix      = "${var.app_prefix != "" ? var.app_prefix : local.default_prefix}"
+}
+
+resource resource "azurerm_app_service" "citadel" {
+    count               = "${length(local.app_regions)}"
+    name                = "${format("%s-%s-%s", local.app_prefix, random_string.webapprnd.result, local.app_regions[count.index])}"
+    location            = "${local.app_regions[count.index]}"
+    resource_group_name = "${azurerm_resource_group.webapps.name}"
+    tags                = "${azurerm_resource_group.webapps.tags}"
+
+    app_service_plan_id = "${element(azurerm_app_service_plan.free.id, count.index)}"
+}
+```
+
+They are very useful for localised hard coding, and also for locally defaulting values as shown in the local.app_prefix logic.
+
+## Outputs
+
+You can define attributes to be exported as outputs. One of the benefits of using outputs is that the outputs are listed at the end of the terraform apply output.
+
+Outputs are defined as standalone stanzas and can be placed in any of your .tf files.  Here is an example:
+
+```ruby
+output "network_interface_ids" {
+  description = "ids of the vm nics provisoned."
+  value       = "${azurerm_network_interface.vm.*.id}"
+}
+```
+
+### Final lab work
+
+* Add an output to your webapps.tf to list out the ids for all of your webapps
 
 ## End of Lab 4
 
-We have reached the end of the lab. You have made use of count and count.index and also been introduced to a few other areas such as locals and outputs.
+We have reached the end of the lab. You have made use of count and count.index and also been introduced to a few other areas such as ways of setting variables, using locals and defining outputs.
 
 Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab4>.
 
