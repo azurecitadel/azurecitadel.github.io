@@ -270,7 +270,7 @@ AllowRDP | TCP | 3389
 
 ## Core networking
 
-OK, time for you to get a little self sufficient and create a coreNetwork.tf file for our core networking.  You will need to find the right resouirce types in the <https://aka.ms/terraform> documentation area. You may also make use of the snippets that came with one of the modules. Type `CTRL-SPACE` and then type tf-azurerm_resource_group to get an example snippet copied into your file.  The snippets do not cover all resource types - for instance the azurerm_virtual_network_gateway is not currently in the set - but can be useful in quickly creating .tf files.
+OK, time for you to get a little self sufficient and create a coreNetwork.tf file for our core networking.  You will need to find the right resource types in the <https://aka.ms/terraform> documentation area. You may also make use of the snippets that came with one of the modules. Type `CTRL-SPACE` and then type tf-azurerm_resource_group to get an example snippet copied into your file.  The snippets do not cover all resource types - for instance the azurerm_virtual_network_gateway is not currently in the set - but can be useful in quickly creating .tf files.
 
 * Create a coreNetwork.tf file containing:
     * Resource Group
