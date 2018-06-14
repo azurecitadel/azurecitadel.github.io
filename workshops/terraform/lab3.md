@@ -103,6 +103,8 @@ In this lab we will be creating the following as part of our core environment:
 
 Browse the documentation pages for the various provider types.  Note that the index on the left lists out the **Provider** and the **Data Sources** first.  The various **Resources** are then listed underneath.
 
+> For the sake of time we will actually comment out the VPN Gateway in these labs before applying our configuration as it takes a little while to build and it is one of the pricier resources that we will be using.  
+
 ## Organising your .tf files
 
 As we found in the last lab, Terraform will merge together all of the *.tf files in the current working directory, ignoring any files which have a different file extension.  By design, Terraform does not recursively walk the directory structure, so any *.tf files in sub-directories will not be considered.
@@ -302,8 +304,12 @@ OK, time for you to get a little self sufficient and create a coreNetwork.tf fil
 
 If you get stuck then the bottom of this lab has a link to a set of files that you can reference.  Visual Studio Code also has a very good compare tool.
 
-* Run through the terraform init, plan and apply workflow
-* Save and commit your files
+> **Note that we will comment out the VPN Gateway stanza to save time and money Don't run `terraform apply` too quickly!**
+
+* Run through the terraform init and plan to confirm that everything will run through ok
+* Use the multiline comment format around the VPN Gateway stanza to comment it out
+* Rerun the plan and confirm that the gateway now won't be created
+* Apply the configuration
 
 Note that the VPN gateway will take several minutes to build, especially on free accounts that have a lower execution priority. A good opportunity for a coffee...
 

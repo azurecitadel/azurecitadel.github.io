@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Terraform Lab 5: Modules"
+title: "Terraform Lab 5: Multi Tenancy"
 categories: null
 date: 2018-08-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
@@ -13,19 +13,23 @@ published: false
 
 ## Introduction
 
-In this lab we will create modules.  Modules are a fantastic way of managing the core building blocks that you will want to deploy into multiple customer configurations.  This lab will cover:
+So far we have been working in Cloud Shell, which works really well for one person doing demos and most development work.  It is not really geared for multiple admins to work in that environment and it is not suitable if you are dealing with multiple tenants.  Also, as the ~/clouddrive area sits on an SMB 3.0 area it does not support symbolic links, which are key to how the modules work in lab 7.
 
-* why modules are important
-* key characteristics
-* how to convert your existing .tf files
-* the Terraform Registry
+So in this lab we will look at how we could make our Terraform platform work effectively in a multi-tenanted environment.  The principals here apply to any more complex environment where there are multiple subscriptions in play, as well as those supporting multiple tenancies or directories.
+
+We will also look at a couple of alteratives for managing systems and where they make the most sense.
+
+1. The Terraform Marketplace offering in Azure and Managed Service Identity (MSI) authentication
+2. Terraform Enterprise from Hashicorp
 
 ## End of Lab 5
 
-We have reached the end of the lab. You have introduced modules to your environment and started to think about how to make use of those to define your standards underpinning different deployments for various reference architectures or customer requirements.
+We have reached the end of the lab. You have used Service Principals for authentication, and mimicked a split environment, enabling customers or business units to deploy their own infrastructure using Terraform whilst referencing the state of centralised systems.
 
-Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab5>.
+We have also looked at the Azure Marketplace offering for Terraform and at Terraform Enterprise.
 
-In the next lab we will go a little bit deeper on Terraform state and how to manage and protect that in a multi-tenanted environment with multiple admins.
+Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab7>.
 
-[◄ Lab 4: Metas](../lab4){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 6: State ►](../lab6){: .btn-success}
+In the next lab we will
+
+[◄ Lab 4: Metas](../lab4){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 8: State ►](../lab6){: .btn-success}
