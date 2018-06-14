@@ -96,9 +96,9 @@ A background knowledge of Terraform is advised. The button below will take you t
 2 | [Variables](lab2) | Provision from within VS Code and start to use variables
 3 | [Core Environment](lab3) | Use a GitHub repo and provision a core environment
 4 | [Meta Parameters](lab4) | Make use of copy and other meta parameters
-5 | [Modules](lab5) | Learn about modules, converting your .tf files, Terraform Registry
-6 | [State](lab6) | Configuring remote state
-7 | [Multi Tenancy](lab7) | Service Principals and read only state in split environments
+5 | [Multi Tenancy](lab5) | Using Service Principals and Managed Service Identity
+6 | [State](lab6) | Configuring remote state and using read only state in split environments
+7 | [Modules](lab7) | Learn about modules, converting your .tf files, Terraform Registry
 8 | [Extending with other Providers](lab8) | Use other providers to configure an AKS Kubernetes cluster
 9 | [Provisioners](lab9) | Leverage provisioners to customise your virtual machine deployments
 10 | [Packer](lab10) | Use Packer to create custom images for virtual machine deployments
