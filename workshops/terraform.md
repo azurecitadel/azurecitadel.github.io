@@ -60,6 +60,7 @@ Azure Account | Microsoft | [ms-vscode.azure-account](https://marketplace.visual
 Azure Terraform | Microsoft | [ms-azuretools.vscode-azureterraform](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureterraform)
 Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
 Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
+Azure Storage | Microsoft | [ms-azuretools.vscode-azurestorage](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)
 
 Use `CTRL+SHIFT+X` to open the extensions sidebar.  You can search and install the extensions from within there.
 
