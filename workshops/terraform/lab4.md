@@ -325,6 +325,8 @@ webappids = [
 ]
 ```
 
+You can also show the outputs in the current state file using the `terraform outputs` command.  You can also output in JSON format if reading into languages such as Python.
+
 ## End of Lab 4
 
 We have reached the end of the lab. You have made use of count and count.index and also been introduced to a few other areas such as ways of setting variables, using locals and defining outputs.
