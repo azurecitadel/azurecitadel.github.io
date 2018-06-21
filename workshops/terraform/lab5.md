@@ -6,7 +6,7 @@ date: 2018-08-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
-published: false
+published: true
 ---
 
 {% include toc.html %}
@@ -157,13 +157,13 @@ tenantId=$(jq -r .tenant <<< $spout)
 az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
 ```
 
-Youl'l notice that we have set the service principal name to the subscription GUID prefixed with "terraform-".
+You'll notice that we have set the service principal name to the subscription GUID prefixed with "terraform-".  The command will generate a service principal name or password if they are not specified.  However specifying the name as 'terraform-\<subscriptionId\>' as a standard should ensure that the endpoint is unique enough yet easily derived in scripting.  
 
 Check that the login is successful using any CLI command such as `az account list-locations --output table` or `az account show --output jsonc`.
 
 #### Create a provider.tf file
 
-Create a provider.tf file with the information:
+Create your provider.tf file with the information:
 
 ```bash
 echo "provider \"azurerm\" {
@@ -189,7 +189,7 @@ provider "azurerm" { }
 > az ad sp credential reset --name "http://terraform-<subscriptionId>"
 > ```
 >
-> Note the full name for a Service Principal is the display name we specified in the initial creation, prefixed with 'http://'. You will need to have >a good level of role based access to display or reset credentials.
+> Note the full name for a Service Principal is the display name we specified in the initial creation, prefixed with `http://` You will need to have a good level of role based access to display or reset credentials.
 
 ## Manually updating state
 
@@ -202,31 +202,44 @@ Run the following in your integrated console, i.e. in your local citadel-terrafo
 
 OK, your local directory is now initialised, but as you have no current terraform.tfstate file then your plan will show that all of the resources will be created.  
 
-We will be dealing with state in more detail in the next lab but if you open your local terraform.tfstate file in vscode then you will notice that it is a text file containing a small amount of JSON data.
+We will be dealing with state in more detail in the next lab but if you open your local terraform.tfstate file in vscode then you will notice that it is a text file containing a small amount of JSON data. It has no knowledge of the resources that have already been created in the prior labs.
 
-If you have installed the Azure Storage extension for vscode then we can copy the contents of the terraform.tfstate file in out Cloud Shell file area.  Click on the Azure logo on the left, and then navigate to your cloud shell storage account, which will be prefixed with cs.  If you then drill into the File Share within it then you will find the share used by Cloud Shell for the ~/clouddrive area.  Navigate within that to the citadel-terraform folder.  This is where you have been syncing your .tf files to date.  Click on the terraform.tfstate file:
+If you have installed the Azure Storage extension for vscode then we can copy the contents of the terraform.tfstate file in out Cloud Shell file area.  
+
+* Click on the Azure logo on the left to open the Storage extension
+* Navigate to your Cloud Shell storage account, which will be prefixed with cs
+* Drill into the File Share within it
+* Find the share used by Cloud Shell for the ~/clouddrive area
+* Navigate within that to the citadel-terraform folder
+    * This is where you have been syncing your .tf files to date
+* Click on the terraform.tfstate file:
 
 ![clouddrive terraform.tfstate](/workshops/terraform/images/clouddrive-terraform.tfstate.png)
 
 This contains the full state of our environment as this is where we have been running the terraform commands during labs 1-4.
 
-* Copy out the contents of the clouddrive terraform.tfstate file (`CTRL-A, CTRL-C`) and close it (`CTRL-W`)
-* Open the local terraform.tfstate file
+* Copy out the contents of the clouddrive terraform.tfstate file (`CTRL-A, CTRL-C`)
+* Close the tab with the clouddrive terraform.tfstate (`CTRL-W`)
+* Open your the local terraform.tfstate file
 * Replace the contents of the file with the clipboard (`CTRL-A, CTRL-V`)
-* Save the local file
+* Save the local file (`CTRL-S`)
 
 OK, you have manually copied the state in.  
 
-* Reopen the integrated console (`CTRL-')
+* Reopen the integrated console (`CTRL-`)
 * Rerun the `terraform plan` step
 
-You should see that everything is up to date and no changes are required.  
+You should see that everything is up to date and known and that no changes are planned.  
 
 ## Multi-tenancy
 
-For a standard multi-tenancy environment then you will need to create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.) This is very flexible and limits user errors with admins running commands whilst in the wrong context.
+For a standard multi-tenancy environment then you will need to create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.) 
 
-There is another argument that you can specify in the provider block that could be of use in a customer environment where they want to configure a deployment across multiple subscriptions.  Let's take the example of customer with one subscription for the core services and another for the devops team.  If you do not have an alias specified in a provider block then that is your default provider, so adding aliases creates additional providers.  You can then specify that provider alias in your resource stanzas.  For example:
+Having a separate terraform folder per customer or environment with its own provider.tf files is very flexible.  It also mitigates common admin errors such as terraform commands being run whilst in the wrong context.
+
+There is another less frequently used argument that you can specify in the provider block called **alias**.  
+
+Using aliases can be of use in a customer environment where they want to configure a deployment across multiple subscriptions.  Let's take the example of customer with one subscription for the core services and another for the devops team.  If you do not have an alias specified in a provider block then that is your default provider, so adding aliases creates additional providers.  You can then specify that provider alias in your resource stanzas.  For example:
 
 ```ruby
 provider "azurerm" {
@@ -237,7 +250,7 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias           = "az.devops"
+  alias           = "azurerm.devops"
   subscription_id = "1234be49-d999-4415-bb65-8aec2c90ba62"
   client_id       = "1234389a-839e-42a9-8201-9a5bed151767"
   client_secret   = "1234a4d9-829a-4477-9650-7a11c4a680f3"
@@ -245,21 +258,105 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "devopsrg" {
-  provider = "az.devops"
+  provider = "azurerm.devops"
 
   # ...
 }
 ```
 
-## ADD IN DETAILS OF TERRAFORM VM AND TERRAFORM ENTERPRISE
+Using service principals is an easy and powerful way of managing multi-tenanted environments when the admins are working in a centralised Terraform environment.
+
+## Terraform VM on the Azure Marketplace
+
+> It is assumed that you are now working with Terraform locally on your machine rather than in Cloud Shell and that you are using the service principal to authenticate.  This section on Terraform VM and MSI is for information only - there is no need to instantiate the offering.
+
+If you are only working within one subscription then an easy production alternative to using service principals is to use the new Terraform VM offering on the marketplace.
+
+This is ideal for customers who want to use a single Terraform instance across multiple team members, multiple automation scenarios and shared environments.
+
+Rather than using CLI 2.0 or Service Principals for the authentication, it uses the third possible authentication method, [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview).  With MSI the whole Terraform service is effectively authorised for access to a subscription.
+
+The Terraform offering in the Marketplace is detailed at <https://aka.ms/aztf>, and is free except for the underlying VM hardware resource costs. The Ubuntu VM will have the following preconfigured:
+
+* Terraform (latest)
+* Azure CLI 2.0
+* Managed Service Identity (MSI) VM Extension
+* unzip
+* jq
+* apt-transport-https
+
+It features:
+
+* Shared remote state with locking, backed off to Azure Storage
+* Shared identity using MSI and RBAC
+
+There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to access and configure the Terraform VM by running the `~/tfEnv.sh` script. Note that if you have multiple subscriptions then you should again make sure that you are in the correct one (using `az account list --output table` and `az account set --subscription <subscriptionId>`) and then run just the role assignment command within the `tfEnv.sh` file.
+
+One of the nice features of the Terraform VM Marketplace offering is that it will automatically back off the local terraform.tfstate to blob storage, with locking based on blob storage leases. (We will be looking at how to do this manually in the next lab.)
+
+It also creates a remoteState.tf file for you in your home directory. The remoteState.tf has the following format:
+
+```json
+terraform {
+ backend "azurerm" {
+  storage_account_name = "storestatelkbfjngsqkyiim"
+  container_name       = "terraform-state"
+  key                  = "prod.terraform.tfstate"
+  access_key           = "6Wbo0IfW3YKRbsjeF9LFxyvlA2dJ8cJQF+ys6ZHIkW8GdBemXB20MGv66E+Nxx5Wi5KjeCXuVF7BcMo1OPAZYw=="
+  }
+}
+```
+
+Note that the "key" is the name of the blob that will be created in the terraform-state container.
+
+### Optional group setting configuration
+
+When you first connect using ssh to your Terraform VM then you'll be in your admin IDs home directory.  You can check the `/etc/passwd` and `/etc/group` files to show your default group.
+
+You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group of admins and a shared area for the Terraform files. (And optionally change the default group for your ID.) The code block below shows how thios can be done:
+
+```bash
+$ sudo addgroup terraform
+Adding group 'terraform' (GID 1001) ...
+$ sudo usermod --group terraform richeney
+$ sudo mkdir --mode 2775 /terraform
+$ sudo chgrp terraform /terraform
+$ ll -d /terraform
+drwxrwsr-x 2 root terraform 4096 Mar 19 11:19 /terraform/
+```
+
+Only members of the new terraform group will be able to create files in the /terraform folder.  The setgid permission ensures that all new files will automatically be assigned terraform as the group rather than the user's default group. You may need to log out of the Terraform VM and then log back in again to reflect the usermod change to the /etc/passwd file.
+
+## Terraform Enterprise
+
+[Terraform Enterprise](https://www.hashicorp.com/products/terraform) extends the standard Terraform capabilities and workflow to provider a richer set of functionality.  It is well suited to enterprise environments that require more collaboration and governance features.
+
+Key features:
+
+* Self service workflow
+* Collaboration for teams
+* Powerful ACLs and auditing
+* Runs Terraform for you from the browser GUI
+* Control the Terraform version in line with your versioned providers and Terraform files
+* Prevent concurrent changes
+* Integrate with SCM platforms (e.g. GitHub, BitBucket, GitLabs)
+* View history of changes
+* Enforce policies with [Sentinel](https://www.hashicorp.com/sentinel)
+
+This video shows some of the key concepts, including the forking of environments from standard definitions, embedded customer environment variables, etc.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/atBRAG_3yNQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+Note that the standard Terraform executable itself is free to use.  [Terraform Enterprise](https://www.hashicorp.com/products/terraform) has a Pro and Premium tier, depending on the required level of features.
+
 
 ## End of Lab 5
 
-We have reached the end of the lab. You have used Service Principals for authentication, and mimicked a split environment, enabling customers or business units to deploy their own infrastructure using Terraform whilst referencing the state of centralised systems.
+We have reached the end of the lab. You have moved to running Terraform locally and we're now using Service Principals for authentication.
 
-We have also looked at the Azure Marketplace offering for Terraform and at Terraform Enterprise.
+We have also looked at the Azure Marketplace offering for Terraform, and at Terraform Enterprise.
 
-Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab7>.
+Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab5>.
 
 In the next lab we will
 
