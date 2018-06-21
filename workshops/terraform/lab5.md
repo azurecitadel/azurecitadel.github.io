@@ -357,6 +357,6 @@ We have also looked at the Azure Marketplace offering for Terraform, and at Terr
 
 Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab5>.
 
-In the next lab we will
+In the next lab we will look at the terraform.tfstate file.
 
 [◄ Lab 4: Metas](../lab4){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 8: State ►](../lab6){: .btn-success}
