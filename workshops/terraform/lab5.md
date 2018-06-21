@@ -349,12 +349,11 @@ This video shows some of the key concepts, including the forking of environments
 
 Note that the standard Terraform executable itself is free to use.  [Terraform Enterprise](https://www.hashicorp.com/products/terraform) has a Pro and Premium tier, depending on the required level of features.
 
-
 ## End of Lab 5
 
 We have reached the end of the lab. You have moved to running Terraform locally and we're now using Service Principals for authentication.
 
-We have also looked at the Azure Marketplace offering for Terraform, and at Terraform Enterprise.
+We have also looked at the Azure Marketplace offering for Terraform, and at Terraform Enterprise.  If you would like to see a labs on configuring Terraform Enterprise then add a comment below.
 
 Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab5>.
 
