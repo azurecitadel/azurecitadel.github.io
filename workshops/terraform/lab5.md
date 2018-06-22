@@ -363,4 +363,4 @@ Your .tf files should look similar to those in <https://github.com/richeney/terr
 
 In the next lab we will look at the terraform.tfstate file.
 
-[◄ Lab 4: Metas](../lab4){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 8: State ►](../lab6){: .btn-success}
+[◄ Lab 4: Metas](../lab4){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 6: State ►](../lab6){: .btn-success}
