@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Terraform Lab 5: Modules"
+title: "Terraform Lab 7: Modules"
 categories: null
 date: 2018-08-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
@@ -62,11 +62,11 @@ module "avset" {
 A couple of points to make:
 
 1. There is no provider type required - you only need the Terraform id
-1. The only required argument is `source`. If you have a hardcoded Terraform module then this is all that you need.
-1. The other arguments are the variables defined within the module
-1. The only attributes available for the module are those that have been exported as outputs
+1. The only required argument is `source` - if you have a hardcoded Terraform module then this is all that you need
+1. The other arguments match the variables defined within the module
+1. The only attributes available for the module are those that have been exported as outputs within the module
 
-If the avset module had an output.tf containing the following:
+As an example, if the avset module had an output.tf containing the following:
 
 ```ruby
 output "ilb_ip" {
@@ -83,13 +83,13 @@ resource "azurerm_provider_type" "tfid" {
 }
 ```
 
-Before we move on, we have a new command to be aware of.  When your root module is using modules then you will need to run a `terraform get`.  This will copy the module information locally.  (If your module is local then it will return immediately.)  You can then run through the `terraform init` to initalise and pull down any required providers before running the plan and apply stages of the workflow.
+When your root module is using child modules then you will need to run a `terraform get`.  This will copy the module information locally.  (If your module is already local then it will return immediately.)  You can then run through the `terraform init` to initalise and pull down any required providers before running the plan and apply stages of the workflow.
 
 ## Creating a module
 
 There is more to know about modules, but let's crack on and make one, based on everything we defined in lab 3, i.e. the networking, NSGs, key vault etc.  We'll make a module called scaffold.
 
-* Copy the `tenant_id` and `object_id` variables out of your root module's variables.tf
+* Copy the `loc`, `tags`m `tenant_id` and `object_id` variables out of your root module's variables.tf
 * Create a new file called `modules/scaffold/variables.tf`
     * Visual Studio Code will automatically create the subfolders
 * Paste the two variables into the scaffold variables.tf
@@ -103,15 +103,65 @@ output "vpnGwPipAddress" {
 }
 ```
 
-OK, that's defined our local module folder with separate variables.tf and outputs.tf files for our module inputs and outputs. We can always add more outputs to the module later on.
+OK, that's defined our local module folder.  It has a variables.tf defining the inputs, which are loc, tags, tenant_id and object_id.  And we have an outputs.tf files for the module outputs, which currently only has vpnGwPipAddress. We can always add more outputs to the module later on.
 
-* Run `terraform push` from the Command Palette
-* Push syncs up the files but won't remove any that you have "removed"
-    * You should be in the Cloud Shell in the ~/clouddrive/citadel-terraform folder
-    * If you type `'ls -l` then you should see more files compare to your vscode workspace
-    * Remove them: `rm coreNetworking.tf keyvaults.tf nsgs.tf`
-* Staying in the Cloud Shell:
-    * Run `terraform get` to ensure the modules are in place
+* Now create a main.tf with a module call
+
+```ruby
+module "scaffold" {
+  source    = "./mymodules/scaffold"
+
+}
+```
+
+* Run `terraform get` and then check your .terraform folder
+
+```bash
+citadel-terraform$ terraform get
+- module.scaffold
+  Getting source "./modules/scaffold"
+citadel-terraform$
+citadel-terraform$ tree .terraform/
+.terraform/
+├── modules
+│   ├── d2a8d6021493603f7473faed81e245db -> /mnt/c/Users/richeney/git/citadel-terraform/modules/scaffold
+│   └── modules.json
+├── plugins
+│   └── linux_amd64
+│       ├── lock.json
+│       ├── terraform-provider-azurerm_v1.7.0_x4
+│       └── terraform-provider-random_v1.3.1_x4
+└── terraform.tfstate
+
+```
+
+* And then `terraform init`
+
+```bash
+citadel-terraform$ terraform init
+Initializing modules...
+- module.scaffold
+
+Initializing the backend...
+
+Initializing provider plugins...
+
+:
+```
+
+* Run `terraform plan`
+
+You should see that all of the resources that are now in the module will be deleted and recreated.  
+
+**LOOK AT TERRAFORM STATE MV????**
+
+## Terraform Registry
+
+## Standards
+
+## Using a module from the registry
+
+## Updating modules and the idea of versioning
 
 ## End of Lab 5
 
