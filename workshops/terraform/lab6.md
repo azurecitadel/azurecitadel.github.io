@@ -211,9 +211,89 @@ Acquiring state lock. This may take a few moments...
 
 You should now see the blob storage
 
-## Add in detail for manually releasing the lease / lock
+## Importing resources
 
-## Add in the import step for a resource group
+Another new command for this lab is `terraform import`.  This is used to import existing resources into the Terraform state.
+
+We'll do this with something nice and harmless like an empty resource group to demonstrate the process. We'll put it into its own file called import.tf so that we can delete it easily.
+
+* Create a resource group: `az group create --name deleteme --location westeurope`
+* Grab the ID for the azure resource: `id=$(az group show --name deleteme --query id --output tsv)`
+* Create an empty stanza for the resource in a new import.tf file
+
+```yaml
+resource "azurerm_resource_group" "deleteme" {}
+```
+
+* Run the import command: `terraform import azurerm_resource_group.deleteme $id`
+
+```bas
+citadel-terraform$ terraform import azurerm_resource_group.deleteme $id
+Acquiring state lock. This may take a few moments...
+azurerm_resource_group.deleteme: Importing from ID "/subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/deleteme"...
+azurerm_resource_group.deleteme: Import complete!
+  Imported azurerm_resource_group (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/deleteme)
+azurerm_resource_group.deleteme: Refreshing state... (ID: /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/deleteme)
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+```
+
+* Run `terraform plan` and you should see some errors as our block is not populated
+* Run `terraform state show azurerm_resource_group.deleteme`
+
+```bash
+citadel-terraform$ terraform state show azurerm_resource_group.deleteme
+id       = /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/deleteme
+location = westeurope
+name     = deleteme
+tags.%   = 0
+```
+
+* Add in the name argument, and the location using the loc variable
+* Rerun `terraform plan` and it should show no errors and no planned changes
+
+The resource is now fully imported and safely under the control of Terraform.
+
+* Add in the tags argument and variable
+* Rerun `terraform plan` and then `terraform apply` to apply that change
+
+> Note that in the future it is planned that Terraform will be able to automatically generate resource stanzas.
+
+## Manually breaking a blob lease that is locking the state 
+
+There is a rare possibility that you end up with a lease attached to your remote state blob file due to transient connectivity issues.  As the lock is in place, certain terraform commands will not work.
+
+Normally when you acquire a lease on blob storage you get a lease ID, and you can then use that lease ID to release the lock.  As Terraform initially acquired the lease then you don't have the lease ID and therefore you have to break it. 
+
+Below are the commands to confirm that there is a lease in effect and then to break the lease.
+
+```bash
+export AZURE_STORAGE_ACCOUNT="<storage_account_name>"
+export AZURE_STORAGE_KEY="<access_key>"
+citadel-terraform$ az storage blob show --container-name tfstate --name 2d31be49-d999-4415-bb65-8aec2c90ba62.terraform.tfstate --query properties.lease
+{
+  "duration": "infinite",
+  "state": "leased",
+  "status": "locked"
+}
+citadel-terraform$ az storage blob lease break --container-name tfstate --blob-name 2d31be49-d959-4415-bb65-8aec2c90ba62.terraform.tfstate
+0
+citadel-terraform$ az storage blob show --container-name tfstate --name 2d31be49-d959-4415-bb65-8aec2c90ba62.terraform.tfstate --query properties.lease
+{
+  "duration": null,
+  "state": "broken",
+  "status": "unlocked"
+}
+```
+
+It is important to first check that the lease is definitely a fault to be cleared, and not the result of another admin applying a change.
+
+## PLACEHOLDER: Split environments and read only states
+
+_RC to talk to Nic Jackson to add in content for that.  Perhaps construct a lab adding a devops area using the main SP and then create a devops SP with policy and RBAC scope against a resource group, allowing read access against the main state for shared vnet, nsg and keyvault info.  Needs more thought and testing._
 
 ## End of Lab 6
 
