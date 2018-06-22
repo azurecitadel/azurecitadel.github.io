@@ -161,9 +161,11 @@ You'll notice that we have set the service principal name to the subscription GU
 
 Check that the login is successful using any CLI command such as `az account list-locations --output table` or `az account show --output jsonc`.
 
+> Note that you will be logged on at the CLI level using the service principal for a period of time, so if you want to revert back to your normal context then you should use `az logout` and then login in normally.  
+
 #### Create a provider.tf file
 
-Create your provider.tf file with the information:
+Create your provider.tf file with the collected information:
 
 ```bash
 echo "provider \"azurerm\" {
@@ -233,7 +235,7 @@ You should see that everything is up to date and known and that no changes are p
 
 ## Multi-tenancy
 
-For a standard multi-tenancy environment then you will need to create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.) 
+For a standard multi-tenancy environment then you will need to create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.)  
 
 Having a separate terraform folder per customer or environment with its own provider.tf files is very flexible.  It also mitigates common admin errors such as terraform commands being run whilst in the wrong context.
 
@@ -264,6 +266,8 @@ resource "azurerm_resource_group" "devopsrg" {
 }
 ```
 
+And don't forget that different service principals can have different scopes and roles within a subscription so that may also come in useful depending on the requirement.
+
 Using service principals is an easy and powerful way of managing multi-tenanted environments when the admins are working in a centralised Terraform environment.
 
 ## Terraform VM on the Azure Marketplace
@@ -272,7 +276,7 @@ Using service principals is an easy and powerful way of managing multi-tenanted 
 
 If you are only working within one subscription then an easy production alternative to using service principals is to use the new Terraform VM offering on the marketplace.
 
-This is ideal for customers who want to use a single Terraform instance across multiple team members, multiple automation scenarios and shared environments.
+This is ideal for customers who want to use a single Terraform instance across multiple team members, multiple automation scenarios and shared environments.  It also provides a linux VM in the subscription that can be used for other admin purposes.
 
 Rather than using CLI 2.0 or Service Principals for the authentication, it uses the third possible authentication method, [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview).  With MSI the whole Terraform service is effectively authorised for access to a subscription.
 
