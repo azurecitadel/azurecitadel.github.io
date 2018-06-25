@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 6: State"
 categories: null
-date: 2018-08-01
+date: 2018-06-25
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
