@@ -33,7 +33,7 @@ Finally, at the end of the lab we will also take a look at a couple of alternati
 
 From this point onwards you will need to have the executables locally.  For macOS and linux you will download them and your integrated console will be preconfigured to use your standard terminal shell.  
 
-For Windows 10 then the minimum is to download both terraform and az at the Windows OS level so that you can use them within a Command Prompt or PowerShell session.  However the remaining labs are based on Windows 10 with the [Windows Subsystem for Linux](https://azurecitadel.github.io/guides/wsl/) (WSL) configured.  If you have WSL then you should also download the 64 bit linux version of terraform, and make sure that both CLI 2.0 and jq are installed.
+For Windows 10 then the minimum is to download both terraform and az at the Windows OS level so that you can use them within a Command Prompt or PowerShell session.  However the remaining labs are based on Windows 10 with the [Windows Subsystem for Linux](https://azurecitadel.github.io/guides/wsl/) (WSL) configured and do make use of Bash scripting at points so WSL is very much recommended.  If you have WSL then you should also download the 64 bit linux version of terraform, and make sure that both CLI 2.0 and jq are installed. (An alternative is to make use of the [Terraform VM](#terraform-vm-on-the-azure-marketplace) discussed towards the bottom of the lab. )
 
 Download terraform for your operating system from <https://www.terraform.io/downloads.html>.  The download will be a zip file containing the terraform executable.  Extract it to a directory within your path, such as /usr/local/bin, or C:\Windows\System32.  
 
