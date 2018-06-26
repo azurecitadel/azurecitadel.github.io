@@ -63,6 +63,8 @@ Or you could use other comparative functions such as greater(), and use 1 or 0 w
 
 Either way will set our new boolean correctly.
 
+* Create a new boolean variable called "pip?" based on the whether dnsLabelPrefix is an empty string or not
+
 ## Conditions
 
 Condition is an optional keyword that can be used in any of your resource objects.  It is usual to place a condition above the other required set of four keywords: name, type, apiVersion and location.  This is to make it more obvious when reading.
