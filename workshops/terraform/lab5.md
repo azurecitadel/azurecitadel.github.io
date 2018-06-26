@@ -265,6 +265,28 @@ OK, you have manually copied the state in.
 
 You should see that everything is up to date and known and that no changes are planned.  
 
+> This is a really sensible checkpoint to reach.  Avoid making changes to the configuration until you reach this kind of steady state.
+
+## Set the Key Vault access policy
+
+At the moment we only have the terraformKeyVaultReader with Get access on keys and secrets.  Let's add our new Terraform Service Principal with an access policy to create secrets and keys as well.
+
+* Add another access policy sub stanza into the key vault resource in the modules/scaffold/main.tf file
+* Use the tenant_id and object_id for your service principal from the provider.tf 
+
+```ruby
+    access_policy {
+      tenant_id             = "72f988bf-89f1-41af-91ab-2d7cd011db47"
+      object_id             = "cf34389a-893e-42a9-8201-9a5bed151767"
+      key_permissions       = [ "get", "list", "import", "update" ]
+      secret_permissions    = [ "get", "list", "set" ]
+    }
+```
+
+* Run the terraform init, plan and apply steps
+
+It should come through as a straight update in place to the key vault
+
 ## Multi-tenancy
 
 For a standard multi-tenancy environment then you will need to create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.)  
