@@ -167,10 +167,10 @@ Create a new parameter in your lab5 azuredeploy.json file for numberOfDataDisks,
 
 You can use the previous section as inspiration, but let's also tidy up the naming convention for our disks.  Configure your templates so that the following names are adopted:
 
-    * **OS Disk**: \<vmname>-osDisk
-    * **Data Disks: \<vmname>-dataDisk01, where 1 is the LUN number
+* **OS Disk**: \<vmname>-osDisk
+* **Data Disks**: \<vmname>-dataDisk01, where 1 is the LUN er
 
-Note that we won't be able to do four data disks against our tiddly Standard_ B1s as the maximum number of data disks that will permit is 2. Feel free to add a maxValue to your new parameter.
+Note that we **won't be able to do four data disks against our tiddly Standard_ B1s as the maximum number of data disks that will permit is 2. Feel free to add a maxValue to your new parameter.
 
 Don't forget to save!
 
