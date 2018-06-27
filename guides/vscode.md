@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Visual Studio Code
-date: 2018-01-23
+date: 2018-06-27
 categories: guides
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, vscode]
 comments: true
@@ -151,19 +151,63 @@ It is highly recommended to spend a little time with the Help and Learn resource
 
 There are a huge number of shortcuts available in Help \| Keyboard Shortcuts Reference.  Here are some useful ones to learn:
 
-Keyboard Shortcut | Action
+### Managing The display
+
 CTRL-B | Toggle Side Bar
 CTLK-' | Toggle Integrated Console
-CTRL-, | Settings
 F11 | Toggle full screen
-CTRL-K, Z | Enter Zen mode
-ESC x 2 | Exit Zen mode
-CRTL-\ | Split Editor
-ALT-SHIFT-1 | Change editor group layout
+CTRL-K, Z | Zen mode (2x ESC to exit)
 CTRL-= | Zoom In
 CTRL-- | Zoom Out
+
+### Manipulating the layout
+
+CTRL-ALT-LEFT, RIGHT | Move file in split layout
+CRTL-\ | Split Editor
+ALT-SHIFT-1 | Change editor group layout
+
+### Navigation
+
+CTRL-, | Settings
 CTRL-SHIFT-E | File Explorer
 CTRL-SHIFT-F | Find in Files
 CTRL-SHIFT-G | Git
 CTRL-SHIFT-X | Extensions
 CTRL-SHIFT-P | Open Command Palette
+
+### Shell commands
+
+code . | Opens the current directory in vscode
+code \<filename> | Opens filename as a tab
+code azuredeploy.* | Opens the matched files as tabs
+
+### Files
+
+CTRL-P | Open from recent files
+CTRL-TAB | Quick switch between open files
+CTRL-S | Save
+CTRL-W | Close active tab
+
+### Cursor editing
+
+CTRL-F2 | Select all occurrences of selected text
+CTRL-ALT-UP, DOWN | Multiple vertically aligned cursors for block editing
+ALT | Allow multiple cursors to be placed using the mouse
+ESC | Come out of multiple cursor mode
+
+### Editing
+
+CTRL-F | Find dialog
+CTRL-H | Replace dialog
+CTRL-ALT-ENTER | Replace all
+
+### Extensions
+
+ALT-M / CTRL-ALT-M | Minify / prettify JSON using JSON Tools
+CTRL-SHIFT-P | Open Command Palette for Git Clone, Terraform Apply, Open Bash in Cloud Shell etc.
+
+### Cool stuff
+
+* Enter in new filenames including new subdirectories and they will be automatically created
+* Copy and paste a folder with a number at the end and the copy will be incremented
+* Drag and drop within the Explorer and also between windows
