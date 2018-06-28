@@ -37,7 +37,7 @@ Terraform has a rich syntax covered on the [interpolation syntax](https://www.te
 
 **Question**:
 
-How could you reference the location within the current resource stanza?
+What is the special variable that allows you to reference information within the current resource stanza?  How would the interpolation expression look for finding out the localtion of the current resource?
 
 **Answer**:
 
@@ -47,7 +47,7 @@ How could you reference the location within the current resource stanza?
 
 **Question**:
 
-If you had a boolean variable for createResource then how could you use count to control the resource creation?
+If you had a boolean variable for createResource then you can make use of count with in if-then-else expression to control whether the resource is created or not.  How does that work?
 
 **Answer**:
 
@@ -57,7 +57,7 @@ If you had a boolean variable for createResource then how could you use count to
 
 **Question**:
 
-What is the difference between `"${var.index-count - 1}"` and `"${var.index-count-1}"`
+Syntactically, what is the difference between `"${var.index-count - 1}"` and `"${var.index-count-1}"`
 
 **Answer**:
 
@@ -258,8 +258,8 @@ tags    = {
 }
 ```
 
-* Add in your webapplocs, tenant_id and object_id values
-* Remove the defaults from your variables.tf for tenant_id and object_id
+* Add in your webapplocs, tenant_id and kvr_object_id values
+* Remove the defaults from your variables.tf for tenant_id and kvr_object_id
 * Set the default webapplocs to an empty list
 
 You can check that files linked to at the bottom of the lab if you get stuck.
