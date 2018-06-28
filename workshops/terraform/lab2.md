@@ -168,7 +168,7 @@ Terraform will interpolate `"${var.webAppLocations[2]}"` as `brazilsouth`as the 
 
 **Question**:
 
-What would be the interpolation syntax to return the number of Web App locations in the array?  (Search the [Terraform Docs](https://www.terraform.io/docs/index.html) area for an example.)
+What would be the interpolation syntax to return the number of Web App locations in the array?  (Find the interpolation page in the [Terraform Docs](https://www.terraform.io/docs/index.html) area for an example.)
 
 **Answer**:
 
@@ -218,7 +218,11 @@ You should notice that the plan now shows some changes to be applied:
 
 This is when the plan stage becomes very useful, to see the impact of a change or addition.  Doing something trivial such as modifying tags can be managed as a simple update, whereas a rename of a resource group or resource will require a more disruptive re-creation as the cosmetic names form part of each resource's unique Azure id. The same is true for other changes that cannot be handled by the Azure Resource Manager layer as an update.
 
+----------
+
 ![planSymbols](/workshops/terraform/images/planSymbols.png)
+
+----------
 
 The plan stage removes the guess work in managing a system through infrastructure as code, not only showing you what will happen, and the order and dependencies of those changes, but also the reasons for certain actions such a re-create.
 
@@ -287,7 +291,9 @@ Run the `terraform init` command to pull down the random provider, and then run 
 
 **Question**:
 
-Which of random_id's exported attributes can be used?
+As you build up Terraform configurations you will need to read the resource pages for the providers to find out which exported attributes you can then use elsewhere in your .tf files.  
+
+Which of **random_id's exported attributes** can be used?
 
 **Answer**:
 
@@ -297,7 +303,7 @@ Which of random_id's exported attributes can be used?
 
 **Question**:
 
-If you wanted to ensure that the storage account name never exceeded 24 characters then which interpolation function could you use?
+If you wanted to ensure that the storage account name never exceeded 24 characters then which **interpolation function** could you use?
 
 **Answer**:
 
@@ -311,7 +317,7 @@ You may use `terraform console` to query the values of graph database entities. 
 
 Enter in the values of Below is an example:
 
-```yaml
+```bash
 richard@Azure:~/clouddrive/citadel$ terraform console
 > var.rg
 terraformCitadelWorkshop
@@ -336,7 +342,7 @@ Releasing state lock. This may take a few moments...
 
 ## End of Lab 2
 
-We have reached the end of the lab. You have started to use variables and functions, and we are now working within Visual Studio Code.
+We have reached the end of the lab. You have started to use variables and functions, and we are now working within Visual Studio Code, using the extension to integrate with Cloud Shell.
 
 Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab2>.
 
