@@ -193,6 +193,15 @@ provider "azurerm" { }
 >
 > Note the full name for a Service Principal is the display name we specified in the initial creation, prefixed with `http://` You will need to have a good level of role based access to display or reset credentials.
 
+## Optionally reconfigure the Azure Terraform extension
+
+If you like using the Command Palette's Terraform commands then you can reconfigure the extension to start using your integrated console rather than the Cloud Shell.  
+
+* Open up settings using `CTRL-,`
+* Search for `terraform.terminal`
+* Click on the pen to the left of the setting in the Default User Settings pane
+* Select `integrated` from the drop down list
+
 ## Manually updating state
 
 OK, now that you have the service principal and the provider.tf file created you should be good to go.  Well, almost...
@@ -255,7 +264,7 @@ At the moment we only have the terraformKeyVaultReader with Get access on keys a
 
 * Run the terraform init, plan and apply steps
 
-It should come through as a straight update in place to the key vault
+It should come through as a straight update in place to the key vault.
 
 ## Multi-tenancy
 
@@ -265,7 +274,7 @@ Having a separate terraform folder per customer or environment with its own prov
 
 There is another less frequently used argument that you can specify in the provider block called **alias**.  
 
-Using aliases can be of use in a customer environment where they want to configure a deployment across multiple subscriptions.  Let's take the example of customer with one subscription for the core services and another for the devops team.  If you do not have an alias specified in a provider block then that is your default provider, so adding aliases creates additional providers.  You can then specify that provider alias in your resource stanzas.  For example:
+Using aliases can be of use in a customer environment where they want to configure a deployment across multiple subscriptions or clouds.  Let's take the example of customer with one subscription for the core services and another for the devops team.  If you do not have an alias specified in a provider block then that is your default provider, so adding aliases creates additional providers.  You can then specify that provider alias in your resource stanzas.  For example:
 
 ```ruby
 provider "azurerm" {
