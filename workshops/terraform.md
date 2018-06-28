@@ -62,15 +62,18 @@ Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio
 Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
 Azure Storage | Microsoft | [ms-azuretools.vscode-azurestorage](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)
 
-Use `CTRL+SHIFT+X` to open the extensions sidebar.  You can search and install the extensions from within there.
+Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
 
 For the Azure Terraform extension you may also need a couple of additional installations:
 
 * [**Terraform**](https://www.terraform.io/downloads.html)
-    * For lab 2 you will need to download the executable and make sure it is in your OS' path, e.g. `C:\Windows\System32\terraform.exe` for Windows
-    * For lab 5 you will need it in your integrated terminal, and the lab covers how to do this for Windows Subsystem for Linux users
+    * For lab 2 you will need to download the executable and make sure it is in your OS' path
+        * For Windows that will need to be in your system PATH, e.g. into`C:\Windows\System32\`
+        * Avoid using the User Path or vscode may not be able to find it  
+    * For lab 5 you will need terraform in your integrated terminal, and the lab covers how to do this for Windows Subsystem for Linux users
 * [**Node.js 6.0+**](https://nodejs.org/en/)
-    * Required for Cloud Shell in lab 2
+    * Required for lab 2
+    * Note that node.js is only required for the Azure Terraform extension in vscode, not for Terraform itself
 * [**GraphViz**](http://www.graphviz.org/) - optional if you are using the visualize feature to ss the Terraform graph
 
 ----------------------
