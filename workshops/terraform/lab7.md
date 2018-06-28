@@ -89,7 +89,7 @@ When your root module is using child modules then you will need to run a `terraf
 
 There is more to know about modules, but let's crack on and make one, based on everything we defined in lab 3, i.e. the networking, NSGs, key vault etc.  We'll make a module called scaffold.
 
-* Copy the `loc`, `tags`, `tenant_id` and `object_id` variables out of your root module's variables.tf
+* Copy the `loc`, `tags`, `tenant_id` and `kvr_object_id` variables out of your root module's variables.tf
 * Create a new file called `modules/scaffold/variables.tf`
     * Visual Studio Code will automatically create the subfolders
 * Paste the two variables into the scaffold variables.tf
@@ -103,7 +103,7 @@ output "vpnGwPipAddress" {
 }
 ```
 
-OK, that's defined our local module folder.  It has a variables.tf defining the inputs, which are loc, tags, tenant_id and object_id.  And we have an outputs.tf files for the module outputs, which currently only has vpnGwPipAddress. We can always add more outputs to the module later on.
+OK, that's defined our local module folder.  It has a variables.tf defining the inputs, which are loc, tags, tenant_id and kvr_object_id.  And we have an outputs.tf files for the module outputs, which currently only has vpnGwPipAddress. We can always add more outputs to the module later on.
 
 * Now create a main.tf with a module call
 
