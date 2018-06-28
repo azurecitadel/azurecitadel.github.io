@@ -66,26 +66,110 @@ The [Kubernetes Provider](https://www.terraform.io/docs/providers/kubernetes/ind
 
 OK, let's create an AKS cluster using the [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) resource type and then use the Kubernetes provider to do some additional configuration.  We'll need an SSH key pair, so let's make sure we have one and put the public key into the Key Vault.
 
-### Allow the Service Principal to create keys
+## Create an AKS module
+
+** ADD THEM IN **
 
 ### SSH Public Key
 
-Hopefully you have am SSH key pair already.  If not then you can create one using the commands below.  
+Hopefully you have an SSH key pair already.  If not then you can create one using the commands below.  
 
-> NOte! Substitute in your own email address!
+> Use your own email address for the comment field.
 
 ```bash
 cd ~
 umask 033
 ssh-keygen -t rsa -b 2048 -C "richard.cheney@microsoft.com"
 ls -Al .ssh
-cat .ssh/id_rsa.pub
+cat ~/.ssh/id_rsa.pub
 ```
 
+The `~/.ssh/id_rsa.pub` public SSH key will be used by default by the module we're about to create and should allow us to login quickly as the aksadmin.
 
+### Create the AKS Service Principal
+
+As per the `modules/aks/variables.tf` file, we need to specify an [AKS Service Principal](https://docs.microsoft.com/en-us/azure/aks/kubernetes-service-principal), using the client_id and client_secret.  The AKS Service Principal is used to access the AKS service's API endpoints.
+
+* First add two new variable definitions with empty defaults into the root module's variables.tf:
+
+```ruby
+variable "aks_client_id" {
+    description = "AKS Service Principal's appId"
+    default     = ""
+}
+
+variable "aks_client_secret" {
+    description = "AKS Service Principal's password"
+    default     = ""
+}
+```
+
+> If you are logged in as the the terraform Service Principal (check with `az account show`), then `az logout` then `az login` to log back in as your normal userid for the subscription. Check you are in the right subscription before running the command to create the AKS Service Principal.
+
+* Create the AKS Service Principal with no role
+
+```bash
+subscriptionId=$(az account show --output tsv --query id)
+az ad sp create-for-rbac --skip-assignment --name "aksapi-$subscriptionId"
+{
+  "appId": "73da5ad0-42cd-445d-aafb-7b4896b12710",
+  "displayName": "aksapi-2d31be49-d999-4415-bb65-8aec2c90ba62",
+  "name": "http://aksapi-2d31be49-d999-4415-bb65-8aec2c90ba62",
+  "password": "cc5f9262-00d9-4e0c-b89b-f3e296da3fc9",
+  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}
+```
+
+OK, let's add the required values into the terraform.tfvars file.
+
+* Add in aks_client_id using the appId value
+* Add in aks_client_secret using the password value
+
+```ruby
+aks_client_id       = "73da5ad0-42cd-445d-aafb-7b4896b12710"
+aks_client_secret   = "cc5f9262-00d9-4e0c-b89b-f3e296da3fc9"
+```
+
+There is no need to use the CLI to assign a role as the AKS resource creation will automatically assign the right role.
+
+Finally, we should be able to use the module in the root module's main.tf.
+
+* Add the module resource into the main.tf
+
+```ruby
+module "aks" {
+    source          = "./modules/aks"
+    client_id       = "${var.aks_client_id}"
+    client_secret   = "${var.aks_client_secret}"
+    tags            = "${var.tags}"
+}
+```
+
+### Build the AKS Cluster
+
+Right, let's test the new module and build that cluster.  
+
+* Run `terraform get` and `terraform init`
+
+```bash
+citadel-terraform$ terraform get
+- module.scaffold
+- module.aks
+  Getting source "./modules/aks"
+citadel-terraform$ terraform init
+Initializing modules...
+- module.scaffold
+- module.aks
+
+Initializing the backend...
+
+Initializing provider plugins...
+:
+```
+
+* Now run the `terraform plan` and `terraform apply`
 
 **CHECK THIS SECTION WITH JUSTIN DAVIES AND BEN COLEMAN!!**
-
 
 
 ## Azure Resource Manager (ARM)
