@@ -64,6 +64,12 @@ Azure Storage | Microsoft | [ms-azuretools.vscode-azurestorage](https://marketpl
 
 Use `CTRL+SHIFT+X` to open the extensions sidebar.  You can search and install the extensions from within there.
 
+For the Azure Terraform extension you may also need a couple of additional installations:
+
+* [**Terraform**](https://www.terraform.io/downloads.html) - If you are executing terraform commands in integrated teminal (this is installed locally within lab 5)
+* [**Node.js 6.0+**](https://nodejs.org/en/) - required for Cloud Shell
+* [**GraphViz**](http://www.graphviz.org/) - if you are using the visualize feature to ss the Terraform graph
+
 ----------------------
 
 [**💻 Azure CLI**](https://aka.ms/GetTheAzureCli){:target="_blank" class="btn-info"}
