@@ -163,6 +163,39 @@ Check that the login is successful using any CLI command such as `az account lis
 
 > Note that you will be logged on at the CLI level using the service principal for a period of time, so if you want to revert back to your normal context then you should use `az logout` and then login in normally.  
 
+#### Custom role assignment
+
+One thing that the Service Principal won't be able top do is to assign RBAC permissions to resources.  If you look at the [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role then you will see that `Microsoft.Authorization/*/Write` is in the NotActions list.
+
+Let's create a custom role and assign that at the resource group level for our key vault.  This command follows on from the previous block and uses the subscriptionId variable from there.
+
+```bash
+az role definition create --role-definition '{
+    "Name": "KeyVaultRBAC",
+    "IsCustom": true,
+    "Description": "Additional role definition to assign read for SPs and access key vault secrets",
+    "Actions": [
+      "Microsoft.Authorization/*/Write",
+      "Microsoft.KeyVault/hsmPools/*"
+    ],
+    "NotActions": [],
+    "AssignableScopes": [
+      "/subscriptions/'$subscriptionId'/resourceGroups/keyVaults"
+    ]
+  }'
+
+az role assignment create --role="KeyVaultRBAC" --resource-group "/subscriptions/$subscriptionId/resourceGroups/keyVaults" --as
+signee-object-id $clientId --output json
+
+az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
+```
+
+> You may get a role assigment error using Visual Studio subscription and azure-cli_2.0.38-1~wheezy_all.deb: The api-version '2018-01-01-preview' is invalid. The supported versions are '2018-05-01,2018-02-01,2018-01-01,2017-12-01,2017-08-01,2017-06-01,2017-05-10,2017-05-01,2017-03-01,2016-09-01,2016-07-01,2016-06-01,2016-02-01,2015-11-01,2015-01-01,2014-04-01-preview,2014-04-01,2014-01-01,2013-03-01,2014-02-26,2014-04'.  If so then assign the role manually in the portal.
+
+Check that the login is successful using any CLI command such as `az account list-locations --output table` or `az account show --output jsonc`.
+
+> Note that you will be logged on at the CLI level using the service principal for a period of time, so if you want to revert back to your normal context then you should use `az logout` and then login in normally.  
+
 #### Create a provider.tf file
 
 Create your provider.tf file with the collected information:
@@ -237,10 +270,10 @@ You should see that everything is up to date and known and that no changes are p
 
 ## Set the Key Vault access policy
 
-At the moment we only have the terraformKeyVaultReader with Get access on keys and secrets.  Let's add our new Terraform Service Principal with an access policy to list secrets and keys as well.
+At the moment we only have the terraformKeyVaultReader with Get access on keys and secrets.  Let's add our new Terraform Service Principal with an access policy to create secrets and keys as well.
 
 * Add another access policy sub stanza into the key vault resource in the modules/scaffold/main.tf file
-* Use the tenant_id and object_id for your service principal from the provider.tf
+* Use the tenant_id and object_id for your service principal from the provider.tf 
 
 ```ruby
     access_policy {
@@ -250,8 +283,6 @@ At the moment we only have the terraformKeyVaultReader with Get access on keys a
       secret_permissions    = [ "get", "list", "set" ]
     }
 ```
-
-**DO I NEED THIS??????**
 
 * Run the terraform init, plan and apply steps
 
