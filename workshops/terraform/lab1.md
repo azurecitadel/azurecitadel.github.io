@@ -248,7 +248,7 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
 
-This is a dry run and shows which actions will be made.  THis allows manual verification of the changes before going aheading and running the apply step.
+This is a dry run and shows which actions will be made.  This allows manual verification of the changes before going aheading and running the apply step.
 
 ## - terraform apply
 
