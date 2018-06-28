@@ -31,7 +31,7 @@ For this lab you will need to have
     * type `git` in the terminal for Linux or MacOS
 * Check Visual Studio Code (vscode)
     * Support for Git is integrated and in-the-box
-    * Click on the Source Control icon on the left (CTRL+SHIFT+G)
+    * Click on the Source Control icon on the left (`CTRL`+`SHIFT`+`G`)
     * The top of the main pane should display "SOURCE CONTROL: GIT"
 * A [GitHub](https://github.com/join) account
 

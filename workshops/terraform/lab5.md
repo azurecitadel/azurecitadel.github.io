@@ -105,7 +105,7 @@ ls -l /usr/local/bin/terraform
 
 ### Final check
 
-OK, you should now be able to open the integrated console in vscode (using `CRTL+'`) and type both `az` and `terraform`.  
+OK, you should now be able to open the integrated console in vscode (using `CRTL`+`'`) and type both `az` and `terraform`.  
 
 As Terraform is from the OSS world then this lab will unapologetically be written from a linux and CLI 2.0 perspective, although there is little reason why you couldn't use the terraform and az executables in a PowerShell session, or use equivalent AzureRM modules PowerShell commands in place of the CLI 2.0 commands.  
 

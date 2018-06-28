@@ -23,7 +23,7 @@ Azure Terraform | Microsoft | [ms-azuretools.vscode-azureterraform](https://mark
 Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
 Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
 
-Use `CTRL+SHIFT+X` to open the extensions sidebar.  You can search and install the extensions from within there.
+Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
 
 As you move through the lab you will start to make use of variables and multiple .tf files.  We'll modify existing resources and add new resources and new providers.
 
@@ -39,7 +39,7 @@ Before we start using variables etc., let's spend a little time getting vscode c
 * Use the dialog box to create a new local folder for your lab files
     * This lab assumes C:\terraform\citadel as your local workspace
 * Select the folder
-* Type `CTRL+,` to open Settings:
+* Type `CTRL`+`,` to open Settings:
 
 ![eol](/workshops/terraform/images/eol.png)
 
@@ -49,7 +49,7 @@ All of the available and defaulted settings are shown on the left, and they can 
     * As soon as you do then you will notice a .vscode/settings.json file is created in your workspace
 1. Search for `eol`
 1. Hover over the "files.eol" setting, click on the pen to edit it and select "\n"
-1. Type `CTRL+S` to save your new workspace settings
+1. Type `CTRL`+`S` to save your new workspace settings
 
 OK, the area is ready.  Let's quickly recreate the main.tf file from the last lab with a new resource group name.
 
@@ -90,7 +90,7 @@ Now that we are using vscode with the various plugins, we have a multitude of pr
 
 Let's push it up to the Cloud Shell:
 
-* Type 'CTRL+SHIFT+P` to open the Command Palette
+* Type `CTRL`+`SHIFT`+`P` to open the Command Palette
 * Type 'push' and select 'Azure Terraform: push'
 * You'll be asked if you want to open Cloud Shell.  Click on OK
 * Select the directory if your ID is linked to multiple tenancies
@@ -102,7 +102,7 @@ Let's push it up to the Cloud Shell:
 
 ![Post push](/workshops/terraform/images/postpush.png)
 
-You can now run through the terraform init, plan and apply workflow using the Command Palette (CTRL+SHIFT+P).  If you search on init, plan and apply you will find the commands from the Azure Terraform extension.  Running these also syncs the files up to Cloud Shell first.
+You can now run through the terraform init, plan and apply workflow using the Command Palette (`CTRL`+`SHIFT`+`P`).  If you search on init, plan and apply you will find the commands from the Azure Terraform extension.  Running these also syncs the files up to Cloud Shell first.
 
 Confirm that the services are up by checking in the portal of using the CLI.
 
