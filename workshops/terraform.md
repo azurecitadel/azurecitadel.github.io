@@ -66,9 +66,12 @@ Use `CTRL+SHIFT+X` to open the extensions sidebar.  You can search and install t
 
 For the Azure Terraform extension you may also need a couple of additional installations:
 
-* [**Terraform**](https://www.terraform.io/downloads.html) - If you are executing terraform commands in integrated teminal (this is installed locally within lab 5)
-* [**Node.js 6.0+**](https://nodejs.org/en/) - required for Cloud Shell
-* [**GraphViz**](http://www.graphviz.org/) - if you are using the visualize feature to ss the Terraform graph
+* [**Terraform**](https://www.terraform.io/downloads.html)
+    * For lab 2 you will need to download the executable and make sure it is in your OS' path, e.g. `C:\Windows\System32\terraform.exe` for Windows
+    * For lab 5 you will need it in your integrated terminal, and the lab covers how to do this for Windows Subsystem for Linux users
+* [**Node.js 6.0+**](https://nodejs.org/en/)
+    * Required for Cloud Shell in lab 2
+* [**GraphViz**](http://www.graphviz.org/) - optional if you are using the visualize feature to ss the Terraform graph
 
 ----------------------
 
