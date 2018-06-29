@@ -55,9 +55,10 @@ OK, the area is ready.  Let's quickly recreate the main.tf file from the last la
 
 ## Create the main.tf and push to Cloud Shell
 
-* Create a new file in the root of the workspace called main.tf
+* Create a new file in the **root** of the workspace called main.tf
     * Hover over the citadel bar in the explorer sidebar for the New File icon
-    * if you accidentally created the main.tf file in the vscode subfolder then you can drag it into the blank area to move it up
+    * do not place the file in any subfolder - Terraform will only work using the *.tf files at the root of the workspace
+    * if you accidentally created the main.tf file in the .vscode subfolder then you can drag it into the blank area to move it up
 * Paste in the contents of the codebox below
 
 ```yaml
@@ -96,9 +97,11 @@ Let's push it up to the Cloud Shell:
 * Select the directory if your ID is linked to multiple tenancies
 * Bash in Cloud Shell will open in the Integrated Console
 * You will be prompted to confirm the push of project files from the current workspace to the Cloud Shell
-* The files will be pushed up into a new ~/clouddrive/citadel directory in the Cloud Shell
+* The files will be pushed (copied) up into a new ~/clouddrive/citadel directory in the Cloud Shell
     * Subsequent pushes will be much quicker
 * In the Cloud Shell `cd clouddrive/citadel` and then `ls -l`
+    * You should see your main.tf file listed
+    * If you cannot see main.tf then check in the vscode explorer to see if you have it in a subfolder
 
 ![Post push](/workshops/terraform/images/postpush.png)
 
