@@ -13,7 +13,7 @@ excerpt: Want to build a virtual data centre in Azure? Watch this video from Ada
 
 Watch as Adam Raffe and Azure Dan take you through the build out of a complete virtual data centre in Azure. This step-by-step 50 minute video covers the networking, security, monitoring and identity required to build a full enterprise class environment in the Azure cloud.
 
-For the full lab guide, head over to https://github.com/araffe/vdc-networking-lab.
+For the full lab guide, head over to https://github.com/azurecitadel/vdc-networking-lab.
 
 ----------
 
