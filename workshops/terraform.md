@@ -6,7 +6,7 @@ date: 2018-06-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
-featured: true
+featured: false
 published: true
 image:
   feature: terraform.jpg
