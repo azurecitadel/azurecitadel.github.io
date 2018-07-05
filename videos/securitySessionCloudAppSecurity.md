@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Security Session - Cloud App Security
+title: Security Session - What is Cloud App Security?
 date: 2018-07-07
 categories: videos
 tags: [Windows, identity, protection, compliance,  Azure Active Directory, security, security session, cas, cloud app security, apps]
