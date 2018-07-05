@@ -48,4 +48,4 @@ The workshop requires the following:
 ## Azure Infrastructure Security Workshop
 
 The main Azure security workshop guide may be found here:
-**[https://github.com/Araffe/azure-security-lab](https://github.com/Araffe/azure-security-lab)**.
+**<https://github.com/azurecitadel/azure-security-lab>**.

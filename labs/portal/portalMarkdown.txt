@@ -24,7 +24,7 @@
 * [OCP Learning Portal](https://learningportal.microsoft.com/) with exam offer and direct links through to FY17's OpenEdx MOOC courses
 * [Azure Citadel](http://aka.ms/citadel) and more than 500 [Hand On Labs](https://www.microsoft.com/handsonlabs) 
 * [Channel9](https://channel9.msdn.com/) and [Microsoft Virtual Academy](https://mva.microsoft.com/product-training/microsoft-azure)
-* Prep guides for [70-533](https://aka.ms/certification/70-533) and [70-534](https://aka.ms/certification/70-533)
+* Prep guides for [70-533](https://aka.ms/certification/70-533) and [70-534](https://aka.ms/certification/70-534)
 
 ### Keeping Up To Date
 

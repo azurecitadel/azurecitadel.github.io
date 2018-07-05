@@ -29,13 +29,15 @@ There are a few key pages on the Terraform site that you will come back to often
 
 ## Interpolation
 
-You have been using interpolation as Terraform has interpreted everything wrapped in `"${ ... }"`. So far this has been limited to referencing variables (e.g. `"${var.loc}"`) or the attributes of various resource types (e.g. `"${azurerm_resource_group.nsgs.location}"`).  Terraform has a rich syntax covered on the [interpolation syntax](https://www.terraform.io/docs/configuration/interpolation.html) page.
+You have been using interpolation as Terraform has interpreted everything wrapped in `"${ ... }"`. So far this has been limited to referencing variables (e.g. `"${var.loc}"`) or the attributes of various resource types (e.g. `"${azurerm_resource_group.nsgs.location}"`).  
 
-* Scroll through the page to familiarise yourself with the breadth of capability
+Terraform has a rich syntax covered on the [interpolation syntax](https://www.terraform.io/docs/configuration/interpolation.html) page.
+
+* Scroll through the interpolation page to familiarise yourself with the breadth of capability
 
 **Question**:
 
-How could you reference the location within the current resource stanza?
+What is the special variable that allows you to reference information within the current resource stanza?  How would the interpolation expression look for finding out the localtion of the current resource?
 
 **Answer**:
 
@@ -45,22 +47,22 @@ How could you reference the location within the current resource stanza?
 
 **Question**:
 
-If you had a boolean variable for createResource then how could you use count to control the resource creation?
+If you had a boolean variable for createResource then you can make use of count with in if-then-else expression to control whether the resource is created or not.  How does that work?
 
 **Answer**:
 
 <div class="answer">
-    <p>"${var.createResource ? 1 : 0}"</p>
+    <p>count = "${var.createResource ? 1 : 0}"</p>
 </div>
 
 **Question**:
 
-What ios the difference between `"${var.index-count - 1}"` and `"${var.index-count-1}"`
+Syntactically, what is the difference between `"${var.index-count - 1}"` and `"${var.index-count-1}"`
 
 **Answer**:
 
 <div class="answer">
-    <p>The first subtracts 1 from the index-count variable and the second returns the index-count-1 variable.</p>
+    <p>"${var.index-count - 1}" subtracts 1 from the index-count variable, "${var.index-count-1}" returns the value of the variable called index-count-1.</p>
 </div>
 
 ## Initial webapp.tf file
@@ -94,7 +96,7 @@ resource "azurerm_app_service_plan" "free" {
     kind                = "Linux"
     sku {
         tier = "Free"
-        size = "S1"
+        size = "F1"
     }
 }
 
@@ -134,13 +136,15 @@ If you run the terraform plan at this point then it should error, saying that it
 
 * Change the app_service_plan_id attribute value to `"${element(azurerm_app_service_plan.free.*.id, count.index)}"`
 * Run the terraform plan and apply steps
-* List out all of the app service plan ids and web app hostnames using the splat operator:
+* In the Cloud Shell, list out the app service plan ids and web app hostnames using the splat operator:
     * `echo "azurerm_app_service_plan.free.*.id" | terraform console`
     * `echo "azurerm_app_service.citadel.*.default_site_hostname" | terraform console`
 
 ## Multiple web apps per location
 
-One really nice feature of the element() function is that it automatically wraps, acting like a mod operator.  So if you wanted to have a number of web apps at each location you could create a new variable, multiply up the count and use the index directly in the naming convention. Here is an example of the two stanzas plus a local variable:
+One really nice feature of the element() function is that it automatically wraps, acting like a mod operator.  So if you wanted to have a number of web apps at each location you could create a new variable, multiply up the count and use the element function rather than a straight list index.
+
+Here is an example of the two stanzas plus a local variable. Note that you do not need to make these changes to your webapps.tf file.  We'll also cover locals a little later in this lab.
 
 ```ruby
 locals {
@@ -157,7 +161,7 @@ resource "azurerm_app_service_plan" "free" {
     kind                = "Linux"
     sku {
         tier = "Free"
-        size = "S1"
+        size = "F1"
     }
 }
 
@@ -179,8 +183,6 @@ The app_service stanza is very different.  For starters, the count for the web a
 ```ruby
 "${ length(var.webapplocs) * local.webappsperloc }"
 ```
-
-(We'll cover locals a little further down in this lab.)
 
 The location makes use of element to loop round the locations.  So if there are five locations (0-4), then location 0 would be used when count.index is 0, 5 and 10.
 
@@ -212,26 +214,55 @@ Terraform and Microsoft have been actively working together to improve the azure
 
 ## Variables
 
-The [variable](https://www.terraform.io/docs/configuration/variables.html) page is your one stop reference for how to feed in variables.  So far we have used the `variable` keyword along with default values, and this is common.
+The [variable](https://www.terraform.io/docs/configuration/variables.html) page is your one stop reference for how to feed in variables.  So far we have used the `variable` keyword to declare our variables and we have used default values.
 
-Let's take the example of our `loc` variable and see a few ways of setting it to UK South.
+Let's take the example of our `loc` variable and see a few different ways of setting it to UK South.
 
-You may use environment variables for your .tf files.  All variables names must be prefixed with `TF_VAR_`, so if your variable name is `loc` then the environment variable setting would look like this:
+### Environment variables
+
+You may use environment variables for your terraform commands.  All environment variable names must be prefixed with `TF_VAR_`, so if your variable name is `loc` then the environment variable setting would look like this:
 
 ```bash
 export TF_VAR_loc=uksouth
 terraform apply
 ```
 
-Or you may set it for the duration of that single command line, e.g. `TF_VAR_loc=uksouth terraform apply`.
+Or you may set it only for the duration of that single command line, e.g. `TF_VAR_loc=uksouth terraform apply`.
+
+### Inline variables
 
 You can also set the parameters inline, e.g. `terraform apply -var 'loc=uksouth'`.  You may use -var multiple times.
 
+### Using .tfvars files
+
 If you have a lot of variables then you can place them in a file.  By convention these are suffixed with `.ftvars`.  Each line should be of the straighforward `loc=uksouth` format.  You can then use `-var-file varfilename` as a switch.  However if your variable file is called `terraform.tfvars` or `.auto.tfvars` then it will be loaded automatically.
+
+### Combinations of the above
 
 You can use multiple of these.  One approach is to use environment variables for sensitive connectivity information (such as the service principal information we'll see in a later lab), to have standard customer variables in a terraform.tfvars file and then use -var switches as overrides.
 
 You will be prompted to interactively enter any variable values if they are have not been defined using any of these mechanisms.
+
+## Create a terraform.tfvars file
+
+Let's create a tfvars file and add our variable values in there.  We'll also remove a couple of the defaults in variables.tf that don't make any real sense.
+
+* Create a terraform.tfvars file
+* Add in the following block to set the loc and tags:
+
+```ruby
+loc     = "westeurope"
+tags    = {
+    source  = "citadel"
+    env     = "training"
+}
+```
+
+* Add in your webapplocs, tenant_id and kvr_object_id values
+* Remove the defaults from your variables.tf for tenant_id and kvr_object_id
+* Set the default webapplocs to an empty list
+
+You can check that files linked to at the bottom of the lab if you get stuck.
 
 ## Locals
 
@@ -272,7 +303,7 @@ output "network_interface_ids" {
 }
 ```
 
-### Final lab work
+## Add an output to webapps.tf
 
 * Add an output to your webapps.tf to list out the ids for all of your webapps
 * Run the terraform plan and apply workflow
@@ -281,18 +312,20 @@ You should see output similar to the following:
 
 ```ruby
 
-Apply complete! Resources: 0 added, 5 changed, 0 destroyed.
+Apply complete! Resources: 30 added, 0 changed, 0 destroyed.
 
 Outputs:
 
 webappids = [
-    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-westeurope,
-    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-centralindia,
-    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-westus2,
-    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-australiaeast,
-    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-brazilsouth
+    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-westeurope,
+    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-centralindia,
+    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-westus2,
+    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-australiaeast,
+    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-brazilsouth
 ]
 ```
+
+You can also show the outputs in the current state file using the `terraform outputs` command.  You can also output in JSON format if reading into languages such as Python.
 
 ## End of Lab 4
 
@@ -300,6 +333,6 @@ We have reached the end of the lab. You have made use of count and count.index a
 
 Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab4>.
 
-You should now be able to create some pretty rich building blocks.  In the next lab we will look at how they can be converted to modules.
+With everything we have looked at so far you can create some pretty complex configurations.  However there are some things that we want to do soon that cannot be done within Cloud Shell's clouddrive area, so we will move towards the more enterprise level solutions using either Managed Service Identity or Service Principals.
 
-[◄ Lab 3: Core](../lab3){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 5: Modules ►](../lab5){: .btn-success}
+[◄ Lab 3: Core](../lab3){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 5: Multi Tenancy ►](../lab5){: .btn-success}

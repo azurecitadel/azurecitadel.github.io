@@ -164,7 +164,6 @@ Requirements:
     * Set the dnsLabelPrefix to something that will be unique for the FQDN
 1. Fix any problems (`CTRL-SHIFT-M`)
     * update any API versions for resources triggering problems
-    * remove the spurious storageAccountID variable
 
 If you have time then work out the commands in either PowerShell or Bash to see the available Ubuntu virtual machine images from Canonical. (Hint: the publisher is Canonical.)
 

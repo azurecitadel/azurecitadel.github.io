@@ -61,7 +61,15 @@ Or you could use other comparative functions such as greater(), and use 1 or 0 w
         "pip?": "[if(greater(length(parameters('dnsLabelPrefix')), 0), bool(1), bool(0))]",
 ```
 
-Either way will set our new boolean correctly.
+Or forget about the `if` function altogether and just pick functions that return boolean true or false as per the [aka.ms/armfunc](https://aka.ms/armfunc) page.
+
+```json
+        "pip?": "[not(empty(parameters('dnsLabelPrefix')))]",
+```
+
+Any of those functions expressions will set our new boolean correctly.
+
+* Create a new boolean variable called "pip?" based on the whether dnsLabelPrefix is an empty string or not
 
 ## Conditions
 

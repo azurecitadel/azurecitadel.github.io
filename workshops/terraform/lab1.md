@@ -21,7 +21,7 @@ There are three ways of authenticating the Terraform provider to Azure:
 2. Managed System Identity (MSI)
 3. Service Principals
 
-This will use the simplest of them, which is the Azure CLI authentication. We will move through the others during the course of the labs and will discuss the use cases for each.
+This lab will be run within Cloud Shell.  Cloud Shell runs on a small linux container (the image is held on DockerHub) and uses MSI to authenticate.  Essentially the whole container is authenticated using your credentials and Terraform leverages MSI. We will move through the other authentication types during the course of the labs and will discuss the use cases for each.
 
 Once you have started your Cloud Shell session you will be automatically logged in to Azure.  Terraform makes use of that authentication and context, so you will be good to go.
 
@@ -248,7 +248,7 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
 
-This is a dry run and shows which actions will be made.  THis allows manual verification of the changes before going aheading and running the apply step.
+This is a dry run and shows which actions will be made.  This allows manual verification of the changes before going aheading and running the apply step.
 
 ## - terraform apply
 

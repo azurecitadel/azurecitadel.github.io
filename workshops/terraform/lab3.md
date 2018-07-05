@@ -31,11 +31,13 @@ For this lab you will need to have
     * type `git` in the terminal for Linux or MacOS
 * Check Visual Studio Code (vscode)
     * Support for Git is integrated and in-the-box
-    * Click on the Source Control icon on the left (CTRL+SHIFT+G)
+    * Click on the Source Control icon on the left (`CTRL`+`SHIFT`+`G`)
     * The top of the main pane should display "SOURCE CONTROL: GIT"
 * A [GitHub](https://github.com/join) account
 
-OK, let's create our repository:
+OK, let's create our repository.
+
+* Log into [GitHub](https://github.com)
 
 ![New Repository](/workshops/terraform/images/newRepo.png)
 
@@ -88,6 +90,10 @@ Let's check that process by modifying the README.md, committing the change and t
 
 OK, so we can save locally and push into Cloud Shell as we move through the lab.  Don't forget to periodically commit your changes locally and push them up into your GitHub repository.
 
+> Visual Studio Code has a nice smart commit feature.  If you have a number of changed files that you want to stage and commit locallt in one go, then you can add in the message at the top of the SCM sidebar and do CTRL-ENTER then it will prompt you to enable Smart Commit.  You then only need to sync in the status bar to push the files up to GitHub. You are still able to chunk your changed files into separate commits.  Just stage your selected files and the Smart Commit will only commit those.  
+>
+> The vscode setting (`CTRL-.`) for that is `"git.enableSmartCommit": true`.
+
 ## AzureRM Provider documentation
 
 The main documentation area for the Terraform azurerm provider is on the Terraform site itself.  Use this short URL to access it quickly:
@@ -102,6 +108,8 @@ In this lab we will be creating the following as part of our core environment:
 * Key Vault
 
 Browse the documentation pages for the various provider types.  Note that the index on the left lists out the **Provider** and the **Data Sources** first.  The various **Resources** are then listed underneath.
+
+> For the sake of time we will actually comment out the VPN Gateway in these labs before applying our configuration as it takes a little while to build and it is one of the pricier resources that we will be using.  
 
 ## Organising your .tf files
 
@@ -260,7 +268,7 @@ Steps:
 * Push to Cloud Shell
 * Run through the init -> plan -> apply workflow
 * Check your new NSGs resource group in the [portal](https://portal.azure.com)
-* Update the nsgs.tf with the remaining NSGs
+* Update the nsgs.tf, adding in the remaining NSGs
 
 NSG Name | Protocol | Port
 AllowSQLServer | TCP | 1443
@@ -302,8 +310,12 @@ OK, time for you to get a little self sufficient and create a coreNetwork.tf fil
 
 If you get stuck then the bottom of this lab has a link to a set of files that you can reference.  Visual Studio Code also has a very good compare tool.
 
-* Run through the terraform init, plan and apply workflow
-* Save and commit your files
+> **Note that we will comment out the VPN Gateway stanza to save time and money Don't run `terraform apply` too quickly!**
+
+* Run through the terraform init and plan to confirm that everything will run through ok
+* Use the multiline comment format around the VPN Gateway stanza to comment it out
+* Rerun the plan and confirm that the gateway now won't be created
+* Apply the configuration
 
 Note that the VPN gateway will take several minutes to build, especially on free accounts that have a lower execution priority. A good opportunity for a coffee...
 
@@ -340,8 +352,8 @@ az ad sp show --id "http://terraformKeyVaultReader" --output jsonc --query "{ten
 ```
 
 * Create the two new variables in the variables.tf file
-    * **object_id**
     * **tenant_id**
+    * **kvr_object_id**
 
 We'll now use these new variables when creating the Key Vault.
 
@@ -359,7 +371,7 @@ resource "azurerm_resource_group" "keyvaults" {
 resource "azurerm_role_assignment" "keyVaultReader" {
   role_definition_name = "Reader"
   scope                = "${azurerm_resource_group.keyvaults.id}"
-  principal_id         = "${var.object_id}"
+  principal_id         = "${var.kvr_object_id}"
 }
 
 resource "azurerm_key_vault" "default" {
@@ -378,7 +390,7 @@ resource "azurerm_key_vault" "default" {
 
     access_policy {
       tenant_id             = "${var.tenant_id}"
-      object_id             = "${var.object_id}"
+      object_id             = "${var.kvr_object_id}"
       key_permissions       = [ "get" ]
       secret_permissions    = [ "get" ]
     }

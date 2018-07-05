@@ -6,7 +6,7 @@ date: 2018-06-01
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
-featured: true
+featured: false
 published: true
 image:
   feature: terraform.jpg
@@ -60,8 +60,21 @@ Azure Account | Microsoft | [ms-vscode.azure-account](https://marketplace.visual
 Azure Terraform | Microsoft | [ms-azuretools.vscode-azureterraform](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureterraform)
 Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
 Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
+Azure Storage | Microsoft | [ms-azuretools.vscode-azurestorage](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)
 
-Use `CTRL+SHIFT+X` to open the extensions sidebar.  You can search and install the extensions from within there.
+Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
+
+For the Azure Terraform extension you may also need a couple of additional installations:
+
+* [**Terraform**](https://www.terraform.io/downloads.html)
+    * For lab 2 you will need to download the executable and make sure it is in your OS' path
+        * For Windows that will need to be in your system PATH, e.g. into`C:\Windows\System32\`
+        * Avoid using the User Path or vscode may not be able to find it  
+    * For lab 5 you will need terraform in your integrated terminal, and the lab covers how to do this for Windows Subsystem for Linux users
+* [**Node.js 6.0+**](https://nodejs.org/en/)
+    * Required for lab 2
+    * Note that node.js is only required for the Azure Terraform extension in vscode, not for Terraform itself
+* [**GraphViz**](http://www.graphviz.org/) - optional if you are using the visualize feature to ss the Terraform graph
 
 ----------------------
 
@@ -96,9 +109,9 @@ A background knowledge of Terraform is advised. The button below will take you t
 2 | [Variables](lab2) | Provision from within VS Code and start to use variables
 3 | [Core Environment](lab3) | Use a GitHub repo and provision a core environment
 4 | [Meta Parameters](lab4) | Make use of copy and other meta parameters
-5 | [Modules](lab5) | Learn about modules, converting your .tf files, Terraform Registry
-6 | [State](lab6) | Configuring remote state
-7 | [Multi Tenancy](lab7) | Service Principals and read only state in split environments
+5 | [Multi Tenancy](lab5) | Using Service Principals and Managed Service Identity
+6 | [State](lab6) | Configuring remote state and using read only state in split environments
+7 | [Modules](lab7) | Learn about modules, converting your .tf files, Terraform Registry
 8 | [Extending with other Providers](lab8) | Use other providers to configure an AKS Kubernetes cluster
 9 | [Provisioners](lab9) | Leverage provisioners to customise your virtual machine deployments
 10 | [Packer](lab10) | Use Packer to create custom images for virtual machine deployments
