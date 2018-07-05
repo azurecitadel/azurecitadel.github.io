@@ -64,7 +64,7 @@ If those commands do not fine the terraform executable then check your path sett
 
 ### Automated installation on linux
 
-If you want to automate the installation of the terraform executable on linux then feel free to make use of the following code block:
+If you want to automate the installation of the terraform executable on linux then feel free to copy out the following code block and create your own shell script:
 
 ```bash
 #!/bin/bash
@@ -92,6 +92,8 @@ else
 fi
 
 echo "Moving terraform executable to /usr/local/bin with elevated privileges..." >&2
+
+sudo true
 
 sudo bash <<"EOF"
 mv /tmp/terraform /usr/local/bin/terraform
