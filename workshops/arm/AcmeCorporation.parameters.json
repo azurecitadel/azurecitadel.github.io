@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"hub": {
+			"value": {
+				"resourceGroup": "lab7-hub",
+				"vnet": {
+					"name": "lab7-hub-vnet",
+					"addressPrefixes": [  "192.168.0.0/16" ]
+				},
+				"subnets": [ 
+					{ "addressPrefix": "192.168.0.0/24", "name": "GatewaySubnet" },
+					{ "addressPrefix": "192.168.1.0/24", "name": "lab7-hub-subnet1" },
+					{ "addressPrefix": "192.168.2.0/24", "name": "lab7-hub-subnet2" }
+				],
+				"vpnGwName": "lab7-hub-vpn-gw"
+			}
+		}
+	}
+}

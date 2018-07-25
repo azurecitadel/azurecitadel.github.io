@@ -5,17 +5,17 @@
 		"hub": {
 		   "type": "object",
 		   "defaultValue": {
-            "resourceGroup": "lab7-hub",
+            "resourceGroup": "hub",
             "vnet": {
-                "name": "lab7-hub-vnet",
+                "name": "hub-vnet",
                 "addressPrefixes": [  "172.16.0.0/16" ]
             },
             "subnets": [ 
-                { "addressPrefix": "172,16.0.0/24", "name": "GatewaySubnet" },
-                { "addressPrefix": "172,16.1.0/24", "name": "lab7-hub-subnet1" },
-                { "addressPrefix": "172,16.2.0/24", "name": "lab7-hub-subnet2" }
+                { "addressPrefix": "172.16.0.0/24", "name": "GatewaySubnet" },
+                { "addressPrefix": "172.16.1.0/24", "name": "hub-subnet1" },
+                { "addressPrefix": "172.16.2.0/24", "name": "hub-subnet2" }
             ],
-            "vpnGwName": "lab7-hub-vpn-gw"
+            "vpnGwName": "hub-vpn-gw"
         },
 		   "metadata": {
 				"description": "Complex object containing hub information.  See default for structure."
@@ -23,8 +23,9 @@
 		}
     },
     "variables": {
-        "vnetUri": "[uri(deployment().properties.templateLink.uri, 'nested/vnet.json')]",
-        "vpngwUri": "[uri(deployment().properties.templateLink.uri, 'nested/vpngw.json')]"
+		"uriBase": "https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/",
+        "vnetUri": "[uri(variables('uriBase'), 'nested/vnet.json')]",
+        "vpngwUri": "[uri(variables('uriBase'), 'nested/vpngw.json')]"
     },
     "resources": [
         {
