@@ -24,8 +24,8 @@
     },
     "variables": {
 		"uriBase": "https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/",
-        "vnetUri": "[uri(variables('uriBase'), 'nested/vnet.json')]",
-        "vpngwUri": "[uri(variables('uriBase'), 'nested/vpngw.json')]"
+        "vnetUri": "[concat(variables('uriBase'), 'nested/vnet.json')]",
+        "vpngwUri": "[concat(variables('uriBase'), 'nested/vpngw.json')]"
     },
     "resources": [
         {
