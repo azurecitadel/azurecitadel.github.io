@@ -6,7 +6,7 @@ date: 2018-07-19
 tags: [azure, virtual, data, centre, vdc, rbac]
 comments: true
 author: Richard_Cheney
-published: false
+published: true
 ---
 
 {% include toc.html %}
