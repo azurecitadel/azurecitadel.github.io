@@ -28,7 +28,7 @@ az login
 To sign in, use a web browser to open the page https://aka.ms/devicelogin and enter the code XXXXXXXXX to authenticate.
 ```
 
-The above command will provide a code as output. Open a browser and navigate to aka.ms/devicelogin to complete the login process.
+The above command will provide a code as output. Open a browser and navigate to <https://aka.ms/devicelogin> to complete the login process.
 
 ## Create the resource groups
 
