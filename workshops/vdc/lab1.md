@@ -13,7 +13,7 @@ published: true
 
 ## 1.0 Introduction
 
-In this lab, we will explore the environment that has been deployed to Azure by the ARM templates. 
+In this lab, we will explore the environment that has been deployed to Azure by the ARM templates.
 
 ## 1.1 Topology
 

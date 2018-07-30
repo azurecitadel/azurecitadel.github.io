@@ -163,16 +163,16 @@ done
 
 ## Useful References
 
-- **Azure Virtual Data Center White Paper:** https://azure.microsoft.com/mediahandler/files/resourcefiles/1ad643b8-73f7-43f6-b05a-8e160168f9df/Azure_Virtual_Datacenter.pdf
+- **Azure Virtual Data Center White Paper:** <https://azure.microsoft.com/mediahandler/files/resourcefiles/1ad643b8-73f7-43f6-b05a-8e160168f9df/Azure_Virtual_Datacenter.pdf>
 
-- **Secure Network Designs:** https://docs.microsoft.com/en-us/azure/best-practices-network-security?toc=%2fazure%2fnetworking%2ftoc.json
+- **Secure Network Designs:** <https://docs.microsoft.com/en-us/azure/best-practices-network-security?toc=%2fazure%2fnetworking%2ftoc.json>
 
-- **Hub and Spoke Network Topologies:** https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+- **Hub and Spoke Network Topologies:** <https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke>
 
-- **Azure Role Based Access Control**: https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-what-is
+- **Azure Role Based Access Control**: <https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-what-is>
 
-- **Azure Network Watcher:** https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview
+- **Azure Network Watcher:** <https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview>
 
-- **Azure Monitor:** https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor
+- **Azure Monitor:** ,<https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor>
 
-[◄ Lab 4: Monitor](../lab4){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} 
+[◄ Lab 4: Monitor](../lab4){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle}
