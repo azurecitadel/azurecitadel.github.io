@@ -147,11 +147,11 @@ Now that we have Azure AD groups assigned to resource groups with the appropriat
 
 **7)** Navigate to the 'VDC-Spoke1' resource group. Select 'Hub\_VNet'. Note that Fred is able to make changes / adds, etc to the Hub\_VNet network resource (remember that Fred is part of the CentralIT group, which has the network contributor role on Spoke 1 and 2 resource groups). However, Fred is not able to see any of the virtual machine resources as the CentralIT group does not have the virtual machine contributor role on this resource group.
 
-## Conclusion <a name="conclusion"></a>
+## Conclusion
 
 Well done, you made it to the end of the lab! We've covered a lot of ground in this lab, including networking, security, monitoring and identity - I hope you enjoyed running through the lab and that you learnt a few useful things from it. Don't forget to delete your resources after you have finished!
 
-## Decommission the Lab <a name="decommission"></a>
+## Decommission the Lab
 
 To decommission the VDC lab, simply remove the resource groups using the following commands:
 
@@ -161,7 +161,7 @@ do az group delete --yes --no-wait --name VDC-$rg
 done
 </pre>
 
-## Useful References <a name="ref"></a>
+## Useful References
 
 - **Azure Virtual Data Center White Paper:** https://azure.microsoft.com/mediahandler/files/resourcefiles/1ad643b8-73f7-43f6-b05a-8e160168f9df/Azure_Virtual_Datacenter.pdf
 
