@@ -8,7 +8,7 @@ tags: [vdc, virtual, data, centre, pre-reqs]
 comments: true
 featured: true
 excerpt: The Virtual Data Centre (VDC) lab provides a theoretical overview and hands on lab to take the learner through the key constructs that are recommended for larger enterprise customers deploying to Azure.     
-author: Adam_Raffe
+author: Richard_Cheney
 image:
   feature: featured/corp2.jpg
   teaser: Education.jpg
