@@ -23,6 +23,7 @@
 		}
     },
     "variables": {
+		"prettyBase": "https://github.com/azurecitadel/vdc-networking-lab/tree/master/nested",
 		"uriBase": "https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/",
         "vnetUri": "[concat(variables('uriBase'), 'nested/vnet.json')]",
         "vpngwUri": "[concat(variables('uriBase'), 'nested/vpngw.json')]"

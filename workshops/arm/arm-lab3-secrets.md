@@ -167,8 +167,6 @@ Requirements:
 
 If you have time then work out the commands in either PowerShell or Bash to see the available Ubuntu virtual machine images from Canonical. (Hint: the publisher is Canonical.)
 
-We will return to key vaults and secrets when we look at the nesting.
-
 ## - Deploy into lab3
 
 OK, if you haven't done so already then create a lab3 resource group and deploy the new template into that in order to test it. Connect to the VM and confirm that the password is the one you stored in the Key Vault.
