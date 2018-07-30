@@ -23,19 +23,19 @@ Before we can use the tools in this section, we must first enable Network Watche
 
 **2)** You should see your Azure subscription listed in the right hand pane - find your region and then click on the'...' on the right hand side. Click 'Enable Network Watcher':
 
-![Enabling Network Watcher](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/NetWatcher1.jpg "Enabling Network Watcher")
+![Enabling Network Watcher](NetWatcher1.jpg "Enabling Network Watcher")
 
 **Figure 16:** Enabling Network Watcher
 
 **3)** On the left hand side of screen under 'Monitoring', click on 'Topology'. Select your subscription and then the resource group 'VDC-Hub' and 'Hub_Vnet'. You will see a graphical representation of the topology on the screen:
 
-![Network Topology](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/NetWatcherTopo.jpg "Network Topology")
+![Network Topology](/workshops/vdc/images/NetWatcherTopo.jpg)
 
 **Figure 17:** Network Topology View in Network Watcher
 
 **4)** A useful feature of Network Watcher is the ability to view network related subscription limits and track your resource utilisation against these. In the left hand menu, select 'Network Subscription Limit'. You will see a list of resources, including virtual networks, public IP addresses and more:
 
-![Network Subscription Limits](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/SubLimits.jpg "Network Subscription Limits")
+![Network Subscription Limits](/workshops/vdc/images/SubLimits.jpg)
 
 **Figure 18:** Network Related Subscription Limits
 
@@ -54,7 +54,7 @@ az storage account create --name storage-account-name -g VDC-Hub --sku Standard_
 
 **3)** Click on the NSG and then in the settings screen, change the status to 'On'. Select the storage account you created in step 1 and change the retention to 5 days. Click 'Save'.
 
-![NSG Flow Log Settings](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/FlowLogs1.jpg "NSG Flow Log Settings")
+![NSG Flow Log Settings](/workshops/vdc/images/FlowLogs1.jpg)
 **Figure 19:** NSG Flow Log Settings
 
 **4)** In order to view data from the NSG logs, we must initiate some traffic that will flow through the NSG. SSH to the OnPrem_VM1 virtual machine as described earlier in the lab. From here, use the curl command to view the demo app on Spoke1\_VM1 (through the load balancer) and attempt to SSH to the same VM (this will fail):
@@ -66,7 +66,7 @@ ssh labuser@10.1.1.5
 
 **5)** NSG Flow Logs are stored in the storage account you configured earlier in this section - in order to view the logs, you must download the JSON file from Blob storage. You can do this either using the Azure portal, or using the *Microsoft Azure Storage Explorer* program available as a free download from http://storageexplorer.com/. If using the Azure portal, navigate to the storage account you created earlier and select 'Blobs'. You will see a container named 'insights-logs-networksecuritygroupflowevent'. Navigate through the directory structure (structured as subscription / resource group / day / month / year / time) until you reach a file named 'PT1H.json'. Download this file to your local machine.
 
-![NSG Log Download](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/NSGLogs.jpg "NSG Log Download")
+![NSG Log Download](/workshops/vdc/images/NSGLogs.jpg)
 
 **Figure 20:** NSG Flow Log Download
 
@@ -108,7 +108,7 @@ Another useful feature of Network Watcher is the ability to trace the next hop f
 
 **3)** The resulting output should display *10.101.2.4* as the next hop. This is the IP address of our Network Virtual Appliance (Cisco CSR) and corresponds to the User Defined Route we configured earlier.
 
-![Next Hop Tracking](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/NextHop.jpg "Next Hop Tracking")
+![Next Hop Tracking](/workshops/vdc/images/NextHop.jpg)
 
 **Figure 21:** Next Hop Tracking
 
@@ -120,13 +120,13 @@ Azure Monitor is a tool that provides central monitoring of most Azure services,
 
 **1)** Start by using the Azure portal to navigate to the Azure Monitor view by expanding the left hand main menu and selecting 'Monitor'. If it is not shown, select 'All Services' and search for it. Select 'Activity Log' from the left hand menu. This shows a filterable view of all activity in your subscription - you can filter based on timespan, event severity, resource type and operation. Modify some of the filter fields in this screen to narrow down the search criteria.
 
-![Azure Monitor Activity Log](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/AzMon1.jpg "Azure Monitor Activity Log")
+![Azure Monitor Activity Log](/workshops/vdc/images/AzMon1.jpg)
 
 **Figure 22:** Azure Monitor Activity Log
 
 **2)** In the Azure Monitor menu on the left, select 'Metrics (Preview)'. In the 'resource' box at the top of the screen, search for 'onprem' and then select the 'OnPrem1_VM' virtual machine in the drop-down menu. Select 'host' as the sub-service and then 'Percentage CPU' as the metric.
 
-![Azure Monitor CPU Metrics](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/AzMonCPU.jpg "Azure Monitor CPU Metrics")
+![Azure Monitor CPU Metrics](/workshops/vdc/images/AzMonCPU.jpg)
 
 **Figure 23:** Azure Monitor CPU Metrics
 
@@ -159,7 +159,7 @@ stress: info: [61727] dispatching hogs: 50 cpu, 0 io, 0 vm, 0 hdd
 
 **12)** After approximately 5 minutes, you should receive an email alerting you to the high CPU on your VM:
 
-![Azure Monitor CPU Alert](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/AzMonAlert.jpg "Azure Monitor CPU Alert")
+![Azure Monitor CPU Alert](/workshops/vdc/images/AzMonAlert.jpg)
 
 **Figure 24:** Azure Monitor CPU Alert
 

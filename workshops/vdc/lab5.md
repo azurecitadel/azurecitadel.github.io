@@ -17,7 +17,7 @@ A critical part of any data centre - whether on-premises or in the cloud - is ma
 
 In this lab, we will create three groups of users, as shown in figure 23:
 
-![VDC Users and Groups](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/Identity.jpg "VDC Users and Groups")
+![VDC Users and Groups](/workshops/vdc/images/Identity.jpg)
 
 **Figure 25:** VDC Lab Users and Groups
 
@@ -35,7 +35,7 @@ We'll start by configuring a number of users and groups.
 
 **1)** To begin, we'll verify our domain name in the Azure portal. On the left hand side of the portal screen, click 'All Services' and then search for 'Azure Active Directory'. Click on 'Domain Name' and you will see the domain assigned to your Azure AD directory.
 
-![AAD Domain Name](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/DomainName.jpg "AAD Domain Name")
+![AAD Domain Name](/workshops/vdc/images/DomainName.jpg)
 
 **Figure 26:** Azure AD Domain Name
 
@@ -119,7 +119,7 @@ Now that we have our users and groups in place, it's time to make use of them by
 
 **3)** Click 'Add' again, but this time select the 'Reader' role and then choose the 'AppDev' group.
 
-![Hub RBAC](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/Hub-RBAC.jpg "Hub RBAC")
+![Hub RBAC](/workshops/vdc/images/Hub-RBAC.jpg)
 
 **Figure 27:** Hub Role Based Access Control
 

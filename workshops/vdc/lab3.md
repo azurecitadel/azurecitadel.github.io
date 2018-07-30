@@ -33,7 +33,7 @@ Our NSG will define two inbound rules - one for HTTP and another for TCP port 30
 - Destination port range: *80*
 - Action: *Allow*
 
-![NSG Rule1](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/NSG1.jpg "NSG Rule1")
+![NSG Rule1](/workshops/vdc/images/NSG1.jpg)
 
 **Figure 10:** Network Security Group - HTTP Rule
 
@@ -55,7 +55,7 @@ Our NSG will define two inbound rules - one for HTTP and another for TCP port 30
 
 **5)** Select 'Network Interfaces'. Click the 'Associate' button and choose 'vdc-csr-1-Nic0'.
 
-![NSG Associate Subnet](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/NSG2.jpg "NSG Associate Subnet")
+![NSG Associate Subnet](/workshops/vdc/images/NSG2.jpg)
 
 **Figure 11:** Network Security Group - Associating with a Subnet
 
@@ -83,13 +83,13 @@ Azure Security Center is a feature built in to Azure which allows administrators
 
 **2)** The overview section of the Security Center shows an 'at-a-glance' view of any security recommendations, alerts and prevention items relating to compute, storage, networking and applications.
 
-![Azure Security Center](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/SecCenter.jpg "Azure Security Center")
+![Azure Security Center](/workshops/vdc/images/SecCenter.jpg)
 
 **Figure 12:** Azure Security Center - Overview Page
 
 **3)** Click on 'Recommendations' in the Security Center menu. You will see a list of recommendations relating to various areas of the environment - for example, the need to add Network Security Groups on subnets and VMs, or the recommendation to apply disk encryption to VMs.
 
-![Azure Security Recommendations](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/SecRecommendations.jpg "Azure Security Recommendations")
+![Azure Security Recommendations](/workshops/vdc/images/SecRecommendations.jpg)
 
 **Figure 13:** Azure Security Center - Recommendations
 
@@ -105,7 +105,7 @@ Azure resource policies are used to place restrictions on what actions can be ta
 
 **3)** Scroll down to the policy entitled 'Allowed Resource Types', click the '...', select 'View Definition' and then click on 'JSON'. This shows you the JSON policy document - this simple example takes a list of resource types and prevents the ability to create them.
 
-![Azure Resource Policy Example](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/armpolicies1.jpg "Azure Resource Policy Example")
+![Azure Resource Policy Example](/workshops/vdc/images/armpolicies1.jpg)
 
 **Figure 14:** Example Resource Policy - Allowed Resource Types
 
@@ -209,7 +209,7 @@ In addition to the ability to define and assign resource policies, Azure Policy 
 
 **Note: it can take around 30 - 60 minutes for the compliance information to be updated, so you may wish to return to this section.**
 
-![Azure Policy - Compliance](https://github.com/azurecitadel/vdc-networking-lab/blob/master/images/PolicyCompliance.jpg "Azure Policy - Compliance")
+![Azure Policy - Compliance](/workshops/vdc/images/PolicyCompliance.jpg)
 
 **Figure 15:** Azure Policy - Compliance View
 
