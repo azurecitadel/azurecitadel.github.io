@@ -67,7 +67,7 @@ master=https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/
 az group deployment create --name VDC-Create --resource-group VDC-Hub --template-uri $master --verbose
 ```
 
-The template deployment process will take approximately 45 minutes. You can monitor the progress of the deployment from the portal (navigate to the *VDC-Hub* resource group and click on *Deployments* at the top of the Overview blade). Alternatively, open up another Cloud Sgell session and use the CLI to monitor the template deployment progress as follows:
+The template deployment process will take approximately 45 minutes. You can monitor the progress of the deployment from the portal (navigate to the *VDC-Hub* resource group and click on *Deployments* at the top of the Overview blade). Alternatively, open up another Cloud Shell session and use the CLI to monitor the template deployment progress as follows:
 
 ```bash
 az group deployment list -g VDC-Hub -o table
