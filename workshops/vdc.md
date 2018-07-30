@@ -64,7 +64,7 @@ Lab | Section | Description
 | [Introduction](/workshops/vdc/intro/) | Short introduction plus provider registration
 | [Lab Setup](/workshops/vdc/setup/) | Deploy the lab environment using a few Azure CLI commands
 1 | [Explore](/workshops/vdc/lab1/) | Explore and understand the starting point for the lab environment
-2 | [Configure](/workshops/vdc/lab2) | Configure a S2S VPN, base Cisco CSR config, user defined routes and vNet peering settings
-3 | [Secure](/workshops/vdc/lab3) | Secure the environment using Network Security Groups, Azure Security Center and Azure Policies
+2 | [Configure](/workshops/vdc/lab2) | Configure a S2S VPN, base Cisco CSR config, UDRs and vNet peering settings
+3 | [Secure](/workshops/vdc/lab3) | Secure the environment using NSGs, Azure Security Center and Azure Policies
 4 | [Monitor](/workshops/vdc/lab4) | Use Network Watcher and analyse NSG Flow Logs
 5 | [RBAC](/workshops/vdc/lab5) | Create users and groups, allocate roles to scopes.  And clean up the lab!
