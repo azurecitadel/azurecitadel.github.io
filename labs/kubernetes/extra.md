@@ -42,4 +42,4 @@ We skipped over this in the main lab, but it can be investigated as an extra tas
 
 - **Helm Chart**  
 We ended up with a lot of YAML files and in some of them we were making manual changes. Helm provides a way to package Kubernetes apps and manage all the YAML with templates. A Helm chart could be created for Smilr  
-[📘 Azure Cosmos DB: MongoDB API](https://docs.helm.sh/){:target="_blank" class="btn-info"}
+[📘 Helm: Package Manager for Kubernetes](https://docs.helm.sh/){:target="_blank" class="btn-info"}
