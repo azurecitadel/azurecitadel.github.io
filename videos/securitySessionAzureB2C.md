@@ -1,9 +1,9 @@
 ---
 layout: article
 title: Security Session - Azure B2C
-date: 2018-06-13
+date: 2018-08-01
 categories: videos
-tags: [Windows, identity, protection, compliance, conditional access, AD connect, Azure Active Directory, B2C, security, security session]
+tags: [Windows, identity, protection, compliance, AD connect, Azure Active Directory, B2C, security, security session]
 comments: true
 author: Jonathan_Worsfold
 image:
@@ -15,7 +15,7 @@ In this episode we look at Azure B2C, what it is, how it is different to Azure A
 
 ----------
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WDUC6bD0OC4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0XbPVZzy7NA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Jonathan Worsfold takes you through various Microsoft security technologies to help secure infrastructure, devices, applications, information and identities. 
 
