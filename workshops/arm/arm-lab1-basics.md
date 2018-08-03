@@ -33,34 +33,39 @@ First of all you will need a working [Azure subscription](/guides/subscription).
 For this lab we will be using Visual Studio Code, and it is assumed that you have configured it as per the [VS Code prereqs](/guides/vscode) page:
 
 * Visual Studio Code
-* Git working in Command Prompt
-* Either CLI 2.0 (az) installed in Windows, or Azure PowerShell Modules (or both)
-* Bash on Ubuntu (Windows Subsystem for Linux) installed for Windows 10 users, with git and az (optional, recommended)
-* VS Code extensions installed (ARM and CLI)
-* ARM snippets
+* Git installed into the operating system
+* CLI 2.0 (az) installed into your operating system
+* If you are using PowerShell on Windows, then ensure you have the AzureRM module installed and imported
+* For Windows 10 users the the following is recommended
+    * Bash on Ubuntu (Windows Subsystem for Linux) installed
+    * Install both git and az into the linux subsytem
+* VS Code extensions installed
+* ARM snippets configured
 * Integrated Console chosen
+
+Finally you have forked the <https://github.com/azurecitadel/arm-workshop> area into your [GitHub](https://github.com) account and then synced it locally.
 
 ------------------------------------------------
 
 ## Create the azuredeploy.json template
 
 Let's create an empty ARM JSON file in Visual Studio Code using the snippets.
-<video video width="800" height="600" autoplay controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-1-createTemplate.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
 
-1. Open your working folder, e.g. C:\myTemplates (CTRL-K, CTRL-O)
-2. Create a folder called _lab1_
-3. Create a file called _azuredeploy.json_
-4. In the body of the file, type `arm!` and hit enter
-5. CTRL-S to save
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j2oHGVopjsY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+**Figure 1:** Creating the azuredeploy.json template
+
+1. Hover over the arm-workshop bar and click on new file
+1. Create a file called _lab1/azuredeploy.json_
+    * The lab1 folder will be autocreated
+1. In the body of the file, type `arm!` and hit enter
+1. CTRL-S to save
 
 Note that if you have any syntax errors then you will see some red highlighting in the scrollbar area.
 
-Visual Studio Code denotes unsaved files with a dot in the tab at the top. Once you have saved the file then this will disappear.  Individual file windows can be closed with CRTL-W.
+Visual Studio Code denotes unsaved files with a round dot in the tab at the top. Once you have saved the file then this will disappear.  Individual file windows can be closed with CRTL-W.
 
-> Typing `arm!` brings in one of the JSON snippets you should have installed as part of the prereqs.  You can find the JSON snippets used in ARM templates in File \| Preferences \| User Snippets.
+> Typing `arm!` brings in one of the JSON snippets you should have installed as part of the prereqs.  You can find the JSON snippets used in ARM templates in File \| Preferences \| User Snippets or via the settings cog at the bottom left.
 
 You should now have the empty JSON file:
 
@@ -80,10 +85,10 @@ The theory section on [ARM templates](../theoryTemplates) explains the various s
 ## Add a storage account resource
 
 Let's add a simple storage account resource into the empty list:
-<video video width="800" height="600" autoplay controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-2-addStorageAccount.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TkyQ9wEBCvI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+**Figure 2:** Adding the storage account resource
 
 1. Hit enter within the resource list
 2. Type `arm-stg` to add in the storage account snippet
@@ -120,6 +125,21 @@ Your ARM template should now look something like this, but with a different (and
 
 Note that we will come back to ensuring the uniqueness of certain values, such as storage account names.
 
+Once you have saved the file, you should get into the habit of committing changes to your local arm-workshop repo, and pushing those commits up into GitHub:
+
+<video video width="800" height="600" controls>
+  <source type="video/mp4" src="/workshops/arm/images/lab1-3-commit.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+**Figure 3:** Using Git integration to commit your file
+
+1. Click on the Git source control symbol
+1. Click on `+` to stage
+1. Enter a commit message and then `CTRL`+`ENTER`
+1. Click on the sync symbol in the status bar
+
+**Please remember to commit and push periodically!**
+
 ## Open up the Integrated Console and login to Azure
 
 Let's move on and deploy the template.  We'll run this in the Integrated Console for now.  You can use the CLI commands in either bash or PowerShell consoles, or the PowerShell cmdlets from the AzureRM module.  Your choice.
@@ -127,6 +147,12 @@ Let's move on and deploy the template.  We'll run this in the Integrated Console
 * Open up the Integrated Console using CRTL-' (or View \| Integrated Console)
 
 ### Logging in using CLI
+
+<video video width="800" height="600" controls>
+  <source type="video/mp4" src="/workshops/arm/images/lab1-4-login.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+**Figure 4:** Logging in to Azure using CLI 2.0
 
 * Type `az login` and follow the instructions
 
@@ -143,25 +169,37 @@ Once authenticated then you will not need to reauthenticate for a period of time
 
 ## Create the resource group and deploy the template
 
-In the Integrated Console, create a new resource group called 'lab1' and then deploy the azuredeploy.json template into it.
+In the Integrated Console, move into your lab1 folder, create a new resource group called 'lab1' and then deploy the azuredeploy.json template into it.
 
 ##### Bash
 
-```bash
-az group create --name lab1 --location "West Europe"
-az group deployment create --name job1 --resource-group lab1 --template-file /mnt/c/myTemplates/lab1/azuredeploy.json
-```
+<video video width="800" height="600" controls>
+  <source type="video/mp4" src="/workshops/arm/images/lab1-5-deploy.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+**Figure 5:** Creating the resource group and deploying the template
 
-> Note that the filename pathing assumes Linux.  If you are using the CLI within PowerShell then use the native Windows pathing, e.g. c:\\myTemplates\\lab1\\azuredeploy.json.  Please convert any filenames in subsequent CLI examples.
+```bash
+cd lab1
+az group create --name lab1 --location "West Europe"
+az group deployment create --name job1 --resource-group lab1 --template-file azuredeploy.json
+```
 
 ##### PowerShell
 
 ```powershell
+cd lab1
 New-AzureRmResourceGroup -Name lab1 -Location "West Europe"
-New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile c:\myTemplates\lab1\azuredeploy.json
+New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile azuredeploy.json
 ```
 
 ## Validating a deployment
+
+<video video width="800" height="600" controls>
+  <source type="video/mp4" src="/workshops/arm/images/lab1-6-deployments.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+**Figure 6:** Viewing deployment history via the Azure portal
 
 * Select the 'lab1' resource group in the portal.
 * Validate the storage account exists with your unique name
@@ -173,7 +211,13 @@ Browse the [deployment operations](https://docs.microsoft.com/en-us/azure/azure-
 
 ------------------------------------------------
 
-## Adding a user parameter
+## Declaring user parameters
+
+<video video width="800" height="600" controls>
+  <source type="video/mp4" src="/workshops/arm/images/lab1-7-parameters.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+**Figure 7:** Adding user parameters
 
 ### storageAccount
 
@@ -295,7 +339,8 @@ I have also updated the cosmetic descriptions for the two parameters.
 
 As you start adding to your ARM templates you will find that VS Code has a couple of useful features as shown in the screenshot below.
 
-![JSON Outline](/workshops/arm/images/jsonoutline.png)
+![JSON Outline](/workshops/arm/images/lab1-8-jsonoutline.png)
+**Figure 8:** JSON outline and +/-
 
 1. In the Explorer (CTRL+SHIFT+E) on the left, you should see a JSON Outline, which is useful for navigating your template, highlighting a section of it and confirming that syntactically it is looking healthy.  If it does not look right in the JSON Outline then that would suggest that you have some braces in the wrong place.
 1. If you hover the cursor between the line numbers and the file contents then you'll see small `+` and `-` icons appear that you can use to shrink down the file.  This is useful for closing down sections of the templates that you know are healthy so that you can concentrate on new sections that may be causing you problems.  And again, if the lines that are opened and closed are not right then you need to check your braces.  I often close up existing parameters and resources when adding new ones to make sure that they are going in at the right point.
@@ -343,9 +388,40 @@ The inline parameters for PowerShell deployments are very slick, and effectively
 
 ------------------------------------------------
 
+## ARM Functions
+
+But before we start looking at variables, let's take a deeper look at the wealth of functions that are available to the ARM templates.  We'll start to see more of them as we work through the various sections of the labs so it is worth spending some time to understand that range of capability.
+
+The documentation for the ARM template functions is one of those areas that you will visit often, and so we come to one of our three important short URLs:
+
+[**aka.ms/armfunc**](https://aka.ms/armfunc){:target="_blank" class="btn-info"}
+
+We'll now step through some of the functions available to ARM templates, and how they can be used.  This will not cover all of them, as the [documentation](https://aka.ms/armfunctions) for the templates is pretty good, so if you need to understand something trivial like how to trim a string with whitespace then dive in to that area and dig out the information.
+
+The functions are split into seven groups:
+
+**Function Group** | **Use Case**
+[Array and Object](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-array) | used to manipulate or test JSON arrays and objects
+[Comparison](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-comparison) | which are a group of test operators used by the **condition** function
+[Deployment](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-deployment) | which covers those related to the deployment job, e.g. the parameters and variables functions
+[Logical](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-logical) | which are a group used in logical expressions, such as _if_,  _and_ and _or_, or converting strings to booleans
+[Numerical](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-numeric) | the group providing integer and floating point arithmetic operators
+[Resource](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource) | a very useful set for working with Azure Resource Manager constructs, such as info and IDs for the subscription, resource group, resources and providers, plus keys of resources, and references to a resources current state
+[Strings](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-string) | and the final set provides a large set of functions to manipulate and test strings
+
+Another way of thinking about functions is to split them into those used to:
+
+* get or generate information
+* manipulate data
+* test
+
+You will see many of these functions used by some of the more complex templates that we will come across as we continue to work through the labs.
+
+------------------------------------------------
+
 ## Using variables
 
-OK, our template is now looking pretty good.  The major issue with it is that it does not ensure that the storageAccount will be unique and therefore the success of the deployment cannot be assured.  Let's fix that by using a variable and some of the functions that are available.
+OK, so our template is now looking pretty good.  The major issue with it is that it does not ensure that the storageAccount will be unique and therefore the success of the deployment cannot be assured.  Let's fix that by using a variable and some of the functions that are available.
 
 A quick search on "azure storage account naming conventions" takes us to the <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions" target="docs">naming conventions</a> page in the best practices area.  The storage account name has to be lower case alphanumerics with 3-24 characters, and it recommends using a standard prefix.
 
@@ -358,7 +434,7 @@ Run through the following to modify your template:
 1. You will need to use a few new functions to do this:
     * **concat**:  will concatenate two or more strings
     * **uniqueString**: will perform a hash function based on the provided string(s) and return 13 characters
-    * We'll provide uniqueString with the subscriptionID as the seed
+    * We'll provide uniqueString with the id property of the resourceGroup() object as the seed
 1. For bonus points you can ensure the new variable will be in lower case
     * **toLower**: will lower case a string
 1. If we are going to concatenate the uniqueString with the prefix then we need to make sure we do not exceed 24 chars for the storageAccount, so we'll also put a maxLength restriction on the prefix parameter.
@@ -368,13 +444,18 @@ Take your time and work slowly through the steps one by one. This is the toughes
 
 Hints:
 
-* Search on "arm functions" to bring up the documentation for the various <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource" target="docs">functions</a>
-* Most of the functions above are strings functions
-* The subscription function is in resource functions
-* Use your internet search skills - others have used uniqueString for the same purpose
-* If you get absolutely stuck then check the variables section in the final azuredeploy.json at the bottom of this lab
+* Most of the functions above are string functions
+* The resourceGroup function is in resource functions
+* Use your internet search skills - others will have used uniqueString for the same purpose
+* If you get absolutely stuck then check the video below or the variables section in the final azuredeploy.json at the bottom of this lab
 
-If you finish earlier than others then explore the functions available.  Some of them will be introduced as we work through different labs.
+If you finish earlier than others then explore the functions further.
+
+<video video width="800" height="600" controls>
+  <source type="video/mp4" src="/workshops/arm/images/lab1-9-variable.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
+**Figure 9:** Using variables and nesting functions
 
 ## Testing template file validity
 
@@ -408,10 +489,11 @@ If you have been deploying the templates using the bash CLI with the standard JS
 
 In the video below we'll configure the output section in our azuredeploy.json file:
 
-<video video width="800" height="600" autoplay controls>
+<video video width="800" height="600" controls>
   <source type="video/mp4" src="/workshops/arm/images/lab1-4-addingOutputs.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
+**Figure 10:** Adding outputs
 
 The outputs section in our template now looks like this:
 
@@ -582,10 +664,11 @@ parameters file | azuredeploy.parameters.json
 
 Let's create a parameter file in our lab1 folder.
 
-<video video width="800" height="600" autoplay controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-5-creatingParameterFile.mp4"></source>
+<video video width="800" height="600" controls>
+  <source type="video/mp4" src="/workshops/arm/images/lab1-11-creatingParameterFile.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
+**Figure 11:** Creating a parameter file and deploying
 
 1. Open VS Code
 1. Create a new file, 'azuredeploy.parameters.json', in the lab1 folder
