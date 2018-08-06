@@ -51,7 +51,7 @@ Finally you have forked the <https://github.com/azurecitadel/arm-workshop> area 
 
 Let's create an empty ARM JSON file in Visual Studio Code using the snippets.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/j2oHGVopjsY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j2oHGVopjsY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 1:** Creating the azuredeploy.json template
 
@@ -127,7 +127,7 @@ Note that we will come back to ensuring the uniqueness of certain values, such a
 
 Once you have saved the file, you should get into the habit of committing changes to your local arm-workshop repo, and pushing those commits up into GitHub:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rJHmGqGU6PM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rJHmGqGU6PM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 3:** Using Git integration to commit your file
 
@@ -146,7 +146,7 @@ Let's move on and deploy the template.  We'll run this in the Integrated Console
 
 ### Logging in using CLI
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AbO1OWMK3Ow" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AbO1OWMK3Ow?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 4:** Logging in to Azure using CLI 2.0
 
@@ -169,7 +169,7 @@ In the Integrated Console, move into your lab1 folder, create a new resource gro
 
 ##### Bash
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rAiT4vZl7E0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rAiT4vZl7E0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 5:** Creating the resource group and deploying the template
 
@@ -189,7 +189,7 @@ New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateF
 
 ## Validating a deployment
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Vc-bU2fADDg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Vc-bU2fADDg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 6:** Viewing deployment history via the Azure portal
 
@@ -205,7 +205,7 @@ Browse the [deployment operations](https://docs.microsoft.com/en-us/azure/azure-
 
 ## Declaring user parameters
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pHNTK9JdXd8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pHNTK9JdXd8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 7:** Adding user parameters
 
@@ -441,7 +441,7 @@ Hints:
 
 If you finish earlier than others then explore the functions further.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VPG-3RZpn2c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VPG-3RZpn2c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 9:** Using variables and nesting functions
 
@@ -477,7 +477,7 @@ If you have been deploying the templates using the bash CLI with the standard JS
 
 In the video below we'll configure the output section in our azuredeploy.json file:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ET3gPqBj-Oc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ET3gPqBj-Oc?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 10:** Adding outputs
 
@@ -650,7 +650,7 @@ parameters file | azuredeploy.parameters.json
 
 Let's create a parameter file in our lab1 folder.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VfVyZKhRTjc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VfVyZKhRTjc?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 11:** Creating a parameter file and deploying
 

@@ -34,7 +34,7 @@ We'll also take a look at API versions and functions, as these are important and
 
 ## API Versions
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dUnJrQTX3HU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dUnJrQTX3HU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 1:** Overview of APIs
 
@@ -73,7 +73,7 @@ Both have their benefits and limitations and the labs will hopefully illustrate 
 
 OK, let's export an example template and parameters file.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/x6rCyE7TDr4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x6rCyE7TDr4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 2:** Exporting a web app template from the portal
 
@@ -205,7 +205,7 @@ Quick guide:
 
 It is worth going through the pain of this refactoring section as it is really good practice for you.  If you do get stuck then the video below shows the files being edited.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4I1qE1Epx8g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4I1qE1Epx8g?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 4:** Refactoring the exported JSON files
 

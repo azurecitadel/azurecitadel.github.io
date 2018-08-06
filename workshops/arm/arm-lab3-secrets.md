@@ -166,7 +166,7 @@ This will show the entire JSON object for the resource's properties.
 
 You can then work out the dot notation to drill down into the JSON object and pull out the specific value you need. Once you have worked with JSON for a while then this will become second nature. See the following video for one example of how this can be done.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2NDzYQW7RFg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2NDzYQW7RFg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 1:** Using references and [jqplay](https://jqplay.org/)
 
