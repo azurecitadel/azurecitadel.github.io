@@ -127,10 +127,8 @@ Note that we will come back to ensuring the uniqueness of certain values, such a
 
 Once you have saved the file, you should get into the habit of committing changes to your local arm-workshop repo, and pushing those commits up into GitHub:
 
-<video video width="800" height="600" controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-3-commit.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rJHmGqGU6PM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 3:** Using Git integration to commit your file
 
 1. Click on the Git source control symbol
@@ -148,10 +146,8 @@ Let's move on and deploy the template.  We'll run this in the Integrated Console
 
 ### Logging in using CLI
 
-<video video width="800" height="600" controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-4-login.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AbO1OWMK3Ow" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 4:** Logging in to Azure using CLI 2.0
 
 * Type `az login` and follow the instructions
@@ -173,10 +169,8 @@ In the Integrated Console, move into your lab1 folder, create a new resource gro
 
 ##### Bash
 
-<video video width="800" height="600" controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-5-deploy.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rAiT4vZl7E0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 5:** Creating the resource group and deploying the template
 
 ```bash
@@ -195,10 +189,8 @@ New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateF
 
 ## Validating a deployment
 
-<video video width="800" height="600" controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-6-deployments.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Vc-bU2fADDg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 6:** Viewing deployment history via the Azure portal
 
 * Select the 'lab1' resource group in the portal.
@@ -213,10 +205,8 @@ Browse the [deployment operations](https://docs.microsoft.com/en-us/azure/azure-
 
 ## Declaring user parameters
 
-<video video width="800" height="600" controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-7-parameters.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pHNTK9JdXd8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 7:** Adding user parameters
 
 ### storageAccount
@@ -451,10 +441,8 @@ Hints:
 
 If you finish earlier than others then explore the functions further.
 
-<video video width="800" height="600" controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-9-variable.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VPG-3RZpn2c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 9:** Using variables and nesting functions
 
 ## Testing template file validity
@@ -489,10 +477,8 @@ If you have been deploying the templates using the bash CLI with the standard JS
 
 In the video below we'll configure the output section in our azuredeploy.json file:
 
-<video video width="800" height="600" controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-4-addingOutputs.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ET3gPqBj-Oc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 10:** Adding outputs
 
 The outputs section in our template now looks like this:
@@ -664,10 +650,8 @@ parameters file | azuredeploy.parameters.json
 
 Let's create a parameter file in our lab1 folder.
 
-<video video width="800" height="600" controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab1-11-creatingParameterFile.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VfVyZKhRTjc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 11:** Creating a parameter file and deploying
 
 1. Open VS Code
