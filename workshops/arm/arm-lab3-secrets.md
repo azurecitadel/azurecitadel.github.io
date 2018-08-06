@@ -166,10 +166,8 @@ This will show the entire JSON object for the resource's properties.
 
 You can then work out the dot notation to drill down into the JSON object and pull out the specific value you need. Once you have worked with JSON for a while then this will become second nature. See the following video for one example of how this can be done.
 
-<video video width="800" height="600" controls>
-    <source type="video/mp4" src="/workshops/arm/images/lab3-1-references.mp4}"></source>
-    <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2NDzYQW7RFg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 1:** Using references and [jqplay](https://jqplay.org/)
 
 You can then rename the output from _vmRef_ to _osDiskId_, change it from object to string and use the dot notation it to output the correct sub value:
