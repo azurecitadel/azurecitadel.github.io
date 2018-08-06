@@ -650,7 +650,7 @@ parameters file | azuredeploy.parameters.json
 
 Let's create a parameter file in our lab1 folder.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VfVyZKhRTjc?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UKBp7LID-go?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Figure 11:** Creating a parameter file and deploying
 
