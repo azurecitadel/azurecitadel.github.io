@@ -34,10 +34,8 @@ We'll also take a look at API versions and functions, as these are important and
 
 ## API Versions
 
-<video video width="800" height="600" controls>
-    <source type="video/mp4" src="/workshops/arm/images/lab2-apis.mp4}"></source>
-    <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dUnJrQTX3HU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 1:** Overview of APIs
 
 All of the resource types are defined by their API version and matching schema. If you look at the storage account resource type from the previous lab you will notice that the API version is dated 2015-06-15. The API defines which properties are required and which are optional.
@@ -75,10 +73,8 @@ Both have their benefits and limitations and the labs will hopefully illustrate 
 
 OK, let's export an example template and parameters file.
 
-<video video width="800" height="600" controls>
-    <source type="video/mp4" src="/workshops/arm/images/lab2-2-export.mp4}"></source>
-    <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x6rCyE7TDr4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 2:** Exporting a web app template from the portal
 
 **Follow the steps below, but make sure you stop just prior to submission via the final 'Create' button.**
@@ -209,10 +205,8 @@ Quick guide:
 
 It is worth going through the pain of this refactoring section as it is really good practice for you.  If you do get stuck then the video below shows the files being edited.
 
-<video video width="800" height="600" controls>
-  <source type="video/mp4" src="/workshops/arm/images/lab2-4-refactor.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4I1qE1Epx8g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 **Figure 4:** Refactoring the exported JSON files
 
 Here is the resulting azuredeploy.json:
