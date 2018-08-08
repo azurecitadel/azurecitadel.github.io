@@ -101,7 +101,7 @@ Azure resource policies are used to place restrictions on what actions can be ta
 
 **1)** In the Azure portal, navigate to the VDC-Hub resource group and then click on *Policies* in the menu.
 
-**2)** Select *Definitions* and then *Policy Definitions* in the right hand pane.
+**2)** Select *Definitions* to bring up the list of policy definitions in the right hand pane.
 
 **3)** Scroll down to the policy entitled 'Allowed Resource Types', click the '...', select 'View Definition' and then click on 'JSON'. This shows you the JSON policy document - this simple example takes a list of resource types and prevents the ability to create them.
 
