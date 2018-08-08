@@ -121,7 +121,7 @@ This step should succeed, which proves connectivity between the On Premises and 
 
 **Figure 6:** SSH from OnPrem-vm to csr
 
-**8)** Exit the SSH session to the CSR 1000v and then exit the SSH session to the OnPrem virtual machine. Find the internal IP address of a virtual machine's NIC in VDC-Spoke1, either by using the portal or any of the following CLI 2.0 commands:
+**8)** Exit the SSH session to the CSR 1000v and then exit the SSH session to the OnPrem virtual machine. You should now be back in the Cloud Shell session.  Find the internal IP address of a virtual machine's NIC in VDC-Spoke1, either by using the portal or any of the following CLI 2.0 commands:
 
 ```bash
 az network nic ip-config list --resource-group VDC-Spoke1 --nic-name Spoke1-vm1-nic -o table
@@ -246,9 +246,7 @@ curl http://10.1.1.4
 lynx http://10.1.1.4
 ```
 
-<<<<YOU ARE HERE>>>>
-
-This command should return an HTML page showing some information, such as the page title, the hostname, system info and whether the application is running inside a container or not.
+This command should return an HTML page showing some information, such as the page title, the hostname, system info and whether the application is running inside a container or not. (The curl command will return the raw HTML, whilst the lynx command should bring up a simple ASCII based browser.)
 
 If you try the same request a number of times, you may notice that the response contains either *Spoke1-VM1* or *Spoke1-VM2* as the hostname, as the load balancer has both of these machines in the backend pool.
 
