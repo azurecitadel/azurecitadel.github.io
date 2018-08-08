@@ -27,11 +27,11 @@ Our NSG will define two inbound rules - one for HTTP and another for TCP port 30
 
 **2)** Navigate to the newly created NSG and select it. Select 'Inbound Security Rules'. Click 'Add' to add a new rule. Use the following parameters:
 
-- Name: *Allow-http*
-- Priority: *100*
-- Source port range: *Any*
-- Destination port range: *80*
-- Action: *Allow*
+* Source port range: *Any*
+* Destination port range: *80*
+* Priority: *100*
+* Action: *Allow*
+* Name: *Allow-http*
 
 ![NSG Rule1](/workshops/vdc/images/NSG1.jpg)
 
@@ -39,21 +39,21 @@ Our NSG will define two inbound rules - one for HTTP and another for TCP port 30
 
 **3)** Add another rule with the following parameters:
 
-- Name: *Allow-3000*
-- Priority: *110*
-- Source port range: *Any*
-- Destination port range: *3000*
-- Action: *Allow*
+* Source port range: *Any*
+* Destination port range: *3000*
+* Priority: *110*
+* Action: *Allow*
+* Name: *Allow-3000*
 
 **4)** Add one more rule with the following parameters:
 
-- Name: *Deny-All*
-- Priority: *120*
-- Source port range: *Any*
-- Destination port range: *Any*
-- Action: *Deny*
+* Source port range: *Any*
+* Destination port range: *Any*
+* Priority: *120*
+* Action: *Deny*
+* Name: *Deny-All*
 
-**5)** Select 'Network Interfaces'. Click the 'Associate' button and choose 'vdc-csr-1-Nic0'.
+**5)** Select 'Network Interfaces'. Click the 'Associate' button and choose 'csr-nic0'.
 
 ![NSG Associate Subnet](/workshops/vdc/images/NSG2.jpg)
 
@@ -148,7 +148,7 @@ In this example, we'll create a policy that enforces a specific naming conventio
 
 This policy states that we must name our resources with the 'VDC-' prefix.
 
-In this exercise, a file has been created on Github containing the above policy - that file will then be referenced from an AZ CLI command in order to create the policy in Azure.
+In this exercise, a file has been created on GitHub containing the above policy - that file will then be referenced from an AZ CLI command in order to create the policy in Azure.
 
 **1)** Using the AZ CLI, enter the following command:
 
