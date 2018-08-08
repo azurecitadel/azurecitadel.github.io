@@ -113,10 +113,10 @@ Azure resource policies are used to place restrictions on what actions can be ta
 
 **5)** Use the following details to create the policy:
 
-- Policy Definition: *Allowed Resource Types*
-- Allowed Resource Types: *Select all 'Microsoft.Network' resources*
-- Display Name: *Allow Network*
-- ID: *Allow-Network*
+* Scope: *Set to your Azure Pass subscription and then VDC-HUB resource group"
+* Policy Definition: *Allowed Resource Types* (should be greyed out)
+* Assigned Name: *Allow Network*
+* Allowed Resource Types: *Select all 'Microsoft.Network' resources*
 
 **6)** Use the Azure Cloud Shell to attempt to create a virtual machine using the following commands:
 
