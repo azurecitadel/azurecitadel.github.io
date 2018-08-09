@@ -79,7 +79,7 @@ You might wonder why the third rule denying all traffic is required in this exam
 
 Azure Security Center is a feature built in to Azure which allows administrators to gain visibility into the security of their environment and to detect and respond to issues and threats. In this part of the lab, we'll explore Azure Security Center and what it has to offer.
 
-**1)** In the Azure portal, expand the left hand menu and select 'All Services'. Search for and then select 'Security Center'.  Select the free plan using the link on the Getting Started page (which may be selected from the General section of the blade) as this will be sufficient information for this lab.
+**1)** In the Azure portal, expand the left hand menu and select 'All Services'. Search for and then select 'Security Center'.  (This should default to using the free tier.)
 
 **2)** The overview section of the Security Center shows an 'at-a-glance' view of any security recommendations, alerts and prevention items relating to compute, storage, networking and applications.
 
