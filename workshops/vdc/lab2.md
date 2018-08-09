@@ -134,7 +134,7 @@ The VM's IP address is expected to be 10.1.1.5 or 10.1.1.6 depending on the orde
 
 **9)** Log back in to OnPrem-vm, and then attempt to connect to the private IP address of the virtual machine within the Spoke 1 vNet.  
 
-(Note that the ccommand below should fail and simply hang - use `CTRL`+`C` to cancel.)
+(Note that the command below should fail and simply hang - use `CTRL`+`C` to cancel.)
 
 ```bash
 ssh labuser@10.1.1.5

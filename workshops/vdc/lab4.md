@@ -23,7 +23,7 @@ Before we can use the tools in this section, we must first enable Network Watche
 
 **2)** You should see your Azure subscription listed in the right hand pane - find your region and then click on the'...' on the right hand side. Click 'Enable Network Watcher':
 
-![Enabling Network Watcher](NetWatcher1.jpg "Enabling Network Watcher")
+![Enabling Network Watcher](/workshops/vdc/images/NetWatcher1.jpg)
 
 **Figure 16:** Enabling Network Watcher
 
