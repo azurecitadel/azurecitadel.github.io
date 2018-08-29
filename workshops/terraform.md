@@ -78,7 +78,7 @@ Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terrafor
 
 Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
 
-
+For Windows Subsystem for Linux users then you should also switch your integrated console from the default $SHELL (either Command Prompt or PowerShell) to WSL. Open the Command Palette (`CTRL`+`SHIFT`+`P`) and then search for the convenience command **Select Default Shell**.
 
 ----------
 
