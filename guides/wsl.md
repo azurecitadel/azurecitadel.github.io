@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Windows Subsystem for Linux
-date: 2018-01-23
+date: 2018-08-29
 categories: guides
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, ubuntu, wsl, lxss]
 comments: true
@@ -15,11 +15,13 @@ image:
 
 ## Enable the Windows Subsystem for Linux
 
-Follow the instructions to enable the [Windows Subsystem for Linux](https://docs.microsoft.com/en-gb/windows/wsl/install-win10).  
+First, click on the button below to open the instructions to enable the Windows Subsystem for Linux itself.  There are now a choice of distros from the Windows Store (Ubuntu, OpenSUSE and SLES).  If you do not have a preference then Ubuntu is a good option.
 
-There are now a choice of distros from the Windows Store (Ubuntu, OpenSUSE and SLES).  If you do not have a preference then Ubuntu is a good option.
+[**Windows Subsystem for Linux**](https://docs.microsoft.com/en-gb/windows/wsl/install-win10){:target="_new" class="btn-info"}
 
-It is recommended to then install some of the commonly used binaries into the linux subsystem if you are working with Azure. It is common to install the az cli, jq, git and terraform binaries at both the Windows 10 OS level and to then also install them into the linux subsytem as well.)
+----------
+
+It is then recommended to install some of the commonly used binaries into the linux subsystem if you are working with Azure. It is common to install the az cli, jq, git and terraform binaries at both the Windows 10 OS level and to then also install them into the linux subsytem as well.)
 
 > This guide will detail the commands to install the binaries into the Windows Subsystem for Linux, and it has been assumed that you are using Ubuntu, which uses apt as the package manager.  If you selected a different distro then search online for the package manager commands for that distribution.
 
