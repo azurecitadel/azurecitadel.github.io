@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform on Azure"
 categories: none
-date: 2018-06-01
+date: 2018-08-28
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -39,7 +39,21 @@ This lab will cover a lot of ground, including
 
 ## Pre-requisites
 
+For labs 1 and 2 you only need an Azure subscription as we will use the Cloud Shell.
+
+For labs 3 onwards it is assumed that you have a linux terminal environment (for running the az and terraform commands) as well as Visual Studio Code (for editing the HCL files). This is perfect for MacOS and Linux desktop users, as well as Windows 10 users who have the Windows Subsystem for Linux configured. (The labs are based on the Ubuntu distribution running as a subsystem in Windows 10.)
+
+If you wish to enable the Windows Subsystem for Linux then follow the instructions here: ,
+
+It is possible to use both az and terraform commands within a PowerShell integrated console on Windows 7 machine, but if there are examples of Bash scripting then you will need to work around that.  You may be able to use the Git Bash on Windows 7 but this has not been tested.  It is recommended to upgrade to Windows 10 and use the Windows Subsystem for Linux as it is a much cleaner integration.
+
+You can run everything on linux servers as well - we are only using az, terraform and text files - but you will miss out on some of the Visual Studio Code editing niceties.
+
+----------
+
 [**Azure Subscription**](/guides/subscription){:target="_blank" class="btn-info"}
+
+**Required for all labs.**
 
 You will need access to a subscription (with 'contributor rights'), or an Azure Pass or free account. Click on the button above for more details.
 
@@ -47,9 +61,11 @@ Ensure that it is active by logging onto the [portal](http://portal.azure.com) a
 
 **💬 Note.** If you are using an Azure Free Pass then please do not activate it using your work email address.  If you do then it will be unlikely that you will have RBAC permissions to create Service Principals and you will be limited to using the Azure CLI authentication.
 
-----------------------
+----------
 
 [**💻 Visual Studio Code**](/guides/vscode){:target="_blank" class="btn-info"}
+
+**Required for lab 3 onwards.**
 
 Please install and configure Visual Studio Code as per the link in the button above.  We won't be writing any real code, but the editor has some great support for editing the .tf files used by Terraform and integrating with Azure.
 
@@ -57,40 +73,45 @@ The following extensions should also be installed as they are assumed by the lab
 
 **Module Name** | **Author** | **Extension Identifier**
 Azure Account | Microsoft | [ms-vscode.azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
-Azure Terraform | Microsoft | [ms-azuretools.vscode-azureterraform](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureterraform)
 Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
 Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
-Azure Storage | Microsoft | [ms-azuretools.vscode-azurestorage](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)
 
 Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
 
-For the Azure Terraform extension you may also need a couple of additional installations:
 
-* [**Terraform**](https://www.terraform.io/downloads.html)
-    * For lab 2 you will need to download the executable and make sure it is in your OS' path
-        * For Windows that will need to be in your system PATH, e.g. into`C:\Windows\System32\`
-        * Avoid using the User Path or vscode may not be able to find it  
-    * For lab 5 you will need terraform in your integrated terminal, and the lab covers how to do this for Windows Subsystem for Linux users
-* [**Node.js 6.0+**](https://nodejs.org/en/)
-    * Required for lab 2
-    * Note that node.js is only required for the Azure Terraform extension in vscode, not for Terraform itself
-* [**GraphViz**](http://www.graphviz.org/) - optional if you are using the visualize feature to ss the Terraform graph
 
-----------------------
+----------
+
+[**💻 Terraform**](https://www.terraform.io/downloads.html){:target="_blank" class="btn-info"}
+
+**Required for lab 3 onwards.**
+
+* Manually download the correct executable from the link above
+* Manually move it to a directory in your OS' path
+
+> Note that for Windows that will need to be in your system path, e.g. `C:\Windows\System32\`. Visual Studio Code does not search the Windows user path.
+
+* For linux systems (including the WSL) that use apt as the package manager you may use the following command to download it to /usr/local/bin:
+
+```bash
+curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/workshops/terraform/installLatestTerraform.sh | sudo -E bash -
+```
+
+* Run `terraform --version` to verify
+
+----------
 
 [**💻 Azure CLI**](https://aka.ms/GetTheAzureCli){:target="_blank" class="btn-info"}
 
-The first lab will make use of the Azure [Cloud Shell](https://shell.azure.com/) which already has both the Azure CLI and the Terraform binary installed.  They will also be automatically updated over time as the base container image is automatically managed by Microsoft.
+**Required for lab 3 onwards.**
 
-You may wish to switch at some point to running the Azure CLI and Terraform locally.
+For Windows, Linux and macOS users, click on the button above to find the right install instructions to install at the operating system level.
 
-For Windows 10 users we highly recommend enabling the Windows Subsystem for Linux (WSL) feature and then downloading one of the Linux distros available on the Windows Store (such as [Ubuntu](ms-windows-store://pdp/?productid=9NBLGGH4MSV6&referrer=unistoreweb&scenario=click&webig=43bd1422-74f7-4017-88ae-c3f84bb60893&muid=35E9D9E2EDE76C043B35D293ECDF6DB9&websession=1745cfbb549648ecac5167207ba91c13)).  Once that is configured then you can installing the Azure CLI using [apt](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
-
-For Linux and macOS users, click on the button above to find the right install instructions.
+For Windows 10 users who have enabled the Windows Subsystem for Linux (WSL) feature then you can installing the Azure CLI in the linux subsystem using [apt](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
 
 **💬 Note.** Use of the legacy Windows CMD prompt is not advised, and use of alternative bash systems (gitbash or cygwin) is discouraged.
 
-----------------------
+----------
 
 ## Assumptions
 
@@ -100,7 +121,7 @@ A background knowledge of Terraform is advised. The button below will take you t
 
 [**Terraform Intro**](https://aka.ms/terraform/intro){:target="_blank" class="btn-info"}
 
-----------------------
+----------
 
 ## Lab Contents
 
