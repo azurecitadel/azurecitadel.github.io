@@ -6,6 +6,10 @@ error()
   exit 1
 }
 
+yellow() { tput setaf 3; cat - >&2; tput sgr0; return; }
+cyan()   { tput setaf 6; cat - >&2; tput sgr0; return; }
+
+
 # Grab the Azure subscription ID
 subId=$(az account show --output tsv --query id)
 [[ -z "$subId" ]] && error "Not logged into Azure as expected."
@@ -20,7 +24,7 @@ fi
 
 
 # Create the service principal
-echo "az ad sp create-for-rbac --role=\"Contributor\" --scopes=\"/subscriptions/$subId\" --name \"terraform-$subId\"" >&2
+echo "az ad sp create-for-rbac --name \"terraform-$subId\"" | yellow
 spout=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$subId" --name "terraform-$subId" --output json)
 
 # If the service principal has been created then offer to reset credentials
@@ -34,37 +38,70 @@ then
   fi 
 fi
 
-[[ -z "$spout" ]] && error "Failed to create / reset the service principal" || echo >&2
+[[ -z "$spout" ]] && error "Failed to create / reset the service principal" 
 
-# Echo the json output to stderr
-jq . <<< $spout >&2 && echo >&2
+# Echo the json output 
+echo "$spout" | yellow
 
 # Derive the required variables
 clientId=$(jq -r .appId <<< $spout)
 clientSecret=$(jq -r .password <<< $spout)
 tenantId=$(jq -r .tenant <<< $spout)
 
-# Create the provider.tf file
-umask 027
-echo "provider \"azurerm\" {
-  subscription_id = \"$subId\"
-  client_id       = \"$clientId\"
-  client_secret   = \"$clientSecret\"
-  tenant_id       = \"$tenantId\"
-}
-" > provider.tf
+echo -e "\nWill now create a provider.tf file.  Choose output type." >&2
+PS3='Choose provider block type: '
+options=("Populated azurerm block" "Empty azurerm block with environment variables" "Quit")
+select opt in "${options[@]}"
+do
+  case $opt in
+    "Populated azurerm block")
+      cat > provider.tf <<-END-OF-STANZA 
+	provider "azurerm" {
+	  subscription_id = "$subId"
+	  client_id       = "$clientId"
+	  client_secret   = "$clientSecret"
+	  tenant_id       = "$tenantId"
+	}
+	END-OF-STANZA
 
-if [[ "$?" -eq 0 ]]
-then
-  echo "Created provider.tf:"
-  sed "s/^/  /g" provider.tf 
-  echo
-fi >&2
+      echo -e "\nPopulated provider.tf:" >&2
+      cat provider.tf | yellow
+      echo >&2
+      break
+      ;;
+    "Empty azurerm block with environment variables")
+      echo "provider \"azurerm\" {}" > provider.tf
+      echo -e "\nEmpty provider.tf:" >&2
+      cat provider.tf | yellow
+      echo >&2
+
+      export ARM_SUBSCRIPTION_ID="$subId"
+      export ARM_CLIENT_ID="$clientId"
+      export ARM_CLIENT_SECRET="$clientSecret"
+      export ARM_TENANT_ID="$tenantId"
+     
+      echo "Copy the following environment variable exports and paste into your .bashrc file:" >&2
+      cat <<-END-OF-ENVVARS | cyan
+	export ARM_SUBSCRIPTION_ID="$subId"
+	export ARM_CLIENT_ID="$clientId"
+	export ARM_CLIENT_SECRET="$clientSecret"
+	export ARM_TENANT_ID="$tenantId"
+	
+	END-OF-ENVVARS
+      break
+      ;;
+    "Quit")
+      exit 0
+      ;;
+    *) echo "invalid option $REPLY";;
+  esac
+done
 
 echo -n "Log in as the Service Principal? [Y/n]: " >&2
 read ans
-if [[ "${ans:-Y}" == [Yy] ]]
-then az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
+if [[ "${ans:-Y}" = [Yy] ]]
+then 
+  az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
 fi 
 
 exit 0
