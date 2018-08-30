@@ -23,4 +23,4 @@ What do you want from the next Security Session? Tell us [here!](http://aka.ms/S
 
 ----------
 
-Follow Jonathan on Twitter: @TheJonLyon
+Follow Jonathan Lyon on Twitter: @TheJonLyon
