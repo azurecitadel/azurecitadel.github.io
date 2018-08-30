@@ -15,7 +15,9 @@ published: true
 
 You can go a long way with Terraform making use of hard coded stanzas or defaulted variables.  If you have a simpler configuration or don't mind manually editing the files to configure the variables then this is a simple way to manage your Terraform files.  However we are looking to build up reusable IP that will work in a multi-tenanted environment, and will prove to be more robust over time as we update those building blocks.
 
-In this lab we will leverage some of the functions and meta parameters that you can use within HCL.  Some of the richer configuration examples that you see will make extensive use of these meta parameters.  We'll also look at the various ways that we can define variables.
+In this lab we will leverage some of the functions and meta parameters that you can use within HCL.  Some of the richer configuration examples that you see will make extensive use of these meta parameters so you will need to have an idea of what they do if you want to leverage the work of others.  
+
+We'll also look at the various ways that we can define variables.
 
 ## Reference documentation
 
@@ -27,9 +29,11 @@ There are a few key pages on the Terraform site that you will come back to often
 [Data Sources](https://www.terraform.io/docs/configuration/data-sources.html) | Using data sources
 [Outputs](https://www.terraform.io/docs/configuration/outputs.html) | Defining outputs
 
+----------
+
 ## Interpolation
 
-You have been using interpolation as Terraform has interpreted everything wrapped in `"${ ... }"`. So far this has been limited to referencing variables (e.g. `"${var.loc}"`) or the attributes of various resource types (e.g. `"${azurerm_resource_group.nsgs.location}"`).  
+You have already been using interpolation. Terraform has interpreted everything wrapped in `"${ ... }"`. So far this has been limited to referencing variables (e.g. `"${var.loc}"`) or the exported attributes of various resource types (e.g. `"${azurerm_resource_group.nsgs.location}"`).  
 
 Terraform has a rich syntax covered on the [interpolation syntax](https://www.terraform.io/docs/configuration/interpolation.html) page.
 
@@ -37,17 +41,17 @@ Terraform has a rich syntax covered on the [interpolation syntax](https://www.te
 
 **Question**:
 
-What is the special variable that allows you to reference information within the current resource stanza?  How would the interpolation expression look for finding out the localtion of the current resource?
+What is the **self** variable and what does it do?  How would the interpolation expression look for finding out the location of the current resource?
 
 **Answer**:
 
 <div class="answer">
-    <p>"${self.location}"</p>
+    <p>The special self variable is a shorthand to refer to the current resource stanza.  You can use "${self.location}" to reference the location of the current resource. It only works within provisioners, which are covered in a later lab.</p>
 </div>
 
 **Question**:
 
-If you had a boolean variable for createResource then you can make use of count with in if-then-else expression to control whether the resource is created or not.  How does that work?
+If you had a boolean variable called **createResource** then you could make use of count with in if-then-else expression to control whether a resource is created or not.  How does that work?
 
 **Answer**:
 
@@ -62,16 +66,20 @@ Syntactically, what is the difference between `"${var.index-count - 1}"` and `"$
 **Answer**:
 
 <div class="answer">
-    <p>"${var.index-count - 1}" subtracts 1 from the index-count variable, "${var.index-count-1}" returns the value of the variable called index-count-1.</p>
+    <p>"${var.index-count - 1}" subtracts 1 from a variable called index-count. "${var.index-count-1}" returns the value of a variable called index-count-1.</p>
 </div>
+
+----------
 
 ## Initial webapp.tf file
 
-Count is one of the more useful meta parameters, and allows for multiple resources to be configured.  Let's work through an example to get some familiarity with it.  We'll use the web app PaaS service, and deploy them to multiple locations
+Count is a useful meta parameter, and allows for multiple resources to be configured.  Let's work through an example to get some familiarity with it.  We'll use the web app PaaS service, and deploy them to multiple locations
 
 * Change the existing loc variable from "West Europe" to the shortname "westeurope"
+    * The azurerm provider is intelligent enough to know that this is not a change
 * Create a new webapplocs list variable
     * Set the default to contain the shortnames of a few regions from `az account list-locations --output table`
+    * E.g. `[ "eastus2", "uksouth", "centralindia" ]`
 * Create a new webapps.tf file
     * Define a new resource group called **webapps**
         * Use the loc and tags variables as per normal
@@ -114,37 +122,41 @@ resource "azurerm_app_service" "citadel" {
 * Run through the Terraform init, plan and apply workflow to test the deployment
 * Show the id for the plan: `echo azurerm_app_service_plan.free.id | terraform console`
 * Show the web address: `echo azurerm_app_service.citadel.default_site_hostname | terraform console`
+* Commit and push
 
-> If you haven't done so for a while then now would be an excellent time for a git commit and push.
+----------
 
 ## Using count
 
-OK, we'll now modify those two stanzas to make it multi-region.  This is done by using the count meta parameter, which may be as set to something simple such as `count = 2` or a numeric variable.  However we'll set this to the number of locations we have in the webapplocs list variable.  
+OK, we'll now modify the app service plan and app service stanzas to make them multi-region.  This is done by using the count meta parameter, which may be as set to something simple such as `count = 2` or a numeric variable, such as `count = "${var.nlocs}"`.  However we'll set this to the number of locations we have in the webapplocs list variable.  
 
 We can then reference `${count.index}` in the stanzas.  Remember that we can slice out a single list element. For instance you can select the first element of a variable called myList using `${var.myList[0]}`.
 
-* Add a new count value based on the length of the webapplocs list variable
-    * This was one of the questions in lab 2
 * Change the azurerm_app_service_plan.free and azurerm_app_service.citadel stanzas
+    * Add a new count argument based on the length of the webapplocs list variable
     * Change location to the correct webapplocs element using `${count.index}`
     * Change the resource name to use the same region shortname as a suffix, replacing `${var.loc}`
 * Save the webapps.tf file
 
 Again, if at any point you find yourself struggling then you can always take a look at the lab files in the link at the bottom of the page.
 
-If you run the terraform plan at this point then it should error, saying that it can no longer find `azurerm_app_service_plan.free.id`.  Now that we are using count for the app service plans, we are creating a list of resources. This introduces a special variable form called the splat. Rather then the single `azurerm_app_service_plan.free.id`, we now have `azurerm_app_service_plan.free.*.id`. And you can pull out a single element from that list using the `element()` function.
+If you run the terraform plan at this point then it should error, saying that it can no longer find `azurerm_app_service_plan.free.id`.  We no longer have a single app service plan, we now have a number of them spread around the globe.
+
+This is handled by introducing a special syntax form called the splat syntax. Rather then the single `azurerm_app_service_plan.free.id`, we now use `azurerm_app_service_plan.free.*.id` to access the list of ids generated by introducing count. And you can pull out a single element from that list using the `element()` function.
 
 * Change the app_service_plan_id attribute value to `"${element(azurerm_app_service_plan.free.*.id, count.index)}"`
 * Run the terraform plan and apply steps
-* In the Cloud Shell, list out the app service plan ids and web app hostnames using the splat operator:
+* List out the app service plan ids and web app hostnames using the splat syntax:
     * `echo "azurerm_app_service_plan.free.*.id" | terraform console`
     * `echo "azurerm_app_service.citadel.*.default_site_hostname" | terraform console`
+
+----------
 
 ## Multiple web apps per location
 
 One really nice feature of the element() function is that it automatically wraps, acting like a mod operator.  So if you wanted to have a number of web apps at each location you could create a new variable, multiply up the count and use the element function rather than a straight list index.
 
-Here is an example of the two stanzas plus a local variable. Note that you do not need to make these changes to your webapps.tf file.  We'll also cover locals a little later in this lab.
+Here is an example of the two stanzas plus a local variable. **Note that you do not need to make these changes to your webapps.tf file.**  We'll also cover locals a little later in this lab.
 
 ```ruby
 locals {
@@ -205,18 +217,18 @@ OK, so that is the basics for using copy.  For those who are familiar with copy 
 1. ARM supports copy at both the resource and sub-resource level (for those array defined sub-resources such as subnets, data disks, NICs etc.)
 1. Terraform supports count at the resource stanza level only
 1. Not all Terraform resource types support the use of the count meta parameter
-1. Support for ARM's array sub-resource types in Terraform definitely varies, for example:
-    * subnets (vNet sub-resource) have their own provider type (azurerm_subnet) in Terraform and count can therefore be used
-    * data disks are sub-stanzas in the azurerm_virtual_machine provider type and count is not supported at that level even if defined elsewhere with azurerm_managed_disk and then attached
-    * NICs are supported using the azurerm_network_interface and the NIC ids can be passed as a list to the azurerm_virtual_machine stanza as network_interface_ids
+1. Whilst ARM supports count for sub-resources with a list type (such as NICs, data disks and subnets), these are commonly managed in Terraform as separate resource stanzas with their own provider type
+    * The generated splat lists are then referenced by other provider types
+1. Terraform supports a count of zero whereas ARM template currently do not
+    * Therefore count is also used to control whether a resource is deployed at all, covering the ARM template *condition* functionality
 
-Terraform and Microsoft have been actively working together to improve the azurerm provider support and there has been a huge amount of progress to date. These anomalies will be addressed as the devs work through the enhancements list as part of the continual improvement.
+----------
 
 ## Variables
 
 The [variable](https://www.terraform.io/docs/configuration/variables.html) page is your one stop reference for how to feed in variables.  So far we have used the `variable` keyword to declare our variables and we have used default values.
 
-Let's take the example of our `loc` variable and see a few different ways of setting it to UK South.
+Let's take the example of our `loc` variable and see a few different ways of overriding the default and setting it to UK South.
 
 ### Environment variables
 
@@ -235,7 +247,7 @@ You can also set the parameters inline, e.g. `terraform apply -var 'loc=uksouth'
 
 ### Using .tfvars files
 
-If you have a lot of variables then you can place them in a file.  By convention these are suffixed with `.ftvars`.  Each line should be of the straighforward `loc=uksouth` format.  You can then use `-var-file varfilename` as a switch.  However if your variable file is called `terraform.tfvars` or `.auto.tfvars` then it will be loaded automatically.
+If you have a lot of variables then you can place them in a file.  By convention these are suffixed with `.tfvars`.  Each line should be of the straighforward `loc=uksouth` format.  You can then use `-var-file varfilename` as a switch.  However if your variable file is called `terraform.tfvars` or `.auto.tfvars` then it will be loaded automatically.
 
 ### Combinations of the above
 
@@ -258,9 +270,9 @@ tags    = {
 }
 ```
 
-* Add in your webapplocs, tenant_id and kvr_object_id values
-* Remove the defaults from your variables.tf for tenant_id and kvr_object_id
+* Add in your webapplocs value
 * Set the default webapplocs to an empty list
+* Run `terraform plan` to confirm that planned changes have been unintentionally introduced
 
 You can check that files linked to at the bottom of the lab if you get stuck.
 
@@ -305,27 +317,54 @@ output "network_interface_ids" {
 
 ## Add an output to webapps.tf
 
-* Add an output to your webapps.tf to list out the ids for all of your webapps
+* Add a **webapp_ids** output to your webapps.tf file, to list out the ids for all of your webapps
 * Run the terraform plan and apply workflow
 
 You should see output similar to the following:
 
 ```ruby
+:
 
-Apply complete! Resources: 30 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-webappids = [
-    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-westeurope,
-    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-centralindia,
-    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-westus2,
-    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-australiaeast,
-    /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-0su6a626-brazilsouth
+webapp_ids = [
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-westeurope,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-eastasia,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-brazilsouth,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-eastus2
 ]
 ```
 
-You can also show the outputs in the current state file using the `terraform outputs` command.  You can also output in JSON format if reading into languages such as Python.
+You can also show the outputs in the current state file using the `terraform output` command.  You can also output in JSON format if reading into languages such as Python or using with linux commands such as the jq filter:
+
+```bash
+terraform-labs$ terraform output
+webapp_ids = [
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-westeurope,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-eastasia,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-brazilsouth,
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-eastus2
+]
+
+terraform-labs$ terraform output -json
+{
+    "webapp_ids": {
+        "sensitive": false,
+        "type": "list",
+        "value": [
+            "/subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-westeurope",
+            "/subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-eastasia",
+            "/subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-brazilsouth",
+            "/subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-eastus2"
+        ]
+    }
+}
+
+terraform-labs$ terraform output -json | jq -r '.webapp_ids.value[] | select(endswith("brazilsouth"))'
+/subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/webapps/providers/Microsoft.Web/sites/webapp-rtplste0-brazilsouth
+```
 
 ## End of Lab 4
 
@@ -333,6 +372,6 @@ We have reached the end of the lab. You have made use of count and count.index a
 
 Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab4>.
 
-With everything we have looked at so far you can create some pretty complex configurations.  However there are some things that we want to do soon that cannot be done within Cloud Shell's clouddrive area, so we will move towards the more enterprise level solutions using either Managed Service Identity or Service Principals.
+With everything we have looked at so far you can develop some pretty complex configurations.  In the next lab we will move away from the Coud Shell or Azure CLI authentication we have used to date, and start using Service Principals.
 
-[◄ Lab 3: Core](../lab3){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 5: Multi Tenancy ►](../lab5){: .btn-success}
+[◄ Lab 3: Core](../lab3){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 5: Multi Tenancy ►](../lab5){: .btn-success}

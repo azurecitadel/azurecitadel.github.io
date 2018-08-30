@@ -123,7 +123,7 @@ A background knowledge of Terraform is advised. The button below will take you t
 
 ----------
 
-## Lab Contents
+## Labs
 
 **Lab** | **Name** | **Description**
 1 | [Basics](lab1) | Use the basic Terraform workflow in Cloud Shell
