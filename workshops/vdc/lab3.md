@@ -27,11 +27,11 @@ Our NSG will define two inbound rules - one for HTTP and another for TCP port 30
 
 **2)** Navigate to the newly created NSG and select it. Select 'Inbound Security Rules'. Click 'Add' to add a new rule. Use the following parameters:
 
-- Name: *Allow-http*
-- Priority: *100*
-- Source port range: *Any*
-- Destination port range: *80*
-- Action: *Allow*
+* Source port range: *Any*
+* Destination port range: *80*
+* Priority: *100*
+* Action: *Allow*
+* Name: *Allow-http*
 
 ![NSG Rule1](/workshops/vdc/images/NSG1.jpg)
 
@@ -39,21 +39,21 @@ Our NSG will define two inbound rules - one for HTTP and another for TCP port 30
 
 **3)** Add another rule with the following parameters:
 
-- Name: *Allow-3000*
-- Priority: *110*
-- Source port range: *Any*
-- Destination port range: *3000*
-- Action: *Allow*
+* Source port range: *Any*
+* Destination port range: *3000*
+* Priority: *110*
+* Action: *Allow*
+* Name: *Allow-3000*
 
 **4)** Add one more rule with the following parameters:
 
-- Name: *Deny-All*
-- Priority: *120*
-- Source port range: *Any*
-- Destination port range: *Any*
-- Action: *Deny*
+* Source port range: *Any*
+* Destination port range: *Any*
+* Priority: *120*
+* Action: *Deny*
+* Name: *Deny-All*
 
-**5)** Select 'Network Interfaces'. Click the 'Associate' button and choose 'vdc-csr-1-Nic0'.
+**5)** Select 'Network Interfaces'. Click the 'Associate' button and choose 'csr-nic0'.
 
 ![NSG Associate Subnet](/workshops/vdc/images/NSG2.jpg)
 
@@ -79,7 +79,7 @@ You might wonder why the third rule denying all traffic is required in this exam
 
 Azure Security Center is a feature built in to Azure which allows administrators to gain visibility into the security of their environment and to detect and respond to issues and threats. In this part of the lab, we'll explore Azure Security Center and what it has to offer.
 
-**1)** In the Azure portal, expand the left hand menu and select 'All Services'. Search for and then select 'Security Center'.  Select the free plan using the link on the Getting Started page (which may be selected from the General section of the blade) as this will be sufficient information for this lab.
+**1)** In the Azure portal, expand the left hand menu and select 'All Services'. Search for and then select 'Security Center'.  (This should default to using the free tier.)
 
 **2)** The overview section of the Security Center shows an 'at-a-glance' view of any security recommendations, alerts and prevention items relating to compute, storage, networking and applications.
 
@@ -101,7 +101,7 @@ Azure resource policies are used to place restrictions on what actions can be ta
 
 **1)** In the Azure portal, navigate to the VDC-Hub resource group and then click on *Policies* in the menu.
 
-**2)** Select *Definitions* and then *Policy Definitions* in the right hand pane.
+**2)** Select *Definitions* to bring up the list of policy definitions in the right hand pane.
 
 **3)** Scroll down to the policy entitled 'Allowed Resource Types', click the '...', select 'View Definition' and then click on 'JSON'. This shows you the JSON policy document - this simple example takes a list of resource types and prevents the ability to create them.
 
@@ -113,10 +113,10 @@ Azure resource policies are used to place restrictions on what actions can be ta
 
 **5)** Use the following details to create the policy:
 
-- Policy Definition: *Allowed Resource Types*
-- Allowed Resource Types: *Select all 'Microsoft.Network' resources*
-- Display Name: *Allow Network*
-- ID: *Allow-Network*
+* Scope: *Set to your Azure Pass subscription and then VDC-HUB resource group"
+* Policy Definition: *Allowed Resource Types* (should be greyed out)
+* Assigned Name: *Allow Network*
+* Allowed Resource Types: *Select all 'Microsoft.Network' resources*
 
 **6)** Use the Azure Cloud Shell to attempt to create a virtual machine using the following commands:
 
@@ -148,7 +148,7 @@ In this example, we'll create a policy that enforces a specific naming conventio
 
 This policy states that we must name our resources with the 'VDC-' prefix.
 
-In this exercise, a file has been created on Github containing the above policy - that file will then be referenced from an AZ CLI command in order to create the policy in Azure.
+In this exercise, a file has been created on GitHub containing the above policy - that file will then be referenced from an AZ CLI command in order to create the policy in Azure.
 
 **1)** Using the AZ CLI, enter the following command:
 

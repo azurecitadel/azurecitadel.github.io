@@ -9,3 +9,4 @@ _asset_bundler_cache
 .jekyll-metadata
 deleteme.json
 .vs
+~*.pptx

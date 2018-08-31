@@ -13,113 +13,80 @@ published: true
 
 ## Introduction
 
-In this lab we'll still be using the Cloud Shell, but we'll switch to using Visual Studio Code for our editing and leverage some of the extensions to integrate.
+In this lab we'll continue to use the Cloud Shell. As you move through the lab you will start to make use of variables and multiple .tf files.  We'll modify existing resources and add new resources and new providers.
 
-If you haven't done so already, install [vscode](/guides/vscode) and make sure that you have the following extensions installed:
+## Create the terraform-lab2 resource group and storage account
 
-**Module Name** | **Author** | **Extension Identifier**
-Azure Account | Microsoft | [ms-vscode.azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
-Azure Terraform | Microsoft | [ms-azuretools.vscode-azureterraform](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureterraform)
-Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
-Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
-
-Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
-
-As you move through the lab you will start to make use of variables and multiple .tf files.  We'll modify existing resources and add new resources and new providers.
-
-## Visual Studio Code
-
-Before we start using variables etc., let's spend a little time getting vscode configured for us.  In this section we'll create a folder for our workspace and then set the workspace to default to linux friendly LF line endings for the Bash based Cloud Shell.
-
-* Open Visual Studio Code
-* Open Folder, by either:
-    * clicking on the 'Open folder...' link in the Start section of the Welcome page,
-    * clicking on File -> Open Folder, or
-    * using the CTRL-K, CTRL-O keyboard shortcut chord
-* Use the dialog box to create a new local folder for your lab files
-    * This lab assumes C:\terraform\citadel as your local workspace
-* Select the folder
-* Type `CTRL`+`,` to open Settings:
-
-![eol](/workshops/terraform/images/eol.png)
-
-All of the available and defaulted settings are shown on the left, and they can then be overriden at the user or workspace level.
-
-1. Click on Workspace Settings
-    * As soon as you do then you will notice a .vscode/settings.json file is created in your workspace
-1. Search for `eol`
-1. Hover over the "files.eol" setting, click on the pen to edit it and select "\n"
-1. Type `CTRL`+`S` to save your new workspace settings
-
-OK, the area is ready.  Let's quickly recreate the main.tf file from the last lab with a new resource group name.
-
-## Create the main.tf and push to Cloud Shell
-
-* Create a new file in the **root** of the workspace called main.tf
-    * Hover over the citadel bar in the explorer sidebar for the New File icon
-    * do not place the file in any subfolder - Terraform will only work using the *.tf files at the root of the workspace
-    * if you accidentally created the main.tf file in the .vscode subfolder then you can drag it into the blank area to move it up
-* Paste in the contents of the codebox below
+Let's quickly recreate the storage account in a new resource group.  You should be in your ~/terraform-labs folder. If you `cat main.tf` then it should look like the following (with a different storage account name).
 
 ```yaml
-resource "azurerm_resource_group" "citadel" {
-  name      = "terraformCitadelWorkshop"
-  location  = "West Europe"
+resource "azurerm_resource_group" "lab1" {
+  name     = "terraform-lab1"
+  location = "West Europe"
 
   tags {
-    environment = "Training"
+    environment = "training"
   }
 }
 
-resource "azurerm_storage_account" "sa" {
-  name                     = "richeneysa1976"
-  resource_group_name      = "${azurerm_resource_group.citadel.name}"
+resource "azurerm_storage_account" "lab1sa" {
+  name                     = "richeneyterraformlab1"
+  resource_group_name      = "${azurerm_resource_group.lab1.name}"
   location                 = "westeurope"
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 ```
 
-This is the same file as we used in the last lab except that we have a new resource group name.  Don't forget to change your storage account name again.
+* Restart vscode (`code .`), refresh the Files pane and reselect main.tf
+* Change the Terraform resource ID (and name) for the resource group from lab1 to lab2
+    * For speed, use the Replace (`CTRL`+`H`), add lab1 and lab2 in the boxes and then use `CTRL`+`ALT`+`Enter`
+    * To find the command shortcuts you can click on the ellipsis (`...`) and search in the Command Palette (`F1`)
+* Save (`CTRL`+`S`)
 
-Now that we are using vscode with the various plugins, we have a multitude of productivity gains, such as linting, intellisense, snippets, auto-complete. The .tf extension is automatically associated with Terraform.
+Your main.tf should now look similar to the code block below:
 
-![vscode](/workshops/terraform/images/main.tf.png)
+```yaml
+resource "azurerm_resource_group" "lab2" {
+  name     = "terraform-lab2"
+  location = "West Europe"
 
-1. It should now show LF rather than CRLF in the toolbar (from the workspace settings)
-1. The round blob in the tab shows it is not saved - use `CTRL-S` to save it locally
+  tags {
+    environment = "training"
+  }
+}
 
-Let's push it up to the Cloud Shell:
+resource "azurerm_storage_account" "lab2sa" {
+  name                     = "richeneyterraformlab2"
+  resource_group_name      = "${azurerm_resource_group.lab2.name}"
+  location                 = "westeurope"
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+```
 
-* Type `CTRL`+`SHIFT`+`P` to open the Command Palette
-* Type 'push' and select 'Azure Terraform: push'
-* You'll be asked if you want to open Cloud Shell.  Click on OK
-* Select the directory if your ID is linked to multiple tenancies
-* Bash in Cloud Shell will open in the Integrated Console
-* You will be prompted to confirm the push of project files from the current workspace to the Cloud Shell
-* The files will be pushed (copied) up into a new ~/clouddrive/citadel directory in the Cloud Shell
-    * Subsequent pushes will be much quicker
-* In the Cloud Shell `cd clouddrive/citadel` and then `ls -l`
-    * You should see your main.tf file listed
-    * If you cannot see main.tf then check in the vscode explorer to see if you have it in a subfolder
+Again, your storage account name should be different to the one in the example. You can now run through the terraform init, plan and apply workflow at the CLI prompt. Check it exists:
 
-![Post push](/workshops/terraform/images/postpush.png)
-
-You can now run through the terraform init, plan and apply workflow using the Command Palette (`CTRL`+`SHIFT`+`P`).  If you search on init, plan and apply you will find the commands from the Azure Terraform extension.  Running these also syncs the files up to Cloud Shell first.
-
-Confirm that the services are up by checking in the portal of using the CLI.
+```bash
+richard@Azure:~$ az resource list -g terraform-lab2 -o table
+Name                   ResourceGroup    Location    Type                               Status
+---------------------  ---------------  ----------  ---------------------------------  --------
+richeneyterraformlab2  terraform-lab2   westeurope  Microsoft.Storage/storageAccounts
+```
 
 ## Introducing variables
 
-One thing that is very useful in Terraform is to make use of multiple .tf files.  The terraform commands will look at all *.tf files in the current working directory.  (Note that by design it does _not_ recursively move through sub-directories.)
+Terraform allws you to use multiple .tf files.  The terraform commands will effectively merge all of the *.tf files in the current working directory.  (Note that by design it does _not_ recursively move through sub-directories.)
 
 So let's create a variables.tf file in the citadel directory and define some of the key variables in there.
 
-Create the variables.tf file in vscode and paste in the following:
+* Create a variables.tf file (`touch variables.tf`)
+    * Precreating the files with the .tf extension triggers the Terraform linting, i.e. the colour coding for the HCL syntax
+* Paste in the following:
 
 ```ruby
 variable "rg" {
-    default = "terraformCitadelWorkshop"
+    default = "terraform-lab2"
 }
 
 variable "loc" {
@@ -147,7 +114,7 @@ We could have added these lines to the top of our main.tf file, but it makes sen
 
 ## Using strings
 
-Let's edit our existing main.tf file and make use of the variables. The interpolation format for simple string variables is `"${var.<varname>}"`.
+Let's edit our existing main.tf file and make use of the variables. The interpolation format for simple string variables is `"${var.<varname>}"`.  The instructions will intentionally become less explicit to force you to refer to the documentation
 
 1. Change the resource group's name to use `"${var.rg}"`
 1. Change the resource group's location to make use of the new `loc` variable
@@ -155,7 +122,7 @@ Let's edit our existing main.tf file and make use of the variables. The interpol
 1. Save your files locally
 1. Run a `terraform plan`
 
-We may have introduced some simple string variables, but the plan output should indicate that there is nothing there that requires a change.
+We may have introduced some simple string variables, but the plan output should indicate that there is nothing there that requires a change as our variable values match those in the state.  (More on how Terraform handles state in later labs.)
 
 ## Using lists
 
@@ -212,14 +179,82 @@ Let's use the tags map for our resources:
 
 * Change the tags for the resource group to use the variable map
 * Set the tags on the storage account to inherit the tags of the resource group
-* Prefix the storage account name with the value of the source tag
+* Prefix the storage account name with the value of the source tag (max 24 chars)
 * Rerun the `terraform plan`
 
 You should notice that the plan now shows some changes to be applied:
 
-![Plan after tagging](/workshops/terraform/images/tagplan.png)
+```bash
+richard@Azure:~/terraform-labs$ terraform plan
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
 
-This is when the plan stage becomes very useful, to see the impact of a change or addition.  Doing something trivial such as modifying tags can be managed as a simple update, whereas a rename of a resource group or resource will require a more disruptive re-creation as the cosmetic names form part of each resource's unique Azure id. The same is true for other changes that cannot be handled by the Azure Resource Manager layer as an update.
+azurerm_resource_group.lab2: Refreshing state... (ID: /subscriptions/2d31be49-d959-4415-bb65-...2c90ba62/resourceGroups/terraform-lab2)
+azurerm_storage_account.lab2sa: Refreshing state... (ID: /subscriptions/2d31be49-d959-4415-bb65-.../storageAccounts/richeneyterraformlab2)
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  ~ update in-place
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  ~ azurerm_resource_group.lab2
+      tags.%:                           "1" => "2"
+      tags.source:                      "" => "citadel"
+
+-/+ azurerm_storage_account.lab2sa (new resource required)
+      id:                               "/subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/terraform-lab2/providers/Microsoft.Storage/storageAccounts/richeneyterraformlab2" => <computed> (forces new resource)
+      access_tier:                      "" => <computed>
+      account_encryption_source:        "Microsoft.Storage" => "Microsoft.Storage"
+      account_kind:                     "Storage" => "Storage"
+      account_replication_type:         "LRS" => "LRS"
+      account_tier:                     "Standard" => "Standard"
+      enable_blob_encryption:           "true" => "true"
+      enable_file_encryption:           "true" => "true"
+      identity.#:                       "0" => <computed>
+      location:                         "westeurope" => "westeurope"
+      name:                             "richeneyterraformlab2" => "citadelricheneytflab2" (forces new resource)
+      primary_access_key:               <sensitive> => <computed> (attribute changed)
+      primary_blob_connection_string:   <sensitive> => <computed> (attribute changed)
+      primary_blob_endpoint:            "https://richeneyterraformlab2.blob.core.windows.net/" => <computed>
+      primary_connection_string:        <sensitive> => <computed> (attribute changed)
+      primary_file_endpoint:            "https://richeneyterraformlab2.file.core.windows.net/" => <computed>
+      primary_location:                 "westeurope" => <computed>
+      primary_queue_endpoint:           "https://richeneyterraformlab2.queue.core.windows.net/" => <computed>
+      primary_table_endpoint:           "https://richeneyterraformlab2.table.core.windows.net/" => <computed>
+      resource_group_name:              "terraform-lab2" => "terraform-lab2"
+      secondary_access_key:             <sensitive> => <computed> (attribute changed)
+      secondary_blob_connection_string: <sensitive> => <computed> (attribute changed)
+      secondary_blob_endpoint:          "" => <computed>
+      secondary_connection_string:      <sensitive> => <computed> (attribute changed)
+      secondary_location:               "" => <computed>
+      secondary_queue_endpoint:         "" => <computed>
+      secondary_table_endpoint:         "" => <computed>
+      tags.%:                           "0" => "2"
+      tags.environment:                 "" => "training"
+      tags.source:                      "" => "citadel"
+
+
+Plan: 1 to add, 1 to change, 1 to destroy.
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+```
+
+This is when the plan stage becomes very useful, to see the impact of a change or addition. The colours on your screen are a useful indicator:
+
+* **Additions** to the environment are shown in <span style="color:green">green</span>
+* **In place changes** are shown in <span style="color:orange">orange</span> (such as the resource group tag change)
+* **Deletes and disruptive changes** are shown in <span style="color:red">red</span> (such as the storage account name change)
+
+Note that renaming a resource group or renaming a resource will require a more disruptive re-creation as the cosmetic names form part of the Azure resourceId. There are other changes that cannot be handled by the Azure Resource Manager layer as a straight update and require a deletion and recreation.
 
 ----------
 
@@ -229,9 +264,9 @@ This is when the plan stage becomes very useful, to see the impact of a change o
 
 The plan stage removes the guess work in managing a system through infrastructure as code, not only showing you what will happen, and the order and dependencies of those changes, but also the reasons for certain actions such a re-create.
 
-In the Cloud Shell, type `terraform --help plan`.  You will see a `--out` switch, that can be used to create a file of the plan. This may be used as a record of the change for change management systems, and may also be an input for the `terraform apply` stage.  The `terraform apply` will run the plan first by default, except when it is fed a serialised plan file.
+In the Cloud Shell, type `terraform --help plan`.  You will see a `--out` switch, that can be used to create a file of the plan. This may be used as a record of the change for change management systems, and may also be an input for the `terraform apply` stage.  The `terraform apply` will run the plan first by default, except when you specify a serialised plan file.
 
-There is no capability to revert to a previous configuratiom directly within Terraform itself.  Instead you need to leverage source code management (SCM) systems to roll back to a previous set of configuration files and then run the plan and apply stages.  In the next lab we will make use of a personal GitHub repository.
+There is no capability to revert to a previous configuratiom directly within Terraform itself.  Instead you need to leverage source code management (SCM) systems to roll back to a previous set of configuration files and then run the plan and apply stages.  (In the next lab we will make use of a personal GitHub repository.)
 
 OK, let's apply that change:
 
@@ -241,33 +276,32 @@ OK, let's apply that change:
 
 First of all, as you know, Terraform supports multiple [providers](https://www.terraform.io/docs/providers/), from public and private cloud providers, through configuration management software such as Chef, application providers such as RabbitMQ and Kubernetes, a number of public DNS providers (e.g. Cloudflare)  and monitoring software such as Datadog.  It also has a number of miscellanous providers to extend the core functionality, such as those interacting with file and zips using the _local_, _archive_ and _template_ resource types.
 
-We will use the random_id provider type to create an eight character random code. Find the Terraform provider page and read it through.  Note the _keeper_ map argument.  This allows us to re-use random values based on a criteria, under the concept of managed randomness.
 
-## Defining unique names using random_id
+## Defining unique names using random_string
 
-Those who have done the [ARM workshop](https://aka.ms/citadel/arm) will remember that the storage account names need to be unique as it forms part of the external FQDN of the public endpoint.  The shortname needs to be 3-24 characters of lowercase alphanumerics. We'll quickly cover how to do that as it introduces a couple of key concepts.
+The storage account names need to be unique as it forms part of the external FQDN of the public endpoint.  The shortname needs to be 3-24 characters of lowercase alphanumerics. We'll reconfigure the storage account name to use a eight character random string suffix.  This will introduces a couple of key concepts.
 
-OK, let's add that into our configuration and use it in our storage account name. There will be a little less hand holding in this section:
+Again, you will need to be more self sufficient in this section.  (If you do get stuck then you can always check the example repo at the end of the lab.)
 
-* Add in a new resource
-* Use random_id as the provider type
-* Specify the id as "rnd"
-* Use the resource group id as the keeper
-    * Check the [Azure resource group page](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html) to see which attributes are exported
-* Set the bytes length to 8
-
-* Configure the storage account name to use the random value
-    * Start the name with 'sa'
-    * Concatenate with the value of the source tag
-    * Suffix with the random value
-    * The random_id has a few options for the outputs, so check the page and choose an appropriate one
+* Read the Terraform provider page for [random](https://www.terraform.io/docs/providers/random/index.html)
+    * What are the arguments?
+    * What is the exported attribute?
+* Add in a new resource stanza
+    * Use random_string as the provider type
+    * Specify the id as "rnd"
+    * Set the length to 8
+    * Set the boolean values appropriately for the storage account naming restrictions
+* Configure the storage account name to concatenate the following
+    * Begin with 'sa'
+    * Concatenate the value of the source tag (e.g. 'citadel')
+    * Suffix with the random string
 
 Save the file and then run `terraform plan` to see the impact.
 
 The command should show that you haven't got all of the required providers:
 
 ```yaml
-richard@Azure:~/clouddrive/terraform-lab2$ terraform plan
+richard@Azure:~/terraform-labs$ terraform plan
 Plugin reinitialization required. Please run "terraform init".
 Reason: Could not satisfy plugin requirements.
 
@@ -292,16 +326,18 @@ Error: error satisfying plugin requirements
 
 Run the `terraform init` command to pull down the random provider, and then run through the `terraform plan` and `terraform apply` steps.
 
+----------
+
 **Question**:
 
 As you build up Terraform configurations you will need to read the resource pages for the providers to find out which exported attributes you can then use elsewhere in your .tf files.  
 
-Which of **random_id's exported attributes** can be used?
+What are the four exported attributes for **random_id**? (Not random_string.)
 
 **Answer**:
 
 <div class="answer">
-    <p>Either .hex or .dec can be used. The .hex value is shorter. You cannot use the b64_url or b64_std as they may include uppercase and special characters.</p>
+    <p>The random_id provider type exports b64_url, b64_std, hex and dec.</p>
 </div>
 
 **Question**:
@@ -311,33 +347,33 @@ If you wanted to ensure that the storage account name never exceeded 24 characte
 **Answer**:
 
 <div class="answer">
-    <p>substr(string, offset, length)</p>
+    <p>substr(string, offset, length), e.g. "${substr("sa${var.tags["source"]}${random_string.rnd.result}", 0, 24)}".  The original string must be longer than the sum of offset and length so consider a longer random_string. </p>
 </div>
+
+----------
 
 ## Using terraform console
 
-You may use `terraform console` to query the values of graph database entities.  The console command creates a REPL, or Read-Evaluate-Print-Loop.
+You may use `terraform console` to query the values of graph database entities in the state. The console command creates a REPL, or Read-Evaluate-Print-Loop.
 
 Enter in the values of Below is an example:
 
 ```bash
-richard@Azure:~/clouddrive/citadel$ terraform console
+richard@Azure:~/terraform-labs$ terraform console
 > var.rg
-terraformCitadelWorkshop
+terraform-lab2
 > var.tags
 {
   "environment" = "training"
   "source" = "citadel"
 }
-> random_id.rnd.hex
-368e6a50844e
-> random_id.rnd.dec
-59985296917582
-> azurerm_resource_group.citadel.id
-/subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/terraformCitadelWorkshop
-> azurerm_storage_account.sa.name
-sacitadel368e6a50844e
-> azurerm_storage_account.sa.account_tier
+> random_string.rnd.result
+xafyl2l6
+> azurerm_resource_group.lab2.id
+/subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/terraform-lab2
+> azurerm_storage_account.lab2sa.name
+sacitadelxafyl2l6
+> azurerm_storage_account.lab2sa.account_tier
 Standard
 > exit
 Releasing state lock. This may take a few moments...
@@ -345,12 +381,10 @@ Releasing state lock. This may take a few moments...
 
 ## End of Lab 2
 
-We have reached the end of the lab. You have started to use variables and functions, and we are now working within Visual Studio Code, using the extension to integrate with Cloud Shell.
+We have reached the end of the lab. You have started to use variables and functions. Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab2>.
 
-Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab2>.
-
-We will scrap everything we've created to date.  Run a `terraform destroy` to remove the environment. Remove your local lab directory containing the variables.tf and main.tf files.
+We will scrap everything we've created to date.  Run a `terraform destroy` to remove the environment. Remove your .tf files. (`rm -i *.tf`)
 
 In the next lab we will start to create the core of a more substantial Azure environment and base it in GitHub.
 
-[◄ Lab 1: Basics](../lab1){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 3: Outputs ►](../lab3){: .btn-success}
+[◄ Lab 1: Basics](../lab1){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 3: Outputs ►](../lab3){: .btn-success}

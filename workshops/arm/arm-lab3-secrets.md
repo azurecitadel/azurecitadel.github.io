@@ -16,44 +16,12 @@ You should now be fairly comfortable working with JSON templates and parameter f
 
 In this lab we will look at:
 
-* ARM functions
 * referencing information
     * for the current deployment
     * for resources that already exist
 * handling secrets with securetext
 
 These are all fairly common as you get more ambitious with your own templates or start using some of the more complex templates that are on the GitHub repository.
-
-## ARM Functions
-
-But before we start moving through those areas, let's take a deeper look at the wealth of functions that are available to the ARM templates.  We'll start to see more of them as we work through the various sections of the lab so it is worth spending some time to understand that range of capability.
-
-The documentation for the ARM template functions is one of those areas that you will visit often, and so we come to our third important short URL:
-
-[**aka.ms/armfunc**](https://aka.ms/armfunc){:target="_blank" class="btn-info"}
-
-We'll now step through some of the functions available to ARM templates, and how they can be used.  This will not cover all of them, as the [documentation](https://aka.ms/armfunctions) for the templates is pretty good, so if you need to understand something trivial like how to trim a string with whitespace then dive in to that area and dig out the information.
-
-The functions are split into seven groups:
-
-**Function Group** | **Use Case**
-[Array and Object](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-array) | used to manipulate or test JSON arrays and objects
-[Comparison](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-comparison) | which are a group of test operators used by the **condition** function
-[Deployment](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-deployment) | which covers those related to the deployment job, e.g. the parameters and variables functions
-[Logical](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-logical) | which are a group used in logical expressions, such as _if_,  _and_ and _or_, or converting strings to booleans
-[Numerical](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-numeric) | the group providing integer and floating point arithmetic operators
-[Resource](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource) | a very useful set for working with Azure Resource Manager constructs, such as info and IDs for the subscription, resource group, resources and providers, plus keys of resources, and references to a resources current state
-[Strings](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-string) | and the final set provides a large set of functions to manipulate and test strings
-
-Browse through the sections to understand the breadth of functions available.
-
-Another way of thinking about functions is to split them into those used to:
-
-* get
-* manipulate
-* test
-
-You will see many of these functions used by some of the more complex templates that we will come across as we continue to work through the labs.
 
 ## Getting information
 
@@ -83,7 +51,7 @@ You will often see the resourceId used in the variables section to simplfy the r
 
 You can also listKeys or list{Value} from those same resourceIds.  This is very useful in the outputs sections.  Check the Azure documentation for [listKeys and list{Value}](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource#listkeys-and-listvalue) as there are a couple of Bash and PowerShell commands to find out what list actions are supported by each resource type.  Try out the example for the storage account resource type.  You will see listkeys, listAccountSas and listServiceSas.  Taking the listkeys as an example, this then ties in with the [REST API reference](https://docs.microsoft.com/en-gb/rest/api/storagerp/storageaccounts/listkeys) material.
 
-We have no specific lab section for this, but you will see the resource functions littered throughout the templates.
+Finally, you can use the [reference()](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource#reference) function to show current runtime information about a resource.  THis is very useful in the outputs section to return the current values for resource properties such as DHCP allocated IP addresses.  We'll use reference() at the end of this lab for practice.  
 
 ## Copying the 101-vm-simple-linux
 
@@ -167,22 +135,65 @@ Requirements:
 
 If you have time then work out the commands in either PowerShell or Bash to see the available Ubuntu virtual machine images from Canonical. (Hint: the publisher is Canonical.)
 
-We will return to key vaults and secrets when we look at the nesting.
+## Use reference() in the outputs section
 
-## - Deploy into lab3
+There wil be times when you want to output the runtime value of a resource property.  For this example, we want the resource ID of the OS managed disk that is created by our template.
 
-OK, if you haven't done so already then create a lab3 resource group and deploy the new template into that in order to test it. Connect to the VM and confirm that the password is the one you stored in the Key Vault.
+One way to find out the dot notation for the property value is to output the whole reference() block and then drill into that informtion.
 
-Before we configure the condition we will first spend a little time cleaning up a few more things in our template to make it more useful.  Once that is done and tested then we'll add in a condition to make the public IP (PIP) and associated DNS name optional.
+1. Create a new variable called vmId
+    * use the resourceId() function
+    * pass in the virtual machine resource type and name
+1. You can then use the following code block in the outputs section:
+
+```json
+      "vmRef": {
+          "type": "object",
+          "value": "[reference(variables('vmId'))]"
+      }
+```
+
+3. Create a lab3 resource group
+1. Deploy the template and parameter file into lab3
+
+Once the job has deployed then you can see look at the output in the portal, or by using the following command:
+
+```bash
+az group deployment show --name jobname --query properties.outputs.vmRef.value --output json --resource-group lab3
+```
+
+This will show the entire JSON object for the resource's properties.  
+
+You can then work out the dot notation to drill down into the JSON object and pull out the specific value you need. Once you have worked with JSON for a while then this will become second nature. See the following video for one example of how this can be done.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2NDzYQW7RFg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+**Figure 1:** Using references and [jqplay](https://jqplay.org/)
+
+You can then rename the output from _vmRef_ to _osDiskId_, change it from object to string and use the dot notation it to output the correct sub value:
+
+```json
+      "osDiskId": {
+          "type": "string",
+          "value": "[reference(variables('vmId')).storageProfile.osDisk.managedDisk.id]"
+      }
+```
+
+## View the resources
+
+OK, connect to the VM and confirm that the password is the one you stored in the Key Vault.
+
+We will first spend a little time cleaning up the template to make it more useful and sort out some of the resource names.  Once that is done and tested then we'll add in a condition in the next lab to make the public IP (PIP) and associated DNS name optional.
 
 This will be a little painful, but once it is done then the template will be far more useful as a building block.
 
 If you look at the resources that have been spun up in resource group lab3 from our lab3 template then you'll notice a few things:
 
-![lab3 resources](/workshops/arm/images/lab3Resources.png)
+![lab3 resources](/workshops/arm/images/lab3-2-resources.png)
+**Figure 2:** Initial resource names
 
-* The vNet (and subnet) are fixed variables for both the name and the address space, so additional VMs deployed to this resource group using this template would share the same networking.  This is fine, but let's make them parameters with defaults so that they can be overriden if need be.
-* This template creates first level Managed Disks for the OS (30GB) and the data disk (1023GB), with unique names prefixed with the vmName.
+* The vNet (and subnet) are fixed variables for both the name and the address space, so additional VMs deployed to this resource group using this template would share the same networking.  This is fine, but let's make them parameters with defaults instead.
+* This template creates first level Managed Disks for the OS (30GB) and the data disk (1023GB), with unique names prefixed with the vmName
 * The PIP and NIC are fixed names and would conflict if a second was added
 
 ----------
