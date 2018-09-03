@@ -6,7 +6,7 @@ date: 2018-06-25
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
-published: true
+published: false
 ---
 
 {% include toc.html %}
@@ -214,4 +214,4 @@ Your .tf files should look similar to those in <https://github.com/richeney/terr
 
 In the next lab we will go a little bit deeper on Terraform state and how to manage and protect that in a multi-tenanted environment with multiple admins.
 
-[◄ Lab 6: State](../lab6){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 8: Extending ►](../lab8){: .btn-success}
+[◄ Lab 6: State](../lab6){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 8: Extending ►](../lab8){: .btn-success}

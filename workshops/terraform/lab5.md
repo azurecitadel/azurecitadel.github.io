@@ -13,11 +13,11 @@ published: true
 
 ## Introduction
 
-So far we have been working in Cloud Shell, which works really well for one person doing demos and a little development work.  If you see you current context (as shown by `az account show`) then that is the tenancy and subscription you will be deploying into and the Terraform Azure provider will authenticate via the Azure CLI.
+So far we have been authenticating using either Cloud Shell (labs 1 and 2) or Azure CLI (labs 3 and 4), which both work really well for one person when doing demos and a little development work.  If you see your current context (as shown by `az account show`) then that will show the authentication type (if not explicitly) and also shows the tenancy and subscription you will be deploying into.
 
-However it is not a workable approach when you have multiple admins working on an environment and it is not suitable if you are dealing with multiple tenants.  (Also, you cannot use modules in the ~/clouddrive area in the Cloud Shell as it sits on an SMB 3.0 area which does not support symbolic links.)
+However it is not a workable approach when you have multiple admins working on an environment and it is not suitable if you are dealing with multiple tenants.
 
-So in this lab we will look at how we could make our Terraform platform work effectively in a multi-tenanted environment by using Service Principals.  The approach here applies to any more complex environment where there are multiple subscriptions in play, as well as those supporting multiple tenancies or directories.  Service Principals are also the recommended route if you are integrating the Terraform Provider into automation or within a DevOps CI/CD pipeline.
+In this lab we will look at how we could make our Terraform platform work effectively in a multi-tenanted environment by using Service Principals.  The approach here applies to any more complex environment where there are multiple subscriptions in play, as well as those supporting multiple tenancies or directories.  Service Principals are also the recommended route if you are integrating the Terraform Provider into automation or within a DevOps CI/CD pipeline.
 
 Finally, at the end of the lab we will also take a look at a couple of alternatives for managing systems and discuss where they make the most sense.
 
@@ -26,92 +26,13 @@ Finally, at the end of the lab we will also take a look at a couple of alternati
 
 ## Pre-requisites
 
-* terraform
-* CLI 2.0
-* jq (linux only)
-* vscode integrated console configured
+You will have already been using the az and terraform executables locally.  As Terraform is from the OSS world then these labs are unapologetically written from a linux and CLI 2.0 perspective. Linux and MacOS users 
 
-From this point onwards you will need to have the executables locally.  For macOS and linux you will download them and your integrated console will be preconfigured to use your standard terminal shell.  
+For Windows 10 then the minimum is to use both terraform and az at the Windows OS level so that you can use them within a Command Prompt or PowerShell session. (You are also free to use the equivalent AzureRM module PowerShell cmdlets in place of the CLI 2.0 commands.)
 
-For Windows 10 then the minimum is to download both terraform and az at the Windows OS level so that you can use them within a Command Prompt or PowerShell session.  However the remaining labs are based on Windows 10 with the [Windows Subsystem for Linux](https://azurecitadel.github.io/guides/wsl/) (WSL) configured and do make use of Bash scripting at points so WSL is very much recommended.  If you have WSL then you should also download the 64 bit linux version of terraform, and make sure that both CLI 2.0 and jq are installed. (An alternative is to make use of the [Terraform VM](#terraform-vm-on-the-azure-marketplace) discussed towards the bottom of the lab. )
+However the remaining labs really are based on Windows 10 users having enabled the [Windows Subsystem for Linux](https://azurecitadel.github.io/guides/wsl/) (WSL) and do make use of Bash scripting at points.  If you have Windows 10 and can enable WSL then it is very much recommended.  Don't forget to follow the [guide](https://azurecitadel.github.io/guides/wsl/) to also install az, jq, git and terraform at that level.
 
-Download terraform for your operating system from <https://www.terraform.io/downloads.html>.  The download will be a zip file containing the terraform executable.  Extract it to a directory within your path, such as /usr/local/bin, or C:\Windows\System32.  
-
-Install the Azure CLI from <https://aka.ms/GetTheAzureCli> if you haven't done so already.
-
-You may also want to install jq if `which jq` fails to find it.  You can install it on Ubuntu (or other Debian derived distros) using `sudo apt-get --assume-yes install jq`.
-
-Configure the [integrated terminal](https://azurecitadel.github.io/guides/vscode/#integrated-console) within Visual Studio Code.  
-
-You can use `where` and `which` on Windows and linux respectively to find the executable within your path. Below is my configuration using Windows 10 and the Ubuntu version of WSL.
-
-```cmd
-Microsoft Windows [Version 10.0.17134.112]
-(c) 2018 Microsoft Corporation. All rights reserved.
-
-C:\Users\richeney>where terraform.exe
-C:\Windows\System32\terraform.exe
-
-C:\Users\richeney>bash
-richeney$ which terraform
-/usr/local/bin/terraform
-richeney$ terraform --version
-Terraform v0.11.7
-
-```
-
-If those commands do not fine the terraform executable then check your path settings.
-
-### Automated installation on linux
-
-If you want to automate the installation of the terraform executable on linux then feel free to copy out the following code block and create your own shell script:
-
-```bash
-#!/bin/bash
-
-# Install zip if not there
-[[ ! -x /usr/bin/zip ]] && sudo apt-get --assume-yes -qq install zip
-
-# Determine latest file using the API
-latest=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')
-dir=https://releases.hashicorp.com/terraform/$latest
-zip=terraform_${latest}_linux_amd64.zip
-
-# Download the zip file
-echo "Downloading $dir/$zip ..." >&2
-curl --silent --output /tmp/$zip $dir/$zip
-
-if [[ "$(cd /tmp; sha256sum $zip)" != "$(curl -s $dir/terraform_${latest}_SHA256SUMS | grep $zip)" ]]
-then
-  echo "ERROR: Downloaded zip does not match SHA256 checksum value - removing" >&2
-  rm /tmp/$zip
-  exit 1
-else
-  echo "Extracting terraform executable ..." >&2
-  unzip -oq /tmp/$zip terraform -d /tmp && rm /tmp/$zip
-fi
-
-echo "Moving terraform executable to /usr/local/bin with elevated privileges..." >&2
-
-sudo true
-
-sudo bash <<"EOF"
-mv /tmp/terraform /usr/local/bin/terraform
-chown root:root /usr/local/bin/terraform
-chmod 755 /usr/local/bin/terraform
-EOF
-
-ls -l /usr/local/bin/terraform
-/usr/local/bin/terraform -version
-```
-
-### Final check
-
-OK, you should now be able to open the integrated console in vscode (using `CRTL`+`'`) and type both `az` and `terraform`.  
-
-As Terraform is from the OSS world then this lab will unapologetically be written from a linux and CLI 2.0 perspective, although there is little reason why you couldn't use the terraform and az executables in a PowerShell session, or use equivalent AzureRM modules PowerShell commands in place of the CLI 2.0 commands.  
-
-From now on we will be working locally within this rather than using the Command Palette extension for Terraform to push into Cloud Shell.
+> An alternative is to make use of the [Terraform VM](#terraform-vm-on-the-azure-marketplace) discussed towards the bottom of the lab.  This has az, jq and terraform preinstalled and defaults to using MSI so the whole VM is authenticated to a subscription.  You can ssh on to the VM and work straight away.  And you are still free to use service principals in preference to MSI. This is an option, especually if your vi, nano or emacs skills are good.
 
 ## Service Principals
 
@@ -119,160 +40,108 @@ Service Principals are security identities within an Azure AD tenancy that may b
 
 When you create a Service Principal then from an RBAC perspective it will have the Contributor role assigned at the subscription scope level.  For most applications you would remove that and then assign a more limited RBAC role and scope assigment, but this default level is ideal for Terraform provisioning.
 
-We will create a Service Principal and then create a provider.tf file in our containing the fields required.  Make sure that you aer in the right Azure context first (i.e. which tenancy and subscription).
+We will create a Service Principal and then create a provider.tf file in our containing the fields required.  Make sure that you are in the right Azure context first (i.e. which tenancy and subscription).
 
 * check your current context by using `az account show`
-    * list out your subscriptions using `az account list --output table`
-    * change subscription by using `az account set --subscription <subscriptionId>`
+* list out your subscriptions using `az account list --output table`
+* change subscription by using `az account set --subscription <subscriptionId>`
 
-### Manual steps
+Service principals work really well in a multi-tenanted environment as the service principal authentication details can sit directly in the relevent terraform directory so that it is easy to define the target subscription and tenancy and tightly connect it with the other infrastructure definitions.
 
-Here is an overview of the steps if you want to do this manually:
-
-* create the service principal
-* capture the appId, password and tenant
-* login as the service principal to test (optional)
-* either
-    * create a azurerm provider block with the service principal values (recommended)
-    * export environment variables
-
-In a production environment you would need to ensure that the file containing the provider block has appropriate permissions.
-
-The Terraform documentation page for this is <https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html>.
-
-### Semi-automated steps
-
-Alternatively, below is a code block containing some bash commands to create a service principal, populate a provider.tf file and then log in with it.  Make sure you are in the right Azure context beforehand using `az account show`.  You will need to have both CLI 2.0 and jq for this code to work.
-
-#### Create the service principal and login
-
-```bash
-subscriptionId=$(az account show --output tsv --query id)
-echo "az ad sp create-for-rbac --role=\"Contributor\" --scopes=\"/subscriptions/$subscriptionId\" --name \"terraform-$subscriptionId\""
-spout=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$subscriptionId" --name "terraform-$subscriptionId" --output json)
-jq . <<< $spout
-
-clientId=$(jq -r .appId <<< $spout)
-clientSecret=$(jq -r .password <<< $spout)
-tenantId=$(jq -r .tenant <<< $spout)
-
-az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
-```
-
-You'll notice that we have set the service principal name to the subscription GUID prefixed with "terraform-".  The command will generate a service principal name or password if they are not specified.  However specifying the name as 'terraform-\<subscriptionId\>' as a standard should ensure that the endpoint is unique enough yet easily derived in scripting.  
-
-Check that the login is successful using any CLI command such as `az account list-locations --output table` or `az account show --output jsonc`.
-
-> Note that you will be logged on at the CLI level using the service principal for a period of time, so if you want to revert back to your normal context then you should use `az logout` and then login in normally.  
-
-#### Create a provider.tf file
-
-Create your provider.tf file with the collected information:
-
-```bash
-echo "provider \"azurerm\" {
-  subscription_id = \"$subscriptionId\"
-  client_id       = \"$clientId\"
-  client_secret   = \"$clientSecret\"
-  tenant_id       = \"$tenantId\"
-}
-" > provider.tf && chmod 640 provider.tf
-```
-
-#### Or use environment variables
-
-If you prefer to use environment variables rather than having the values in a provider.tf file then export ARM_SUBSCRIPTION_ID, ARM_CLIENT_ID, ARM_CLIENT_SECRET and ARM_TENANT_ID using the values from the Service Principal creation.  You will need a provider block in one of your files with an empty object, e.g.:
-
-```ruby
-provider "azurerm" { }
-```
-
-> Note that if you have lost the password values at any point then you may be able to use a command such as the following to generate a new password:
->
-> ```bash
-> az ad sp credential reset --name "http://terraform-<subscriptionId>"
-> ```
->
-> Note the full name for a Service Principal is the display name we specified in the initial creation, prefixed with `http://` You will need to have a good level of role based access to display or reset credentials.
-
-## Optionally reconfigure the Azure Terraform extension
-
-If you like using the Command Palette's Terraform commands then you can reconfigure the extension to start using your integrated console rather than the Cloud Shell.  
-
-* Open up settings using `CTRL-,`
-* Search for `terraform.terminal`
-* Click on the pen to the left of the setting in the Default User Settings pane
-* Select `integrated` from the drop down list
-
-## Manually updating state
-
-OK, now that you have the service principal and the provider.tf file created you should be good to go.  Well, almost...
-
-Run the following in your integrated console, i.e. in your local citadel-terraform directory:
-
-* `terraform init`
-* `terraform plan`
-
-OK, your local directory is now initialised, but as you have no current terraform.tfstate file then your plan will show that all of the resources will be created.  
-
-We will be dealing with state in more detail in the next lab but if you open your local terraform.tfstate file in vscode then you will notice that it is a text file containing a small amount of JSON data. It has no knowledge of the resources that have already been created in the prior labs.
-
-If you have installed the Azure Storage extension for vscode then we can copy the contents of the terraform.tfstate file in out Cloud Shell file area.  
-
-* Click on the Azure logo on the left to open the Storage extension
-* Navigate to your Cloud Shell storage account, which will be prefixed with cs
-* Drill into the File Share within it
-* Find the share used by Cloud Shell for the ~/clouddrive area
-* Navigate within that to the citadel-terraform folder
-    * This is where you have been syncing your .tf files to date
-* Click on the terraform.tfstate file:
-
-![clouddrive terraform.tfstate](/workshops/terraform/images/clouddrive-terraform.tfstate.png)
-
-This contains the full state of our environment as this is where we have been running the terraform commands during labs 1-4.
-
-* Copy out the contents of the clouddrive terraform.tfstate file (`CTRL-A, CTRL-C`)
-* Close the tab with the clouddrive terraform.tfstate (`CTRL-W`)
-* Open your the local terraform.tfstate file
-* Replace the contents of the file with the clipboard (`CTRL-A, CTRL-V`)
-* Save the local file (`CTRL-S`)
-
-OK, you have manually copied the state in.  
-
-* Reopen the integrated console (`CTRL-`)
-* Rerun the `terraform plan` step
-
-You should see that everything is up to date and known and that no changes are planned.  
-
-> This is a really sensible checkpoint to reach.  Avoid making changes to the configuration until you reach this kind of steady state.
-
-## Set the Key Vault access policy
-
-At the moment we only have the terraformKeyVaultReader with Get access on keys and secrets.  Let's add our new Terraform Service Principal with an access policy to list secrets and keys as well.
-
-* Add another access policy sub stanza into the key vault resource in the modules/scaffold/main.tf file
-* Use the tenant_id and object_id for your service principal from the provider.tf
-
-```ruby
-    access_policy {
-      tenant_id             = "72f988bf-89f1-41af-91ab-2d7cd011db47"
-      object_id             = "cf34389a-893e-42a9-8201-9a5bed151767"
-      key_permissions       = [ "get", "list", "import", "update" ]
-      secret_permissions    = [ "get", "list", "set" ]
-    }
-```
-
-**DO I NEED THIS??????**
-
-* Run the terraform init, plan and apply steps
-
-It should come through as a straight update in place to the key vault.
-
-## Multi-tenancy
-
-For a standard multi-tenancy environment then you will need to create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.)  
+For a standard multi-tenancy environment then you would create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.)  
 
 Having a separate terraform folder per customer or environment with its own provider.tf files is very flexible.  It also mitigates common admin errors such as terraform commands being run whilst in the wrong context.
+
+## Steps
+
+This is an overview of the steps if you want to do this manually:
+
+* Create the service principal
+* Capture the appId, password and tenant
+* Login as the service principal to test (optional)
+* Either
+    * Create a azurerm provider block populated with the service principal values
+    * Export environment variables, with an empty azurerm provider block
+
+----------
+
+Here is an example provider.tf file containing a **populated** azurerm provider block:
+
+```ruby
+provider "azurerm" {
+  subscription_id = "2d31be49-d959-4415-bb65-8aec2c90ba62"
+  client_id       = "b8928160-69bf-4483-a2cc-b726e1e65d87"
+  client_secret   = "93b1423d-26a9-4ee7-a4f6-29e32d4c05e8"
+  tenant_id       = "72f988bf-86f1-41af-91ab-2d7cd012db47"
+}
+```
+
+Note that in a production environment you would need to ensure that this file has appropriate permissions so that the client_id and client_secret does not leak and create a security risk. (See below for resetting credentials.)
+
+----------
+
+The alternative is to use **environment variables**.  For example, by adding the following lines to a .bashrc file:
+
+```bash
+export ARM_SUBSCRIPTION_ID="2d31be49-d959-4415-bb65-8aec2c90ba62"
+export ARM_CLIENT_ID="b8928160-69bf-4483-a2cc-b726e1e65d87"
+export ARM_CLIENT_SECRET="93b1423d-26a9-4ee7-a4f6-29e32d4c05e8"
+export ARM_TENANT_ID="72f988bf-86f1-41af-91ab-2d7cd012db47"
+```
+
+If you are using environment variables then the provider block should be **empty**:
+
+```ruby
+provider "azurerm" {}
+```
+
+Note that this approach is not as effective if you are moving between terraform directories for different customer tenancies and subscriptions, as you need to export the correct variables for the required context, but it does have the benefit of not having the credentials visible in one of the *.tf files.
+
+## Challenge
+
+Rather than a straight lab, we'll make this one more of a challenge. The challenge will get you in the habit of searching for documentation available from both Hashicorp and Microsoft. In this challenge you will create a service principal called `terraform-labs-<subscriptionId>`.
+
+**Run through the following**:
+
+1. **Find your subscription ID and copy the GUID to the clipboard**
+1. **Search for the documentation to create an Azure service principal for use with Terraform**
+1. **Follow the guide and create a populated provider.tf file**
+1. **Log on to azure as the service principal using the CLI**
+1. **Log back in with your normal Azure ID and show the context**
+1. **Search for the Azure Docs for changing the role (and scope) for the service principal**
+
+If you get stuck then there are answers at the bottom of the lab.
+
+## Automated
+
+If you want to automate that process then feel free to make use of this script to create a service principal and provider.tf: <https://github.com/azurecitadel/azurecitadel.github.io/blob/master/workshops/terraform/createTerraformServicePrincipal.sh>
+
+The script will interactively
+
+1. create the service principal (or resets the credentials if it already exists)
+1. prompts to choose either a populated or empty provider.tf azurerm provider block
+1. exports the environment variables if you selected an empty block (and display the commands)
+1. display the az login command to log in as the service principal
+
+The following commands will download it and run it:
+
+```bash
+uri=https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/workshops/terraform/createTerraformServicePrincipal.sh
+curl -sL $uri > createTerraformServicePrincipal.sh && chmod 750 createTerraformServicePrincipal.sh
+./createTerraformServicePrincipal.sh
+```
+
+## Resetting service principal credentials
+
+Note that if you have lost the password values at any point then you can always use the following command to generate a new password:
+
+```bash
+az ad sp credential reset --name "http://terraform-<subscriptionId>"
+```
+
+Note the full name for a Service Principal is the display name we specified in the initial creation, prefixed with `http://` You will need to have the correct level of role based access to display or reset credentials.
+
+## Aliases
 
 There is another less frequently used argument that you can specify in the provider block called **alias**.  
 
@@ -291,7 +160,7 @@ provider "azurerm" {
   subscription_id = "1234be49-d999-4415-bb65-8aec2c90ba62"
   client_id       = "1234389a-839e-42a9-8201-9a5bed151767"
   client_secret   = "1234a4d9-829a-4477-9650-7a11c4a680f3"
-  tenant_id       = "123488bf-8691-41af-91ab-2d7cd011db47"
+  tenant_id       = "72f988bf-8691-41af-91ab-2d7cd011db47"
 }
 
 resource "azurerm_resource_group" "devopsrg" {
@@ -307,7 +176,7 @@ Using service principals is an easy and powerful way of managing multi-tenanted 
 
 ## Terraform VM on the Azure Marketplace
 
-> It is assumed that you are now working with Terraform locally on your machine rather than in Cloud Shell and that you are using the service principal to authenticate.  This section on Terraform VM and MSI is for information only - there is no need to instantiate the offering.
+> It is assumed that you are now working with Terraform locally on your machine rather than in Cloud Shell and that you are using the service principal to authenticate.  This section on Terraform VM and MSI is for information only - there is no need to run the offering.
 
 If you are only working within one subscription then an easy production alternative to using service principals is to use the new Terraform VM offering on the marketplace.
 
@@ -329,13 +198,13 @@ It features:
 * Shared remote state with locking, backed off to Azure Storage
 * Shared identity using MSI and RBAC
 
-There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to access and configure the Terraform VM by running the `~/tfEnv.sh` script. Note that if you have multiple subscriptions then you should again make sure that you are in the correct one (using `az account list --output table` and `az account set --subscription <subscriptionId>`) and then run just the role assignment command within the `tfEnv.sh` file.
+There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to access and configure the Terraform VM by running the `~/tfEnv.sh` script. Note that if you have multiple subscriptions then you should again make sure that you are in the correct one and then run just the role assignment command within the `tfEnv.sh` file.
 
 One of the nice features of the Terraform VM Marketplace offering is that it will automatically back off the local terraform.tfstate to blob storage, with locking based on blob storage leases. (We will be looking at how to do this manually in the next lab.)
 
 It also creates a remoteState.tf file for you in your home directory. The remoteState.tf has the following format:
 
-```json
+```ruby
 terraform {
  backend "azurerm" {
   storage_account_name = "storestatelkbfjngsqkyiim"
@@ -388,9 +257,43 @@ This video shows some of the key concepts, including the forking of environments
 
 Note that the standard Terraform executable itself is free to use.  [Terraform Enterprise](https://www.hashicorp.com/products/terraform) has a Pro and Premium tier, depending on the required level of features.
 
+## Challenge Answers
+
+* Find your subscription ID and copy the GUID to the clipboard
+
+<div class="answer" style="font-size:50%">
+    <small>
+        <p>There are many ways of finding the subscription GUID. Here are a few:
+            <ol>
+                <li>You can search on subscriptions at the top of the portal, or look at the properties in the portal blade of any resource group or    resource.</li>
+                <li>From the az CLI you can run `az account show --output json`.</li>
+                <li>In scripting you could set a variable using `subId=$(az account show --output tsv --query id)`.</li>
+            </ol>
+        </p>
+    </small>
+</div>
+
+* Search for the documentation to create an Azure service principal for use with Terraform
+
+<div class="answer" style="font-size:50%">
+        <p>Searching on "terraform azure service principal" takes you to  https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html.</p>
+</div>
+
+* Log back in with your normal Azure ID and show the context
+
+<div class="answer" style="font-size:50%">
+    <p>az logout<br>az login<br>az account show</p>
+</div>
+
+* Search for the Azure Docs for changing the role (and scope) for the service principal
+
+<div class="answer" style="font-size:50%">
+    <p>Searching on "azure cli service principal" takes you to https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli.<br>This includes sections on deleting and creating role assigments.  You should always remove the Contributor role when adding a different inbuilt or custom role to a service principal.</p><p>The page itself does not mention scope, but clicking on the <em>az role assignment create</em> link takes you through to the https://docs.microsoft.com/en-us/cli/azure/role/assignment#az-role-assignment-create reference page. The command has a --scope switch that defaults to the subscription but can be set to another scope point such as a resource group or an individual resource.</p>
+</div>
+
 ## End of Lab 5
 
-We have reached the end of the lab. You have moved to running Terraform locally and we're now using Service Principals for authentication.
+We have reached the end of the lab. We're now using Service Principals for authentication.
 
 We have also looked at the Azure Marketplace offering for Terraform, and at Terraform Enterprise.  If you would like to see a labs on configuring Terraform Enterprise then add a comment below.
 
@@ -398,4 +301,4 @@ Your .tf files should look similar to those in <https://github.com/richeney/terr
 
 In the next lab we will look at the terraform.tfstate file.
 
-[◄ Lab 4: Metas](../lab4){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 6: State ►](../lab6){: .btn-success}
+[◄ Lab 4: Metas](../lab4){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 6: State ►](../lab6){: .btn-success}

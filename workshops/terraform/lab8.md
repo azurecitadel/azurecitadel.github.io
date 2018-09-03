@@ -6,7 +6,7 @@ date: 2018-06-25
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
-published: true
+published: false
 ---
 
 {% include toc.html %}
@@ -203,4 +203,4 @@ Your .tf files should look similar to those in <https://github.com/richeney/terr
 
 In the next lab we will also look at provisioners and how they can help to go beyond vanilla image deployments for your virtual machines.
 
-[◄ Lab 7: Multi Tenancy](../lab7){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 9: Provisioners ►](../lab9){: .btn-success}
+[◄ Lab 7: Multi Tenancy](../lab7){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 9: Provisioners ►](../lab9){: .btn-success}
