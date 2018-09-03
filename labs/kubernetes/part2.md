@@ -67,7 +67,7 @@ This will take slightly longer but should complete in 3-5 minutes
 
 If you want to double check the images have been built and stored in your registry you can run
 ```
-az acr repository list -g kube-labs --name $ACR_NAME -o table
+az acr repository list -g kube-lab --name $ACR_NAME -o table
 ```
 
 ## End of Module 2

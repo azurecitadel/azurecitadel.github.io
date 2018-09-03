@@ -1,0 +1,112 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+		"avsetPrefix": {
+		   "type": "string",
+		   "defaultValue": "appPattern",
+		   "metadata": {
+				"description": "Prefix for the availability set"
+			}
+		},
+		"hub": {
+		   "type": "object",
+		   "defaultValue": {
+            "resourceGroup": "lab7-hub",
+            "vnet": {
+                "name": "lab7-hub-vnet",
+                "addressPrefixes": [  "172.16.0.0/16" ]
+            },
+            "subnets": [ 
+                { "addressPrefix": "172.16.0.0/24", "name": "GatewaySubnet" },
+                { "addressPrefix": "172.16.1.0/24", "name": "hub-subnet1" },
+                { "addressPrefix": "172.16.2.0/24", "name": "hub-subnet2" }
+            ],
+            "vpnGwName": "hub-vpn-gw"
+        },
+		   "metadata": {
+				"description": "Complex object containing hub information.  See default for structure."
+			}
+		},
+		"spoke": {
+		   "type": "object",
+		   "defaultValue": {
+            "resourceGroup": "lab7-spoke",
+            "vnet": {
+                "name": "lab7-spoke-vnet",
+                "addressPrefixes": [  "172.17.0.0/16" ]
+            },
+            "subnets": [ 
+                { "addressPrefix": "172.17.1.0/24", "name": "lab7-spoke-subnet1" }
+            ]
+        },
+		   "metadata": {
+				"description": "Complex object containing spoke information.  See default for structure."
+			}
+		}
+    },
+    "variables": {
+		"uriBase": "https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/",
+        "spokeUri": "[concat(variables('uriBase'), 'nested/spoke.json')]",
+        "avsetUri": "[concat(variables('uriBase'), 'nested/avset.json')]"
+    },
+    "resources": [
+        {
+            "comments": "Create spoke vNet",
+            "name": "Deploy-Spoke-vNet",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "[parameters('spoke').resourceGroup]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('spokeUri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "hub": {
+                        "value": "[parameters('hub')]"
+					},
+					"spoke": {
+						"value": "[parameters('spoke')]"
+					},
+					"peer": {
+						"value": true
+					}
+                }
+            }
+		},
+		{
+            "comments": "Create availability Set",
+            "name": "Deploy-Availability-Set",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+			"resourceGroup": "[parameters('spoke').resourceGroup]",
+			"dependsOn": [
+				"Deploy-Spoke-vNet"
+			],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('avsetUri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+					"vnetName": {
+						"value": "[parameters('spoke').vnet.name]"
+					},
+					"subnetName": {
+						"value": "[parameters('spoke').subnets[0].name]"
+					},
+					"prefix": {
+						"value": "[parameters('avsetPrefix')]"
+					},
+					"vmCount": {
+						"value": 3
+					}
+
+                }
+            }
+		}
+    ]
+}

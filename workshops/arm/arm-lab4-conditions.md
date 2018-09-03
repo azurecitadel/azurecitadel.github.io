@@ -16,7 +16,8 @@ Conditions are a fairly recent addition, and have massively simplified some of t
 
 Our VM template is working well and the naming is coming through nicely when we have multiple VMs in the resource group:
 
-![Multiple VMs](/workshops/arm/images/lab4MultipleVms.png)
+![Multiple VMs](/workshops/arm/images/lab4-1-multipleVms.png)
+**Figure 1:** Multiple virtual machine naming
 
 We could rename the storage account used solely for the boot diagnostics, but that is not too important.  Note how the unique name for that is seeded by the resource group ID, so both VM deployments got the same "unique name" and are leveraging the same storage account. If you check the storage account then you can see that each VM's boot diagnostics log.
 
@@ -28,15 +29,22 @@ The change that we're going to make in this lab is to configure the template so 
 
 This will make our Ubuntu virtual machine building block template far more useful in a wider number of scenarios.
 
+The following video shows this being done, but it is recommended that you work through the lab yourself first, and only refer to the video if you get stuck, or want to learn a few more vscode keyboard shortcuts!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ryp5DOgcEtQ?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+**Figure 2:** Making resources conditional
+
 ## Set up the lab4 area
 
 Copy the lab3 directory and paste it into a blank area of the Explorer.  Visual Studio Code should automatically create the folder as lab4.
 
 Clear the outputs object.  We'll cover the reason why later.  It should be set to `"outputs": {}`
 
-Default the dnsLabelPrefix parameter to an empty string (`""`) in the main template and save it.  Also remove the whole object from your parameters file so that you only have 
-* the adminUsername string 
-* the adminPassword key vault reference 
+Default the dnsLabelPrefix parameter to an empty string (`""`) in the main template and save it.  Also remove the whole object from your parameters file so that you only have:
+
+* the adminUsername string
+* the adminPassword key vault reference
 * the vNet
 
 If you were to submit now, your deployment should fail as your template requires a valid dnsLabelPrefix. Let's make the changes to add in the conditions.
@@ -231,13 +239,19 @@ job=job.$(date --utc +"%Y%m%d.%H%M%S")
 az group deployment create --parameters "@$parms" --parameters vmName=lab4UbuntuVm2 dnsLabelPrefix=richeneylab4vm2 --template-file $template --resource-group $rg --name $job --no-wait
 ```
 
+<video video width="800" height="600" controls>
+    <source type="video/mp4" src="/workshops/arm/images/lab4-3-submit.mp4"></source>
+    <p>Your browser does not support the video element.</p>
+</video>
+**Figure 3:** Submitting using inline parameters
+
 ## Alternatives
 
-Substituting in variables or null in this way is the simplest way to handle condtional properties.
+Substituting in variables or null in this way is the simplest way to handle condtional pro> rties.
 
 However, you may find that there are more substantial differences.  In that case you have a couple more options, either using alternate resources, or building up your properties.
 
-The following section is extremely optional and gets a little more technical.  If you think that the above information on conditions is more than sufficient then feel to skip to the [end of the lab](#final-lab4-template-and-parameter-files).
+> The following section is extremely optional and gets a little more technical.  If you think that the above information on conditions is more than sufficient then feel to skip to the [end of the lab](#final-lab4-template-and-parameter-files).
 
 ## - Duplicated resources
 

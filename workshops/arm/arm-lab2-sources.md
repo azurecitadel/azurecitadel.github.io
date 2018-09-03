@@ -28,11 +28,15 @@ In this lab we will
 1. use the resource group export to see how a configuration change should look in the template
 1. make use of the wide range of Azure quickstart templates on GitHub
 
-Before we do that, let's take a look at API versions, as these are important and this is a good time to get to know about them.
+We'll also take a look at API versions and functions, as these are important and this is a good time to get to know about them.
 
 ------------------
 
 ## API Versions
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dUnJrQTX3HU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+**Figure 1:** Overview of APIs
 
 All of the resource types are defined by their API version and matching schema. If you look at the storage account resource type from the previous lab you will notice that the API version is dated 2015-06-15. The API defines which properties are required and which are optional.
 
@@ -52,6 +56,8 @@ Take a look at the reference page for the [Microsoft.Storage/storageAccounts](ht
 
 Note that only the most recent API version is shown in the reference documentation, and there is sometimes a small lag between a new API being released and the documentation catching up.  There is a huge amount of innovation on the Azure platform so this is a neverending task. If you do need to look backwards then there is a full list of the various [API versions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services#supported-api-versions). You can also look at the [schemas](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) directly on GitHub.  If you are feeling masochistic then you can use the schemas to check differences in API releases.
 
+For Azure Stack there is a new root element called [apiProfile](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-version-profiles) which can be used to globally set the apiVersion across public Azure Cloud and Azure Stack deployments.  When this is used then apiVersion does not need to be specified within the resource objects.
+
 ------------------
 
 ## Exporting templates from the portal
@@ -66,6 +72,10 @@ Both have their benefits and limitations and the labs will hopefully illustrate 
 ## Exporting prior to resource deployment
 
 OK, let's export an example template and parameters file.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x6rCyE7TDr4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+**Figure 2:** Exporting a web app template from the portal
 
 **Follow the steps below, but make sure you stop just prior to submission via the final 'Create' button.**
 
@@ -167,33 +177,37 @@ Here are the example initial files:
 
 > You may find that the portal has created the template based on the `2014-04-01-preview` version of the ARM schema.  If this is the case then change it to `2015-01-01` (as above). You may also want to change the API version of the `Microsoft.Web/sites` resource to `2016-08-01` which is the current API version at the time of writing.  This will remove any of the "problems" as triggered by the ARM Tools extension.
 
-Configure VS Code to have both the azuredeploy.json and the azuredeploy.parameters.json side by side.
+Configure VS Code to have both the azuredeploy.json and the azuredeploy.parameters.json side by side. (Use either `CTRL`+`ALT`+`<|>`, or drag the parameters tab towards the right hand side until the snap area is shown.)
 
-![vscode](/workshops/arm/images/lab2-1-vscode.png)
+![vscode](/workshops/arm/images/lab2-3-vscode.png)
+**Figure 3:** Side by side layout
 
 We have a few too many parameters for our service so let's refactor it down to a completely minimal set of parameters, i.e. just the Web App name.  The quickest way to hardcode or derive certain options is to move them down to the variables section.
 
 Quick guide:
 
-1. Add in a variables section
-1. Create variable names to match the names of parameters to be "moved"
-    1. Hardcode the values where sensible
-    1. Derive the values where possible
-1. Remove parameters that are no longer required
+1. Rename the _name_ parameter to _webAppName_ (see note below)
+1. Hardcode values in the resources section where sensible
+1. Derive variable values where possible
+    * Use concat to derive webAppPlan, sufficing '-plan' to your webAppName
+    * We'll use this rather than _hostingPlanName_
+1. Create a new variable, _webAppPlanId_ using resourceId()
+    * Check the <https://aka.ms/armfunc> page for how to use it
+    * Replace the properties.serverFarmID value with the _webAppPlanId_ variable
+    * Also replace the dependsOn entity - IDs are more specific than names
+1. Remove the strange tag - this is not required
+1. Remove all of the parameters that are no longer required
 1. Change the appropriate parameter calls in the resources section to variable calls
-1. Rename the 'name' parameters to webAppName
-1. Add in default values and allowed values for remaining parameters
-1. Strip down the parameters file to only the required parameter values
+1. Strip down the parameters file to only the required webAppName parameter value
 1. Test
 
-Here is a video that shows example files being edited.  (Note the use of CTRL-F2 in VS Code to Change All Occurrences.)
-
-<video video width="800" height="600" controls autoplay muted>
-  <source type="video/mp4" src="/workshops/arm/images/lab2-2-refactoringExport.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
-
 > Note that the "name" parameter as generated from the portal would cause a problem for PowerShell submissions.  This is because the PowerShell New-AzureRmResourceGroupDeployment cmdlet automatically creates new switches on the fly based on the parameter names, but these must not clash with existing switches.  As `-name` is one of those switches you will see an error.  Changing it to 'webAppName' avoids this.
+
+It is worth going through the pain of this refactoring section as it is really good practice for you.  If you do get stuck then the video below shows the files being edited.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4I1qE1Epx8g?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+**Figure 4:** Refactoring the exported JSON files
 
 Here is the resulting azuredeploy.json:
 
@@ -202,58 +216,50 @@ Here is the resulting azuredeploy.json:
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "name": {
+        "webAppName": {
             "type": "string"
         }
     },
     "variables": {
-        "hostingPlanName": "[concat(parameters('name'), '-plan')]",
-        "hostingEnvironment": "",
-        "location": "[resourceGroup().location]",
-        "sku": "Free",
-        "skuCode": "F1",
-        "workerSize": "0",
-        "serverFarmResourceGroup": "[resourceGroup().name]",
-        "subscriptionId": "[subscription().subscriptionId]"
+        "webAppPlan": "[concat(parameters('webAppName'), '-plan')]",
+        "webAppPlanId": "[resourceId('Microsoft.Web/serverfarms', variables('webAppPlan'))]"
     },
     "resources": [
         {
-            "apiVersion": "2016-03-01",
-            "name": "[parameters('name')]",
+            "apiVersion": "2016-08-01",
+            "name": "[parameters('webAppName')]",
             "type": "Microsoft.Web/sites",
             "properties": {
-                "name": "[parameters('name')]",
-                "serverFarmId": "[concat('/subscriptions/', variables('subscriptionId'),'/resourcegroups/', variables('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
-                "hostingEnvironment": "[variables('hostingEnvironment')]"
+                "name": "[parameters('webAppName')]",
+                "serverFarmId": "[variables('webAppPlanId')]",
+                "hostingEnvironment": ""
             },
-            "location": "[variables('location')]",
-            "tags": {
-                "[concat('hidden-related:', '/subscriptions/', variables('subscriptionId'),'/resourcegroups/', variables('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty"
-            },
+            "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+                "[variables('webAppPlanId')]"
             ]
         },
         {
             "apiVersion": "2016-09-01",
-            "name": "[variables('hostingPlanName')]",
+            "name": "[variables('webAppPlan')]",
             "type": "Microsoft.Web/serverfarms",
-            "location": "[variables('location')]",
+            "location": "[resourceGroup().location]",
             "properties": {
-                "name": "[variables('hostingPlanName')]",
-                "workerSizeId": "[variables('workerSize')]",
+                "name": "[variables('webAppPlan')]",
+                "workerSizeId": "0",
                 "reserved": false,
-                "numberOfWorkers": "1",
-                "hostingEnvironment": "[variables('hostingEnvironment')]"
+                "numberOfWorkers": "1"
             },
             "sku": {
-                "Tier": "[variables('sku')]",
-                "Name": "[variables('skuCode')]"
+                "Tier": "Free",
+                "Name": "F1"
             }
         }
     ]
 }
 ```
+
+> Note that we could also change the schema from _2014-04-01-preview_ to _2015-01-01_
 
 And the matching azuredeploy.parameters.json file should only have one parameter:
 
@@ -262,12 +268,14 @@ And the matching azuredeploy.parameters.json file should only have one parameter
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "name": {
+        "webAppName": {
             "value": "richeneyarm"
         }
     }
 }
 ```
+
+Refactoring files is very common.  In lab 1 you were mainly taking a hardcoded file and creating new parameters and variables.  In this lab you have taken something that is a little too open (and strange in places) and made it a little more standardised and hardcoded.
 
 Note that from this point onwards only the bash commands will be shown for brevity.  It is not difficult to create the corresponding PowerShell commands.  If you are running CLI 2.0 within PowerShell then explicitly state the string variables rather than derive them from other variables or command output.
 
@@ -299,7 +307,8 @@ It is possible to export a whole resource group definition as ARM JSON.  This is
 1. Type `CTRL-SHIFT-P` to bring up the Command Palette
 1. Use the 'File: Compare Active File With...' to see the difference
 
-![Compare](/workshops/arm/images/lab2-3-compareRgExports.png)
+![Compare](/workshops/arm/images/lab2-5-compareRgExports.png)
+**Figure 5:** Comparing resource group exports
 
 If you take a look at the [web app reference page](https://docs.microsoft.com/en-gb/azure/templates/microsoft.web/sites) then you'll find the CORS property and you will also see that it is comparatively well described.  This is not always the case for some of the other resource properties, so this before and after comparison is a handy way of checking the format of the string, array or object that is expected.
 
@@ -426,6 +435,6 @@ $sshCommand = $Outputs.sshCommand.Value
 
 Clean up your lab2 resource group containing the web app before moving on.  From now on it will be assumed that you will clean up your resource groups as you go.
 
-In the next section we will look at some of the more complex functions that you can make use of in ARM templates and we will also handle secrets and securetext.
+In the next section we will handle secrets and securetext.
 
 [◄ Lab 1: Basics](../arm-lab1-basics){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 3: Secrets ►](../arm-lab3-secrets){: .btn-success}

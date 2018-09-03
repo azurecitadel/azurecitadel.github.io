@@ -19,11 +19,11 @@ This environment will be the basis of the remaining labs in the workshop, so no 
 
 ## Creating a GitHub repository
 
-Git is the dominant source code management (SCM) platform in use today.  It is an open source project created by Linus Torvalds, the creator of the Linux kernel. Many organisations host their own private Git repositories, including Microsoft.  (Microsoft contributed to the Git source code to extend the underlying filesystem in order to host the Windows source code.)
+Git is the dominant source code management (SCM) platform in use today.  (Git was created by Linus Torvalds as he found the existing SCM systems to have missing functionality.) Many organisations host their own private Git repositories, including Microsoft.  (Microsoft contributed to the Git source code to extend the underlying filesystem in order to host the Windows source code.)
 
-You will create a free public terraform repository on GitHub.  GitHub is the largest host of open source code in thed.a world.  (This documentation is also hosted on a GitHub repository.)
+You will create a free public terraform-labs repository on GitHub.  GitHub is the largest host of open source code in thed.a world.  (This documentation is also hosted on a GitHub repository.)
 
-For this lab you will need to have
+For this lab you will need to have:
 
 * [Git](https://git-scm.com/downloads) installed locally
 * Ensure the git executable is in the path
@@ -42,17 +42,17 @@ OK, let's create our repository.
 ![New Repository](/workshops/terraform/images/newRepo.png)
 
 * Click on the `+` at the top right and 'New repository'
-    * Name: **citadel-terraform**
+    * Name: **terraform-labs**
     * Description: leave blank
     * **Public** (default)
     * Tick the **Initialize this repository with a README** check box
     * Create repository
 * Click on the green **Clone or download** button
-* Copy the repository URL, which should be similar to `https://github.com/<githubUsername>/citadel-terraform.git`
+* Copy the repository URL, which should be similar to `https://github.com/<githubUsername>/terraform-labs.git`
 
 ![Repository URL](/workshops/terraform/images/repoUrl.png)
 
-Clone the empty citadel-terraform repository into vscode:
+Clone the empty terraform-labs repository into vscode:
 
 * Open vscode
 * Type CTRL-SHIFT-P to open the Command Palette
@@ -68,10 +68,7 @@ Now that you have cloned the repository locally, your local repository will have
 
 Let's check that process by modifying the README.md, committing the change and then pushing it upstream:
 
-<video video width="800" height="400" controls>
-    <source type="video/mp4" src="/workshops/terraform/images/stageCommitPush.mp4"></source>
-    <p>Your browser does not support the video element.</p>
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/55UXNsJXB48?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 * Edit the README.md file in vscode
 * Add in the following text: `Lab files for https://aka.ms/citadel/terraform workshop.`
@@ -83,7 +80,7 @@ Let's check that process by modifying the README.md, committing the change and t
 * Push up to the 'origin' GitHub by either
     * clicking on the arrows in the status bar to refresh (both push and pull), or
     * clicking on the ellipsis (`...`) in the SCM area and `Push` from the context menu
-* Once the push has completed then go back into GitHub (`https://github.com/\<githubUsername>/citadel-terraform`) and refresh
+* Once the push has completed then go back into GitHub (`https://github.com/\<githubUsername>/terraform-labs`) and refresh
 * Confirm the README file now shows your committed change
 
 ![GitHub](/workshops/terraform/images/github.png)
@@ -163,6 +160,9 @@ Finally the KeyVaults resource group will contain an Azure Key Vault to store ou
 ## Initial variables.tf
 
 * Create a variables.tf file
+    * Go back into vscode's explorer view (`CTRL`+`SHIFT`+`E`)
+    * Hover over the Explorer bar and click on the new file icon
+    * Name it **variables.tf**
 * Add in the following variables
 
 ```ruby
@@ -178,6 +178,9 @@ variable "tags" {
     }
 }
 ```
+
+* Save the file (`CTRL`+`S`)
+* Close the file (`CTRL`+`W`)
 
 We'll add to that file as we move through the lab.
 
@@ -265,9 +268,18 @@ resource "azurerm_network_security_rule" "AllowHTTPS" {
 Steps:
 
 * Save the file
-* Push to Cloud Shell
+* Open a terminal
+    * Either open a separate terminal or just use the integrated terminal in vscode (`CTRL`+`'`)
+    * If in a separate terminal then change to your local repository directory
+    * Run `ls -l` to check that the nsgs.tf and variables.tf are there
+* Log in to Azure (`az login`)
+    * Check your context (`az account show`)
+
+> Terraform has a few ways of authenticating the azurerm provider.  In the first couple of labs we used the Cloud Shell, and the context included `"cloudShellID": true`.  Cloud Shell uses a variant of [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview) (MSI) which is also used by the Terraform marketplace offering.In this lab you will be using the Azure CLI authentication, which is good for local development work.  In later labs we will make use of [Service Principals](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli), which is my preferred mechanism for multi-admin and/ormulti-tenanted environments.
+
 * Run through the init -> plan -> apply workflow
 * Check your new NSGs resource group in the [portal](https://portal.azure.com)
+
 * Update the nsgs.tf, adding in the remaining NSGs
 
 NSG Name | Protocol | Port
@@ -275,6 +287,8 @@ AllowSQLServer | TCP | 1443
 AllowRDP | TCP | 3389
 
 * Rerun the plan -> apply workflow
+
+> These are not a particularly useful set of NSGs, but they do help to illustrate how easy it is create a standard set of NSGs that can be leveraged by multiple clients and subscriptions.
 
 ## Core networking
 
@@ -310,135 +324,50 @@ OK, time for you to get a little self sufficient and create a coreNetwork.tf fil
 
 If you get stuck then the bottom of this lab has a link to a set of files that you can reference.  Visual Studio Code also has a very good compare tool.
 
+* Run through the terraform init and plan to confirm that everything will run through ok
+
 > **Note that we will comment out the VPN Gateway stanza to save time and money Don't run `terraform apply` too quickly!**
 
-* Run through the terraform init and plan to confirm that everything will run through ok
-* Use the multiline comment format around the VPN Gateway stanza to comment it out
-* Rerun the plan and confirm that the gateway now won't be created
-* Apply the configuration
-
-Note that the VPN gateway will take several minutes to build, especially on free accounts that have a lower execution priority. A good opportunity for a coffee...
-
-## Azure Key Vault
-
-We will also hard code a default key vault.  There are a few core services that we want to be able to assume when we are creating the more flexible Terraform files in the later labs, amd Key Vault is one of them.  It also give us an opportunity to introduce service principals, role assigments and scopes.
-
-> Note that if you are an organisation looking to centralise your key and secret management whilst using multiple Terraform cloud providers then  Hashicorp has a cloud agnostic product named [Vault](https://www.vaultproject.io/).  Use of Vault is outside the scope of these labs.
-
-We're going to need a service principal (sp) that has permissions to read the Azure Key Vault.  If you look at the [azurerm_key_vault](https://www.terraform.io/docs/providers/azurerm/r/key_vault.html) page then you'll see we need to specify a tenant_id and an object_id.
-
-The creation of service principals from Terraform is a current [enhancement request](https://github.com/terraform-providers/terraform-provider-azurerm/issues/16), so in the meantime we'll create the service principal via the CLI and use the tenant ID and object ID values in a couple of new Terraform variables.  
-
-Note that by default, service principals are created with Contributor role assigned to the root of the subscription, which is far more generous than we want.  We'll therefore initially set it to no role assignment.  We'll then use Terraform to assign a valid role against the keyVaults resource group once that has been created.
-
-### Create a service principal
-
-* Create a service principal with no role assignment
-
-```bash
-az ad sp create-for-rbac --name "terraformKeyVaultReader" --skip-assignment
-```
-
-Note that the service principal (or sp) name must be unique within the tenancy for this command to succeed.  You can also specify a password using `--password`, but if not then the command will generate one for you and show it in the output.  Note in the output that the sp name is prefixed with `http://`, so if you were to delete the sp then the command would be `az ad sp delete --id "http://terraformKeyVaultReader"`.
-
-If you run the following command it will query the new sp and give us the values we need for our variables.
-
-```bash
-az ad sp show --id "http://terraformKeyVaultReader" --output jsonc --query "{tenant_id:appOwnerTenantId, object_id:objectId}"
-{
-  "object_id": "6aee7885-a16d-4448-aeca-3788aafda778",
-  "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-}
-```
-
-* Create the two new variables in the variables.tf file
-    * **tenant_id**
-    * **kvr_object_id**
-
-We'll now use these new variables when creating the Key Vault.
-
-### Create the keyvaults.tf
-
-* Create a new keyVaults.tf file
-
-```bash
-resource "azurerm_resource_group" "keyvaults" {
-    name        = "keyVaults"
-    location    = "${var.loc}"
-    tags        = "${var.tags}"
-}
-
-resource "azurerm_role_assignment" "keyVaultReader" {
-  role_definition_name = "Reader"
-  scope                = "${azurerm_resource_group.keyvaults.id}"
-  principal_id         = "${var.kvr_object_id}"
-}
-
-resource "azurerm_key_vault" "default" {
-    name                = "keyVault"
-    resource_group_name = "${azurerm_resource_group.keyvaults.name}"
-    location            = "${azurerm_resource_group.keyvaults.location}"
-    tags                = "${azurerm_resource_group.keyvaults.tags}"
-
-    depends_on          = [ "azurerm_role_assignment.keyVaultReader" ]
-
-    sku {
-        name = "standard"
-    }
-
-    tenant_id = "${var.tenant_id}"
-
-    access_policy {
-      tenant_id             = "${var.tenant_id}"
-      object_id             = "${var.kvr_object_id}"
-      key_permissions       = [ "get" ]
-      secret_permissions    = [ "get" ]
-    }
-    enabled_for_deployment          = false # Azure Virtual Machines permitted to retrieve certs?
-    enabled_for_template_deployment = false # ARM deployments allowed to pull secrets?
-    enabled_for_disk_encryption     = true  # Azure Disk Encryptions permitted to grab secrets and unwrap keys ?
-}
-```
-
-* Run through the terraform init, plan and apply workflow
-
-The apply should fail on the keyvault resource as the keyVault name is already in use.  The key vault service creates a public endpoint, such as <https://{vault-name}.vault.azure.net> for the public cloud, and therefore the shortname needs to be unique.
-
-* Create a new **rndstr** resource using the random_string provider type
-    * 12 characters
-    * lowercase alphanumerics
-* Append the result to the key vault name
-* Rerun through the terraform init, plan and apply workflow to create the key vault
-
-There are a few new things to note here:
-
-1. There are implicit dependencies on the keyVaults resource group from both the role assigment and key vault resources
-1. There is an explicit dependency on the role assignment from the key vault, using a **depends_on** array
-1. There are comments against some of the key vault booleans
+* Use the multiline comment format to comment out the VPN Gateway stanza
 
 There are a couple of ways of commenting in HCL:
 
 ```tf
+ # This is a single line comment
 
-# This is a single line comment
-
-/* And this is a multi line
-comment */
-
+ /* And this is a multi line
+ comment */
 ```
 
-Use the Azure [portal](http://portal.azure.com) to check the keyVaults resource group.  You should see the new key vault within it, but look at the Access Control (IAM) in the blade.  It should show the new service principal with the Reader role, similar to the filtered output below:
+* Rerun the plan and confirm that the gateway now won't be created
+* Apply the configuration
 
-![Access Control](/workshops/terraform/images/accessControl.png)
+## Commit your changes
 
-Note that the Reader role is one of many inbuilt roles available.  You can also create custom roles via either the [CLI](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-cli#custom-roles) or [Terraform](https://www.terraform.io/docs/providers/azurerm/r/role_definition.html).
+If you look at the Source Control view in vscode then you should see a number of pending changes in there.  Really we only want to commit the files we have been creating rather than the ones that have been generated by the terraform commands, and we can control that through the use of a .gitignore file.
+
+* Create a file called .gitignore
+* Add in the folliwng text
+
+```text
+.terraform/*
+terraform.tfstate
+terraform.tfstate.backup
+```
+
+* Save and close the file
+
+The .gitignore exclusions should grey out the Terraform system files in the vscode Explorer, and in Source Control the pending changes should now be restricted to your *.tf files and the new .gitignore.
+
+* Stage and commit using "End of lab 3" as the message
+* Push the changes into your terraform-labs GitHub repo
 
 ## End of Lab 3
 
-We have reached the end of the lab. You have started to use GitHub and work with multiple resource groups, resources and .tf files. We also have a set of core resources that we will leverage in the following labs.
+We have reached the end of the lab. You have started to use GitHub and work with multiple resource groups, resources and .tf files. We also deployed a very simple set of core resources that we can leverage in the following labs.
 
-Your .tf files should look somewhat similar to those in <https://github.com/richeney/terraform-lab3>, although you may have spread your Terraform stanzas across your .tf files differently dependent on how you have it organised.
+The .tf files in tour repository should look somewhat similar to those in <https://github.com/richeney/terraform-lab3>, although you may have spread your Terraform stanzas across your .tf files differently dependent on how you have it organised.
 
 In the next lab we will look at some of the meta parameters that you can use in Terraform to gain richer functionality.
 
-[◄ Lab 2: Variables](../lab2){: .btn-subtle} [▲ Index](../#lab-contents){: .btn-subtle} [Lab 4: Metas ►](../lab4){: .btn-success}
+[◄ Lab 2: Variables](../lab2){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 4: Metas ►](../lab4){: .btn-success}
