@@ -38,21 +38,25 @@ fi
 
 echo "az group create --name $rg --location $loc" 
 az group create --name $rg --location $loc --output jsonc 
+[[ $? -ne 0 ]] && error "Failed to create resource group $rg"
 
 # Create the storage account
 
 saName=tfstate$(tr -dc "[:lower:][:digit:]" < /dev/urandom | head -c 10)
 echo "az storage account create --name $saName --kind BlobStorage --access-tier hot --sku Standard_LRS --resource-group $rg --location $loc" 
 az storage account create --name $saName --kind BlobStorage --access-tier hot --sku Standard_LRS --resource-group $rg --location $loc --output jsonc
+[[ $? -ne 0 ]] && error "Failed to create storage account $saName"
 
 # Grab the storage account key
 
 saKey=$(az storage account keys list --account-name $saName --resource-group $rg --query "[1].value" --output tsv)
+[[ $? -ne 0 ]] && error "Do not have sufficient privileges to read the storage account access key"
 
 # Create the container
 containerName="tfstate-$subId-$(basename $(pwd))"
 echo "az storage container create --name $containerName --account-name $saName --account-key $saKey" 
 az storage container create --name $containerName --account-name $saName --account-key $saKey --output jsonc
+[[ $? -ne 0 ]] && error "Failed to create the container $containerName"
 
 # Creating the backend.tf
 
