@@ -18,44 +18,54 @@ In this lab we will introduce the use of complex parameter and variable objects.
 
 OK, let's start with using objects rather than strings in the parameter section.  You have already been using objects when using functions such as subscription() and resourceGroup().  They return standard JSON objects, and then you usually pull out one of the values, such as resourceGroup().location.  You can also use objects and arrays in the parameters section.
 
-Below is an example parameters section for a networking template:
+Below is an example parameters section for a networking template, [spoke.json](https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/nested/spoke.json):
 
 ```json
-  "parameters": {
-    "peer": {
-      "type": "bool",
-      "allowedValues": [ true, false ],
-      "defaultValue": false
-    },
-    "hub": {
-      "type": "object",
-      "defaultValue": {
-        "resourceGroup": "core",
-        "vnet": {
-          "name": "Core"
-        }
-      },
-      "metadata": {
-            "description": "Info for an existing hub or core vNet.  Required if peer==true.  Assumed to be within the same subscription."
-      }
-    },
-    "spoke": {
-      "type": "object",
-      "defaultValue": {
-        "vnet": {
-          "name": "Spoke",
-          "addressPrefixes": [ "10.99.0.0/16" ]
+    "parameters": {
+        "peer": {
+           "type": "bool",
+           "defaultValue": true,
+           "metadata": {
+                "description": "Boolean to control whether spoke is peered to the hub"
+            }
         },
-        "subnets": [
-          { "name": "subnet1", "addressPrefix": "10.99.0.0/24" },
-          { "name": "subnet2", "addressPrefix": "10.99.1.0/24" }
-        ]
-      },
-      "metadata": {
-        "description": "Complex object containing information for the spoke vNet.  See defaultValue for example."
-      }
-    }
-  },
+        "hub": {
+            "type": "object",
+            "defaultValue": {
+                "resourceGroup": "westeurope",
+                "vnet": {
+                    "name": "hub"
+                }
+            },
+            "metadata": {
+                "description": "Object containing required information for the hub vNet.  See defaultValue for minimum expected structure."
+            }
+        },
+        "spoke": {
+            "type": "object",
+            "defaultValue": {
+                "vnet": {
+                    "name": "Example-vnet",
+                    "addressPrefixes": [
+                        "10.1.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "addressPrefix": "10.1.1.0/24",
+                        "name": "Example-vnet-subnet1"
+                    },
+                    {
+                        "addressPrefix": "10.1.2.0/24",
+                        "name": "Example-vnet-subnet2"
+                    }
+                ]
+            },
+            "metadata": {
+                "description": "Object containing information for the spoke vNet.  See defaultValue for expected structure."
+            }
+        }
+    },
 ```
 
 The first parameter is a simple true or false boolean, which is very useful for conditions and if functions.  Here is an example condition statement lower down in that same template:

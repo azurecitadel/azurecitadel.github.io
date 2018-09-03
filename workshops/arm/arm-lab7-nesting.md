@@ -16,7 +16,7 @@ Using nested templates is a great way of managing your IP for repeatable complex
 
 We will look at how inline nested templates can give us more flexibility within a building block, and then we will look at a master template using object and array parameters to call multiple linked templates.  Going through the lab will give you an understanding of how to incorporate each type into your own templates, and the examples give a good indication of when it makes sense to do so.
 
-We will then revisit key vaults and run through a short lab to show how nesting enables the use of dynamic key vault IDs.
+We will use a nested deployment to create a basic network hub environment and then you'll create a new master template to create a spoke that is vNet peered to it. We will also create a public load balancer fronting an availability set containing three VMs.  
 
 Finally, we will link to some of the great documentation that is available.
 
@@ -65,7 +65,7 @@ The name, type and apiVersion are required as per normal.
 
 In the properties section the mode property is also required.  (Again, if you set this to 'Complete' rather than 'Incremental' then be aware that the ARM layer will merrily remove any resources from the resource group that are not described in the master template, so only use this option if you are 100% confident in what you are doing!)
 
-You can define both the parameters and the template as inline JSON objects.  The vnet-spoke.json example in the next section defines the template inline.  As you'll remember from the first lab, the template is always required whilst the parameters are optional.
+You can define both the parameters and the template as inline JSON objects.  The spoke.json example in the next section defines the template inline.  As you'll remember from the first lab, the template is always required whilst the parameters are optional.
 
 Alternatively you can replace either of these with links to an external URI, using the templateLink and parametersLink objects.  We'll see an example of that in the master template.  Note that both objects are structured the same:
 
@@ -78,7 +78,7 @@ Alternatively you can replace either of these with links to an external URI, usi
 
 The URI must be an http or https file.  You cannot use FTP or local files.  A Git repository is common (either GitHub or a private repo), as is using blob storage, potentially with SAS tokens to control access.
 
-For the URI itself, you can hardcode them, but it is more common to [use variables](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-linked-templates#using-variables-to-link-templates) to define them dynamically. The `deployment().properties.templateLink.uri` function can be used to return the base URL for the current template, and the uri() function.  The [functions](https://aka.ms/armfunc) area goes into more detail on the usage.
+For the URI itself, you can hardcode them, but it is also very common to [use variables](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-linked-templates#using-variables-to-link-templates) to define them dynamically. The `deployment().properties.templateLink.uri` function can be used to return the base URL for the current template, and the uri() function.  The [functions](https://aka.ms/armfunc) area goes into more detail on the usage.
 
 The contentVersion string is not required.  So far we have not been versioning our templates as we have modified them, but using linked templates is a good reason to consider doing so. When you specify the contentVersion string then the deployment will check that the contentVersion is a direct match.  For example, imagine you substantially change a building block template to the point that the parameters change.  If that template is linked to by a number of master templates then this would fail.  An update to the master templates with a correctly configured parameters section and an updated contentVersion string would be required before the deployment would go through successfully.
 
@@ -88,67 +88,67 @@ You'll also notice the optional 'resourceGroup' string. This permits us to have 
 
 For larger organisations a [hub and spoke topology](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) is a recommended virtual data centre architecture to provide service isolation, network traffic control, billing and role based access control (RBAC).
 
-Use CTRL+O in vscode and open up the `https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/vnet-spoke.json` file.
+Take a look at the repository used for the [Virtual Data Centre](https://github.com/azurecitadel/vdc-networking-lab) workshop. Navigate into the nested subdirectory and look at the [spoke.json](https://github.com/azurecitadel/vdc-networking-lab/blob/master/nested/spoke.json) file.  
 
-The vnet-spoke.json will create a spoke vNet, and will also create a vNet peering back to a pre-existing hub vNet.  For that peering to work, the Microsoft.Network/virtualNetworks/virtualNetworkPeerings resource type needs to be created at both ends to create the connection.  Therefore the vNet peering from the hub to the spoke needs to be created in the hub's resource group.
+The spoke.json will create a spoke vNet, and will also create a vNet peering back to a pre-existing hub vNet.  For that peering to work, the Microsoft.Network/virtualNetworks/virtualNetworkPeerings resource type needs to be created at both ends to create the connection.  Therefore the vNet peering from the hub to the spoke needs to be created in the hub's resource group.
 
 The hub vNet name and resource group are part of the expected parameters, but let's look at the two ends of the peering:
 
 ```json
     {
-      "condition": "[parameters('peer')]",
-      "name": "[concat(parameters('spoke').vnet.name, '/peering-to-', parameters('hub').vnet.name)]",
-      "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-      "apiVersion": "2017-10-01",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[variables('spokeID')]"
-      ],
-      "properties": {
-        "allowVirtualNetworkAccess": true,
-        "allowForwardedTraffic": false,
-        "allowGatewayTransit": false,
-        "useRemoteGateways": false,
-        "remoteVirtualNetwork": {
-          "id": "[variables('hubID')]"
-        }
-      }
+        "comments": "Optional vnet to hub peering",
+        "condition": "[parameters('peer')]",
+        "name": "[concat(parameters('spoke').vnet.name, '/to-', parameters('hub').vnet.name)]",
+        "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+        "apiVersion": "2017-10-01",
+        "location": "[resourceGroup().location]",
+        "properties": {
+            "allowVirtualNetworkAccess": true,
+            "allowForwardedTraffic": false,
+            "allowGatewayTransit": false,
+            "useRemoteGateways": false,
+            "remoteVirtualNetwork": {
+                "id": "[resourceId(parameters('hub').resourceGroup,'Microsoft.Network/virtualNetworks/', parameters('hub').vnet.name)]"
+            }
+        },
+        "dependsOn": [
+            "[concat(parameters('spoke').vnet.name)]"
+        ]
     },
     {
-      "condition": "[parameters('peer')]",
-      "name": "[concat('peer-', parameters('hub').vnet.name, '-to-', parameters('spoke').vnet.name)]",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "resourceGroup": "[parameters('hub').resourceGroup]",
-      "dependsOn": [
-        "[variables('spokeID')]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-              {
-                "apiVersion": "2017-10-01",
-                "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-                "name": "[concat(parameters('hub').vnet.name, '/peering-to-', parameters('spoke').vnet.name)]",
-                "location": "[resourceGroup().location]",
-                "properties": {
-                    "allowVirtualNetworkAccess": true,
-                    "allowForwardedTraffic": false,
-                    "allowGatewayTransit": true,
-                    "useRemoteGateways": false,
-                    "remoteVirtualNetwork": {
-                      "id": "[variables('spokeID')]"
+        "comments": "Inline deployment for reverse peering",
+        "condition": "[parameters('peer')]",
+        "name": "[concat('DeployVnetPeering-', parameters('hub').vnet.name, '-to-', parameters('spoke').vnet.name)]",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2017-05-10",
+        "resourceGroup": "[parameters('hub').resourceGroup]",
+        "properties": {
+            "mode": "Incremental",
+            "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "resources": [
+                    {
+                        "apiVersion": "2017-10-01",
+                        "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+                        "name": "[concat(parameters('hub').vnet.name, '/to-', parameters('spoke').vnet.name)]",
+                        "location": "[resourceGroup().location]",
+                        "properties": {
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": false,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false,
+                            "remoteVirtualNetwork": {
+                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks/', parameters('spoke')t.name)]"
+                            }
+                        }
                     }
-                }
-              }
-          ]
-        }
-      }
+                ]
+            }
+        },
+        "dependsOn": [
+            "[concat(parameters('spoke').vnet.name)]"
+        ]
     }
 ```
 
@@ -156,277 +156,161 @@ The first peering resource is a straightforward `Microsoft.Network/virtualNetwor
 
 The second peering, however, is a nested inline template deployment (`Microsoft.Resources/deployments`) which gives us the flexibility to deploy into a different resource group.   We have the embedded inline template deploying the peering into the hub vNet and into the hub's resource group. Once both ends are in place then the peering is established.
 
-Taking this approach has made the vnet-spoke.json building block more functional and rather neat and tidy.
+Taking this approach has made the spoke.json building block both more functional and rather neat and tidy. Click on the 'Raw' button on the GitHub page. This will take you through to the raw URI, <https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/nested/spoke.json>.  
 
-There is a corresponding `https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/vnet-hub.json` file for creating the hub, and it creates the hub vNet with a couple of standard subnets, plus a GatewaySubnet containing a VPN gateway with a public IP. As the public IP is dynamically allocated we ideally want to be able to determine the value and output that at the end.
+Open up a Bash terminal session. You can use the curl command to prove that the raw URI can be accessed:
 
-However, this brings up an interesting problem with public IPs in that the dynamic IP address is only allocated once the NIC is online, i.e.when the gateway itself is up.  As the reference() function shows the current runtime state of the resource, trying to return `"[reference(variables('gatewayPipId')).ipAddress]` would fail first time round as the IP address isn't allocated, but will work for a redeployment. So we'll avoid that by returning just the resource ID instead, as it is a simple one line CLI command to find out the IP address once you have that resource ID:
-
-```json
-  "outputs": {
-    "gatewayPipId": {
-      "type": "string",
-      "value": "[variables('gatewayPipId')]"
-    }
-  }
+```bash
+curl https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/nested/spoke.json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "peer": {
+           "type": "bool",
+           "defaultValue": true,
+           "metadata": {
+                "description": "Boolean to control whether spoke is peered to the hub"
+            }
+        },
+        "hub": {
+            "type": "object",
+            "defaultValue": {
+                "resourceGroup": "westeurope",
+                "vnet": {
+                    "name": "hub"
+                }
+            },
+:
+:
 ```
 
-OK, let's take a look at how those two building blocks could be used by a master template.
+> Quick tip: If your machine is caching web content and not showing the most up to date version of a template then you can always use a unique query string to force a fresh version, e.g. `curl -sL https://path/to/template.json?$(date +%s)`.
+
+OK, let's take a look at how this template is called by a master template.
 
 ## Example of a master template calling linked templates
 
-Open up the `https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/azuredeploy.json` master template, and the corresponding `https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/azuredeploy.parameters.json` parameters file.
+Open up the `https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/DeployVDCwithNVA.json` master template. (You can use `CTRL`+`O` in vscode and then paste in the raw URI.)
 
-The template will create:
+The template creates the environment used in the [Virtual Data Centre](https://aka.ms/citadel/vdc) workshop. The template uses the nested templates to create the following:
 
-* a single hub vNet, containing a number of subnets, and the GatewaySubnet can also include an optional VPN Gateway and public IP address
-* one or more spoke vNets, also containing a number of subnets, with a vNet peering back to the hub vNet
+* OnPrem vNet including VPN gateway and single VM with a public IP
+* Hub vNet including the other VPN gateway, plus two subnets
+* Cisco CSR 1000v in the VDC-NVA resource group
+* Two spoke vNets, peered to the hub vNet, with each containing load balanced HA VMs running a simple node.js app
 
-First of all, take a look at the parameters.  The main template has defaults, which are pretty much there for testing and to describe the expected parameter objects.  Below are the ones from the parameters file:
-
-## - Parameters
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "hub": {
-            "value": {
-                "resourceGroup": "shared",
-                "vnet": { "name": "shared", "addressPrefixes": [ "10.0.0.0/16" ] },
-                "subnets": [
-                    { "name": "GatewaySubnet", "addressPrefix": "10.0.0.0/24" },
-                    { "name": "outside", "addressPrefix": "10.0.1.0/24" },
-                    { "name": "inside", "addressPrefix": "10.0.2.0/24" },
-                    { "name": "shared", "addressPrefix": "10.0.3.0/24" }
-                ],
-                "createGateway": true,
-                "gatewaySku": "VpnGw1"
-            }
-        },
-        "spokes": {
-            "value": [
-                {
-                    "resourceGroup": "erp",
-                    "vnet": { "name": "erp", "addressPrefixes": [ "10.1.0.0/16"  ] },
-                    "subnets": [
-                        { "name": "presentation", "addressPrefix": "10.1.0.0/24" },
-                        { "name": "application", "addressPrefix": "10.1.1.0/24" },
-                        { "name": "business", "addressPrefix": "10.1.2.0/24" },
-                        { "name": "data", "addressPrefix": "10.1.3.0/24" }
-                    ]
-                },
-                {
-                    "resourceGroup": "test",
-                    "vnet": { "name": "test", "addressPrefixes": [ "10.76.0.0/16" ] },
-                    "subnets": [
-                        { "name": "test1", "addressPrefix": "10.76.0.0/24" },
-                        { "name": "test2", "addressPrefix": "10.76.1.0/24" }
-                    ]
-                },
-                {
-                    "resourceGroup": "dev",
-                    "vnet": { "name": "dev", "addressPrefixes": [ "10.77.0.0/16" ] },
-                    "subnets": [
-                        { "name": "dev", "addressPrefix": "10.77.0.0/16" }
-                    ]
-                }
-            ]
-        }
-    }
-}
-```
-
-The hub parameter object specifies the resource group, vNet name and address space, plus the array of subnets.  It also has controls for whether a VPN Gateway is created and if so, with which SKU.
-
-The spokes parameter is actually an array, and each member of the array (i.e. each spoke) is an object which is structurally very similar to the hub object, except with no gateway properties.  Some level of consistency is usually a good idea.
-
-Before we move onto the resources themselves, take a look at the first two variables:
-
-## - Variables Section
+Take a look at the variables section.  There are two main types of variables used here, to reference the URIs of the nested templates and also the hardcoded complaex objects that are used as the parameters to some of the nested templates.  Let's look at the URIs first:
 
 ```json
-  "variables": {
-    "hubUrl": "[uri(deployment().properties.templateLink.uri, 'vnet-hub.json')]",
-    "spokeUrl": "[uri(deployment().properties.templateLink.uri, 'vnet-spoke.json')]",
-    "hubDeploymentName": "[concat('deployHub-', parameters('hub').vnet.name)]"
-  },
+    "variables": {
+        "vnetUri": "[uri(deployment().properties.templateLink.uri, 'nested/vnet.json')]",
+        "spokeUri": "[uri(deployment().properties.templateLink.uri, 'nested/spoke.json')]",
+        "avsetUri": "[uri(deployment().properties.templateLink.uri, 'nested/avset.json')]",
+        "vpngwUri": "[uri(deployment().properties.templateLink.uri, 'nested/vpngw.json')]",
+        "vmUri": "[uri(deployment().properties.templateLink.uri, 'nested/vm.json')]",
+        "csrUri": "[uri(deployment().properties.templateLink.uri, 'nested/ciscoCSR.json')]",
+        :
 ```
 
-Using a combination of the uri() and deployment() functions is a great way of determining the path for the master template and deriving the linked template names from it.  These files are in the same directory as the master template and parameters file, but you will often see the linked templates in a subdirectory, e.g. `"spokeUrl": "[uri(deployment().properties.templateLink.uri, '/nested/vnet-spoke.json')]"`.
+Using a combination of the uri() and deployment() functions is a great way of determining the path for the master template and deriving the linked template names from it.  The deployment() function will return the full URI of the current template.  The uri() function takes the directory name of that template and then appends the second string.
 
 <div class="warning">WARNING: Using deployment().properties.templateLink.uri will only return a value if the --template-uri switch is used. The deployment will fail validation if --template-file is used.</div>
 
-OK, here is the hub deployment.  Note how we are sending all of the parameters individually:
-
-## - Hub Resource
+OK, let's look at the rest of the variables:
 
 ```json
-  "resources": [
-    {
-      "name": "[variables('hubDeploymentName')]",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "resourceGroup": "[parameters('hub').resourceGroup]",
-      "properties": {
-        "mode": "Incremental",
-        "parameters": {
-          "vnetName": {
-              "value": "[parameters('hub').vnet.name]"
-          },
-          "vNetAddressPrefixes": {
-              "value": "[parameters('hub').vnet.addressPrefixes]"
-          },
-          "subnets": {
-              "value": "[parameters('hub').subnets]"
-          },
-          "createGateway": {
-              "value": "[parameters('hub').createGateway]"
-          },
-          "gatewaySku": {
-              "value": "[parameters('hub').gatewaySku]"
-          }
-        },
-        "templateLink": {
-          "uri": "[variables('hubUrl')]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    }, ...
-```
-
-We are pulling out a number of elements from our main hub parameter object.  The .vnet.name and .gatewaySku are strings, .createGateway is a boolean, and both .vnet.addressPrefixes and .subnets are arrays, and these match the parameter types expected by the parameters section of the vnet-hub.json template.
-
-## - Spoke Resources
-
-```json
-    ...,
-    {
-        "name": "[concat('deploySpoke', copyIndex(1), '-', parameters('spokes')[copyIndex()].vnet.name)]",
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2017-05-10",
-        "resourceGroup": "[parameters('spokes')[copyIndex()].resourceGroup]",
-        "dependsOn": [
-            "[concat('Microsoft.Resources/deployments/', variables('hubDeploymentName'))]"
-        ],
-        "copy": {
-            "name": "spokecopy",
-            "count": "[length(parameters('spokes'))]",
-            "mode": "Serial",
-            "batchSize": 1
-        },
-        "properties": {
-          "mode": "Incremental",
-          "parameters": {
-            "peer": {
-                "value": true
+        "hub": {
+            "resourceGroup": "VDC-Hub",
+            "vnet": {
+                "name": "Hub-vnet",
+                "addressPrefixes": [  "10.101.0.0/16" ]
             },
-            "hub": {
-                "value": "[parameters('hub')]"
+            "subnets": [
+                { "addressPrefix": "10.101.0.0/24", "name": "GatewaySubnet" },
+                { "addressPrefix": "10.101.1.0/24", "name": "Hub-vnet-subnet1" },
+                { "addressPrefix": "10.101.2.0/24", "name": "Hub-vnet-subnet2" }
+            ],
+            "vpnGwName": "Hub-vpn-gw"
+        },
+        "onprem": {
+            "resourceGroup": "VDC-OnPrem",
+            "vnet": {
+                "name": "OnPrem-vnet",
+                "addressPrefixes": [  "10.102.0.0/16" ]
             },
-            "spoke": {
-                "value": "[parameters('spokes')[copyIndex()]]"
+            "subnets": [
+                { "addressPrefix": "10.102.0.0/24", "name": "GatewaySubnet" },
+                { "addressPrefix": "10.102.1.0/24", "name": "OnPrem-vnet-subnet1" },
+                { "addressPrefix": "10.102.2.0/24", "name": "OnPrem-vnet-subnet2" }
+            ],
+            "vpnGwName": "OnPrem-vpn-gw"
+        },
+        "spokes": [
+            {
+                "resourceGroup": "VDC-Spoke1",
+                "vnet": {
+                    "name": "Spoke1-vnet",
+                    "addressPrefixes": [  "10.1.0.0/16" ]
+                },
+                "subnets": [
+                    { "addressPrefix": "10.1.1.0/24", "name": "Spoke1-vnet-subnet1" },
+                    { "addressPrefix": "10.1.2.0/24", "name": "Spoke1-vnet-subnet2" }
+                ]
+            },
+            {
+                "resourceGroup": "VDC-Spoke2",
+                "vnet": {
+                    "name": "Spoke2-vnet",
+                    "addressPrefixes": [  "10.2.0.0/16" ]
+                },
+                "subnets": [
+                    { "addressPrefix": "10.2.1.0/24", "name": "Spoke2-vnet-subnet1" },
+                    { "addressPrefix": "10.2.2.0/24", "name": "Spoke2-vnet-subnet2" }
+                ]
             }
-          },
-          "templateLink": {
-            "uri": "[variables('spokeUrl')]",
-            "contentVersion": "1.0.0.0"
-          }
+        ],
+        "nva": {
+            "resourceGroup": "VDC-NVA"
         }
-      }
+    },
 ```
 
-There are a few interesting points for this section.
+These are good examples of the complex objects that were discussed in the previous lab, and densely describe the environment.  Note that the structure of both hub and onprem, and the objects within the spokes array have a consistent structure.  The variables could easily be parameters (with defaultValues used to describe the expected object), but the template is using variables as this environment is fairly hardcoded at the master template level.
 
-1. The resource deployment has a copy, based on the number of members in that spoke parameter array.  Therefore if the parameters have, say six spokes, then there will be six deployments, all individually named with the spoke number and suffixed by the vNet name for that spoke.  We have a dependency on the hub deployment (as we are peering to it) and the copy overrides the default parallel mode to deploy the spokes one by one.  The main reason is that the two way vNet peering resources in the spoke template can throw up a conflict if multiple jobs are peppering the hub vNet at the same time.  Running them sequentially avoids that scenario.
-2. The parameter section is more of a passthrough than the section we saw earlier for the hub linked template.  The format of the hub parameter closely matches what is expected by the spoke linked template.  In this way, using objects is much more flexible.  There are some elements of the main hub parameter object that are not used by the spoke linked template, but that does not matter; the spoke template just expects an object to be passed.  Therefore this proves a little more extensible.
-3. The spokes parameter for the master template is an array.  However we are not passing that full array through to the linked template.  Instead the spoke parameter is the individual member spoke object within that array, based on the copyIndex(), and matches the object expected by the parameters section in that template.
-
-The last thing we want the master template to do for us is to surface the resource ID for the VPN gateway's public IP.  If you remember, the output section of the vnet-hub.json template looked like this:
-
-## - Outputs section for vnet-hub.json
+Finally, let's take a look at the parameters sections for the various deployments.  For the hub and onprem networking deployments you'll notice that the whole object is passed through.
 
 ```json
-  "outputs": {
-    "gatewayPipId": {
-      "type": "string",
-      "value": "[variables('gatewayPipId')]"
-    }
-  }
+        {
+            "comments": "Create OnPrem vNet",
+            "name": "Deploy-OnPrem-vNet",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "[variables('onprem').resourceGroup]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('vnetUri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "vnet": {
+                        "value": "[variables('onprem')]"
+                    }
+                }
+            }
+        },
 ```
 
-We can use the reference() function against the hub deployment resource itself to pull out the gatewayPipID string that the linked template will put in its output section.
+The vnet.json then takes that object and uses parts of it.
 
-## - Outputs section for azuredeploy.json
+And the same is true for the spokes, although here we are using a copy argument to loop through the elements in the spokes array.  Again we are passing in the whole spoke object, plus the hub object.  Note that the spoke.json template only requires parts of the hub object, i.e. the name of the hub vnet and the resourceGroup, and happily oignores the rest of the information.
 
-```json
-  "outputs": {
-    "vpnGatewayPipId": {
-        "type": "string",
-        "value": "[reference(variables('hubDeploymentName')).outputs.gatewayPipId.value]"
-    }
-  }
-```
+Creating good complex object structures that can be used in multiples building block templates is pretty powerful and keeps the template deployments short.  
 
-Here are a few lines selected from an example [deploy.sh](https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/deploy.sh) script to show how the resource ID is pulled from the deployment and then the single az command is used to output the VPN gateway IP address which will have been allocated by that point:
+If you look at some of the other resource deployments in this master template then some pass in a few simple strong values pulled from those objects.  The Cisco CSR template takes no parameters at all, only determining which resource group to deploy to.
 
-## - deploy.sh (partial)
-
-```bash
-templateUri="https://raw.githubusercontent.com/richeney/arm/master/nestedTeamples/azuredeploy.json"
-parametersUri="https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/azuredeploy.parameters.json"
-
-# Pull out parameters into a multi line variable
-parameters=$(curl --silent "$parametersUri?$(date +%s)" | jq .parameters)
-
-# Determine the resource groups from the parameters variable
-hubrg=$(jq --raw-output .hub.value.resourceGroup <<< $parameters)
-spokergs=$(jq --raw-output .spokes.value[].resourceGroup <<< $parameters)
-
-# Create the resource groups is they do not exist
-echo "Checking or creating resource groups:" >&2
-for rg in $hubrg $spokergs
-do az group create --location $loc --name $rg --output tsv --query name | sed 's/^/- /1'
-done
-
-# Deploy the templates and find out the gateway's PIP
-query="properties.outputs.vpnGatewayPipId.value"
-vpnGatewayPipId=$(az group deployment create --resource-group $hubrg --template-uri $templateUri --query $query --output tsv --parameters "$parameters" --verbose)
-az network public-ip show --ids $vpnGatewayPipId --query ipAddress --output tsv
-```
-
-The full script includes some good descriptive comments, but you can see from these commands that we are pulling out the PIP ID from the outputs of the master template, and then using that with a short JMESPATH query to grab the IP address. (For more information on using JMESPATH queries then look at the [CLI guide](https://azurecitadel.github.io/guides/cli/).)
-
-## Lab to dynamically handle key vault and secret names
-
-OK, do you remember first using key vault secrets back in lab3? If you remember, the adminPassword's type in the [azuredeploy.json](https://raw.githubusercontent.com/richeney/arm/master/lab3/azuredeploy.json) template is set to securetext as per normal.  This ensures that the deployment logs never include the password.  In the parameter file, [azuredeploy.parameters.json](https://raw.githubusercontent.com/richeney/arm/master/lab3/azuredeploy.parameters.json) used the reference() function to grab the value of secret held in the key vault so that it wasn't shown as plaintext in that file as well.  However the values for both the key vault name and the secret name were hardcoded as the parameters file does not support any of the functions that we can use in the main ARM templates.
-
-This lab will make use of nested templates to make the key vault name and the secret name dynamic.  Labs 4 and 5 improved on our lab 3 virtual machine templates so we'll use lab 5 as the base for lab 7.
-
-Here is a loose guide of what to do, rather than a set of explicit instructions.
-
-1. Create a lab7 folder
-1. Copy the lab5 [azuredeploy.json](https://raw.githubusercontent.com/richeney/arm/master/lab5/azuredeploy.json) into lab7 as vm.json
-1. Create a new azuredeploy.json file.
-1. The parameters section should be consistent with vm.json, with the following changes:
-    * remove adminPassword
-    * add strings for keyVaultName and secretName
-1. In your variables section, derive the uri for the vm.json file
-1. Create a deployment resource to use that uri as a linked template
-1. Ensure the parameters section for the deployment resource passes through adminPassword to the linked template
-1. Create a new parameters file, based on the lab5 [azuredeploy.parameters.json](https://raw.githubusercontent.com/richeney/arm/master/lab5/azuredeploy.parameters.json), but with the required changes
-1. Feel free to create additional key vaults and/or secrets and then test your new template
-
-For bonus points, feel free to incorporate complex parameter objects and/or variable objects for the t-shirt sizes.
-
-## Submitting
-
-You won't be able to submit that nested templates with --template-file switch.  You have to use the --template-uri switch as otherwise the uri() function will fail validation. You can either push the files up to a GitHub repo (or somewhere else where they are accessible of http/https), or you can hardcode the vmUri to `"https://raw.githubusercontent.com/richeney/arm/master/lab7/vm.json"`.
-
-## Final files
-
-There are a few ways of completing that lab, so if you got it to work then well done. If you want to see my files then here you go:
+<<<<<<YOU ARE HERE>>>>>>
 
 ###### Lab 7 Files
 

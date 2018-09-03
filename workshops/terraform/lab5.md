@@ -112,9 +112,9 @@ Rather than a straight lab, we'll make this one more of a challenge. The challen
 
 If you get stuck then there are answers at the bottom of the lab.
 
-## Automated
+## Automated scripts
 
-If you want to automate that process then feel free to make use of this script to create a service principal and provider.tf: <https://github.com/azurecitadel/azurecitadel.github.io/blob/master/workshops/terraform/createTerraformServicePrincipal.sh>
+If you want to automate that process then feel free to make use of this createTerraformServicePrincipal.sh script to create a service principal and provider.tf: <https://github.com/azurecitadel/azurecitadel.github.io/blob/master/workshops/terraform/createTerraformServicePrincipal.sh>
 
 The script will interactively
 
@@ -129,6 +129,13 @@ The following commands will download it and run it:
 uri=https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/workshops/terraform/createTerraformServicePrincipal.sh
 curl -sL $uri > createTerraformServicePrincipal.sh && chmod 750 createTerraformServicePrincipal.sh
 ./createTerraformServicePrincipal.sh
+```
+
+You can also download a short splogin.sh script that logs in as the service principal if you have a populated provider.tf file:
+
+```bash
+uri=https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/workshops/terraform/splogin.sh
+curl -sL $uri > splogin.sh && chmod 750 splogin.sh
 ```
 
 ## Resetting service principal credentials
