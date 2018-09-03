@@ -26,7 +26,7 @@ Finally, at the end of the lab we will also take a look at a couple of alternati
 
 ## Pre-requisites
 
-You will have already been using the az and terraform executables locally.  As Terraform is from the OSS world then these labs are unapologetically written from a linux and CLI 2.0 perspective. Linux and MacOS users 
+You will have already been using the az and terraform executables locally.  As Terraform is from the OSS world then these labs are unapologetically written from a linux and CLI 2.0 perspective. Linux and MacOS users are well catered for as vscode is cross-platform and the standard packages (az, terraform) are easily installed.
 
 For Windows 10 then the minimum is to use both terraform and az at the Windows OS level so that you can use them within a Command Prompt or PowerShell session. (You are also free to use the equivalent AzureRM module PowerShell cmdlets in place of the CLI 2.0 commands.)
 
