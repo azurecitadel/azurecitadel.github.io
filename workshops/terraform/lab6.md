@@ -265,6 +265,8 @@ The resource is now fully imported and safely under the control of Terraform.
 
 * Add in the tags argument and variable
 * Rerun `terraform plan` and then `terraform apply` to apply that change
+* Now delete the import.tf file
+* Rerun `terraform plan` and then `terraform apply` to remove the delete resource group
 
 > Note that in the future it is planned that Terraform will be able to automatically generate resource stanzas.
 
@@ -305,7 +307,7 @@ It is important to first check that the lease is definitely a fault to be cleare
 
 We have reached the end of the lab. You have configured remote state into an Azure storage account and imported an existing resource into the configuration.
 
-Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab6>.
+Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab6>. (I have retained the import.tf for reference.)
 
 In the next lab we will look at some of the additional areas to consider with multi-tenanted environments, including the use of Service Principals and referencing read only states.  We will also look at some of the other ways of managing environments, such as the Terraform Marketplace offering in Azure, and Hashicorp's Terraform Enterprise.
 
