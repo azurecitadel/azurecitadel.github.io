@@ -53,7 +53,7 @@ We will build our images directly from source. The source of Smilr is held on Gi
 
 To use ACR Build to run our Docker build task in Azure, we call the `az acr build` sub-command. The first image we'll build is for the Smilr data API component, the source Dockerfile is in the **node/data-api** sub-directory and we'll tag the resulting image `smilr/data-api`
 ```
-az acr build --registry $ACR_NAME -g kube-lab --file node/data-api/Dockerfile --image smilr/data-api --context https://github.com/benc-uk/microservices-demoapp.git
+az acr build --registry $ACR_NAME -g kube-lab --file node/data-api/Dockerfile --image smilr/data-api https://github.com/benc-uk/microservices-demoapp.git
 ```
 **💬 Note.**  If you are familiar with the Docker command line and the `docker build` command you notice some similarity in syntax and approach
 
@@ -61,7 +61,7 @@ az acr build --registry $ACR_NAME -g kube-lab --file node/data-api/Dockerfile --
 
 That should take about a minute or two to run. After that we'll build the frontend, the command will be very similar just with a different source file image tag
 ```
-az acr build --registry $ACR_NAME -g kube-lab --file node/frontend/Dockerfile --image smilr/frontend --context https://github.com/benc-uk/microservices-demoapp.git
+az acr build --registry $ACR_NAME -g kube-lab --file node/frontend/Dockerfile --image smilr/frontend https://github.com/benc-uk/microservices-demoapp.git
 ```
 This will take slightly longer but should complete in 3-5 minutes
 
