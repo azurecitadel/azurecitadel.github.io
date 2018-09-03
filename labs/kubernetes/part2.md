@@ -23,7 +23,7 @@ ACR_NAME="change-this-to-your-unique-acr-name"
 az acr create -n $ACR_NAME -g kube-lab -l westeurope --sku Standard --admin-enabled true
 ```
 
-**💬 Note. April 2018.**  We will be using a preview feature called *ACR Build* and this is only available in **westeurope** and **eastus**, so make sure you create your registry in either of those regions. 
+**💬 Note. Sept 2018.**  We will be using a feature called *ACR Build* this is currently in preview but now quite stable. 
 
 
 ## Configure Kubernetes to use ACR
@@ -49,26 +49,19 @@ We will use this secret later on
 
 For this section we will be using a brand new feature of *Azure Container Registry*  called "ACR Build", this allows us to build container images in Azure without need access to a Docker host or having Docker installed locally. It also pushes the resulting images directly into your registry.
 
-This feature is not part of the Azure CLI yet, so needs to be installed as an extension
-```
-az extension add --source https://acrbuild.blob.core.windows.net/cli/acrbuildext-0.0.4-py2.py3-none-any.whl -y
-```
+We will build our images directly from source. The source of Smilr is held on GitHub in this repository https://github.com/benc-uk/microservices-demoapp
 
-We will build our images from source, to do that we'll get the Smilr application source code from Github using git
+To use ACR Build to run our Docker build task in Azure, we call the `az acr build` sub-command. The first image we'll build is for the Smilr data API component, the source Dockerfile is in the **node/data-api** sub-directory and we'll tag the resulting image `smilr/data-api`
 ```
-git clone https://github.com/benc-uk/microservices-demoapp.git
-cd microservices-demoapp
-```
-
-Now we'll use ACR Build to run our Docker build task in Azure. The first image we'll build is for the Smilr data API component, the source Dockerfile is in the **node/data-api** sub-directory and we'll tag the resulting image `smilr/data-api`
-```
-az acr build --registry $ACR_NAME -g kube-lab --context . --file node/data-api/Dockerfile --image smilr/data-api 
+az acr build --registry $ACR_NAME -g kube-lab --file node/data-api/Dockerfile --image smilr/data-api https://github.com/benc-uk/microservices-demoapp.git
 ```
 **💬 Note.**  If you are familiar with the Docker command line and the `docker build` command you notice some similarity in syntax and approach
 
+**💬 Note.**  If the CLI times out with "no more logs" message you can still view the build logs by running `az acr build-task logs -r $ACR_NAME -g kube-lab` to check on the progress
+
 That should take about a minute or two to run. After that we'll build the frontend, the command will be very similar just with a different source file image tag
 ```
-az acr build --registry $ACR_NAME -g kube-lab --context . --file node/frontend/Dockerfile --image smilr/frontend
+az acr build --registry $ACR_NAME -g kube-lab --file node/frontend/Dockerfile --image smilr/frontend https://github.com/benc-uk/microservices-demoapp.git
 ```
 This will take slightly longer but should complete in 3-5 minutes
 
