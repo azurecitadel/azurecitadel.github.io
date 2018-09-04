@@ -8,9 +8,9 @@ comments: true
 excerpt: Set up Ubuntu, OpenSUSE or SLES as your Windows subsystem for Linux (WSL).
 author: Richard_Cheney
 image:
-  feature: 
+  feature:
   teaser: cloud-tools.png
-  thumb: 
+  thumb:
 ---
 
 ## Enable the Windows Subsystem for Linux
@@ -39,25 +39,15 @@ Verify the installation
 
 ----------
 
-## jq
+## Installing git, jq and wall packages
 
-Add git to the bash shell:
-
-* Open up a Command Prompt, and type `bash`.
-* Update the package list and then install jq
-    * `sudo apt update && sudo apt --assume-yes install jq`
-* Verify by going into the bash shell and typing `jq` to see the base commands
-
-----------
-
-## git
-
-Add git to the bash shell:
+There are a few standard packages that are useful to have installed.  You may have your own preferred packages to add to the list.
 
 * Open up a Command Prompt, and type `bash`.
-* Update the package list and then install git
-    * `sudo apt update && sudo apt --assume-yes install git`
-* Verify by going into the bash shell and typing `git` to see the base commands
+* Update the package list and then install the desired packages
+    * `sudo apt update && sudo apt --assume-yes install git jq wall`
+* Verify by going into the bash shell and typing `jq` or `git` to see the base commands
+* Check that wall is there by running `which wall`
 
 > Note that you should also install git at the Windows 10 OS level if you wish to use the SCM functionality in Visual Studio Code.
 
@@ -65,9 +55,9 @@ Add git to the bash shell:
 
 ## Terraform
 
-Terraform is not installed using a package manager.  
+Terraform is not installed using a package manager.
 
-The manual installation path is to go to the Terraform [downloads](https://www.terraform.io/downloads.html) page, download the 64 bit linux version and place it in the path.  
+The manual installation path is to go to the Terraform [downloads](https://www.terraform.io/downloads.html) page, download the 64 bit linux version and place it in the path.
 
 If you are trusting then you can run the following script to download the latest version and install into /usr/local/bin.  You will be prompted for your password as the script uses sudo. Note that it will install zip if that is not present on the system. (Triple click to select the whole line.)
 
@@ -83,7 +73,7 @@ curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/m
 
 The default colours for both the PS1 prompt and for vi and vim can be difficult to read.  If you find that to be the case then follow the instructions below.
 
-* Edit ~/.bashrc (using nano, vi, or vim) and then scroll to the color_prompt section.  
+* Edit ~/.bashrc (using nano, vi, or vim) and then scroll to the color_prompt section.
     * The PS1 prompt colours are set in the sections that are in the format `[01:34m\]`.  The 34 is light blue, which is hard to read.  Changing the number from 34 to 36 (cyan) or 33 (yellow) will be more readable. (Info from [here](http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html).)
 * For vi(m) users then creating a .vimrc file will also help to set a more readable colour scheme
 
