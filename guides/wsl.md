@@ -39,15 +39,15 @@ Verify the installation
 
 ----------
 
-## Installing git, jq and wall packages
+## Installing git, jq and tree packages
 
 There are a few standard packages that are useful to have installed.  You may have your own preferred packages to add to the list.
 
 * Open up a Command Prompt, and type `bash`.
 * Update the package list and then install the desired packages
-    * `sudo apt update && sudo apt --assume-yes install git jq wall`
+    * `sudo apt update && sudo apt --assume-yes install git jq tree`
 * Verify by going into the bash shell and typing `jq` or `git` to see the base commands
-* Check that wall is there by running `which wall`
+* Check that wall is there by running `which tree`
 
 > Note that you should also install git at the Windows 10 OS level if you wish to use the SCM functionality in Visual Studio Code.
 
