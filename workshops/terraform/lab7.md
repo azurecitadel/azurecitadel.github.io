@@ -40,11 +40,11 @@ You can also nest modules.  For instance, you might have a customised virtual ma
 
 This is an efficient way of starting with smaller modules and combining them to create complex configurations.
 
-## Key characteristics
+## Key module characteristics
 
 The truth is that you have already been working with a module.  The **root module** is everything that sits in the directory in which you have been running your terraform commands.
 
-And a module is just a collection of terraform files in a location.  
+And a module is just a collection of terraform files in a location.
 
 The code block below shows an example module call:
 
@@ -59,14 +59,18 @@ module "avset" {
 }
 ```
 
-A couple of points to make:
+A few really important points to make:
 
-1. There is no provider type required - you only need the Terraform id
-1. The only required argument is `source` - if you have a hardcoded Terraform module then this is all that you need
-1. The other arguments match the variables defined within the module
-1. The only attributes available for the module are those that have been exported as outputs within the module
+1. **Provider type is not required**
+    * You only need the Terraform id
+1. **_Source_ is the only required argument**
+    * If your module is hardcoded (like the NSGs) then this is all that you need
+1. **Create additional arguments for your module by defining variables**
+    * The module cannot see any variables from the root module
+1. **Create attributes for your module by defining output**
+    * You cannot access any 'normal' provider type attributes from the module unless they are exported as outputs
 
-As an example, if the avset module had an output.tf containing the following:
+Let's look at using a module's outputs as an exported attribute. For example, if the avset module had an output.tf containing the following:
 
 ```ruby
 output "ilb_ip" {
@@ -85,15 +89,27 @@ resource "azurerm_provider_type" "tfid" {
 
 When your root module is using child modules then you will need to run a `terraform get`.  This will copy the module information locally.  (If your module is already local then it will return immediately.)  You can then run through the `terraform init` to initalise and pull down any required providers before running the plan and apply stages of the workflow.
 
-## Creating a module
+## Create a terraform-modules repository
 
-There is more to know about modules, but let's crack on and make one, based on everything we defined in lab 3, i.e. the networking, NSGs, key vault etc.  We'll make a module called scaffold.
+There is more to know about modules, but let's crack on and make a simple one called scaffold, based on the networking and NSGs from lab 3.
 
-* Copy the `loc`, `tags`, `tenant_id` and `kvr_object_id` variables out of your root module's variables.tf
-* Create a new file called `modules/scaffold/variables.tf`
-    * Visual Studio Code will automatically create the subfolders
+We'll first make a make a new GitHub repository for our modules.
+
+* Go into GitHub and create a new repository called terraform-modules
+* Clone it in vscode
+* Select add Add to Workspace from the notification
+
+![Add to Workspace](/workshops/terraform/images/addToWorkshop/png)
+
+* Check vscode's Explorer (`CTRL`+`SHIFT`+`E`) and SCM (`CTRL`+`SHIFT`+`G`) to see how it handles multi root workspaces
+
+## Create the scaffold module
+
+* Copy the `loc` and `tags` variables out of your root module's variables.tf
+* Right click the terraform-modules bar in vscode Explorer
+* Create a new file called `scaffold/variables.tf`
+    * Visual Studio Code will automatically create the subfolder
 * Paste the two variables into the scaffold variables.tf
-* Move the coreNetworking.tf, keyvaults.tf and nsgs.tf file into the scaffold folder
 * Create a `/modules/scaffold/outputs.tf` file
     * Add in the following output
 
@@ -103,42 +119,72 @@ output "vpnGwPipAddress" {
 }
 ```
 
-OK, that's defined our local module folder.  It has a variables.tf defining the inputs, which are loc, tags, tenant_id and kvr_object_id.  And we have an outputs.tf files for the module outputs, which currently only has vpnGwPipAddress. We can always add more outputs to the module later on.
+Concatenate the coreNetworking.tf and nsgs.tf file into the scaffold folder
 
-* Now create a main.tf with a module call
+* Open the Integrated Console and make sure you are in the terraform-labs folder
+* Run the commands in the following code block:
+
+```bash
+cat coreNetworking.tf nsgs.tf > ../modules/scaffoldmain.tf
+rm coreNetworking.tf nsgs.tf
+```
+
+The commands have concatenated the two files into a new main.tf in out scaffold module, and then removed them from out terraform-labs area.
+
+OK, that's defined our local module folder.  It is a common convention for modules to have only a variables.tf, main.tf and an outputs.tf and that is what we have.
+
+1. The variables.tf defines our modules inputs, which are loc and tags
+1. The main azurerm stanzas are in the main.tf
+1. The outputs.tf file has the module outputs, which is currently only the vpnGwPipAddress
+
+ If you want your module to match tha convention then you can use the following commands to concatenate the two files together:
+
+# Create a new main.tf in terraform-labs
+
+We will rename the webapps.tf and add in the new module call at the top. (You still have full flexibility over how you name your *.tf files, but we'll make the change anyway.)
+
+* Rename the webapps.tf to main.tf
+* Insert the following stanza at the top of the file
 
 ```ruby
 module "scaffold" {
-  source    = "./mymodules/scaffold"
-
+  source    = "../terraform-modules/scaffold"
 }
 ```
+
+That is a relative path for the _source_ value.  You may fully path if you prefer.
+
+* Commit and push the changes to both GitHub repositories
+    * You will need to select each source control provider in turn
+
+## Import the module
 
 * Run `terraform get` and then check your .terraform folder
 
 ```bash
-citadel-terraform$ terraform get
+terraform-labs$ terraform get
 - module.scaffold
-  Getting source "./modules/scaffold"
-citadel-terraform$
-citadel-terraform$ tree .terraform/
-.terraform/
+  Getting source "../terraform-modules/scaffold"
+
+terraform-labs$ tree .terraform
+.terraform
 ├── modules
-│   ├── d2a8d6021493603f7473faed81e245db -> /mnt/c/Users/richeney/git/citadel-terraform/modules/scaffold
+│   ├── babf0d8e37fc83a12629fc770f59087b -> /mnt/c/Users/richeney/git/terraform-modules/scaffold
 │   └── modules.json
-├── plugins
-│   └── linux_amd64
-│       ├── lock.json
-│       ├── terraform-provider-azurerm_v1.7.0_x4
-│       └── terraform-provider-random_v1.3.1_x4
-└── terraform.tfstate
+└── plugins
+    └── linux_amd64
+        ├── lock.json
+        ├── terraform-provider-azurerm_v1.13.0_x4
+        └── terraform-provider-random_v2.0.0_x4
+
+4 directories, 4 files
 
 ```
 
 * And then `terraform init`
 
 ```bash
-citadel-terraform$ terraform init
+terraform-labs$ terraform init
 Initializing modules...
 - module.scaffold
 
@@ -151,7 +197,15 @@ Initializing provider plugins...
 
 * Run `terraform plan`
 
-You should see that all of the resources that are now in the module will be deleted and recreated. They have essentially all been renamed, with the resources prefixed with `module.terraform.` and we can use that to manipulate the terraform.tfstate file.  We can refactor the Terraform IDs for those resources using the `terraform state mv` command.  This is a very flexible tool that can selectively extract resources from one state file into another.  Run `terraform state mv --help` to check the help page for it.  
+You should see in the plan output that all of the resources that are now in the module will be deleted and recreated.
+
+**DO NOT RUN A TERRAFORM APPLY!!**
+
+Those resources have essentially all been renamed, with the resources prefixed with `module.terraform.` and we can use that to manipulate the terraform.tfstate file.  This givesw us an opportunity to ontroduce another command to manage state effectively.
+
+## Refactoring module resources in a state file
+
+We can refactor the Terraform IDs for those resources using the `terraform state mv` command.  This is a very flexible tool that can selectively extract resources from one state file into another.  Run `terraform state mv --help` to check the help page for it.
 
 * Run the loop below to rename the resources in our existing state file
 
@@ -163,7 +217,7 @@ done
 
 * Rerun `terraform plan`
 
-You should now see that there are no changes required.  
+You should now see that there are no changes required.
 
 The `terraform state mv` command is potentially dangerous, so it automatically creates backup files for each action.  If you want to tidy them up then you can run `rm terraform.tfstate.??????????.backup`.
 
@@ -175,26 +229,11 @@ You will notice that AWS has by far the largest number of community contributed 
 
 Browse one of the modules.  You'll notice the source path starts with `Azure/`, and the documentation shows examples in the readme, inputs, outputs, dependencies, resources etc.  In terms of standards this is a good guideline for your own modules.
 
-You can also click on the source link and it will take you through to the GitHub repository.  Take a look at <https://github.com/Azure/terraform-azurerm-network> and you will see that it has a good README.md.  The other key thing is that for simple one level modules that most contributors stick to variables.tf, main.tf and outputs.tf.  This makes it easier for everyone usiubng a module to see the inputs, outputs, and have everything else hidden away in the main.tf.  Let's do the same:
-
-* Move to the modules/scaffold folder
-* Concatenate your coreNetworking.tf, keyvaults.tf and nsgs.tf into a single main.tf file
-* Remove the old files
-* Return back to the main citadel-terraform folder
-
-```bash
-citadel-terraform$ cd modules/scaffold/
-scaffold$ pwd
-/mnt/c/Users/richeney/git/citadel-terraform/modules/scaffold
-scaffold$ cat coreNetworking.tf keyvaults.tf nsgs.tf > main.tf
-scaffold$ rm coreNetworking.tf keyvaults.tf nsgs.tf
-scaffold$ cd -
-/mnt/c/Users/richeney/git/citadel-terraform
-```
-
-* Run the `terraform plan` to confirm no changes are required
+You can also click on the source link and it will take you through to the GitHub repository.  Take a look at <https://github.com/Azure/terraform-azurerm-network> and you will see that it has a good README.md.  As mentioned before, for simple one level modules that most contributors stick to variables.tf, main.tf and outputs.tf.  This makes it easier for everyone using a module to see the inputs and the outputs, and have everything else hidden away in the main.tf.
 
 ## Using a module from the registry
+
+<<<<<<YOU ARE HERE>>>>>>
 
 If you are ahead of others in the lab then feel free to leverage one of the modules on the [Terraform Registry](https://registry.terraform.io/).  Note that instantiating services on the public cloud platformas will incur charges so be sensible!
 
@@ -204,7 +243,7 @@ One of the key tenets for Terraform is the idea of versioning.  This applies thr
 
 As a result, the terraform executable can only be updated manually, outside of standard linux package management such as `sudo apt update && sudo apt full-upgrade` on Ubuntu.  The Terraform [releases](https://releases.hashicorp.com/terraform/) page lists out all of the versions, but does not include a 'latest' to adhere to that versioning ethos.  If you want a new version then you download that version and replace the one that you have.
 
-The same applies to modules.  When you ran the `terraform get` it takes a copy of the modules and puts them into your `.terraform/modules` folder.  (For the local modules it uses a symbolic link instead.)  And if you run `terraform get` then it **will not** update modules if they already exist in that folder.  Instead you have to use `terraform get -update=true`. And you can include [version constraints](https://www.terraform.io/docs/modules/usage.html#module-versions) to ensure that you are using a known good version.  
+The same applies to modules.  When you ran the `terraform get` it takes a copy of the modules and puts them into your `.terraform/modules` folder.  (For the local modules it uses a symbolic link instead.)  And if you run `terraform get` then it **will not** update modules if they already exist in that folder.  Instead you have to use `terraform get -update=true`. And you can include [version constraints](https://www.terraform.io/docs/modules/usage.html#module-versions) to ensure that you are using a known good version.
 
 ## End of Lab 7
 
