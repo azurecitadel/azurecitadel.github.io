@@ -167,9 +167,9 @@ variable "tags" {
 }
 ```
 
-We can pull out individual values.  For instance `"${var.tags['source']}"` would be evaluated as `citadel`.
+We can pull out individual values.  For instance `"${var.tags["source"]}"` would be evaluated as `citadel`. (Note the syntax always uses double speech marks `"` rather than single quotes `'`.)
 
-Or we can pass in the full map using `"${var.tags}"`, which will be resolved to:
+Wwe can also pass in the whole map using `"${var.tags}"`, which will be resolved to:
 
 ```json
 {
@@ -178,12 +178,14 @@ Or we can pass in the full map using `"${var.tags}"`, which will be resolved to:
 }
 ```
 
-Let's use the tags map for our resources:
+Let's use that tags map for our resources:
 
-* Change the tags for the resource group to use the variable map
-* Set the tags on the storage account to inherit the tags of the resource group
-* Prefix the storage account name with the value of the source tag (max 24 chars)
+* Change the tags for the resource group to use the _whole map_ for the **tags variable**
+* Set the tags on the storage account to use the tags exported attribute of the azurerm_resource_group
+* Prefix the storage account name with the value of the **source tag**
 * Rerun the `terraform plan`
+
+If you get stuck on this section then you can skip to the end of the lab and click on the _terraform-lab2_ repo to show example files.
 
 You should notice that the plan now shows some changes to be applied:
 
