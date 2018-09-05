@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 1: Basics"
 categories: null
-date: 2018-08-28
+date: 2018-09-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney

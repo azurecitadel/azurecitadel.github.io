@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 4: Meta Parameters"
 categories: null
-date: 2018-06-05
+date: 2018-09-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -15,7 +15,7 @@ published: true
 
 You can go a long way with Terraform making use of hard coded stanzas or defaulted variables.  If you have a simpler configuration or don't mind manually editing the files to configure the variables then this is a simple way to manage your Terraform files.  However we are looking to build up reusable IP that will work in a multi-tenanted environment, and will prove to be more robust over time as we update those building blocks.
 
-In this lab we will leverage some of the functions and meta parameters that you can use within HCL.  Some of the richer configuration examples that you see will make extensive use of these meta parameters so you will need to have an idea of what they do if you want to leverage the work of others.  
+In this lab we will leverage some of the functions and meta parameters that you can use within HCL.  Some of the richer configuration examples that you see will make extensive use of these meta parameters so you will need to have an idea of what they do if you want to leverage the work of others.
 
 We'll also look at the various ways that we can define variables.
 
@@ -33,7 +33,7 @@ There are a few key pages on the Terraform site that you will come back to often
 
 ## Interpolation
 
-You have already been using interpolation. Terraform has interpreted everything wrapped in `"${ ... }"`. So far this has been limited to referencing variables (e.g. `"${var.loc}"`) or the exported attributes of various resource types (e.g. `"${azurerm_resource_group.nsgs.location}"`).  
+You have already been using interpolation. Terraform has interpreted everything wrapped in `"${ ... }"`. So far this has been limited to referencing variables (e.g. `"${var.loc}"`) or the exported attributes of various resource types (e.g. `"${azurerm_resource_group.nsgs.location}"`).
 
 Terraform has a rich syntax covered on the [interpolation syntax](https://www.terraform.io/docs/configuration/interpolation.html) page.
 
@@ -128,7 +128,7 @@ resource "azurerm_app_service" "citadel" {
 
 ## Using count
 
-OK, we'll now modify the app service plan and app service stanzas to make them multi-region.  This is done by using the count meta parameter, which may be as set to something simple such as `count = 2` or a numeric variable, such as `count = "${var.nlocs}"`.  However we'll set this to the number of locations we have in the webapplocs list variable.  
+OK, we'll now modify the app service plan and app service stanzas to make them multi-region.  This is done by using the count meta parameter, which may be as set to something simple such as `count = 2` or a numeric variable, such as `count = "${var.nlocs}"`.  However we'll set this to the number of locations we have in the webapplocs list variable.
 
 We can then reference `${count.index}` in the stanzas.  Remember that we can slice out a single list element. For instance you can select the first element of a variable called myList using `${var.myList[0]}`.
 
@@ -160,7 +160,7 @@ Here is an example of the two stanzas plus a local variable. **Note that you do 
 
 ```ruby
 locals {
-    webappsperloc   = 3  
+    webappsperloc   = 3
 }
 
 resource "azurerm_app_service_plan" "free" {

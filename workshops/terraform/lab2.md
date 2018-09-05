@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 2: Variables"
 categories: null
-date: 2018-06-01
+date: 2018-09-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -330,7 +330,7 @@ Run the `terraform init` command to pull down the random provider, and then run 
 
 **Question**:
 
-As you build up Terraform configurations you will need to read the resource pages for the providers to find out which exported attributes you can then use elsewhere in your .tf files.  
+As you build up Terraform configurations you will need to read the resource pages for the providers to find out which exported attributes you can then use elsewhere in your .tf files.
 
 What are the four exported attributes for **random_id**? (Not random_string.)
 

@@ -31,17 +31,17 @@ Finally, at the end of the lab we will also take a look at a couple of alternati
 * jq (linux only)
 * vscode integrated console configured
 
-From this point onwards you will need to have the executables locally.  For macOS and linux you will download them and your integrated console will be preconfigured to use your standard terminal shell.  
+From this point onwards you will need to have the executables locally.  For macOS and linux you will download them and your integrated console will be preconfigured to use your standard terminal shell.
 
 For Windows 10 then the minimum is to download both terraform and az at the Windows OS level so that you can use them within a Command Prompt or PowerShell session.  However the remaining labs are based on Windows 10 with the [Windows Subsystem for Linux](https://azurecitadel.github.io/guides/wsl/) (WSL) configured and do make use of Bash scripting at points so WSL is very much recommended.  If you have WSL then you should also download the 64 bit linux version of terraform, and make sure that both CLI 2.0 and jq are installed. (An alternative is to make use of the [Terraform VM](#terraform-vm-on-the-azure-marketplace) discussed towards the bottom of the lab. )
 
-Download terraform for your operating system from <https://www.terraform.io/downloads.html>.  The download will be a zip file containing the terraform executable.  Extract it to a directory within your path, such as /usr/local/bin, or C:\Windows\System32.  
+Download terraform for your operating system from <https://www.terraform.io/downloads.html>.  The download will be a zip file containing the terraform executable.  Extract it to a directory within your path, such as /usr/local/bin, or C:\Windows\System32.
 
 Install the Azure CLI from <https://aka.ms/GetTheAzureCli> if you haven't done so already.
 
 You may also want to install jq if `which jq` fails to find it.  You can install it on Ubuntu (or other Debian derived distros) using `sudo apt-get --assume-yes install jq`.
 
-Configure the [integrated terminal](https://azurecitadel.github.io/guides/vscode/#integrated-console) within Visual Studio Code.  
+Configure the [integrated terminal](https://azurecitadel.github.io/guides/vscode/#integrated-console) within Visual Studio Code.
 
 You can use `where` and `which` on Windows and linux respectively to find the executable within your path. Below is my configuration using Windows 10 and the Ubuntu version of WSL.
 
@@ -105,15 +105,15 @@ ls -l /usr/local/bin/terraform
 
 ### Final check
 
-OK, you should now be able to open the integrated console in vscode (using `CRTL+'`) and type both `az` and `terraform`.  
+OK, you should now be able to open the integrated console in vscode (using `CRTL+'`) and type both `az` and `terraform`.
 
-As Terraform is from the OSS world then this lab will unapologetically be written from a linux and CLI 2.0 perspective, although there is little reason why you couldn't use the terraform and az executables in a PowerShell session, or use equivalent AzureRM modules PowerShell commands in place of the CLI 2.0 commands.  
+As Terraform is from the OSS world then this lab will unapologetically be written from a linux and CLI 2.0 perspective, although there is little reason why you couldn't use the terraform and az executables in a PowerShell session, or use equivalent AzureRM modules PowerShell commands in place of the CLI 2.0 commands.
 
 From now on we will be working locally within this rather than using the Command Palette extension for Terraform to push into Cloud Shell.
 
 ## Service Principals
 
-Service Principals are security identities within an Azure AD tenancy that may be used by apps, services and automation tools.  
+Service Principals are security identities within an Azure AD tenancy that may be used by apps, services and automation tools.
 
 When you create a Service Principal then from an RBAC perspective it will have the Contributor role assigned at the subscription scope level.  For most applications you would remove that and then assign a more limited RBAC role and scope assigment, but this default level is ideal for Terraform provisioning.
 
@@ -157,11 +157,11 @@ tenantId=$(jq -r .tenant <<< $spout)
 az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
 ```
 
-You'll notice that we have set the service principal name to the subscription GUID prefixed with "terraform-".  The command will generate a service principal name or password if they are not specified.  However specifying the name as 'terraform-\<subscriptionId\>' as a standard should ensure that the endpoint is unique enough yet easily derived in scripting.  
+You'll notice that we have set the service principal name to the subscription GUID prefixed with "terraform-".  The command will generate a service principal name or password if they are not specified.  However specifying the name as 'terraform-\<subscriptionId\>' as a standard should ensure that the endpoint is unique enough yet easily derived in scripting.
 
 Check that the login is successful using any CLI command such as `az account list-locations --output table` or `az account show --output jsonc`.
 
-> Note that you will be logged on at the CLI level using the service principal for a period of time, so if you want to revert back to your normal context then you should use `az logout` and then login in normally.  
+> Note that you will be logged on at the CLI level using the service principal for a period of time, so if you want to revert back to your normal context then you should use `az logout` and then login in normally.
 
 #### Custom role assignment
 
@@ -194,7 +194,7 @@ az login --service-principal --username $clientId --password $clientSecret --ten
 
 Check that the login is successful using any CLI command such as `az account list-locations --output table` or `az account show --output jsonc`.
 
-> Note that you will be logged on at the CLI level using the service principal for a period of time, so if you want to revert back to your normal context then you should use `az logout` and then login in normally.  
+> Note that you will be logged on at the CLI level using the service principal for a period of time, so if you want to revert back to your normal context then you should use `az logout` and then login in normally.
 
 #### Create a provider.tf file
 
@@ -235,11 +235,11 @@ Run the following in your integrated console, i.e. in your local citadel-terrafo
 * `terraform init`
 * `terraform plan`
 
-OK, your local directory is now initialised, but as you have no current terraform.tfstate file then your plan will show that all of the resources will be created.  
+OK, your local directory is now initialised, but as you have no current terraform.tfstate file then your plan will show that all of the resources will be created.
 
 We will be dealing with state in more detail in the next lab but if you open your local terraform.tfstate file in vscode then you will notice that it is a text file containing a small amount of JSON data. It has no knowledge of the resources that have already been created in the prior labs.
 
-If you have installed the Azure Storage extension for vscode then we can copy the contents of the terraform.tfstate file in out Cloud Shell file area.  
+If you have installed the Azure Storage extension for vscode then we can copy the contents of the terraform.tfstate file in out Cloud Shell file area.
 
 * Click on the Azure logo on the left to open the Storage extension
 * Navigate to your Cloud Shell storage account, which will be prefixed with cs
@@ -259,12 +259,12 @@ This contains the full state of our environment as this is where we have been ru
 * Replace the contents of the file with the clipboard (`CTRL-A, CTRL-V`)
 * Save the local file (`CTRL-S`)
 
-OK, you have manually copied the state in.  
+OK, you have manually copied the state in.
 
 * Reopen the integrated console (`CTRL-`)
 * Rerun the `terraform plan` step
 
-You should see that everything is up to date and known and that no changes are planned.  
+You should see that everything is up to date and known and that no changes are planned.
 
 > This is a really sensible checkpoint to reach.  Avoid making changes to the configuration until you reach this kind of steady state.
 
@@ -273,7 +273,7 @@ You should see that everything is up to date and known and that no changes are p
 At the moment we only have the terraformKeyVaultReader with Get access on keys and secrets.  Let's add our new Terraform Service Principal with an access policy to create secrets and keys as well.
 
 * Add another access policy sub stanza into the key vault resource in the modules/scaffold/main.tf file
-* Use the tenant_id and object_id for your service principal from the provider.tf 
+* Use the tenant_id and object_id for your service principal from the provider.tf
 
 ```ruby
     access_policy {
@@ -290,11 +290,11 @@ It should come through as a straight update in place to the key vault
 
 ## Multi-tenancy
 
-For a standard multi-tenancy environment then you will need to create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.)  
+For a standard multi-tenancy environment then you will need to create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.)
 
 Having a separate terraform folder per customer or environment with its own provider.tf files is very flexible.  It also mitigates common admin errors such as terraform commands being run whilst in the wrong context.
 
-There is another less frequently used argument that you can specify in the provider block called **alias**.  
+There is another less frequently used argument that you can specify in the provider block called **alias**.
 
 Using aliases can be of use in a customer environment where they want to configure a deployment across multiple subscriptions.  Let's take the example of customer with one subscription for the core services and another for the devops team.  If you do not have an alias specified in a provider block then that is your default provider, so adding aliases creates additional providers.  You can then specify that provider alias in your resource stanzas.  For example:
 

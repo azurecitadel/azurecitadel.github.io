@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 3: Core Environment"
 categories: null
-date: 2018-06-05
+date: 2018-09-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -87,7 +87,7 @@ Let's check that process by modifying the README.md, committing the change and t
 
 OK, so we can save locally and push into Cloud Shell as we move through the lab.  Don't forget to periodically commit your changes locally and push them up into your GitHub repository.
 
-> Visual Studio Code has a nice smart commit feature.  If you have a number of changed files that you want to stage and commit locallt in one go, then you can add in the message at the top of the SCM sidebar and do CTRL-ENTER then it will prompt you to enable Smart Commit.  You then only need to sync in the status bar to push the files up to GitHub. You are still able to chunk your changed files into separate commits.  Just stage your selected files and the Smart Commit will only commit those.  
+> Visual Studio Code has a nice smart commit feature.  If you have a number of changed files that you want to stage and commit locallt in one go, then you can add in the message at the top of the SCM sidebar and do CTRL-ENTER then it will prompt you to enable Smart Commit.  You then only need to sync in the status bar to push the files up to GitHub. You are still able to chunk your changed files into separate commits.  Just stage your selected files and the Smart Commit will only commit those.
 >
 > The vscode setting (`CTRL-.`) for that is `"git.enableSmartCommit": true`.
 
@@ -106,7 +106,7 @@ In this lab we will be creating the following as part of our core environment:
 
 Browse the documentation pages for the various provider types.  Note that the index on the left lists out the **Provider** and the **Data Sources** first.  The various **Resources** are then listed underneath.
 
-> For the sake of time we will actually comment out the VPN Gateway in these labs before applying our configuration as it takes a little while to build and it is one of the pricier resources that we will be using.  
+> For the sake of time we will actually comment out the VPN Gateway in these labs before applying our configuration as it takes a little while to build and it is one of the pricier resources that we will be using.
 
 ## Organising your .tf files
 

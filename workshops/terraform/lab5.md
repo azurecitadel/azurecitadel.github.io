@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 5: Multi Tenancy"
 categories: null
-date: 2018-06-25
+date: 2018-09-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -36,7 +36,7 @@ However the remaining labs really are based on Windows 10 users having enabled t
 
 ## Service Principals
 
-Service Principals are security identities within an Azure AD tenancy that may be used by apps, services and automation tools.  
+Service Principals are security identities within an Azure AD tenancy that may be used by apps, services and automation tools.
 
 When you create a Service Principal then from an RBAC perspective it will have the Contributor role assigned at the subscription scope level.  For most applications you would remove that and then assign a more limited RBAC role and scope assigment, but this default level is ideal for Terraform provisioning.
 
@@ -48,7 +48,7 @@ We will create a Service Principal and then create a provider.tf file in our con
 
 Service principals work really well in a multi-tenanted environment as the service principal authentication details can sit directly in the relevent terraform directory so that it is easy to define the target subscription and tenancy and tightly connect it with the other infrastructure definitions.
 
-For a standard multi-tenancy environment then you would create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.)  
+For a standard multi-tenancy environment then you would create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.)
 
 Having a separate terraform folder per customer or environment with its own provider.tf files is very flexible.  It also mitigates common admin errors such as terraform commands being run whilst in the wrong context.
 
@@ -150,7 +150,7 @@ Note the full name for a Service Principal is the display name we specified in t
 
 ## Aliases
 
-There is another less frequently used argument that you can specify in the provider block called **alias**.  
+There is another less frequently used argument that you can specify in the provider block called **alias**.
 
 Using aliases can be of use in a customer environment where they want to configure a deployment across multiple subscriptions or clouds.  Let's take the example of customer with one subscription for the core services and another for the devops team.  If you do not have an alias specified in a provider block then that is your default provider, so adding aliases creates additional providers.  You can then specify that provider alias in your resource stanzas.  For example:
 

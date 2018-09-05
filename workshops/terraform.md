@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform on Azure"
 categories: none
-date: 2018-08-28
+date: 2018-09-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -11,7 +11,7 @@ published: true
 image:
   feature: terraform.jpg
   teaser: terraform.png
-excerpt: Series of labs for Terraform on Azure 
+excerpt: Series of labs for Terraform on Azure
 ---
 
 {% include toc.html %}

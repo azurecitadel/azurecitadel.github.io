@@ -2,7 +2,7 @@
 layout: article
 title: "Terraform Lab 6: State"
 categories: null
-date: 2018-06-25
+date: 2018-09-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
@@ -21,7 +21,7 @@ We will also cover locking (and how to remove leases on Azure blob storage), as 
 
 ## Overview
 
-Terraform stores the state of your managed infrastructure from the last time Terraform was run.  The local file is called terraform.tfstate.  
+Terraform stores the state of your managed infrastructure from the last time Terraform was run.  The local file is called terraform.tfstate.
 
 When you run `terraform plan` it will refresh an in memory copy of the state for the planning step.  Note that it won't save that updated state to disk.
 
@@ -137,7 +137,7 @@ terraform {
 }
 ```
 
-The storage account name, container name and storage account access key are all values from the Azure storage account service.  
+The storage account name, container name and storage account access key are all values from the Azure storage account service.
 
 The "key" is the **name** of the blob file that Terraform will create within the container for the remote state.
 
