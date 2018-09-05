@@ -124,8 +124,15 @@ The labs make use of a few binaries that are not part of a standard Ubuntu insta
 * git
 * tree
 
-For Ubuntu the install command is `sudo apt install jq git tree'  If you have a different distribution then you should use the right package manager.
+For Ubuntu the install command is `sudo apt install jq git tree'  If you have a different distribution then you should use the right package manager for that distribution.
 
+----------
+
+[**💻 Join GitHub**](https://github.com/join){:target="_blank" class="btn-info"}
+
+**Required for lab 3 onwards.**
+
+For lab 3 onwards we will use a public repository in GitHub so you will need to have a GitHub account.
 
 ## Assumptions
 
