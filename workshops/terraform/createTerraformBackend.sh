@@ -6,7 +6,7 @@ error()
   then
     tput setaf 1
     echo "ERROR: $@" >&2
-    tpu sgr0
+    tput sgr0
   fi
 
   exit 1
