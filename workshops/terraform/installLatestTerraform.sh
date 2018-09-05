@@ -4,7 +4,7 @@
 [[ ! -x /usr/bin/zip ]] && sudo apt-get --assume-yes -qq install zip
 
 # Install jq if not there
-[[ ! -x /usr/bin/jq ]] && sudo apt-get --assume-yes -qq install zip
+[[ ! -x /usr/bin/jq ]] && sudo apt-get --assume-yes -qq install jq
 
 # Determine latest file using the API
 latest=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')

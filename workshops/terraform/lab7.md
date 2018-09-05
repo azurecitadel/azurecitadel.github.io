@@ -339,7 +339,9 @@ terraform-labs$ ls -l .terraform/modules/
 total 0
 drwxrwxrwx 1 richeney richeney 4096 Sep  4 17:01 a5269b88508cfda37e02e97e5759753f
 lrwxrwxrwx 1 richeney richeney   51 Sep  4 16:46 ca0c4bdbf3f2e5218f73ce44078a995f -> /mnt/c/Users/richeney/git/terraform-scaffold-module-rwxrwxrwx 1 richeney richeney  439 Sep  4 17:01 modules.json
+
 terraform-labs$ rm .terraform/modules/ca0c4bdbf3f2e5218f73ce44078a995f
+
 terraform-labs$ ls -l .terraform/modules/
 total 0
 drwxrwxrwx 1 richeney richeney 4096 Sep  4 17:01 a5269b88508cfda37e02e97e5759753f
