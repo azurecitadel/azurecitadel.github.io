@@ -26,9 +26,13 @@ You will create a free public terraform-labs repository on GitHub.  GitHub is th
 For this lab you will need to have:
 
 * [Git](https://git-scm.com/downloads) installed locally
-* Ensure the git executable is in the path
-    * type `git` in PowerShell or Command Prompt on Windows
-    * type `git` in the terminal for Linux or MacOS
+* Ensure the git executable is in the operating system path
+* For Windows
+    * Visual Studio Code will not find
+    * Type `where git` in Command Prompt
+    * Note that git must be found in one of the *system* path directories
+    *
+    * Type `git` in the terminal for Linux or MacOS
 * Check Visual Studio Code (vscode)
     * Support for Git is integrated and in-the-box
     * Click on the Source Control icon on the left (`CTRL`+`SHIFT`+`G`)
@@ -85,9 +89,9 @@ Let's check that process by modifying the README.md, committing the change and t
 
 ![GitHub](/workshops/terraform/images/github.png)
 
-OK, so we can save locally and push into Cloud Shell as we move through the lab.  Don't forget to periodically commit your changes locally and push them up into your GitHub repository.
+OK, so we can save the files and run terraform commands locally as  move through the lab.  Don't forget to periodically commit your changes locally and push them up into your GitHub repository.
 
-> Visual Studio Code has a nice smart commit feature.  If you have a number of changed files that you want to stage and commit locallt in one go, then you can add in the message at the top of the SCM sidebar and do CTRL-ENTER then it will prompt you to enable Smart Commit.  You then only need to sync in the status bar to push the files up to GitHub. You are still able to chunk your changed files into separate commits.  Just stage your selected files and the Smart Commit will only commit those.
+> Visual Studio Code has a nice smart commit feature.  If you have a number of changed files that you want to stage and commit locally in one go, then you can add in the message at the top of the SCM sidebar and do CTRL-ENTER then it will prompt you to enable Smart Commit.  You then only need to sync in the status bar to push the files up to GitHub. You are still able to chunk your changed files into separate commits.  Just stage your selected files and the Smart Commit will only commit those.
 >
 > The vscode setting (`CTRL-.`) for that is `"git.enableSmartCommit": true`.
 
@@ -102,7 +106,6 @@ In this lab we will be creating the following as part of our core environment:
 * Virtual Network with three subnets
 * VPN Gateway in the GatewaySubnet
 * Network Security Groups
-* Key Vault
 
 Browse the documentation pages for the various provider types.  Note that the index on the left lists out the **Provider** and the **Data Sources** first.  The various **Resources** are then listed underneath.
 
@@ -154,8 +157,6 @@ AllowHTTP | TCP | 80
 AllowHTTPS | TCP | 443
 AllowSQLServer | TCP | 1443
 AllowRDP | TCP | 3389
-
-Finally the KeyVaults resource group will contain an Azure Key Vault to store our secrets and keys.
 
 ## Initial variables.tf
 
@@ -292,7 +293,13 @@ AllowRDP | TCP | 3389
 
 ## Core networking
 
-OK, time for you to get a little self sufficient and create a coreNetwork.tf file for our core networking.  You will need to find the right resource types in the <https://aka.ms/terraform> documentation area. You may also make use of the snippets that came with one of the modules. Type `CTRL-SPACE` and then type tf-azurerm_resource_group to get an example snippet copied into your file.  The snippets do not cover all resource types - for instance the azurerm_virtual_network_gateway is not currently in the set - but can be useful in quickly creating .tf files.
+OK, time for you to get a little self sufficient and create a coreNetwork.tf file for our core networking.
+
+This lab is designed to get you to start working with the <https://aka.ms/terraform> documentation area. Note that you'll have to **scroll past the data sources** on the left to get to the resource types.  (The data sources are used to get information about existing Azure resources.)
+
+You may also make use of the snippets that came with one of the modules. Type `CTRL-SPACE` and then type tf-azurerm_resource_group to get an example snippet copied into your file.  The snippets do not cover all resource types - for instance the azurerm_virtual_network_gateway is not currently in the set - but can be useful in quickly creating .tf files.
+
+Note that we will create a stanza for the VPN Gateway. but for the sake of time we will default to commenting it out as it takes around 45 minutes to run.
 
 * Create a coreNetwork.tf file containing:
     * Resource Group
