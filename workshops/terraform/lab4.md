@@ -283,7 +283,7 @@ You will be prompted to interactively enter any variable values if they are have
 
 ## Create a terraform.tfvars file
 
-Let's create a tfvars file and add our variable values in there.  We'll also remove a couple of the defaults in variables.tf that don't make any real sense.
+Let's create a tfvars file and add our variable values in there rather than relying on the defaults.  We will use the same values so that we don't make a real change to our environment.  We'll also remove the default for the webapplocs in variables.tf.
 
 * Create a terraform.tfvars file
 * Add in the following block to set the loc and tags:
@@ -298,7 +298,9 @@ tags    = {
 
 * Add in your webapplocs value
 * Set the default webapplocs to an empty list
-* Run `terraform plan` to confirm that planned changes have been unintentionally introduced
+* Run `terraform plan` to confirm that there are no planned changes
+
+Using `terraform plan` to confim that there are no changes is good practice when you are reorganising your files, as it is a sense check that no unintentional changes have been introduced.
 
 You can check that files linked to at the bottom of the lab if you get stuck.
 
