@@ -43,9 +43,9 @@ For labs 1 and 2 you only need an Azure subscription as we will use the Cloud Sh
 
 For labs 3 onwards it is assumed that you have a linux terminal environment (for running the az and terraform commands) as well as Visual Studio Code (for editing the HCL files). This is perfect for MacOS and Linux desktop users, as well as Windows 10 users who have the Windows Subsystem for Linux configured. (The labs are based on the Ubuntu distribution running as a subsystem in Windows 10.)
 
-If you wish to enable the Windows Subsystem for Linux then follow the instructions here: ,
+If you wish to enable the Windows Subsystem for Linux then follow the instructions here: <https://azurecitadel.github.io/guides/wsl/>
 
-It is possible to use both az and terraform commands within a PowerShell integrated console on Windows 7 machine, but if there are examples of Bash scripting then you will need to work around that.  You may be able to use the Git Bash on Windows 7 but this has not been tested.  It is recommended to upgrade to Windows 10 and use the Windows Subsystem for Linux as it is a much cleaner integration.
+If you are using Windows 7 then you cannot install WSL. It is possible to use both az and terraform commands within a PowerShell integrated console on Windows 7 machine and you can still make your way through the labs, but if there are examples of Bash scripting then you will need to work around that. You may be able to use the Git Bash on Windows 7 but this has not been tested.  It is recommended to upgrade to Windows 10 and use the Windows Subsystem for Linux as it is a far cleaner integration.
 
 You can run everything on linux servers as well - we are only using az, terraform and text files - but you will miss out on some of the Visual Studio Code editing niceties.
 
@@ -75,6 +75,7 @@ The following extensions should also be installed as they are assumed by the lab
 Azure Account | Microsoft | [ms-vscode.azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
 Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
+JSON Tools | Erik Lynd | [eriklynd.json-tools](https://marketplace.visualstudio.com/items?itemName=eriklynd.json-tools)
 
 Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
 
@@ -112,6 +113,19 @@ For Windows 10 users who have enabled the Windows Subsystem for Linux (WSL) feat
 **💬 Note.** Use of the legacy Windows CMD prompt is not advised, and use of alternative bash systems (gitbash or cygwin) is discouraged.
 
 ----------
+
+[**💻 Additional binaries**](#){:target="_blank" class="btn-info"}
+
+**Required for lab 3 onwards.**
+
+The labs make use of a few binaries that are not part of a standard Ubuntu install, so please add the following packages if you cannot find them using _which_, e.g. `which jq`:
+
+* jq
+* git
+* tree
+
+For Ubuntu the install command is `sudo apt install jq git tree'  If you have a different distribution then you should use the right package manager.
+
 
 ## Assumptions
 

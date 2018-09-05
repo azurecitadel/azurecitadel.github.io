@@ -94,6 +94,9 @@ All other commands:
 
 Terraform uses its own file format, called HCL (Hashicorp Configuration Language).  This is very similar to YAML.  We'll create a main.tf file with a resource group and storage account:
 
+* Create a terraform-labs directory in your home directory (`mkdir terraform-labs`)
+* Change to the new directory (`cd terraform-labs`)
+* Create an empty main.tf file (`touch main.tf`)
 * Copy the text from the codeblock below
 
 ```ruby
@@ -115,9 +118,6 @@ resource "azurerm_storage_account" "lab1sa" {
 }
 ```
 
-* Create a terraform-labs directory in your home directory (`mkdir terraform-labs`)
-* Change to the new directory (`cd terraform-labs`)
-* Create an empty main.tf file (`touch main.tf`)
 * Start vscode in the Cloud Shell (`code .`)
 * Click on the main.tf file in the explorer pane
 * Paste in the contents of the clipboard
@@ -127,7 +127,7 @@ resource "azurerm_storage_account" "lab1sa" {
 * Save the file (`CTRL`+`S`)
     * The round dot on the file name tab denotes unsaved changes
 
-Let's look more closely at the resource block (or stanza) for the storage account.
+Let's look more closely at the second resource block (or stanza) for the **storage account**.
 
 The Terraform top level **keyword** is `resource`. We'll cover the various top level keywords as we go through the labs.
 
@@ -187,9 +187,9 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-As you can see it has downloaded the provider.azurerm which we specified in out main.tf file.  The azurerm_resource_group and azurerm_storage_account are both resource types within the azurerm Terraform provider.
-
 * List out all of the files in the current directory (`find .`)
+
+As you can see it has downloaded the provider.azurerm into the `.terraform/plugins` area which we specified in out main.tf file.  The azurerm_resource_group and azurerm_storage_account are both resource types within the azurerm Terraform provider.
 
 ## - terraform plan
 
@@ -375,7 +375,7 @@ Rerun the resouce list command to confirm that the resources have been removed:
 ```bash
 richard@Azure:~/terraform-labs$ az resource list --resource-group terraform-lab1 --output table
 Resource group 'terraform-lab1' could not be found.
-```bash
+```
 
 ## End of Lab 1
 

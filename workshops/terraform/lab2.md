@@ -76,7 +76,7 @@ richeneyterraformlab2  terraform-lab2   westeurope  Microsoft.Storage/storageAcc
 
 ## Introducing variables
 
-Terraform allws you to use multiple .tf files.  The terraform commands will effectively merge all of the *.tf files in the current working directory.  (Note that by design it does _not_ recursively move through sub-directories.)
+Terraform allows you to use multiple .tf files.  The terraform commands will effectively merge all of the *.tf files in the current working directory.  (Note that by design it does _not_ recursively move through sub-directories.)
 
 So let's create a variables.tf file in the citadel directory and define some of the key variables in there.
 
@@ -119,6 +119,8 @@ Let's edit our existing main.tf file and make use of the variables. The interpol
 1. Change the resource group's name to use `"${var.rg}"`
 1. Change the resource group's location to make use of the new `loc` variable
 1. Change the location for the storage account and link it to the resource group's location
+    * You need to use the exported attribute of the resource group stanza
+    * Format: `"${\<provider_type>.\<terraformId>.\<attribute>}"`
 1. Save your files locally
 1. Run a `terraform plan`
 
