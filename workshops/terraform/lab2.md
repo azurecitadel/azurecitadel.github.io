@@ -387,7 +387,7 @@ Releasing state lock. This may take a few moments...
 
 We have reached the end of the lab. You have started to use variables and functions. Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab2>.
 
-We will scrap everything we've created to date.  Run a `terraform destroy` to remove the environment. Remove your .tf files. (`rm -i *.tf`)
+From lab 3 onwards we will be using Visual Studio Code and locally stored files rather than Cloud Shell.  Therefore you can delete everything we've created to date.  Run a `terraform destroy` to remove the environment.  Feel free to keep the terraform-labs directory in your Cloud Shell home directory, but if you do want to clean it up then run `rm -fR ~/terraform-labs`.
 
 In the next lab we will start to create the core of a more substantial Azure environment and base it in GitHub.
 
