@@ -78,6 +78,8 @@ provider "azurerm" {
 
 Note that in a production environment you would need to ensure that this file has appropriate permissions so that the client_id and client_secret does not leak and create a security risk. (See below for resetting credentials.)
 
+You should also add provider.tf into your .gitignore file so that you don't push up sensitive values up into a public GitHub repository!**
+
 ----------
 
 The alternative is to use **environment variables**.  For example, by adding the following lines to a .bashrc file:
@@ -106,9 +108,14 @@ Rather than a straight lab, we'll make this one more of a challenge. The challen
 1. **Find your subscription ID and copy the GUID to the clipboard**
 1. **Search for the documentation to create an Azure service principal for use with Terraform**
 1. **Follow the guide and create a populated provider.tf file**
+1. **Add provider.tf to your .gitignore file**
 1. **Log on to azure as the service principal using the CLI**
 1. **Log back in with your normal Azure ID and show the context**
 1. **Search for the Azure Docs for changing the role (and scope) for the service principal**
+    * There is no need to change the role or scope - this is for info
+1. Run `terraform init` and `terraform plan`
+1. Log into the Azure [portal](https://portal.azure.com) and search on App Registrations
+    * The service will list out the service principals
 
 If you get stuck then there are answers at the bottom of the lab.
 
