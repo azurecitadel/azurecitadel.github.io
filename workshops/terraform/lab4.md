@@ -269,7 +269,11 @@ You can also set the parameters inline, e.g. `terraform apply -var 'loc=uksouth'
 
 ### Using .tfvars files
 
-If you have a lot of variables then you can place them in a file.  By convention these are suffixed with `.tfvars`.  Each line should be of the straighforward `loc=uksouth` format.  You can then use `-var-file varfilename` as a switch.  However if your variable file is called `terraform.tfvars` or `.auto.tfvars` then it will be loaded automatically.
+If you have a lot of variables to set then you can place them in a file.  By convention these are suffixed with `.tfvars`.
+
+Think of the variables.tf as your variable **declarations**, where you define which variables are required and configure default values where sensible.  The variables.tfvars file can then be used to set the **values**. If you specify a value for a variable in variables.tfvars then it will override the default in variables.tf.
+
+Each line should be of the straighforward `loc=uksouth` format.  You can then use `-var-file varfilename` as a switch.  However if your variable file is called `terraform.tfvars` or `.auto.tfvars` then it will be loaded automatically.
 
 ### Combinations of the above
 
