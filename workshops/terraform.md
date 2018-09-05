@@ -41,13 +41,7 @@ This lab will cover a lot of ground, including
 
 For labs 1 and 2 you only need an Azure subscription as we will use the Cloud Shell.
 
-For labs 3 onwards it is assumed that you have a linux terminal environment (for running the az and terraform commands) as well as Visual Studio Code (for editing the HCL files). This is perfect for MacOS and Linux desktop users, as well as Windows 10 users who have the Windows Subsystem for Linux configured. (The labs are based on the Ubuntu distribution running as a subsystem in Windows 10.)
-
-If you wish to enable the Windows Subsystem for Linux then follow the instructions here: <https://azurecitadel.github.io/guides/wsl/>
-
-If you are using Windows 7 then you cannot install WSL. It is possible to use both az and terraform commands within a PowerShell integrated console on Windows 7 machine and you can still make your way through the labs, but if there are examples of Bash scripting then you will need to work around that. You may be able to use the Git Bash on Windows 7 but this has not been tested.  It is recommended to upgrade to Windows 10 and use the Windows Subsystem for Linux as it is a far cleaner integration.
-
-You can run everything on linux servers as well - we are only using az, terraform and text files - but you will miss out on some of the Visual Studio Code editing niceties.
+For labs 3 onwards it is assumed that you have a linux terminal environment (for running the az and terraform commands) as well as Visual Studio Code (for editing the HCL files). This is perfect for macOS and Linux desktop users, as well as Windows 10 users who have the Windows Subsystem for Linux configured. (The labs are based on the Ubuntu distribution running as a subsystem in Windows 10.)
 
 ----------
 
@@ -63,23 +57,29 @@ Ensure that it is active by logging onto the [portal](http://portal.azure.com) a
 
 ----------
 
-[**💻 Visual Studio Code**](/guides/vscode){:target="_blank" class="btn-info"}
+[**Windows Subsytem for Linux**](https://azurecitadel.github.io/guides/wsl/){:target="_blank" class="btn-info"}
+
+**Required for lab 3 onwards for Windows 10 users.**
+
+For Windows 10 users then enable and use the Windows Subsystem for Linux for these labs.   Follow the instructions here: <https://azurecitadel.github.io/guides/wsl/>.  (This also has the instructions for installing terraform, git, tree and jq.)
+
+> These labs are not tested on Windows 7. If you are using Windows 7 then you cannot install the Windows Subsystem for Linux. It is recommended to upgrade to Windows 10 and use the Windows Subsystem for Linux. It is possible to use both az and terraform commands within a PowerShell integrated console on Windows 7 machine and you can still make your way through the labs, but if there are examples of Bash scripting then you will need to work around that. You may be able to use the Git Bash on Windows 7 but this has not been tested.
+
+----------
+
+[**💻 Additional Binaries**](#){:target="_blank" class="btn-info"}
 
 **Required for lab 3 onwards.**
 
-Please install and configure Visual Studio Code as per the link in the button above.  We won't be writing any real code, but the editor has some great support for editing the .tf files used by Terraform and integrating with Azure.
+The labs make use of a few binaries that are not part of a standard Ubuntu install, so please add the following packages if you cannot find them using _which_, e.g. `which jq`:
 
-The following extensions should also be installed as they are assumed by the labs:
+* jq
+* git
+* tree
 
-**Module Name** | **Author** | **Extension Identifier**
-Azure Account | Microsoft | [ms-vscode.azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
-Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
-Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
-JSON Tools | Erik Lynd | [eriklynd.json-tools](https://marketplace.visualstudio.com/items?itemName=eriklynd.json-tools)
+For Ubuntu the install command is `sudo apt update && sudo apt install jq git tree'.
 
-Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
-
-For Windows Subsystem for Linux users then you should also switch your integrated console from the default $SHELL (either Command Prompt or PowerShell) to WSL. Open the Command Palette (`CTRL`+`SHIFT`+`P`) and then search for the convenience command **Select Default Shell**.
+If you have a different distribution then you should use the right package manager for that distribution.
 
 ----------
 
@@ -114,17 +114,44 @@ For Windows 10 users who have enabled the Windows Subsystem for Linux (WSL) feat
 
 ----------
 
-[**💻 Additional binaries**](#){:target="_blank" class="btn-info"}
+[**💻 Visual Studio Code**](/guides/vscode){:target="_blank" class="btn-info"}
 
 **Required for lab 3 onwards.**
 
-The labs make use of a few binaries that are not part of a standard Ubuntu install, so please add the following packages if you cannot find them using _which_, e.g. `which jq`:
+Please install and configure Visual Studio Code as per the link in the button above.  We won't be writing any real code, but the editor has some great support for editing the .tf files used by Terraform and integrating with Azure.
 
-* jq
-* git
-* tree
+**Extensions**
 
-For Ubuntu the install command is `sudo apt install jq git tree'  If you have a different distribution then you should use the right package manager for that distribution.
+The following extensions should also be installed as they are assumed by the labs:
+
+**Module Name** | **Author** | **Extension Identifier**
+Azure Account | Microsoft | [ms-vscode.azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
+Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
+Advanced Terraform Snippets Generator | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
+JSON Tools | Erik Lynd | [eriklynd.json-tools](https://marketplace.visualstudio.com/items?itemName=eriklynd.json-tools)
+
+Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
+
+**Integrated Console**
+
+For Windows Subsystem for Linux users then switch your integrated console from the default $SHELL (either Command Prompt or PowerShell) to WSL. Open the Command Palette (`CTRL`+`SHIFT`+`P`) and then search for the convenience command **Select Default Shell**.
+
+**Git**
+
+You will need Git installed at the _operating system_ level. (Linux and macOS should have this already (`which git`) if you have followed the steps above.)
+
+Visual Studio Code will not find the git executable in WSL on Windows 10, so you need to install it and ensure that it is in the _system_ path.  (As vscode also won't find it in the user path.)
+
+You can download and install Git for Windows by following the instructions [here](https://azurecitadel.github.io/guides/git/).
+
+You can check where Git has been installed in Windows 10 by running either:
+
+* Command Prompt: `where git`
+* PowerShell: `Get-Command git.exe | Select-Object -ExpandProperty Definition`
+
+It will normally be in the `C:\Program Files\Git\cmd\` directory.
+
+Check that the directory is in your system path by clicking **Start → Run** and typing `SystemPropertiesAdvanced`. This will open the dialog box. Select **Path** in the system variables at the bottom, and then **Edit**. Add the directory if it is missing.
 
 ----------
 
