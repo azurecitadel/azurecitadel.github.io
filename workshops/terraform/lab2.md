@@ -119,8 +119,9 @@ Let's edit our existing main.tf file and make use of the variables. The interpol
 1. Change the resource group's name to use `"${var.rg}"`
 1. Change the resource group's location to make use of the new `loc` variable
 1. Change the location for the storage account and link it to the resource group's location
-    * You need to use the exported attribute of the resource group stanza
+    * Use the exported attribute _location_ for the azurerm_resource_group stanza
     * Format: `"${\<provider_type>.\<terraformId>.\<attribute>}"`
+    * The [Terraform docs](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html) for each provider type always show the exported attributes
 1. Save your files locally
 1. Run a `terraform plan`
 
@@ -277,7 +278,6 @@ OK, let's apply that change:
 ## Additional Terraform providers
 
 First of all, as you know, Terraform supports multiple [providers](https://www.terraform.io/docs/providers/), from public and private cloud providers, through configuration management software such as Chef, application providers such as RabbitMQ and Kubernetes, a number of public DNS providers (e.g. Cloudflare)  and monitoring software such as Datadog.  It also has a number of miscellanous providers to extend the core functionality, such as those interacting with file and zips using the _local_, _archive_ and _template_ resource types.
-
 
 ## Defining unique names using random_string
 
