@@ -118,10 +118,10 @@ Let's edit our existing main.tf file and make use of the variables. The interpol
 
 1. Change the resource group's name to use `"${var.rg}"`
 1. Change the resource group's location to make use of the new `loc` variable
-1. Change the location for the storage account and link it to the resource group's location
-    * Use the exported attribute _location_ for the azurerm_resource_group stanza
-    * Format: `"${\<provider_type>.\<terraformId>.\<attribute>}"`
-    * The [Terraform docs](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html) for each provider type always show the exported attributes
+1. Change the value for the location argument in the storage account stanza
+    * We'll link it to the location attribute exported from the resource group stanza
+    * Format: `"${azurerm_resource_group.<terraformId>.location}"`
+    * The [Terraform docs](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html) for each provider type show the exported attributes, although some standard ones such as _id_, _location_ and _tags_ aren't always listed
 1. Save your files locally
 1. Run a `terraform plan`
 
