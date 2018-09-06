@@ -14,12 +14,16 @@ error()
   exit 1
 }
 
-# Install zip if not there
-[[ ! -x /usr/bin/zip ]] && sudo apt-get --assume-yes -qq install zip
-[[ ! -x /usr/bin/zip ]] && error "Install package \"zip\" and rerun"
+# Check for zip and jq
+_pkgs=""
+[[ ! -x /usr/bin/zip ]] && _pkgs="$_pkgs zip"
+[[ ! -x /usr/bin/jq ]]  && _pkgs="$_pkgs jq"
 
-# Install jq if not there
-[[ ! -x /usr/bin/jq ]] && sudo apt-get --assume-yes -qq install jq
+if [[ -n "$_pkgs"  ]]
+then sudo apt-get update && sudo apt-get install --assume-yes -qq $_pkgs
+fi
+
+[[ ! -x /usr/bin/zip ]] && error "Install package \"zip\" and rerun"
 [[ ! -x /usr/bin/jq ]] && error "Install package \"jq\" and rerun"
 
 # Determine latest file using the API
