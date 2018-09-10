@@ -19,7 +19,7 @@ published: true
 
 This early placeholder lab has now been replaced with the larger Terraform on Azure workshops. Click on the button below to go to the new workshop.
 
-[Terraform on Azure](https:aka.ms/citadel/terraform){:target="_blank" class="btn-info"}
+[Terraform on Azure](https://aka.ms/citadel/terraform){:target="_blank" class="btn-info"}
 
 This lab will be removed at the end of October.
 
