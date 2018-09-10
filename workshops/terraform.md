@@ -1,12 +1,12 @@
 ---
 layout: article
 title: "Terraform on Azure"
-categories: none
+categories: workshops
 date: 2018-09-05
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code]
 comments: true
 author: Richard_Cheney
-featured: false
+featured: true
 published: true
 image:
   feature: terraform.jpg
@@ -180,7 +180,7 @@ A background knowledge of Terraform is advised. The button below will take you t
 4 | [Meta Parameters](lab4) | Make use of copy and other meta parameters
 5 | [Multi Tenancy](lab5) | Using Service Principals and Managed Service Identity
 6 | [State](lab6) | Configuring remote state and using read only state in split environments
-7 | [Modules](lab7) | Learn about modules, converting your .tf files, Terraform Registry (_coming soon_)
+7 | [Modules](lab7) | Learn about modules, converting your .tf files, Terraform Registry
 8 | [Extending with other Providers](lab8) | Use other providers to configure an AKS Kubernetes cluster (_coming soon_)
 9 | [Provisioners](lab9) | Leverage provisioners to customise your virtual machine deployments (_coming soon_)
 
