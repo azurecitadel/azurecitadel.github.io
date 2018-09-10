@@ -5,9 +5,9 @@ date: 2018-03-15
 categories: labs
 author: Richard_Cheney
 image:
-  feature: 
+  feature:
   teaser: cloud-builder.png
-  thumb: 
+  thumb:
 comments: true
 excerpt: Use Terraform's AzureRM provider to drive Infrastructure as Code.
 published: true
@@ -15,13 +15,19 @@ published: true
 
 {% include toc.html %}
 
+## Notice
+
+This early placeholder lab has now been replaced with the larger Terraform on Azure workshops. Click on the button below to go to the new workshop.
+
+[Terraform on Azure](https:aka.ms/citadel/terraform){:target="_blank" class="btn-info"}
+
+This lab will be removed at the end of October.
+
 ## Introduction
 
 This self serve lab will get you set up to run Terraform to orchestrate Azure resources using infrastructure (and more) as code, and then set you a number of challenges to increase your familiarity with the product and how it works.
 
 This lab is provided as an intentionally challenging hackathon style lab, as a little pain tends to make the learning stick.  It is also a placeholder whilst we work on a fuller set of labs to mirror the depth of the ARM workshop.
-
-The short URL for this page is <https://aka.ms/citadel/terraform>.
 
 ## Prereqs
 
@@ -198,7 +204,7 @@ VirtualMachine    PublicIPAddresses    PrivateIPAddresses
 Terraform         52.174.86.74         10.0.0.4
 ```
 
-Check that you can SSH to the machine using Putty, WSL Ubuntu or Cloud Shell.  
+Check that you can SSH to the machine using Putty, WSL Ubuntu or Cloud Shell.
 
 There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to access and configure the Terraform VM by running the `~/tfEnv.sh` script. Note that if you have multiple subscriptions then myou should make sure that you are in the correct one (using `az account list --output table` and `az account set --subscription <subscriptionId>`) and then run just the role assignment command within the `tfEnv.sh` file.
 
