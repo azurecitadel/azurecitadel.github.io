@@ -23,7 +23,7 @@ Finally will also look at how you can use Terraform to fork a native ARM templat
 
 Take a look at the range of [Terraform Providers](https://www.terraform.io/docs/providers/) available.  It is a wide and expanding list, covering am ultitude of private and public cloud platforms, various applications, supporting technologies and cloud services such as public DNS.
 
-All of the providers follow the same documentation standard as the azurerm provider.  
+All of the providers follow the same documentation standard as the azurerm provider.
 
 ### Datadog
 
@@ -54,7 +54,7 @@ The [Cloudflare Provider](https://www.terraform.io/docs/providers/cloudflare/ind
 1. cloudflare_load_balancer_monitor
 1. cloudflare_zone_settings_override
 
-Again, the options here extend out what is possible in a configuration.  
+Again, the options here extend out what is possible in a configuration.
 
 ### Kubernetes
 
@@ -62,17 +62,93 @@ There are a number of different container orchestration technologies, but Kubern
 
 The [Kubernetes Provider](https://www.terraform.io/docs/providers/kubernetes/index.html) has a couple of authentication options, and a wide array of resource types and also a couple of data types.  It can take the base Kubernetes cluster and its running components, and then schedule the Kubernetes resources, like pods, replication controllers, services etc.
 
-## Azure Container Service (AKS)
+## Azure Kubernetes Service (AKS)
 
-OK, let's create an AKS cluster using the [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) resource type and then use the Kubernetes provider to do some additional configuration.  We'll need an SSH key pair, so let's make sure we have one and put the public key into the Key Vault.
+OK, let's create an Azure Kubernetes Service (AKS) cluster using the [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) resource type and then use the Kubernetes provider to do some additional configuration.
+
+If you are not familiar with AKS then it is a Kubernetes cluster where you only have to pay for the compute nodes. There is a great set of [tutorials](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-app) on the Azure Docs which are highly recommended to get a base understanding of the platform.  A few key features:
+
+1. Kubernetes management plane is provided as a free PaaS service
+1. [Virtual kubelet provider](https://docs.microsoft.com/en-us/azure/aks/virtual-kubelet) for Azure Container Instances (ACI) enables limitless bursting
+1. [Open Service Broker for Azure](https://docs.microsoft.com/en-us/azure/aks/integrate-azure) (OSBA) simplifies integration with other Azure PaaS services
+
+We'll need an SSH key pair, so let's make sure we have one and put the public key into a Key Vault.
+
+????????????? ADD KEY VAULT IN LATER?
+
+## Specifying a minimum provider version
+
+When you run terraform init, the required providers are copied locally.  They will **not** be updated unless you
+
+1. specify a [provider version constraint](https://www.terraform.io/docs/configuration/providers.html#provider-versions) in the provider block and run `terraform init`
+1. run `terraform init -upgrade=true` to upgrade to the latest acceptable version of the modules
+
+> Terraform has a philosophy around version management that enables you to collectively control the version of the terraform executable, the provider(s) and the terraform files themselves.  Therefore you control if and when any of those are upgraded so that nothing is broken.
+
+If you search the [azurerm provider changelog](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md) for azurerm_kubernetes_cluster then you will see active support for the AKS service and regular bug fixes. Let's specify a minimum version of 1.14. (This is current at the time of writing; specify a more recent version if the changelog entry mentions kubernetes.)
+
+* Add a constraint to the azurerm provider block for a minimum version of 1.14 or later
+* Show the required providers and any associated version constraints
+
+```bash
+terraform providers
+```
+
+Example output:
+
+```yaml
+├── provider.azurerm >= 1.14.0
+├── provider.random
+└── module.scaffold
+    └── provider.azurerm (inherited)
+
+terraform-labs$ terraform init
+Initializing modules...
+- module.scaffold
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Checking for available provider plugins on https://releases.hashicorp.com...
+- Downloading plugin for provider "azurerm" (1.14.0)...
+:
+```
 
 ## Create an AKS module
 
-** ADD THEM IN **
+OK, let's make another local module called terraform-aks-module.  The terraform config is loosely based on Nic Jackson's early [blog post](https://www.hashicorp.com/blog/kubernetes-cluster-with-aks-and-terraform).
+
+* Run the following commands to initialise the area and open it in vscode
+
+```bash
+mkdir -m 750 ../terraform-aks-module
+cd ../terraform-aks-module
+git init
+touch variables.tf main.tf outputs.tf
+code .
+```
+
+* Copy the following code block into your variables.tf
+
+```ruby
+
+```
+
+* Copy the following code block into your outputs.tf
+
+```ruby
+
+```
+
+* Copy the following code block into your main.tf
+
+```ruby
+
+```
 
 ### SSH Public Key
 
-Hopefully you have an SSH key pair already.  If not then you can create one using the commands below.  
+Hopefully you have an SSH key pair already.  If not then you can create one using the commands below.
 
 > Use your own email address for the comment field.
 
@@ -147,7 +223,7 @@ module "aks" {
 
 ### Build the AKS Cluster
 
-Right, let's test the new module and build that cluster.  
+Right, let's test the new module and build that cluster.
 
 * Run `terraform get` and `terraform init`
 
@@ -189,7 +265,7 @@ If an azurerm resource type then becomes available then a resource stanza can cr
 
 ### Extending ARM into Terraform
 
-For information, ARM templates can now also drive certain Terraform providers as per the recent [blog](https://azure.microsoft.com/en-us/blog/introducing-the-azure-terraform-resource-provider/).  
+For information, ARM templates can now also drive certain Terraform providers as per the recent [blog](https://azure.microsoft.com/en-us/blog/introducing-the-azure-terraform-resource-provider/).
 
 Whilst it is in public preview then the Cloudflare, Datadog and Kubernetes will be supported and then other providers will be added.
 
