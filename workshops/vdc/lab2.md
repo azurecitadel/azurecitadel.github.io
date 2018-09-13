@@ -132,7 +132,7 @@ The second command is more complicated, using a JMESPATH query to customise the 
 
 The VM's IP address is expected to be 10.1.1.5 or 10.1.1.6 depending on the order in which the VM builds completed.
 
-**9)** Log back in to OnPrem-vm, and then attempt to connect to the private IP address of the virtual machine within the Spoke 1 vNet.  
+**9)** Log back in to OnPrem-vm, and then attempt to connect to the private IP address of the virtual machine within the Spoke 1 vNet.
 
 (Note that the command below should fail and simply hang - use `CTRL`+`C` to cancel.)
 
@@ -152,7 +152,7 @@ In this section, we will configure a number of *User Defined Routes*. A UDR in A
 
 We'll create our first User Defined Route using the Azure portal, with subsequent UDRs configured using the Azure CLI.
 
-**1)** In the Azure portal, click '+ Create a resource' and then search for 'Route Table'. Select this and then create a new route table named *OnPrem-UDR*, making sure that you have selected the existing *VDC-OnPrem* resource group. Once complete, navigate to the newly created UDR and select it.
+**1)** In the Azure portal, click '+ Create a resource' and then search for 'Route Table'. Select this and then create a new route table named *OnPrem-UDR*, making sure that a) you have selected the existing *VDC-OnPrem* resource group and b) it is in the 'West Europe' region. Once complete, navigate to the newly created UDR and select it.
 
 **2)** Click on 'Routes' and then 'Add'. Create a new route with the following parameters:
 
@@ -237,7 +237,7 @@ It turns out that there is an additional setting we must configure on the VNet p
 
 **5)** Configure the Spoke 2 VNet peering with 'Use Remote Network Gateway' and then attempt to connect to one of the virtual machines in Spoke 2 (e.g. 10.2.1.5). This connection should also now succeed.
 
-**6)** Still from the OnPrem-vm machine, use either the curl or lynx commands to make an HTTP request to the load balancer private IP address in Spoke1. (The curl command will return the raw HTML, whilst lynx has been installed so that you can view the page in a basic ASCII browser.)  
+**6)** Still from the OnPrem-vm machine, use either the curl or lynx commands to make an HTTP request to the load balancer private IP address in Spoke1. (The curl command will return the raw HTML, whilst lynx has been installed so that you can view the page in a basic ASCII browser.)
 
 Note that the IP address *should* be 10.1.1.4, however you may need to verify this in the portal or CLI:
 
