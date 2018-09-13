@@ -27,9 +27,9 @@ In our VDC environment, we have a hub virtual network (used as a central point f
 
 **4)** Use 'M1crosoft123' as the shared key. Select 'OK' to complete the connection.
 
-**5)** Repeat the process for the other VPN gateway (OnPrem-gw), but reverse the first and second gateways when creating the connection (name the connection 'OnPrem2Hub').
+**5)** Repeat the process for the other VPN gateway (OnPrem-vpn-gw), but reverse the first and second gateways when creating the connection (name the connection 'OnPrem2Hub').
 
-**6)** Under the resource group *VDC-OnPrem* navigate back to the *OnPrem-gw* virtual network gateway resource and then click 'Connections'. You should see a successful VPN connection between the OnPrem and Hub VPN gateways.
+**6)** Under the resource group *VDC-OnPrem* navigate back to the *OnPrem-vpn-gw* virtual network gateway resource and then click 'Connections'. You should see a successful VPN connection between the OnPrem and Hub VPN gateways.
 
 **Note:** It may take a few minutes before a successful connection is shown between the gateways.
 
