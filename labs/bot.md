@@ -10,7 +10,7 @@ image:
   feature: 
   teaser: BotIntro.png
   thumb: 
-excerpt: An introduction to the Azure Bot service, building a basic Node web bot to adding Congnitive Services. 
+excerpt: An introduction to the Azure Bot service, building a basic Node web bot to adding Cognitive Services. 
 ---
 
 
