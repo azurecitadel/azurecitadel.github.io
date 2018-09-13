@@ -251,7 +251,6 @@ your Terraform state and will henceforth be managed by Terraform.
 * Run `terraform state show azurerm_resource_group.deleteme`
 
 ```bash
-terraform-labs$ terraform state show azurerm_resource_group.deleteme
 id       = /subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/deleteme
 location = westeurope
 name     = deleteme
@@ -270,30 +269,48 @@ The resource is now fully imported and safely under the control of Terraform.
 
 > Note that in the future it is planned that Terraform will be able to automatically generate resource stanzas.
 
-## Manually breaking a blob lease that is locking the state
+## Breaking a blob lease that is locking the state
 
-There is a rare possibility that you end up with a lease attached to your remote state blob file due to transient connectivity issues.  As the lock is in place, certain terraform commands will not work.
+There is a possibility that you end up with an unwanted lease on your remote state blob file. Certain  terraform commands will therefore fail as they cannot lock the state.
 
 Normally when you acquire a lease on blob storage you get a lease ID, and you can then use that lease ID to release the lock.  As Terraform initially acquired the lease then you don't have the lease ID and therefore you have to break it.
 
 Below are the commands to confirm that there is a lease in effect and then to break the lease.
 
+First, set the environment variables (used by the Azure CLI storage commands) and some standard Bash variables based on the values you have in your backend.tf.
+
 ```bash
 export AZURE_STORAGE_ACCOUNT="<storage_account_name>"
 export AZURE_STORAGE_KEY="<access_key>"
-containerName=tfstate-2d31be49-d999-4415-bb65-8aec2c90ba62-terraform-labs
+containerName=<container_name>
+blobName=<key>
+```
 
-terraform-labs$ az storage blob show --container-name $containerName --name terraform.tfstate --query properties.lease
+Check the current status of the blob lease using the following command:
+
+```bash
+az storage blob show --container-name $containerName --name $blobName --query properties.lease
+```
+
+Example output below. Note the status of locked.
+
+```json
 {
   "duration": "infinite",
   "state": "leased",
   "status": "locked"
 }
+```
 
-terraform-labs$ az storage blob lease break --container-name tfstate --blob-name 2d31be49-d959-4415-bb65-8aec2c90ba62.terraform.tfstate
-0
+The following command will break the lease:
 
-terraform-labs$ az storage blob show --container-name $containerName --name terraform.tfstate --query properties.lease
+```bash
+az storage blob lease break --container-name $containerName --blob-name $blobName
+```
+
+Recall the blob show command to see the status of the lease.  It should be the same as the following JSON:
+
+```json
 {
   "duration": null,
   "state": "broken",
@@ -302,6 +319,13 @@ terraform-labs$ az storage blob show --container-name $containerName --name terr
 ```
 
 It is important to first check that the lease is definitely a fault to be cleared, and not the result of another admin applying a change.
+
+You may use the following commands to download an example script to break the lease based on your backend.tf:
+
+```bash
+uri=https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/workshops/terraform/breakStateLock.sh
+curl -sL $uri > breakStateLock.sh && chmod 750 breakStateLock.sh
+```
 
 ## End of Lab 6
 
