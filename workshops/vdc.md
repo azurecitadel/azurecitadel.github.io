@@ -7,12 +7,12 @@ categories: workshops
 tags: [vdc, virtual, data, centre, pre-reqs]
 comments: true
 featured: true
-excerpt: The Virtual Data Centre (VDC) lab provides a theoretical overview and hands on lab to take the learner through the key constructs that are recommended for larger enterprise customers deploying to Azure.     
+excerpt: The Virtual Data Centre (VDC) lab provides a theoretical overview and hands on lab to take the learner through the key constructs that are recommended for larger enterprise customers deploying to Azure.
 author: Richard_Cheney
 image:
   feature: featured/corp2.jpg
   teaser: Education.jpg
-  thumb: 
+  thumb:
 ---
 Ovewview and pre-requisites for the Virtual Data Centre (VDC) workshop.
 
@@ -37,7 +37,8 @@ The workshop requires the following:
 
 * **[Azure Subscription]({{ site.url }}/guides/subscription)**
     * If your workshop is being hosted by a Microsoft Cloud Solution Architect (CSA) then you will be provided with a code for an **Azure Pass** subscription
-    * Open a private browser session, go to <http://signup.live.com> and create a new  Microsoft account in  **vdc._firstname.lastname_@outlook.com** format
+    * Open a **private** (in-private / incognito) browser session
+    * Go to <http://signup.live.com> and create a new  Microsoft account in  **vdc._firstname.lastname_@outlook.com** format
     * Go to <https://www.microsoftazurepass.com> and follow the instructions to redeem the code and activate your Azure Pass
 * If you will be using you own subscription (e.g. Visual Studio Enterprise) then you can confirm that the subscription is valid for the workshop by checking the following in the portal:
     * prove the ability to create resources by creating a new resource group
