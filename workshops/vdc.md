@@ -52,17 +52,12 @@ The workshop requires the following:
     * In the Azure [portal](https://portal.azure.com), click on the Cloud Shell icon at the top of the screen (**>_**), create the storage account for clouddrive and confirm it is working by typing ```az account show```
     * [Bash and CLI 2.0]({{ site.url }}/guides/wsl) (optional, recommended, only applicable for Windows 10)
 
-## Previous Virtual Data Centre Workshop
-
-If you are looking for Adam Raffe's original virtual data centre workshop guide then you may find it here:
-**<https://github.com/araffe/vdc-networking-lab>**.  Follow the README.md file for the hands on lab element.
-
 ## Labs
 
 The setup for the lab has been updated, and the labs have been fully migrated into the Azure Citadel organisation.  Here are the individual lab sections:
 
 Lab | Section | Description
-| [Introduction](/workshops/vdc/intro/) | Short introduction plus provider registration
+
 | [Lab Setup](/workshops/vdc/setup/) | Deploy the lab environment using a few Azure CLI commands
 1 | [Explore](/workshops/vdc/lab1/) | Explore and understand the starting point for the lab environment
 2 | [Configure](/workshops/vdc/lab2) | Configure a S2S VPN, base Cisco CSR config, UDRs and vNet peering settings
