@@ -149,7 +149,7 @@ variables.tf
 
 The Core resource group will contain our core networking, i.e. the virtual network, three subnets (training, dev and GatewaySubnet) and a VPN gateway.
 
-The NSGs resource group will contain a group of simple predefined NSGs:
+The NSGs resource group will contain a some simple predefined NSGs. The first is intended for the resource group level and includes a selection of allowed ingress ports.
 
 **NSG Name** | **Protocol** | **Port**
 AllowSSH | TCP | 22
@@ -157,6 +157,8 @@ AllowHTTP | TCP | 80
 AllowHTTPS | TCP | 443
 AllowSQLServer | TCP | 1443
 AllowRDP | TCP | 3389
+
+And then we will a couple of NIC level NSGs for attaching to Windows and Ubuntu servers, allowing RDP and SSH respectively.
 
 ## Initial variables.tf
 
@@ -187,20 +189,20 @@ We'll add to that file as we move through the lab.
 
 ## NSGs
 
-OK, let's start with the NSGs.  We will hardcode these from the name of the resource group to the names of the NSGs and the security rules within them.
+OK, let's start with the NSGs.  We will hardcode these from the name of the resource group to the names of the NSGs and the security rules within them.  The initial file includes the NSG intended fo use at the resource group level, and the Ubuntu NSG intended for use at the VM's NIC. You'll then add on RFP to the resource_group_default NSG and create a new NSG for Windows.
 
 * Create an nsgs.tf
 * Add in the following text
 
 ```ruby
-resource "azurerm_resource_group" "nsgs" {
+*/resource "azurerm_resource_group" "nsgs" {
    name         = "NSGs"
    location     = "${var.loc}"
    tags         = "${var.tags}"
 }
 
-resource "azurerm_network_security_group" "AllowSSH" {
-   name = "AllowSSH"
+resource "azurerm_network_security_group" "resource_group_default" {
+   name = "ResourceGroupDefault"
    resource_group_name  = "${azurerm_resource_group.nsgs.name}"
    location             = "${azurerm_resource_group.nsgs.location}"
    tags                 = "${azurerm_resource_group.nsgs.tags}"
@@ -209,9 +211,9 @@ resource "azurerm_network_security_group" "AllowSSH" {
 resource "azurerm_network_security_rule" "AllowSSH" {
     name = "AllowSSH"
     resource_group_name         = "${azurerm_resource_group.nsgs.name}"
-    network_security_group_name = "${azurerm_network_security_group.AllowSSH.name}"
+    network_security_group_name = "${azurerm_network_security_group.resource_group_default.name}"
 
-    priority                    = 1001
+    priority                    = 1010
     access                      = "Allow"
     direction                   = "Inbound"
     protocol                    = "Tcp"
@@ -221,19 +223,12 @@ resource "azurerm_network_security_rule" "AllowSSH" {
     source_address_prefix       = "*"
 }
 
-resource "azurerm_network_security_group" "AllowHTTP" {
-   name = "AllowHTTP"
-   resource_group_name  = "${azurerm_resource_group.nsgs.name}"
-   location             = "${azurerm_resource_group.nsgs.location}"
-   tags                 = "${azurerm_resource_group.nsgs.tags}"
-}
-
 resource "azurerm_network_security_rule" "AllowHTTP" {
     name = "AllowHTTP"
     resource_group_name         = "${azurerm_resource_group.nsgs.name}"
-    network_security_group_name = "${azurerm_network_security_group.AllowHTTP.name}"
+    network_security_group_name = "${azurerm_network_security_group.resource_group_default.name}"
 
-    priority                    = 1001
+    priority                    = 1020
     access                      = "Allow"
     direction                   = "Inbound"
     protocol                    = "Tcp"
@@ -243,19 +238,13 @@ resource "azurerm_network_security_rule" "AllowHTTP" {
     source_address_prefix       = "*"
 }
 
-resource "azurerm_network_security_group" "AllowHTTPS" {
-   name = "AllowHTTPS"
-   resource_group_name  = "${azurerm_resource_group.nsgs.name}"
-   location             = "${azurerm_resource_group.nsgs.location}"
-   tags                 = "${azurerm_resource_group.nsgs.tags}"
-}
 
 resource "azurerm_network_security_rule" "AllowHTTPS" {
     name = "AllowHTTPS"
     resource_group_name         = "${azurerm_resource_group.nsgs.name}"
-    network_security_group_name = "${azurerm_network_security_group.AllowHTTPS.name}"
+    network_security_group_name = "${azurerm_network_security_group.resource_group_default.name}"
 
-    priority                    = 1001
+    priority                    = 1021
     access                      = "Allow"
     direction                   = "Inbound"
     protocol                    = "Tcp"
@@ -264,7 +253,43 @@ resource "azurerm_network_security_rule" "AllowHTTPS" {
     source_port_range           = "*"
     source_address_prefix       = "*"
 }
+
+resource "azurerm_network_security_rule" "AllowSQLServer" {
+    name = "AllowSQLServer"
+    resource_group_name         = "${azurerm_resource_group.nsgs.name}"
+    network_security_group_name = "${azurerm_network_security_group.resource_group_default.name}"
+
+    priority                    = 1030
+    access                      = "Allow"
+    direction                   = "Inbound"
+    protocol                    = "Tcp"
+    destination_port_range      = 1443
+    destination_address_prefix  = "*"
+    source_port_range           = "*"
+    source_address_prefix       = "*"
+}
+
+resource "azurerm_network_security_group" "nic_ubuntu" {
+   name = "NIC_Ubuntu"
+   resource_group_name  = "${azurerm_resource_group.nsgs.name}"
+   location             = "${azurerm_resource_group.nsgs.location}"
+   tags                 = "${azurerm_resource_group.nsgs.tags}"
+
+    security_rule {
+        name                       = "SSH"
+        priority                   = 100
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = 22
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+  }
+}
 ```
+
+The resource blocks show the two different ways that you can define NSGs.  The resource_group_default has separate resource stanzas for the NSG rules, which are then attached to the empty NSG resource.  The Ubuntu NSG resource includes a security_rule block within it.
 
 Steps:
 
@@ -281,15 +306,12 @@ Steps:
 * Run through the init -> plan -> apply workflow
 * Check your new NSGs resource group in the [portal](https://portal.azure.com)
 
-* Update the nsgs.tf, adding in the remaining NSGs
-
-NSG Name | Protocol | Port
-AllowSQLServer | TCP | 1443
-AllowRDP | TCP | 3389
-
+* Add in a new NSG for Windows servers called *nic_windows* to nsgs.tf
+    * Include an embedded security_rule to allow RDP traffic (port 3389)
+* Add a new NSG rule called AllowRDP and link it to the existing resource_group_default NSG
 * Rerun the plan -> apply workflow
 
-> These are not a particularly useful set of NSGs, but they do help to illustrate how easy it is create a standard set of NSGs that can be leveraged by multiple clients and subscriptions.
+Note the additions and changes highlighted in the plan.
 
 ## Core networking
 
