@@ -1,15 +1,15 @@
 ---
 layout: article
 title: ai
-categories: workshops
+categories: labs
 date: 2018-01-08
 tags: [azure, ai, ml, dl, ds, data science, deep learning, machine learning, congnitive computing]
 comments: true
 author: Naveed_Hussain, Faris_Haddad, Robin_Lester
 image:
-  feature: 
+  feature:
   teaser: coming-soon.jpg
-  thumb: 
+  thumb:
 excerpt: coming soon.
 published: false
 ---
