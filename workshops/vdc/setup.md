@@ -36,37 +36,63 @@ Before proceeding with this lab, please make sure you have fulfilled all of the 
         * open a new tab to <https://shell.azure.com>
     1. Installing the CLI on the Windows Subsystem for Linux (<https://aka.ms/InstallTheAzureCLI>)
 
-## Registering the Microsoft.Insights provider
-
-**Some subscription types (e.g. Azure Passes) do not have the necessary resource provider enabled to use NSG Flow Logs. Before beginning the lab, enable the resource provider by entering the following Azure CLI command - this will save time later.**
-
-(You can triple click the command in the code box below to highlight the whole line, and then copy and paste into your CLI session.)
-
-```bash
-az provider register --namespace Microsoft.Insights
-```
-
-**💬** There is no need to wait for the registration to complete before continuing with the lab set up.
-
-If you want to double check the status for the provider then you can use this command:
-
-```bash
-az provider show --namespace Microsoft.Insights --query registrationState --output tsv
-```
-
-Perform the following steps to initialise the lab environment.
-
 ## Log in to Azure
 
-**💬** If you are using the Cloud Shell then you will already be logged into Azure. Just open <https://shell.azure.com>
+### Cloud Shell
 
-If you are using a local CLI session, you must log in to Azure using the *az login* command as follows:
+You can open the Cloud Shell by clicking on the icon (**>_**) at the top of the [portal](https://portal.azure.com).  But for a better experience then you can open an (almost) full page tab using <https://shell.azure.com>, so this is recommended.
+
+The first time you use the cloud shell you will be prompted for Bash or PowerShell.  Choose Bash for this lab. You will also be prompted to create storage.  Say yes.
+
+The storage account is used to back off your home directory to a page blob so that any changes you make in that directory will be persistent.  (The linux containers used for Cloud Shell are ephemeral.) Drag and drop files from File Explorer into the terminal area to upload.
+
+The other persistent area is an SMB 3.0 area mounted in the ~/clouddrive, so you can also move files in or out using [Storage Explorer](https://azure.microsoft.com/en-gb/features/storage-explorer/).  The mount options for the Azure Files area does not support symbolic links and all files will be given permissions of 777.
+
+Note that if you are using the Cloud Shell then you will already be logged into Azure.
+
+### Windows Subsystem for Linux
+
+If you are using a local CLI session (WSL for Windows 10, or the macOS or linux terminals) then you must log in to Azure using the *az login* command as follows:
 
 ```bash
 az login
 ```
 
 Depending on your config then it will either open a browser window for authentication, or give you a device code and link to a web page to authenticate and link to the CLI session.
+
+### Showing and switching context
+
+Show your current context by running the following command:
+
+```bash
+az account show --output jsonc
+```
+
+(You can triple click the command in the code box below to highlight the whole line, which makes copy and paste quicker.)
+
+If you have multiple subscriptions then the following commands may be used to switch context.
+
+```bash
+az account list --output table
+az account set --subscription <subscriptionId>
+az account show
+```
+
+## Registering the Microsoft.Insights provider
+
+**Some subscription types (e.g. Azure Passes) do not have the necessary resource provider enabled to use NSG Flow Logs. Before beginning the lab, enable the resource provider by entering the following Azure CLI command - this will save time later.**
+
+```bash
+az provider register --namespace Microsoft.Insights
+```
+
+> **💬** There is no need to wait for the registration to complete before continuing with the lab set up.
+
+If you do want to double check the status for the provider then you can always use this command:
+
+```bash
+az provider show --namespace Microsoft.Insights --query registrationState --output tsv
+```
 
 ## Create the resource groups
 

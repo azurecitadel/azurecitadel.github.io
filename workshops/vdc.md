@@ -57,8 +57,7 @@ The workshop requires the following:
 The setup for the lab has been updated, and the labs have been fully migrated into the Azure Citadel organisation.  Here are the individual lab sections:
 
 Lab | Section | Description
-
-| [Lab Setup](/workshops/vdc/setup/) | Deploy the lab environment using a few Azure CLI commands
+ | [Setup](/workshops/vdc/setup/) | Deploy the base lab environment using a few Azure CLI commands
 1 | [Explore](/workshops/vdc/lab1/) | Explore and understand the starting point for the lab environment
 2 | [Configure](/workshops/vdc/lab2) | Configure a S2S VPN, base Cisco CSR config, UDRs and vNet peering settings
 3 | [Secure](/workshops/vdc/lab3) | Secure the environment using NSGs, Azure Security Center and Azure Policies
