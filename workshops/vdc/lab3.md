@@ -154,7 +154,7 @@ In this exercise, a file has been created on GitHub containing the above policy 
 
 <pre lang="...">
  az policy definition create --name EnforceNaming --display-name EnforceNamingConvention --rules https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/naming-policy.json
-</pre>
+ </pre>
 
 **2)** Assign the policy to the VDC-Hub resource group using the following AZ CLI command:
 
