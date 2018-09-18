@@ -39,7 +39,9 @@ The workshop requires the following:
     * If your workshop is being hosted by a Microsoft Cloud Solution Architect (CSA) then you will be provided with a code for an **Azure Pass** subscription
     * Open a **private** (in-private / incognito) browser session
     * Go to <http://signup.live.com> and create a new  Microsoft account in  **vdc._firstname.lastname_@outlook.com** format
-    * Go to <https://www.microsoftazurepass.com> and follow the instructions to redeem the code and activate your Azure Pass
+    * Go to <https://www.microsoftazurepass.com> (still within a private session)
+    * Ensure that you log in using your new email (*Sign In* is top right)
+    * Follow the instructions to redeem the code and activate your Azure Pass
 * If you will be using you own subscription (e.g. Visual Studio Enterprise) then you can confirm that the subscription is valid for the workshop by checking the following in the portal:
     * prove the ability to create resources by creating a new resource group
     * check there are no stringent Virtual Machine or CPU quotas in Subscriptions -> Usage + Quotas
