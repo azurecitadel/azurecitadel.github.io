@@ -7,9 +7,9 @@ tags: [azure, 101, paas, web, app, git, github]
 comments: true
 author: Richard_Cheney
 image:
-  feature: 
+  feature:
   teaser: Education.jpg
-  thumb: 
+  thumb:
 excerpt: Create a web app and then pull some html content from GitHub.  CLI and Portal options.
 ---
 {% include toc.html %}
@@ -54,7 +54,7 @@ last=Cheney
 
 Set the _first_ and _last_ variables to match your given name and family name rather than mine.
 
-Setting these will help to ensure that the variables set in the following section are likely to be unique, notably the app name (which has to be globally unique) and the username (that has to be unique within the subscription). 
+Setting these will help to ensure that the variables set in the following section are likely to be unique, notably the app name (which has to be globally unique) and the username (that has to be unique within the subscription).
 
 Type (or copy and paste) the following commands into the console:
 
@@ -78,24 +78,25 @@ appName=azure101${first}${last}
   * clones the HTML files in the GitHub repo locally
   * changes the working directory to the new clone of the repo and then initialises it for Git
   * lists the files and then finally the pwd command prints the working directory so that you know where they are locally
-2. The second section 
-  * configures git with user information 
+2. The second section
+  * configures git with user information
   * sets up to cache our credentials after the first successful connection to a remote repository
 3. The third section then defines some variables (for the resource group, deployment user credentials and the web app name) that we'll use later in the lab
 
-If you have installed full bash on Windows 10 then you may double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.  
+If you have installed full bash on Windows 10 then you may double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.
 
-If you are in the Cloud Shell then `cat index.html` will display the raw html.  
+If you are in the Cloud Shell then `cat index.html` will display the raw html.
 
 **2. Create the deployment user**
 
 Run the following command to create the deployment user:
 
-```
+```bash
 az webapp deployment user set --user-name $user --password $pwd
 ```
 
-* You will be prompted to make your username or password more unique if you have chosen one that is too common, although the error is a basic 400 decline HTTP error
+* If you have changed the password from the example above, and is too simple or common then you may see a basic 400 decline HTTP error
+    * If that happens then you can change the password to something more complex and obscure and retry
 * The deployment user is the equivalent of a service account so that Git can authenticate to Azure and deploy to it
 
 **3. Create the resource group**
@@ -142,7 +143,7 @@ deployuri=$(az webapp deployment source config-local-git --name $appName --resou
 echo $deployuri
 ```
 
-* The first command create an https endpoint similar to below, and then saves that value into the $deployuri variable.  The second prints the variable to screen, e.g. 
+* The first command create an https endpoint similar to below, and then saves that value into the $deployuri variable.  The second prints the variable to screen, e.g.
   `https://<username>@<appname>.scm.azurewebsites.net/<appname>.git`
 
 * Note the _scm_ section of the URL - this is the Kudu address. We’ll come back to that later
@@ -160,7 +161,7 @@ git remote -v
 Push the master branch of the local html repo up to the azure remote:
 
 ```bash
-echo $pwd 
+echo $pwd
 
 git push azure master
 ```
@@ -169,17 +170,17 @@ Refresh the web page and confirm that it has changed.
 
 **8. Change the HTML and push again to the Web App**
 
-Edit the index.html to change the Twitter account to your own.  You can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser. 
+Edit the index.html to change the Twitter account to your own.  You can use ``nano index.html``, or ``vi index.html`` for those familiar with using terminal editors. Or you may go into the web app in the portal and use the App Service Editor in the blade and edit the index.html directly in the browser.
 
 Commit the change, and then push it up to the azure remote:
 
 ```bash
-git commit -a -m "Description of the change" 
+git commit -a -m "Description of the change"
 
 git push azure master
 ```
 
-Refresh the web page and confirm that it has been changed as expected.  
+Refresh the web page and confirm that it has been changed as expected.
 
 ### If you have time:
 
@@ -200,23 +201,23 @@ Azure offers many ways of achieving something, with a view that users should use
   * Create a new resource group, and call it **Azure101PaaS**
   * There is a choice of WIndows or Linux based web apps.  Retain the WIndows default.
   * Click on the app service plan/location so that we can define our own
-    * create a new App Service Plan called **freeTier** 
+    * create a new App Service Plan called **freeTier**
     * use the same region as the Resource Group
     * specify the **F1** free tier
     * click on **OK**
   * Click on **Create**
 
 Once the web app has deployed successfully:
-* open the App Service blade 
+* open the App Service blade
 * click on the URL in the Overview section
 
-The placeholder web page will be opened in a new tab: 
+The placeholder web page will be opened in a new tab:
 
-![](/labs/webapps/images/webappPlaceholder.jpg) 
+![](/labs/webapps/images/webappPlaceholder.jpg)
 
 * Scroll down the App Service blade and find **App Service Editor** in the Development Tools section
 * Click on the **Go->** link in the main pane.  This will open up a new tab containing the App Service Editor environment.
-* Select the Git button on the left 
+* Select the Git button on the left
 
     ![Git](/labs/webapps/images/gitLogo.png)
 
