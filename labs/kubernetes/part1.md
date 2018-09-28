@@ -14,7 +14,8 @@ image:
 
 ## Registering Providers
 
-As AKS is in preview you might need to register the `Microsoft.ContainerService` provider in your subscription. Additionally if this is a new subscription created from an Azure Pass or trial, the core `Network`, `Storage` & `Compute` providers may not be registered.  
+AKS is a Generally Avaialable (GA) service as of June 13, 2018 and is currently avalaible in select regions across the globe. Please see the current [Product Region Avalaibility](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=kubernetes-service&regions=all) table for updated reference and Roadmap regions.
+If this is a new subscription created from an Azure Pass or trial, the core `Network`, `Storage` & `Compute` providers may not be registered.  
 Run the following commands to ensure all four providers are enabled:
 ```
 az provider register -n Microsoft.Network
@@ -24,16 +25,10 @@ az provider register -n Microsoft.ContainerService
 ```
 
 ## Deploying AKS
-We will begin by deploying Kubernetes using [*Azure Container Service (AKS)*](https://azure.microsoft.com/en-us/services/container-service/) (for the rest of the document we will simply refer to it as AKS)
+We will begin by deploying Kubernetes using [*Azure Kubernetes Service (AKS)*](https://azure.microsoft.com/en-us/services/container-service/) (for the rest of the document we will simply refer to it as AKS)
 
-**💬 Note.** At the time of writing (Mar 2018) AKS is in preview and the only Azure regions where AKS can be deployed are: 
-- westeurope
-- eastus
-- centralus
-- canadacentral
-- canadaeast  
 
-> Pick a location and use it for everything you create in this lab. We will use **westeurope**, but you can use one of the other regions listed above if you wish. If using an Azure Pass or Internal Use subscription, you will be limited to westeurope and eastus
+> Pick a location and use it for everything you create in this lab. We will use **westeurope**, but you can use one of the other regions listed in the [Product Region Avalaibility](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=kubernetes-service&regions=all) table. If using an Azure Pass or Internal Use subscription, you will be limited to westeurope and eastus
 
 Using the Azure CLI creating an AKS cluster is easy. First create a resource group:
 ```
@@ -56,13 +51,13 @@ However you will probably want to customize your cluster, some common options ar
 
 A recommended cluster configuration for this lab is as follows:
 ```
-az aks create -g kube-lab -n aks-cluster -l westeurope --node-count 3 --node-vm-size Standard_B2ms --kubernetes-version 1.9.6 --verbose
+az aks create -g kube-lab -n aks-cluster -l westeurope --node-count 3 --node-vm-size Standard_DS2v2 --kubernetes-version 1.10.7 --verbose
 ```
-This is a three node cluster, running Kubernetes 1.9.6 using B-Series burstable VMs to minimize costs  
+This is a three node cluster, running Kubernetes 1.10.7 using D-Series General Compute VMs to minimize costs  
 
 **💬 Note 1.** The `az aks create` command uses your default SSH keypair located in **~/.ssh/id_rsa.pub** to provision the cluster nodes. If these keys don't exist (likely if you've never used WSL Bash or the Cloud Shell before) then you must add `--generate-ssh-keys` to the command. If you have your own SSH keys you wish to use, then add the `--ssh-key-value` parameter and provide the key public contents as a string
 
-**💬 Note 2.** The command might take some time to complete, around 30 mins is normal, but in some cases up to an hour.
+**💬 Note 2.** The command might take some time to complete, around 20 mins is normal, but in some cases up to an 45 minutes.
 
 **💬 Note 3.** To save costs you can optionally enable auto-shutdown on the node VMs. Find the resource group named **MC_kube-lab_aks-cluster_westeurope** this will contain your cluster's nodes and other Azure resources. Click on each of the VMs and switch on the auto shutdown feature. You will need to manually start them again when you want to use your cluster, which might take around 5 mins, but having the nodes shutdown you can keep your AKS cluster deployed indefinitely for essentially zero cost
 
@@ -74,7 +69,7 @@ If you are using *Azure Cloud Shell* you can skip this part as `kubectl` is alre
 
 To download the `kubectl` binary run:
 ```
-sudo az aks install-cli --client-version 1.9.6
+sudo az aks install-cli
 ```
 
 Test the command has been installed and is in your path by simply running `kubectl`
