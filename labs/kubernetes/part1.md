@@ -51,9 +51,9 @@ However you will probably want to customize your cluster, some common options ar
 
 A recommended cluster configuration for this lab is as follows:
 ```
-az aks create -g kube-lab -n aks-cluster -l westeurope --node-count 3 --node-vm-size Standard_DS2v2 --kubernetes-version 1.10.7 --verbose
+az aks create -g kube-lab -n aks-cluster -l westeurope --node-count 3 --node-vm-size Standard_DS2_v2 --kubernetes-version 1.10.7 --verbose
 ```
-This is a three node cluster, running Kubernetes 1.10.7 using D-Series General Compute VMs to minimize costs  
+This is a three node cluster, running Kubernetes 1.10.7 using D-Series General Compute VMs to minimize costs but allow for reasonable reliability of the cluster. 
 
 **💬 Note 1.** The `az aks create` command uses your default SSH keypair located in **~/.ssh/id_rsa.pub** to provision the cluster nodes. If these keys don't exist (likely if you've never used WSL Bash or the Cloud Shell before) then you must add `--generate-ssh-keys` to the command. If you have your own SSH keys you wish to use, then add the `--ssh-key-value` parameter and provide the key public contents as a string
 
