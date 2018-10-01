@@ -16,7 +16,7 @@ excerpt: Designed for people wanting to learn Kubernetes; going from basics to d
 {% include toc.html %}
 
 ## Introduction
-This lab aims to introduce people to Kubernetes and Azure Container Service (AKS) by working through a practical example; that of deploying a working microservices application. During this lab you will deploy a Kubernetes cluster using AKS, configure your own container registry, deploy a number of microservices, configure their network access to combine the services into a working end to end application. Finally you look at how Kubernetes can be used to make the app resilient and scalable
+This lab aims to introduce people to Kubernetes and Azure Kubernetes Service (AKS) by working through a practical example; that of deploying a working microservices application. During this lab you will deploy a Kubernetes cluster using AKS, configure your own container registry, deploy a number of microservices, configure their network access to combine the services into a working end to end application. Finally you look at how Kubernetes can be used to make the app resilient and scalable
 
 The application we will be using is called 'Smilr' and is [covered in much more detail in this demo guide](/demos/microservices/). Smilr allows people to provide feedback on events or sessions they have attended via a simple web & mobile interface. The feedback consists of a rating (scored 1-5) and supporting comments. Administrators can create new events and schedule them
 
