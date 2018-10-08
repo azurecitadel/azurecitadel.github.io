@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Kubernetes: Module 6 - Scaling & Persistence"
-date: 2018-03-23
+date: 2018-10-01
 tags: [kubernetes, microservices, containers, azure, aks, nodejs]
 comments: true
 author: Ben_Coleman
