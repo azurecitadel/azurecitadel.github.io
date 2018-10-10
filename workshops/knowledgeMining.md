@@ -16,7 +16,11 @@ image:
 
 ## Welcome
 
+Real-world data is messy. It often spans media types (e.g. text documents, PDF files, images, databases), changes constantly, and carries valuable knowledge in ways that is not readily usable.
+
 Cognitive Search adds data extraction, natural language processing (NLP), and image processing skills to an Azure Search indexing pipeline, making previously unsearchable or unstructured content more searchable. Information created by Cognitive Search Skills, such as entity recognition or image analysis, gets added to an index in Azure Search.
+
+This solution alleviates the large effort needed to accomplish the typical solution pattern needed for this: ingest-enrich-explore. Sidesteps usual challenges like large scale change tracking to file format support, and even composition of multiple AI models. Today it takes a huge amount of effort, requires branching into multiple unrelated domains (from cracking PDFs to handling AI model composition). This is where Cognitive Search comes in.
 
 This one day training will focus on hands-on activities that develop proficiency with Cognitive Search, an Azure Search AI-oriented capability. These labs assume an introductory to intermediate knowledge of [Visual Studio](https://www.visualstudio.com/vs/community/), the [Azure Portal](https://portal.azure.com), [Azure Functions](https://azure.microsoft.com/en-us/services/functions/) and [Azure Search](https://azure.microsoft.com/en-us/services/search/). If you are not at that skill level, we have prerequisite materials below that you **need** to complete prior to beginning this training.
 
@@ -51,10 +55,10 @@ Since this is an AI training on top of Microsoft Azure Services, before we start
 
 Since you have finished the prerequisites, let's start the training. You just need to follow the workshop structure presented below.
 
-+ [Introduction](https://github.com/Azure/LearnAI-Cognitive-Search/blob/master/01-Introduction.md) - 1 hour - Motivation, context, key concepts
-+ [Solution Architecture](https://github.com/Azure/LearnAI-Cognitive-Search/blob/master/02-Solution-Architecture.md) - 1 hour - Diagram, use cases, deployment options and costs
-+ [Environment Creation](https://github.com/Azure/LearnAI-Cognitive-Search/blob/master/03-Environment-Creation.md) - 1 hour - Using the Azure Portal, we will create the services we need fo the workshop
-+ [Lab 1](https://github.com/Azure/LearnAI-Cognitive-Search/blob/master/04-Lab-1-Text-Skills.md) - 2 hours - Create a Cognitive Search Enrichment Process: **Text** Skills
-+ [Lab 2](https://github.com/Azure/LearnAI-Cognitive-Search/blob/master/05-Lab-2-Image-Skills.md) - 1 hour - Create a Cognitive Search Skillset: **Image** Skills
-+ [Lab 3](https://github.com/Azure/LearnAI-Cognitive-Search/blob/master/06-Lab-3-Custom-Skills.md) - 2 hours - Create a Cognitive Search Skillset with **Custom** Skills
-+ [Final Case](https://github.com/Azure/LearnAI-Cognitive-Search/blob/master/07-Final-Case.md) - 0.5 hour - Brainstorm - Create a Cognitive Search Solution
++ [Introduction](https://github.com/farishaddad/Knowledge-Mining-using-Cognitive-Search/blob/master/01-Introduction.md) - 1 hour - Motivation, context, key concepts
++ [Solution Architecture](https://github.com/farishaddad/Knowledge-Mining-using-Cognitive-Search/blob/master/02-Solution-Architecture.md) - 1 hour - Diagram, use cases, deployment options and costs
++ [Environment Creation](https://github.com/farishaddad/Knowledge-Mining-using-Cognitive-Search/blob/master/03-Environment-Creation.md) - 1 hour - Using the Azure Portal, we will create the services we need fo the workshop
++ [Lab 1](https://github.com/farishaddad/Knowledge-Mining-using-Cognitive-Search/blob/master/04-Lab-1-Text-Skills.md) - 2 hours - Create a Cognitive Search Enrichment Process: **Text** Skills
++ [Lab 2](https://github.com/farishaddad/Knowledge-Mining-using-Cognitive-Search/blob/master/05-Lab-2-Image-Skills.md) - 1 hour - Create a Cognitive Search Skillset: **Image** Skills
++ [Lab 3](https://github.com/farishaddad/Knowledge-Mining-using-Cognitive-Search/blob/master/06-Lab-3-Custom-Skills.md) - 2 hours - Create a Cognitive Search Skillset with **Custom** Skills
++ [Final Case](https://github.com/farishaddad/Knowledge-Mining-using-Cognitive-Search/blob/master/07-Final-Case.md) - 0.5 hour - Brainstorm - Create a Cognitive Search Solution
