@@ -10,7 +10,7 @@ author: Faris_Haddad
 excerpt: This one day training will focus on hands-on activities that develop proficiency with Cognitive Search, an Azure Search AI-oriented capability.
 image:
   feature:
-  teaser: project.jpg
+  teaser: project.png
   thumb:
 ---
 
