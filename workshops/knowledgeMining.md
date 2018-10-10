@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Azure Search Workshop - Building an Enterprise Cognitive Search Solution
+title: Build a Cognitive Search Solution
 date: 2018-10-10
 categories: workshops
 tags: [cognitive, search, knowledge, data, mining, AI]
