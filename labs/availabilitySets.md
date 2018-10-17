@@ -7,9 +7,9 @@ tags: [azure, virtual machines, scales sets, vm, vmss, availability, sets, prote
 comments: true
 author: Richard_Cheney
 image:
-  feature: 
+  feature:
   teaser: coming-soon.jpg
-  thumb: 
+  thumb:
 excerpt: Hands on lab to work through making VMs and scale sets highly available within an Azure datacentre.
 published: false
 ---
@@ -37,7 +37,7 @@ Once these are understood, it is highly recommended that you continue to the Ava
 The scenarios may be grouped into three:
 
 1. **Unplanned Hardware Maintenance Event** Failure prediction can trigger a Live Migration to enable imminently faulty hardware to be replaced without impacting VM availability
-1. **Unexpected Downtime** A hardware fault unexpecteldy impacts the host server (or whole fault domain).  The VM wil have downtime, and will be rebooted onto good hardware in a crash consistent state (i.e. loss of data that has not been flushed to disk, ephemeral temp disk is lost, etc.)
+1. **Unexpected Downtime** A hardware fault unexpecteldy impacts the host server (or whole fault domain).  The VM will have downtime, and will be rebooted onto good hardware in a crash consistent state (i.e. loss of data that has not been flushed to disk, ephemeral temp disk is lost, etc.)
 1. **Planned Maintenance events** Most of these are now non-disruptive, but some (such as the fixes for the  Spectre and Meltdown CPU level exploits) demand a full reboot to take effect
 
 There are also a couple of domains we refer to when managing availability:
@@ -85,7 +85,7 @@ Now, before we go ahead and do this there are a few important points to be made:
 
 Before we begin the hands on part, here are a few hints to make life a little simpler with the CLI:
 
-1. Once you have created your resource group, shorten the commands by using the `az configure --defaults group=myResourceGroupName location=westeurope` 
+1. Once you have created your resource group, shorten the commands by using the `az configure --defaults group=myResourceGroupName location=westeurope`
     * You can then skip the --resource-group and --location switches common to most az commands, which is exactly what I've done with all of these examples
     * Note that if I am scripting rather than executing from the prompt then I always specify the --resource-group and --location switches where applicable
 1. Use variables in Bash if you will be reusing switch values regularly.  E.g. `rg=westeurope; avset=myAvailabilitySetName; lb=myLoadBalancerName`
@@ -99,7 +99,7 @@ OK, let's get going.
 
 ### Hands On Lab for Load Balancers and Availability Sets
 
-This lab is based on the excellent [Load Balance VMs](https://docs.microsoft.com/en-gb/azure/virtual-machines/linux/tutorial-load-balancer) tutorial and it covers both availability sets and load balancers. 
+This lab is based on the excellent [Load Balance VMs](https://docs.microsoft.com/en-gb/azure/virtual-machines/linux/tutorial-load-balancer) tutorial and it covers both availability sets and load balancers.
 
 Before we start, I'll set a large number of variables up front.  This way, should you get kicked out of a Cloud Shell session then you can repaste those variables and continue from where you left off.  And once that is done then the last two lines will set the defaults so that we can skip the --resource-group switch from now on and create the resource group (this will still succeed if it already exists):
 
@@ -151,7 +151,7 @@ do
 done
 ```
 
-OK, now we can create the availability set and then the virtual machines within it.  We'll use nice small B series VMs and default to managed disks.  The main lab also makes use of 
+OK, now we can create the availability set and then the virtual machines within it.  We'll use nice small B series VMs and default to managed disks.  The main lab also makes use of
 
 ```bash
 az vm availability-set create --name $avset --platform-fault-domain-count 2 --platform-update-domain-count 5
@@ -163,7 +163,7 @@ do
 done
 ```
 
-These will get submitted with the --no-wait, so wait a few minutes for them to deploy and start.  The tutorial on Microsoft Docs makes use cloud-init to initialise the VMs with nginx,  but we'll cover VM level automation technologies in a separate lab.  For the minute, we'll just ssh into each VM and add nginx the old-fashioned way using apt-get. 
+These will get submitted with the --no-wait, so wait a few minutes for them to deploy and start.  The tutorial on Microsoft Docs makes use cloud-init to initialise the VMs with nginx,  but we'll cover VM level automation technologies in a separate lab.  For the minute, we'll just ssh into each VM and add nginx the old-fashioned way using apt-get.
 
 First up is a manual example which first outputs the IP addresses for thos public IPs, and then shows the command to connect in, update the package lists and then install nginx:
 
@@ -355,4 +355,4 @@ Unfortunately at this point of time it is not yet supported to move resources th
 
 ## Next steps
 
-OK, we have covered some good ground for using load balancers, availability sets and virtual machine scale sets to manage any scenarios around fault domain or update domain level events. Don't forget that  
+OK, we have covered some good ground for using load balancers, availability sets and virtual machine scale sets to manage any scenarios around fault domain or update domain level events. Don't forget that

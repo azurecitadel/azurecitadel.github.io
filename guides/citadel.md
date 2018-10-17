@@ -149,7 +149,7 @@ The markdown format also allows html tags to be inserted, so these can be used t
 
 The diagram below show the overall flow we follow with GitHub.  Most contributors do not have write access to the main azurecitadel copy of the repo, so the process makes a fork of that under your own ID, so that you can then clone that version locally and work on new content.  Once you want to save that content it can then be committed and pushed back up to your fork.
 
-If you then want to make those changes active on the main website then submit a pull request and one of the admins wil then merge the changes into the main repo.
+If you then want to make those changes active on the main website then submit a pull request and one of the admins will then merge the changes into the main repo.
 
 Jekyll then regenerates the static HTML site and your changes will be live on [Azure Citadel](https://aka.ms/citadel).
 

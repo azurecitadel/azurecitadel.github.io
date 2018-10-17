@@ -13,7 +13,7 @@ published: true
 
 ## Introduction
 
-This is a short and simple lab to introduce you to the Terraform workflow and HCL file format.  Everything wil be run within the bash version of the Azure Cloud Shell which already has Terraform installed and maintained for you, so all you need for this lab is an active Azure subscription.
+This is a short and simple lab to introduce you to the Terraform workflow and HCL file format.  Everything will be run within the bash version of the Azure Cloud Shell which already has Terraform installed and maintained for you, so all you need for this lab is an active Azure subscription.
 
 There are three ways of authenticating the Terraform provider to Azure:
 

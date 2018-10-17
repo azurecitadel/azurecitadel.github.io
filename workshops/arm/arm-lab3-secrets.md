@@ -51,7 +51,7 @@ You will often see the resourceId used in the variables section to simplfy the r
 
 You can also listKeys or list{Value} from those same resourceIds.  This is very useful in the outputs sections.  Check the Azure documentation for [listKeys and list{Value}](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource#listkeys-and-listvalue) as there are a couple of Bash and PowerShell commands to find out what list actions are supported by each resource type.  Try out the example for the storage account resource type.  You will see listkeys, listAccountSas and listServiceSas.  Taking the listkeys as an example, this then ties in with the [REST API reference](https://docs.microsoft.com/en-gb/rest/api/storagerp/storageaccounts/listkeys) material.
 
-Finally, you can use the [reference()](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource#reference) function to show current runtime information about a resource.  THis is very useful in the outputs section to return the current values for resource properties such as DHCP allocated IP addresses.  We'll use reference() at the end of this lab for practice.  
+Finally, you can use the [reference()](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-resource#reference) function to show current runtime information about a resource.  THis is very useful in the outputs section to return the current values for resource properties such as DHCP allocated IP addresses.  We'll use reference() at the end of this lab for practice.
 
 ## Copying the 101-vm-simple-linux
 
@@ -137,7 +137,7 @@ If you have time then work out the commands in either PowerShell or Bash to see 
 
 ## Use reference() in the outputs section
 
-There wil be times when you want to output the runtime value of a resource property.  For this example, we want the resource ID of the OS managed disk that is created by our template.
+There will be times when you want to output the runtime value of a resource property.  For this example, we want the resource ID of the OS managed disk that is created by our template.
 
 One way to find out the dot notation for the property value is to output the whole reference() block and then drill into that informtion.
 
@@ -162,7 +162,7 @@ Once the job has deployed then you can see look at the output in the portal, or 
 az group deployment show --name jobname --query properties.outputs.vmRef.value --output json --resource-group lab3
 ```
 
-This will show the entire JSON object for the resource's properties.  
+This will show the entire JSON object for the resource's properties.
 
 You can then work out the dot notation to drill down into the JSON object and pull out the specific value you need. Once you have worked with JSON for a while then this will become second nature. See the following video for one example of how this can be done.
 
