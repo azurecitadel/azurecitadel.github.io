@@ -69,15 +69,71 @@ curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/m
 
 ----------
 
-## *Optional*: Change font and vi colours
+## *Optional*: Customisations
 
-The default colours for both the PS1 prompt and for vi and vim can be difficult to read.  If you find that to be the case then follow the instructions below.
+Customisation is a personal thing, so feel free to use any, all or none of the following.
 
-* Edit ~/.bashrc (using nano, vi, or vim) and then scroll to the color_prompt section.
-    * The PS1 prompt colours are set in the sections that are in the format `[01:34m\]`.  The 34 is light blue, which is hard to read.  Changing the number from 34 to 36 (cyan) or 33 (yellow) will be more readable. (Info from [here](http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html).)
-* For vi(m) users then creating a .vimrc file will also help to set a more readable colour scheme
+They are included as you may find that the out of the box colours for both the PS1 prompt and for vi(m) can be difficult to read.  Also some of the labs use git commands locally so the revised PS1 prompt below will show when you are in a repo and which branch you are on.
+
+### Updated PS1 prompt
+
+* Go to your home directory using `cd`.
+* Backup your .bashrc file using `cp -p .bashrc .bashrc-backup`.
+* Download git-prompt.sh
 
 ```bash
 umask 022
-echo -e "colo murphy\nsyntax on" >> ~/.vimrc
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+```
+
+* Run the following to add a couple of lines to the bottom of your .bashrc
+
+```bash
+cat << EOF >> ~/.bashrc
+
+source ~/.git-prompt.sh
+export PS1='\[\033[01;32m\]\w\[\033[01;33m\]$(__git_ps1 " (%s)") \[\033[01;37m\]\$ '
+EOF
+```
+
+* Source your profile to see the change: `source ~/.bashrc`
+
+You will need to move to a local git repo to see the branch within the prompt.
+
+There is online documentation available if you want to customise the [colors]((http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html)) or [content](https://help.ubuntu.com/community/CustomizingBashPrompt) of the PS1 string.
+
+### Customised vi(m)
+
+If you are used to editing with vi then add the following lines are in your .bashrc:
+
+```bash
+export EDITOR=vi
+set -o vi
+```
+
+You can also select the colour scheme for legibility:
+
+```bash
+umask 022
+echo -e "colo delek\nsyntax on" >> ~/.vimrc
+```
+
+Or create a custom one, e.g.:
+
+```bash
+umask 022
+mkdir -p ~/.vim/colors
+curl https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/guides/wsl/cloudshell.vim > ~/.vim/colors/cloudshell.vim
+echo -e "colo cloudshell\nsyntax on" >> ~/.vimrc
+```
+
+### Customised ls colours
+
+With WSL you will notice that anything in /mnt/c will appear to linux as if it has 777 permissions.  This is highlighted as insecure in the coloured ls output with an angry looking colour scheme. This can reduce legibility, so if you want to customise that then feel free to run the following commands to customise the output.
+
+```bash
+umask 022
+curl https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/guides/wsl/.dircolors_cloudshell > ~/.dircolors
+source ~/.bashrc
+ls -lrt --color=auto /mnt/c/Users/$LOGNAME/Downloads
 ```
