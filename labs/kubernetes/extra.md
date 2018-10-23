@@ -13,11 +13,11 @@ This section contains a few ideas for expanding on what was done in the main lab
 
 ## Basic Kubernetes Practices
 - **Container Health Probes**  
-We haven't told Kubernetes any way to know if Smilr app containers it deployed were healthy and actually operational. A started container is not a direct indication of operational health. Kubernetes provides mechanisms called *Liveness and Readiness Probes* to give it an understanding of the health of the pods  
+We haven't told Kubernetes any way to know if Smilr app containers it deployed were healthy and actually operational. A started container is not a direct indication of operational health. Kubernetes provides mechanisms called *Liveness and Readiness Probes* to give it an understanding of the health of the pods. **Hint: The data-api listens for HTTP requests on port 4000 and the frontend on port 3000**  
 [📘 Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#define-readiness-probes){:target="_blank" class="btn-info"}
 
 - **Pod Resources**  
-We didn't provide Kubernetes with any information about how much memory or CPU our pods would need, or the max they should be allowed to use. This can be done with resource requests and resource limits, and it allows Kubernetes to better distribute pods across the nodes  
+We didn't provide Kubernetes with any information about how much memory or CPU our pods would need, or the max they should be allowed to use. This is generally bad practice and you should set limits on your Pods to prevent resource starvation. This can be done with resource requests and resource limits, and it allows Kubernetes to better distribute pods across the nodes  
 [📘 Managing Compute Resources](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/){:target="_blank" class="btn-info"}
 
 - **Auto Scaling**  
