@@ -11,13 +11,14 @@ excerpt: This workshop is a series of hands-on labs focused on deploying a Node.
 image:
   feature: code.jpg
   teaser: Education.jpg
-  thumb: 
+  thumb:
 ---
 In this workshop we will start by using *Visual Studio Code* and *Visual Studio Team Services* to create a continuous integration/continuous deployment pipeline to deploy a Node.js application to *Azure App Service* using an ARM Template.
 
 Then, in Lab 2, we will move on to containerizing the application using <a href="https://www.docker.com" target="_blank">Docker</a> and deploying to *Azure Container Instances*.
 
 The workshop will cover:
+
 * Node.js & Express
 * Visual Studio Code (VSCode)
 * Git & GitHub
@@ -34,16 +35,16 @@ Lab | Description
 <a href="/labs/devops-vsts/" target="_new">DevOps with VSTS & Azure</a> | Learn how to create a continuous delivery pipeline with VS Code, VSTS & Azure App Service
 <a href="/labs/devops-containers" target="_new">Containerizing Apps with Azure</a> | Convert your deployed application to a Docker container and deploy it as an Azure Container Instance
 
-## Pre-requisites 
+## Pre-requisites
 
 To complete this workshop you will need the following:
 
 Pre-req | Required | Comment
-<a href="/guides/subscription" target="_new">Azure Subscription</a> | Required | 
-<a href="/guides/vsts" target="_new">Visual Studio Team Services</a> | Required | 
-<a href="/guides/git" target="_new">Git</a> | Required | 
+<a href="/guides/subscription" target="_new">Azure Subscription</a> | Required |
+<a href="/guides/vsts" target="_new">Visual Studio Team Services</a> | Required |
+<a href="/guides/git" target="_new">Git</a> | Required |
 <a href="/guides/nodejs" target="_new">Node.js</a> | Required |
-<a href="/guides/vscode" target="_new">Visual Studio Code</a> | Required | 
+<a href="/guides/vscode" target="_new">Visual Studio Code</a> | Required |
 <a href="/guides/docker" target="_new">Docker</a> | Required | Required for Lab 2 only
 
 ### Content
@@ -94,5 +95,3 @@ You may also wish to delete the VSTS project we created. but before deleting the
 * Delete the VSTS Project
   * Navigate back to your *Account Hub* page by clicking the **Team Services** icon in the very top left of the window.
   * Hover your cursor over the project you wish to delete, then click the *Delete* icon (X).
-
-

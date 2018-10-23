@@ -89,13 +89,13 @@ resource "azurerm_provider_type" "tfid" {
 
 When your root module is using child modules then you will need to run a `terraform get`.  This will copy the module information locally.  (If your module is already local then it will return immediately.)  You can then run through the `terraform init` to initalise and pull down any required providers before running the plan and apply stages of the workflow.
 
-## Create a terraform-scaffold-module repository
+## Create a terraform-module-scaffold repository
 
 There is more to know about modules, but let's crack on and make a simple one called scaffold, based on the networking and NSGs from lab 3.
 
 We'll first make a make a new GitHub repository for our modules.
 
-* Go into GitHub and create a new repository called terraform-scaffold-module
+* Go into GitHub and create a new repository called terraform-module-scaffold
 * Clone it in vscode
 * Select add Add to Workspace from the notification
 
@@ -106,7 +106,7 @@ We'll first make a make a new GitHub repository for our modules.
 ## Create the scaffold module
 
 * Copy the `loc` and `tags` variables out of your root module's variables.tf
-* Right click the terraform-scaffold-module bar in vscode Explorer
+* Right click the terraform-module-scaffold bar in vscode Explorer
 * Create a new file called `variables.tf`
 * Paste the two variables into the scaffold variables.tf
 * Create an `outputs.tf` file
@@ -118,13 +118,13 @@ output "vpnGwPipAddress" {
 }
 ```
 
-Concatenate the coreNetworking.tf and nsgs.tf file into the terraform-scaffold-module folder
+Concatenate the coreNetworking.tf and nsgs.tf file into the terraform-module-scaffold folder
 
 * Open the Integrated Console and make sure you are in the terraform-labs folder
 * Run the commands in the following code block:
 
 ```bash
-cat coreNetworking.tf nsgs.tf > ../terraform-scaffold-module/main.tf
+cat coreNetworking.tf nsgs.tf > ../terraform-module-scaffold/main.tf
 rm coreNetworking.tf nsgs.tf
 ```
 
@@ -145,7 +145,7 @@ We will rename the webapps.tf and add in the new module call at the top. (You st
 
 ```ruby
 module "scaffold" {
-  source    = "../terraform-scaffold-module/scaffold"
+  source    = "../terraform-module-scaffold/scaffold"
 }
 ```
 
@@ -158,12 +158,12 @@ That is a relative path for the _source_ value.  You may fully path if you prefe
 ```bash
 terraform-labs$ terraform get
 - module.scaffold
-  Getting source "/mnt/c/Users/richeney/git/terraform-scaffold-module"
+  Getting source "/mnt/c/Users/richeney/git/terraform-module-scaffold"
 
 terraform-labs$ tree .terraform
 .terraform
 ├── modules
-│   ├── ca0c4bdbf3f2e5218f73ce44078a995f -> /mnt/c/Users/richeney/git/terraform-scaffold-module
+│   ├── ca0c4bdbf3f2e5218f73ce44078a995f -> /mnt/c/Users/richeney/git/terraform-module-scaffold
 │   └── modules.json
 ├── plugins
 │   └── linux_amd64
@@ -183,8 +183,8 @@ terraform-labs$ jq . .terraform/modules/modules.json
 {
   "Modules": [
     {
-      "Source": "/mnt/c/Users/richeney/git/terraform-scaffold-module",
-      "Key": "1.scaffold;/mnt/c/Users/richeney/git/terraform-scaffold-module",
+      "Source": "/mnt/c/Users/richeney/git/terraform-module-scaffold",
+      "Key": "1.scaffold;/mnt/c/Users/richeney/git/terraform-module-scaffold",
       "Version": "",
       "Dir": ".terraform/modules/ca0c4bdbf3f2e5218f73ce44078a995f",
       "Root": ""
@@ -227,9 +227,9 @@ done
 
 * Rerun `terraform plan`
 
-You should now see that there are no changes required.
+You should now see that there are no changes required. Whenever you are making fundamental backend changes to a configuration then getting to this point of stability is important before introducing actual adds, deletes and changes to the infrastructure.
 
-The `terraform state mv` command is potentially dangerous, so it automatically creates backup files for each action.  If you want to tidy them up then you can run `rm terraform.tfstate.??????????.backup`.
+The `terraform state mv` command is potentially dangerous, so Terraform sensibly creates backup files for each action.  If you want to tidy those automatically created backup files up then you can run `rm terraform.tfstate.??????????.backup`.
 
 ## Using a module from GitHub
 
@@ -239,11 +239,11 @@ Push the module up to GitHub:
 
 * Open the Source Control sidebar in vscode (`CTRL`+`SHIFT`+`G`)
 * Commit your scaffold module
-* Push the terraform-scaffold-module repository up to GitHub
-    * If you have multiple repositories open then click on the sync icon for terraform-scaffold-module in the Source Control Providers
+* Push the terraform-module-scaffold repository up to GitHub
+    * If you have multiple repositories open then click on the sync icon for terraform-module-scaffold in the Source Control Providers
     * Repeat the above for your terraform-labs repository if you have not pushed it up recently
-* Open a browser and navigate to the terraform-scaffold-module repository
-    * Example path: `https://github.com/\<username>/terraform-scaffold-module/`
+* Open a browser and navigate to the terraform-module-scaffold repository
+    * Example path: `https://github.com/\<username>/terraform-module-scaffold/`
     * You should see the variables.tf, main.tf and outputs.tf
 * Copy the address in the address bar (`CTRL`+`L`, `CTRL`+`C`)
 * Find the module in your terraform-labs main.tf
@@ -253,8 +253,8 @@ For example:
 
 ```ruby
 module "scaffold" {
-  # source    = "/mnt/c/Users/richeney/git/terraform-scaffold-module"
-  source    = "github.com/richeney/terraform-scaffold-module"
+  # source    = "/mnt/c/Users/richeney/git/terraform-module-scaffold"
+  source    = "github.com/richeney/terraform-module-scaffold"
 }
 ```
 
@@ -272,7 +272,7 @@ terraform-labs$ tree .terraform
 │   │   ├── outputs.tf
 │   │   ├── README.md
 │   │   └── variables.tf
-│   ├── ca0c4bdbf3f2e5218f73ce44078a995f -> /mnt/c/Users/richeney/git/terraform-scaffold-module
+│   ├── ca0c4bdbf3f2e5218f73ce44078a995f -> /mnt/c/Users/richeney/git/terraform-module-scaffold
 │   └── modules.json
 ├── plugins
 │   └── linux_amd64
@@ -294,15 +294,15 @@ The modules directory has a code to denote each module.  The top one (`a5269b885
 {
   "Modules": [
     {
-      "Source": "/mnt/c/Users/richeney/git/terraform-scaffold-module",
-      "Key": "1.scaffold;/mnt/c/Users/richeney/git/terraform-scaffold-module",
+      "Source": "/mnt/c/Users/richeney/git/terraform-module-scaffold",
+      "Key": "1.scaffold;/mnt/c/Users/richeney/git/terraform-module-scaffold",
       "Version": "",
       "Dir": ".terraform/modules/ca0c4bdbf3f2e5218f73ce44078a995f",
       "Root": ""
     },
     {
-      "Source": "github.com/richeney/terraform-scaffold-module",
-      "Key": "1.scaffold;github.com/richeney/terraform-scaffold-module",
+      "Source": "github.com/richeney/terraform-module-scaffold",
+      "Key": "1.scaffold;github.com/richeney/terraform-module-scaffold",
       "Version": "",
       "Dir": ".terraform/modules/a5269b88508cfda37e02e97e5759753f",
       "Root": ""
@@ -319,8 +319,8 @@ We'll remove the old local module, which is the first one in my example
 {
   "Modules": [
     {
-      "Source": "github.com/richeney/terraform-scaffold-module",
-      "Key": "1.scaffold;github.com/richeney/terraform-scaffold-module",
+      "Source": "github.com/richeney/terraform-module-scaffold",
+      "Key": "1.scaffold;github.com/richeney/terraform-module-scaffold",
       "Version": "",
       "Dir": ".terraform/modules/a5269b88508cfda37e02e97e5759753f",
       "Root": ""
@@ -338,7 +338,7 @@ If you have any JSON syntax errors then vscode will highlight those for you.
 terraform-labs$ ls -l .terraform/modules/
 total 0
 drwxrwxrwx 1 richeney richeney 4096 Sep  4 17:01 a5269b88508cfda37e02e97e5759753f
-lrwxrwxrwx 1 richeney richeney   51 Sep  4 16:46 ca0c4bdbf3f2e5218f73ce44078a995f -> /mnt/c/Users/richeney/git/terraform-scaffold-module-rwxrwxrwx 1 richeney richeney  439 Sep  4 17:01 modules.json
+lrwxrwxrwx 1 richeney richeney   51 Sep  4 16:46 ca0c4bdbf3f2e5218f73ce44078a995f -> /mnt/c/Users/richeney/git/terraform-module-scaffold-rwxrwxrwx 1 richeney richeney  439 Sep  4 17:01 modules.json
 
 terraform-labs$ rm .terraform/modules/ca0c4bdbf3f2e5218f73ce44078a995f
 

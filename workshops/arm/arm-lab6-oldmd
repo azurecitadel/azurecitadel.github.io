@@ -252,7 +252,7 @@ Copy the template above into a new template file, and then submit using `az grou
 
 ## Using 'pointer' variables
 
-As you can see from the template above, it can get a little verbose when so many of the function calls evaluate the concat to get to the correct variable object.  The plus side is that it is obvious that those properties wil differ based on the vmSize parameter.
+As you can see from the template above, it can get a little verbose when so many of the function calls evaluate the concat to get to the correct variable object.  The plus side is that it is obvious that those properties will differ based on the vmSize parameter.
 
 If you wish to make the template a little more succinct and readable then you can dynamically set a variable and reference that throughout the template instead.
 
