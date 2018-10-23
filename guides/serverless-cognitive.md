@@ -37,9 +37,9 @@ The system consists of four main parts:
 1. Image is HTTP POSTed from camera app as Base64 string back to same Azure Function
 2. Azure Function decodes Base64 data and stores resulting image in Blob Storage, into *photo-in* container
 3. Second Azure Function is triggered on a new blob arriving at *photo-in* 
-4. Function sends image to Cognitive Service API (REST call) and uses result to render a new JPEG image with details "drawn" over the photo
-5. Result is stored in *photo-out* container in Blob Storage
-6. Static HTML5 viewing page polls *photo-out* for new images and updates page dynamically
+4. Function sends image to Cognitive Service API (REST call) and gets the JSON result
+5. Result is stored in *photo-out* container as a blob of JSON
+6. Static HTML/Javascript viewer 'app' polls *photo-out* for new blobs and updates page dynamically by fetching and reading the JSON. Details are shown as overlays on the images, such as the caption, tags and location of faces (using HTML5 Canvas API)
 
 
 ## Example (Viewer Results)
@@ -49,16 +49,26 @@ The system consists of four main parts:
 ## Deployment & Setup
 The system requires a single Function App, storage account and Cognitive Services account. Using a consumption plan for the Function App means the costs for deploying the system are extremely small.
 
-All these steps use the Azure Portal, and assume you already have an Azure subscription
+### Option 1. Automated Deployment Script 
+A bash script `deploy.sh` for fully automated deployment is provided in the **etc** directory. This script will create everything and deploy all the Functions code. The default resource group is called ****Demo.ServerlessVision**** and deploys to **North Europe**, you can modify the script to change these defaults.  
+
+To run the script you will need the Azure CLI installed and configured and either run the script locally under WSL bash or simply use the Azure Cloud Shell
+
+- **Step 1** Go to [shell.azure.com](shell.azure.com) and login
+- **Step 2** Run `curl -s https://raw.githubusercontent.com/benc-uk/serverless-cognitive/master/etc/deploy.sh | bash`
+
+### Option 2. Manual Deployment
+If you want to learn a little bit more about Functions and how the parts integrate together, then you can manually deploy the solution. All these steps use the Azure Portal, and assume you already have an Azure subscription
 
 ### 1. Deploy a new Azure Function App using the Portal 
 - Click; *New ➔ Compute ➔ Function App*
- - Pick any unique name for your app
+- Pick any unique name for your app
 - Pick Windows as the OS
 - Opt to create a new resource group, give it any name that you wish
-- For the *Hosting Plan* Select "Consumption Plan"
+- For the *Hosting Plan* select "Consumption Plan"
+- For the *Runtime Stack* select "JavaScript"
 - Opt to create a new storage account, and make a note of the name
-- Turn off Application Insights
+- Use of *Application Insights* is optional, it will provide monitoring and diagnostics if you are interested in seeing them
 
 ### 2. Deploy Computer Vision Cognitive Service
 - Click; *New ➔ AI + Machine Learning ➔ Computer Vision*
@@ -66,14 +76,14 @@ All these steps use the Azure Portal, and assume you already have an Azure subsc
 - Place in same resource group used for the Function App
 - Once the Computer Vision Cognitive Service is deployed, click into the resource and click on keys. Copy "Key 1" somewhere, e.g. into a text file.
 
-### 3. Deploy & code to Functions & Configure
+### 3. Deploy & code to Functions & configure
 - We will deploy the function code from the main [source GitHub repo](https://github.com/benc-uk/serverless-cognitive):
   - Click into your new Function App from the Portal, you will be taken to the Functions Portal
-  - Click: *Platform Features ➔ Deployment Options* (It is listed under CODE DEPLOYMENT)
-  - Click: *Setup ➔ Choose Source ➔ External Repository*
-  - Enter `https://github.com/benc-uk/serverless-cognitive.git` as the URL, and the branch as "master". Click OK
-  - It might take a few seconds, but the view will refresh and you will see a tick, indicating the code has deployed
-  - Close the deployments view
+  - Click: *Platform Features ➔ Deployment Center* (It is listed under CODE DEPLOYMENT)
+  - Click: *External Repository* in the Source Control view, then click 'Continue'.
+  - Enter `https://github.com/benc-uk/serverless-cognitive.git` as the Repository URL, and for the branch enter "master". Click 'Continue'
+  - Click 'Finish' on the summary page.
+  - The view will refresh and you will see a page displaying the status of the deployment. Be patient and wait until the status changes to "Success (Active)"
 - Click the list of Functions on the left side, and two functions; *cameraFunction* and *cognitiveFunction* should appear
 - Get the URL of the camera app, click: on the *cameraFunction* then click on "</> Get function URL" at the top. Copy this URL somewhere, as you will need to open it on your mobile, creating a short link or sending it over to your phone as a message/email will save you typing it in
 - Configure the functions to access your Cognitive Service:
