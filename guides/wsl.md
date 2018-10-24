@@ -75,6 +75,16 @@ Customisation is a personal thing, so feel free to use any, all or none of the f
 
 They are included as you may find that the out of the box colours for both the PS1 prompt and for vi(m) can be difficult to read.  Also some of the labs use git commands locally so the revised PS1 prompt below will show when you are in a repo and which branch you are on.
 
+### Modified colours for new Windows console
+
+The new console is used by Command Prompt and by the WSL linux distros such as Ubuntu.  It is a significant ground up [rework](https://blogs.msdn.microsoft.com/commandline/tag/console/), and is a great improvement on the old console.
+
+You can easily customise the colour scheme for it.  Download [colortools](https://github.com/Microsoft/console/releases) and extract.  The [blog page](https://blogs.msdn.microsoft.com/commandline/2017/08/11/introducing-the-windows-console-colortool/) shows how to use it, but essentially you use `colortools.exe -b <file>` in Command Prompt (or PowerShell).  The file must either be an .ini file or an .itermcolors file, which is used by consoles such as MacOS' iTerm2.
+
+The colortools download will include a few files, but you can also find [repositories](https://github.com/mbadolato/iTerm2-Color-Schemes) full of itermcolors files.
+
+Or you can customise and then export your own ini files in the console, such as this [Nord Extra Dark colour scheme](https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/guides/wsl/nord-extra-dark.ini), which is close to the extension in vscode. Right click the link and save alongside the other schemes, and then you can use `.\colortools.exe -b nord-extra-dark` to set.
+
 ### Updated PS1 prompt
 
 * Go to your home directory using `cd`.
