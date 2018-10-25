@@ -30,14 +30,20 @@ We will begin by deploying Kubernetes using [*Azure Kubernetes Service (AKS)*](h
 
 > Pick a location and use it for everything you create in this lab. We will use **westeurope**, but you can use one of the other regions listed in the [Product Region Avalaibility](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=kubernetes-service&regions=all) table. If using an Azure Pass or Internal Use subscription, you will be limited to westeurope and eastus
 
+Set BASH environment variables for the Azure region and resource group you plan to use in this walk through.
+```
+group=<resource group name>
+region=<azure region name>
+```
+
 Using the Azure CLI creating an AKS cluster is easy. First create a resource group:
 ```
-az group create -n kube-lab -l westeurope
+az group create -n $group -l $region
 ```
 
 The most basic form of the AKS create command using all the defaults is simply:
 ```
-az aks create -g kube-lab -n aks-cluster -l westeurope
+az aks create -g $group-n aks-cluster -l $region
 ```
 
 However you will probably want to customize your cluster, some common options are:
@@ -51,7 +57,7 @@ However you will probably want to customize your cluster, some common options ar
 
 A recommended cluster configuration for this lab is as follows:
 ```
-az aks create -g kube-lab -n aks-cluster -l westeurope --node-count 3 --node-vm-size Standard_DS2_v2 --kubernetes-version 1.11.2 --verbose
+az aks create -g $group -n aks-cluster -l $region --node-count 3 --node-vm-size Standard_DS2_v2 --kubernetes-version 1.11.2 --verbose
 ```
 This is a three node cluster, running Kubernetes 1.11.2 using D-series VMs with 2 cores to minimize costs but allow for reasonable reliability of the cluster. 
 
@@ -104,7 +110,7 @@ For the lab we will use the command line for everything, and all commands will b
 ### Option 1 - Using WSL Bash 
 If using WSL Bash on your local machine, the dashboard can be accessed via a proxy tunnel into the Kubernetes cluster itself. To create this proxy:
 ```
-az aks browse -g kube-lab -n aks-cluster
+az aks browse -g $group -n aks-cluster
 ```
 To access the dashboard go to [http://127.0.0.1:8001](http://127.0.0.1:8001) in your browser. 
 
