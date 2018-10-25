@@ -28,9 +28,10 @@ az provider register -n Microsoft.ContainerService
 ## Deploying AKS
 We will begin by deploying Kubernetes using [*Azure Kubernetes Service (AKS)*](https://azure.microsoft.com/en-us/services/container-service/) (for the rest of the document we will simply refer to it as AKS)
 
-> Pick a location and use it for everything you create in this lab. We will use **westeurope**, but you can use one of the other regions listed in the [Product Region Avalaibility](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=kubernetes-service&regions=all) table. If using an Azure Pass or Internal Use subscription, you will be limited to westeurope and eastus
+> Pick an Azure region and use it for everything you create in this lab. We will use **westeurope**, but you can use one of the other regions listed in the [Product Region Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=kubernetes-service&regions=all) table.  
+Note. If you are using an Azure Pass or Internal Use subscription, you will be limited to westeurope and eastus
 
-Set BASH environment variables for the Azure region and resource group you plan to use in this walk through.
+Set Bash environment variables for the Azure region and resource group you plan to use in this walk through. You can pick anything for the resource group name (no spaces), a suggestion is *kube-lab*
 ```
 group=<resource group name>
 region=<azure region name>
@@ -107,41 +108,16 @@ Accessing the Kubernetes dashboard is optional, but if it's your first time usin
 
 For the lab we will use the command line for everything, and all commands will be provided. However it is useful to be able to sanity check and see what is going on using the dashboard. It's a matter of personal choice if you want to use the dashboard, but it's worth having to hand for triaging problems and investigation.
 
-### Option 1 - Using WSL Bash 
-If using WSL Bash on your local machine, the dashboard can be accessed via a proxy tunnel into the Kubernetes cluster itself. To create this proxy:
+If using WSL Bash on your local machine or in Azure Cloud Shell, the dashboard can be accessed via a proxy tunnel into the dashboard pod (which is automatically running in your AKS cluster). To create this proxy, run this command:
 ```
-az aks browse -g $group -n aks-cluster
+az aks browse -g $group -n aks-cluster --enable-cloud-console-aks-browse
 ```
-To access the dashboard go to [http://127.0.0.1:8001](http://127.0.0.1:8001) in your browser. 
+- If using WSL Bash locally - Access the dashboard by going to [http://127.0.0.1:8001](http://127.0.0.1:8001) in your browser. 
+- If using Azure Cloud Shell - The dashboard will open in a new browser tab, check if the pop-up has been blocked. Alternatively click the link provided in the command output 
 
-**💬 Note 1.** This command doesn't return to the prompt when executed, so run it in a new window or terminal
+**💬 Note 1.** This command doesn't return to the prompt when executed, so run it in a new window, tab or terminal. Azure Cloud Shell has a 'Open new session' icon on the toolbar for doing this. 
 
-**💬 Note 2.**  It is fairly common for the proxy to drop after short periods of inactivity, so be prepared to re-start the `az aks browse` command if the dashboard stops responding
-
-### Option 2 - Using Cloud Shell
-If you are using the Azure Cloud Shell `az aks browse` will not work as it creates a tunnel to localhost. Your only option is to expose the dashboard publicly. **Normally this is not a recommend approach** as there is *no authentication on the dashboard*, however for a lab and short term use it will suffice. 
-
-We will limit access to just your current public IP address, with a firewall (Azure NSG) to prevent it being completely open to the entire internet. This is a very brittle configuration but provides some degree of security
-
-Visit http://whatismyip.host/ and get your IPv4 address
-
-Then run the following Bash snippet, but modify the section `put-your-ip-here` with the real IP address
-```
-kubectl expose deployment kubernetes-dashboard --port=80 --target-port=9090 --type=LoadBalancer --name dash-external -n kube-system --overrides='{ "apiVersion": "v1", "spec": { "loadBalancerSourceRanges" : ["put-your-ip-here/32"] } }'
-```
-This will expose your dashboard on a new public IP, and configure the firewall 
-
-To get the assigned IP to access your dashboard run the command  
-```
-kubectl get svc/dash-external -n kube-system
-```
-Check the output for the EXTERNAL-IP. If you have just created your AKS cluster it could take around 5 minutes before the external IP address is assigned. Keep running the command and checking.
-
-Once the IP is assigned, access the dashboard by simply going to that IP in your browser.
-
-**💬 Note.**  Should your public IP change for what ever reason or you want to open up the firewall to other IPs/ranges you will need to run `KUBE_EDITOR="nano" kubectl edit svc/dash-external -n kube-system` and you can modify the **loadBalancerSourceRanges** section 
-
-Later in the lab we will explain in more detail about exposed services like this, and what they are doing, but for now we can move on.
+**💬 Note 2.**  It is not uncommon for the proxy/tunnel to drop after short periods of inactivity, so be prepared to re-start the command if the dashboard stops responding, use Ctrl+C to stop the command and then re-run it.
 
 
 ## End of Module 1
