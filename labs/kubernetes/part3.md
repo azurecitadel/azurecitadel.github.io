@@ -24,6 +24,10 @@ We'll apply configurations to Kubernetes using `kubectl` and YAML configuration 
 
 To get started create a directory on your local machine (e.g. **C:\Dev\kube-lab**) to hold the files we'll be creating and editing in this lab, and then start VS Code with this empty directory as it's project (File -> Open Folder)
 
+### Cloud Shell Editor
+If using the Azure Cloud Shell, it's strongly recommended to use the built-in online editor which is invoked with the command `code .` Note the dot after the command, it's recommended you invoke the editor this way as it will then show a file explorer view for the current directory.
+
+When creating a new file use the touch command to create an empty file, e.g. `touch foo.yaml`, then in the editor click refresh icon at the top of the files view in order to see the file and open it for editing. There are other ways to use the Cloud Shell Editor, but this workflow is recommended 
 
 ## Deploy MongoDB 
 Create a new file called **mongo.deploy.yaml** and paste the following contents in it:
@@ -49,7 +53,7 @@ spec:
         - containerPort: 27017
 ```
 
-**💬 Note.**  YAML is sensitive to indentation, so be mindful of this when copy & pasting
+**💬 Note.**  YAML is sensitive to indentation and white space, so be extra mindful of this when copy & pasting
 
 There's a lot going on here but we'll cover of some of the concepts:
 - We're declaring a *Deployment* named **mongodb**

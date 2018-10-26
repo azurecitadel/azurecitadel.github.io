@@ -68,7 +68,7 @@ We will deploy an *Azure Container Service (AKS)* cluster however this is not ne
 - [Option 1: WSL Bash](https://docs.microsoft.com/en-us/windows/wsl/install-win10){:target="_blank" class="btn-info"}  
 The majority of this lab is command-line based, and we will be using Linux Bash. One great option for running Bash is to use the *Windows Subsystem for Linux (WSL)*. If you have this already installed and working this would be the preferred option. For this lab you can go ahead and install WSL however be aware it takes some time to install & requires a reboot.  
   - You will additionally need to [install the Azure CLI v2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
-  - **Note.** Any Linux distro should work, however only *Ubuntu* has been tested.
+  - **Note.** Any WSL distro should work, however only *Ubuntu* has been tested.
 
 - [Option 2: Azure Cloud Shell](https://azure.microsoft.com/en-gb/features/cloud-shell/){:target="_blank" class="btn-info"}  
 The *Azure Cloud Shell* is an online browser based shell, accessed either from the Azure Portal or directly via **[https://shell.azure.com/bash](https://shell.azure.com/bash){:target="_blank"}**. There is nothing you need to install, however if you have not used it before it will prompt you for a few set-up steps. We will be using the Bash version of the Cloud Shell, not PowerShell. You will need your Azure subscription setup before you can start.

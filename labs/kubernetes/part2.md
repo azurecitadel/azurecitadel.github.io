@@ -13,14 +13,16 @@ image:
 {% include toc.html %}
 
 ## Overview
-*Azure Container Registry* is a secure fully hosted private Docker registry which we will use to both build & store our application container images
+*Azure Container Registry* (ACR) is a secure fully hosted private Docker registry which we will use to both build & store our application container images
 
 ## Deploying Azure Container Registry 
-To create a *Azure Container Registry* (ACR) instance, pick a name for your ACR, this has to be globally DNS unique (e.g. pick something with your name and the year). We will set this in a Bash variable as we'll be using it a lot
+To create a *Azure Container Registry* instance, pick a name for your ACR, this has to be globally DNS unique (e.g. pick something with your name and the year). We will set this in a Bash variable as we'll be using it a lot
+
+We'll re-use the `$group` and `$region` variables we set when creating the AKS cluster, so make sure you use the same session/window. If need be, reset the variables to your given values as described at the start of [part 1](../part1)
 
 ```
 ACR_NAME="change-this-to-your-unique-acr-name"
-az acr create -n $ACR_NAME -g kube-lab -l westeurope --sku Standard --admin-enabled true
+az acr create -n $ACR_NAME -g $group -l $region --sku Standard --admin-enabled true
 ```
 
 **💬 Note. Sept 2018.**  We will be using a feature called *ACR Build* this is currently in preview but now quite stable. 
@@ -29,7 +31,7 @@ az acr create -n $ACR_NAME -g kube-lab -l westeurope --sku Standard --admin-enab
 ## Configure Kubernetes to use ACR
 Get the ACR login password and set it in a Bash variable 
 ```
-ACR_PWD=`az acr credential show -n $ACR_NAME -g kube-lab --query "passwords[0].value" -o tsv`
+ACR_PWD=`az acr credential show -n $ACR_NAME -g $group --query "passwords[0].value" -o tsv`
 ```
 
 As a sanity check you can display the value of the password using `echo $ACR_PWD` 
@@ -53,21 +55,21 @@ We will build our images directly from source. The source of Smilr is held on Gi
 
 To use ACR Build to run our Docker build task in Azure, we call the `az acr build` sub-command. The first image we'll build is for the Smilr data API component, the source Dockerfile is in the **node/data-api** sub-directory and we'll tag the resulting image `smilr/data-api`
 ```
-az acr build --registry $ACR_NAME -g kube-lab --file node/data-api/Dockerfile --image smilr/data-api https://github.com/benc-uk/microservices-demoapp.git
+az acr build --registry $ACR_NAME -g $group --file node/data-api/Dockerfile --image smilr/data-api https://github.com/benc-uk/microservices-demoapp.git
 ```
 **💬 Note.**  If you are familiar with the Docker command line and the `docker build` command you notice some similarity in syntax and approach
 
-**💬 Note.**  If the CLI times out with "no more logs" message you can still view the build logs by running `az acr build-task logs -r $ACR_NAME -g kube-lab` to check on the progress
+**💬 Note.**  If the CLI times out with a "no more logs" message you can still view the build logs by running `az acr build-task logs -r $ACR_NAME -g $group` to check on the progress
 
 That should take about a minute or two to run. After that we'll build the frontend, the command will be very similar just with a different source file image tag
 ```
-az acr build --registry $ACR_NAME -g kube-lab --file node/frontend/Dockerfile --image smilr/frontend https://github.com/benc-uk/microservices-demoapp.git
+az acr build --registry $ACR_NAME -g $group --file node/frontend/Dockerfile --image smilr/frontend https://github.com/benc-uk/microservices-demoapp.git
 ```
 This will take slightly longer but should complete in 3-5 minutes
 
 If you want to double check the images have been built and stored in your registry you can run
 ```
-az acr repository list -g kube-lab --name $ACR_NAME -o table
+az acr repository list -g $group --name $ACR_NAME -o table
 ```
 
 ## End of Module 2

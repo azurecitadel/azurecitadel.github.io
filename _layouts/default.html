@@ -58,8 +58,26 @@
     <script type="text/javascript" src="/slick/slick.min.js"></script>
 
     <script>
+      // This function randomizes child elements in a given selector
+      $.fn.randomize = function (selector) {
+        var $elems = selector ? $(this).find(selector) : $(this).children(),
+          $parents = $elems.parent();
+
+        $parents.each(function () {
+          $(this).children(selector).sort(function (childA, childB) {
+            // Prevent last slide from being reordered
+            if ($(childB).index() !== $(this).children(selector).length - 1) {
+              return Math.round(Math.random()) - 0.5;
+            }
+          }.bind(this)).detach().appendTo(this);
+        });
+
+        return this;
+      };
+
       $(document).ready(function () {
-        $('.carousel').slick({
+        // Call with randomize()
+        $('.carousel').randomize().slick({
           autoplay: true,
           autoplaySpeed: 5500,
           arrows: true,
