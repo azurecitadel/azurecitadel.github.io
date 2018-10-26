@@ -16,23 +16,23 @@ layout: default
 		<div class="archive-wrap">
 			<div class="page-content">
 
-            <div class="carousel">
+				<div class="carousel">
 					{% for featured_page in site.pages %}
-						{% if featured_page.featured %}
-							<div>
-								<h2><a href="{{ site.url }}{{ featured_page.url }}">{{ featured_page.title }}</a></h2>
-								<a href="{{ site.url }}{{ featured_page.url }}">
-									{% if featured_page.image.feature %}
-										<img src="{{ site.url }}/images/{{ featured_page.image.feature }}" >
-									{% else %}
-										<img src="{{ site.url }}/images/{{ site.featured }}" >
-									{% endif %}
-								</a>
-								<p class="post-excerpt" itemprop="description">{{ featured_page.excerpt | strip_html | truncate: 160 }}</p>
-							</div>
-							{% endif %} 
-						{% endfor %}
-						</div>
+					{% if featured_page.featured %}
+					<div class="carousel-item">
+						<h2><a href="{{ site.url }}{{ featured_page.url }}">{{ featured_page.title }}</a></h2>
+						<a href="{{ site.url }}{{ featured_page.url }}">
+							{% if featured_page.image.feature %}
+							<img src="{{ site.url }}/images/{{ featured_page.image.feature }}">
+							{% else %}
+							<img src="{{ site.url }}/images/{{ site.featured }}">
+							{% endif %}
+						</a>
+						<p class="post-excerpt" itemprop="description">{{ featured_page.excerpt | strip_html | truncate: 160 }}</p>
+					</div>
+					{% endif %}
+					{% endfor %}
+				</div>
 
 				<br/>
 				<h1>Content</h1>
