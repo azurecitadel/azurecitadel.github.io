@@ -1,55 +1,81 @@
 ---
 layout: article
 title: Azure PowerShell Module
-date: 2018-01-23
+date: 2018-10-30
 categories: guides
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, template]
 comments: true
 author: Richard_Cheney
-excerpt: Instructions to update PowerShell and add in the AzureRM module.
+excerpt: Instructions to update PowerShell and add in the Az module.
 image:
-  feature: 
+  feature:
   teaser: cloud-builder.png
-  thumb: 
+  thumb:
 ---
 
 ## Overview
 
-Extend PowerShell functionality by adding in the Azure module, plus CLI 2.0
+Add a module to PowerShell to add cmdlets for Azure.  The older AzureRm module has been replaced with a newer Az module.  This shortens the cmdlets and works with PowerShell Core and Cloud Shell.
 
-## Install the Azure PowerShell Module
+Note that the Az module will only reach full parity with the AzureRm module during November.  But the most common commands are already there and it can be configured with aliases so that existing scripts will work.
 
-### Open PowerShell as Administrator
+> If you are concerned by this then leave the page and follow the [AzureRm installation instructions](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps).
 
-All current Windows desktop operating systems have PowerShell installed.  Open up either the PowerShell prompt, or the PowerShell ISE (interactive scripting environment) as an Administrator.  (Note that PowerShell is also available for Linux and MacOS.)
+The Az module will have parity with AzureRm in November 2018, and no more updates will be applied to the AzureRm module after December 2018.
 
-### Install PowerShellGet
+## Open PowerShell as Administrator
 
-PowerShellGet is included in Windows Management Framework 5, which includes PowerShell 5.x.
-* Run `Get-Module PowerShellGet -list | Select-Object Name,Version,Path` to confirm that PowerShellGet is installed and the version is 1.0.0.1 or later  
+All current Windows desktop operating systems have PowerShell installed.
+
+Right click either the PowerShell prompt or the PowerShell ISE, and Run as Administrator.  This whole guide assumes that you are running PowerShell as Administrator.
+
+### Ensure PowerShellGet is installed
+
+PowerShellGet is included in Windows Management Framework 5, which includes PowerShell 5.x. Most versions of Windows 10 have this installed by default.
+
+* Run `Get-Module PowerShellGet -list | Select-Object Name,Version,Path` to confirm that PowerShellGet is installed and the version is 1.0.0.1 or later
 * If PowerShellGet is not installed, then install [WMF 5.0](https://www.microsoft.com/en-us/download/details.aspx?id=50395)
 
-### Install or Update Azure PowerShell
-Make sure that PowerShell is still open with admin privileges. 
-* Run `Install-Module AzureRM`
-* If the AzureRM module is already installed, then update with `Update-Module AzureRM`
-* The available versions may be listed using `Get-Module AzureRM -ListAvailable`
-* Older versions may be uninstalled using `Uninstall-Module AzureRM -RequiredVersion 3.3.0`, where 3.3.0 is the version of the AzureRM module being uninstalled
+## List and remove any AzureRm modules
 
-## Verify the module installation
-Note that the AzureRM module isn’t imported by default.
-* Typing `Import-Module AzureRM` will import the module for use (note possible error below)
-* If there are multiple versions of the module side by side then the version may be specified using, for example, `Import-Module AzureRM -RequiredVersion 3.8.0`
-* `Get-Module AzureRM` will confirm if the module is loaded and which version number
-* `Get-Command -Module AzureRM` will list all the available AzureRM commands
-* Type `Login-AzureRmAccount` and follow the dialog to log in andl show the subscription name
+All versions of the AzureRm module should be removed before installing the Az module.
 
-NB. If you receive a PowerShell execution error, then check your Execution Policy settings using `Get-ExecutionPolicy -List | Format-Table -AutoSize`.  The `Set-ExecutionPolicy RemoteSigned` command should set the correct policy.
+* List any installed AzureRM modules using `Get-Command -Module AzureRM -ListAvailable`. TEST
+* For each version, run `Uninstall-AllModules -TargetModule AzureRM -Version <X.X.X> -Force`.
 
-The instructions are taken from [https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps).
+## Set ExecutionPolicy
 
-## Install Azure CLI (optional)
+* List out the current ExecutionPolicy using `Get-ExecutionPolicy -List | Format-Table -AutoSize`.
+* If the LocalMachine scope is Undefined then
+    * Run `Set-ExecutionPolicy RemoteSigned` and say `Yes`.
 
-* Download the [Azure CLI installer(MSI)](https://aka.ms/InstallAzureCliWindows) and run it.
-* Check that the `az` commands works within PowerShell
+Example `Get-ExecutionPolicy -List | Format-Table -AutoSize` output:
 
+```powershell
+PS C:\Windows\system32> Get-ExecutionPolicy -List | Format-Table -AutoSize
+
+        Scope ExecutionPolicy
+        ----- ---------------
+MachinePolicy       Undefined
+   UserPolicy       Undefined
+      Process       Undefined
+  CurrentUser       Undefined
+ LocalMachine    RemoteSigned
+```
+
+## Install and Import the Az PowerShell module
+
+You need to install and then load the module:
+
+* `Install-Module -Name Az`
+* `Import-Module -Name Az`
+* `Get-Module -Name Az` to confirm which version of the module is loaded
+* Type `Login-AzAccount`, follow the dialog to log in and show the subscription name
+
+## Add the AzureRm alias
+
+The AzureRm aliases ensures that older scripts will continue to run without having to refactor all of the cmdlets.
+
+* `Enable-AzureRmAlias`
+
+Test that `Get-AzContext` and `Get-AzureRmContext` will both work and show the same output.
