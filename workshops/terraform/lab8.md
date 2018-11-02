@@ -6,7 +6,7 @@ date: 2018-11-02
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code, providers, api]
 comments: true
 author: Richard_Cheney
-published: false
+published: true
 ---
 
 {% include toc.html %}
