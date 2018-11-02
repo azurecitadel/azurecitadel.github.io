@@ -102,6 +102,10 @@ provider "azurerm" {}
 
 Note that this approach is not as effective if you are moving between terraform directories for different customer tenancies and subscriptions, as you need to export the correct variables for the required context, but it does have the benefit of not having the credentials visible in one of the *.tf files.
 
+----------
+
+You can also mix and match, with the tenant and subscription IDs in the provider, and then environment variables for ARM_CLIENT_ID and ARM_CLIENT_SECRET.  This is a good combination as it ensures that you do not accidentally deploy resources into the wrong subscription, whilst removing the service principal's app ID and password from the Terraform files.
+
 ## Challenge
 
 Rather than a straight lab, we'll make this one more of a challenge. The challenge will get you in the habit of searching for documentation available from both Hashicorp and Microsoft. In this challenge you will create a service principal called `terraform-labs-<subscriptionId>-sp`.
