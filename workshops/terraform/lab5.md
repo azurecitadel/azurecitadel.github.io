@@ -199,25 +199,27 @@ Using service principals is an easy and powerful way of managing multi-tenanted 
 
 ## Advanced service principal configuration
 
-If you are creating resource groups (and standard resources within them) then a Terraform service principal with the standard Contributor role assigned at the subscription level is the most common configuration.
+If you are creating resource groups (and standard resources within them) then a Terraform service principal with the standard Contributor role assigned at the subscription level is the most common configuration you will see.  Consider this the default.
 
-However if you are doing any of the following then your service principal will require additional configuration:
+You will often see examples of Terraform resource types where the service principal is created manually.  The serviceA principal's client id and password are then passed in as variables. This does not need special permissions but is less automated.
 
-1. Creating and deleting service principals
-1. Creating and deleting RBAC roles
-1. Assigning and un-assigning roles to scopes
-1. Creating and deleting policy definitions
-1. Assigning and un-assigning policy definitions
-
-In lab 8 we will be doing some of the above as the Azure Kubernetes Service (AKS) requires a service principal.
-
-You may see example where the service principal is created manually.  The service principal's client id and password are then passed in as variables. This does not need special permissions but is less automated.
-
-If you want the creation of the AKS service principal automated within Terraform (i.e. within a CI/CD pipeline) then the additional configuration is required.
+This section deals with the additional configuration required to enhance your Terraform service principal's abilities and widen the provider types it can apply and destroy.
 
 You will need to be at the Owner or equivalent level to complete this section.
 
-### Create a custom role
+If you have no need of advanced service principal configuration then you may skip ahead to the [challenge answers](#challenge-answers).
+
+## Creating a custom Terraform role
+
+If you are doing any of the following then your service principal will require a custom RBAC role and assignment:
+
+* Creating RBAC roles and assigning against scopes
+    * azurerm_role_assignment
+    * azurerm_role_definition
+    * azurerm_user_assigned_identity
+* Creating and assigning policy definitions and initiatives
+    * azurerm_policy_assignment
+    * azurerm_policy_definition
 
 The definition of the in-built [Contributor role](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) has a number of NotActions, such as Microsoft.Authorization/*/Write.
 
@@ -294,12 +296,11 @@ For the moment we only want the roleAssignments and roleDefinitions actions and 
 {
     "Name":  "Terraform",
     "IsCustom":  true,
-    "Description":  "Contributor, plus ability to create Service Principals and assign roles.",
+    "Description":  "Contributor, with exploded Microsoft.Authorization actions and no Blueprint actions.",
     "Actions":  [
         "*"
         ],
     "NotActions":  [
-        "Microsoft.Authorization/*/Delete",
         "Microsoft.Authorization/classicAdministrators/write",
         "Microsoft.Authorization/classicAdministrators/delete",
         "Microsoft.Authorization/denyAssignments/write",
@@ -312,9 +313,13 @@ For the moment we only want the roleAssignments and roleDefinitions actions and 
         "Microsoft.Authorization/policyDefinitions/delete",
         "Microsoft.Authorization/policySetDefinitions/write",
         "Microsoft.Authorization/policySetDefinitions/delete",
+        "Microsoft.Authorization/roleAssignments/delete",
+        "Microsoft.Authorization/roleAssignments/write",
+        "Microsoft.Authorization/roleDefinitions/delete",
+        "Microsoft.Authorization/roleDefinitions/write",
         "Microsoft.Authorization/elevateAccess/Action",
-        "Microsoft.Blueprint/blueprintAssignments/write",
-        "Microsoft.Blueprint/blueprintAssignments/delete"
+        "Microsoft.Blueprint/*/write",
+        "Microsoft.Blueprint/*/delete"
         ],
     "DataActions": [],
     "NotDataActions": [],
@@ -324,11 +329,16 @@ For the moment we only want the roleAssignments and roleDefinitions actions and 
 }
 ```
 
-* Either
-    * Modify the AssignableScopes array to match your subscription GUID(s), or
-    * Change to "/" to allow the role to be assigned to all subscriptions
+> The custom policy above is essentially the same as contributor, but with the exploded Microsoft.Authorization actions you can selectively delete the NotActions to permit your Terraform service principal to do more. Blueprint write and delete actions are prohibited.
 
-> Note that you could also remove the NotActions for the policyAssignments and policyDefinitions for standard policy operations. Remove policyDefinitionSets if you are using policy initiatives to group policies together.
+* Customise the AssignableScopes. Any of the following are valid:
+    * Change to "/" to allow the role to be assigned to all subscriptions (and child scopes)
+    * Provide a list of subscription (or resource group) resource IDs as scopes
+
+* Customise the NotActions:
+    * For example, if you need your Terraform service principal to assign inbuilt roles to scopes, then delete the two lines for _Microsoft.Authorization/roleAssignments_
+    * There is a corresponding read action for those lines that is implicitly allowed
+    * Permitting write actions enables `terraform apply` for those provider types, but you'll also need the delete action for `terraform destroy`
 
 * Create the custom role:
 
@@ -357,16 +367,25 @@ az role assignment create --role Terraform --assignee http://terraform-00000000-
 * List the roles again
 * Display the new role definitions using `az role definition list --name Terraform`
 
-### Allowing permissions to Azure Active Directory
+## Adding API Permissions to Azure Active Directory
 
-This area actually falls outside of ARM.  When you created the Terraform service principal, you also created an App Registration.
+For Azure Active Directory resources you will need additional API permissions:
 
-We'll add some API Permissions so that this app has API permissions within AAD.
+* Creating service principals and applications
+    * azurerm_azuread_application
+    * azurerm_azuread_service_principal
+    * azurerm_azuread_service_principal_password
+
+This area actually falls outside of ARM.  When you created the Terraform service principal, you also created an App Registration. You can give this registered app additional permissions for various APIs.
 
 As per the note at the top of the [azurerm_azuread_service_principal](https://www.terraform.io/docs/providers/azurerm/r/azuread_service_principal.html) documentation, the service principal will need Read & Write All Applications and Sign In & Read User Profile in the AAD API. This is the legacy API rather than the newer Microsoft Graph.
 
+There are two types of permissions.
 
-#### Portal
+    1. Delegated.  The app is permitted to drive the API but within the scope of the "parent" ID.  Therefore if the admin running `terraform apply` does not have access to create objects within AAD then the delegated permission will also not have access.  This is relatively safe.
+    1. Application. The permission is absolute and therefore inherently less secure.  Give thought before adding Role permissions and be selective on who then has access to the service principal credentials.
+
+### Portal
 
 As you can tell from the labs, I like to automate wherever possible. As a one off task this is quicker via the portal, especially as the final step does not appear to have a matching CLI command yet.
 
@@ -379,19 +398,34 @@ As you can tell from the labs, I like to automate wherever possible. As a one of
 
 * Add a Permission
     * Select the Azure Active Directory Graph in the Supported legacy APIs section
-    * Select Application Permissions
-    * Check Application.ReadWrite.All
-    * Check Directory.Read.All
+        * Select Application Permissions
+            * Check Application.ReadWrite.All
+        * Select Delegated Permissions
+            * Check User.Read
     * Click on Add Permissions
+
+* View the additional permissions in code form
+    * Click on the Manifest in the blade
+    * Scroll down to the requiredResourceAccess section
+
+![manifest](/workshops/terraform/images/manifest.png)
+
+> The Resource App ID for the AAD API is 00000002-0000-0000-c000-000000000000, and the permissions GUIDs are listed in this [GUID Table](https://blogs.msdn.microsoft.com/aaddevsup/2018/06/06/guid-table-for-windows-azure-active-directory-permissions/)
+
+* Click again on the API Permissions
 
 > Note the warning showing that admin consent is required.
 
 * Grant admin consent for Default Directory
     * Click Yes when prompted
 
-#### CLI
+![permissions](/workshops/terraform/images/permissions.png)
 
-The CLI commands are listed below for completeness.
+The Terraform service principal will now be able to use the azurerm_service_principal provider type.
+
+### CLI
+
+The CLI commands are listed below for completeness. Note that there does not appear to be a CLI command to grant admin consent for the Default Directory.
 
 * Create a file called manifest.json, containing the following JSON:
 
@@ -401,11 +435,11 @@ The CLI commands are listed below for completeness.
         "resourceAppId": "00000002-0000-0000-c000-000000000000",
         "resourceAccess": [
             {
-                "id": "1cda74f2-2616-4834-b122-5cb1b07f8a59",
-                "type": "Role"
+                "id": "311a71cc-e848-46a1-bdf8-97ff7156d8e6",
+                "type": "Scope"
             },
             {
-                "id": "5778995a-e1bf-45b8-affa-663a9f3f4d04",
+                "id": "1cda74f2-2616-4834-b122-5cb1b07f8a59",
                 "type": "Role"
             }
         ]
@@ -413,12 +447,11 @@ The CLI commands are listed below for completeness.
 ]
 ```
 
-> The Resource App ID for the AAD API is 00000002-0000-0000-c000-000000000000, and the permissions GUIDs are listed in this [GUID Table](https://blogs.msdn.microsoft.com/aaddevsup/2018/06/06/guid-table-for-windows-azure-active-directory-permissions/)
-
 * Get the ID for the service principal's application:
 
 ```bash
-appID=$(az ad sp show --id "http://terraform-2bf55508-ddee-49d0-b4ac-c6a7461ef998-sp" --query appId --output tsv)
+subId=$(az account show --query id --output tsv)
+appId=$(az ad sp show --id "http://terraform-${subId}-sp" --query appId --output tsv)
 ```
 
 * Show the API Permissions in the application's manifest:
@@ -437,9 +470,11 @@ az ad app update --id $appId --required-resource-accesses @manifest.json
 
 * Rerun the command to show the API permissions
 
-> There is no CLI command to grant consent to the default directory. Granting consent requires a few REST API calls. Follow the portal steps to navigate to the API Permissions dialog and then click on the button to grant consent
+> Note that there is no CLI command to grant consent to the default directory. Granting consent requires a few REST API calls. Follow the portal steps to navigate to the API Permissions dialog and then click on the button to grant consent
 
 ## Challenge Answers
+
+Here are the answers to the challenge part of the lab.
 
 * Find your subscription ID and copy the GUID to the clipboard
 
