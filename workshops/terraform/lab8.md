@@ -19,7 +19,7 @@ The same provider extensibility also applies to supporting services and data pla
 
 We will also:
 
-* evolve our use of modules with a nested modules
+* evolve our use of modules with a nested module
 * look at locals, keepers and the lifecycle meta-parameter
 * use a more natural workflow to create and test a new module locally
 * create a GitHub repo as an upstream and push up to it
