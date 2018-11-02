@@ -8,9 +8,9 @@ comments: true
 author: Richard_Cheney
 excerpt: Tweak those Cloud Shell colours!
 image:
-  feature: 
+  feature:
   teaser: cloud-lab.png
-  thumb: 
+  thumb:
 ---
 
 One of the attractions of using the Azure Cloud Shell is that there is little configuration required.  However the default colours are not the most readable, so feel free to use the commands below to change them.
@@ -45,9 +45,9 @@ If you want a colourscheme that more closely resembles the main cloud shell colo
 umask 022
 mkdir --parents ~/.vim/colors
 curl -o ~/.vim/colors/cloudshell.vim https://azurecitadel.github.io/guides/cloudshell/cloudshell.vim
-echo > ~/.vimrc <<-EOF
-    syntax on
-    colorscheme cloudshell
+echo > ~/.vimrc <<EOF
+syntax on
+colorscheme cloudshell
 EOF
 ```
 
