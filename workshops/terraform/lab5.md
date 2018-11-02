@@ -19,26 +19,21 @@ However it is not a workable approach when you have multiple admins working on a
 
 In this lab we will look at how we could make our Terraform platform work effectively in a multi-tenanted environment by using Service Principals.  The approach here applies to any more complex environment where there are multiple subscriptions in play, as well as those supporting multiple tenancies or directories.  Service Principals are also the recommended route if you are integrating the Terraform Provider into automation or within a DevOps CI/CD pipeline.
 
-Finally, at the end of the lab we will also take a look at a couple of alternatives for managing systems and discuss where they make the most sense.
-
-1. The Terraform Marketplace offering in Azure and Managed Service Identity (MSI) authentication
-2. Terraform Enterprise from Hashicorp
-
 ## Pre-requisites
 
 You will have already been using the az and terraform executables locally.  As Terraform is from the OSS world then these labs are unapologetically written from a linux and CLI 2.0 perspective. Linux and MacOS users are well catered for as vscode is cross-platform and the standard packages (az, terraform) are easily installed.
 
-For Windows 10 then the minimum is to use both terraform and az at the Windows OS level so that you can use them within a Command Prompt or PowerShell session. (You are also free to use the equivalent AzureRM module PowerShell cmdlets in place of the CLI 2.0 commands.)
+For Windows 10 then the minimum is to use both terraform and az at the Windows OS level so that you can use them within a Command Prompt or PowerShell session.
 
 However the remaining labs really are based on Windows 10 users having enabled the [Windows Subsystem for Linux](https://azurecitadel.github.io/guides/wsl/) (WSL) and do make use of Bash scripting at points.  If you have Windows 10 and can enable WSL then it is very much recommended.  Don't forget to follow the [guide](https://azurecitadel.github.io/guides/wsl/) to also install az, jq, git and terraform at that level.
 
-> An alternative is to make use of the [Terraform VM](#terraform-vm-on-the-azure-marketplace) discussed towards the bottom of the lab.  This has az, jq and terraform preinstalled and defaults to using MSI so the whole VM is authenticated to a subscription.  You can ssh on to the VM and work straight away.  And you are still free to use service principals in preference to MSI. This is an option, especually if your vi, nano or emacs skills are good.
+> An alternative is to make use of the [Terraform VM](#terraform-vm-on-the-azure-marketplace) discussed towards the bottom of the lab.  This has az, jq and terraform pre-installed and defaults to using MSI so the whole VM is authenticated to a subscription.  You can ssh on to the VM and work straight away.  And you are still free to use service principals in preference to MSI. This is an option, especially if your vi, nano or emacs skills are good.
 
 ## Service Principals
 
 Service Principals are security identities within an Azure AD tenancy that may be used by apps, services and automation tools.
 
-When you create a Service Principal then from an RBAC perspective it will have the Contributor role assigned at the subscription scope level.  For most applications you would remove that and then assign a more limited RBAC role and scope assigment, but this default level is ideal for Terraform provisioning.
+When you create a Service Principal then from an RBAC perspective it will, by default, have the Contributor role assigned at the subscription scope level.  For most applications you would remove that and then assign a more limited RBAC role and scope assignment, but this default level is ideal for Terraform provisioning.
 
 We will create a Service Principal and then create a provider.tf file in our containing the fields required.  Make sure that you are in the right Azure context first (i.e. which tenancy and subscription).
 
@@ -46,7 +41,7 @@ We will create a Service Principal and then create a provider.tf file in our con
 * list out your subscriptions using `az account list --output table`
 * change subscription by using `az account set --subscription <subscriptionId>`
 
-Service principals work really well in a multi-tenanted environment as the service principal authentication details can sit directly in the relevent terraform directory so that it is easy to define the target subscription and tenancy and tightly connect it with the other infrastructure definitions.
+Service principals work really well in a multi-tenanted environment as the service principal authentication details can sit directly in the relevant terraform directory so that it is easy to define the target subscription and tenancy and tightly connect it with the other infrastructure definitions.
 
 For a standard multi-tenancy environment then you would create a service principal per subscription and then create a provider block for each terraform folder. (The provider stanza can be in any of the .tf files, but provider.tf is common.)
 
@@ -62,6 +57,8 @@ This is an overview of the steps if you want to do this manually:
 * Either
     * Create a azurerm provider block populated with the service principal values
     * Export environment variables, with an empty azurerm provider block
+* Modify the service principal's role and scope (optional)
+* Add application API permissions if required (optional)
 
 ----------
 
@@ -76,9 +73,15 @@ provider "azurerm" {
 }
 ```
 
-Note that in a production environment you would need to ensure that this file has appropriate permissions so that the client_id and client_secret does not leak and create a security risk. (See below for resetting credentials.)
+Recommendations:
 
-You should also add provider.tf into your .gitignore file so that you don't push up sensitive values up into a public GitHub repository!**
+* **Set restrictive file permissions.**
+
+In a production environment you would need to ensure that this file has appropriate permissions so that the client_id and client_secret does not leak and create a security risk.
+
+* **Add provider.tf into your .gitignore file**
+
+Don't push up sensitive values up into a public GitHub repository!
 
 ----------
 
@@ -99,9 +102,15 @@ provider "azurerm" {}
 
 Note that this approach is not as effective if you are moving between terraform directories for different customer tenancies and subscriptions, as you need to export the correct variables for the required context, but it does have the benefit of not having the credentials visible in one of the *.tf files.
 
+----------
+
+You can also combine the two.  Include the subscription, client id and tenant id in the provider.tf, and then have ARM_CLIENT_SECRET exported as an environment variable.
+
+The benefit of this approach is that if you move between directories that the authentication will only work if you have the right environment variable to match the provider file, which is safer. And you could consider storing that secret in a vault.
+
 ## Challenge
 
-Rather than a straight lab, we'll make this one more of a challenge. The challenge will get you in the habit of searching for documentation available from both Hashicorp and Microsoft. In this challenge you will create a service principal called `terraform-labs-<subscriptionId>`.
+Rather than a straight lab, we'll make this one more of a challenge. The challenge will get you in the habit of searching for documentation available from both Hashicorp and Microsoft. In this challenge you will create a service principal called `terraform-labs-<subscriptionId>-sp`.
 
 **Run through the following**:
 
@@ -112,16 +121,16 @@ Rather than a straight lab, we'll make this one more of a challenge. The challen
 1. **Log on to azure as the service principal using the CLI**
 1. **Log back in with your normal Azure ID and show the context**
 1. **Search for the Azure Docs for changing the role (and scope) for the service principal**
-    * There is no need to change the role or scope - this is for info
-1. Run `terraform init` and `terraform plan`
-1. Log into the Azure [portal](https://portal.azure.com) and search on App Registrations
-    * The service will list out the service principals
+    * There is no need to change the role or scope at this point - this is purely for info
+1. **Run `terraform init` and `terraform plan`**
+1. **Log into the Azure [portal](https://portal.azure.com) and search on App Registrations**
+    * The service will list out apps registered for the service principals
 
 If you get stuck then there are answers at the bottom of the lab.
 
 ## Automated scripts
 
-If you want to automate that process then feel free to make use of this createTerraformServicePrincipal.sh script to create a service principal and provider.tf: <https://github.com/azurecitadel/azurecitadel.github.io/blob/master/workshops/terraform/createTerraformServicePrincipal.sh>
+If you want to automate the process then feel free to make use of this createTerraformServicePrincipal.sh script to create a service principal and provider.tf: <https://github.com/azurecitadel/azurecitadel.github.io/blob/master/workshops/terraform/createTerraformServicePrincipal.sh>
 
 The script will interactively
 
@@ -188,88 +197,247 @@ And don't forget that different service principals can have different scopes and
 
 Using service principals is an easy and powerful way of managing multi-tenanted environments when the admins are working in a centralised Terraform environment.
 
-## Terraform VM on the Azure Marketplace
+## Advanced service principal configuration
 
-> It is assumed that you are now working with Terraform locally on your machine rather than in Cloud Shell and that you are using the service principal to authenticate.  This section on Terraform VM and MSI is for information only - there is no need to run the offering.
+If you are creating resource groups (and standard resources within them) then a Terraform service principal with the standard Contributor role assigned at the subscription level is the most common configuration.
 
-If you are only working within one subscription then an easy production alternative to using service principals is to use the new Terraform VM offering on the marketplace.
+However if you are doing any of the following then your service principal will require additional configuration:
 
-This is ideal for customers who want to use a single Terraform instance across multiple team members, multiple automation scenarios and shared environments.  It also provides a linux VM in the subscription that can be used for other admin purposes.
+1. Creating and deleting service principals
+1. Creating and deleting RBAC roles
+1. Assigning and un-assigning roles to scopes
+1. Creating and deleting policy definitions
+1. Assigning and un-assigning policy definitions
 
-Rather than using CLI 2.0 or Service Principals for the authentication, it uses the third possible authentication method, [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview).  With MSI the whole Terraform service is effectively authorised for access to a subscription.
+In lab 8 we will be doing some of the above as the Azure Kubernetes Service (AKS) requires a service principal.
 
-The Terraform offering in the Marketplace is detailed at <https://aka.ms/aztf>, and is free except for the underlying VM hardware resource costs. The Ubuntu VM will have the following preconfigured:
+You may see example where the service principal is created manually.  The service principal's client id and password are then passed in as variables. This does not need special permissions but is less automated.
 
-* Terraform (latest)
-* Azure CLI 2.0
-* Managed Service Identity (MSI) VM Extension
-* unzip
-* jq
-* apt-transport-https
+If you want the creation of the AKS service principal automated within Terraform (i.e. within a CI/CD pipeline) then the additional configuration is required.
 
-It features:
+You will need to be at the Owner or equivalent level to complete this section.
 
-* Shared remote state with locking, backed off to Azure Storage
-* Shared identity using MSI and RBAC
+### Create a custom role
 
-There is also an Azure Docs page at <https://aka.ms/aztfdoc> which covers how to access and configure the Terraform VM by running the `~/tfEnv.sh` script. Note that if you have multiple subscriptions then you should again make sure that you are in the correct one and then run just the role assignment command within the `tfEnv.sh` file.
+The definition of the in-built [Contributor role](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) has a number of NotActions, such as Microsoft.Authorization/*/Write.
 
-One of the nice features of the Terraform VM Marketplace offering is that it will automatically back off the local terraform.tfstate to blob storage, with locking based on blob storage leases. (We will be looking at how to do this manually in the next lab.)
+See the role definition by running `az role definition list --name Contributor`.
 
-It also creates a remoteState.tf file for you in your home directory. The remoteState.tf has the following format:
+Output:
 
-```ruby
-terraform {
- backend "azurerm" {
-  storage_account_name = "storestatelkbfjngsqkyiim"
-  container_name       = "terraform-state"
-  key                  = "prod.terraform.tfstate"
-  access_key           = "6Wbo0IfW3YKRbsjeF9LFxyvlA2dJ8cJQF+ys6ZHIkW8GdBemXB20MGv66E+Nxx5Wi5KjeCXuVF7BcMo1OPAZYw=="
+```json
+[
+  {
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Lets you manage everything except access to resources.",
+    "id": "/subscriptions/2bf55508-ddee-49d0-b4ac-c6a7461ef999/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab98-20f7382dd24c",
+    "name": "b24988ac-6180-42a0-ab98-20f7382dd24c",
+    "permissions": [
+      {
+        "actions": [
+          "*"
+        ],
+        "dataActions": [],
+        "notActions": [
+          "Microsoft.Authorization/*/Delete",
+          "Microsoft.Authorization/*/Write",
+          "Microsoft.Authorization/elevateAccess/Action",
+          "Microsoft.Blueprint/blueprintAssignments/write",
+          "Microsoft.Blueprint/blueprintAssignments/delete"
+        ],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Contributor",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
   }
+]
+```
+
+We want to allow some of those Microsoft.Authorization actions.  You can list those out using the following command:
+
+```bash
+az provider operation show --namespace Microsoft.Authorization --query resourceTypes[].operations[].name[] --output tsv | sort | grep -v read
+```
+
+Output:
+
+```yaml
+Microsoft.Authorization/classicAdministrators/delete
+Microsoft.Authorization/classicAdministrators/write
+Microsoft.Authorization/denyAssignments/delete
+Microsoft.Authorization/denyAssignments/write
+Microsoft.Authorization/locks/delete
+Microsoft.Authorization/locks/write
+Microsoft.Authorization/policyAssignments/delete
+Microsoft.Authorization/policyAssignments/write
+Microsoft.Authorization/policyDefinitions/delete
+Microsoft.Authorization/policyDefinitions/write
+Microsoft.Authorization/policySetDefinitions/delete
+Microsoft.Authorization/policySetDefinitions/write
+Microsoft.Authorization/roleAssignments/delete
+Microsoft.Authorization/roleAssignments/write
+Microsoft.Authorization/roleDefinitions/delete
+Microsoft.Authorization/roleDefinitions/write
+```
+
+For the moment we only want the roleAssignments and roleDefinitions actions and therefore the rest should remain as specified NotActions.
+
+> In the following commands, substitute 00000000-0000-0000-0000-000000000000 with your subscription GUID
+
+* Create a file called terraform.customrole.json, containing the following:
+
+```json
+{
+    "Name":  "Terraform",
+    "IsCustom":  true,
+    "Description":  "Contributor, plus ability to create Service Principals and assign roles.",
+    "Actions":  [
+        "*"
+        ],
+    "NotActions":  [
+        "Microsoft.Authorization/*/Delete",
+        "Microsoft.Authorization/classicAdministrators/write",
+        "Microsoft.Authorization/classicAdministrators/delete",
+        "Microsoft.Authorization/denyAssignments/write",
+        "Microsoft.Authorization/denyAssignments/delete",
+        "Microsoft.Authorization/locks/write",
+        "Microsoft.Authorization/locks/delete",
+        "Microsoft.Authorization/policyAssignments/write",
+        "Microsoft.Authorization/policyAssignments/delete",
+        "Microsoft.Authorization/policyDefinitions/write",
+        "Microsoft.Authorization/policyDefinitions/delete",
+        "Microsoft.Authorization/policySetDefinitions/write",
+        "Microsoft.Authorization/policySetDefinitions/delete",
+        "Microsoft.Authorization/elevateAccess/Action",
+        "Microsoft.Blueprint/blueprintAssignments/write",
+        "Microsoft.Blueprint/blueprintAssignments/delete"
+        ],
+    "DataActions": [],
+    "NotDataActions": [],
+    "AssignableScopes":  [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+        ]
 }
 ```
 
-Note that the "key" is the name of the blob that will be created in the terraform-state container.
+* Either
+    * Modify the AssignableScopes array to match your subscription GUID(s), or
+    * Change to "/" to allow the role to be assigned to all subscriptions
 
-### Optional group setting configuration
+> Note that you could also remove the NotActions for the policyAssignments and policyDefinitions for standard policy operations. Remove policyDefinitionSets if you are using policy initiatives to group policies together.
 
-When you first connect using ssh to your Terraform VM then you'll be in your admin IDs home directory.  You can check the `/etc/passwd` and `/etc/group` files to show your default group.
-
-You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group of admins and a shared area for the Terraform files. (And optionally change the default group for your ID.) The code block below shows how thios can be done:
+* Create the custom role:
 
 ```bash
-$ sudo addgroup terraform
-Adding group 'terraform' (GID 1001) ...
-$ sudo usermod --group terraform richeney
-$ sudo mkdir --mode 2775 /terraform
-$ sudo chgrp terraform /terraform
-$ ll -d /terraform
-drwxrwsr-x 2 root terraform 4096 Mar 19 11:19 /terraform/
+az role definition create --role-definition terraform.customrole.json
 ```
 
-Only members of the new terraform group will be able to create files in the /terraform folder.  The setgid permission ensures that all new files will automatically be assigned terraform as the group rather than the user's default group. You may need to log out of the Terraform VM and then log back in again to reflect the usermod change to the /etc/passwd file.
+* List the roles assigned at the subscription level:
 
-## Terraform Enterprise
+```bash
+az role assignment list --output table
+```
 
-[Terraform Enterprise](https://www.hashicorp.com/products/terraform) extends the standard Terraform capabilities and workflow to provider a richer set of functionality.  It is well suited to enterprise environments that require more collaboration and governance features.
+* Remove the Contributor role:
 
-Key features:
+```bash
+az role assignment delete --role Contributor --assignee http://terraform-00000000-0000-0000-0000-000000000000-sp
+```
 
-* Self service workflow
-* Collaboration for teams
-* Powerful ACLs and auditing
-* Runs Terraform for you from the browser GUI
-* Control the Terraform version in line with your versioned providers and Terraform files
-* Prevent concurrent changes
-* Integrate with SCM platforms (e.g. GitHub, BitBucket, GitLabs)
-* View history of changes
-* Enforce policies with [Sentinel](https://www.hashicorp.com/sentinel)
+* Add the custom role:
 
-This video shows some of the key concepts, including the forking of environments from standard definitions, embedded customer environment variables, etc.
+```bash
+az role assignment create --role Terraform --assignee http://terraform-00000000-0000-0000-0000-000000000000-sp
+```
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/atBRAG_3yNQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+* List the roles again
+* Display the new role definitions using `az role definition list --name Terraform`
 
-Note that the standard Terraform executable itself is free to use.  [Terraform Enterprise](https://www.hashicorp.com/products/terraform) has a Pro and Premium tier, depending on the required level of features.
+### Allowing permissions to Azure Active Directory
+
+This area actually falls outside of ARM.  When you created the Terraform service principal, you also created an App Registration.
+
+We'll add some API Permissions so that this app has API permissions within AAD.
+
+As per the note at the top of the [azurerm_azuread_service_principal](https://www.terraform.io/docs/providers/azurerm/r/azuread_service_principal.html) documentation, the service principal will need Read & Write All Applications and Sign In & Read User Profile in the AAD API. This is the legacy API rather than the newer Microsoft Graph.
+
+
+#### Portal
+
+As you can tell from the labs, I like to automate wherever possible. As a one off task this is quicker via the portal, especially as the final step does not appear to have a matching CLI command yet.
+
+* Navigate to the API Permissions
+    * Search for "App Registrations" in All Services
+    * Select Preview experience
+    * All Applications
+    * Select the terraform-<subscriptionId>-sp application
+    * API Permissions
+
+* Add a Permission
+    * Select the Azure Active Directory Graph in the Supported legacy APIs section
+    * Select Application Permissions
+    * Check Application.ReadWrite.All
+    * Check Directory.Read.All
+    * Click on Add Permissions
+
+> Note the warning showing that admin consent is required.
+
+* Grant admin consent for Default Directory
+    * Click Yes when prompted
+
+#### CLI
+
+The CLI commands are listed below for completeness.
+
+* Create a file called manifest.json, containing the following JSON:
+
+```json
+[
+    {
+        "resourceAppId": "00000002-0000-0000-c000-000000000000",
+        "resourceAccess": [
+            {
+                "id": "1cda74f2-2616-4834-b122-5cb1b07f8a59",
+                "type": "Role"
+            },
+            {
+                "id": "5778995a-e1bf-45b8-affa-663a9f3f4d04",
+                "type": "Role"
+            }
+        ]
+    }
+]
+```
+
+> The Resource App ID for the AAD API is 00000002-0000-0000-c000-000000000000, and the permissions GUIDs are listed in this [GUID Table](https://blogs.msdn.microsoft.com/aaddevsup/2018/06/06/guid-table-for-windows-azure-active-directory-permissions/)
+
+* Get the ID for the service principal's application:
+
+```bash
+appID=$(az ad sp show --id "http://terraform-2bf55508-ddee-49d0-b4ac-c6a7461ef998-sp" --query appId --output tsv)
+```
+
+* Show the API Permissions in the application's manifest:
+
+```bash
+az ad app show --id $appId --query requiredResourceAccess
+```
+
+This should be an empty array (`[]`) at this point.
+
+* Update the API Permissions with the manifest
+
+```bash
+az ad app update --id $appId --required-resource-accesses @manifest.json
+```
+
+* Rerun the command to show the API permissions
+
+> There is no CLI command to grant consent to the default directory. Granting consent requires a few REST API calls. Follow the portal steps to navigate to the API Permissions dialog and then click on the button to grant consent
 
 ## Challenge Answers
 
@@ -309,9 +477,12 @@ Note that the standard Terraform executable itself is free to use.  [Terraform E
 
 We have reached the end of the lab. We're now using Service Principals for authentication.
 
-We have also looked at the Azure Marketplace offering for Terraform, and at Terraform Enterprise.  If you would like to see a labs on configuring Terraform Enterprise then add a comment below.
-
 Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab5>.
+
+If you want to explore other options in a multi-tenanted environment then take a look at the following:
+
+1. [Terraform Enterprise](../TerraformEnterprise)
+1. [Terraform Marketplace VM](../TerraformMarketplaceVM)
 
 In the next lab we will look at the terraform.tfstate file.
 
