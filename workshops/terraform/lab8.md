@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Terraform Lab 8: Extending with other providers"
+title: "Terraform Lab 8: Extending beyond ARM"
 categories: null
 date: 2018-11-02
 tags: [azure, terraform, modules, infrastructure, paas, iaas, code, providers, api]
