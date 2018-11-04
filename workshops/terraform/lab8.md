@@ -479,7 +479,7 @@ Example output:
 * Run `terraform plan`
 * Run `terraform apply -auto-approve`
 
-The cluster should take around 15 minutes to deploy, so a good time for a coffee. Once it has completed then check that the cluster is operating as expected.
+The cluster should take around 15 minutes to deploy, so it's a good time for a coffee break. Once it has completed then check that the cluster is operating as expected.
 
 * Create the Kubernetes config file using the AKS module's kube_config output:
 
@@ -510,7 +510,7 @@ If your browser screen is similar to the image above then all is good.
 
 ## Add the Kubernetes configuration
 
-Now it is time to introduce the kubernetes provider. We can use this to extend the configuration to not only create the AKS cluster, but to provision the pods and services on top.
+Now it is time to introduce the Kubernetes Provider. We can use this to extend the configuration to not only create the AKS cluster, but to provision the pods and services on top.
 
 * Append the following into your provider.tf file:
 
@@ -524,7 +524,7 @@ provider "kubernetes" {
 }
 ```
 
-Note that the exported attributes of the azurerm_kubernetes_cluster are now being used by this provider, which also introduces an implicit dependency.
+Note that the exported attributes of the azurerm_kubernetes_cluster are now being used by this Provider, which also introduces an implicit dependency.
 
 * Append the main.tf with the following resource type block:
 
@@ -543,27 +543,27 @@ resource "kubernetes_pod" "test" {
 }
 ```
 
-We are now making use of a different [provider](https://www.terraform.io/docs/providers/) by using the [kubernetes_pod](https://www.terraform.io/docs/providers/kubernetes/r/pod.html) resource type.
+We are now making use of a different [Provider](https://www.terraform.io/docs/providers/) by using the [kubernetes_pod](https://www.terraform.io/docs/providers/kubernetes/r/pod.html) resource type.
 
-* Run through the terraform init, plan and apply workflow
+* Run through the `terraform init`, `terraform plan` and `terraform apply` workflow
 * Run `kubectl get nodes`
 * Run `kubectl get pods`
-* Rerun the `kubectl proxy` and check the [dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/overview?namespace=default)
+* Re-run the `kubectl proxy` and check the [dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/overview?namespace=default)
 
 If you can access the dashboard and see the two nodes and the single test pod then the module is successfully tested.
 
-* Remove the cluster: `terraform destroy`
+* Remove the cluster by running `terraform destroy`
 
-The destruction will take several minutes.  Whilst that is running you can move to the next section and push the module up to GitHub.
+The destruction will take several minutes.  While that is running you can move to the next section and push the module up to GitHub.
 
-If you have **insufficient directory permissions** then your module will have hardcoded Terraform service principal id and secret values.  You can turn those into variables and continue, or skip to the [extending Terraform into ARM section](#extending-terraform-into-arm).
+If you have **insufficient directory permissions** then your module will have hardcoded the Terraform Service Principal ID and secret values.  You can turn those into variables and continue, or skip to the [extending Terraform into ARM section](#extending-terraform-into-arm).
 
 ## Push to GitHub
 
 You should already have a [GitHub account](https://github.com/join) from the earlier labs.
 
-* Remove the Terraform service principal values from your provider.tf so that only the version argument remains
-* Commit into your local repo
+* Remove the Terraform Service Principal values from your provider.tf so that only the version argument remains
+* Commit the files into your local repo
     * Add the files to the index `git add --all`
     * Commit the files `git commit -a -m "Initial commit"`
 * Log onto [GitHub](https://github.com)
@@ -600,19 +600,19 @@ To https://github.com/richeney/terraform-module-aks.git
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
 
-The full module is now up in GitHub.
+The full module should now be uploaded to GitHub.
 
-## Test the module hosted in Github
+## Test the module hosted in GitHub
 
 If you wish you can test the whole module.
 
 We'll do this within your [Cloud Shell](https://shell.azure.com)'s home directory.
 
 * Create a new lab8 folder in your home directory (`mkdir lab8`)
-* Change directory (`cd lab8`)
-* Create an empty aks.tf (`touch aks.tf`)
-* Edit in the Monaco editor (`code .`)
-* Add the following HCL into the aks.tf:
+* Change to this directory (`cd lab8`)
+* Create an empty aks.tf file (`touch aks.tf`)
+* Edit the file in the Monaco editor (`code .`)
+* Add the following HCL into the aks.tf file:
 
 ```ruby
 provider "azurerm" {
@@ -634,9 +634,9 @@ output "cluster" {
 * Change the username
 * Save and quit (`CTRL`+`S`, `CTRL`+`Q`)
 * Export ARM_CLIENT_ID and ARM_CLIENT_SECRET environment variables
-    * Set to the Terraform service principal's app ID and password (values in terraform-labs/provider.tf)
+    * Set the environment variables to the Terraform Service Principal's app ID and password (the values in the terraform-labs/provider.tf)
     * Example: `export ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000"
-    * Optionally add to your ~/.bashrc
+    * Optionally you can add it to your ~/.bashrc
 
 * Run through the Terraform workflow
     * `terraform get`
@@ -652,7 +652,7 @@ az aks get-credentials --name $(terraform output cluster) --resource-group aks
 
 The command creates your ~/.kube/config file.  It is an alternative to the command you ran earlier that redirected the terraform kube_config output.
 
-The kubectl binary is alfready included part of the Cloud Shell container image, so you can use that straight away without having to install:
+The kubectl binary is already included as part of the Cloud Shell container image, so you can use that straight away without having to install it:
 
 ```bash
 kubectl get pods
@@ -668,12 +668,12 @@ az aks browse --enable-cloud-console-aks-browse --name $(terraform output cluste
 
 Use `CTRL`+`C` to close the tunnel. You can then run `terraform destroy` to remove the cluster.
 
-OK, that is lab element completed. Well done!
+OK, that is the lab element completed. Well done!
 
-Whilst your cluster is being removed you can read through the next two sections to discuss some additional options
+While your cluster is being removed you can read through the next two sections to discuss some additional options: 
 
 * Terraform driving native ARM template deployments
-* ARM templates leveraging certain Terraform providers.
+* ARM templates leveraging certain Terraform providers
 
 ## Extending Terraform into ARM
 
