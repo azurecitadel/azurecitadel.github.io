@@ -422,30 +422,30 @@ The `~/.ssh/id_rsa.pub` public SSH key will be used in the locals default. It wi
 
 ## Specifying minimum provider versions
 
-We will need the Terraform service principal credentials for full testing:
+We will need the Terraform Service Principal credentials for full testing:
 
-* Copy in the provider.tf file from the terraform-labs repo
+* Copy in provider.tf file from the terraform-labs repository into the Terraform-Module-AKS directory
 
-We will need a minimum version of the azurerm provider for the AKS module to work.  Exploring this introduces a key tenet for Terraform regarding versioning.
+We will need a minimum version of the AzureRM Provider for the AKS module to work.  Exploring this introduces a key tenet for Terraform regarding versioning.
 
-As you already know, when you run terraform init, the required providers are copied locally. It is important to understand that those providers will *not* be upgraded unless you force that to happen.
+As you already know, when you run terraform init, the required Providers are copied locally. It is important to understand that those Providers will *not* be upgraded unless you force that to happen.
 
-Terraform has a philosophy around version management that enables you to collectively control the version of everything from top to bottom, i.e. the terraform executable, the individual Terraform providers and the terraform files themselves.  Therefore you have full control on when any of those are upgraded so that you know that nothing will become unexpectedly broken.
+Terraform has a philosophy around version management that enables you to collectively control the version of everything from top to bottom (i.e. the Terraform executable, the individual Terraform Providers and the Terraform files themselves).  Therefore, you have full control on when any of those components are upgraded, so that you know that nothing will become unexpectedly broken.
 
-Take a look at the [azurerm changelog](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md).  This lists the new features, bug fixes and improvements that are rolled into each release.  If you require functionality of a newer release then you have a couple of options:
+Take a look at the [AzureRM changelog](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md).  This lists the new features, bug fixes and improvements that are rolled into each release.  If you require functionality of a newer release then you have a couple of options:
 
-1. specify a [provider version constraint](https://www.terraform.io/docs/configuration/providers.html#provider-versions) in the provider block and run `terraform init`
-1. run `terraform init -upgrade=true` to upgrade to the latest acceptable version of the modules
+1. Specify a [Provider version constraint](https://www.terraform.io/docs/configuration/providers.html#provider-versions) in the Provider block and run `terraform init`
+1. Run `terraform init -upgrade=true` to upgrade to the latest version allowed within configured constraints
 
-Specify a minimum version of 1.17 for the azurerm provider:
+Specify a minimum version of 1.17 for the AzureRM Provider:
 
-* Add a constraint to the azurerm provider block for a minimum version of 1.17 (or later)
+* Add a constraint to the AzureRM Provider block for a minimum version of 1.17 (or later)
 
-> 1.17 is current at the time of writing; feel free to specify a more recent version if the changelog entry mentions new or updated azurerm_kubernetes_* provider types
+> Version 1.17 is current at the time of this writing; feel free to specify a more recent version if the changelog entry mentions new or updated azurerm_kubernetes_* provider types
 
 * Run `terraform init`
 
-Note that the output recommends that a minimum should be specified for the random provider:
+Note that the output recommends that a minimum version should be specified for the random provider:
 
 ```json
 The following providers do not have any version constraints in configuration,
