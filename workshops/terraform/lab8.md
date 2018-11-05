@@ -15,14 +15,14 @@ published: true
 
 In this lab we will look at other providers that can help with our Azure deployments. One of the reasons for choosing Terraform is the extensible support for multiple providers so that the same workflow and logic can be applied to various public and private cloud platforms.
 
-The same provider extensibility also applies to supporting services and data plane configuration.  In this lab we will look at examples from Cloudflare and Datadog, and then we'll deploy an AKS Kubernetes cluster using a combination of the AzureRM provider for the control plane and the Kubernetes provider for the data plane.
+The same provider extensibility also applies to supporting services and data plane configuration.  In this lab we will look at examples from Cloudflare and Datadog, and then we'll deploy an Azure Kubernetes Service (AKS) Kubernetes cluster using a combination of the AzureRM provider for the control plane and the Kubernetes provider for the data plane.
 
 We will also:
 
-* evolve our use of modules with a nested module
-* look at locals, keepers and the lifecycle meta-parameter
-* use a more natural workflow to create and test a new module locally
-* create a GitHub repo as an upstream and push up to it
+* Evolve our use of modules with a nested module
+* Look at locals, keepers and the lifecycle meta-parameter
+* Use a more natural workflow to create and test a new module locally
+* Create a upstream GitHub repository and push our code to it
 
 Let's start by exploring alternative providers.
 
@@ -30,11 +30,11 @@ Let's start by exploring alternative providers.
 
 Take a look at the range of [Terraform Providers](https://www.terraform.io/docs/providers/) available.  It is a wide and expanding list, covering a multitude of private and public cloud platforms, various applications, supporting technologies and cloud services such as public DNS.
 
-All of the providers follow the same documentation standard as the azurerm provider.
+All of the Providers follow the same documentation standard as the AzureRM Provider.
 
 ### Datadog
 
-[Datadog](https://www.datadoghq.com/) is used by 1000s of customer as their platform for modern monitoring and analytics, and it has over 200 integrations with various cloud services, including a number of [Azure services](https://www.datadoghq.com/product/integrations/#cat-azure).
+[Datadog](https://www.datadoghq.com/) is used by 1000's of customers as their platform for modern monitoring and analytics, and it has over 200 integrations with various cloud services, including a number of [Azure services](https://www.datadoghq.com/product/integrations/#cat-azure).
 
 The [Datadog Provider](https://www.terraform.io/docs/providers/datadog/index.html) is relatively simple, with a couple of key variables for the API to authenticate with, and four possible resource types:
 
@@ -47,7 +47,7 @@ This allows the monitoring to be configured automatically as one facet of the wi
 
 ### Cloudflare
 
-[Cloudflare](https://www.cloudflare.com/dns/) offer a number of services including a fast authoritative public DNS servers on 1.1.1.1 and 1.0.0.1.  They are very fast in terms of DNS lookup latency and speed of DNS record propagation.
+[Cloudflare](https://www.cloudflare.com/dns/) offer a number of services including fast authoritative public DNS servers on 1.1.1.1 and 1.0.0.1.  They are very fast in terms of DNS lookup latency and speed of DNS record propagation.
 
 These are widely used as an alterative to other well known public DNS servers such as Google's 8.8.8.8 and 8.8.4.4, and have a free tier for personal use.
 
@@ -61,27 +61,27 @@ The [Cloudflare Provider](https://www.terraform.io/docs/providers/cloudflare/ind
 1. cloudflare_load_balancer_monitor
 1. cloudflare_zone_settings_override
 
-Again, the options here extend out what is possible in a configuration.
+Again, the options here extend what is possible in a Terraform configuration.
 
 ### Kubernetes
 
-There are a number of different container orchestration technologies, but Kubernetes has essentially won that war and is now the *de facto* orchestrator technology for hyperscale cloud platforms.  If you are unfamiliar with Kubernetes then spend a few minutes to read the [Kubernetes core concepts](https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads).
+There are a number of different container orchestration technologies, but Kubernetes has essentially won that war and is now the *de facto* orchestrator technology for hyperscale cloud platforms.  If you are unfamiliar with Kubernetes, then spend a few minutes to read the [Kubernetes core concepts](https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads).
 
-The Terraform [Kubernetes Provider](https://www.terraform.io/docs/providers/kubernetes/index.html) has a couple of authentication options, and includes a wide array of resource types and also a couple of data types.  It can take a base Kubernetes cluster and its running components, and then schedule the Kubernetes resources, like pods, replication controllers, services etc.
+The Terraform [Kubernetes Provider](https://www.terraform.io/docs/providers/kubernetes/index.html) has a couple of authentication options, and includes a wide array of resource types and also a couple of data types.  It can take a base Kubernetes cluster and its running components, and then schedule the Kubernetes resources, like pods, replication controllers, services, etc.
 
 But it does need a base Kubernetes cluster first...
 
 ## Azure Kubernetes Service (AKS)
 
-In this lab we will create an Azure Kubernetes Service (AKS) cluster using the [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) resource type.  We will then use the Kubernetes provider to do additional configuration on top of the AKS deployment.  This lab will demonstrate how you can use multiple providers to achieve the end goal, and how to link them by using the exported attributes of one provider type as arguments to another provider type.
+In this lab we will create an Azure Kubernetes Service (AKS) cluster using the [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) resource type.  We will then use the Kubernetes provider to do additional configuration on top of the AKS deployment.  This lab will demonstrate how you can use multiple Providers to achieve the end goal, and how to link them by using the exported attributes of one Provider type as arguments to another Provider type.
 
-If you are not familiar with AKS then it is a Kubernetes cluster where you only have to pay for the compute nodes. If you want to see how it is created manually via the CLI then use this [tutorial]. A few key AKS features:
+If you are not familiar with AKS, it is a Kubernetes cluster where you only have to pay for the compute nodes. If you want to see how it is created manually via the CLI then use this [tutorial](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster). A few key AKS features include:
 
-1. The Kubernetes management plane is provided as a free PaaS service!
-1. [Open Service Broker for Azure](https://docs.microsoft.com/en-us/azure/aks/integrate-azure) (OSBA) simplifies integration with other Azure PaaS services
-1. [Virtual kubelet provider](https://docs.microsoft.com/en-us/azure/aks/virtual-kubelet) for Azure Container Instances (ACI) enables limitless bursting (experimental open source project)
+1. The Kubernetes management plane is provided as a free Platform-as-a-Service (PaaS) service!
+1. The [Open Service Broker for Azure](https://docs.microsoft.com/en-us/azure/aks/integrate-azure) (OSBA) simplifies integration with other Azure PaaS services
+1. The [Virtual Kubelet Provider](https://docs.microsoft.com/en-us/azure/aks/virtual-kubelet) for Azure Container Instances (ACI) enables limitless bursting (experimental open source project)
 
-Note that we will only be using core AKS functionality in this lab, with a simple demo container image.
+Note that we will only be using the core AKS functionality in this lab, with a simple demo container image.
 
 ## Create the AKS module
 
@@ -93,12 +93,12 @@ We'll take this lab in stages.
 1. Create an SSH key pair
 1. Test locally with a customised providers.tf file
 1. Commit locally
-1. Add GitHub as a remote and push
-1. Test as a module
+1. Add GitHub as a remote repository and push to it
+1. Test our code as a module
 1. Add the additional Kubernetes configuration
-1. Retest
+1. Re-test
 
-The terraform config in this section is loosely based on Nic Jackson's [blog post](https://www.hashicorp.com/blog/kubernetes-cluster-with-aks-and-terraform), updated with some of Lawrence Gripper's excellent [AKS repo](https://github.com/lawrencegripper/azure-aks-terraform).
+The Terraform configuration in this section is loosely based on Nic Jackson's [blog post](https://www.hashicorp.com/blog/kubernetes-cluster-with-aks-and-terraform), updated with some of Lawrence Gripper's excellent [AKS repo](https://github.com/lawrencegripper/azure-aks-terraform).
 
 ## Initialise the module area
 
