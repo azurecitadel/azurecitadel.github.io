@@ -679,29 +679,29 @@ Whilst your cluster is being removed you can read through the next two sections 
 
 One AzureRM resource type that we have not discussed so far is [azurerm_template_deployment](https://www.terraform.io/docs/providers/azurerm/r/template_deployment.html).
 
-There has been a huge investment into the AzureRM Terraform Provider (from both Microsoft and HashiCorp in collaboration) and it has excellent coverage of the most commonly used Azure Services.  However, there are some limitations:
+There has been a huge investment into the AzureRM Terraform provider (from both Microsoft and HashiCorp in collaboration) and it has excellent coverage of the most commonly used Azure services.  However, there are some limitations:
 
-* **coverage** - there are certain cases where some Azure services that are available as ARM resource types, are not yet available as a Terraform resource types
+* **coverage** - there are certain cases where Azure services are available as an ARM resource type, but are not yet available as a Terraform resource type
 * **lag** - inevitably there will be a period of lag when new Azure services are released, although prominent services such as AKS and Cosmos DB has been released close to the General Availability (GA) date
 
-Terraform can initiate the deployment of an ARM template and have knowledge of the deployment.  Destroying the resource in Terraform (via `terraform destroy`) will only destroy Terraform's knowledge of the deployment. For this reason it is recommended to create a separate Resource Group for the templated deployment so that removing both the Resource Group and the ARM deployment will remove the resources as well.
+Terraform can initiate the deployment of an ARM template and have knowledge of the deployment.  Destroying the resource in Terraform (via `terraform destroy`) will only destroy Terraform's knowledge of the deployment. For this reason it is recommended to create a separate resource group for the templated deployment so that removing both the resource group and the ARM deployment will remove the resources as well.
 
 If an AzureRM resource type then becomes available, then a resource stanza can be created and the existing resource(s) can be imported.  It will need careful configuration until a `terraform plan` doesn't show any creates, destroys or changes.  It would not be safe to configure new additions, deletions or changes until that steady state has been achieved.
 
 ## Extending ARM into Terraform
 
-For your information, ARM templates can now also drive certain Terraform Providers as per the new [Azure Resource Provider](https://azure.microsoft.com/en-us/blog/introducing-the-azure-terraform-resource-provider/) recently announced. 
+For your information, ARM templates can now also drive certain Terraform Providers as per the [Azure Resource Provider for Terraform](https://azure.microsoft.com/en-us/blog/introducing-the-azure-terraform-resource-provider/) blog page. 
 
-While it is in Public Preview, the following 3 Terraform Providers will be supported (Cloudflare, Datadog and Kubernetes) with other Providers being added in the future.
+While it is in Public Preview, the following 3 Terraform providers will be supported (Cloudflare, Datadog and Kubernetes) with other providers being added in the future.
 
 Azure Resource Manager (ARM) will never drive other cloud providers, but it does allow ARM configurations to take advantage of the Terraform framework and extend the configuration beyond the functionality at the control plane level.
 
 ## End of Lab 8
 
-We have reached the end of the lab. You have provisioned and configured a Kubernetes cluster on the AKS service, and looked at some of the other Providers and Provider Types.  We have also leveraged additional API permissions to create the AKS Service Principal on the fly.  We have worked through a sensible workflow to create and test a new module before publishing it, and re-testing as needed.
+We have reached the end of the lab. You have provisioned and configured a Kubernetes cluster on the AKS service, and looked at some of the other providers and provider types.  We have also leveraged additional API permissions to create the AKS service principal on the fly.  We have worked through a sensible workflow to create and test a new module before publishing it, and re-testing as needed.
 
 Your AKS module should look similar to that in <https://github.com/richeney/terraform-module-aks>.
 
-In the next lab we will also look at Provisioners and how they can help to go beyond vanilla image deployments for your virtual machines.
+In the next lab we will also look at provisioners and how they can help to go beyond vanilla image deployments for your virtual machines.
 
 [◄ Lab 7: Multi Tenancy](../lab7){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 9: Provisioners ►](../lab9){: .btn-success}
