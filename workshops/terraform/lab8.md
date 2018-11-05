@@ -420,6 +420,18 @@ ssh-keygen -t rsa -b 2048 -C "richard.cheney@microsoft.com"
 > Use your own email address for the comment field!
 
 The `~/.ssh/id_rsa.pub` public SSH key will be used in the locals default. It will be used as the authentication for the aksadmin user.
+Note: You will need to press Enter in the command-line when prompted as follows:
+* `Enter file in which to save the key (/home/username/.ssh/id_rsa):`
+* `Enter passphrase (empty for no passphrase):`
+* `Enter same passphrase again:`
+
+You should receive an output similar to the following:
+```bash
+Your identification has been saved in /home/username/.ssh/id_rsa.
+Your public key has been saved in /home/username/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:Ocwl7ZCZbtvnRLg9w8It7zFVS8SdxRoEHJXqpivh73Y richard.cheney@microsoft.com
+```
 
 ## Specifying minimum provider versions
 
