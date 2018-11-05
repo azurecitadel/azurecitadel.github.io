@@ -130,7 +130,7 @@ There will be two sets of example files at the end of the lab to match whichever
 
 If you have **insufficient directory permissions** then skip to the [main AKS module](#main-aks-module).
 
-## Add the additional API permissions to your Terraform Service Principal
+## Add the additional API permissions to your Terraform service principal
 
 The [advanced configuration section](../lab5#advanced-service-principal-configuration) of Lab 5 explains both custom RBAC roles in ARM, and adding additional API permissions to the service principal's app registration.
 
