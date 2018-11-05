@@ -281,10 +281,10 @@ OK, that is the sub-module finished. Let's move up a level and do the main AKS m
 
 ## Main AKS module
 
-* Close any open editing windows in vscode (using `CTRL`+`W`)
-* Close up the service_principal folder in the Explorer
+* Close any open editing windows in VSCode (using `CTRL`+`W`)
+* Close the service_principal folder in the VSCode explorer
     * If you have **insufficient directory permissions** then you may delete the service_principal folder
-* Add the following to the variables.tf
+* Add the following to the variables.tf (Note: This is the variables.tf file in the root of our Terraform-Module-AKS directory, **NOT** the variables.tf file in the service_principal directory)
 
 ```ruby
 variable "resource_group_name" {
@@ -319,7 +319,7 @@ variable "tags" {
 
 Every argument for this module has a default value, which will make testing easier. Note that the default for the SSH public key is an empty string. More on that in a moment.
 
-* Add the following into the main.tf
+* Add the following into the main.tf (Again, this is the main.tf file in the root of our Terraform-Module-AKS directory, **NOT** the main.tf file in the service_principal directory)
 
 ```ruby
 locals {
@@ -380,20 +380,20 @@ resource "azurerm_kubernetes_cluster" "aks" {
 }
 ```
 
-**\<insufficient directory permissions>**:
-
-1. Modify the azurerm_kubernetes_cluster.aks block
-    1. Remove the depends_on for module.service_principal
+**\<insufficient directory permissions>**
+**If you encountered the 'insufficient directory permissions' you need to follow these steps, else you can skip them**
+1. Modify the `resource "azurerm_kubernetes_cluster" "aks"` block
+    1. Remove the `depends_on = ["module.service_principal"]` 
     1. Hardcode the service_principal stanza's values for client_id and client_secret to use the values in your provider.tf
-1. Remove the module.service_principal block
+1. Remove the `module "service_principal" {}` block
 
 **\</insufficient directory permissions>**
 
-OK, this is the first time that we have actively used locals.  Locals are useful for generating values that will only be used within this individual .tf file.  (Locals are roughly similar to the variables section of an ARM template.)
+OK, this is the first time that we have actively used Locals.  Locals are useful for generating values that will *only* be used within this individual .tf file.  (Locals are roughly similar to the Variables section of an ARM template).
 
 The cluster name is a good example of a local variable, as it uses a random string appended to the aks- prefix, and is then referenced a few times throughout the main.tf.
 
-The SSH key is another, as it allows us to overcome a limitation in Terraform.  You cannot use an interpolation within a variable definition's default value. If you remember, we defaulted the variable to an empty string.  The locals section defines a default value (based on the contents of the default name for an SSH public key), and then the local.ssh_public_key will default to that if the user has not passed in an SSH public key argument value.
+The SSH key is another good example of a local variable, as it allows us to overcome a limitation in Terraform.  You cannot use an interpolation within a variable definition's default value. If you remember, we defaulted the variable to an empty string.  The Locals section defines a default value (based on the contents of the default name for an SSH public key), and then the local.ssh_public_key will default to that if the user has not passed in an SSH public key argument value.
 
 * Add the following into the outputs.tf:
 
