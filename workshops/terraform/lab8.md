@@ -118,21 +118,21 @@ code .
 
 ## Insufficient directory permissions?
 
-One feature of this lab is that it shows how to configure the Terraform Service Principal with sufficient API permissions to use the azurerm_service_principal resource type in order to create the AKS Service Principal on the fly.  There isn't a great deal of information available on the internet on how to have one Service Principal create another, so this lab helps to fill that gap.
+One feature of this lab is that it shows how to configure the Terraform service principal with sufficient API permissions to use the azurerm_service_principal resource type in order to create the AKS service principal on the fly.  There isn't a great deal of information available on the internet on how to have one service principal create another, so this lab helps to fill that gap.
 
-However, you may be working in a subscription where you have insufficient directory authority to create users and groups and therefore you cannot successfully assign and use the additional API permissions (For instance this will be true for Microsoft employees using subscriptions associated with the microsoft.com directory).
+However, you may be working in a subscription where you have insufficient directory authority to create users and groups and therefore you cannot successfully assign and use the additional API permissions (For instance this will be true for Microsoft employees using subscriptions associated with the microsoft.com directory.)
 
-You can still complete the lab, but you'll have to skip the service_principal sub-module and associated API permissions for the Terraform Service Principal and tweak the main.tf accordingly.  Instead we'll hardcode the AKS Service Principal ID and secret values to those of your existing Terraform Service Principal.
+You can still complete the lab, but you'll have to skip the service_principal sub-module and associated API permissions for the Terraform service principal and tweak the main.tf accordingly.  Instead we'll hardcode the AKS service principal ID and secret values to those of your existing Terraform service principal.
 
 There will be two sets of example files at the end of the lab to match whichever path you have taken.
 
-> If you cannot create users and groups in your subscriptions directory then look out for sentences in the lab that mention **insufficient directory permissions**, or instructions blocks wrapped with HTML style **\<insufficient directory permissions>** list of commands **\</insufficient directory permissions>** tags.
+> If you cannot create users and groups in your subscriptions directory then look out for sentences in the lab that mention **insufficient directory permissions**, or instructions blocks wrapped with HTML style **\<insufficient directory permissions>** _\<list of commands>_ **\</insufficient directory permissions>** tags.
 
 If you have **insufficient directory permissions** then skip to the [main AKS module](#main-aks-module).
 
 ## Add the additional API permissions to your Terraform Service Principal
 
-The [advanced configuration section](../lab5#advanced-service-principal-configuration) of Lab 5 explains both custom RBAC roles in ARM, and adding additional API permissions to the Service Principal's app registration.
+The [advanced configuration section](../lab5#advanced-service-principal-configuration) of Lab 5 explains both custom RBAC roles in ARM, and adding additional API permissions to the service principal's app registration.
 
 This section adds the required API permissions for the legacy Azure Active Directory API (as per the note at the top of the [azurerm_service_principal](https://www.terraform.io/docs/providers/azurerm/r/azuread_service_principal.html) page).
 
@@ -156,7 +156,7 @@ This section adds the required API permissions for the legacy Azure Active Direc
 ]
 ```
 
-* Update the API permissions for your Terraform Service Principal's registered application:
+* Update the API permissions for your Terraform service principal's registered application:
 
 ```bash
 subId=$(az account show --query id --output tsv)
@@ -178,7 +178,7 @@ az ad app show --id $appId --query requiredResourceAccess
 
 ## Create the service_principal sub-module
 
-The AKS service requires a Service Principal itself.  The Service Principal that is created will automatically be assigned the Contributor role on the new Resource Groups that the AKS Provider deploys. Terraform has the ability to create Service Principals so we will make use of that. We'll keep it tidy by hiding those resource types in a sub-module.
+The AKS service requires a service principal itself.  The service principal that is created will automatically be assigned the Contributor role on the new resource groups that the AKS provider deploys. Terraform has the ability to create service principals so we will make use of that. We'll keep it tidy by hiding those resource types in a sub-module.
 
 * Open the service_principal sub-folder in the VSCode explorer
 * Copy the following code block into the service_principal module's main.tf
@@ -215,11 +215,11 @@ resource "azurerm_azuread_service_principal_password" "aks_sp_password" {
 }
 ```
 
-> Note that the password block includes a Provisioner to locally sleep for 30 seconds, to give the app and Service Principal sufficient time to become available.  This is to overcome a current known [bug](https://github.com/terraform-providers/terraform-provider-azurerm/issues/1635). More on Provisioners in the next lab.
+> Note that the password block includes a provisioner to locally sleep for 30 seconds, to give the app and service principal sufficient time to become available.  This is to overcome a current known [bug](https://github.com/terraform-providers/terraform-provider-azurerm/issues/1635). More on provisioners in the next lab.
 
 **Question**:
 
-What impact does the **keeper** value have on the Service Principal password?
+What impact does the **keeper** value have on the service principal password?
 
 **Answer**:
 
@@ -234,7 +234,7 @@ How long will the password be valid for?
 **Answer**:
 
 <div class="answer">
-    <p>One year (FYI 8760 hours = 1 year).</p>
+    <p>8760 hours = 1 year.</p>
 </div>
 
 **Question**:
