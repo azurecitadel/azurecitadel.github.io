@@ -510,7 +510,7 @@ If your browser screen is similar to the image above then all is good.
 
 ## Add the Kubernetes configuration
 
-Now it is time to introduce the Kubernetes Provider. We can use this to extend the configuration to not only create the AKS cluster, but to provision the pods and services on top.
+Now it is time to introduce the Kubernetes provider. We can use this to extend the configuration to not only create the AKS cluster, but to provision the pods and services on top.
 
 * Append the following into your provider.tf file:
 
@@ -524,7 +524,7 @@ provider "kubernetes" {
 }
 ```
 
-Note that the exported attributes of the azurerm_kubernetes_cluster are now being used by this Provider, which also introduces an implicit dependency.
+Note that the exported attributes of the azurerm_kubernetes_cluster are now being used by the Kubernetes provider, which also introduces an implicit dependency.
 
 * Append the main.tf with the following resource type block:
 
@@ -543,7 +543,7 @@ resource "kubernetes_pod" "test" {
 }
 ```
 
-We are now making use of a different [Provider](https://www.terraform.io/docs/providers/) by using the [kubernetes_pod](https://www.terraform.io/docs/providers/kubernetes/r/pod.html) resource type.
+We are now making use of a different [provider](https://www.terraform.io/docs/providers/) by using the [kubernetes_pod](https://www.terraform.io/docs/providers/kubernetes/r/pod.html) resource type.
 
 * Run through the `terraform init`, `terraform plan` and `terraform apply` workflow
 * Run `kubectl get nodes`
@@ -556,7 +556,7 @@ If you can access the dashboard and see the two nodes and the single test pod th
 
 The destruction will take several minutes.  While that is running you can move to the next section and push the module up to GitHub.
 
-If you have **insufficient directory permissions** then your module will have hardcoded the Terraform Service Principal ID and secret values.  You can turn those into variables and continue, or skip to the [extending Terraform into ARM section](#extending-terraform-into-arm).
+If you have **insufficient directory permissions** then your module will have hardcoded the Terraform service principal ID and secret values.  You can turn those into variables and continue, or skip to the [extending Terraform into ARM section](#extending-terraform-into-arm).
 
 ## Push to GitHub
 
@@ -634,9 +634,9 @@ output "cluster" {
 * Change the username
 * Save and quit (`CTRL`+`S`, `CTRL`+`Q`)
 * Export ARM_CLIENT_ID and ARM_CLIENT_SECRET environment variables
-    * Set the environment variables to the Terraform Service Principal's app ID and password (the values in the terraform-labs/provider.tf)
+    * Set the environment variables to the Terraform service principal's app ID and password (the values may be found in the terraform-labs/provider.tf)
     * Example: `export ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000"
-    * Optionally you can add it to your ~/.bashrc
+    * Optionally, you may add the export commands to your ~/.bashrc
 
 * Run through the Terraform workflow
     * `terraform get`
