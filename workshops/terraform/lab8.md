@@ -102,9 +102,9 @@ The Terraform configuration in this section is loosely based on Nic Jackson's [b
 
 ## Initialise the module area
 
-Create a local module area called terraform-aks-module by following the lab steps below. It is assumed that you are starting in the terraform-labs area.
+Create a local module area called terraform-aks-module by following the lab steps below. It is assumed that you are starting in the terraform-labs directory.
 
-* Run the following commands to initialise the module area and open it in  a new vscode window
+* Run the following commands to initialise the module area and open it in  a new VSCode window
 
 ```bash
 mkdir -m 750 ../terraform-module-aks
@@ -120,21 +120,21 @@ code .
 
 One feature of this lab is that it shows how to configure the Terraform service principal with sufficient API permissions to use the azurerm_service_principal resource type in order to create the AKS service principal on the fly.  There isn't a great deal of information available on the internet on how to have one service principal create another, so this lab helps to fill that gap.
 
-However, you may be working in a subscription where you have insufficient directory authority to create users and groups and therefore you cannot successfully assign and use the additional API permissions. (For instance this will be true for Microsoft employees using subscriptions associated with the microsoft.com directory.)
+However, you may be working in a subscription where you have insufficient directory authority to create users and groups and therefore you cannot successfully assign and use the additional API permissions (For instance this will be true for Microsoft employees using subscriptions associated with the microsoft.com directory.)
 
-You can still complete the lab, but you'll have to skip the service_principal sub-module and associated API permissions for the Terraform service principal and tweak the main.tf accordingly.  Instead we'll hardcode the AKS service_principal id and secret values to those of your existing Terraform service principal.
+You can still complete the lab, but you'll have to skip the service_principal sub-module and associated API permissions for the Terraform service principal and tweak the main.tf accordingly.  Instead we'll hardcode the AKS service principal ID and secret values to those of your existing Terraform service principal.
 
 There will be two sets of example files at the end of the lab to match whichever path you have taken.
 
-> If you cannot create users and groups in your subscriptions directory then look out for sentences in the lab that mention **insufficient directory permissions**. Or instructions blocks wrapped with HTML style **\<insufficient directory permissions>** list of commands **\</insufficient directory permissions>** tags.
+> If you cannot create users and groups in your subscriptions directory then look out for sentences in the lab that mention **insufficient directory permissions**, or instructions blocks wrapped with HTML style **\<insufficient directory permissions>** _\<list of commands>_ **\</insufficient directory permissions>** tags.
 
 If you have **insufficient directory permissions** then skip to the [main AKS module](#main-aks-module).
 
-## Add the additional API Permissions to your Terraform service principal
+## Add the additional API permissions to your Terraform service principal
 
-The [advanced config section](../lab5#advanced-service-principal-configuration) of lab 5 explains both custom RBAC roles in ARM, and adding additional API permissions to the service principal's app registration.
+The [advanced configuration section](../lab5#advanced-service-principal-configuration) of Lab 5 explains both custom RBAC roles in ARM, and adding additional API permissions to the service principal's app registration.
 
-This section adds the required API permissions for the legacy Azure Active Directory API. (As per the note at the top of the [azurerm_service_principal](https://www.terraform.io/docs/providers/azurerm/r/azuread_service_principal.html) page.)
+This section adds the required API permissions for the legacy Azure Active Directory API (as per the note at the top of the [azurerm_service_principal](https://www.terraform.io/docs/providers/azurerm/r/azuread_service_principal.html) page).
 
 * Add the following JSON into your manifest.json file:
 
@@ -165,21 +165,22 @@ az ad app update --id $appId --required-resource-accesses @manifest.json
 az ad app show --id $appId --query requiredResourceAccess
 ```
 
-* Grant admin consent for the Default Directory via the portal
-    * Search for "App Registrations" in All Services
-    * Select Preview experience
-    * All Applications
-    * Select the terraform-<subscriptionId>-sp application
-    * API Permissions
-    * Grant admin consent for Default Directory
+* Grant admin consent for the Default Directory via the portal: 
+    * Navigate to Azure Active Directory (AAD)
+    * Under the Manage list, select App registrations (Preview)
+    * Ensure the All Applications tab is selected
+    * Search for, and select the Terraform Service Principal application that we created previously (i.e. terraform-<subscriptionId>-sp)
+    * Select API Permissions
+    * Click the 'Grant admin consent for Default Directory' button
+    * Click Yes on the confirmation prompt
 
 ![permissions](/workshops/terraform/images/permissions.png)
 
 ## Create the service_principal sub-module
 
-The AKS service requires a service principal itself.  The service principal that is created will automatically be assigned Contributor role to the new resource groups that the AKS provider deploys. Terraform has the ability to create service principals so we will make use of that. We'll keep it tidy by hiding those resource types in a sub-module.
+The AKS service requires a service principal itself.  The service principal that is created will automatically be assigned the Contributor role on the new resource groups that the AKS provider deploys. Terraform has the ability to create service principals so we will make use of that. We'll keep it tidy by hiding those resource types in a sub-module.
 
-* Open the service_principal sub-folder in vscode's explorer
+* Open the service_principal sub-folder in the VSCode explorer
 * Copy the following code block into the service_principal module's main.tf
 
 ```ruby
@@ -223,7 +224,7 @@ What impact does the **keeper** value have on the service principal password?
 **Answer**:
 
 <div class="answer">
-    <p>It ensures that the password is not changed unless the service principal ID is changed, i.e. it has been recreated.</p>
+    <p>It ensures that the password is not changed unless the Service Principal ID is changed (i.e. it has been recreated).</p>
 </div>
 
 **Question**:
@@ -233,7 +234,7 @@ How long will the password be valid for?
 **Answer**:
 
 <div class="answer">
-    <p>One year.</p>
+    <p>8760 hours = 1 year.</p>
 </div>
 
 **Question**:
@@ -243,7 +244,7 @@ What does the lifecycle meta-parameter do for the password?
 **Answer**:
 
 <div class="answer">
-    <p>It manages the lifecycle of the resource, and ensures that the password is not changed if and when the end date is updated. You would have to use the terraform taint command to force a password to be recreated.</p>
+    <p>It manages the lifecycle of the resource, and ensures that the password is not changed if and when the end date is updated. You would have to use the Terraform [taint command](https://www.terraform.io/docs/commands/taint.html) to force a password to be recreated.</p>
 </div>
 
 * Copy the following code block into the service_principal module's outputs.tf
@@ -263,7 +264,7 @@ output "client_secret" {
 }
 ```
 
-The client id and secret will be used by the azurerm_kubernetes_cluster resource in the parent.
+The client ID and secret will be used by the azurerm_kubernetes_cluster resource in the parent.
 
 * Copy the following code block into the service_principal module's variables.tf
 
@@ -274,7 +275,7 @@ variable "sp_name" {
 }
 ```
 
-The only argument required by the service_principal is the name, which simplifies the main.tf that we'll be creating in the parent directory.  This is a good practice to adopt if it helps to make your modules readable and supportable.
+The only argument required by the service_principal is the name, which simplifies the main.tf that we'll be creating in the parent directory.  This is a good practice to adopt as it helps to make your modules readable and supportable.
 
 OK, that is the sub-module finished. Let's move up a level and do the main AKS module.
 
