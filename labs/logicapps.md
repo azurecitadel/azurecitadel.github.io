@@ -78,7 +78,7 @@ OK, let's create an empty Logic App in the Azure101PaaS resource group.  The vid
 
 ## Define the REST API endpoint
 
-**This section describes what we are doing before we then get on with actually doing it.  If you understand REST API endpoints and schemas then you can skip straight through to [creating the request](#request).
+**This section describes what we are doing before we then get on with actually doing it.**  If you understand REST API endpoints and schemas then you can skip straight through to [creating the request](#request).
 
 We'll create a REST API point, using the sample payload in the code block below. The endpoint is defined as two steps:
 
