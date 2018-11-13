@@ -15,14 +15,14 @@ published: true
 
 In this lab we will look at other providers that can help with our Azure deployments. One of the reasons for choosing Terraform is the extensible support for multiple providers so that the same workflow and logic can be applied to various public and private cloud platforms.
 
-The same provider extensibility also applies to supporting services and data plane configuration.  In this lab we will look at examples from Cloudflare and Datadog, and then we'll deploy an AKS Kubernetes cluster using a combination of the AzureRM provider for the control plane and the Kubernetes provider for the data plane.
+The same provider extensibility also applies to supporting services and data plane configuration.  In this lab we will look at examples from Cloudflare and Datadog, and then we'll deploy an Azure Kubernetes Service (AKS) Kubernetes cluster using a combination of the AzureRM provider for the control plane and the Kubernetes provider for the data plane.
 
 We will also:
 
-* evolve our use of modules with a nested module
-* look at locals, keepers and the lifecycle meta-parameter
-* use a more natural workflow to create and test a new module locally
-* create a GitHub repo as an upstream and push up to it
+* Evolve our use of modules with a nested module
+* Look at locals, keepers and the lifecycle meta-parameter
+* Use a more natural workflow to create and test a new module locally
+* Create a upstream GitHub repository and push our code to it
 
 Let's start by exploring alternative providers.
 
@@ -30,11 +30,11 @@ Let's start by exploring alternative providers.
 
 Take a look at the range of [Terraform Providers](https://www.terraform.io/docs/providers/) available.  It is a wide and expanding list, covering a multitude of private and public cloud platforms, various applications, supporting technologies and cloud services such as public DNS.
 
-All of the providers follow the same documentation standard as the azurerm provider.
+All of the Providers follow the same documentation standard as the AzureRM Provider.
 
 ### Datadog
 
-[Datadog](https://www.datadoghq.com/) is used by 1000s of customer as their platform for modern monitoring and analytics, and it has over 200 integrations with various cloud services, including a number of [Azure services](https://www.datadoghq.com/product/integrations/#cat-azure).
+[Datadog](https://www.datadoghq.com/) is used by 1000's of customers as their platform for modern monitoring and analytics, and it has over 200 integrations with various cloud services, including a number of [Azure services](https://www.datadoghq.com/product/integrations/#cat-azure).
 
 The [Datadog Provider](https://www.terraform.io/docs/providers/datadog/index.html) is relatively simple, with a couple of key variables for the API to authenticate with, and four possible resource types:
 
@@ -47,7 +47,7 @@ This allows the monitoring to be configured automatically as one facet of the wi
 
 ### Cloudflare
 
-[Cloudflare](https://www.cloudflare.com/dns/) offer a number of services including a fast authoritative public DNS servers on 1.1.1.1 and 1.0.0.1.  They are very fast in terms of DNS lookup latency and speed of DNS record propagation.
+[Cloudflare](https://www.cloudflare.com/dns/) offer a number of services including fast authoritative public DNS servers on 1.1.1.1 and 1.0.0.1.  They are very fast in terms of DNS lookup latency and speed of DNS record propagation.
 
 These are widely used as an alterative to other well known public DNS servers such as Google's 8.8.8.8 and 8.8.4.4, and have a free tier for personal use.
 
@@ -61,27 +61,27 @@ The [Cloudflare Provider](https://www.terraform.io/docs/providers/cloudflare/ind
 1. cloudflare_load_balancer_monitor
 1. cloudflare_zone_settings_override
 
-Again, the options here extend out what is possible in a configuration.
+Again, the options here extend what is possible in a Terraform configuration.
 
 ### Kubernetes
 
-There are a number of different container orchestration technologies, but Kubernetes has essentially won that war and is now the *de facto* orchestrator technology for hyperscale cloud platforms.  If you are unfamiliar with Kubernetes then spend a few minutes to read the [Kubernetes core concepts](https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads).
+There are a number of different container orchestration technologies, but Kubernetes has essentially won that war and is now the *de facto* orchestrator technology for hyperscale cloud platforms.  If you are unfamiliar with Kubernetes, then spend a few minutes to read the [Kubernetes core concepts](https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads).
 
-The Terraform [Kubernetes Provider](https://www.terraform.io/docs/providers/kubernetes/index.html) has a couple of authentication options, and includes a wide array of resource types and also a couple of data types.  It can take a base Kubernetes cluster and its running components, and then schedule the Kubernetes resources, like pods, replication controllers, services etc.
+The Terraform [Kubernetes Provider](https://www.terraform.io/docs/providers/kubernetes/index.html) has a couple of authentication options, and includes a wide array of resource types and also a couple of data types.  It can take a base Kubernetes cluster and its running components, and then schedule the Kubernetes resources, like pods, replication controllers, services, etc.
 
 But it does need a base Kubernetes cluster first...
 
 ## Azure Kubernetes Service (AKS)
 
-In this lab we will create an Azure Kubernetes Service (AKS) cluster using the [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) resource type.  We will then use the Kubernetes provider to do additional configuration on top of the AKS deployment.  This lab will demonstrate how you can use multiple providers to achieve the end goal, and how to link them by using the exported attributes of one provider type as arguments to another provider type.
+In this lab we will create an Azure Kubernetes Service (AKS) cluster using the [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) resource type.  We will then use the Kubernetes provider to do additional configuration on top of the AKS deployment.  This lab will demonstrate how you can use multiple Providers to achieve the end goal, and how to link them by using the exported attributes of one Provider type as arguments to another Provider type.
 
-If you are not familiar with AKS then it is a Kubernetes cluster where you only have to pay for the compute nodes. If you want to see how it is created manually via the CLI then use this [tutorial]. A few key AKS features:
+If you are not familiar with AKS, it is a Kubernetes cluster where you only have to pay for the compute nodes. If you want to see how it is created manually via the CLI then use this [tutorial](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster). A few key AKS features include:
 
-1. The Kubernetes management plane is provided as a free PaaS service!
-1. [Open Service Broker for Azure](https://docs.microsoft.com/en-us/azure/aks/integrate-azure) (OSBA) simplifies integration with other Azure PaaS services
-1. [Virtual kubelet provider](https://docs.microsoft.com/en-us/azure/aks/virtual-kubelet) for Azure Container Instances (ACI) enables limitless bursting (experimental open source project)
+1. The Kubernetes management plane is provided as a free Platform-as-a-Service (PaaS) service!
+1. The [Open Service Broker for Azure](https://docs.microsoft.com/en-us/azure/aks/integrate-azure) (OSBA) simplifies integration with other Azure PaaS services
+1. The [Virtual Kubelet Provider](https://docs.microsoft.com/en-us/azure/aks/virtual-kubelet) for Azure Container Instances (ACI) enables limitless bursting (experimental open source project)
 
-Note that we will only be using core AKS functionality in this lab, with a simple demo container image.
+Note that we will only be using the core AKS functionality in this lab, with a simple demo container image.
 
 ## Create the AKS module
 
@@ -93,18 +93,18 @@ We'll take this lab in stages.
 1. Create an SSH key pair
 1. Test locally with a customised providers.tf file
 1. Commit locally
-1. Add GitHub as a remote and push
-1. Test as a module
+1. Add GitHub as a remote repository and push to it
+1. Test our code as a module
 1. Add the additional Kubernetes configuration
-1. Retest
+1. Re-test
 
-The terraform config in this section is loosely based on Nic Jackson's [blog post](https://www.hashicorp.com/blog/kubernetes-cluster-with-aks-and-terraform), updated with some of Lawrence Gripper's excellent [AKS repo](https://github.com/lawrencegripper/azure-aks-terraform).
+The Terraform configuration in this section is loosely based on Nic Jackson's [blog post](https://www.hashicorp.com/blog/kubernetes-cluster-with-aks-and-terraform), updated with some of Lawrence Gripper's excellent [AKS repo](https://github.com/lawrencegripper/azure-aks-terraform).
 
 ## Initialise the module area
 
-Create a local module area called terraform-aks-module by following the lab steps below. It is assumed that you are starting in the terraform-labs area.
+Create a local module area called terraform-aks-module by following the lab steps below. It is assumed that you are starting in the terraform-labs directory.
 
-* Run the following commands to initialise the module area and open it in  a new vscode window
+* Run the following commands to initialise the module area and open it in  a new VSCode window
 
 ```bash
 mkdir -m 750 ../terraform-module-aks
@@ -120,21 +120,21 @@ code .
 
 One feature of this lab is that it shows how to configure the Terraform service principal with sufficient API permissions to use the azurerm_service_principal resource type in order to create the AKS service principal on the fly.  There isn't a great deal of information available on the internet on how to have one service principal create another, so this lab helps to fill that gap.
 
-However, you may be working in a subscription where you have insufficient directory authority to create users and groups and therefore you cannot successfully assign and use the additional API permissions. (For instance this will be true for Microsoft employees using subscriptions associated with the microsoft.com directory.)
+However, you may be working in a subscription where you have insufficient directory authority to create users and groups and therefore you cannot successfully assign and use the additional API permissions (For instance this will be true for Microsoft employees using subscriptions associated with the microsoft.com directory.)
 
-You can still complete the lab, but you'll have to skip the service_principal sub-module and associated API permissions for the Terraform service principal and tweak the main.tf accordingly.  Instead we'll hardcode the AKS service_principal id and secret values to those of your existing Terraform service principal.
+You can still complete the lab, but you'll have to skip the service_principal sub-module and associated API permissions for the Terraform service principal and tweak the main.tf accordingly.  Instead we'll hardcode the AKS service principal ID and secret values to those of your existing Terraform service principal.
 
 There will be two sets of example files at the end of the lab to match whichever path you have taken.
 
-> If you cannot create users and groups in your subscriptions directory then look out for sentences in the lab that mention **insufficient directory permissions**. Or instructions blocks wrapped with HTML style **\<insufficient directory permissions>** list of commands **\</insufficient directory permissions>** tags.
+> If you cannot create users and groups in your subscriptions directory then look out for sentences in the lab that mention **insufficient directory permissions**, or instructions blocks wrapped with HTML style **\<insufficient directory permissions>** _\<list of commands>_ **\</insufficient directory permissions>** tags.
 
 If you have **insufficient directory permissions** then skip to the [main AKS module](#main-aks-module).
 
-## Add the additional API Permissions to your Terraform service principal
+## Add the additional API permissions to your Terraform service principal
 
-The [advanced config section](../lab5#advanced-service-principal-configuration) of lab 5 explains both custom RBAC roles in ARM, and adding additional API permissions to the service principal's app registration.
+The [advanced configuration section](../lab5#advanced-service-principal-configuration) of Lab 5 explains both custom RBAC roles in ARM, and adding additional API permissions to the service principal's app registration.
 
-This section adds the required API permissions for the legacy Azure Active Directory API. (As per the note at the top of the [azurerm_service_principal](https://www.terraform.io/docs/providers/azurerm/r/azuread_service_principal.html) page.)
+This section adds the required API permissions for the legacy Azure Active Directory API (as per the note at the top of the [azurerm_service_principal](https://www.terraform.io/docs/providers/azurerm/r/azuread_service_principal.html) page).
 
 * Add the following JSON into your manifest.json file:
 
@@ -165,21 +165,22 @@ az ad app update --id $appId --required-resource-accesses @manifest.json
 az ad app show --id $appId --query requiredResourceAccess
 ```
 
-* Grant admin consent for the Default Directory via the portal
-    * Search for "App Registrations" in All Services
-    * Select Preview experience
-    * All Applications
-    * Select the terraform-<subscriptionId>-sp application
-    * API Permissions
-    * Grant admin consent for Default Directory
+* Grant admin consent for the Default Directory via the portal: 
+    * Navigate to Azure Active Directory (AAD)
+    * Under the Manage list, select App registrations (Preview)
+    * Ensure the All Applications tab is selected
+    * Search for, and select the Terraform Service Principal application that we created previously (i.e. terraform-<subscriptionId>-sp)
+    * Select API Permissions
+    * Click the 'Grant admin consent for Default Directory' button
+    * Click Yes on the confirmation prompt
 
 ![permissions](/workshops/terraform/images/permissions.png)
 
 ## Create the service_principal sub-module
 
-The AKS service requires a service principal itself.  The service principal that is created will automatically be assigned Contributor role to the new resource groups that the AKS provider deploys. Terraform has the ability to create service principals so we will make use of that. We'll keep it tidy by hiding those resource types in a sub-module.
+The AKS service requires a service principal itself.  The service principal that is created will automatically be assigned the Contributor role on the new resource groups that the AKS provider deploys. Terraform has the ability to create service principals so we will make use of that. We'll keep it tidy by hiding those resource types in a sub-module.
 
-* Open the service_principal sub-folder in vscode's explorer
+* Open the service_principal sub-folder in the VSCode explorer
 * Copy the following code block into the service_principal module's main.tf
 
 ```ruby
@@ -223,7 +224,7 @@ What impact does the **keeper** value have on the service principal password?
 **Answer**:
 
 <div class="answer">
-    <p>It ensures that the password is not changed unless the service principal ID is changed, i.e. it has been recreated.</p>
+    <p>It ensures that the password is not changed unless the Service Principal ID is changed (i.e. it has been recreated).</p>
 </div>
 
 **Question**:
@@ -233,7 +234,7 @@ How long will the password be valid for?
 **Answer**:
 
 <div class="answer">
-    <p>One year.</p>
+    <p>8760 hours = 1 year.</p>
 </div>
 
 **Question**:
@@ -243,7 +244,7 @@ What does the lifecycle meta-parameter do for the password?
 **Answer**:
 
 <div class="answer">
-    <p>It manages the lifecycle of the resource, and ensures that the password is not changed if and when the end date is updated. You would have to use the terraform taint command to force a password to be recreated.</p>
+    <p>It manages the lifecycle of the resource, and ensures that the password is not changed if and when the end date is updated. You would have to use the Terraform [taint command](https://www.terraform.io/docs/commands/taint.html) to force a password to be recreated.</p>
 </div>
 
 * Copy the following code block into the service_principal module's outputs.tf
@@ -263,7 +264,7 @@ output "client_secret" {
 }
 ```
 
-The client id and secret will be used by the azurerm_kubernetes_cluster resource in the parent.
+The client ID and secret will be used by the azurerm_kubernetes_cluster resource in the parent.
 
 * Copy the following code block into the service_principal module's variables.tf
 
@@ -274,16 +275,16 @@ variable "sp_name" {
 }
 ```
 
-The only argument required by the service_principal is the name, which simplifies the main.tf that we'll be creating in the parent directory.  This is a good practice to adopt if it helps to make your modules readable and supportable.
+The only argument required by the service_principal is the name, which simplifies the main.tf that we'll be creating in the parent directory.  This is a good practice to adopt as it helps to make your modules readable and supportable.
 
 OK, that is the sub-module finished. Let's move up a level and do the main AKS module.
 
 ## Main AKS module
 
-* Close any open editing windows in vscode (using `CTRL`+`W`)
-* Close up the service_principal folder in the Explorer
+* Close any open editing windows in VSCode (using `CTRL`+`W`)
+* Close the service_principal folder in the VSCode explorer
     * If you have **insufficient directory permissions** then you may delete the service_principal folder
-* Add the following to the variables.tf
+* Add the following to the variables.tf (Note: This is the variables.tf file in the root of our Terraform-Module-AKS directory, **NOT** the variables.tf file in the service_principal directory)
 
 ```ruby
 variable "resource_group_name" {
@@ -318,7 +319,7 @@ variable "tags" {
 
 Every argument for this module has a default value, which will make testing easier. Note that the default for the SSH public key is an empty string. More on that in a moment.
 
-* Add the following into the main.tf
+* Add the following into the main.tf (Again, this is the main.tf file in the root of our Terraform-Module-AKS directory, **NOT** the main.tf file in the service_principal directory)
 
 ```ruby
 locals {
@@ -379,20 +380,20 @@ resource "azurerm_kubernetes_cluster" "aks" {
 }
 ```
 
-**\<insufficient directory permissions>**:
-
-1. Modify the azurerm_kubernetes_cluster.aks block
-    1. Remove the depends_on for module.service_principal
+**\<insufficient directory permissions>**
+**If you encountered the 'insufficient directory permissions' you need to follow these steps, else you can skip them**
+1. Modify the `resource "azurerm_kubernetes_cluster" "aks"` block
+    1. Remove the `depends_on = ["module.service_principal"]` 
     1. Hardcode the service_principal stanza's values for client_id and client_secret to use the values in your provider.tf
-1. Remove the module.service_principal block
+1. Remove the `module "service_principal" {}` block
 
 **\</insufficient directory permissions>**
 
-OK, this is the first time that we have actively used locals.  Locals are useful for generating values that will only be used within this individual .tf file.  (Locals are roughly similar to the variables section of an ARM template.)
+OK, this is the first time that we have actively used Locals.  Locals are useful for generating values that will *only* be used within this individual .tf file.  (Locals are roughly similar to the Variables section of an ARM template).
 
 The cluster name is a good example of a local variable, as it uses a random string appended to the aks- prefix, and is then referenced a few times throughout the main.tf.
 
-The SSH key is another, as it allows us to overcome a limitation in Terraform.  You cannot use an interpolation within a variable definition's default value. If you remember, we defaulted the variable to an empty string.  The locals section defines a default value (based on the contents of the default name for an SSH public key), and then the local.ssh_public_key will default to that if the user has not passed in an SSH public key argument value.
+The SSH key is another good example of a local variable, as it allows us to overcome a limitation in Terraform.  You cannot use an interpolation within a variable definition's default value. If you remember, we defaulted the variable to an empty string.  The Locals section defines a default value (based on the contents of the default name for an SSH public key), and then the local.ssh_public_key will default to that if the user has not passed in an SSH public key argument value.
 
 * Add the following into the outputs.tf:
 
@@ -419,33 +420,45 @@ ssh-keygen -t rsa -b 2048 -C "richard.cheney@microsoft.com"
 > Use your own email address for the comment field!
 
 The `~/.ssh/id_rsa.pub` public SSH key will be used in the locals default. It will be used as the authentication for the aksadmin user.
+Note: You will need to press Enter in the command-line when prompted as follows:
+* `Enter file in which to save the key (/home/username/.ssh/id_rsa):`
+* `Enter passphrase (empty for no passphrase):`
+* `Enter same passphrase again:`
+
+You should receive an output similar to the following:
+```bash
+Your identification has been saved in /home/username/.ssh/id_rsa.
+Your public key has been saved in /home/username/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:Ocwl7ZCZbtvnRLg9w8It7zFVS8SdxRoEHJXqpivh73Y richard.cheney@microsoft.com
+```
 
 ## Specifying minimum provider versions
 
 We will need the Terraform service principal credentials for full testing:
 
-* Copy in the provider.tf file from the terraform-labs repo
+* Copy in provider.tf file from the terraform-labs repository into the terraform-module-aks directory
 
-We will need a minimum version of the azurerm provider for the AKS module to work.  Exploring this introduces a key tenet for Terraform regarding versioning.
+We will need a minimum version of the AzureRM provider for the AKS module to work.  Exploring this introduces a key tenet for Terraform regarding versioning.
 
 As you already know, when you run terraform init, the required providers are copied locally. It is important to understand that those providers will *not* be upgraded unless you force that to happen.
 
-Terraform has a philosophy around version management that enables you to collectively control the version of everything from top to bottom, i.e. the terraform executable, the individual Terraform providers and the terraform files themselves.  Therefore you have full control on when any of those are upgraded so that you know that nothing will become unexpectedly broken.
+Terraform has a philosophy around version management that enables you to collectively control the version of everything from top to bottom (i.e. the Terraform executable, the individual Terraform providers and the Terraform files themselves).  Therefore, you have full control on when any of those components are upgraded, so that you know that nothing will become unexpectedly broken.
 
-Take a look at the [azurerm changelog](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md).  This lists the new features, bug fixes and improvements that are rolled into each release.  If you require functionality of a newer release then you have a couple of options:
+Take a look at the [AzureRM changelog](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md).  This lists the new features, bug fixes and improvements that are rolled into each release.  If you require functionality of a newer release then you have a couple of options:
 
-1. specify a [provider version constraint](https://www.terraform.io/docs/configuration/providers.html#provider-versions) in the provider block and run `terraform init`
-1. run `terraform init -upgrade=true` to upgrade to the latest acceptable version of the modules
+1. Specify a [provider version constraint](https://www.terraform.io/docs/configuration/providers.html#provider-versions) in the provider block and run `terraform init`
+1. Run `terraform init -upgrade=true` to upgrade to the latest version allowed within configured constraints
 
-Specify a minimum version of 1.17 for the azurerm provider:
+Specify a minimum version of 1.17 for the AzureRM Provider:
 
-* Add a constraint to the azurerm provider block for a minimum version of 1.17 (or later)
+* Add a constraint to the AzureRM provider block for a minimum version of 1.17 (or later)
 
-> 1.17 is current at the time of writing; feel free to specify a more recent version if the changelog entry mentions new or updated azurerm_kubernetes_* provider types
+> Version 1.17 is current at the time of writing; feel free to specify a more recent version if the changelog entry mentions new or updated azurerm_kubernetes_* provider types
 
 * Run `terraform init`
 
-Note that the output recommends that a minimum should be specified for the random provider:
+Note that the output recommends that a minimum version should be specified for the random provider:
 
 ```json
 The following providers do not have any version constraints in configuration,
@@ -479,7 +492,7 @@ Example output:
 * Run `terraform plan`
 * Run `terraform apply -auto-approve`
 
-The cluster should take around 15 minutes to deploy, so a good time for a coffee. Once it has completed then check that the cluster is operating as expected.
+The cluster should take around 15 minutes to deploy, so it's a good time for a coffee break. Once it has completed then check that the cluster is operating as expected.
 
 * Create the Kubernetes config file using the AKS module's kube_config output:
 
@@ -510,7 +523,7 @@ If your browser screen is similar to the image above then all is good.
 
 ## Add the Kubernetes configuration
 
-Now it is time to introduce the kubernetes provider. We can use this to extend the configuration to not only create the AKS cluster, but to provision the pods and services on top.
+Now it is time to introduce the Kubernetes provider. We can use this to extend the configuration to not only create the AKS cluster, but to provision the pods and services on top.
 
 * Append the following into your provider.tf file:
 
@@ -524,7 +537,7 @@ provider "kubernetes" {
 }
 ```
 
-Note that the exported attributes of the azurerm_kubernetes_cluster are now being used by this provider, which also introduces an implicit dependency.
+Note that the exported attributes of the azurerm_kubernetes_cluster are now being used by the Kubernetes provider, which also introduces an implicit dependency.
 
 * Append the main.tf with the following resource type block:
 
@@ -545,25 +558,25 @@ resource "kubernetes_pod" "test" {
 
 We are now making use of a different [provider](https://www.terraform.io/docs/providers/) by using the [kubernetes_pod](https://www.terraform.io/docs/providers/kubernetes/r/pod.html) resource type.
 
-* Run through the terraform init, plan and apply workflow
+* Run through the `terraform init`, `terraform plan` and `terraform apply` workflow
 * Run `kubectl get nodes`
 * Run `kubectl get pods`
-* Rerun the `kubectl proxy` and check the [dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/overview?namespace=default)
+* Re-run the `kubectl proxy` and check the [dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/overview?namespace=default)
 
 If you can access the dashboard and see the two nodes and the single test pod then the module is successfully tested.
 
-* Remove the cluster: `terraform destroy`
+* Remove the cluster by running `terraform destroy`
 
-The destruction will take several minutes.  Whilst that is running you can move to the next section and push the module up to GitHub.
+The destruction will take several minutes.  While that is running you can move to the next section and push the module up to GitHub.
 
-If you have **insufficient directory permissions** then your module will have hardcoded Terraform service principal id and secret values.  You can turn those into variables and continue, or skip to the [extending Terraform into ARM section](#extending-terraform-into-arm).
+If you have **insufficient directory permissions** then your module will have hardcoded the Terraform service principal ID and secret values.  You can turn those into variables and continue, or skip to the [extending Terraform into ARM section](#extending-terraform-into-arm).
 
 ## Push to GitHub
 
 You should already have a [GitHub account](https://github.com/join) from the earlier labs.
 
-* Remove the Terraform service principal values from your provider.tf so that only the version argument remains
-* Commit into your local repo
+* Remove the Terraform Service Principal values from your provider.tf so that only the version argument remains
+* Commit the files into your local repo
     * Add the files to the index `git add --all`
     * Commit the files `git commit -a -m "Initial commit"`
 * Log onto [GitHub](https://github.com)
@@ -600,19 +613,19 @@ To https://github.com/richeney/terraform-module-aks.git
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
 
-The full module is now up in GitHub.
+The full module should now be uploaded to GitHub.
 
-## Test the module hosted in Github
+## Test the module hosted in GitHub
 
 If you wish you can test the whole module.
 
 We'll do this within your [Cloud Shell](https://shell.azure.com)'s home directory.
 
 * Create a new lab8 folder in your home directory (`mkdir lab8`)
-* Change directory (`cd lab8`)
-* Create an empty aks.tf (`touch aks.tf`)
-* Edit in the Monaco editor (`code .`)
-* Add the following HCL into the aks.tf:
+* Change to this directory (`cd lab8`)
+* Create an empty aks.tf file (`touch aks.tf`)
+* Edit the file in the Monaco editor (`code .`)
+* Add the following HCL into the aks.tf file:
 
 ```ruby
 provider "azurerm" {
@@ -634,9 +647,9 @@ output "cluster" {
 * Change the username
 * Save and quit (`CTRL`+`S`, `CTRL`+`Q`)
 * Export ARM_CLIENT_ID and ARM_CLIENT_SECRET environment variables
-    * Set to the Terraform service principal's app ID and password (values in terraform-labs/provider.tf)
+    * Set the environment variables to the Terraform service principal's app ID and password (the values may be found in the terraform-labs/provider.tf)
     * Example: `export ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000"
-    * Optionally add to your ~/.bashrc
+    * Optionally, you may add the export commands to your ~/.bashrc
 
 * Run through the Terraform workflow
     * `terraform get`
@@ -652,7 +665,7 @@ az aks get-credentials --name $(terraform output cluster) --resource-group aks
 
 The command creates your ~/.kube/config file.  It is an alternative to the command you ran earlier that redirected the terraform kube_config output.
 
-The kubectl binary is alfready included part of the Cloud Shell container image, so you can use that straight away without having to install:
+The kubectl binary is already included as part of the Cloud Shell container image, so you can use that straight away without having to install it:
 
 ```bash
 kubectl get pods
@@ -668,39 +681,39 @@ az aks browse --enable-cloud-console-aks-browse --name $(terraform output cluste
 
 Use `CTRL`+`C` to close the tunnel. You can then run `terraform destroy` to remove the cluster.
 
-OK, that is lab element completed. Well done!
+OK, that is the lab element completed. Well done!
 
-Whilst your cluster is being removed you can read through the next two sections to discuss some additional options
+While your cluster is being removed you can read through the next two sections to discuss some additional options: 
 
 * Terraform driving native ARM template deployments
-* ARM templates leveraging certain Terraform providers.
+* ARM templates leveraging certain Terraform providers
 
 ## Extending Terraform into ARM
 
-One azurerm resource type that we have not discussed so far is [azurerm_template_deployment](https://www.terraform.io/docs/providers/azurerm/r/template_deployment.html).
+One AzureRM resource type that we have not discussed so far is [azurerm_template_deployment](https://www.terraform.io/docs/providers/azurerm/r/template_deployment.html).
 
-There hase been a huge investment into the azurerm Terraform provider and it has excellent coverage of the most commonly used services.  However are some limitations:
+There has been a huge investment into the AzureRM Terraform provider (from both Microsoft and HashiCorp in collaboration) and it has excellent coverage of the most commonly used Azure services.  However, there are some limitations:
 
-* **coverage** - there are certain edge case services that are available as ARM resource types, and are not yet available as a Terraform resource type
-* **lag** - inevitably there will be a period of lag as new Azure services are released, although prominent services such as AKS and Cosmos DB has been released close to the General Availability (GA) date
+* **coverage** - there are certain cases where Azure services are available as an ARM resource type, but are not yet available as a Terraform resource type
+* **lag** - inevitably there will be a period of lag when new Azure services are released, although prominent services such as AKS and Cosmos DB has been released close to the General Availability (GA) date
 
-Terraform can initiate the deployment of an ARM template and have knowledge of the deployment.  Destroying the resource in Terraform will only destroy that knowledge of the deployment. For this reason it is recommended to create a separate resource group for the templated deployment so that removing both the resource group and the ARM deployment will remove the resources as well.
+Terraform can initiate the deployment of an ARM template and have knowledge of the deployment.  Destroying the resource in Terraform (via `terraform destroy`) will only destroy Terraform's knowledge of the deployment. For this reason it is recommended to create a separate resource group for the templated deployment so that removing both the resource group and the ARM deployment will remove the resources as well.
 
-If an azurerm resource type then becomes available then a resource stanza can created and the existing resource(s) can be imported.  It will need careful configuration until a `terraform plan` doesn't show any creates, destroys or changes.  It would not be safe to configure new additions, deletions or changes until that steady state has been achieved.
+If an AzureRM resource type then becomes available, then a resource stanza can be created and the existing resource(s) can be imported.  It will need careful configuration until a `terraform plan` doesn't show any creates, destroys or changes.  It would not be safe to configure new additions, deletions or changes until that steady state has been achieved.
 
 ## Extending ARM into Terraform
 
-For information, ARM templates can now also drive certain Terraform providers as per the recent [blog](https://azure.microsoft.com/en-us/blog/introducing-the-azure-terraform-resource-provider/).
+For your information, ARM templates can now also drive certain Terraform Providers as per the [Azure Resource Provider for Terraform](https://azure.microsoft.com/en-us/blog/introducing-the-azure-terraform-resource-provider/) blog page. 
 
-Whilst it is in public preview then the Cloudflare, Datadog and Kubernetes will be supported and then other providers will be added.
+While it is in Public Preview, the following 3 Terraform providers will be supported (Cloudflare, Datadog and Kubernetes) with other providers being added in the future.
 
-Azure Resource Manager will never drive other cloud providers, but it does allow ARM configurations to take advantage of the Terraform framework and extend the configuration beyond the functionality at the control plane level.
+Azure Resource Manager (ARM) will never drive other cloud providers, but it does allow ARM configurations to take advantage of the Terraform framework and extend the configuration beyond the functionality at the control plane level.
 
 ## End of Lab 8
 
-We have reached the end of the lab. You have provisioned and configured a Kubernetes cluster on the AKS service, and looked at some of the other providers and provider types.  We have also leverage additional API permissions to create the AKS service principal on the fly.  We have worked through a sensible workflow to create and test a new module before publishing it and testing once more.
+We have reached the end of the lab. You have provisioned and configured a Kubernetes cluster on the AKS service, and looked at some of the other providers and provider types.  We have also leveraged additional API permissions to create the AKS service principal on the fly.  We have worked through a sensible workflow to create and test a new module before publishing it, and re-testing as needed.
 
-Your aks module should look similar to that in <https://github.com/richeney/terraform-module-aks>.
+Your AKS module should look similar to that in <https://github.com/richeney/terraform-module-aks>.
 
 In the next lab we will also look at provisioners and how they can help to go beyond vanilla image deployments for your virtual machines.
 
