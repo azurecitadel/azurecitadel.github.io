@@ -181,7 +181,7 @@ A background knowledge of Terraform is advised. The button below will take you t
 5 | [Multi Tenancy](lab5) | Using Service Principals and Managed Service Identity
 6 | [State](lab6) | Configuring remote state and using read only state in split environments
 7 | [Modules](lab7) | Learn about modules, converting your .tf files, Terraform Registry
-8 | [Extending with other Providers](lab8) | Use other providers to configure an AKS Kubernetes cluster (_coming soon_)
+8 | [Extending beyond ARM](lab8) | Use providers and the AAD API to fully configure a kubernetes cluster
 9 | [Provisioners](lab9) | Leverage provisioners to customise your virtual machine deployments (_coming soon_)
 
 **💬 Note.** The labs are currently being built and will become available over the coming month.
