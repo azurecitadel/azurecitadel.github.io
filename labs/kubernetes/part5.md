@@ -18,7 +18,7 @@ Now we know how to create deployments and services, we can pick up the pace a li
 ## Deploy Frontend
 For the frontend we can start with the service, it doesn't matter that the pods for it don't exist yet, that is what the selector is for, it will pick them up when they are created. This service also needs to be a `LoadBalancer` as we clearly want to access it externally.
 
-Create a new file called **frontend.svc.yaml** and paste the following YAML contents, save the file and then run run `kubectl apply -f frontend.svc.yaml`
+Create a new file called **frontend.svc.yaml** (run `touch frontend.svc.yaml` and refresh the files view in the editor) and paste the following YAML contents.
 ```yaml
 kind: Service
 apiVersion: v1
@@ -33,9 +33,11 @@ spec:
   selector:
     app: frontend
 ```
+Save the file and then run run `kubectl apply -f frontend.svc.yaml`
+
 As before check the status with `kubectl get service`, you can wait for the external IP to be assigned or carry on with the next step
 
-Create another new file called **frontend.deploy.yaml** and paste the following YAML contents. You will need to replace **{acr_name}** and **{data_api_ip}** with their real values.  
+Create another new file called **frontend.deploy.yaml** (run `touch frontend.deploy.yaml` and refresh the files view in the editor) and paste the following YAML contents. You will need to replace **{acr_name}** and **{data_api_external_ip}** (it's public IP we accessed earlier) with their real values.  
 If you skipped Part 2, you are not using ACR, then you can omit the registry and just use `smilr/frontend` as the image and remove the `imagePullSecrets:` section.
 
 Save the file and then run `kubectl apply -f frontend.deploy.yaml`
@@ -98,7 +100,7 @@ node demoData.js
 ```
 This script will connect to MongoDB, and inject some demo data (events and feedback) you should see some messages confirming what it has done. Type `exit` to leave the Bash session 
 
-Now refresh the Smilr app in your browser, and check there are events on the home screen, and go into te reports view to validate there is example feedback in the database.
+Now refresh the Smilr app in your browser, and check there are events on the home screen, and go into the reports view to validate there is example feedback in the database.
 
 ## End of Module 5
 What we have at this stage in Kubernetes is our desired state

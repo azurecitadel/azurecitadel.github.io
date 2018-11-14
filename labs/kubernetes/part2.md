@@ -24,8 +24,9 @@ We'll re-use the `$group` and `$region` variables we set when creating the AKS c
 ACR_NAME="change-this-to-your-unique-acr-name"
 az acr create -n $ACR_NAME -g $group -l $region --sku Standard --admin-enabled true
 ```
+The ACR name can only contain letters and numbers (no dots or dashes, etc), and it's advised to make it all lowercase
 
-**💬 Note. Sept 2018.**  We will be using a feature called *ACR Build* this is currently in preview but now quite stable. 
+**💬 Note. Sept 2018.**  We will be using a feature called *ACR Tasks* this is currently in preview but now quite stable. 
 
 
 ## Configure Kubernetes to use ACR
@@ -49,17 +50,17 @@ We will use this secret later on
 
 ## Build container images with ACR
 
-For this section we will be using a brand new feature of *Azure Container Registry*  called "ACR Build", this allows us to build container images in Azure without need access to a Docker host or having Docker installed locally. It also pushes the resulting images directly into your registry.
+For this section we will be using a brand new feature of *Azure Container Registry*  called "ACR Tasks", this allows us to build container images in Azure without need access to a Docker host or having Docker installed locally. It also pushes the resulting images directly into your registry.
 
 We will build our images directly from source. The source of Smilr is held on GitHub in this repository https://github.com/benc-uk/microservices-demoapp
 
-To use ACR Build to run our Docker build task in Azure, we call the `az acr build` sub-command. The first image we'll build is for the Smilr data API component, the source Dockerfile is in the **node/data-api** sub-directory and we'll tag the resulting image `smilr/data-api`
+To use ACR Tasks to run our Docker build task in Azure, we call the `az acr build` sub-command. The first image we'll build is for the Smilr data API component, the source Dockerfile is in the **node/data-api** sub-directory and we'll tag the resulting image `smilr/data-api`
 ```
 az acr build --registry $ACR_NAME -g $group --file node/data-api/Dockerfile --image smilr/data-api https://github.com/benc-uk/microservices-demoapp.git
 ```
 **💬 Note.**  If you are familiar with the Docker command line and the `docker build` command you notice some similarity in syntax and approach
 
-**💬 Note.**  If the CLI times out with a "no more logs" message you can still view the build logs by running `az acr build-task logs -r $ACR_NAME -g $group` to check on the progress
+**💬 Note.**  If the CLI times out with a "no more logs" message you can still view the build logs by running `az acr task logs -r $ACR_NAME -g $group` to check on the progress
 
 That should take about a minute or two to run. After that we'll build the frontend, the command will be very similar just with a different source file image tag
 ```

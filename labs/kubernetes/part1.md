@@ -31,7 +31,7 @@ We will begin by deploying Kubernetes using [*Azure Kubernetes Service (AKS)*](h
 > Pick an Azure region and use it for everything you create in this lab. We will use **westeurope**, but you can use one of the other regions listed in the [Product Region Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=kubernetes-service&regions=all) table.  
 Note. If you are using an Azure Pass or Internal Use subscription, you will be limited to westeurope and eastus
 
-Set Bash environment variables for the Azure region and resource group you plan to use in this walk through. You can pick anything for the resource group name (no spaces), a suggestion is *kube-lab*
+Set Bash environment variables for the Azure region and resource group you plan to use in this walk through. You can pick anything for the resource group name (no spaces), a suggestion is *kube-lab* for `group` 
 ```
 group=<resource group name>
 region=<azure region name>
@@ -42,31 +42,30 @@ Using the Azure CLI creating an AKS cluster is easy. First create a resource gro
 az group create -n $group -l $region
 ```
 
-The most basic form of the AKS create command using all the defaults is simply:
-```
-az aks create -g $group-n aks-cluster -l $region
-```
+The most basic form of the AKS create command using all the defaults is simply this. (But please don't run this command) `az aks create -g $group -n aks-cluster -l $region`
 
 However you will probably want to customize your cluster, some common options are:
 - **\-\-node-count** - Number of nodes in your cluster
 - **\-\-node-vm-size** - Azure VM size (e.g. `Standard_A2_v2`)
-- **\-\-kubernetes-version** - Kubernetes version (run `az aks get-versions -o table` to list available versions)
+- **\-\-kubernetes-version** - Kubernetes version (run `az aks get-versions -o table -l $region` to list available versions)
 
 [📘 AKS Create docs](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-create){:target="_blank" class="btn-info"}
 
 > **📕 Kubernetes Glossary.** A *Node* is a worker machine in Kubernetes, it hosts the workloads in your cluster and runs the containers
 
-A recommended cluster configuration for this lab is as follows:
+The `az aks create` command uses your default SSH keypair located in **~/.ssh/id_rsa.pub** to provision the cluster nodes. If you've never used Cloud Shell or WSL Bash before, them these keys won't exist then you must add `--generate-ssh-keys` to the following command.
+
+For this lab the recommended cluster configuration and command to run is
 ```
-az aks create -g $group -n aks-cluster -l $region --node-count 3 --node-vm-size Standard_DS2_v2 --kubernetes-version 1.11.2 --verbose
+az aks create -g $group -n aks-cluster -l $region \
+--node-count 3 --node-vm-size Standard_DS2_v2 \
+--kubernetes-version 1.11.3 --verbose
 ```
-This is a three node cluster, running Kubernetes 1.11.2 using D-series VMs with 2 cores to minimize costs but allow for reasonable reliability of the cluster. 
+This is a three node cluster, running Kubernetes 1.11.3 using D-series VMs with 2 cores to minimize costs but allow for reasonable reliability of the cluster. 
 
-**💬 Note 1.** The `az aks create` command uses your default SSH keypair located in **~/.ssh/id_rsa.pub** to provision the cluster nodes. If these keys don't exist (likely if you've never used WSL Bash or the Cloud Shell before) then you must add `--generate-ssh-keys` to the command. If you have your own SSH keys you wish to use, then add the `--ssh-key-value` parameter and provide the key public contents as a string
+**💬 Note 1.** The command might take some time to complete, around 15 mins is normal, but in some cases up to an 30 minutes.
 
-**💬 Note 2.** The command might take some time to complete, around 20 mins is normal, but in some cases up to an 45 minutes.
-
-**💬 Note 3.** To save costs you can optionally enable auto-shutdown on the node VMs. Find the resource group named **MC_kube-lab_aks-cluster_westeurope** this will contain your cluster's nodes and other Azure resources. Click on each of the VMs and switch on the auto shutdown feature. You will need to manually start them again when you want to use your cluster, which might take around 5 mins, but having the nodes shutdown you can keep your AKS cluster deployed indefinitely for essentially zero cost
+**💬 Note 2.** To save costs you can optionally enable auto-shutdown on the node VMs. Find the resource group named **MC_kube-lab_aks-cluster_westeurope** this will contain your cluster's nodes and other Azure resources. Click on each of the VMs and switch on the auto shutdown feature. You will need to manually start them again when you want to use your cluster, which might take around 5 mins, but having the nodes shutdown you can keep your AKS cluster deployed indefinitely for essentially zero cost
 
 
 ## Get Kubectl CLI tool (WSL Bash Only)
@@ -108,9 +107,16 @@ Accessing the Kubernetes dashboard is optional, but if it's your first time usin
 
 For the lab we will use the command line for everything, and all commands will be provided. However it is useful to be able to sanity check and see what is going on using the dashboard. It's a matter of personal choice if you want to use the dashboard, but it's worth having to hand for triaging problems and investigation.
 
+By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. To prevent this, you have to run this command
+```
+kubectl create clusterrolebinding kubernetes-dashboard \
+--clusterrole=cluster-admin \
+--serviceaccount=kube-system:kubernetes-dashboard
+```
+
 If using WSL Bash on your local machine or in Azure Cloud Shell, the dashboard can be accessed via a proxy tunnel into the dashboard pod (which is automatically running in your AKS cluster). To create this proxy, run this command:
 ```
-az aks browse -g $group -n aks-cluster --enable-cloud-console-aks-browse
+az aks browse -g $group -n aks-cluster
 ```
 - If using WSL Bash locally - Access the dashboard by going to [http://127.0.0.1:8001](http://127.0.0.1:8001) in your browser. 
 - If using Azure Cloud Shell - The dashboard will open in a new browser tab, check if the pop-up has been blocked. Alternatively click the link provided in the command output 
