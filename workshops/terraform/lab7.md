@@ -136,7 +136,7 @@ OK, that's defined our local module folder.  It is a common convention for modul
 1. The main azurerm stanzas are in the main.tf
 1. The outputs.tf file has the module outputs, which is currently only the vpnGwPipAddress
 
-# Create a new main.tf in terraform-labs
+## Create a new main.tf in terraform-labs
 
 We will rename the webapps.tf and add in the new module call at the top. (You still have full flexibility over how you name your *.tf files, but we'll make the change anyway.)
 
