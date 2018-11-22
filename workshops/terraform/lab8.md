@@ -165,7 +165,7 @@ az ad app update --id $appId --required-resource-accesses @manifest.json
 az ad app show --id $appId --query requiredResourceAccess
 ```
 
-* Grant admin consent for the Default Directory via the portal: 
+* Grant admin consent for the Default Directory via the portal:
     * Navigate to Azure Active Directory (AAD)
     * Under the Manage list, select App registrations (Preview)
     * Ensure the All Applications tab is selected
@@ -383,7 +383,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
 **\<insufficient directory permissions>**
 **If you encountered the 'insufficient directory permissions' you need to follow these steps, else you can skip them**
 1. Modify the `resource "azurerm_kubernetes_cluster" "aks"` block
-    1. Remove the `depends_on = ["module.service_principal"]` 
+    1. Remove the `depends_on = ["module.service_principal"]`
     1. Hardcode the service_principal stanza's values for client_id and client_secret to use the values in your provider.tf
 1. Remove the `module "service_principal" {}` block
 
@@ -460,7 +460,7 @@ Specify a minimum version of 1.17 for the AzureRM Provider:
 
 Note that the output recommends that a minimum version should be specified for the random provider:
 
-```json
+```text
 The following providers do not have any version constraints in configuration,
 so the latest version was installed.
 
@@ -477,7 +477,7 @@ suggested below.
 
 Example output:
 
-```ruby
+```text
 .
 ├── provider.azurerm ~> 1.17.0
 ├── provider.random ~> 2.0
@@ -683,7 +683,7 @@ Use `CTRL`+`C` to close the tunnel. You can then run `terraform destroy` to remo
 
 OK, that is the lab element completed. Well done!
 
-While your cluster is being removed you can read through the next two sections to discuss some additional options: 
+While your cluster is being removed you can read through the next two sections to discuss some additional options:
 
 * Terraform driving native ARM template deployments
 * ARM templates leveraging certain Terraform providers
@@ -703,7 +703,7 @@ If an AzureRM resource type then becomes available, then a resource stanza can b
 
 ## Extending ARM into Terraform
 
-For your information, ARM templates can now also drive certain Terraform Providers as per the [Azure Resource Provider for Terraform](https://azure.microsoft.com/en-us/blog/introducing-the-azure-terraform-resource-provider/) blog page. 
+For your information, ARM templates can now also drive certain Terraform Providers as per the [Azure Resource Provider for Terraform](https://azure.microsoft.com/en-us/blog/introducing-the-azure-terraform-resource-provider/) blog page.
 
 While it is in Public Preview, the following 3 Terraform providers will be supported (Cloudflare, Datadog and Kubernetes) with other providers being added in the future.
 
