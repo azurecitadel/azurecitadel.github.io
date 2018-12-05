@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div id="main" role="main">			
+<div id="main" role="main">
 	<div class="wrap">
 		{% if page.image.feature %}
 		<div class="page-feature">
@@ -11,7 +11,19 @@ layout: default
 				{% if page.image.credit %}{% include image-credit.html %}{% endif %}
 			</div><!-- /.page-image -->
 		</div><!-- /.page-feature -->
-		{% endif %}
+        {% endif %}
+
+        <p><a href="" class="btn-danger"><strong>💬 GOOD NEWS!</strong></a></p>
+
+        <p>We will be moving to a new Jekyll theme during the week before Christmas. This will include:</p>
+        <ul>
+                <li>a fresh new look</li>
+                <li>new categorisation for the content</li>
+                <li>a fantastic new search capability</li>
+                <li>navigation frames for both the current page and other labs </li>
+        </ul>
+        <p><strong>As a result we will have a change freeze between 8th -31st Dec.</strong></p>
+        <p>We'll welcome contributions from the community in the New Year, and the contribution guide will be updated in line with the new features. Thank you for all of the positive feedback you have given us, and we have plenty more Azure content planned for 2019. Have a fantastic holiday season!</p>
 
 		<div class="archive-wrap">
 			<div class="page-content">
@@ -36,7 +48,7 @@ layout: default
 
 				<br/>
 				<h1>Content</h1>
-				
+
 				<div class="tiles">
 					{% for hometile in site.data.hometiles %}
 					<div class="tile hometile" onclick="location.href='{{ hometile.url }}'">
@@ -45,11 +57,10 @@ layout: default
 					</div>
 					{% endfor %}
 				</div>
-				 
+
 				{{ content }}
 
 			</div><!-- /.page-content -->
 		</div class="archive-wrap"><!-- /.archive-wrap -->
 	</div><!-- /.wrap -->
 </div><!-- /#main -->
-
