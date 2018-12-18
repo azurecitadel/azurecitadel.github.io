@@ -56,6 +56,34 @@ kubernetes_lab:
     - title: "Extra Optional Exercises"
       url: "containers/kubernetes/extra"  
 
+arm_lab:
+  - title: "Main Page"
+    url: "automation/arm"
+
+  - title: "Theory"
+    children: 
+    - title: "Azure Resource Manager"
+      url: "automation/arm/theoryARM"
+    - title: "ARM Templates"
+      url: "automation/arm/theoryTemplates"
+
+  - title: "Lab Modules"
+    children: 
+    - title: "1 - First Template"
+      url: "automation/arm/lab1"
+    - title: "2 - Sources of Resources"
+      url: "automation/arm/lab2"
+    - title: "3 - References and Secrets"
+      url: "automation/arm/lab3"
+    - title: "4 - Conditional Resources"
+      url: "automation/arm/lab5"
+    - title: "5 - Using Copy"
+      url: "automation/arm/lab5"
+    - title: "6 - Objects and Arrays"
+      url: "automation/arm/lab6"
+    - title: "7 - Nested Deployments"
+      url: "automation/arm/lab7"
+
 custom_lab:
   - title: "Main Lab Modules"
     children:

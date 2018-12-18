@@ -1,0 +1,78 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+		"hub": {
+		   "type": "object",
+		   "defaultValue": {
+            "resourceGroup": "hub",
+            "vnet": {
+                "name": "hub-vnet",
+                "addressPrefixes": [  "172.16.0.0/16" ]
+            },
+            "subnets": [ 
+                { "addressPrefix": "172.16.0.0/24", "name": "GatewaySubnet" },
+                { "addressPrefix": "172.16.1.0/24", "name": "hub-subnet1" },
+                { "addressPrefix": "172.16.2.0/24", "name": "hub-subnet2" }
+            ],
+            "vpnGwName": "hub-vpn-gw"
+        },
+		   "metadata": {
+				"description": "Complex object containing hub information.  See default for structure."
+			}
+		}
+    },
+    "variables": {
+		"prettyBase": "https://github.com/azurecitadel/vdc-networking-lab/tree/master/nested",
+		"uriBase": "https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/",
+        "vnetUri": "[concat(variables('uriBase'), 'nested/vnet.json')]",
+        "vpngwUri": "[concat(variables('uriBase'), 'nested/vpngw.json')]"
+    },
+    "resources": [
+        {
+            "comments": "Create hub vNet",
+            "name": "Deploy-Hub-vNet",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "[parameters('hub').resourceGroup]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('vnetUri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "vnet": {
+                        "value": "[parameters('hub')]"
+                    }
+                }
+            }
+		},
+		{
+            "comments": "Create VPN Gateway in hub",
+            "name": "Deploy-Hub-vpnGateway",
+            "condition": "[not(empty(parameters('hub').vpnGwName))]",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "[parameters('hub').resourceGroup]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('vpnGwUri')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "vnetName": {
+                        "value": "[parameters('hub').vnet.name]"
+                    },
+                    "vpnGwName": {
+                        "value": "[parameters('hub').vpnGwName]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "Deploy-Hub-vNet"
+            ]
+        }
+    ]
+}
