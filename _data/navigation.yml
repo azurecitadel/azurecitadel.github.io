@@ -26,7 +26,8 @@ sidemenu:
       url: "/automation"
     - title: "Azure Fundamentals"
       url: "/fundamentals"                            
-
+    - title: "Security"
+      url: "/security"  
 #
 # Custom lab sidemenus
 #

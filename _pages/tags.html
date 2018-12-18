@@ -14,7 +14,7 @@ header:
   overlay_color: "rgb(0, 130, 114)"
 ---
 
-{% assign all_tags = site.pages | map: 'tags' | join: ','  | split: ',' | uniq %}
+{% assign all_tags = site.pages | map: 'tags' | join: ','  | split: ',' | uniq | sort %}
 
 {% for tag in all_tags %}
   <h2 id="{{ tag }}">{{ tag }}</h2>

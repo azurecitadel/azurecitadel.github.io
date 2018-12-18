@@ -60,16 +60,16 @@ Dan And Tom:
     bio      :
     avatar   : images/authors/dbtw.jpg
     email    : ignore@microsoft.com
-    twitter  :
+    twitter  : 
     github   :
     linkedin :
 
 Dan Baker:
     name     : Azure Dan
-    bio      :
+    bio      : Dan Baker (aka Azure Dan) is the UK Azure regional skills evangelist
     avatar   : images/authors/dan-b.jpg
     email    : dan.baker@microsoft.com
-    twitter  :
+    twitter  : azuredan
     github   :
     linkedin :
 
@@ -114,7 +114,7 @@ Phil Harvey:
     bio      :
     avatar   : images/authors/phil-h.jpg
     email    : phil.harvey@microsoft.com
-    twitter  :
+    twitter  : codebeard
     github   :
     linkedin :
 

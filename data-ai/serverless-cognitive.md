@@ -2,10 +2,14 @@
 title: Serverless & Cognitive Services
 author: Ben Coleman
 date: 2018-06-15
-tags: [serverless, cognitive]
+tags: [cognitive-services, serverless, azure-functions]
 category: data-ai
+featured: true
+header:
+  teaser: images/teaser/serverless-cognitive.png
+  overlay_image: images/teaser/serverless-cognitive.png
 
-excerpt: Set up a Serverless & Cognitive Services App
+excerpt: Create a serverless image recognition app with Azure Functions and Cognitive Services
 ---
 
 ## Overview
