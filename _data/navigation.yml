@@ -25,9 +25,7 @@ sidemenu:
     - title: "Automation"
       url: "/automation"
     - title: "Azure Fundamentals"
-      url: "/blah"
-    - title: "Open Source"
-      url: "/blah"                              
+      url: "/fundamentals"                            
 
 #
 # Custom lab sidemenus
@@ -88,15 +86,15 @@ custom_lab:
   - title: "Main Lab Modules"
     children:
     - title: "Part 1"
-      url: "p1"
+      url: "/blah/part1"
     - title: " Part 2"
-      url: "p2"
+      url: "/blah/part2"
     - title: "Part 3"
-      url: "p3"
+      url: "/blah/part3"
 
   - title: "Optional Modules"
     children:
     - title: "Goat Herding"
-      url: "/p4"
+      url: "/foo"
     - title: "Knitting Socks"
-      url: "/p5"    
+      url: "/bar"    
