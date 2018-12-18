@@ -2,7 +2,7 @@
 title: 'ARM Lab 7: Nesting templates'
 date: 2018-04-17
 tags: [authoring, arm, workshop, hackathon, lab, template, nesting]
-categories: automation
+category: automation
 author: Richard Cheney
 sidebar:
   nav: "arm_lab"
@@ -16,7 +16,7 @@ Using nested templates is a great way of managing your IP for repeatable complex
 
 We will look at how inline nested templates can give us more flexibility within a building block, and then we will look at a master template using object and array parameters to call multiple linked templates.  Going through the lab will give you an understanding of how to incorporate each type into your own templates, and the examples give a good indication of when it makes sense to do so.
 
-We will use a nested deployment to create a basic network hub environment and then you'll create a new master template to create a spoke that is vNet peered to it. We will also create a public load balancer fronting an availability set containing three VMs.  
+We will use a nested deployment to create a basic network hub environment and then you'll create a new master template to create a spoke that is vNet peered to it. We will also create a public load balancer fronting an availability set containing three VMs.
 
 Finally, we will link to some of the great documentation that is available.
 
@@ -88,7 +88,7 @@ You'll also notice the optional 'resourceGroup' string. This permits us to have 
 
 For larger organisations a [hub and spoke topology](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) is a recommended virtual data centre architecture to provide service isolation, network traffic control, billing and role based access control (RBAC).
 
-Take a look at the repository used for the [Virtual Data Centre](https://github.com/azurecitadel/vdc-networking-lab) workshop. Navigate into the nested subdirectory and look at the [spoke.json](https://github.com/azurecitadel/vdc-networking-lab/blob/master/nested/spoke.json) file.  
+Take a look at the repository used for the [Virtual Data Centre](https://github.com/azurecitadel/vdc-networking-lab) workshop. Navigate into the nested subdirectory and look at the [spoke.json](https://github.com/azurecitadel/vdc-networking-lab/blob/master/nested/spoke.json) file.
 
 The spoke.json will create a spoke vNet, and will also create a vNet peering back to a pre-existing hub vNet.  For that peering to work, the Microsoft.Network/virtualNetworks/virtualNetworkPeerings resource type needs to be created at both ends to create the connection.  Therefore the vNet peering from the hub to the spoke needs to be created in the hub's resource group.
 
@@ -156,7 +156,7 @@ The first peering resource is a straightforward `Microsoft.Network/virtualNetwor
 
 The second peering, however, is a nested inline template deployment (`Microsoft.Resources/deployments`) which gives us the flexibility to deploy into a different resource group.   We have the embedded inline template deploying the peering into the hub vNet and into the hub's resource group. Once both ends are in place then the peering is established.
 
-Taking this approach has made the spoke.json building block both more functional and rather neat and tidy. Click on the 'Raw' button on the GitHub page. This will take you through to the raw URI, <https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/nested/spoke.json>.  
+Taking this approach has made the spoke.json building block both more functional and rather neat and tidy. Click on the 'Raw' button on the GitHub page. This will take you through to the raw URI, <https://raw.githubusercontent.com/azurecitadel/vdc-networking-lab/master/nested/spoke.json>.
 
 Open up a Bash terminal session. You can use the curl command to prove that the raw URI can be accessed:
 
@@ -306,7 +306,7 @@ The vnet.json then takes that object and uses parts of it.
 
 And the same is true for the spokes, although here we are using a copy argument to loop through the elements in the spokes array.  Again we are passing in the whole spoke object, plus the hub object.  Note that the spoke.json template only requires parts of the hub object, i.e. the name of the hub vnet and the resourceGroup, and happily oignores the rest of the information.
 
-Creating good complex object structures that can be used in multiples building block templates is pretty powerful and keeps the template deployments short.  
+Creating good complex object structures that can be used in multiples building block templates is pretty powerful and keeps the template deployments short.
 
 If you look at some of the other resource deployments in this master template then some pass in a few simple strong values pulled from those objects.  The Cisco CSR template takes no parameters at all, only determining which resource group to deploy to.
 

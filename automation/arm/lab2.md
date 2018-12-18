@@ -2,7 +2,7 @@
 title: 'ARM Lab 2: Sources of template information'
 date: 2018-04-17
 tags: [authoring, arm, workshop, hackathon, lab, template, functions]
-categories: automation
+category: automation
 author: Richard Cheney
 sidebar:
   nav: "arm_lab"

@@ -2,7 +2,7 @@
 title: 'ARM Lab 5: Create multiple resources using copy'
 date: 2018-04-17
 tags: [authoring, arm, workshop, hackathon, lab, template, copy]
-categories: automation
+category: automation
 author: Richard Cheney
 sidebar:
   nav: "arm_lab"

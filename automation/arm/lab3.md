@@ -2,7 +2,7 @@
 title: 'ARM Lab 3: Functions and secrets'
 date: 2018-04-17
 tags: [authoring, arm, workshop, hackathon, lab, template, references, secrets]
-categories: automation
+category: automation
 author: Richard Cheney
 sidebar:
   nav: "arm_lab"
