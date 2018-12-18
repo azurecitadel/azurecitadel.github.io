@@ -20,5 +20,5 @@
 
 - name: fundamentals
   title: Fundamentals
-  image: /images/categories/az-fund.png
+  image: /images/categories/fundamentals.png
   desc: "Core concepts for Azure and ecosystem tooling, configuration guidance, etc."

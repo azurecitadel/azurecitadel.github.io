@@ -37,9 +37,9 @@ name                     : ""
 description              : "Azure related training material developed and maintained by the technical field team at Microsoft."
 url                      : # "http://localhost:4000" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # "/" 
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-# breadcrumbs            : false # true, false (default)
+repository               : https://github.com/azurecitadel/azurecitadel.github.io
+teaser                   : "/images/teaser/default.png"
+breadcrumbs              : true  # true, false (default)
 words_per_minute         : 200
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
@@ -146,7 +146,7 @@ footer:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "http://example.net"
+      url: "https://github.com/azurecitadel/azurecitadel.github.io"
 
 # Reading Files
 include:

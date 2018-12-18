@@ -4,6 +4,7 @@ author: Ben Coleman
 date: 2018-10-01
 tags: [kubernetes, microservices, aks]
 category: containers
+featured: true
 
 header:
   overlay_image: images/header/kube.png

@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: single
 permalink: /recent/
 hidden: true
 title: Recently Added
@@ -20,7 +20,7 @@ header:
 
 <div class="entries-{{ page.entries_layout }}">
 {% for post in all_pages reversed %}
-  {% if post.category and max < 8 %}
+  {% if post.category and max < 12 %}
     {% unless post.hidden %}
       {% assign max = max | plus: 1 %}
         {% include archive-single.html type=page.entries_layout %}

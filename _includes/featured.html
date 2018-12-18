@@ -1,0 +1,15 @@
+<!-- same view logic as _pages/recent.html except extra filter on featured == true -->
+
+{% assign all_pages = site.pages | where: "featured", "true" | sort: 'date' %}
+{% assign max = 0 %}
+
+<div class="entries-{{ page.entries_layout }}">
+{% for post in all_pages reversed %}
+  {% if post.category and max < 4 %}
+    {% unless post.hidden %}
+      {% assign max = max | plus: 1 %}
+        {% include archive-single.html type=page.entries_layout %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+</div>
