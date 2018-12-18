@@ -6,19 +6,19 @@
 - name: data-ai
   title: "Data & AI"
   image: /images/categories/data-ai.png
-  desc: "Real world AI with cognitive services, bots data-analytics and machine learning"  
+  desc: "Real world AI with cognitive services, bots data-analytics and machine learning"
 
 - name: devops
   title: DevOps
   image: /images/categories/devops.png
-  desc: "Deploy & build software faster through pipelines, with automation and DevOps practies"
+  desc: "Deploy & build software faster through pipelines, with automation and DevOps practices"
 
 - name: automation
   title: Automation
   image: /images/categories/auto.png
-  desc: "Operate at scale and manage your cloud resources optimally through automation"
+  desc: "Operate at scale using scaffolding, infrastructure as code and scripting to automate"
 
 - name: fundamentals
   title: Fundamentals
-  image: /images/categories/fundamentals.png
-  desc: "Core concepts of Azure and information on getting started for beginners"  
+  image: /images/categories/az-fund.png
+  desc: "Core concepts for Azure and ecosystem tooling, configuration guidance, etc."
