@@ -1,177 +1,177 @@
 template:
-  name: 
-  bio: 
-  avatar: 
-  email: 
-  twitter: 
-  github: 
-  linkedin: 
+    name     :
+    bio      :
+    avatar   :
+    email    :
+    twitter  :
+    github   :
+    linkedin :
 
 Ben Coleman:
-  name: Ben Coleman
-  bio: Cloud Solution Architect.<br/>Containers, Open source, Node.js, DevOps, automation
-  avatar: images/authors/benc.jpg
-  twitter: BenCodeGeek
-  github: benc-uk
-  linkedin: benc-uk
-  links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "http://benco.io"
+    name     : Ben Coleman
+    bio      : Cloud Solution Architect.<br/>Containers, Open source, Node.js, DevOps, automation
+    avatar   : images/authors/benc.jpg
+    twitter  : BenCodeGeek
+    github   : benc-uk
+    linkedin : benc-uk
+    links:
+      - label: "Website"
+        icon : "fas fa-fw fa-link"
+        url  : "http://benco.io"
 
 Richard_Cheney:
-  name: Richard Cheney
-  bio: Cloud Solution Architect.<br/>Infrastructure as code, automation, networking, storage, compute 
-  avatar: images/authors/rich-c.jpg
-  email: richard.cheney@microsoft.com
-  twitter: RichCheneyAzure
-  github: richeney
-  linkedin: richardcheney
+    name     : Richard Cheney
+    bio      : Cloud Solution Architect.<br/>Infrastructure as code, automation, networking, storage, compute
+    avatar   : images/authors/rich-c.jpg
+    email    : richard.cheney@microsoft.com
+    twitter  : RichCheneyAzure
+    github   : richeney
+    linkedin : richardcheney
 
 Tom_Wilde:
-  name: Tom Wilde
-  bio: 
-  avatar: images/authors/tom-w.png
-  email: tom.wilde@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Tom Wilde
+    bio      :
+    avatar   : images/authors/tom-w.png
+    email    : tom.wilde@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 John_Duckmanton:
-  name: John Duckmanton
-  bio: 
-  avatar: images/authors/john-d.jpg
-  email: john.duckmanton@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : John Duckmanton
+    bio      :
+    avatar   : images/authors/john-d.jpg
+    email    : john.duckmanton@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 John_And_Ben:
-  name: John Duckmanton & Ben Coleman
-  bio: 
-  avatar: images/authors/bcdj.jpg
-  email: ignore@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : John Duckmanton & Ben Coleman
+    bio      :
+    avatar   : images/authors/bcdj.jpg
+    email    : ignore@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Dan_And_Tom:
-  name: Dan Baker & Tom Wilde
-  bio: 
-  avatar: images/authors/dbtw.jpg
-  email: ignore@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Dan Baker & Tom Wilde
+    bio      :
+    avatar   : images/authors/dbtw.jpg
+    email    : ignore@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Dan_Baker:
-  name: Azure Dan
-  bio: 
-  avatar: images/authors/dan-b.jpg
-  email: dan.baker@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Azure Dan
+    bio      :
+    avatar   : images/authors/dan-b.jpg
+    email    : dan.baker@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Mahesh_Balija:
-  name: Mahesh Balija
-  bio: 
-  avatar: images/authors/mahesh-b.jpg
-  email: Mahesh.Balija@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Mahesh Balija
+    bio      :
+    avatar   : images/authors/mahesh-b.jpg
+    email    : Mahesh.Balija@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Naveed_Hussain:
-  name: Naveed Hussain
-  bio: 
-  avatar: images/authors/naveed-h.jpg
-  email: naveed.hussain@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Naveed Hussain
+    bio      :
+    avatar   : images/authors/naveed-h.jpg
+    email    : naveed.hussain@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Faris_Haddad:
-  name: Faris Haddad
-  bio: 
-  avatar: images/authors/faris-h.jpg
-  email: faris.haddad@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Faris Haddad
+    bio      :
+    avatar   : images/authors/faris-h.jpg
+    email    : faris.haddad@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Robin_Lester:
-  name: Robin Lester
-  bio: 
-  avatar: images/authors/robin-l.jpg
-  email: robin.lester@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Robin Lester
+    bio      :
+    avatar   : images/authors/robin-l.jpg
+    email    : robin.lester@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Phil_Harvey:
-  name: Phil Harvey
-  bio: 
-  avatar: images/authors/phil-h.jpg
-  email: phil.harvey@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Phil Harvey
+    bio      :
+    avatar   : images/authors/phil-h.jpg
+    email    : phil.harvey@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Mark_Harrison:
-  name: Mark Harrison
-  bio: 
-  avatar: images/authors/mark-h.jpg
-  email: mark.harrison@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Mark Harrison
+    bio      :
+    avatar   : images/authors/mark-h.jpg
+    email    : mark.harrison@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Matt_Biggs:
-  name: Matthew Biggs
-  bio: 
-  avatar: images/authors/matt-b.jpeg
-  email: matthew.biggs@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Matthew Biggs
+    bio      :
+    avatar   : images/authors/matt-b.jpeg
+    email    : matthew.biggs@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Giles_Davies:
-  name: Giles Davies
-  bio: 
-  avatar: images/authors/giles-d.jpg
-  email: giles.davies@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Giles Davies
+    bio      :
+    avatar   : images/authors/giles-d.jpg
+    email    : giles.davies@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Mike_James_and_Robin-Manuel_Thiel:
-  name: Mike James and Robin-Manuel Thiel
-  bio: 
-  avatar: images/authors/Mike_James_and_Robin-Manuel_Thiel.jpg
-  email: rothie@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
+    name     : Mike James and Robin-Manuel Thiel
+    bio      :
+    avatar   : images/authors/Mike_James_and_Robin-Manuel_Thiel.jpg
+    email    : rothie@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
 
 Jonathan_Lyon:
-  name: Jonathan Lyon
-  bio: 
-  avatar: images/authors/jonathan-w.jpg
-  email: jonathan.lyon@microsoft.com
-  twitter: 
-  github: 
-  linkedin: 
- 
+    name     : Jonathan Lyon
+    bio      :
+    avatar   : images/authors/jonathan-w.jpg
+    email    : jonathan.lyon@microsoft.com
+    twitter  :
+    github   :
+    linkedin :
+
 Dave Placeholder:
-  name: Dave Placeholder
-  bio: Goat Herder.<br/>Cheese, goats cheese, other types of cheese, mostly cheese
-  avatar: images/authors/harold.jpg
-  email: 
-  twitter: Cofffee_Dad
-  github: example
-  linkedin: example
-  links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "http://microsoft.com"      # Author details.
+    name     : Dave Placeholder
+    bio      : Goat Herder.<br/>Cheese, goats cheese, other types of cheese, mostly cheese
+    avatar   : images/authors/harold.jpg
+    email    :
+    twitter  : Cofffee_Dad
+    github   : example
+    linkedin : example
+    links:
+      - label: "Website"
+        icon : "fas fa-fw fa-link"
+        url  : "http://microsoft.com"      # Author details.
