@@ -4,11 +4,13 @@ title: Lab Terraforming Azure Kubernetes Service (AKS)
 date: 2018-03-15
 category: containers
 author: Richard Cheney
+tags: [ containers, terraform ]
+layout: single
 image:
   feature:
-  teaser: cloud-builder.png
+  teaser: images/teaser/cloud-builder.png
   thumb:
-excerpt: Use Terraform's AzureRM provider to drive Infrastructure as Code. The ancient Greeks studied the Platonic solids extensively. Some sources (such as Proclus) credit Pythagoras with their discovery. Other evidence suggests that he may have only been familiar with the tetrahedron, cube, and dodecahedron and that the discovery of the octahedron and icosahedron belong to Theaetetus, a contemporary of Plato. In any case, Theaetetus gave a mathematical description of all 
+excerpt: Use Terraform's AzureRM provider to drive Infrastructure as Code. This was an early challenge based lab but it has now been superseded by the https://aka.ms/citadel/terraform lab.
 ---
 
 {% include toc.html %}
