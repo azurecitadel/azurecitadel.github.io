@@ -1,19 +1,16 @@
 ---
-layout: single
-hidden: true
 title: "Kubernetes: Module 6 - Scaling & Persistence"
-date: 2018-10-01
-tags: [kubernetes, microservices, containers, aks]
-comments: true
 author: Ben Coleman
+date: 2018-10-01
+tags: [kubernetes, microservices, aks]
+hidden: true
+
 header:
   image: images/teaser/kube.png
   teaser: images/teaser/containers.png
 sidebar:
   nav: "kubernetes_lab"  
 ---
-
-{% include toc.html %}
 
 ## Overview
 In this final module we will look at ways to make our app resilient and performant through the use of pod scaling and volume persistence
@@ -90,12 +87,12 @@ After about 30 seconds, reload the Smilr UI and you'll see you've lost all the d
 ### Persisting data with StatefulSets and VolumeClaims
 Let's fix our data loss problem. This next part will introduce a lot of new topics, but ends up being quite simple in the end.
 
-Persisting data with Docker containers (not just in Kubernetes) is done through *Volumes*, these are logical chunks of data much a bit like disks. These volumes are managed by the Docker engine, and mounted into a running container at a mount point on the container's internal file system   
+Persisting data with Docker containers (not just in Kubernetes) is done through *Volumes*, these are logical chunks of data much like disks. These volumes are managed by the Docker engine, and mounted into a running container at a mount point on the container's internal file system   
 [📘 Docker Storage](https://docs.docker.com/storage/){:target="_blank" class="btn-info"}
 
 
 
-We'll change the MongoDB deployment to use a *StatefulSet*. Create new file called **mongo.stateful.yaml** and paste the following YAML into the file:
+We'll change the MongoDB deployment to use a *StatefulSet*. Create new file called **mongo.stateful.yaml** (run `touch mongo.stateful.yaml` and refresh the files view in the editor)  and paste the following YAML into the file:
 ```yaml
 kind: StatefulSet
 apiVersion: apps/v1
@@ -132,7 +129,7 @@ spec:
 ```
 This looks a lot like the *Deployment* object we created in module 3, but there's some big differences:
 - We declare it as `kind: StatefulSet`
-- All *StatefulSets* much have a `serviceName`, this is used when naming the pods it creates in an ordinal series
+- All *StatefulSets* must have a `serviceName`, this is used when naming the pods it creates in an ordinal series
 - We've added a `volumeMounts` section which mounts a volume named `mongo-vol` to the **/data/db** directory inside the container. This is where MongoDB has been configured to persist its database files on the filesystem
 - There is a `volumeClaimTemplates` section which defines a *PersistentVolumeClaim* with a *StorageClass* of type **default**. The request is for a *PersistentVolume* with 500Mb storage. This volume is named `mongo-vol` to link to the volumeMount of the container spec
 
@@ -172,7 +169,7 @@ kubectl describe pod mongodb-0
 ```
 Don't be alarmed if it re-tries a few times and there's some warnings in the events, keep running `kubectl describe` and eventually the container should start and the pod change to **Running** status
 
-**💬 Note.** Notice, the pod doesn't have a randomly generated name as before, this is because *StatefulSets* will name the pods in ordinal sequence, this ensures they will pick up the correct volumes if they were to be re-scheduled into a a new host
+**💬 Note.** Notice, the pod doesn't have a randomly generated name as before, this is because *StatefulSets* will name the pods in ordinal sequence, this ensures they will pick up the correct volumes if they were to be re-scheduled into a new host.
 
 We are nearly done, if you wish you can validate the data persistence is working by creating some data in the app (or using the demoData script as before), delete the MongoDB *StatefulSet* with `kubectl delete -f mongo.stateful.yaml` and recreate it `kubectl apply -f mongo.stateful.yaml` the data you created before deletion should be there
 

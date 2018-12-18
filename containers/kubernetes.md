@@ -4,7 +4,6 @@ author: Ben Coleman
 category: containers
 date: 2018-10-01
 tags: [kubernetes, microservices, aks]
-layout: single
 header:
   overlay_image: images/header/kube.png
   teaser: images/teaser/containers.png
@@ -12,8 +11,6 @@ excerpt: Designed for people wanting to learn Kubernetes; going from the basics 
 sidebar:
   nav: "kubernetes_lab"
 ---
-
-{% include toc.html %}
 
 ## Introduction
 This lab aims to introduce people to Kubernetes and Azure Kubernetes Service (AKS) by working through a practical example; that of deploying a working microservices application. During this lab you will deploy a Kubernetes cluster using AKS, configure your own container registry, deploy a number of microservices, configure their network access to combine the services into a working end to end application. Finally you look at how Kubernetes can be used to make the app resilient and scalable
@@ -65,13 +62,16 @@ We will deploy an *Azure Container Service (AKS)* cluster however this is not ne
   - ***Note On Permissions*** - If using an existing subscription you will need rights to create a service principal in the Azure AD tenant you use. This is a pre-req to deploying AKS. 
   - If you activate an Azure Pass ***do not use your company/work email address***
 
-- [Option 1: WSL Bash](https://docs.microsoft.com/en-us/windows/wsl/install-win10){:target="_blank" class="btn-info"}  
-The majority of this lab is command-line based, and we will be using Linux Bash. One great option for running Bash is to use the *Windows Subsystem for Linux (WSL)*. If you have this already installed and working this would be the preferred option. For this lab you can go ahead and install WSL however be aware it takes some time to install & requires a reboot.  
+- [Option 1: Azure Cloud Shell](https://azure.microsoft.com/en-gb/features/cloud-shell/){:target="_blank" class="btn-info"}  
+This is the preferred and recommended approach for a number of reasons. The *Azure Cloud Shell* is an online browser based shell, accessed either from the Azure Portal or directly via **[https://shell.azure.com/bash](https://shell.azure.com/bash){:target="_blank"}**. There is nothing you need to install, however if you have not used it before it will prompt you for a few set-up steps. We will be using the Bash version of the Cloud Shell, not PowerShell. You will need your Azure subscription setup before you can start.
+
+
+- [Option 2: WSL Bash](https://docs.microsoft.com/en-us/windows/wsl/install-win10){:target="_blank" class="btn-info"} 
+
+The majority of this lab is command-line based, and you can use Linux Bash. One great option for running Bash is to use the *Windows Subsystem for Linux (WSL)*. If you have this already installed and working this would be the preferred option. For this lab you can go ahead and install WSL however be aware it takes some time to install & requires a reboot.  
   - You will additionally need to [install the Azure CLI v2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
   - **Note.** Any WSL distro should work, however only *Ubuntu* has been tested.
 
-- [Option 2: Azure Cloud Shell](https://azure.microsoft.com/en-gb/features/cloud-shell/){:target="_blank" class="btn-info"}  
-The *Azure Cloud Shell* is an online browser based shell, accessed either from the Azure Portal or directly via **[https://shell.azure.com/bash](https://shell.azure.com/bash){:target="_blank"}**. There is nothing you need to install, however if you have not used it before it will prompt you for a few set-up steps. We will be using the Bash version of the Cloud Shell, not PowerShell. You will need your Azure subscription setup before you can start.
 
 - [Visual Studio Code](https://code.visualstudio.com/){:target="_blank" class="btn-info"}  
 We will not be writing real code but there will be significant editing of YAML files. You can use other text editors if you wish (but please not Notepad!). VS Code has good support for YAML and the [Kubernetes extension](https://marketplace.visualstudio.com/items?itemName=brendandburns.vs-kubernetes) can be extremely useful for working with Kubernetes 
@@ -93,4 +93,3 @@ As this lab is quite long, it has been split into several modules:
 
 ## Supporting Slides
 [Azure Container Strategy & Orchestration with Kubernetes](https://1drv.ms/b/s!AhEX99ErZbKGg1n8wQOPvgtQoYsl){:target="_blank" class="btn-info"}
-

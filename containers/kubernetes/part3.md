@@ -1,19 +1,16 @@
 ---
-layout: single
-hidden: true
 title: "Kubernetes: Module 3 - Deploying the Data Layer"
-date: 2018-10-01
-tags: [kubernetes, microservices, containers, aks]
-comments: true
 author: Ben Coleman
+date: 2018-10-01
+tags: [kubernetes, microservices, aks]
+hidden: true
+
 header:
   image: images/teaser/kube.png
   teaser: images/teaser/containers.png
 sidebar:
   nav: "kubernetes_lab"  
 ---
-
-{% include toc.html %}
 
 ## Overview
 With our AKS Kubernetes cluster in place we're now ready to start using it, we'll do this by creating some Kubernetes *Pods* and *Deployments* via configurations
@@ -25,15 +22,23 @@ We have three microservices we need to deploy, and due to dependencies between t
 
 We'll apply configurations to Kubernetes using `kubectl` and YAML configuration files. These YAML files will describe the objects we want to create, modify and delete in the cluster. 
 
-To get started create a directory on your local machine (e.g. **C:\Dev\kube-lab**) to hold the files we'll be creating and editing in this lab, and then start VS Code with this empty directory as it's project (File -> Open Folder)
+We'll create a new project directory to work out of for thhis lab
+```
+mkdir kube-lab
+cd kube-lab
+```
 
 ### Cloud Shell Editor
-If using the Azure Cloud Shell, it's strongly recommended to use the built-in online editor which is invoked with the command `code .` Note the dot after the command, it's recommended you invoke the editor this way as it will then show a file explorer view for the current directory.
+If using the Azure Cloud Shell, it's strongly recommended to use the built-in online editor which is invoked with the command 
+```
+code .
+``` 
+Note the dot after the command, it's recommended you invoke the editor this way as it will then show a file explorer view for the current directory.
 
 When creating a new file use the touch command to create an empty file, e.g. `touch foo.yaml`, then in the editor click refresh icon at the top of the files view in order to see the file and open it for editing. There are other ways to use the Cloud Shell Editor, but this workflow is recommended 
 
 ## Deploy MongoDB 
-Create a new file called **mongo.deploy.yaml** and paste the following contents in it:
+Create a new file called **mongo.deploy.yaml** (run `touch mongo.deploy.yaml` and refresh the files view in the editor) and paste the following contents in it, and save:
 ```yaml
 kind: Deployment
 apiVersion: apps/v1
@@ -89,7 +94,7 @@ You can find the IP in the output (it will be a 10.244.x.x address), make a note
 `kubectl get pod -l app=mongodb -o=jsonpath='{.items[0].status.podIP}{"\n"}'`
 
 ## Deploy Data API
-Create a new file called **data-api.deploy.yaml** and paste the contents below in it. You will need to replace **{acr_name}** and **{mongo_ip}** with their real values.
+Create a new file called **data-api.deploy.yaml** (run `touch data-api.deploy.yaml` and refresh the files view in the editor) and paste the contents below in it. You will need to replace **{acr_name}** and **{mongo_ip}** with their real values.
 
 If you skipped Part 2 you are not using ACR, then you can omit the registry and just use `smilr/data-api` as the image and remove the `imagePullSecrets:` section
 ```yaml
@@ -140,15 +145,19 @@ First get the name of of the Data API pod with:
 kubectl get pods
 ``` 
 
-Then start the port forwarding tunnel from localhost port 8080 to the container port 4000, with: 
+Then start the port forwarding tunnel from localhost port 8080 to the container port 4000. You should run this in a new Cloud Shell tab, so open that first: 
 ```
 kubectl port-forward {data_api_pod_name} 8080:4000
 ```
-Now access the Data API in your browser by visiting `http://localhost:8080/api/info` this should return some system & status information from the Smilr API as JSON. You can now use `Ctrl+C` to stop the `kubectl port-forward` command and close the tunnel.
+Now switch back to the main Cloud Shell tab and access the Data API by running 
+```
+curl localhost:8080/api/info | jq
+``` 
+This should return some system & status information from the Smilr API as JSON. You can now use `Ctrl+C` to stop the `kubectl port-forward` command and close the tunnel.
 
 ## End of Module 3
 What we have have at this stage in Kubernetes can be represented as follows
-![Application Architecture Diagram](/labs/kubernetes/images/part3.png)
+![Application Architecture Diagram](../images/part3.png)
 
 Now this is not a recommended configuration for a lot of reasons, and in the next module we will examine why, and start to rectify it
 
