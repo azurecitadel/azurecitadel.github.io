@@ -4,13 +4,11 @@ title: Lab Terraforming Azure Kubernetes Service (AKS)
 date: 2018-03-15
 category: containers
 author: Richard Cheney
-tags: [ containers, terraform ]
+tags: [ containers, terraform, kubernetes, aks ]
 layout: single
 header:
   teaser: images/teaser/cloud-builder.png
 excerpt: Use Terraform's AzureRM provider to drive Infrastructure as Code. This was an early challenge based lab but it has now been superseded by the https://aka.ms/citadel/terraform lab. It is recommended to use that instead.
-sidebar:
-  nav: "custom_lab"
 ---
 
 {% include toc.html %}
