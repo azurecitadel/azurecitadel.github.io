@@ -5,7 +5,7 @@
 
 - name: data-ai
   title: "Data & AI"
-  image: /images/categories/data-ai.jpg
+  image: /images/categories/data-ai.png
   desc: "Real world AI with cognitive services, bots data-analytics and machine learning"  
 
 - name: devops
