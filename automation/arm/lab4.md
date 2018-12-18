@@ -2,7 +2,7 @@
 title: 'ARM Lab 4: Conditions and tests'
 date: 2018-04-17
 tags: [authoring, arm, workshop, hackathon, lab, template, conditions]
-categories: automation
+category: automation
 author: Richard Cheney
 sidebar:
   nav: "arm_lab"
