@@ -6,7 +6,7 @@ tags: [kubernetes, microservices, aks]
 hidden: true
 
 header:
-  image: images/teaser/kube.png
+  overlay_image: images/header/kube.png
   teaser: images/teaser/containers.png
 sidebar:
   nav: "kubernetes_lab"

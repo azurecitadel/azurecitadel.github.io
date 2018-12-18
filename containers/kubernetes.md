@@ -30,7 +30,7 @@ For the purpose of this lab we can ignore much of the low level detail & softwar
 
 ### Application Architecture
 This is a simplified view of the Smilr application:
-![Application Architecture Diagram](/labs/kubernetes/images/arch.png)
+![Application Architecture Diagram](images/arch.png)
 
 This is what we will be standing up and deploying piece by to Kubernetes over the course of this lab
 
