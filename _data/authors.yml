@@ -19,7 +19,7 @@ Ben Coleman:
         icon : "fas fa-fw fa-link"
         url  : "http://benco.io"
 
-Richard_Cheney:
+Richard Cheney:
     name     : Richard Cheney
     bio      : Cloud Solution Architect.<br/>Infrastructure as code, automation, networking, storage, compute
     avatar   : images/authors/rich-c.jpg
@@ -28,7 +28,7 @@ Richard_Cheney:
     github   : richeney
     linkedin : richardcheney
 
-Tom_Wilde:
+Tom Wilde:
     name     : Tom Wilde
     bio      :
     avatar   : images/authors/tom-w.png
@@ -37,7 +37,7 @@ Tom_Wilde:
     github   :
     linkedin :
 
-John_Duckmanton:
+John Duckmanton:
     name     : John Duckmanton
     bio      :
     avatar   : images/authors/john-d.jpg
@@ -46,7 +46,7 @@ John_Duckmanton:
     github   :
     linkedin :
 
-John_And_Ben:
+John And Ben:
     name     : John Duckmanton & Ben Coleman
     bio      :
     avatar   : images/authors/bcdj.jpg
@@ -55,7 +55,7 @@ John_And_Ben:
     github   :
     linkedin :
 
-Dan_And_Tom:
+Dan And Tom:
     name     : Dan Baker & Tom Wilde
     bio      :
     avatar   : images/authors/dbtw.jpg
@@ -64,7 +64,7 @@ Dan_And_Tom:
     github   :
     linkedin :
 
-Dan_Baker:
+Dan Baker:
     name     : Azure Dan
     bio      :
     avatar   : images/authors/dan-b.jpg
@@ -73,7 +73,7 @@ Dan_Baker:
     github   :
     linkedin :
 
-Mahesh_Balija:
+Mahesh Balija:
     name     : Mahesh Balija
     bio      :
     avatar   : images/authors/mahesh-b.jpg
@@ -82,7 +82,7 @@ Mahesh_Balija:
     github   :
     linkedin :
 
-Naveed_Hussain:
+Naveed Hussain:
     name     : Naveed Hussain
     bio      :
     avatar   : images/authors/naveed-h.jpg
@@ -91,7 +91,7 @@ Naveed_Hussain:
     github   :
     linkedin :
 
-Faris_Haddad:
+Faris Haddad:
     name     : Faris Haddad
     bio      :
     avatar   : images/authors/faris-h.jpg
@@ -100,7 +100,7 @@ Faris_Haddad:
     github   :
     linkedin :
 
-Robin_Lester:
+Robin Lester:
     name     : Robin Lester
     bio      :
     avatar   : images/authors/robin-l.jpg
@@ -109,7 +109,7 @@ Robin_Lester:
     github   :
     linkedin :
 
-Phil_Harvey:
+Phil Harvey:
     name     : Phil Harvey
     bio      :
     avatar   : images/authors/phil-h.jpg
@@ -118,7 +118,7 @@ Phil_Harvey:
     github   :
     linkedin :
 
-Mark_Harrison:
+Mark Harrison:
     name     : Mark Harrison
     bio      :
     avatar   : images/authors/mark-h.jpg
@@ -127,7 +127,7 @@ Mark_Harrison:
     github   :
     linkedin :
 
-Matt_Biggs:
+Matt Biggs:
     name     : Matthew Biggs
     bio      :
     avatar   : images/authors/matt-b.jpeg
@@ -136,7 +136,7 @@ Matt_Biggs:
     github   :
     linkedin :
 
-Giles_Davies:
+Giles Davies:
     name     : Giles Davies
     bio      :
     avatar   : images/authors/giles-d.jpg
@@ -145,7 +145,7 @@ Giles_Davies:
     github   :
     linkedin :
 
-Mike_James_and_Robin-Manuel_Thiel:
+Mike James and Robin-Manuel Thiel:
     name     : Mike James and Robin-Manuel Thiel
     bio      :
     avatar   : images/authors/Mike_James_and_Robin-Manuel_Thiel.jpg
@@ -154,7 +154,7 @@ Mike_James_and_Robin-Manuel_Thiel:
     github   :
     linkedin :
 
-Jonathan_Lyon:
+Jonathan Lyon:
     name     : Jonathan Lyon
     bio      :
     avatar   : images/authors/jonathan-lyon.jpg
