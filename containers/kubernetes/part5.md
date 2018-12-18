@@ -1,19 +1,16 @@
 ---
-layout: single
-hidden: true
 title: "Kubernetes: Module 5 - Deploying the Frontend"
-date: 2018-10-01
-tags: [kubernetes, microservices, containers, aks]
-comments: true
 author: Ben Coleman
+date: 2018-10-01
+tags: [kubernetes, microservices, aks]
+hidden: true
+
 header:
-  image: images/teaser/kube.png
+  overlay_image: images/header/kube.png
   teaser: images/teaser/containers.png
 sidebar:
   nav: "kubernetes_lab"  
 ---
-
-{% include toc.html %}
 
 ## Overview
 Now we know how to create deployments and services, we can pick up the pace a little, and get the frontend microservice up and running 
@@ -21,7 +18,7 @@ Now we know how to create deployments and services, we can pick up the pace a li
 ## Deploy Frontend
 For the frontend we can start with the service, it doesn't matter that the pods for it don't exist yet, that is what the selector is for, it will pick them up when they are created. This service also needs to be a `LoadBalancer` as we clearly want to access it externally.
 
-Create a new file called **frontend.svc.yaml** and paste the following YAML contents, save the file and then run run `kubectl apply -f frontend.svc.yaml`
+Create a new file called **frontend.svc.yaml** (run `touch frontend.svc.yaml` and refresh the files view in the editor) and paste the following YAML contents.
 ```yaml
 kind: Service
 apiVersion: v1
@@ -36,9 +33,11 @@ spec:
   selector:
     app: frontend
 ```
+Save the file and then run run `kubectl apply -f frontend.svc.yaml`
+
 As before check the status with `kubectl get service`, you can wait for the external IP to be assigned or carry on with the next step
 
-Create another new file called **frontend.deploy.yaml** and paste the following YAML contents. You will need to replace **{acr_name}** and **{data_api_ip}** with their real values.  
+Create another new file called **frontend.deploy.yaml** (run `touch frontend.deploy.yaml` and refresh the files view in the editor) and paste the following YAML contents. You will need to replace **{acr_name}** and **{data_api_external_ip}** (it's public IP we accessed earlier) with their real values.  
 If you skipped Part 2, you are not using ACR, then you can omit the registry and just use `smilr/frontend` as the image and remove the `imagePullSecrets:` section.
 
 Save the file and then run `kubectl apply -f frontend.deploy.yaml`
@@ -74,7 +73,7 @@ By now the `frontend-svc` should have an external IP, get this IP using `kubectl
 
 The Smilr app client UI should load and look something like this, (here I've opened the browser console with F12 to check some of the log messages output by the app)
 
-![smilr-app](/labs/kubernetes/images/smilr1.png)
+![smilr-app](../images/smilr1.png)
 
 We have a functioning app! Well mostly, wouldn't it be great to have some data in the app to look at. We could use the admin screens to manually create some events, but there is another way and we'll use another feature of Kubernetes to do it
 
@@ -101,11 +100,11 @@ node demoData.js
 ```
 This script will connect to MongoDB, and inject some demo data (events and feedback) you should see some messages confirming what it has done. Type `exit` to leave the Bash session 
 
-Now refresh the Smilr app in your browser, and check there are events on the home screen, and go into te reports view to validate there is example feedback in the database.
+Now refresh the Smilr app in your browser, and check there are events on the home screen, and go into the reports view to validate there is example feedback in the database.
 
 ## End of Module 5
 What we have at this stage in Kubernetes is our desired state
-![Application Architecture Diagram](/labs/kubernetes/images/arch.png)
+![Application Architecture Diagram](../images/arch.png)
 
 But there's a few final improvements we need to make our app more robust
 
