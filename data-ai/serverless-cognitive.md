@@ -1,16 +1,12 @@
 ---
 title: Serverless & Cognitive Services
-date: 2018-06-15
-category: data-ai
-tags: [serverless, cognitive]
-comments: true
 author: Ben Coleman
-excerpt: Set up a Serverless & Cognitive Services App
-header:
-  teaser: images/categories/oss.png
----
+date: 2018-06-15
+tags: [serverless, cognitive]
+category: data-ai
 
-{% include toc.html %}
+excerpt: Set up a Serverless & Cognitive Services App
+---
 
 ## Overview
 This guide will step you through deploying a multi part application which demonstrates using serverless compute with Azure Functions combined with the pre-built machine learning models of Cognitive Services 
