@@ -6,11 +6,12 @@ category: containers
 author: Richard Cheney
 tags: [ containers, terraform ]
 layout: single
-image:
-  feature:
+header:
+  overlay_image: 
   teaser: images/teaser/cloud-builder.png
-  thumb:
 excerpt: Use Terraform's AzureRM provider to drive Infrastructure as Code. This was an early challenge based lab but it has now been superseded by the https://aka.ms/citadel/terraform lab. Use that instead.
+sidebar:
+  nav: "sidebar"
 ---
 
 {% include toc.html %}
