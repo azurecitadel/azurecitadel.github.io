@@ -16,7 +16,7 @@
 - name: automation
   title: Automation
   image: /images/categories/auto.png
-  desc: "Lorem ipsum dolor sit amet, justo ludus te per."
+  desc: "Operate at scale using scaffolding, infrastructure as code and scripting to automate."
 
 - name: fundamentals
   title: Fundamentals
