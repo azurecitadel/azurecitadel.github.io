@@ -10,7 +10,7 @@ image:
   feature:
   teaser: images/teaser/cloud-builder.png
   thumb:
-excerpt: Use Terraform's AzureRM provider to drive Infrastructure as Code. This was an early challenge based lab but it has now been superseded by the https://aka.ms/citadel/terraform lab.
+excerpt: Use Terraform's AzureRM provider to drive Infrastructure as Code. This was an early challenge based lab but it has now been superseded by the https://aka.ms/citadel/terraform lab. Use that instead.
 ---
 
 {% include toc.html %}
