@@ -1,14 +1,13 @@
 ---
-
 title: Compliance in Office 365 is easy
 date: 2018-02-06
 category: security
-tags: [office, o365, 365, compliance, adg, advanced data governance, e-discovery, security, security session]
-
+tags: [office365, identity, governance]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png
 excerpt: In this episode we look at adding and using compliance features built into Office 365, with demos on Data Governance and e-Discovery.
+toc: false
 ---
 
 In this episode we look at adding and using compliance features built into Office 365, with demos on Data Governance and e-Discovery.

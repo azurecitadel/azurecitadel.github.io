@@ -1,14 +1,13 @@
 ---
-
 title: Azure Security Center
 date: 2018-03-29
 category: security
-tags: [Windows, azure, protection, compliance, azure security center, asc, post breach, security, security session]
-
+tags: [identity, security-center, azure-ad]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png
-excerpt: In this episode we look at security in Azure Security Center. It's not just virtual machines in Azure that it protects, it's PaaS services and machines in other cloud too!
+excerpt: In this episode we look at security in Azure Security Center. It's not just virtual machines in Azure that it protects, it's PaaS services and machines in other cloud too
+toc: false
 ---
 
 In this episode we look at security in Azure Security Center. It's not just virtual machines in Azure that it protects, it's PaaS services and machines in other cloud too!

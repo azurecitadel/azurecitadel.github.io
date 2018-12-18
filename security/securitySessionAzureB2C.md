@@ -1,14 +1,13 @@
 ---
-
 title: Azure B2C
 date: 2018-08-01
 category: security
-tags: [Windows, identity, protection, compliance, AD connect, Azure Active Directory, B2C, security, security session]
-
+tags: [identity, azure-b2c, azure-ad]
 author: Jonathan_Lyon
 header:
   teaser: /images/teaser/security.png
 excerpt: In this episode we look at Azure B2C, what it is, how it is different to Azure Active Directory and what scenarios make good use cases for B2C.
+toc: false
 ---
 
 In this episode we look at Azure B2C, what it is, how it is different to Azure Active Directory and what scenarios make good use cases for B2C.

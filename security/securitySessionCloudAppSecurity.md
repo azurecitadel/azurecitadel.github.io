@@ -1,14 +1,13 @@
 ---
-
 title: What is Cloud App Security?
 date: 2018-07-07
 category: security
-tags: [Windows, identity, protection, compliance,  Azure Active Directory, security, security session, cas, cloud app security, apps]
-
+tags: [identity, azure-ad, cloud-app-security]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png
 excerpt: In this episode we look at how we can uncover shadow IT and secure cloud applications using Cloud App Security.
+toc: false
 ---
 
 In this episode we look at how we can uncover shadow IT and secure cloud applications using Cloud App Security.

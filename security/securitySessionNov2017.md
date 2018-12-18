@@ -1,14 +1,13 @@
 ---
-
 title: Security Session - Protecting information
 date: 2017-11-30
 category: security
-tags: [azure information protection, aip, security, security session]
-
+tags: [azure-information-protection, azure-ad]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png
 excerpt: In this episode we look at securing information with Azure Information Protection.
+toc: false
 ---
 
 

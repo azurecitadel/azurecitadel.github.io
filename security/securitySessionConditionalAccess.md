@@ -1,14 +1,13 @@
 ---
-
 title: Firewall identities with Azure AD Conditional Access
 date: 2018-06-13
 category: security
-tags: [Windows, identity, protection, compliance, conditional access, AD connect, Azure Active Directory, security, security session]
-
+tags: [identity, conditional-access, azure-ad]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png
 excerpt: In this episode we look at protecting identities using Azure AD Conditional Access. By connecting all your apps, identities, devices and data to Azure AD you can effectively create a firewall for identities.
+toc: false
 ---
 
 In this episode we look at protecting identities using Azure AD Conditional Access. By connecting all your apps, identities, devices and data to Azure AD you can effectively create a firewall for identities.

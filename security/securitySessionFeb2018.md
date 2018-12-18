@@ -1,14 +1,13 @@
 ---
-
 title: Post breach detection on Windows 10
 date: 2018-02-28
 category: security
-tags: [Windows, endpoint, protection, compliance, post breach, ATP, WDATP, security, security session]
-
+tags: [windows, identity, azure-atp, azure-ad]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png
 excerpt: In this episode we look at post breach detection capabilities in Windows 10, specifically Windows Defender Advanced Threat Protection
+toc: false
 ---
 
 In this episode we look at post breach detection capabilities in Windows 10, specifically Windows Defender Advanced Threat Protection. If you just concentrated on pre breach, how would you know when you've been compromised?
