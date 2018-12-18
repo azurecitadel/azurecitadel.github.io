@@ -1,0 +1,30 @@
+---
+layout: archive
+permalink: /recent/
+hidden: true
+title: Recently Added
+author_profile: false
+read_time: false
+toc: false
+search: false
+classes: wide
+entries_layout: grid
+sidebar:
+  nav: "sidemenu"
+header:
+  overlay_color: "rgb(92, 45, 145)"
+---
+
+{% assign all_pages = site.pages | sort: 'date' %}
+{% assign max = 0 %}
+
+<div class="entries-{{ page.entries_layout }}">
+{% for post in all_pages reversed %}
+  {% if post.category and max < 8 %}
+    {% unless post.hidden %}
+      {% assign max = max | plus: 1 %}
+        {% include archive-single.html type=page.entries_layout %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+</div>

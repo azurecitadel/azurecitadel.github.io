@@ -1,0 +1,67 @@
+---
+layout: splash
+author_profile: false
+sidebar:
+  nav: "sidemenu"
+header:
+  overlay_image: /images/site/main.png
+  overlay_filter: 0.0
+  actions:
+    - label: "Get Started"
+      url: "/categories"
+read_time: false  
+excerpt: Stuff here, lots of words. Well not lots, just some<br/>Maybe across two lines?
+classes: wide
+toc: false
+hidden: true
+search: false
+
+feature_row_pages:
+  - image_path: /images/teaser/containers.png
+    title: Kubernetes Lab
+    url: "/containers/kubernetes"
+    excerpt: "This lab aims to introduce people to Kubernetes and Azure Kubernetes Service (AKS)"
+    btn_class: "btn--success"
+
+  - image_path: /images/teaser/banana.jpg
+    title: Test Lab
+    url: "/data-ai/fruit"
+    excerpt: "Test words here this is a featured lab"
+    btn_class: "btn--success"
+
+  - image_path: /images/categories/devops.png
+    title: Something DevOps
+    url: "/devops/test2"
+    excerpt: "DevOps is a thing, blah yeah, try it out"
+    btn_class: "btn--success" 
+
+feature_row:
+  - image_path: /images/site/home/browse.png
+    title: "Categories"
+    url: "/categories"
+    excerpt: "Browse all available content by category"
+    btn_label: "Browse"
+    btn_class: "btn--info"
+
+  - image_path: /images/site/home/new.png
+    title: "Recent"
+    url: "/recent"
+    excerpt: "Explore recently added content"
+    btn_label: "View Recent"
+    btn_class: "btn--info"
+
+  - image_path: /images/site/home/search.png
+    title: "Search"
+    url: "/search"
+    excerpt: "Try the search, it works!"      
+    btn_label: "Search"
+    btn_class: "btn--info"  
+---
+
+{% assign page.read_time = true %}
+
+<h1>Featured Content</h1>
+{% include feature_row id="feature_row_pages" %}
+
+<h1>Explore The Citadel</h1>
+{% include feature_row %}

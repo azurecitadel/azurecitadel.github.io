@@ -1,0 +1,29 @@
+---
+layout: archive
+permalink: /categories/
+hidden: true
+title: Content Categories
+author_profile: false
+read_time: false
+toc: false
+search: false
+classes: wide
+sidebar:
+  nav: "sidemenu"
+header:
+  overlay_color: "rgb(0, 24, 143)"
+---
+
+<div class="entries-grid">
+{% for cat in site.data.categories %}
+  <div class="grid__item" style="min-height: 13rem">
+    <article class="archive__item" >
+    <div class="archive__item-teaser">
+      <img src="{{ cat.image }}" alt="">
+    </div>
+    <h2 class="archive__item-title" itemprop="headline"><a href="{{ site.baseurl }}/{{ cat.name }}"></a>{{ cat.title }}</a></h2>
+    {{ cat.desc }}
+  </article>
+  </div>
+{% endfor %}
+</div>

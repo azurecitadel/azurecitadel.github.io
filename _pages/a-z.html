@@ -1,0 +1,28 @@
+---
+layout: single
+permalink: /a-z/
+hidden: true
+title: Alphabetic Index
+author_profile: false
+read_time: false
+toc: false
+search: false
+classes: wide
+sidebar:
+  nav: "sidemenu"
+header:
+  overlay_color: "rgb(92, 45, 145)"
+---
+
+{% assign all_pages = site.pages | sort: 'title' %}
+
+<div class="entries-{{ page.entries_layout }}">
+  {% for post in all_pages %}
+    {% unless post.hidden %}
+      {% if post.category %}
+        <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+</div>
+

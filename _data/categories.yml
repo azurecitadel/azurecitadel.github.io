@@ -1,0 +1,29 @@
+- name: containers
+  title: Containers
+  image: /images/categories/containers.jpg
+  desc: "Application modernisation using containers, Docker and Kubernetes"
+
+- name: data-ai
+  title: "Data & AI"
+  image: /images/categories/data-ai.jpg
+  desc: "Lorem ipsum dolor sit amet, justo ludus te per."  
+
+- name: devops
+  title: DevOps
+  image: /images/categories/devops.png
+  desc: "Lorem ipsum dolor sit amet, justo ludus te per."
+
+- name: automation
+  title: Automation
+  image: /images/categories/auto.png
+  desc: "Lorem ipsum dolor sit amet, justo ludus te per."
+
+- name: fundamentals
+  title: Fundamentals
+  image: /images/categories/az-fund.png
+  desc: "Core concepts of Azure and getting started for beginners"  
+
+- name: open-source
+  title: Open Source 
+  image: /images/categories/oss.png
+  desc: "Lorem ipsum dolor sit amet, justo ludus te per."

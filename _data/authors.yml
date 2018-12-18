@@ -1,0 +1,23 @@
+Ben Coleman:
+  name        : Ben Coleman
+  bio         : Cloud Solution Architect.<br/>Containers, Open source, Node.js, DevOps, automation
+  avatar      : images/authors/benc.jpg
+  twitter     : BenCodeGeek
+  github      : benc-uk
+  linkedin    : benc-uk
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "http://benco.io"
+
+Dave Placeholder:
+  name        : Dave Placeholder
+  bio         : Goat Herder.<br/>Cheese, goats cheese, other types of cheese, mostly cheese
+  avatar      : images/authors/harold.jpg
+  twitter     : Cofffee_Dad
+  github      : example
+  linkedin    : example
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "http://microsoft.com"      
