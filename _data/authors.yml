@@ -47,24 +47,6 @@ John Duckmanton:
     github   :
     linkedin :
 
-John And Ben:
-    name     : John Duckmanton & Ben Coleman
-    bio      :
-    avatar   : images/authors/bcdj.jpg
-    email    : ignore@microsoft.com
-    twitter  :
-    github   :
-    linkedin :
-
-Dan And Tom:
-    name     : Dan Baker & Tom Wilde
-    bio      :
-    avatar   : images/authors/dbtw.jpg
-    email    : ignore@microsoft.com
-    twitter  : 
-    github   :
-    linkedin :
-
 Dan Baker:
     name     : Azure Dan
     bio      : Dan Baker (aka Azure Dan) is the UK Azure regional skills evangelist
@@ -146,11 +128,20 @@ Giles Davies:
     github   :
     linkedin :
 
-Mike James and Robin-Manuel Thiel:
-    name     : Mike James and Robin-Manuel Thiel
+Mike James:
+    name     : Mike James
     bio      :
-    avatar   : images/authors/Mike_James_and_Robin-Manuel_Thiel.jpg
-    email    : rothie@microsoft.com
+    avatar   : images/authors/mike-james.jpg
+    email    : 
+    twitter  :
+    github   :
+    linkedin :
+
+Robin-Manuel Thiel:
+    name     : Robin-Manuel Thiel
+    bio      :
+    avatar   : images/authors/robin-manuel-thiel.jpg
+    email    : 
     twitter  :
     github   :
     linkedin :
