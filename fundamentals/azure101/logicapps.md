@@ -1,19 +1,18 @@
 ---
-layout: article
-title: Azure 101 Logic App Lab
-categories: labs
+title: Logic App Lab
 date: 2017-12-07
-tags: [azure, 101, paas, logic, app, twitter, lab, tutorial]
+author: Richard Cheney
+category: fundamentals
 comments: true
-author: Richard_Cheney
-image:
-  feature:
-  teaser: Education.jpg
-  thumb:
+featured: false
+hidden: false
+header:
+  overlay_image: images/header/whiteboard.jpg
+  teaser: images/teaser/education.png
+sidebar:
+  nav: "azure101"
 excerpt: Create a Logic App with an http endpoint ready to receive a JSON payload containing feedback information.  Extend with conditional emails and permanent logging to Cosmos DB.
 ---
-
-{% include toc.html %}
 
 ## Introduction
 
@@ -49,7 +48,7 @@ We won't be using the Cosmos DB until the end of the lab, but we'll kick off the
 You can use the CLI to deploy an ARM template to build the Cosmos DB.  Copy out and run the commands in the code block below, but don't forget to **change the name=\<yourname>cosmosdb parameter** before submitting.
 
 ```bash
-template='http://azurecitadel.github.io/labs/logicapps/azuredeploy.json'
+template='http://azurecitadel.github.io/fundamentals/azure101/logicapps/azuredeploy.json'
 az group deployment create --parameters name=<yourname>cosmosdb --resource-group Azure101PaaS --template-uri $template --name job1  --no-wait
 ```
 
@@ -64,7 +63,7 @@ Once you have submitted the Cosmos DB deployment then we can forget about it for
 OK, let's create an empty Logic App in the Azure101PaaS resource group.  The video below shows the creation, and you'll also find step by step instructions underneath.
 
 <video video width="800" height="600" autoplay controls muted>
-  <source type="video/mp4" src="/labs/logicapps/images/createLogicApp.mp4"></source>
+  <source type="video/mp4" src="/fundamentals/azure101/logicapps/images/createLogicApp.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
 
@@ -119,7 +118,7 @@ This is the format that the various applications will use for feedback into our 
 }
 ```
 
-![request](/labs/logicapps/images/httpRequest.png)
+![request](/fundamentals/azure101/logicapps/images/httpRequest.png)
 
 * Click on the **'Use sample payload to generate schema'** link in the bottom half of the dialog box
 * Paste the sample payload in there (`CTRL`+`V`)
@@ -133,7 +132,7 @@ Note that the JSON describes the keys in order to give them titles such as _emai
 * Select **Add an Action**
 * Select the corresponding **response**
 
-![request](/labs/logicapps/images/httpResponse.png)
+![request](/fundamentals/azure101/logicapps/images/httpResponse.png)
 
 * Use the default HTTP status code of 200
 * Add a header, with **ID** as the key
@@ -142,21 +141,21 @@ Note that the JSON describes the keys in order to give them titles such as _emai
 
 Once you have completed the configuration then your Logic App should look something like the picture below.
 
-![HTTP Response](/labs/logicapps/images/httpRequestResponse.png)
+![HTTP Response](/fundamentals/azure101/logicapps/images/httpRequestResponse.png)
 
 Don't forget to **Save** your Logic App's new HTTP endpoint before we test that it works in the next step.
 
-> In the steps above we generated the JSON schema on the fly, but you can also create proper schemas outside of the portal and then paste those in.  As an example, I also generated a [JSON schema](/labs/logicapps/schema.json) using the excellent <https://jsonschema.net> website and then modified to customise the variable titles, descriptions, etc.  The schema describes the expected format.
+> In the steps above we generated the JSON schema on the fly, but you can also create proper schemas outside of the portal and then paste those in.  As an example, I also generated a [JSON schema](/fundamentals/azure101/logicapps/schema.json) using the excellent <https://jsonschema.net> website and then modified to customise the variable titles, descriptions, etc.  The schema describes the expected format.
 
 ### Test the endpoint
 
 OK, let's test the endpoint.  You can test this using the bash Cloud Shell using the curl command below. Curl is a fantastic and powerful command line tool, and we will use it to POST data to our REST API.
 
-However, if you have downloaded the [Postman](https://www.getpostman.com/) application then you may use this instead of curl if you are not a fan of command line interfaces. If that is what you would prefer then just open up the [Postman instructions](/labs/logicapps/postman) and follow those instead for the http endpoint test.
+However, if you have downloaded the [Postman](https://www.getpostman.com/) application then you may use this instead of curl if you are not a fan of command line interfaces. If that is what you would prefer then just open up the [Postman instructions](/fundamentals/azure101/logicapps/postman) and follow those instead for the http endpoint test.
 
 For those using curl, then first copy the HTTP POST URL from the Request step in the workflow.
 
-![URL](/labs/logicapps/images/httpPostUrl.png)
+![URL](/fundamentals/azure101/logicapps/images/httpPostUrl.png)
 
 (This is the same URL you will find on the Overview blade, labelled Callback url(POST).)
 
@@ -237,7 +236,7 @@ Logic Apps also has some really nice functionality to trace both successful and 
 * Click on the new **Runs History** entry to view the details
     * Open up the individual steps to view the inputs and outputs
 
-![Logic App Run](/labs/logicapps/images/logicAppRun.png)
+![Logic App Run](/fundamentals/azure101/logicapps/images/logicAppRun.png)
 
 This is useful to see the values as it steps through the workflow. Our workflow is simple, but this is invaluable for more complex workflows.
 
@@ -254,7 +253,7 @@ PR departments proactively monitor for comments on social media platforms, notab
 Another video, followed by the steps:
 
 <video video width="800" height="600" autoplay controls muted>
-  <source type="video/mp4" src="/labs/logicapps/images/workflow-2-conditionalEmail.mp4"></source>
+  <source type="video/mp4" src="/fundamentals/azure101/logicapps/images/workflow-2-conditionalEmail.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
 
@@ -271,7 +270,7 @@ Another video, followed by the steps:
     * Subject: **Feedback from _name_**
     * Body: Add in all of the useful information from the JSON payload to create the body of the email.  The screenshot below gives an example.
 
-![Logic App Email](/labs/logicapps/images/logicAppEmail.png)
+![Logic App Email](/fundamentals/azure101/logicapps/images/logicAppEmail.png)
 
 * Click on **Save**
 
@@ -284,7 +283,7 @@ Either
 
 You can then check the inbox for the email tool you selected to see if the email has been successfully received.
 
-![Logic App Email Test](/labs/logicapps/images/logicAppEmailTest.png)
+![Logic App Email Test](/fundamentals/azure101/logicapps/images/logicAppEmailTest.png)
 
 ----------
 
@@ -303,21 +302,21 @@ We'll now add a collection called production into our feedback database, and we'
     * Storage Capacity: **Fixed (10GB)**
     * Initial Throughput Capacity (RU/s): **400**
 
-![Cosmos DB Connection](/labs/logicapps/images/workflow-3-cosmosDbCollection.png)
+![Cosmos DB Connection](/fundamentals/azure101/logicapps/images/workflow-3-cosmosDbCollection.png)
 
 * In the Cosmos DB Overview area
     * Copy the URI
 
 The URI is in the form `https://<ID>.documents.azure.com:443`
 
-![Cosmos DB Connection](/labs/logicapps/images/workflow-3-cosmosDbEndpoint.png)
+![Cosmos DB Connection](/fundamentals/azure101/logicapps/images/workflow-3-cosmosDbEndpoint.png)
 
 ### Add the Create Document step and connect to Cosmos DB
 
 Final video, followed by the steps:
 
 <video video width="800" height="600" autoplay controls muted>
-  <source type="video/mp4" src="/labs/logicapps/images/workflow-3-cosmosDbCreateDocument.mp4"></source>
+  <source type="video/mp4" src="/fundamentals/azure101/logicapps/images/workflow-3-cosmosDbCreateDocument.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
 
@@ -330,7 +329,7 @@ Final video, followed by the steps:
 * Paste in the connection string `https://<yourname>cosmosdb.documents.azure.com:443/`
 * Select the Cosmos DB and click on Create
 
-![Cosmos DB Connection](/labs/logicapps/images/workflow-3-cosmosDbConnection.png)
+![Cosmos DB Connection](/fundamentals/azure101/logicapps/images/workflow-3-cosmosDbConnection.png)
 
 ### Define the document format and placement
 
@@ -356,7 +355,7 @@ Set the parameters for the _Create or update document_ action:
 
 Below is an example of the _Create or update document_ logic
 
-![Cosmos DB Connection](/labs/logicapps/images/workflow-3-cosmosDbDocument.png)
+![Cosmos DB Connection](/fundamentals/azure101/logicapps/images/workflow-3-cosmosDbDocument.png)
 
 * Save
 
@@ -366,7 +365,7 @@ Below is an example of the _Create or update document_ logic
 * Check the Run History and view the outputs
 * Go into Cosmos DB and use the Data Explorer to verify that the feedback is beeing collected successfully
 
-![Cosmos DB Document Test](/labs/logicapps/images/cosmosDbDocumentTest.png)
+![Cosmos DB Document Test](/fundamentals/azure101/logicapps/images/cosmosDbDocumentTest.png)
 
 ## Final notes
 

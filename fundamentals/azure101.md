@@ -1,17 +1,19 @@
 ---
-layout: article
 title: Azure 101
 date: 2017-08-29
-categories: workshops
-tags: [azure, 101, index, content]
+author: Richard Cheney
+category: fundamentals
+tags: [azure, 101]
 comments: true
-author: Richard_Cheney
 featured: true
-excerpt: The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.
-image:
-  feature: featured/corp1.jpg
-  teaser: Education.jpg
-  thumb:
+excerpt: The Azure 101 session is an instructor led session for technical learners who have had little to no experience with Azure public cloud
+header:
+  overlay_image: images/header/whiteboard.jpg
+  teaser: images/teaser/education.png
+excerpt: Learn how to use Infrastructure as Code with Azure Resource Manager template deployments.
+sidebar:
+  nav: "azure101"
+featured: true
 ---
 {% include toc.html %}
 
@@ -50,19 +52,17 @@ Please confirm that your Azure subscription is working correctly _before_ the se
 
 If the resource group is successfuly deployed then your subscription has sufficient permissions for the Azure 101 workshop.
 
-## Cloud Infrastructure and Apps track
-
-### Labs
+## Labs
 
 Lab | Description
-<a href="/labs/portal/" target="_blank">Portal & vNets</a> | Learn and customise the Azure portal, and create vNets and subnets
-<a href="/labs/vmquickstart" target="_blank">VM Quickstart</a> | Follow a Quickstart for either Linux or Windows VMs, via the portal, CLI or PowerShell
-<a href="/labs/webapps" target="_blank">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
-<a href="/labs/logicapps" target="_blank">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
+<a href="/fundamentals/azure101/portal/" target="_blank">Portal & vNets</a> | Learn and customise the Azure portal, and create vNets and subnets
+<a href="/fundamentals/azure101/vmquickstart" target="_blank">VM Quickstart</a> | Follow a Quickstart for either Linux or Windows VMs, via the portal, CLI or PowerShell
+<a href="/fundamentals/azure101/webapps" target="_blank">Web App Lab</a> | Create a Web App using content pulled from a GitHub repository
+<a href="/fundamentals/azure101/logicapps" target="_blank">Logic App Lab</a> | Create a feedback mechanism, HTTP endpoint, conditional emails and logging
 
-### Content
+## Content
 
-The below sections are [PowerPoint](/workshops/azure101/azure101InfraAndAppsPresenterDeck.pptx) content unless specified otherwise
+The below sections are [PowerPoint](/fundamentals/azure101/azure101InfraAndAppsPresenterDeck.pptx) content unless specified otherwise
 
 1. Azure Intro
     * Cloud drivers and key Azure principles

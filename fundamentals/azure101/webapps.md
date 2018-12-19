@@ -1,18 +1,18 @@
 ---
-layout: article
 title: Web App Lab
-categories: labs
 date: 2017-09-20
-tags: [azure, 101, paas, web, app, git, github]
+author: Richard Cheney
+category: fundamentals
 comments: true
-author: Richard_Cheney
-image:
-  feature:
-  teaser: Education.jpg
-  thumb:
-excerpt: Create a web app and then pull some html content from GitHub.  CLI and Portal options.
+featured: false
+hidden: false
+header:
+  overlay_image: images/header/whiteboard.jpg
+  teaser: images/teaser/education.png
+sidebar:
+  nav: "azure101"
+excerpt: Use the PaaS Web App service to create a static HTML web site using content from a GitHub repoository.
 ---
-{% include toc.html %}
 
 ## Introduction
 
@@ -25,15 +25,15 @@ The Web App lab is split into two options - the first option is for students who
 The diagram below gives an overview of what we are doing with a set of html
 files hosted on GitHub and pushing those into a Web App in Azure using Git.
 
-![](/labs/webapps/images/webappGit.jpg)
+![Option 1](/fundamentals/azure101/webapps/images/webappGit.jpg)
 
-1.	Use git clone to download the sample static HTML site from GitHub to your laptop
-2.	Login to Azure and create a deployment user
-3.	Create the Azure101PaaS resource group
-4.	Create the free tier app service plan
-5.	Create a web app within the app service plan
-6.	Configure a Git access point for the web app
-7.	Define the access point as an upstream git repo called “azure”, and use git push to add the html files
+1. Use git clone to download the sample static HTML site from GitHub to your laptop
+2. Login to Azure and create a deployment user
+3. Create the Azure101PaaS resource group
+4. Create the free tier app service plan
+5. Create a web app within the app service plan
+6. Configure a Git access point for the web app
+7. Define the access point as an upstream git repo called “azure”, and use git push to add the html files
 
 ### Select your console
 
@@ -74,13 +74,14 @@ user=${first}${last}Deploy
 pwd=azure101p455w0rd
 appName=azure101${first}${last}
 ```
+
 1. The first section
-  * clones the HTML files in the GitHub repo locally
-  * changes the working directory to the new clone of the repo and then initialises it for Git
-  * lists the files and then finally the pwd command prints the working directory so that you know where they are locally
+    * clones the HTML files in the GitHub repo locally
+    * changes the working directory to the new clone of the repo and then initialises it for Git
+    * lists the files and then finally the pwd command prints the working directory so that you know where they are locally
 2. The second section
-  * configures git with user information
-  * sets up to cache our credentials after the first successful connection to a remote repository
+    * configures git with user information
+    * sets up to cache our credentials after the first successful connection to a remote repository
 3. The third section then defines some variables (for the resource group, deployment user credentials and the web app name) that we'll use later in the lab
 
 If you have installed full bash on Windows 10 then you may double click the _index.html_ file in File Explorer to view the website locally.  You should see a couple of pieces of static images and text on the left, and a Twitter timeline on the right.
@@ -128,10 +129,10 @@ az webapp create --name $appName --resource-group $rg --plan quickStartPlan
 ```
 
 * Again, there will be output JSON when the command succeeds
-* Open your web browser and navigate to http://\<unique_app_name>.azurewebsites.net. (You will also find the link in the new web app in the Azure portal.)
+* Open your web browser and navigate to `http://<unique_app_name>.azurewebsites.net`. (You will also find the link in the new web app in the Azure portal.)
 * You should see a ‘placeholder’ web page – this indicates that the web app is running and ready to be configured.
 
-![](/labs/webapps/images/webappPlaceholder.jpg)
+![Default Page](/fundamentals/azure101/webapps/images/webappPlaceholder.jpg)
 
 **6. Create the Git deployment access point**
 
@@ -187,9 +188,9 @@ Refresh the web page and confirm that it has been changed as expected.
 There is a rich ecosystem built around the PaaS applications.  If you have time then explore the ecosystem for Web Apps
 
 * Browse the blade in the portal, checking out deployment slots, scale up and out, App Service Editor and Application Insights
-* Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. https://\<website>.scm.azurewebsites.net/.
+* Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. `https://<website>.scm.azurewebsites.net`.
 
---------------------------------------------------------
+--------------------------------------------
 
 ## Option 2: Use the portal and pull the content in
 
@@ -197,29 +198,30 @@ Azure offers many ways of achieving something, with a view that users should use
 
 * Open the portal
 * Click on **+ New**, search for "Web App" and click on Create
-  * Set the App name to something globally unique, such as **azure101\<yourname>**, as it will form part of the FQDN
-  * Create a new resource group, and call it **Azure101PaaS**
-  * There is a choice of WIndows or Linux based web apps.  Retain the WIndows default.
-  * Click on the app service plan/location so that we can define our own
-    * create a new App Service Plan called **freeTier**
-    * use the same region as the Resource Group
-    * specify the **F1** free tier
-    * click on **OK**
-  * Click on **Create**
+    * Set the App name to something globally unique, such as **azure101\<yourname>**, as it will form part of the FQDN
+    * Create a new resource group, and call it **Azure101PaaS**
+    * There is a choice of WIndows or Linux based web apps.  Retain the WIndows default.
+    * Click on the app service plan/location so that we can define our own
+        * create a new App Service Plan called **freeTier**
+        * use the same region as the Resource Group
+        * specify the **F1** free tier
+        * click on **OK**
+    * Click on **Create**
 
 Once the web app has deployed successfully:
+
 * open the App Service blade
 * click on the URL in the Overview section
 
 The placeholder web page will be opened in a new tab:
 
-![](/labs/webapps/images/webappPlaceholder.jpg)
+![Placeholder](/fundamentals/azure101/webapps/images/webappPlaceholder.jpg)
 
 * Scroll down the App Service blade and find **App Service Editor** in the Development Tools section
 * Click on the **Go->** link in the main pane.  This will open up a new tab containing the App Service Editor environment.
 * Select the Git button on the left
 
-    ![Git](/labs/webapps/images/gitLogo.png)
+    ![Git](/fundamentals/azure101/webapps/images/gitLogo.png)
 
 * Set the Repository URL to `https://github.com/richeney/azure101-webapp-html`
 * Click on the Clone from a git URL
@@ -232,4 +234,4 @@ The placeholder web page will be opened in a new tab:
 ### If you have time:
 
 * Browse the blade in the portal, checking out deployment options, deployment slots, scale up and out, and Application Insights
-* Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. https://\<website>.scm.azurewebsites.net/
+* Click on your website link. Access Kudu by inserting scm before azurewebsites.net, i.e. `https://<website>.scm.azurewebsites.net`

@@ -85,6 +85,24 @@ arm:
     - title: "ARM Templates"
       url: "automation/arm/theoryTemplates"
 
+azure101:
+  - title: "Azure 101 Main Page"
+    url: "fundamentals/azure101"
+
+  - title: "Azure 101 Presentation Deck"
+    url: "fundamentals/azure101/azure101InfraAndAppsPresenterDeck.pptx"
+
+  - title: "Labs"
+    children:
+    - title: "Portal and vNets"
+      url: "fundamentals/azure101/portalk.md"
+    - title: "Virtual Machine Quickstarts"
+      url: "fundamentals/azure101/vmquickstart.md"
+    - title: "Web Apps"
+      url: "fundamentals/azure101/webapps.md"
+    - title: "Logic Apps and Cosmos DB"
+      url: "fundamentals/azure101/logicapps.md"
+
 cli:
   - title: "Azure CLI"
     url: "prereqs/cli"
