@@ -6,7 +6,8 @@ category: automation
 tags: [arm, template]
 author: Richard Cheney
 header:
-  teaser: Education.jpg
+  overlay_image: images/header/arm.png
+  teaser: /images/teaser/cloud-builder.png
 excerpt: Learn how to use Infrastructure as Code with Azure Resource Manager template deployments.
 sidebar:
   nav: "arm_lab"
