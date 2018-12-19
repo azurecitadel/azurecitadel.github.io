@@ -4,8 +4,11 @@ date: 2018-04-17
 category: automation
 author: Richard Cheney
 sidebar:
-  nav: "arm_lab"
+  nav: "arm"
 hidden: true
+header:
+  overlay_image: images/header/arm.png
+excerpt: Understand the Azure Resource Manager deployment model
 ---
 
 {% include toc.html %}

@@ -6,6 +6,9 @@ author: Richard Cheney
 sidebar:
   nav: "arm"
 hidden: true
+header:
+  overlay_image: images/header/arm.png
+excerpt: Deploy multiple resources or properties within resources
 ---
 
 ## Introduction

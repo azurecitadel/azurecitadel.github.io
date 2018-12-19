@@ -4,8 +4,11 @@ date: 2018-04-17
 category: automation
 author: Richard Cheney
 sidebar:
-  nav: "arm_lab"
+  nav: "arm"
 hidden: true
+header:
+  overlay_image: images/header/arm.png
+excerpt: Core concepts for ARM template, from the core structure through to the various tools to author and deploy
 ---
 
 {% include toc.html %}

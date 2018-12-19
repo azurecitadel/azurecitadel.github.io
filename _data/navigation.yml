@@ -56,17 +56,8 @@ kubernetes_lab:
       url: "containers/kubernetes/extra"
 
 arm:
-  - title: "Main Page"
+  - title: "ARM Lab"
     url: "automation/arm"
-
-  - title: "Theory"
-    children:
-    - title: "Azure Resource Manager"
-      url: "automation/arm/theoryARM"
-    - title: "ARM Templates"
-      url: "automation/arm/theoryTemplates"
-
-  - title: "Lab Modules"
     children:
     - title: "1 - First Template"
       url: "automation/arm/lab1"
@@ -82,6 +73,13 @@ arm:
       url: "automation/arm/lab6"
     - title: "7 - Nested Deployments"
       url: "automation/arm/lab7"
+
+  - title: "Theory"
+    children:
+    - title: "Azure Resource Manager"
+      url: "automation/arm/theoryARM"
+    - title: "ARM Templates"
+      url: "automation/arm/theoryTemplates"
 
 cli:
   - title: "Azure CLI"

@@ -6,6 +6,9 @@ author: Richard Cheney
 sidebar:
   nav: "arm"
 hidden: true
+header:
+  overlay_image: images/header/arm.png
+excerpt: Use the portal and GitHub repo to create templates faster
 ---
 
 ## Overview

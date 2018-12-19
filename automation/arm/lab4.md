@@ -6,6 +6,9 @@ author: Richard Cheney
 sidebar:
   nav: "arm"
 hidden: true
+header:
+  overlay_image: images/header/arm.png
+excerpt: Make your templates richer by using conditional resources and resource properties
 ---
 
 ## Introduction

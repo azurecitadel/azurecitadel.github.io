@@ -6,6 +6,9 @@ author: Richard Cheney
 sidebar:
   nav: "arm"
 hidden: true
+header:
+  overlay_image: images/header/arm.png
+excerpt: Explore the various functions and introduce Azure Key Vault for secrets
 ---
 
 ## Introduction

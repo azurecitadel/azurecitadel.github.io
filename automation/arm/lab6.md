@@ -6,6 +6,9 @@ author: Richard Cheney
 sidebar:
   nav: "arm"
 hidden: true
+header:
+  overlay_image: images/header/arm.png
+excerpt: Use more complex object and array parameters to simplify your ARM modules
 ---
 
 ## Introduction
