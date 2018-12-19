@@ -421,7 +421,7 @@ This is in once where the entity contains the intent animal, and once where the 
 
 In the top section of _spiritMeaning_, highlight the code to build the message with the hero card – as above, **do not include the var sanimal**. As shown below, you will see a light bulb icon appear, hover over this and click, **Extract to function in global scope**. Change the name to **spiritCard**.
 
-![](/labs/bot/images/Extract_to_function.PNG)
+![](../images/Extract_to_function.PNG)
 
 You should now see a new function created:
 
@@ -466,7 +466,7 @@ intents.matches('spiritMeaning', [
 
 For trying to keep this lab simple to follow, the bot is not complex, but brings together a few of the key principles of user identity, conversation flow, and cognitive services and that is as much as we are going to do with this lab. You have a basic bot that will run in the Azure portal, or in a web page iFrame. If you want to use on Skype or other channels, go to Channels in the Azure portal and follow the instructions – if you want to try the bot in Skype (personal version), open the client, and click the icon to add the bot as a contact.
 
-![](/labs/bot/images/skypetiger.PNG) 
+![](../images/skypetiger.PNG) 
 
 It's that easy! 
 
