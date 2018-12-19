@@ -10,7 +10,7 @@ author: Richard Cheney
 sidebar:
   nav: "vdc"
 header:
-  header: /images/header/vdc.jpg
+  header: /images/header/vdc.png
   teaser: /images/teaser/blueprint.jpg
 excerpt: The Virtual Data Centre (VDC) lab provides a theoretical overview and hands on lab to go through the key constructs  recommended for larger enterprise customers
 ---

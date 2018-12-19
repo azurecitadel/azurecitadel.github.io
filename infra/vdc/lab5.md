@@ -8,7 +8,7 @@ author: Richard Cheney
 sidebar:
   nav: "vdc"
 header:
-  header: /images/header/vdc.jpg
+  header: /images/header/vdc.png
   teaser: /images/teaser/blueprint.jpg
 excerpt: Configure role based access control for your VDC resources
 ---
