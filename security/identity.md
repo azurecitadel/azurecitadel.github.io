@@ -1,19 +1,13 @@
 ---
-layout: article
 title: Extending Identities to the Cloud
 date: 2017-09-19
-categories: labs
-tags: [aad, identity, hybrid]
-comments: true
-author: Tom_Wilde
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
+category: security
+tags: [azure-ad, identity, hybrid]
+author: Tom Wilde
+header:
+  teaser: /images/teaser/education.png
+excerpt: Learn how to extend on premise identities to the cloud with Azure Active Directory 
 ---
-Extending Identities to the Cloud.
-
-{% include toc.html %}
 
 ## Overview
 During this lab we will learn how to extend our on premise identities to the cloud.  This allows you to provide a common identity for your users for Office 365, Azure, SaaS applications integrated with Azure AD + a whole lot more.
@@ -31,13 +25,13 @@ Pass-through Authentication will be used and we will not be synchronizing passwo
 
 ## Pre-requisites
 The workshop requires the following:
-* [Azure Subscription](/guides/prereqSubscription.md)
+* [Azure Subscription](/prereqs/subscription)
 * Some of these steps will require a public domain (e.g. microsoft.com) with the ability to edit the DNS settings so we can match our on premise identities to the cloud. If you do not own one you can skip certain steps and still use AD Connect but it wouldn't be a great user experience in a production environment.
 
 ## Labs
-* [Lab: **Create Windows Active Directory Forest**](./create-ad)
-* [Lab: **Create Azure Active Directory Tenant**](./create-aad)
-* [Lab: **Prepare Windows Active Directory**](./prepare-ad)
-* [Lab: **Configure AD Connect**](./configure-adc)
+### [Lab: **Create Windows Active Directory Forest**](./create-ad)
+### [Lab: **Create Azure Active Directory Tenant**](./create-aad)
+### [Lab: **Prepare Windows Active Directory**](./prepare-ad)
+### [Lab: **Configure AD Connect**](./configure-adc)
 
 

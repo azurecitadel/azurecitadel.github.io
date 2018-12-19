@@ -9,4 +9,4 @@ header:
 
 # Guidelines
 - Images should be PNG
-- Images should ??? size
+- Images should a good size as they will stretch across the screen

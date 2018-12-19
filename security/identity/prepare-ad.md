@@ -1,19 +1,9 @@
 ---
-layout: article
-title: Prepare Windows Azure Active Directory
+title: Configure Active Directory Connect
 date: 2017-09-19
-tags: [aad, identity, hybrid]
-comments: true
-author: Tom_Wilde
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
+hidden: true
+author: Tom Wilde
 ---
-Extending Identities to the Cloud.
-
-{% include toc.html %}
-
 ## Prepare Windows Active Directory
 Now we need to configure our on premise domain to match the newly created and verified domain (if you own it) and configure our on premise identities to match. 
 I will edit my on premise domain **wildecompany.local** then my users so they no longer log in as **user@wildecompany.local**, instead now log into **user@wilde.company** so they match!
@@ -64,6 +54,6 @@ I will edit my on premise domain **wildecompany.local** then my users so they no
 
 My **@wildecompany.local** users are now **@wilde.company**. Now we have matched our on premise users our public domain they can have a consistent experience regardless of whether they're logging in to on premise or cloud apps. This is a fundamental step when migrating identities to the cloud. 
 
-Move onto the next lab [Configure AD Connect.](./configure-adc.md)
+Move onto the next lab [Configure AD Connect.](../configure-adc)
 
 

@@ -1,19 +1,9 @@
 ---
-layout: article
-title: Create Azure Active Directory
+title: Configure Active Directory Connect
 date: 2017-09-19
-tags: [aad, identity, hybrid]
-comments: true
-author: Tom_Wilde
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
+hidden: true
+author: Tom Wilde
 ---
-Extending Identities to the Cloud.
-
-{% include toc.html %}
-
 ## Create Azure Active Directory
 Next we need to create a new Azure Active Directory Tenant.  I will be creating a tenant called **wilde.company** (this is a public domain that I own), if you do not own a public domain and are completing this lab as a learning exercise then you will not be able to verify the domain, don't worry and continue as normal.
 
@@ -78,6 +68,6 @@ e.g:
 * *yourcompany.co.uk > yourcompany.onmicrosoft.com*
 * *example.org > example.onmicrosoft.com*
 
-Move onto the next lab [Prepare Active Directory.](./prepare-ad.md)
+Move onto the next lab [Prepare Active Directory.](../prepare-ad)
 
 

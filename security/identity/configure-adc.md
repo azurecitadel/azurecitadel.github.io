@@ -1,19 +1,9 @@
 ---
-layout: article
 title: Configure Active Directory Connect
 date: 2017-09-19
-tags: [aad, identity, hybrid]
-comments: true
-author: Tom_Wilde
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
+hidden: true
+author: Tom Wilde
 ---
-Extending Identities to the Cloud.
-
-{% include toc.html %}
-
 ## Configure Active Directory Connect
 
 We're almost ready to synchronize our identities, but first we'll create a new global admin (specifically for the new Azure AD Tenant) and use that account for AD Connect.
