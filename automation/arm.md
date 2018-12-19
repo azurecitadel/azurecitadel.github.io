@@ -10,7 +10,7 @@ header:
   teaser: /images/teaser/cloud-builder.png
 excerpt: Learn how to use Infrastructure as Code with Azure Resource Manager template deployments.
 sidebar:
-  nav: "arm_lab"
+  nav: "arm"
 featured: true
 ---
 

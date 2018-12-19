@@ -4,11 +4,12 @@ date: 2018-04-17
 category: automation
 author: Richard Cheney
 sidebar:
-  nav: "arm_lab"
+  nav: "arm"
 hidden: true
+header:
+  overlay_image: images/header/arm.png
+excerpt: Create your first template and deploy to Azure
 ---
-
-{% include toc.html %}
 
 ## Overview
 
