@@ -26,7 +26,7 @@
 - name: security
   title: Security
   image: /images/categories/security.png
-  desc: "Securing your data & applications in the cloud. Managing access and indentities with Azure Active Directory"
+  desc: "Securing your data & applications in the cloud. Managing access and identities with Azure Active Directory"
 
 - name: infra
   title: Core Infrastructure

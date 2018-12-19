@@ -11,6 +11,7 @@ Ben Coleman:
     name     : Ben Coleman
     bio      : Cloud Solution Architect.<br/>Containers, Open source, Node.js, DevOps, automation
     avatar   : images/authors/benc.jpg
+    email    : ben.coleman@microsoft.com    
     twitter  : BenCodeGeek
     github   : benc-uk
     linkedin : benc-uk
@@ -132,7 +133,7 @@ Matt Biggs:
     bio      :
     avatar   : images/authors/matt-b.jpeg
     email    : matthew.biggs@microsoft.com
-    twitter  :
+    twitter  : azurecloudmatt
     github   :
     linkedin :
 

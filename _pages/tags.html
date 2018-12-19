@@ -5,7 +5,7 @@ hidden: true
 title: "Browse By Tags"
 author_profile: false
 read_time: false
-toc: true
+toc: false
 toc_label: Tag List
 toc_icon: tags
 search: false
@@ -15,6 +15,21 @@ header:
 ---
 
 {% assign all_tags = site.pages | map: 'tags' | join: ','  | split: ',' | uniq | sort %}
+
+<script>
+function tagJump() {
+  var url = location.href;
+  var tag = document.getElementById("tagSelect").value;
+  location.href = "#"+tag;
+}
+</script>
+
+<h1>Jump to tag:</h1>
+<select onchange="tagJump()" id="tagSelect">
+  {% for tag in all_tags %}
+    <option>{{ tag }}</option>
+  {% endfor %}
+</select>
 
 {% for tag in all_tags %}
   <h2 id="{{ tag }}">{{ tag }}</h2>
