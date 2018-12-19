@@ -2,6 +2,7 @@
 title: CLI 2.0 First Steps
 date: 2017-10-04
 author: Richard Cheney
+category: prereqs
 comments: true
 hidden: true
 sidebar:

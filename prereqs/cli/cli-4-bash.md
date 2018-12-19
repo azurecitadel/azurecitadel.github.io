@@ -2,12 +2,15 @@
 title: CLI 2.0 and Bash Scripting
 date: 2017-10-04
 author: Richard Cheney
+category: prereqs
 comments: true
 hidden: true
 sidebar:
   nav: "cli"
+header:
+  overlay_image: images/header/arm.png
+excerpt: Incorporate the Azure CLI into your Bash scripting
 ---
-{% include toc.html %}
 
 ## Introduction
 
