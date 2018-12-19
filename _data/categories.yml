@@ -32,3 +32,8 @@
   title: Core Infrastructure
   image: /images/categories/infra.png
   desc: "Infrastructure & Networking"
+
+- name: prereqs
+  title: Lab Pre-Requisites
+  image: /images/categories/prereqs.png
+  desc: "Get yourself set up and ready to take on the labs"

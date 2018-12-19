@@ -94,6 +94,23 @@ cli:
     - title: "Scripting in Bash"
       url: "fundamentals/cli/cli-4-bash.md"
 
+vdc:
+  - title: "Virtual Data Centre"
+    url: "infra/vdc"
+    children:
+    - title: "Setup"
+      url: "infra/vdc/lab0"
+    - title: "Explore"
+      url: "infra/vdc/lab1"
+    - title: "Configure"
+      url: "infra/vdc/lab2"
+    - title: "Secure"
+      url: "infra/vdc/lab3"
+    - title: "Monitor"
+      url: "infra/vdc/lab4"
+    - title: "RBAC"
+      url: "infra/vdc/lab5"
+
 custom_lab:
   - title: "Main Lab Modules"
     children:
