@@ -22,12 +22,16 @@ sidemenu:
       url: "/containers"
     - title: "DevOps"
       url: "/devops"
+    - title: "Infrastructure"
+      url: "/infra"
     - title: "Automation"
       url: "/automation"
     - title: "Azure Fundamentals"
       url: "/fundamentals"
     - title: "Security"
       url: "/security"
+    - title: "Pre-reqs"
+      url: "/prereqs"
 #
 # Custom lab sidemenus
 #
