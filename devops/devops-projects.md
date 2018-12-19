@@ -1,18 +1,14 @@
 ---
-layout: article
 title: DevOps Projects Lab
-categories: labs
+category: devops
 date: 2018-06-04
-tags: [azure, lab, portal, devops, devops-projects, nodejs]
-comments: true
-author: John_Duckmanton
-image:
-  feature: devops-cycle.png 
-  teaser: devops-cycle.png
-  thumb: 
+tags: [devops-projects, nodejs]
+author: John Duckmanton
+header:
+  teaser: /images/teaser/devops-proj.png
+  overlay_image: /images/teaser/devops-proj.png
 excerpt: Azure DevOps Projects simplifies the process of setting up a complete CI/CD pipeline for code deployment to Azure, whether you're starting a new project from scratch, or bringing your codebase with you.
 ---
-{% include toc.html %}
 
 ## Introduction
 
@@ -49,7 +45,7 @@ For this lab we'll create a sample Node.js application and deploy it to Azure Ap
   - Click on the **+ Create a resource** icon (or press G+N), search for _DevOps Project_ and choose **Create**.
   - Select _Node.js_ and click **Next**
 
-  ![](/labs/devops-projects/images/new-node-project.png)
+  ![](images/new-node-project.png)
 
   - Select _Express.js_ application framework and click **Next**
   - Select the _Web App_ Azure Service and click **Next**
@@ -74,7 +70,7 @@ As a part of creating the DevOps project, a CI/CD pipeline has been created incl
 
 You can see all these elements along with their status under your project as shown in the example below:
 
-![](/labs/devops-projects/images/myfirstdevopsproject.png)
+![](images/myfirstdevopsproject.png)
 
 ### Review the code repository
 
@@ -82,7 +78,7 @@ Your project will have been initialized with sample source code. You can view yo
 
 * From your Azure DevOps Project dashboard, select _Repositories_ from the top of the Azure DevOps project dashboard. This link opens your VSTS project and navigates to the Git repository.
 
-![](/labs/devops-projects/images/repositories-menu.png)
+![](images/repositories-menu.png)
 
 * Browse the code. When you are finished close the browser tab.
 
@@ -130,13 +126,13 @@ On the right-hand side of the browser, select **View releases**. This view shows
 
 Click on the name of the release (or select the ellipsis next to one of your releases, and choose **Open**). 
 
-![](/labs/devops-projects/images/release-definition.png)
+![](images/release-definition.png)
 
 There are several menus to explore from this view such as a release summary, associated work items, and Tests.
 
 Select **Logs**. The logs view shows each step that was executed as part of the release along with a visual indicator of whether the task completed succesfully. You can also see the log output from each task.
 
-![](/labs/devops-projects/images/release-logs.png)
+![](images/release-logs.png)
 
 ### Review your App
 
@@ -146,11 +142,11 @@ You can see the app service name on the right-hand side of the window. The curre
 
 * To navigate to your the app service, click on the app service name.
 
-![](/labs/devops-projects/images/app-service.png)
+![](images/app-service.png)
 
 * To view your running application, click **Browse**.
 
-![](/labs/devops-projects/images/app-endpoint.png)
+![](images/app-endpoint.png)
 
 
 ### Monitor your application
