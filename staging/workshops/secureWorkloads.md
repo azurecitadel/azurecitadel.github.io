@@ -7,12 +7,12 @@ categories: workshops
 tags: [security, azure, infrastructure]
 comments: true
 featured: true
-excerpt: This workshop is focused on securing IaaS and PaaS workloads in Azure.     
+excerpt: This workshop is focused on securing IaaS and PaaS workloads in Azure.
 author: Adam_And_Tom
 image:
-  feature: 
+  feature:
   teaser: secure.png
-  thumb: 
+  thumb:
 ---
 Overview and pre-requisites for the Azure infrastructure workshop.
 
@@ -37,7 +37,7 @@ This workshop walks the user through a scenario where a fictional organisation (
 
 The workshop requires the following:
 
-* **[Azure Subscription]({{ site.url }}/guides/subscription)**
+* **[Azure Subscription]({{ site.url }}/prereqs/subscription)**
   * If your workshop is being hosted by a Microsoft Cloud Solution Architect (CSA) then you will be provided with a code for an **Azure Pass** subscription
 
   * If you will be using you own subscription (e.g. Visual Studio Enterprise), you will need the ability to create users and groups in the associated Azure Active Directory tenant.

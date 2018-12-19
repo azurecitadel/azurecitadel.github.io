@@ -36,13 +36,13 @@ The short URL to get back to this page is:
 
 ### Azure subscription
 
-You will need a working [Azure subscription](/guides/subscription).
+You will need a working [Azure subscription](/prereqs/subscription).
 
 Test that the subscription is active by logging onto the [portal](http://portal.azure.com) and creating an resource group.
 
 ### Visual Studio Code plus extensions
 
-For the labs we will be using Visual Studio Code, configured as per the [VS Code](/guides/vscode) prereqs page.  Please **follow all of those configuration steps** to make sure you are ready to begin the labs.
+For the labs we will be using Visual Studio Code, configured as per the [VS Code](/prereqs/vscode) prereqs page.  Please **follow all of those configuration steps** to make sure you are ready to begin the labs.
 
 You will need to add in the following extensions to vscode for the ARM workshop:
 

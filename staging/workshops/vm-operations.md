@@ -7,12 +7,12 @@ categories: workshops
 tags: [management, operations, backup, dr, inventory, change management, azure, infrastructure]
 comments: true
 featured: true
-excerpt: This workshop is focused on performing operations on virtual machines in Azure.     
+excerpt: This workshop is focused on performing operations on virtual machines in Azure.
 author: Dan_And_Tom
 image:
-  feature: 
+  feature:
   teaser: cloud-tools.png
-  thumb: 
+  thumb:
 ---
 Overview and pre-requisites for the Azure infrastructure workshop.
 
@@ -35,7 +35,7 @@ This workshop walks the user through a scenario where a fictional organisation (
 
 The workshop requires the following:
 
-* **[Azure Subscription]({{ site.url }}/guides/subscription)**
+* **[Azure Subscription]({{ site.url }}/prereqs/subscription)**
   * If your workshop is being hosted by a Microsoft Cloud Solution Architect (CSA) then you will be provided with a code for an **Azure Pass** subscription
 
 * At least one virtual machine to apply virtual machine operations on.

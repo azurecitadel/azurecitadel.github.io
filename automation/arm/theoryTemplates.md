@@ -110,9 +110,9 @@ The truth is that you can use any text editor to manipulate JSON files, but most
 
 Microsoft provide a couple of integrated development environments (IDEs) that are recommended.
 
-The more lightweight cross platform product of the two is <a href="/guides/vscode" target="_new">Visual Studio Code</a> (VS Code).  This supports JSON syntax highlighting, intellisense and ARM snippets.  It has some good integration with both Azure and the GitHub Azure Quickstart repository that we will come on to later. This is the IDE tool that you will see in the screenshots for the majority of the lab. The install instructions in the link include a couple of key extensions, plus how to install the ARM snippets.
+The more lightweight cross platform product of the two is <a href="/prereqs/vscode" target="_new">Visual Studio Code</a> (VS Code).  This supports JSON syntax highlighting, intellisense and ARM snippets.  It has some good integration with both Azure and the GitHub Azure Quickstart repository that we will come on to later. This is the IDE tool that you will see in the screenshots for the majority of the lab. The install instructions in the link include a couple of key extensions, plus how to install the ARM snippets.
 
-The more heavyweight product  is <a href="/guides/vs2017" target="_new">Visual Studio 2017</a> (VS 2017).  Once integrated with Azure then adding resources into a JSON file also adds in variables and parameters, and it has excellent intellisense including variable values.  However for many it is a sledgehammer to crack a nut for managing something as trivial as JSON files, and can be unnecessarily complex and slow to install and start up.
+The more heavyweight product  is <a href="/prereqs/vs2017" target="_new">Visual Studio 2017</a> (VS 2017).  Once integrated with Azure then adding resources into a JSON file also adds in variables and parameters, and it has excellent intellisense including variable values.  However for many it is a sledgehammer to crack a nut for managing something as trivial as JSON files, and can be unnecessarily complex and slow to install and start up.
 
 One option for simple editing is within the Azure Portal itself.  Type 'template' into the search and select "Deploy a custom template" from there. (Or go direct using this <a href="https://portal.azure.com/#create/Microsoft.Template" target="_new">Deploy a Custom Template</a> link.)
 
@@ -148,7 +148,7 @@ New-AzureRmResourceGroupDeployment -Name myDeployment -ResourceGroupName $rg -Te
 
 Note that PowerShell is also an option for the Cloud Shell (`>_`) built into the Azure Portal.
 
-> Install instructions for the [PowerShell Azure Modules](/guides/powershell).
+> Install instructions for the [PowerShell Azure Modules](/prereqs/powershell).
 
 #### CLI 2.0
 
@@ -166,7 +166,7 @@ az group deployment create --name myDeployment --resource-group $rg --template-f
 
 These commands are as tested within the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install-win10" target="_new">Windows Subsystem for Linux</a> (WSL), with the CLI 2.0 added.
 
-> Install instructions for [Windows Subsystem for Linux and CLI 2.0]({{ site.url }}/guides/wsl).
+> Install instructions for [Windows Subsystem for Linux and CLI 2.0]({{ site.url }}/prereqs/wsl).
 
 Again there is a bash session available within the Azure Portal using the Cloud Shell (`>_`).  In fact this is the default.  Note that there is no need to login to Cloud Shell.  Also the environment as it is maintained for you so there is no need to update.
 

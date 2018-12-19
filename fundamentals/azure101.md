@@ -11,7 +11,7 @@ excerpt: The Azure 101 session is intended as an introductory training for techn
 image:
   feature: featured/corp1.jpg
   teaser: Education.jpg
-  thumb: 
+  thumb:
 ---
 {% include toc.html %}
 
@@ -30,10 +30,10 @@ Allow five hours for a full session including all of the labs.
 The workshop requires the following
 
 Pre-req | Required | Comment
-<a href="/guides/subscription" target="_blank">Azure Subscription</a> | Required |
-<a href="/guides/wsl" target="_blank">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
-<a href="/guides/powershell" target="_blank">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
-<a href="/guides/vscode" target="_blank">Visual Studio Code</a> | Optional |
+<a href="/prereqs/subscription" target="_blank">Azure Subscription</a> | Required |
+<a href="/prereqs/wsl" target="_blank">Bash & CLI 2.0</a> | Optional | Windows 10 only, recommended for power users
+<a href="/prereqs/powershell" target="_blank">Azure Powershell Modules</a> | Optional | Recommended for existing PowerShell users
+<a href="/prereqs/vscode" target="_blank">Visual Studio Code</a> | Optional |
 
 Please confirm that your Azure subscription is working correctly _before_ the session:
 
