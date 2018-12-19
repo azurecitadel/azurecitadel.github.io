@@ -11,6 +11,7 @@ header:
 excerpt: Learn how to use Infrastructure as Code with Azure Resource Manager template deployments.
 sidebar:
   nav: "arm_lab"
+featured: true
 ---
 
 {% include toc.html %}
