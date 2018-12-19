@@ -8,8 +8,8 @@ author: Richard Cheney
 sidebar:
   nav: "vdc"
 header:
-  header: /images/header/vdc.png
-  teaser: /images/teaser/blueprint.jpg
+  overlay_image: /images/header/vdc.png
+  teaser: /images/teaser/blueprint.png
 excerpt: Deploy the baseline VDC environment into your subscription
 ---
 
