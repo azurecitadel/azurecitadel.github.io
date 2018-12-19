@@ -83,16 +83,16 @@ arm:
 
 cli:
   - title: "Azure CLI"
-    url: "fundamentals/cli"
+    url: "prereqs/cli"
     children:
     - title: "Setup"
-      url: "fundamentals/cli/cli-1-setup.md"
+      url: "prereqs/cli/cli-1-setup.md"
     - title: "First Steps"
-      url: "fundamentals/cli/cli-2-firststeps.md"
+      url: "prereqs/cli/cli-2-firststeps.md"
     - title: "JMESPATH Queries"
-      url: "fundamentals/cli/cli-3-jmespath.md"
+      url: "prereqs/cli/cli-3-jmespath.md"
     - title: "Scripting in Bash"
-      url: "fundamentals/cli/cli-4-bash.md"
+      url: "prereqs/cli/cli-4-bash.md"
 
 vdc:
   - title: "Virtual Data Centre"
