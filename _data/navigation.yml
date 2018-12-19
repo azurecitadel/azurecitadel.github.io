@@ -95,26 +95,26 @@ azure101:
   - title: "Labs"
     children:
     - title: "Portal and vNets"
-      url: "fundamentals/azure101/portalk.md"
+      url: "fundamentals/azure101/portal"
     - title: "Virtual Machine Quickstarts"
-      url: "fundamentals/azure101/vmquickstart.md"
+      url: "fundamentals/azure101/vmquickstart"
     - title: "Web Apps"
-      url: "fundamentals/azure101/webapps.md"
+      url: "fundamentals/azure101/webapps"
     - title: "Logic Apps and Cosmos DB"
-      url: "fundamentals/azure101/logicapps.md"
+      url: "fundamentals/azure101/logicapps"
 
 cli:
   - title: "Azure CLI"
     url: "prereqs/cli"
     children:
     - title: "Setup"
-      url: "prereqs/cli/cli-1-setup.md"
+      url: "prereqs/cli/cli-1-setup"
     - title: "First Steps"
-      url: "prereqs/cli/cli-2-firststeps.md"
+      url: "prereqs/cli/cli-2-firststeps"
     - title: "JMESPATH Queries"
-      url: "prereqs/cli/cli-3-jmespath.md"
+      url: "prereqs/cli/cli-3-jmespath"
     - title: "Scripting in Bash"
-      url: "prereqs/cli/cli-4-bash.md"
+      url: "prereqs/cli/cli-4-bash"
 
 vdc:
   - title: "Virtual Data Centre"

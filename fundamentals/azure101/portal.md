@@ -5,7 +5,7 @@ category: fundamentals
 author: Richard Cheney
 comments: true
 featured: false
-hidden: false
+hidden: true
 header:
   overlay_image: images/header/whiteboard.jpg
   teaser: images/teaser/education.png
