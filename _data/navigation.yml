@@ -42,17 +42,17 @@ kubernetes_lab:
   - title: "Lab Modules"
     children:
     - title: "1 - Deploying Kubernetes"
-      url: "containers/kubernetes/part1"
+      url: "cloud-native/kubernetes/part1"
     - title: "2 - Azure Container Registry (ACR) "
-      url: "containers/kubernetes/part2"
+      url: "cloud-native/kubernetes/part2"
     - title: "3 - Deploying the Data Layer"
-      url: "containers/kubernetes/part3"
+      url: "cloud-native/kubernetes/part3"
     - title: "4 - Services & Networking"
-      url: "containers/kubernetes/part4"
+      url: "cloud-native/kubernetes/part4"
     - title: "5 - Deploying the Frontend"
-      url: "containers/kubernetes/part5"
+      url: "cloud-native/kubernetes/part5"
     - title: "6 - Scaling & Persistence"
-      url: "containers/kubernetes/part6"
+      url: "cloud-native/kubernetes/part6"
 
   - title: "Optional Modules"
     children:
