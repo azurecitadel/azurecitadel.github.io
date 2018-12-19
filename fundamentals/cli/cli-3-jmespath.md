@@ -6,6 +6,9 @@ comments: true
 hidden: true
 sidebar:
   nav: "cli"
+header:
+  overlay_image: images/header/arm.png
+excerpt: Harness the power of JMESPATH queries
 ---
 {% include toc.html %}
 
@@ -74,6 +77,7 @@ The structures are split into two types:
 When arrays and objects contain multiple elements then those elements are separated by commas.
 
 Values may be:
+
 * string
 * number
 * true
@@ -202,7 +206,6 @@ The VM name should be unique within that subscription and resource group, so the
 
 Pipes are very useful when combining filters with multi-selects, and also the functions shown below.
 
-
 ## Additional Functions
 
 There are a whole host of [functions](http://jmespath.org/specification.html#builtin-functions) that can be very powerful.  Here are a few examples:
@@ -217,10 +220,9 @@ There are a whole host of [functions](http://jmespath.org/specification.html#bui
 
   The `contain` function will also returns true if tested against an array if the search value matches on of the elements.
 
-
 * **min**, **max**, **min_by**, **max_by**, **sort_by**, **sort**, **reverse**
 
-  The following command will provide an array of all VMs sorted by the OS disk size, with the largest first: ` az vm list --output json --query "reverse(sort_by([], &storageProfile.osDisk.diskSizeGb))"`
+  The following command will provide an array of all VMs sorted by the OS disk size, with the largest first: `az vm list --output json --query "reverse(sort_by([], &storageProfile.osDisk.diskSizeGb))"`
 
 * **to_array**, **to_string**, **to_number**
 

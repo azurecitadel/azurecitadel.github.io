@@ -7,7 +7,7 @@ category: fundamentals
 comments: true
 header:
   teaser: /images/teaser/code.jpg
-comments: true
+  overlay_image: images/header/arm.png
 excerpt: Delve into CLI 2.0, integrate with Bash scripts and unlock the power of the JMESPATH queries
 sidebar:
   nav: "cli"

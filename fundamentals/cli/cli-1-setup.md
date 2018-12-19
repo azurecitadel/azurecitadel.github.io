@@ -6,6 +6,9 @@ comments: true
 hidden: true
 sidebar:
   nav: "cli"
+header:
+  overlay_image: images/header/arm.png
+excerpt: Get Azure CLI setup on your machine
 ---
 
 ## Installation
@@ -30,9 +33,9 @@ For Windows 7, 8 and 8.1 users then the Cloud Shell is recommended for this lab.
 The level of innovation on Azure is reflected in the frequent updates made to CLI 2.0 and therefore it is good practice to update local installs regularly.  Depending on your package manager then the command to update all packages is shown below:
 
 **OS** | **Package Manager** | **Command**
-macOS | brew | ```brew upgrade```
-Ubuntu | apt-get | ``` sudo apt-get update && sudo apt-get dist-upgrade```
-RHEL, Fedora, CentOS | yum | ```yum check-update && sudo yum update```
-openSUSE, SLE | zypper | ```sudo zypper refresh && sudo zypper update```
+macOS | brew | `brew upgrade`
+Ubuntu | apt-get | `sudo apt-get update && sudo apt-get dist-upgrade`
+RHEL, Fedora, CentOS | yum | `yum check-update && sudo yum update`
+openSUSE, SLE | zypper | `sudo zypper refresh && sudo zypper update`
 
 Note that these commands will update all packages, not just the azure-cli package.
