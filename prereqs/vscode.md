@@ -31,11 +31,11 @@ Here is a summary:
     * Remove all Explorer integrations, file associations, and use Command Prompt as the shell
     * Check  `git` works in PowerShell (or Command Prompt)
     * If successful then Git should be the integrated SCM in Visual Studio Code
-1. <a href="/guides/powershell" target="_blank">PowerShell</a>
+1. <a href="/prereqs/powershell" target="_blank">PowerShell</a>
     * Install the [Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)
     * Install the [Azure CLI installer (MSI)](https://aka.ms/InstallAzureCliWindows)
     * Check `az` works within PowerShell
-1. <a href="/guides/wsl" target="_blank">Bash</a> (Windows 10 only)
+1. <a href="/prereqs/wsl" target="_blank">Bash</a> (Windows 10 only)
     * Install Ubuntu into the Windows subsystem for Linux
     * Follow the instructions to add both git and the Azure CLI into the subsystem
 1. [Integrated Console](#integrated-console)

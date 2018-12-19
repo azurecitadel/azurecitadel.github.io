@@ -28,7 +28,7 @@ excerpt: The Virtual Data Centre (VDC) lab provides a theoretical overview and h
 
 The workshop requires the following:
 
-* **[Azure Subscription]({{ site.url }}/guides/subscription)**
+* **[Azure Subscription]({{ site.url }}/prereqs/subscription)**
     * If your workshop is being hosted by a Microsoft Cloud Solution Architect (CSA) then you will be provided with a code for an **Azure Pass** subscription
     * Open a **private** (in-private / incognito) browser session
     * Go to <http://signup.live.com> and create a new  Microsoft account in  **vdc._firstname.lastname_@outlook.com** format
@@ -45,7 +45,7 @@ The workshop requires the following:
     * Using a work email may mean that you do not have write access to the company's directory and therefore you cannot create users and groups
 * **Cloud Shell**
     * In the Azure [portal](https://portal.azure.com), click on the Cloud Shell icon at the top of the screen (**>_**), create the storage account for clouddrive and confirm it is working by typing ```az account show```
-    * [Bash and CLI 2.0]({{ site.url }}/guides/wsl) (optional, recommended, only applicable for Windows 10)
+    * [Bash and CLI 2.0]({{ site.url }}/prereqs/wsl) (optional, recommended, only applicable for Windows 10)
 
 ## Labs
 

@@ -29,9 +29,9 @@ The lab does take a little while to run through, but will give you a good ground
 
 Before we start, let's check your configuration.
 
-First of all you will need a working [Azure subscription](/guides/subscription).
+First of all you will need a working [Azure subscription](/prereqs/subscription).
 
-For this lab we will be using Visual Studio Code, and it is assumed that you have configured it as per the [VS Code prereqs](/guides/vscode) page:
+For this lab we will be using Visual Studio Code, and it is assumed that you have configured it as per the [VS Code prereqs](/prereqs/vscode) page:
 
 * Visual Studio Code
 * Git installed into the operating system
@@ -585,7 +585,7 @@ The `query='properties.outputs.storageAccount.value'` line is setting a new `$qu
 
 We have also used the `--output` switch to output in tab separated value format which is far simpler when settings bash variables.  Run `az account show --output json` to see what that the default output looks like and then compare with the other possible output types, jsonc, table and tsv.  Try a few simple queries such as `--query user` and `--query user.name` to see how it affects the result.
 
-The JMESPATH queries are hugely flexible and powerful, but here we are simply selecting one of the outputs.  There is a separate [Bash and CLI](/guides/cli/) guide if you want to go deeper in this area.
+The JMESPATH queries are hugely flexible and powerful, but here we are simply selecting one of the outputs.  There is a separate [Bash and CLI](/prereqs/cli/) guide if you want to go deeper in this area.
 
 #### PowerShell
 

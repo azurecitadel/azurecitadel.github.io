@@ -83,7 +83,7 @@ You can easily customise the colour scheme for it.  Download [colortools](https:
 
 The colortools download will include a few files, but you can also find [repositories](https://github.com/mbadolato/iTerm2-Color-Schemes) full of itermcolors files.
 
-Or you can customise and then export your own ini files in the console, such as this [Nord Extra Dark colour scheme](https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/guides/wsl/nord-extra-dark.ini), which is close to the extension in vscode. Right click the link and save alongside the other schemes, and then you can use `.\colortools.exe -b nord-extra-dark` to set.
+Or you can customise and then export your own ini files in the console, such as this [Nord Extra Dark colour scheme](https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/prereqs/wsl/nord-extra-dark.ini), which is close to the extension in vscode. Right click the link and save alongside the other schemes, and then you can use `.\colortools.exe -b nord-extra-dark` to set.
 
 ### Updated PS1 prompt
 
@@ -133,7 +133,7 @@ Or create a custom one, e.g.:
 ```bash
 umask 022
 mkdir -p ~/.vim/colors
-curl https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/guides/wsl/cloudshell.vim > ~/.vim/colors/cloudshell.vim
+curl https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/prereqs/wsl/cloudshell.vim > ~/.vim/colors/cloudshell.vim
 echo -e "colo cloudshell\nsyntax on" >> ~/.vimrc
 ```
 
@@ -143,7 +143,7 @@ With WSL you will notice that anything in /mnt/c will appear to linux as if it h
 
 ```bash
 umask 022
-curl https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/guides/wsl/.dircolors_cloudshell > ~/.dircolors
+curl https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/prereqs/wsl/.dircolors_cloudshell > ~/.dircolors
 source ~/.bashrc
 ls -lrt --color=auto /mnt/c/Users/$LOGNAME/Downloads
 ```

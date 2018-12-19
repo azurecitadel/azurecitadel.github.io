@@ -27,7 +27,7 @@ The content is split into four main areas:
 
 **Folder** | **Description**
 /demos | Instructions for demos used to show functionality of Azure services
-/guides | Tech Primers for supporting technologies
+/prereqs | Tech Primers for supporting technologies
 /labs | Guided hands-on Azure labs, usually ranging from 15-120 minutes
 /workshops | Full or multi-day sessions, often including multiples labs
 
@@ -153,7 +153,7 @@ If you then want to make those changes active on the main website then submit a 
 
 Jekyll then regenerates the static HTML site and your changes will be live on [Azure Citadel](https://aka.ms/citadel).
 
-![Git Workflow](/guides/citadel/images/gitWorkflow.png)
+![Git Workflow](/prereqs/citadel/images/gitWorkflow.png)
 
 > These workflow steps need to be tested. Note that the recommended workflows introduce branches and private repositories (PRs), but this is a level of complexity that is not required for the repo whilst the number of contributors and rate of change are both low.
 
@@ -168,7 +168,7 @@ You will need to create your own [GitHub](https://github.com/join) ID if you do 
 
 ### 2. Clone within vscode
 
-You will need to have met the core [vscode prereqs](/guides/vscode) to be able to upload:
+You will need to have met the core [vscode prereqs](/prereqs/vscode) to be able to upload:
 
 * Visual Studio Code
 * Git
@@ -182,7 +182,7 @@ You can then clone the repository:
     1. Paste in the URL for your fork of the repo
     1. Choose which local directory will be used
 
-> Before working on files, it is always a good idea to pull down any updates in the upstream.   Either select Pull from the ellipsis (**...**) in the SCM screen (CTRL-SHIFT-G), or click on the sync button (![sync](/guides/citadel/images/sync.png)) at the bottom left of vscode. (Note that a resysnc does the same but also pushes up from your side.)
+> Before working on files, it is always a good idea to pull down any updates in the upstream.   Either select Pull from the ellipsis (**...**) in the SCM screen (CTRL-SHIFT-G), or click on the sync button (![sync](/prereqs/citadel/images/sync.png)) at the bottom left of vscode. (Note that a resysnc does the same but also pushes up from your side.)
 
 ### 3. Add azurecitadel as the upstream
 
@@ -236,7 +236,7 @@ Once you are happy with the new content then you can stage and commit them to th
 Push those committed changes up to your GitHub repo:
 
 * Select Push from the SCM ellipsis, or
-* Click on the sync button (![sync](/guides/citadel/images/sync.png))
+* Click on the sync button (![sync](/prereqs/citadel/images/sync.png))
 
 ### 7. Make a pull request
 
