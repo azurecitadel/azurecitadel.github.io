@@ -40,7 +40,7 @@ baseurl                  : # "/"
 repository               : https://github.com/azurecitadel/azurecitadel.github.io
 teaser                   : "/images/teaser/default.png"
 breadcrumbs              : false  # true, false (default)
-words_per_minute         : 200
+words_per_minute         : 100
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
   disqus:

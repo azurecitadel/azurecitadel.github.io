@@ -1,19 +1,15 @@
 ---
-layout: article
+
 title: DevOps with VS Code, VSTS & Azure App Service
 date: 2017-09-29
-categories: labs
-tags: [vscode, vsts, nodejs, lab]
-comments: true
-author: John_Duckmanton
+category: devops
+tags: [vscode, azure-devops, nodejs]
+author: John Duckmanton
 excerpt: In this lab we will use Visual Studio Code and Visual Studio Team Services to create a continuous integration/continuous deployment pipeline to deploy a Node.js application to Azure App Service using an ARM Template. 
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
+header:
+  teaser: /images/teaser/devops-proj.png
+  overlay_image: /images/teaser/devops-proj.png
 ---
-
-{% include toc.html %}
 
 ## Overview
 
