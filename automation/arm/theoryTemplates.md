@@ -1,12 +1,11 @@
 ---
-layout: article
 title: ARM Templates
 date: 2018-04-17
-categories: null
-#permalink: /armtemplates/theory/
-tags: [authoring, arm, workshop, hackathon, lab, template]
-comments: true
-author: Richard_Cheney
+category: automation
+author: Richard Cheney
+sidebar:
+  nav: "arm_lab"
+hidden: true
 ---
 
 {% include toc.html %}

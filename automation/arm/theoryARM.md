@@ -1,11 +1,11 @@
 ---
-layout: article
 title: Azure Resource Manager
 date: 2018-04-17
-categories: null
-tags: [authoring, arm, workshop, hackathon, lab, template]
-comments: true
-author: Richard_Cheney
+category: automation
+author: Richard Cheney
+sidebar:
+  nav: "arm_lab"
+hidden: true
 ---
 
 {% include toc.html %}
