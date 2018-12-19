@@ -57,7 +57,7 @@ kubernetes_lab:
   - title: "Optional Modules"
     children:
     - title: "Extra Optional Exercises"
-      url: "containers/kubernetes/extra"
+      url: "cloud-native/kubernetes/extra"
 
 arm:
   - title: "ARM Lab"
