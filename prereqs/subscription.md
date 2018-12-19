@@ -44,14 +44,14 @@ Microsoft Cloud Platform partners are also entitled to [internal usage rights](h
 Silver |$6,100
 Gold | $12,100
 
-The internal usage rights ([IUR](http://aka.ms/iur)) credits may be used for
+The internal usage rights ([IUR](https://aka.ms/iur)) credits may be used for
 
 * Internal business use
 * Customer demos
 * Internal development and testing
 * Internal training for employees and customers
 
-The internal usage rights may be activated at [http://aka.ms/ActivateIUR](http://aka.ms/ActivateIUR).
+The internal usage rights may be activated at [https://aka.ms/ActivateIUR](https://aka.ms/ActivateIUR).
 
 ## Azure Free Account
 

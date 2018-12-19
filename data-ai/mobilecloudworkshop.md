@@ -1,16 +1,17 @@
 ---
-layout: article
 title: Mobile Cloud Workshop
 date: 2018-05-01
-categories: workshops
-tags: [mobile, xamarin, azure, paas, cosmosdb, appservice, storage, apimanagement, functions]
-comments: false
-author: Mike_James_and_Robin-Manuel_Thiel
-image:
-  feature: mobilecloudworkshop-feature.jpg
-  teaser: mobilecloudworkshop-teaser.jpg
+author: Mike James and Robin-Manuel Thiel
+tags: [mobile, xamarin, appservice, apimanagement, functions]
 excerpt: A workshop design to help you learn Azure & Mobile
+category: data-ai
+header:
+  overlay_image: /images/header/mobilecloudworkshop-feature.jpg
+  teaser: /images/teaser/mobilecloudworkshop-teaser.jpg
+featured: false
 ---
+
+## Introduction
 
 Welcome to the Microsoft Mobile Cloud Workshop. We've created this workshop to showcase the speed and ease at which you can leverage Microsoft's cloud platform to build Data-Driven Intelligent Apps. The workshop will give you insights and hands-on labs on how to leverage innovative scalable Cloud Backend Services for your applications.
 

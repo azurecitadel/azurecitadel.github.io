@@ -1,22 +1,16 @@
 ---
-layout: article
 title: Securing Workloads in Azure
 date: 2018-02-23
-categories: workshops
-#permalink: /seclab/
+category: security
 tags: [security, azure, infrastructure]
 comments: true
 featured: true
-excerpt: This workshop is focused on securing IaaS and PaaS workloads in Azure.
-author: Adam_And_Tom
-image:
-  feature:
-  teaser: secure.png
-  thumb:
+author: Tom Wilde
+header:
+  overlay_image: images/header/nothing.png
+  teaser: images/teaser/secure.png
+excerpt: This workshop is focused on securing IaaS and PaaS workloads in Azure
 ---
-Overview and pre-requisites for the Azure infrastructure workshop.
-
-{% include toc.html %}
 
 ## Introduction
 
@@ -38,12 +32,12 @@ This workshop walks the user through a scenario where a fictional organisation (
 The workshop requires the following:
 
 * **[Azure Subscription]({{ site.url }}/prereqs/subscription)**
-  * If your workshop is being hosted by a Microsoft Cloud Solution Architect (CSA) then you will be provided with a code for an **Azure Pass** subscription
+    * If your workshop is being hosted by a Microsoft Cloud Solution Architect (CSA) then you will be provided with a code for an **Azure Pass** subscription
 
-  * If you will be using you own subscription (e.g. Visual Studio Enterprise), you will need the ability to create users and groups in the associated Azure Active Directory tenant.
+    * If you will be using you own subscription (e.g. Visual Studio Enterprise), you will need the ability to create users and groups in the associated Azure Active Directory tenant.
 
 * **Office 365 / EMS License**
-  * Your subscription will need to be licensed for Office 365 and Enterprise Mobility and Security; details on how to sign up for a free trial are provided in the main lab guide.
+    * Your subscription will need to be licensed for Office 365 and Enterprise Mobility and Security; details on how to sign up for a free trial are provided in the main lab guide.
 
 ## Azure Infrastructure Security Workshop
 
