@@ -8,8 +8,6 @@ sidebar:
 hidden: true
 ---
 
-{% include toc.html %}
-
 ## Introduction
 
 Conditions are a fairly recent addition, and have massively simplified some of the more complicated template work where we used to make use of nested templates.  This lab will work through a simple example.

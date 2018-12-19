@@ -8,8 +8,6 @@ sidebar:
 hidden: true
 ---
 
-{% include toc.html %}
-
 ## Overview
 
 In this lab we will be creating a simple template using Visual Studio Code.  We will then be deploying it into a resource group using Azure CLI 2.0.  The lab will make use of the storage account resources, which is one of the simpler ones available on the Azure platform.

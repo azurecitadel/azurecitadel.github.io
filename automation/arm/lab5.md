@@ -8,8 +8,6 @@ sidebar:
 hidden: true
 ---
 
-{% include toc.html %}
-
 ## Introduction
 
 There are times when you will want to create multiple copies of a resource such as multiple virtual machines within an availability set.

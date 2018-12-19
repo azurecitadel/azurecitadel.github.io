@@ -8,8 +8,6 @@ sidebar:
 hidden: true
 ---
 
-{% include toc.html %}
-
 ## Introduction
 
 Using nested templates is a great way of managing your IP for repeatable complex deployments and helps to hide away the verbosity of the child templates.

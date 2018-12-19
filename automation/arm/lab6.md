@@ -8,8 +8,6 @@ sidebar:
 hidden: true
 ---
 
-{% include toc.html %}
-
 ## Introduction
 
 In this lab we will introduce the use of complex parameter and variable objects.  It is common to use these when defining capable building blocks called by a master template to provide simplicity, flexibility and standardisation.  This lab will combine with the next to bring together some of these elements and then task you with creating your own master template and linked templates for your building blocks.

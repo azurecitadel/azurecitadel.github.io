@@ -1,0 +1,302 @@
+[
+  {
+    "availabilitySet": null,
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://businesscontinuitytes312.blob.core.windows.net/"
+      }
+    },
+    "fqdns": "richeneyubuntu.westeurope.cloudapp.azure.com",
+    "hardwareProfile": {
+      "vmSize": "Standard_D1_v2"
+    },
+    "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/businessContinuityTest/providers/Microsoft.Compute/virtualMachines/ubuntu",
+    "identity": null,
+    "licenseType": null,
+    "location": "westeurope",
+    "macAddresses": "00-0D-3A-26-1D-BE",
+    "name": "ubuntu",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/businessContinuityTest/providers/Microsoft.Network/networkInterfaces/ubuntu792",
+          "primary": null,
+          "resourceGroup": "businessContinuityTest"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "richardc",
+      "computerName": "ubuntu",
+      "customData": null,
+      "linuxConfiguration": {
+        "disablePasswordAuthentication": true,
+        "ssh": {
+          "publicKeys": [
+            {
+              "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOOqNsqp7WOUg6gMI2OztqH8HIuyMMZoFq0Rm53g1wDY1GCs8frGSw58sNtJRE+tzTpzhIS8Urnglsu+qJrZIaRKk5KLQruBcv7BNpeZgYoFX6g1mT0bpyICJH2KprHkm8/LMlCyFPLDZkUlG1u43O1t9N+roBHVw3Oo8t0BZrcxYcV4/wldxjz+wrwNoM/2eA52cQftKvbIT4jVzxCQh0XanCSLLq3Y4cEShuyCiBy3Vef1a/62+mMhW2cXIjKPXYdEiLeDjoDKhnI0rMo71/s+XdTN/qc6rzb5GIYCHvZ0XQKrkJNdfDzjHTfIfbm7n59rWkEW0f9kE3k3WFy3sF",
+              "path": "/home/richardc/.ssh/authorized_keys"
+            }
+          ]
+        }
+      },
+      "secrets": [],
+      "windowsConfiguration": null
+    },
+    "plan": null,
+    "powerState": "VM stopped",
+    "privateIps": "172.16.0.5",
+    "provisioningState": "Succeeded",
+    "publicIps": "52.166.204.218",
+    "resourceGroup": "businessContinuityTest",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": true,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/businessContinuityTest/providers/Microsoft.Compute/virtualMachines/ubuntu/extensions/enablevmaccess",
+        "instanceView": null,
+        "location": "westeurope",
+        "name": "enablevmaccess",
+        "protectedSettings": null,
+        "provisioningState": "Succeeded",
+        "publisher": "Microsoft.OSTCExtensions",
+        "resourceGroup": "businessContinuityTest",
+        "settings": {},
+        "tags": null,
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "typeHandlerVersion": "1.4",
+        "virtualMachineExtensionType": "VMAccessForLinux"
+      },
+      {
+        "autoUpgradeMinorVersion": false,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/businessContinuityTest/providers/Microsoft.Compute/virtualMachines/ubuntu/extensions/LinuxAsm",
+        "instanceView": null,
+        "location": "westeurope",
+        "name": "LinuxAsm",
+        "protectedSettings": null,
+        "provisioningState": "Failed",
+        "publisher": "Microsoft.Azure.Extensions",
+        "resourceGroup": "businessContinuityTest",
+        "settings": {
+          "resourceGroupName": "BUSINESSCONTINUITYTEST",
+          "services": [
+            {
+              "id": "LINUXSERVICE",
+              "scanners": [
+                {
+                  "frequency": "PT12H",
+                  "name": "baseline",
+                  "options": [
+                    {
+                      "name": "Baseline",
+                      "value": "Azure.Linux"
+                    }
+                  ]
+                },
+                {
+                  "frequency": "PT12H",
+                  "name": "software",
+                  "options": [
+                    {
+                      "name": "IncludeAvailableUpdates",
+                      "value": "true"
+                    },
+                    {
+                      "name": "IncludePackageInventory",
+                      "value": "true"
+                    }
+                  ]
+                },
+                {
+                  "frequency": "PT1H",
+                  "name": "heartbeat"
+                }
+              ],
+              "version": "2C6F0E321760772D5C09C2155053B36711E52227915A3C51AA821B4CBFF89450"
+            }
+          ],
+          "subscriptionID": "2ca40be1-7680-4f2b-92f7-06b2123a68cc",
+          "vmName": "ubuntu",
+          "vmVersion": "Compute"
+        },
+        "tags": null,
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "typeHandlerVersion": "2.2",
+        "virtualMachineExtensionType": "LinuxAsm"
+      },
+      {
+        "autoUpgradeMinorVersion": true,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/businessContinuityTest/providers/Microsoft.Compute/virtualMachines/ubuntu/extensions/OmsAgentForLinux",
+        "instanceView": null,
+        "location": "westeurope",
+        "name": "OmsAgentForLinux",
+        "protectedSettings": null,
+        "provisioningState": "Succeeded",
+        "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+        "resourceGroup": "businessContinuityTest",
+        "settings": {
+          "azureResourceId": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourcegroups/businesscontinuitytest/providers/microsoft.compute/virtualmachines/ubuntu",
+          "stopOnMultipleConnections": false,
+          "workspaceId": "b181217c-0c48-4b07-b884-d5a77a6fb2f2"
+        },
+        "tags": null,
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "typeHandlerVersion": "1.0",
+        "virtualMachineExtensionType": "OmsAgentForLinux"
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [],
+      "imageReference": {
+        "id": null,
+        "offer": "UbuntuServer",
+        "publisher": "Canonical",
+        "sku": "16.04-LTS",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 30,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/BUSINESSCONTINUITYTEST/providers/Microsoft.Compute/disks/ubuntu_OsDisk_1_87846aeafa3d4041a6118b243f6a99c0",
+          "resourceGroup": "BUSINESSCONTINUITYTEST",
+          "storageAccountType": "Standard_LRS"
+        },
+        "name": "ubuntu_OsDisk_1_87846aeafa3d4041a6118b243f6a99c0",
+        "osType": "Linux",
+        "vhd": null
+      }
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "554a8bf3-315d-4440-a735-9f8fad263b6a",
+    "zones": null
+  },
+  {
+    "availabilitySet": null,
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://businesscontinuitytes657.blob.core.windows.net/"
+      }
+    },
+    "fqdns": "",
+    "hardwareProfile": {
+      "vmSize": "Standard_D1_v2"
+    },
+    "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/businessContinuityTest/providers/Microsoft.Compute/virtualMachines/windows",
+    "identity": null,
+    "licenseType": "Windows_Server",
+    "location": "westeurope",
+    "macAddresses": "00-0D-3A-26-1F-7B",
+    "name": "windows",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/businessContinuityTest/providers/Microsoft.Network/networkInterfaces/windows327",
+          "primary": null,
+          "resourceGroup": "businessContinuityTest"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "richeney",
+      "computerName": "windows",
+      "customData": null,
+      "linuxConfiguration": null,
+      "secrets": [],
+      "windowsConfiguration": {
+        "additionalUnattendContent": null,
+        "enableAutomaticUpdates": true,
+        "provisionVmAgent": true,
+        "timeZone": null,
+        "winRm": null
+      }
+    },
+    "plan": null,
+    "powerState": "VM running",
+    "privateIps": "172.16.0.4",
+    "provisioningState": "Succeeded",
+    "publicIps": "52.166.204.149",
+    "resourceGroup": "businessContinuityTest",
+    "resources": [
+      {
+        "autoUpgradeMinorVersion": true,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/businessContinuityTest/providers/Microsoft.Compute/virtualMachines/windows/extensions/enablevmaccess",
+        "instanceView": null,
+        "location": "westeurope",
+        "name": "enablevmaccess",
+        "protectedSettings": null,
+        "provisioningState": "Failed",
+        "publisher": "Microsoft.Compute",
+        "resourceGroup": "businessContinuityTest",
+        "settings": {
+          "UserName": "richeney"
+        },
+        "tags": null,
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "typeHandlerVersion": "2.0",
+        "virtualMachineExtensionType": "VMAccessAgent"
+      },
+      {
+        "autoUpgradeMinorVersion": true,
+        "forceUpdateTag": null,
+        "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/businessContinuityTest/providers/Microsoft.Compute/virtualMachines/windows/extensions/MicrosoftMonitoringAgent",
+        "instanceView": null,
+        "location": "westeurope",
+        "name": "MicrosoftMonitoringAgent",
+        "protectedSettings": null,
+        "provisioningState": "Succeeded",
+        "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+        "resourceGroup": "businessContinuityTest",
+        "settings": {
+          "azureResourceId": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourcegroups/businesscontinuitytest/providers/microsoft.compute/virtualmachines/windows",
+          "stopOnMultipleConnections": true,
+          "workspaceId": "b181217c-0c48-4b07-b884-d5a77a6fb2f2"
+        },
+        "tags": null,
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "typeHandlerVersion": "1.0",
+        "virtualMachineExtensionType": "MicrosoftMonitoringAgent"
+      }
+    ],
+    "storageProfile": {
+      "dataDisks": [],
+      "imageReference": {
+        "id": null,
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "diskSizeGb": 128,
+        "encryptionSettings": null,
+        "image": null,
+        "managedDisk": {
+          "id": "/subscriptions/2ca40be1-7680-4f2b-92f7-06b2123a68cc/resourceGroups/BUSINESSCONTINUITYTEST/providers/Microsoft.Compute/disks/windows_OsDisk_1_cd704639f424445e81c42b412444f59b",
+          "resourceGroup": "BUSINESSCONTINUITYTEST",
+          "storageAccountType": "Standard_LRS"
+        },
+        "name": "windows_OsDisk_1_cd704639f424445e81c42b412444f59b",
+        "osType": "Windows",
+        "vhd": null
+      }
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines",
+    "vmId": "6fbcc513-1f34-48a4-bdc3-e079ef6d4fbf",
+    "zones": null
+  }
+]

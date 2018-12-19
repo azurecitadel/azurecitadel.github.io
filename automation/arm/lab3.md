@@ -8,8 +8,6 @@ sidebar:
 hidden: true
 ---
 
-{% include toc.html %}
-
 ## Introduction
 
 You should now be fairly comfortable working with JSON templates and parameter files, leveraging the various sources of ARM template, and refactoring variables and parameters and resources to customise the files for your requirements.
