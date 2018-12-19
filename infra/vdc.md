@@ -1,7 +1,7 @@
 ---
 title: Virtual Data Centre Workshop
 date: 2017-09-12
-categories: infra
+category: infra
 tags: [vdc]
 comments: true
 featured: true

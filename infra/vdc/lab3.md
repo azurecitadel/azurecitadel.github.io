@@ -1,7 +1,7 @@
 ---
 title: "VDC Lab 3: Secure"
 date: 2018-07-19
-categories: infra
+category: infra
 comments: true
 hidden: true
 author: Richard Cheney

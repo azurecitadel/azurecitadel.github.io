@@ -1,7 +1,7 @@
 ---
 title: "VDC Lab 2: Configure"
 date: 2018-07-19
-categories: infra
+category: infra
 comments: true
 hidden: true
 author: Richard Cheney
