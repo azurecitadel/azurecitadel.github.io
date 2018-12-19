@@ -1,7 +1,6 @@
 ---
 title: 'ARM Lab 1: First Template and Deployment'
 date: 2018-04-17
-tags: [authoring, arm, workshop, hackathon, lab, template]
 category: automation
 author: Richard Cheney
 sidebar:

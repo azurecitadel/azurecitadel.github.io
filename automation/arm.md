@@ -3,7 +3,7 @@ layout: single
 title: Creating ARM Templates
 date: 2018-01-08
 category: automation
-tags: [authoring, creating, arm, workshop, hackathon, lab, template]
+tags: [arm, template]
 author: Richard Cheney
 header:
   teaser: Education.jpg
