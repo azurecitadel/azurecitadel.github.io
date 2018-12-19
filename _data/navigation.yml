@@ -25,9 +25,9 @@ sidemenu:
     - title: "Automation"
       url: "/automation"
     - title: "Azure Fundamentals"
-      url: "/fundamentals"                            
+      url: "/fundamentals"
     - title: "Security"
-      url: "/security"  
+      url: "/security"
 #
 # Custom lab sidemenus
 #
@@ -53,21 +53,21 @@ kubernetes_lab:
   - title: "Optional Modules"
     children:
     - title: "Extra Optional Exercises"
-      url: "containers/kubernetes/extra"  
+      url: "containers/kubernetes/extra"
 
-arm_lab:
+arm:
   - title: "Main Page"
     url: "automation/arm"
 
   - title: "Theory"
-    children: 
+    children:
     - title: "Azure Resource Manager"
       url: "automation/arm/theoryARM"
     - title: "ARM Templates"
       url: "automation/arm/theoryTemplates"
 
   - title: "Lab Modules"
-    children: 
+    children:
     - title: "1 - First Template"
       url: "automation/arm/lab1"
     - title: "2 - Sources of Resources"
@@ -82,6 +82,19 @@ arm_lab:
       url: "automation/arm/lab6"
     - title: "7 - Nested Deployments"
       url: "automation/arm/lab7"
+
+cli:
+  - title: "Azure CLI"
+    url: "fundamentals/cli"
+    children:
+    - title: "Setup"
+      url: "fundamentals/cli/cli-1-setup.md"
+    - title: "First Steps"
+      url: "fundamentals/cli/cli-2-firststeps.md"
+    - title: "JMESPATH Queries"
+      url: "fundamentals/cli/cli-3-jmespath.md"
+    - title: "Scripting in Bash"
+      url: "fundamentals/cli/cli-4-bash.md"
 
 custom_lab:
   - title: "Main Lab Modules"
@@ -98,4 +111,4 @@ custom_lab:
     - title: "Goat Herding"
       url: "/foo"
     - title: "Knitting Socks"
-      url: "/bar"    
+      url: "/bar"

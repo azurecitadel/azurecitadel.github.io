@@ -4,7 +4,7 @@ date: 2018-04-17
 category: automation
 author: Richard Cheney
 sidebar:
-  nav: "arm_lab"
+  nav: "arm"
 hidden: true
 ---
 
