@@ -2,7 +2,7 @@
 title: What is Cloud App Security?
 date: 2018-07-07
 category: security
-tags: [identity, azure-ad, cloud-app-security]
+tags: [identity, azure-ad, cloud-app-security, video]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png

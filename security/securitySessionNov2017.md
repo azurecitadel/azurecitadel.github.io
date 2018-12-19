@@ -2,7 +2,7 @@
 title: Security Session - Protecting information
 date: 2017-11-30
 category: security
-tags: [azure-information-protection, azure-ad]
+tags: [azure-information-protection, azure-ad, video]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png

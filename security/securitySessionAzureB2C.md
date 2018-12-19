@@ -2,7 +2,7 @@
 title: Azure B2C
 date: 2018-08-01
 category: security
-tags: [identity, azure-b2c, azure-ad]
+tags: [identity, azure-b2c, azure-ad, video]
 author: Jonathan_Lyon
 header:
   teaser: /images/teaser/security.png

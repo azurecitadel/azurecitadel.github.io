@@ -2,7 +2,7 @@
 title: Azure Security Center
 date: 2018-03-29
 category: security
-tags: [identity, security-center, azure-ad]
+tags: [identity, security-center, azure-ad, video]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png

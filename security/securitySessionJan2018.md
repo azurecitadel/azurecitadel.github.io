@@ -2,7 +2,7 @@
 title: Compliance in Office 365 is easy
 date: 2018-02-06
 category: security
-tags: [office365, identity, governance]
+tags: [office365, identity, governance, video]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png

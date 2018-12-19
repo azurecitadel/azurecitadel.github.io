@@ -2,7 +2,7 @@
 title: Firewall identities with Azure AD Conditional Access
 date: 2018-06-13
 category: security
-tags: [identity, conditional-access, azure-ad]
+tags: [identity, conditional-access, azure-ad, video]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png

@@ -2,7 +2,7 @@
 title: Post breach detection on Windows 10
 date: 2018-02-28
 category: security
-tags: [windows, identity, azure-atp, azure-ad]
+tags: [windows, identity, azure-atp, azure-ad, video]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png

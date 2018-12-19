@@ -26,4 +26,9 @@
 - name: security
   title: Security
   image: /images/categories/security.png
-  desc: "Security is important, probably. People never shut up about it"
+  desc: "Securing your data & applications in the cloud. Managing access and indentities with Azure Active Directory"
+
+- name: infra
+  title: Core Infrastructure
+  image: /images/categories/infra.png
+  desc: "Infrastructure & Networking"

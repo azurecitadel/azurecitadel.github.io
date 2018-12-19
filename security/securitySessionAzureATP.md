@@ -2,7 +2,7 @@
 title: Protecting identities with Azure ATP
 date: 2018-03-29
 category: security
-tags: [identity, azure-atp, azure-ad]
+tags: [identity, azure-atp, azure-ad, video]
 author: Tom Wilde
 header:
   teaser: /images/teaser/security.png
