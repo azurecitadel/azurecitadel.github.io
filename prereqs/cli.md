@@ -6,7 +6,7 @@ tags: [cli, bash]
 category: prereqs
 comments: true
 header:
-  teaser: /images/teaser/code.jpg
+  teaser: /images/teaser/code.png
   overlay_image: images/header/arm.png
 excerpt: Delve into CLI 2.0, integrate with Bash scripts and unlock the power of the JMESPATH queries
 sidebar:

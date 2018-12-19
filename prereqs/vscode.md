@@ -6,7 +6,7 @@ category: prereqs
 tags: [vs2017]
 comments: true
 header:
-  teaser: /images/teaser/code.jpg
+  teaser: /images/teaser/code.png
 excerpt: Install and configure the lightweight vscode and set up Git and Azure CLI for the integrated console
 ---
 
