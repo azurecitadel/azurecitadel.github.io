@@ -1,19 +1,9 @@
 ---
-layout: article
-title: Create Windows Active Directory Forest
+title: Configure Active Directory Connect
 date: 2017-09-19
-tags: [aad, identity, hybrid]
-comments: true
-author: Tom_Wilde
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
+hidden: true
+author: Tom Wilde
 ---
-Extending Identities to the Cloud.
-
-{% include toc.html %}
-
 ## Create Windows Active Directory Forest
 First we need to create a new Windows Active Directory Forest and Domain to use during this lab and we'll utilise an ARM template to do all the hard work.
 
@@ -55,5 +45,5 @@ I will be creating a new on-premise Windows Active Directory domain called **wil
 
 We've now created an Active Directory Forest with a single Domain and multiple users.
 
-Move onto the next lab [Create Azure Active Directory.](./create-ad.md)
+Move onto the next lab [Create Azure Active Directory.](../create-aad)
 

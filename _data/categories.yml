@@ -1,7 +1,7 @@
-- name: containers
-  title: Containers
+- name: cloud-native
+  title: Cloud Native
   image: /images/categories/containers.png
-  desc: "Understand how to build cloud native, modern apps with containers, Docker and Kubernetes"
+  desc: "Understand how to build cloud native, modern apps with containers, serverless & Kubernetes"
 
 - name: data-ai
   title: "Data & AI"

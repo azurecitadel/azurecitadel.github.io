@@ -1,19 +1,15 @@
 ---
-layout: article
 title: Introduction to Serverless Functions
-categories: labs
+category: cloud-native
 date: 2017-12-01
 tags: [paas, functions, app, serverless]
-comments: true
-author: John_Duckmanton
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb:
+
+header:
+  teaser: images/teaser/serverless.png
+  overlay_image: images/teaser/serverless.png
+author: John Duckmanton
 excerpt: Create a simple Serverless Function to pre-process a CSV file loaded into Azure Blob Storage. 
 ---
-
-{% include toc.html %}
 
 ## Introduction
 Azure Functions is a solution for easily running small pieces of code, or "functions," in the cloud. You can write just the code you need for the problem at hand, without worrying about a whole application or the infrastructure to run it. Functions can make development even more productive, and you can use your development language of choice, such as C#, F#, Node.js, Java, or PHP. Pay only for the time your code runs and trust Azure to scale as needed. Azure Functions lets you develop serverless applications on Microsoft Azure.
@@ -22,7 +18,7 @@ The "problem" we want to solve as the subject of this lab is that we have a csv 
 
 There are many ways to create and deploy a function app, but in this lab we're going to create a simple C# function app through the Azure Portal. This function will be triggered by the arrival of a new csv file in a defined Azure Storage Container. The function will read the csv file, process it and write-out a new csv file to another blob.
 
-![](/labs/functions/images/functions-lab-overview.png)
+![](images/functions-lab-overview.png)
 ## Pre-requisites
 
 * Azure Subscription
@@ -33,7 +29,7 @@ There are many ways to create and deploy a function app, but in this lab we're g
 * Login to the [Azure Portal](https://portal.azure.com)
 * Click the **Create a Resource** button and select **Compute**. Then select **Function App**.
 
-![](/labs/functions/images/create-function-app.png)
+![](images/create-function-app.png)
 
 * Set the following settings for the app:
   * App name: **csv-utility-functions-[yourname]**  (ensure this is unique)
@@ -50,15 +46,15 @@ Now that we have a function app to host our function, we can create the function
 
 * Expand the function app, then click the **+** next to **Functions** to create a new function
 
-![](/labs/functions/images/create-function.png)
+![](images/create-function.png)
 
 * Click the **Custom Function** link at the bottom of the page
 
-![](/labs/functions/images/custom-function.png)
+![](images/custom-function.png)
 
 * Since we want to trigger our function based on the arrival of a new blob, select the **BlobTrigger - C#** template. 
 
-![](/labs/functions/images/blob-trigger.png)
+![](images/blob-trigger.png)
 
 
 * Set the following Azure Blob Storage trigger settings:
@@ -78,7 +74,7 @@ Next we need to define a blob container in our storage account that we will use 
 
 * Expand the function and click **Integrate**
 
-![](/labs/functions/images/integrate-button.png)
+![](images/integrate-button.png)
 
 * Under *Outputs* click **+ New Output**
 * Click **Azure Blob Storage** then **Select**
@@ -103,7 +99,7 @@ Next we need to define a blob container in our storage account that we will use 
   * Right-click on the new container and select **Set Public Access Level**
   * Set the access level to **Public read access for container and blobs**
 
-![](/labs/functions/images/create-blob-container.png)
+![](images/create-blob-container.png)
 
 * Now repeat the above steps to create another container called **csv-files-out**
 
@@ -119,7 +115,7 @@ Next we need to define a blob container in our storage account that we will use 
 
 * Click on the **View Files** option on the right of the window
 
-![](/labs/functions/images/view-files.png)
+![](images/view-files.png)
 
 * Click **Upload** and upload the *project.json* file to Azure. When the upload has completed click on the file. It should look like this...
 
@@ -142,11 +138,11 @@ To test that the function works as expected:
 
 * In the *Azure Portal*, click on the **ProcessCSVFile** function name and expand the *Logs* section so that we can see the output when the function runs.
 
-* Download csv data file of [Titanic Survivors](/labs/functions/TitanicTab.csv) to your local PC.
+* Download csv data file of [Titanic Survivors](TitanicTab.csv) to your local PC.
 
 * Go to the Azure Storage Explorer and upload this file to your **csv-files-in** storage container. This will trigger your function to execute.
 
-![](/labs/functions/images/upload-test-file.png)
+![](images/upload-test-file.png)
 
 * You should see the function being triggered in the log output, and a file called *TitanicTab-processed.csv* in your output blob container (you can view and download this file in Storage Explorer).
 
