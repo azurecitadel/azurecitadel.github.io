@@ -8,8 +8,8 @@ featured: true
 hidden: true
 tags: [terraform]
 header:
-  overlay_image: images/header/terraform.jpg
-  teaser: images/teaser/cloud-terraform.png
+  overlay_image: images/header/terraform.png
+  teaser: images/teaser/terraformlogo.png
 sidebar:
   nav: "terraform"
 excerpt: Configure remote state to use Azure Blob Storage, import existing resources under Terraform control and break remote state leases

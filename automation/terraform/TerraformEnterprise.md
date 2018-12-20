@@ -1,12 +1,18 @@
 ---
-layout: article
-title: "Terraform Enterprise"
-categories: null
+title: Terraform Enterprise
 date: 2018-10-29
-tags: [azure, terraform, enterprise]
+author: Richard Cheney
+category: automation
 comments: true
-author: Richard_Cheney
-published: true
+featured: false
+hidden: true
+tags: [terraform]
+header:
+  overlay_image: images/header/terraform.png
+  teaser: images/teaser/terraformlogo.png
+sidebar:
+  nav: "terraform"
+excerpt: Short overview of Terraform Enterprise and the key business benefits it brings to enterprise environments
 ---
 
 ## Terraform Enterprise

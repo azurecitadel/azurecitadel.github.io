@@ -8,8 +8,8 @@ featured: true
 hidden: true
 tags: [terraform]
 header:
-  overlay_image: images/header/terraform.jpg
-  teaser: images/teaser/cloud-terraform.png
+  overlay_image: images/header/terraform.png
+  teaser: images/teaser/terraformlogo.png
 sidebar:
   nav: "terraform"
 excerpt: Create an Azure Kubernetes Service module that not only creates the AKS cluster, but also the creation of the AKS service principal and the Kubernetes level configuration of a test container pod
