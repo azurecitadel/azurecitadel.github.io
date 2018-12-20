@@ -62,7 +62,7 @@ Note that the "key" is the name of the blob that will be created in the terrafor
 
 When you first connect using ssh to your Terraform VM then you'll be in your admin IDs home directory.  You can check the `/etc/passwd` and `/etc/group` files to show your default group.
 
-You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group of admins and a shared area for the Terraform files. (And optionally change the default group for your ID.) The code block below shows how thios can be done:
+You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group of admins and a shared area for the Terraform files. (And optionally change the default group for your ID.) The code block below shows how this can be done:
 
 ```bash
 $ sudo addgroup terraform

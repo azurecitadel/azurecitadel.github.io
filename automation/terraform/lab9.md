@@ -25,7 +25,7 @@ We will also look at templates in the context of Terraform, and how you can use 
 
 ## End of Lab 9
 
-We have reached the end of the lab. You have use provisioners and templates to demonstrate how you could direc additiopnal configuration in your virtual machines once they have been deployed from a template.
+We have reached the end of the lab. You have use provisioners and templates to demonstrate how you could direc additional configuration in your virtual machines once they have been deployed from a template.
 
 Your .tf files should look similar to those in <https://github.com/richeney/terraform-lab9>.
 

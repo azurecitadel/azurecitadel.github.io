@@ -215,7 +215,7 @@ Initializing provider plugins...
 
 You should see in the plan output that all of the resources that are now in the module will be deleted and recreated.  **DO NOT RUN A TERRAFORM APPLY!!**
 
-Those resources have essentially all been renamed, with the resources prefixed with `module.terraform.` and we can use that to manipulate the terraform.tfstate file.  This givesw us an opportunity to ontroduce another command to manage state effectively.
+Those resources have essentially all been renamed, with the resources prefixed with `module.terraform.` and we can use that to manipulate the terraform.tfstate file.  This gives us an opportunity to introduce another command to manage state effectively.
 
 ## Refactoring module resources in a state file
 

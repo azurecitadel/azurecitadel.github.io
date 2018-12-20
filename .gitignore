@@ -6,6 +6,7 @@
 .jekyll-metadata
 .sass-cache
 _asset_bundler_cache
+_config_local.yml
 _site
 codekit-config.json
 example/_site

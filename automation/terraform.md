@@ -9,7 +9,7 @@ hidden: false
 tags: [terraform]
 header:
   overlay_image: images/header/terraform.png
-  teaser: images/teaser/terraform.png
+  teaser: images/teaser/terraformlogo.png
 sidebar:
   nav: "terraform"
 excerpt: Series of labs for Terraform on Azure

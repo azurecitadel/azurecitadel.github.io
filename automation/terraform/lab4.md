@@ -154,8 +154,6 @@ resource "azurerm_provider_type" "terraformid" {
 
 We can then reference `${count.index}` in the stanzas.  Remember that we can slice out a single list element. For instance you can select the first element of a variable called myList using `${var.myList[0]}`.
 
-
-
 * Change the azurerm_app_service_plan.free and azurerm_app_service.citadel stanzas
     * Add a new count argument based on the length of the webapplocs list variable
     * Change location to the correct webapplocs element using `${count.index}`
@@ -277,7 +275,7 @@ If you have a lot of variables to set then you can place them in a file.  By con
 
 Think of the variables.tf as your variable **declarations**, where you define which variables are required and configure default values where sensible.  The variables.tfvars file can then be used to set the **values**. If you specify a value for a variable in variables.tfvars then it will override the default in variables.tf.
 
-> This is analagous to declaring your ARM template parameters in the parameter section of the main azuredeploy.json template, and then setting the values in a azuredeploy.parameters.json file.
+> This is analogous to declaring your ARM template parameters in the parameter section of the main azuredeploy.json template, and then setting the values in a azuredeploy.parameters.json file.
 
 Each line should be of the straighforward `loc=uksouth` format.  You can then use `-var-file varfilename` as a switch.  However if your variable file is called `terraform.tfvars` or `.auto.tfvars` then it will be loaded automatically.
 
