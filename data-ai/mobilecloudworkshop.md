@@ -1,13 +1,13 @@
 ---
 title: Mobile Cloud Workshop
 date: 2018-05-01
-author: Mike James and Robin-Manuel Thiel
+author: [Mike James, Robin-Manuel Thiel]
 tags: [mobile, xamarin, appservice, apimanagement, functions]
 excerpt: A workshop design to help you learn Azure & Mobile
 category: data-ai
 header:
   overlay_image: /images/header/mobilecloudworkshop-feature.jpg
-  teaser: /images/teaser/mobilecloudworkshop-teaser.jpg
+  teaser: /images/teaser/mobilecloudworkshop.png
 featured: false
 ---
 

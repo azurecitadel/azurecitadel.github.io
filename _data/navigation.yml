@@ -18,8 +18,8 @@ sidemenu:
     children:
     - title: "Data & AI"
       url: "/data-ai"
-    - title: "Containers"
-      url: "/containers"
+    - title: "Cloud Native"
+      url: "/cloud-native"
     - title: "DevOps"
       url: "/devops"
     - title: "Infrastructure"

@@ -1,12 +1,10 @@
 ---
 title: Build a Cognitive Search Solution
 date: 2018-10-10
-comments: true
-author: Faris_Haddad
+author: Faris Haddad
 category: data-ai
-tags: [cognitive, search, knowledge, data]
+tags: [cognitive-services, search, knowledge]
 header:
-  overlay_image: /images/header/nothing.png
   teaser: /images/teaser/project.png
 featured: true
 excerpt: This one day training will focus on hands-on activities that develop proficiency with Cognitive Search, an Azure Search AI-oriented capability

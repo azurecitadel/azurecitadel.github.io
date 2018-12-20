@@ -1,6 +1,8 @@
-{% assign author = page.author | default: page.authors[0] | default: site.author %}
-{% assign author = site.data.authors[author] | default: author %}
+<!-- {% assign author = page.author | default: page.authors[0] | default: site.author %}
+assign author = site.data.authors[author] | default: author %} -->
 
+{% for author_key in page.author %}
+{% assign author = site.data.authors[author_key] | default: author_key %}
 <div itemscope itemtype="http://schema.org/Person">
 
   {% if author.avatar %}
@@ -269,3 +271,5 @@
     </ul>
   </div>
 </div>
+<hr/>
+{% endfor %}
