@@ -5,7 +5,7 @@ category: infra
 tags: [vm, change management]
 comments: true
 featured: false
-author: Dan And Tom
+author: [Dan Baker, Tom Wilde]
 header:
   overlay_image: images/header/nothing.png
   teaser: images/teaser/cloud-tools.png
