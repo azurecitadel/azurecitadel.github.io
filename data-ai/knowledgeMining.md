@@ -5,7 +5,6 @@ author: Faris Haddad
 category: data-ai
 tags: [cognitive-services, search, knowledge]
 header:
-  overlay_image: /images/header/nothing.png
   teaser: /images/teaser/project.png
 featured: true
 excerpt: This one day training will focus on hands-on activities that develop proficiency with Cognitive Search, an Azure Search AI-oriented capability
