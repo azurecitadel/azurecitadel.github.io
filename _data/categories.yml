@@ -1,3 +1,8 @@
+- name: automation
+  title: Automation
+  image: /images/categories/auto.png
+  desc: "Operate at scale using scaffolding, infrastructure as code and scripting to automate"
+
 - name: cloud-native
   title: Cloud Native
   image: /images/categories/containers.png
@@ -13,27 +18,22 @@
   image: /images/categories/devops.png
   desc: "Build better software faster with DevOps practices; CI & CD pipelines, automation and infrastructure as code"
 
-- name: automation
-  title: Automation
-  image: /images/categories/auto.png
-  desc: "Operate at scale using scaffolding, infrastructure as code and scripting to automate"
-
 - name: fundamentals
   title: Fundamentals
   image: /images/categories/fundamentals.png
   desc: "Core concepts for Azure and ecosystem tooling, configuration guidance, etc."
 
-- name: security
-  title: Security
-  image: /images/categories/security.png
-  desc: "Securing your data & applications in the cloud. Managing access and identities with Azure Active Directory"
-
 - name: infra
-  title: Core Infrastructure
+  title: Infrastructure
   image: /images/categories/infra.png
   desc: "Infrastructure & Networking"
 
 - name: prereqs
-  title: Lab Pre-Requisites
+  title: Pre-Requisites
   image: /images/categories/prereqs.png
   desc: "Get yourself set up and ready to take on the labs"
+
+- name: security
+  title: Security
+  image: /images/categories/security.png
+  desc: "Securing your data & applications in the cloud. Managing access and identities with Azure Active Directory"
