@@ -1,14 +1,12 @@
 ---
-layout: article
 title: Minikube / Kubernetes - Lab 
 date: 2017-11-23
-categories: labs
-featured: false
-author: Mark_Harrison
-image:
-  teaser: mh-minikube.jpg
-comments: true
+category: cloud-native
+author: Mark Harrison
+header:
+  teaser: /images/teaser/mh/mh-minikube.jpg
 excerpt: In this lab we explore the use of Minikube. 
+unpublished: true
 ---
 ![](https://github.com/markharrisonuk/Lab_Minikube/raw/master/Images/Minikube.png)
 
@@ -16,4 +14,4 @@ Minikube is a tool that makes it easy to run Kubernetes locally, for users looki
 
 In this lab we explore the use of Minikube.
 
-## [![link](/images/icons/link.svg) Access the full lab on my GitHub](https://github.com/markharrisonuk/Lab_Minikube/blob/master/README.md)
+## [Access the full lab on my GitHub](https://github.com/markharrisonuk/Lab_Minikube/blob/master/README.md){: .btn .btn--primary .btn--large}

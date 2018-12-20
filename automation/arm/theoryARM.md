@@ -10,9 +10,6 @@ header:
   overlay_image: images/header/arm.png
 excerpt: Understand the Azure Resource Manager deployment model
 ---
-
-{% include toc.html %}
-
 ## Background
 
 Azure Resource Manager, or ARM, is the dominant deployment type for Azure, spanning the public clouds, government clouds and Azure Stack private cloud deployments.  It superseded the Azure Service Manager which is expected to be slowly deprecated over time, and will be ignored in this lab except as a comparison point.

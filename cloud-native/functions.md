@@ -2,7 +2,7 @@
 title: Introduction to Serverless Functions
 category: cloud-native
 date: 2017-12-01
-tags: [paas, functions, app, serverless]
+tags: [paas, azure-functions, serverless]
 
 header:
   teaser: images/teaser/serverless.png

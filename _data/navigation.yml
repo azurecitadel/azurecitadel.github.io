@@ -32,7 +32,8 @@ sidemenu:
       url: "/prereqs"
     - title: "Security"
       url: "/security"
-
+    - title: "Web & Mobile"
+      url: "/web"
 #
 # Custom lab sidemenus
 #

@@ -11,8 +11,6 @@ header:
   overlay_image: images/header/arm.png
 excerpt: Harness the power of JMESPATH queries
 ---
-{% include toc.html %}
-
 ## Introduction
 
 The `--query` switch is one of the "global" switches, i.e. it is available on every az command, and it enables you to query and filter the output of the command.

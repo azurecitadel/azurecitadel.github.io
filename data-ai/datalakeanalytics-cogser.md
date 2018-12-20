@@ -10,8 +10,6 @@ excerpt: A walk through video of how to use the Text Analytics Cognitive Service
 ---
 ![Header Image](images/Header.png "Header Image")
 
-{% include toc.html %}
-
 ## Introduction
 Watch Phil Harvey and Azure Dan work through analysing the Plays of Shakespeare using the <a href="https://azure.microsoft.com/en-gb/services/cognitive-services/" target="_blank">Cognitive Services</a> <a href="https://azure.microsoft.com/en-gb/services/cognitive-services/text-analytics/" target="_blank">Text Analytics</a> integration with Azure <a href="https://azure.microsoft.com/en-gb/services/data-lake-analytics/" target="_blank">Data Lake Analytics</a>.
 

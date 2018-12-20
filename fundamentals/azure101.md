@@ -15,8 +15,6 @@ sidebar:
   nav: "azure101"
 featured: true
 ---
-{% include toc.html %}
-
 ## Introduction
 
 The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.

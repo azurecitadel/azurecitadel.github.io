@@ -13,9 +13,6 @@ sidebar:
   nav: "arm"
 featured: true
 ---
-
-{% include toc.html %}
-
 ## Introduction
 
 This self-paced enablement session will run through a sequence of bite-sized labs that build on each other.

@@ -1,14 +1,13 @@
 ---
-layout: article
+
 title: Service Fabric - Lab 
 date: 2017-12-01
-categories: labs
-featured: false
-author: Mark_Harrison
-image:
-  teaser: mh-sf.jpg
-comments: true
-excerpt: In this lab we explore the use of Service Fabric.
+category: infra
+tags: [service-fabric, microservices]
+author: Mark Harrison
+header:
+  teaser: /images/teaser/mh/mh-sf.jpg
+excerpt: In this lab we explore the use of Service Fabric
 ---
 ![](https://github.com/markharrisonuk/Lab_ServiceFabric/raw/master/Images/SF.png)
 
@@ -16,4 +15,4 @@ Service Fabric is a distributed systems platform that makes it easy to package, 
 
 In this lab we explore the use of Service Fabric.
 
-## [![link](/images/icons/link.svg) Access the full lab on my GitHub](https://github.com/markharrisonuk/Lab_ServiceFabric/blob/master/README.md)
+## [Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_ServiceFabric/blob/master/README.md){: .btn .btn--primary .btn--large}

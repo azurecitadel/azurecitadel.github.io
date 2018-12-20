@@ -12,9 +12,6 @@ header:
   teaser: images/teaser/blueprint.png
 excerpt: Explore the baseline VDC environment
 ---
-
-{% include toc.html %}
-
 ## 1.0 Introduction
 
 In this lab, we will explore the environment that has been deployed to Azure by the ARM templates.

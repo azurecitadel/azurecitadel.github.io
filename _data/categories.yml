@@ -16,7 +16,7 @@
 - name: devops
   title: DevOps
   image: /images/categories/devops.png
-  desc: "Build better software faster with DevOps practices; CI & CD pipelines, automation and infrastructure as code"
+  desc: "Build better software faster with DevOps practices; CI & CD pipelines, automation and infra as code"
 
 - name: fundamentals
   title: Fundamentals
@@ -26,12 +26,12 @@
 - name: infra
   title: Infrastructure
   image: /images/categories/infra.png
-  desc: "Infrastructure & Networking"
+  desc: "Virtual machines & networking are still the backbone of many cloud architectures"
 
 - name: iot
   title: Internet Of Things
   image: /images/categories/iot.png
-  desc: "Internet Of Things"
+  desc: "Build production-grade IoT applications and configure your IoT solution"
 
 - name: prereqs
   title: Pre-Requisites
@@ -41,4 +41,9 @@
 - name: security
   title: Security
   image: /images/categories/security.png
-  desc: "Securing your data & applications in the cloud. Managing access and identities with Azure Active Directory"
+  desc: "Securing your data & applications in the cloud. Managing access and identities with Azure AD"
+
+- name: web
+  title: Web & Mobile
+  image: /images/categories/web.png
+  desc: "Developing using web & mobile platforms using RESTful APIs. Azure platform services and API management"

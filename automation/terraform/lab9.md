@@ -14,9 +14,6 @@ sidebar:
   nav: "terraform"
 excerpt: Nothing to see here...
 ---
-
-{% include toc.html %}
-
 ## Introduction
 
 In this lab we will look at provisioners, and how they can be used to drive additional virtual machine customisation once the base image has been deployed.

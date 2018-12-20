@@ -10,9 +10,6 @@ header:
   overlay_image: images/header/arm.png
 excerpt: Core concepts for ARM template, from the core structure through to the various tools to author and deploy
 ---
-
-{% include toc.html %}
-
 ## Azure Resource Manager templates
 
 Azure Resource Manager (ARM) templates are used to deploy resources into resource groups programatically.  ARM provides full Infrastructure as Code capability for Azure.

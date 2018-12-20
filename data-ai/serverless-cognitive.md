@@ -2,7 +2,7 @@
 title: Serverless & Cognitive Services
 author: Ben Coleman
 date: 2018-06-15
-tags: [cognitive-services, serverless, azure-functions]
+tags: [cognitive-services, serverless, azure-functions, paas]
 category: data-ai
 featured: true
 header:

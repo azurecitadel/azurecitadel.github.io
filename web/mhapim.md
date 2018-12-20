@@ -1,14 +1,12 @@
 ---
-layout: article
 title: Azure API Management - Lab 
 date: 2017-11-01
-categories: labs
-featured: false
-author: Mark_Harrison
-image:
-  teaser: mh-apim.jpg
-comments: true
-excerpt: In this lab we explore the use of Azure API Management. 
+category: web
+tags: [api-management]
+author: Mark Harrison
+header:
+  teaser: /images/teaser/mh/mh-apim.jpg
+excerpt: In this lab we explore the use of Azure API Management
 ---
 ![](https://github.com/markharrisonuk/Lab_APIM/raw/master/Images/APIM.png)
 
@@ -16,4 +14,5 @@ Azure API Management is a solution for publishing APIs to external and internal 
 
 In this lab we explore the use of Azure API Management.
 
-## [![link](/images/icons/link.svg) Access the full lab on my GitHub](https://github.com/markharrisonuk/Lab_APIM/blob/master/README.md)
+## [Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_APIM/blob/master/README.md){: .btn .btn--primary .btn--large}
+

@@ -11,8 +11,6 @@ header:
   overlay_image: images/header/arm.png
 excerpt: Explore the Azure CLI
 ---
-{% include toc.html %}
-
 ## Logging into Azure
 
 Log into Azure using ```az login```.  (Note that this is not necessary in Cloud Shell.)

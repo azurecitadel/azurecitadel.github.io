@@ -14,9 +14,6 @@ sidebar:
   nav: "terraform"
 excerpt: Declare and use variables, and introduce more functions
 ---
-
-{% include toc.html %}
-
 ## Introduction
 
 In this lab we'll continue to use the Cloud Shell. As you move through the lab you will start to make use of variables and multiple .tf files.  We'll modify existing resources and add new resources and new providers.

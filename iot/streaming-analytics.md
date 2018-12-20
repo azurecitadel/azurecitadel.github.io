@@ -1,18 +1,13 @@
 ---
-layout: article
 title: Streaming Analytics Lab
-categories: labs
+category: iot
 date: 2018-01-07
-tags: [azure, Streaming, Analytics, CEP, ComplexEventProcessing, StreamingAnalytics, IoT, IoTHub, EventHub, lab]
-comments: true
-author: Mahesh_Balija
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
-excerpt: Introduction to Streaming Analytics, create a Streaming Analytics Job and perform simple aggregations on the events from files or IoT Hub or Event Hubs.
+tags: [iot-hub, stream-analytics]
+author: Mahesh Balija
+header:
+  teaser: images/teaser/education.png
+excerpt: Introduction to Streaming Analytics, create a Streaming Analytics Job and perform simple aggregations on the events from files or IoT Hub or Event Hubs
 ---
-{% include toc.html %}
 
 ## Introduction
 
