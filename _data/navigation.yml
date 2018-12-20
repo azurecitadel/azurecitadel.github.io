@@ -6,10 +6,10 @@ main:
     url: "/tags"
   - title: "Recent"
     url: "/recent"
-  - title: "A-Z"
-    url: "/a-z"
+  # - title: "A-Z"
+  #   url: "/a-z"
   - title: "News"
-    url: "/"
+    url: "/news"
 
 # home page side menu
 sidemenu:
