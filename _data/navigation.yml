@@ -2,12 +2,10 @@
 main:
   - title: "Categories"
     url: "/categories"
+  - title: "Recent"
+    url: "/recent"    
   - title: "Tags"
     url: "/tags"
-  - title: "Recent"
-    url: "/recent"
-  # - title: "A-Z"
-  #   url: "/a-z"
   - title: "News"
     url: "/news"
 

@@ -79,7 +79,7 @@ search_full_content      : true # true, false (default)
 search_provider          : algolia # lunr (default), algolia, google
 algolia:
   application_id         : 7OH2BGCS3F # YOUR_APPLICATION_ID
-  index_name             : Azure Citadel Test # YOUR_INDEX_NAME
+  index_name             : Azure_Citadel # YOUR_INDEX_NAME
   search_only_api_key    : c7d0d56e6a342c7a26ae845c63cef275 # YOUR_SEARCH_ONLY_API_KEY
   powered_by             : # true (default), false
 google:
