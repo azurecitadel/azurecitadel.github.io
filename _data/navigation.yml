@@ -19,13 +19,13 @@ sidemenu:
     - title: "Automation"
       url: "/automation"
     - title: "Cloud Native"
-      url: "/cloud-native"      
+      url: "/cloud-native"
     - title: "Data & AI"
       url: "/data-ai"
     - title: "DevOps"
       url: "/devops"
     - title: "Fundamentals"
-      url: "/fundamentals"      
+      url: "/fundamentals"
     - title: "Infrastructure"
       url: "/infra"
     - title: "Pre-Reqs"
@@ -87,10 +87,10 @@ arm:
       url: "automation/arm/theoryTemplates"
 
 azure101:
-  - title: "Azure 101 Main Page"
+  - title: "Main Page"
     url: "fundamentals/azure101"
 
-  - title: "Azure 101 Presentation Deck"
+  - title: "Presentation Deck"
     url: "fundamentals/azure101/azure101InfraAndAppsPresenterDeck.pptx"
 
   - title: "Labs"
@@ -116,6 +116,36 @@ cli:
       url: "prereqs/cli/cli-3-jmespath"
     - title: "Scripting in Bash"
       url: "prereqs/cli/cli-4-bash"
+
+terraform:
+  - title: "Main Page"
+    url: "automation/terraform"
+
+  - title: "Labs"
+    children:
+    - title: "Basics"
+      url: "automation/terraform/lab1"
+    - title: "Variables"
+      url: "automation/terraform/lab2"
+    - title: "Core Environment"
+      url: "automation/terraform/lab3"
+    - title: "Meta Parameters"
+      url: "automation/terraform/lab4"
+    - title: "Multi Tenancy"
+      url: "automation/terraform/lab5"
+    - title: "State"
+      url: "automation/terraform/lab6"
+    - title: "Modules"
+      url: "automation/terraform/lab7"
+    - title: "Extending beyond ARM"
+      url: "automation/terraform/lab8"
+
+  - title: "Other reading"
+    children:
+    - title: "Terraform Enterprise"
+      url: "automation/terraform/TerraformEnterprise"
+    - title: "Terraform Marketplace VM"
+      url: "automation/terraform/TerraformMarketplaceVM"
 
 vdc:
   - title: "Virtual Data Centre"
