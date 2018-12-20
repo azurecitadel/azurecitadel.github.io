@@ -28,6 +28,8 @@ sidemenu:
       url: "/fundamentals"
     - title: "Infrastructure"
       url: "/infra"
+    - title: "Internet Of Things"
+      url: "/iot"      
     - title: "Pre-Reqs"
       url: "/prereqs"
     - title: "Security"

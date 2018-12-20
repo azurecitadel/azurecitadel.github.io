@@ -53,7 +53,7 @@ However you will probably want to customize your cluster, some common options ar
 - **\-\-node-vm-size** - Azure VM size (e.g. `Standard_A2_v2`)
 - **\-\-kubernetes-version** - Kubernetes version (run `az aks get-versions -o table -l $region` to list available versions)
 
-[📘 AKS Create docs](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-create){:target="_blank" class="btn-info"}
+[📘 AKS Create docs](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-create){:target="_blank" class="btn btn--success"}
 
 > **📕 Kubernetes Glossary.** A *Node* is a worker machine in Kubernetes, it hosts the workloads in your cluster and runs the containers
 
@@ -147,5 +147,5 @@ With an AKS cluster deployed and operational we're in a position to start using 
 
 ---
 
-[🡸 Main Lab Index](..){: .btn-success}
-[🡺 Module 2: Azure Container Registry (ACR)](../part2){: .btn-success}
+[🡸 Main Lab Index](..){: .btn .btn--primary .btn--large} 
+[🡺 Module 2: Azure Container Registry (ACR)](../part2){: .btn .btn--primary .btn--large}  

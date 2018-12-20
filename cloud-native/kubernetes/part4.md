@@ -29,7 +29,7 @@ So how do we cope with all this in Kubernetes? The answer is to use services
 > **📕 Kubernetes Glossary.** A Kubernetes *Service* is an abstraction which defines a logical set of *Pods* and a policy by which to access them over the network.
 
 There are several types of services in Kubernetes, we will deal with just two of them `ClusterIP` and `LoadBalancer`. One thing they all have in common is a `selector` this defines the set of pods the service represents. Typical selectors will filter on the label metadata attached to the pods when they were deployed  
-[📘 Read More - Kubernetes Services](https://kubernetes.io/docs/concepts/services-networking/service/){:target="_blank" class="btn-info"}
+[📘 Read More - Kubernetes Services](https://kubernetes.io/docs/concepts/services-networking/service/){:target="_blank" class="btn btn--success"}
 
 
 ## Create Service for MongoDB
@@ -120,5 +120,5 @@ This is nearly everything we need to get our app up & running so let's get the f
 
 ---
 
-[🡸 Module 3: Deploying the Data Layer](../part3){: .btn-success}  
-[🡺 Module 5: Deploying the Frontend](../part5){: .btn-success}
+[🡸 Module 3: Deploying the Data Layer](../part3){: .btn .btn--primary .btn--large} 
+[🡺 Module 5: Deploying the Frontend](../part5){: .btn .btn--primary .btn--large} 

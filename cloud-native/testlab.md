@@ -7,6 +7,8 @@ header:
   overlay_image: images/header/kube.png
   teaser: images/teaser/kube.png
 excerpt: Testing only IGNORE
-published: false
+
 ---
 Hello
+
+[Module 1 - Deploying Kubernetes](part1){: .btn .btn--primary .btn--large} 

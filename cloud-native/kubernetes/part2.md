@@ -38,7 +38,7 @@ ACR_PWD=`az acr credential show -n $ACR_NAME -g $group --query "passwords[0].val
 As a sanity check you can display the value of the password using `echo $ACR_PWD` 
 
 In order for the Kubernetes nodes to authenticate with ACR we will set up a *Secret* in Kubernetes which holds the login details for our registry. There are other ways to authenticate between AKS and ACR however they are slightly more complex, so we'll not use them in this lab.  
-[📘 ACR and AKS Authentication](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks){:target="_blank" class="btn-info"}
+[📘 ACR and AKS Authentication](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks){:target="_blank" class="btn btn--success"}
 
 Create a secret called **acr-auth** with this command:
 ```
@@ -78,5 +78,5 @@ We now have the application images we need built & stored in a private registry.
 
 ---
 
-[🡸 Module 1: Deploying Kubernetes](../part1){: .btn-success}  
-[🡺 Module 3: Deploying the Data Layer](../part3){: .btn-success}  
+[🡸 Module 1: Deploying Kubernetes](../part1){: .btn .btn--primary .btn--large} 
+[🡺 Module 3: Deploying the Data Layer](../part3){: .btn .btn--primary .btn--large} 
