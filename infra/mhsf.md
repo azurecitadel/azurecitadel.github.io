@@ -15,4 +15,4 @@ Service Fabric is a distributed systems platform that makes it easy to package, 
 
 In this lab we explore the use of Service Fabric.
 
-## [Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_ServiceFabric/blob/master/README.md){: .btn .btn--primary .btn--large}
+[Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_ServiceFabric/blob/master/README.md){: .btn .btn--primary .btn--large}

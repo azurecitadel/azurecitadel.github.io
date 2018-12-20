@@ -14,4 +14,4 @@ Azure Container Service (ACS) allows you to quickly deploy a production ready Ku
 
 In this lab we explore the use of AKS.
 
-## [Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_AKS/blob/master/README.md){: .btn .btn--primary .btn--large}
+[Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_AKS/blob/master/README.md){: .btn .btn--primary .btn--large}

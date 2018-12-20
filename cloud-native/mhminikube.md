@@ -14,4 +14,4 @@ Minikube is a tool that makes it easy to run Kubernetes locally, for users looki
 
 In this lab we explore the use of Minikube.
 
-## [Access the full lab on my GitHub](https://github.com/markharrisonuk/Lab_Minikube/blob/master/README.md){: .btn .btn--primary .btn--large}
+[Access the full lab on my GitHub](https://github.com/markharrisonuk/Lab_Minikube/blob/master/README.md){: .btn .btn--primary .btn--large}

@@ -14,4 +14,4 @@ Azure Container Instances offers the fastest and simplest way to run a container
 
 In this lab we explore the use of Azure Container Instances.
 
-## [Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_ACI/blob/master/README.md){: .btn .btn--primary .btn--large}
+[Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_ACI/blob/master/README.md){: .btn .btn--primary .btn--large}

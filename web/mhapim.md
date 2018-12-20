@@ -14,5 +14,5 @@ Azure API Management is a solution for publishing APIs to external and internal 
 
 In this lab we explore the use of Azure API Management.
 
-## [Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_APIM/blob/master/README.md){: .btn .btn--primary .btn--large}
+[Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_APIM/blob/master/README.md){: .btn .btn--primary .btn--large}
 

@@ -19,5 +19,5 @@ Functions is a serverless compute service that enables you to run code on-demand
 
 In this lab we explore the use of Functions.
 
-## [Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_Functions/blob/master/README.md){: .btn .btn--primary .btn--large}
+[Access the full lab on my GitHub ⇒](https://github.com/markharrisonuk/Lab_Functions/blob/master/README.md){: .btn .btn--primary .btn--large}
 

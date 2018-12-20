@@ -20,4 +20,4 @@ Azure DevOps provides a complete set of DevOps tools for Azure. This lab will wa
 - Monitoring with Application Insights
 - Tracking pipeline progress with Azure DevOps Dashboards
 
-## [Access the full lab ⇒](https://github.com/gidavies/WebAppDevOpsLab)
+[Access the full lab ⇒](https://github.com/gidavies/WebAppDevOpsLab){: .btn .btn--primary .btn--large}
