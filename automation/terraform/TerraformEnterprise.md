@@ -37,4 +37,4 @@ This video shows some of the key concepts, including the forking of environments
 
 Note that the standard Terraform executable itself is free to use.  [Terraform Enterprise](https://www.hashicorp.com/products/terraform) has a Pro and Premium tier, depending on the required level of features.
 
-[◄ Return to Lab 5](../lab5#end-of-lab-5){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle}
+[◄ Return to Lab 5](../lab5#end-of-lab-5){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse}

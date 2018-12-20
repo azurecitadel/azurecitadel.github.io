@@ -390,6 +390,4 @@ Your main.tf file should look similar to the main.tf file in <https://github.com
 
 In the next lab we will introduce variables, use multiple .tf files, and we'll add and modify to our resources. Click on the right arrow to move to the next lab.
 
-[▲ Index](../#labs){: .btn-subtle} [Lab 2: Variables ►](../lab2){: .btn-success}
-{: .btn .btn .btn--large}
-{: .btn .btn--primary .btn--large}
+[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Variables ►](../lab2){: .btn .btn--primary}

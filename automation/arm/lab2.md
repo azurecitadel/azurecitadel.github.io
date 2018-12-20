@@ -180,7 +180,7 @@ Here are the example initial files:
 
 Configure VS Code to have both the azuredeploy.json and the azuredeploy.parameters.json side by side. (Use either `CTRL`+`ALT`+`<|>`, or drag the parameters tab towards the right hand side until the snap area is shown.)
 
-![vscode](/workshops/arm/images/lab2-3-vscode.png)
+![vscode](/automation/arm/images/lab2-3-vscode.png)
 **Figure 3:** Side by side layout
 
 We have a few too many parameters for our service so let's refactor it down to a completely minimal set of parameters, i.e. just the Web App name.  The quickest way to hardcode or derive certain options is to move them down to the variables section.
@@ -308,7 +308,7 @@ It is possible to export a whole resource group definition as ARM JSON.  This is
 1. Type `CTRL-SHIFT-P` to bring up the Command Palette
 1. Use the 'File: Compare Active File With...' to see the difference
 
-![Compare](/workshops/arm/images/lab2-5-compareRgExports.png)
+![Compare](/automation/arm/images/lab2-5-compareRgExports.png)
 **Figure 5:** Comparing resource group exports
 
 If you take a look at the [web app reference page](https://docs.microsoft.com/en-gb/azure/templates/microsoft.web/sites) then you'll find the CORS property and you will also see that it is comparatively well described.  This is not always the case for some of the other resource properties, so this before and after comparison is a handy way of checking the format of the string, array or object that is expected.
@@ -438,4 +438,4 @@ Clean up your lab2 resource group containing the web app before moving on.  From
 
 In the next section we will handle secrets and securetext.
 
-[◄ Lab 1: Basics](../arm-lab1-basics){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 3: Secrets ►](../arm-lab3-secrets){: .btn-success}
+[◄ Lab 1: Basics](../lab1){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 3: Shh Secrets ►](../lab3){: .btn .btn--primary}

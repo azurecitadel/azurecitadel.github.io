@@ -76,4 +76,4 @@ drwxrwsr-x 2 root terraform 4096 Mar 19 11:19 /terraform/
 
 Only members of the new terraform group will be able to create files in the /terraform folder.  The setgid permission ensures that all new files will automatically be assigned terraform as the group rather than the user's default group. You may need to log out of the Terraform VM and then log back in again to reflect the usermod change to the /etc/passwd file.
 
-[◄ Return to Lab 5](../lab5#end-of-lab-5){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle}
+[◄ Return to Lab 5](../lab5#end-of-lab-5){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse}

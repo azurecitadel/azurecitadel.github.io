@@ -339,4 +339,4 @@ Your .tf files should look similar to those in <https://github.com/richeney/terr
 
 In the next lab we will look at some of the additional areas to consider with multi-tenanted environments, including the use of Service Principals and referencing read only states.  We will also look at some of the other ways of managing environments, such as the Terraform Marketplace offering in Azure, and Hashicorp's Terraform Enterprise.
 
-[◄ Lab 5: Multi Tenancy](../lab5){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 7: Modules ►](../lab7){: .btn-success}
+[◄ Lab 5: Multi Tenancy](../lab5){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 7: Modules ►](../lab7){: .btn .btn--primary}

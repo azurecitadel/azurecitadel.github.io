@@ -330,7 +330,7 @@ I have also updated the cosmetic descriptions for the two parameters.
 
 As you start adding to your ARM templates you will find that VS Code has a couple of useful features as shown in the screenshot below.
 
-![JSON Outline](/workshops/arm/images/lab1-8-jsonoutline.png)
+![JSON Outline](/automation/arm/images/lab1-8-jsonoutline.png)
 **Figure 8:** JSON outline and +/-
 
 1. In the Explorer (CTRL+SHIFT+E) on the left, you should see a JSON Outline, which is useful for navigating your template, highlighting a section of it and confirming that syntactically it is looking healthy.  If it does not look right in the JSON Outline then that would suggest that you have some braces in the wrong place.
@@ -753,4 +753,4 @@ Remove-AzureRmResourceGroup -Name lab1
 
 Creating templates from scratch using empty templates and snippets is only one of the possible methods.  In the next lab we will look at different sources.
 
-[◄ Theory: Templates](../theoryTemplates){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 2: Sources ►](../arm-lab2-sources){: .btn-success}
+[◄ Theory: Templates](../theoryTemplates){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 2: Sources ►](../lab2){: .btn .btn--primary}

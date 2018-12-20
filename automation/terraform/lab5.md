@@ -523,4 +523,4 @@ If you want to explore other options in a multi-tenanted environment then take a
 
 In the next lab we will look at the terraform.tfstate file.
 
-[◄ Lab 4: Metas](../lab4){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 6: State ►](../lab6){: .btn-success}
+[◄ Lab 4: Metas](../lab4){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 6: State ►](../lab6){: .btn .btn--primary}

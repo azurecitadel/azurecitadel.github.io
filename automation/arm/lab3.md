@@ -190,7 +190,7 @@ This will be a little painful, but once it is done then the template will be far
 
 If you look at the resources that have been spun up in resource group lab3 from our lab3 template then you'll notice a few things:
 
-![lab3 resources](/workshops/arm/images/lab3-2-resources.png)
+![lab3 resources](/automation/arm/images/lab3-2-resources.png)
 **Figure 2:** Initial resource names
 
 * The vNet (and subnet) are fixed variables for both the name and the address space, so additional VMs deployed to this resource group using this template would share the same networking.  This is fine, but let's make them parameters with defaults instead.
@@ -292,4 +292,4 @@ If yours aren't quite right then use the compare tool from the Command Palette.
 
 In the next section we will look at using the copy property to create multiple of a resource, or of a property (such as managed disks) within a resource.
 
-[◄ Lab 2: Sources](../arm-lab2-sources){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 4: Conditions ►](../arm-lab4-conditions){: .btn-success}
+[◄ Lab 2: Sources](../lab2){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 4: Conditions ►](../lab4){: .btn .btn--primary}

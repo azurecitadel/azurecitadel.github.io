@@ -724,4 +724,4 @@ Your AKS module should look similar to that in <https://github.com/richeney/terr
 
 In the next lab we will also look at provisioners and how they can help to go beyond vanilla image deployments for your virtual machines.
 
-[◄ Lab 7: Multi Tenancy](../lab7){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 9: Provisioners ►](../lab9){: .btn-success}
+[◄ Lab 7: Multi Tenancy](../lab7){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 9: Provisioners ►](../lab9){: .btn .btn--primary}

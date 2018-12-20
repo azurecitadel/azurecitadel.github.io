@@ -357,4 +357,4 @@ Now that you have some idea of the capabilities then it is a great time to take 
 
 This is highly recommended reading before you go from here and start producing your own world class Azure templates.  Good luck!
 
-[◄ Lab 6: Complex](../arm-lab6-complex){: .btn-subtle} [▲ Index](../#index){: .btn-success}
+[◄ Lab 6: Complex](../lab6){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--primary}

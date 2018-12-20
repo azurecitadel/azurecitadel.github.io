@@ -94,7 +94,7 @@ If you have a different distribution then you should use the right package manag
 * For linux systems (including the WSL) that use apt as the package manager you may use the following command to download it to /usr/local/bin:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/workshops/terraform/installLatestTerraform.sh | sudo -E bash -
+curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/automation/terraform/installLatestTerraform.sh | sudo -E bash -
 ```
 
 * Run `terraform --version` to verify

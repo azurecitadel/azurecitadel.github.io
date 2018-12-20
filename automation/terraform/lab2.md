@@ -397,4 +397,4 @@ From lab 3 onwards we will be using Visual Studio Code and locally stored files 
 
 In the next lab we will start to create the core of a more substantial Azure environment and base it in GitHub.
 
-[◄ Lab 1: Basics](../lab1){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 3: Outputs ►](../lab3){: .btn-success}
+[◄ Lab 1: Basics](../lab1){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 3: Outputs ►](../lab3){: .btn .btn--primary}

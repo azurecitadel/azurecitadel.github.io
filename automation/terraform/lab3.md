@@ -403,4 +403,4 @@ The .tf files in tour repository should look somewhat similar to those in <https
 
 In the next lab we will look at some of the meta parameters that you can use in Terraform to gain richer functionality.
 
-[◄ Lab 2: Variables](../lab2){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 4: Metas ►](../lab4){: .btn-success}
+[◄ Lab 2: Variables](../lab2){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 4: Metas ►](../lab4){: .btn .btn--primary}

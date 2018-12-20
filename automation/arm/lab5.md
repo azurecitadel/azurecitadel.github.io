@@ -227,4 +227,4 @@ The scenario you are looking to avoid is having lots of similar but slightly dif
 
 In the next section we will look at the benefits of using more complex objects and arrays in the parameters, variables and outputs sections.
 
-[◄ Lab 4: Conditions](../arm-lab4-conditions){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 6: Complex ►](../arm-lab6-complex){: .btn-success}
+[◄ Lab 4: Conditions](../lab4){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 6: Complex ►](../lab6){: .btn .btn--primary}

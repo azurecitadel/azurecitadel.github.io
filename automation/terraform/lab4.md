@@ -406,4 +406,4 @@ Your .tf files should look similar to those in <https://github.com/richeney/terr
 
 With everything we have looked at so far you can develop some pretty complex configurations.  In the next lab we will move away from the Coud Shell or Azure CLI authentication we have used to date, and start using Service Principals.
 
-[◄ Lab 3: Core](../lab3){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 5: Multi Tenancy ►](../lab5){: .btn-success}
+[◄ Lab 3: Core](../lab3){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 5: Multi Tenancy ►](../lab5){: .btn .btn--primary}

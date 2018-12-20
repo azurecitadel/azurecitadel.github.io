@@ -17,7 +17,7 @@ excerpt: Core concepts for ARM template, from the core structure through to the 
 
 Azure Resource Manager (ARM) templates are used to deploy resources into resource groups programatically.  ARM provides full Infrastructure as Code capability for Azure.
 
-![ARM Templates](/workshops/arm/images/armTemplates.png)
+![ARM Templates](/automation/arm/images/armTemplates.png)
 
 The format is very flexible and enables the configuration of multiple resources and the dependencies between them.
 
@@ -31,7 +31,7 @@ The declarative form is a safer approach, and may be used repeatedly to provide 
 
 ## Templates and Parameter Files
 
-![Template Basics](/workshops/arm/images/templateBasics.png)
+![Template Basics](/automation/arm/images/templateBasics.png)
 
 It is possible to deploy using just a template (and this is how the labs will start) but it is common to also have a corresponding parameters file.  The deployment command then specifies both files.  It is up to you how to name the template and parameter files, but by convention the standards are **azuredeploy.json** and **azuredeploy.parameters.json** respectively.
 
@@ -104,7 +104,7 @@ The "name" and "sku" are illustrative parameters.  The actual parameters would d
 
 If you go through the following lab sections then you will create example template and parameter files.  By doing so you will also be exposed to some of the key functions that are often used.
 
-![Authoring](/workshops/arm/images/armAuthoring.png)
+![Authoring](/automation/arm/images/armAuthoring.png)
 
 The truth is that you can use any text editor to manipulate JSON files, but most power users will prefer those with support for JSON formatting and snippets of code.
 
@@ -116,7 +116,7 @@ The more heavyweight product  is <a href="/prereqs/vs2017" target="_new">Visual 
 
 One option for simple editing is within the Azure Portal itself.  Type 'template' into the search and select "Deploy a custom template" from there. (Or go direct using this <a href="https://portal.azure.com/#create/Microsoft.Template" target="_new">Deploy a Custom Template</a> link.)
 
-![Portal](/workshops/arm/images/searchTemplatesInPortal.png)
+![Portal](/automation/arm/images/searchTemplatesInPortal.png)
 
 The portal editor within this allows the addition of common resources, and much like Visual Studio 2017 it will also populate some of the parameters and variables.  In addition you can use common templates or pull from the Azure Quickstart repository.
 
@@ -126,7 +126,7 @@ Examples of other popular third text editing applications are Atom and Sublime T
 
 The theme of choice continues when it comes to deployment.  There are a number of different options that you may use.
 
-![Deploying](/workshops/arm/images/deployingTemplates.png)
+![Deploying](/automation/arm/images/deployingTemplates.png)
 
 #### Azure Portal
 
@@ -187,7 +187,7 @@ Visual Studio Code provides some useful functionality:
 
 VSTS includes Azure Deployment as one of the many available build steps:
 
-![VSTS](/workshops/arm/images/armVSTS.png)
+![VSTS](/automation/arm/images/armVSTS.png)
 
 ##### REST API
 
@@ -205,7 +205,7 @@ Chef, Puppet, Ansible, Salt and Octopus are all Configuration Management tools a
 
 The vast majority of templates that have been contributed to the Azure Quickstart GitHub repository include a large blue Deploy To Azure button that will go straight into the Deploy a Custom Template screens in the Azure Portal.  The template and parameters files will be loaded, so you can change the parameter values away from the defaults and then submit.
 
-![Quickstart Deploy](/workshops/arm/images/deployToAzure.png)
+![Quickstart Deploy](/automation/arm/images/deployToAzure.png)
 
 ## Recommended reading
 
@@ -213,4 +213,4 @@ For more background information on JSON templates and how they are deployed usin
 
 * [Template Sections](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)
 
-[◄ Theory: ARM](../theoryARM){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 1: Basics ►](../arm-lab1-basics){: .btn-success}
+[◄ Theory: ARM](../theoryARM){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 1: Basics ►](../lab1-basics){: .btn .btn--primary}

@@ -481,4 +481,4 @@ This lab contains some really useful information for those of you creating more 
 
 In the next lab we will take a look at an example of nested deployments using both inline and linked templates.  And then you will take a look at key vaults again and use a nested deployments to work around the hardcoded key vault and secret names that we had to use in the earlier lab.
 
-[◄ Lab 5: Copies](../arm-lab5-copies){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 7: Nesting ►](../arm-lab7-nesting){: .btn-success}
+[◄ Lab 5: Copies](../lab5){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 7: Nesting ►](../lab7){: .btn .btn--primary}

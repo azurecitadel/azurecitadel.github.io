@@ -31,4 +31,4 @@ Your .tf files should look similar to those in <https://github.com/richeney/terr
 
 In the next lab we will look at one of the other Hashicorp products that complements this area, and how you can use Packer to programmatically create custom images to underpin your Azure virtual machine deployments.
 
-[◄ Lab 8: Extending](../lab8){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 10: Packer ►](../lab10){: .btn-success}
+[◄ Lab 8: Extending](../lab8){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 10: Packer ►](../lab10){: .btn .btn--primary}
