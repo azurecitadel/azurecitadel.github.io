@@ -1,16 +1,16 @@
 ---
-layout: article
 title: Windows Subsystem for Linux
 date: 2018-10-22
-categories: guides
-tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, ubuntu, wsl, lxss]
-comments: true
-excerpt: Set up Ubuntu, OpenSUSE or SLES as your Windows subsystem for Linux (WSL). Now with additional customisations!
 author: Richard Cheney
-image:
-  feature:
-  teaser: cloud-tools.png
-  thumb:
+category: automation
+comments: true
+featured: false
+hidden: true
+tags: [terraform]
+header:
+  overlay_image: images/header/nothing.png
+  teaser: images/teaser/cloud-tools.png
+excerpt: Set up Ubuntu, OpenSUSE or SLES as your Windows subsystem for Linux (WSL). Now with additional customisations!
 ---
 
 ## Enable the Windows Subsystem for Linux
@@ -62,7 +62,7 @@ The manual installation path is to go to the Terraform [downloads](https://www.t
 If you are trusting then you can run the following script to download the latest version and install into /usr/local/bin.  You will be prompted for your password as the script uses sudo. Note that it will install zip if that is not present on the system. (Triple click to select the whole line.)
 
 ```bash
-curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/workshops/terraform/installLatestTerraform.sh | sudo -E bash -
+curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/automation/terraform/installLatestTerraform.sh | sudo -E bash -
 ```
 
 * Verify by running `which terraform` and `terraform --version`

@@ -8,8 +8,8 @@ featured: true
 hidden: true
 tags: [terraform]
 header:
-  overlay_image: images/header/terraform.png
-  teaser: images/teaser/terraformlogo.png
+  overlay_image: images/header/terraform.jpg
+  teaser: images/teaser/cloud-terraform.png
 sidebar:
   nav: "terraform"
 excerpt: Create a GitHub repository and a core environment for the subsequent labs
@@ -25,7 +25,7 @@ This environment will be the basis of the remaining labs in the workshop, so no 
 
 Git is the dominant source code management (SCM) platform in use today.  (Git was created by Linus Torvalds as he found the existing SCM systems to have missing functionality.) Many organisations host their own private Git repositories, including Microsoft.  (Microsoft contributed to the Git source code to extend the underlying filesystem in order to host the Windows source code.)
 
-You will create a free public terraform-labs repository on GitHub.  GitHub is the largest host of open source code in thed.a world.  (This documentation is also hosted on a GitHub repository.)
+You will create a free public terraform-labs repository on GitHub.  GitHub is the largest host of open source code in the world.  (This documentation is also hosted on a GitHub repository.)
 
 For this lab you will need to have:
 
@@ -35,7 +35,7 @@ For this lab you will need to have:
     * Visual Studio Code will not find
     * Type `where git` in Command Prompt
     * Note that git must be found in one of the *system* path directories
-    *
+* For Linux and MacOS
     * Type `git` in the terminal for Linux or MacOS
 * Check Visual Studio Code (vscode)
     * Support for Git is integrated and in-the-box
@@ -305,7 +305,7 @@ Steps:
 * Log in to Azure (`az login`)
     * Check your context (`az account show`)
 
-> Terraform has a few ways of authenticating the azurerm provider.  In the first couple of labs we used the Cloud Shell, and the context included `"cloudShellID": true`.  Cloud Shell uses a variant of [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview) (MSI) which is also used by the Terraform marketplace offering.In this lab you will be using the Azure CLI authentication, which is good for local development work.  In later labs we will make use of [Service Principals](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli), which is my preferred mechanism for multi-admin and/ormulti-tenanted environments.
+> Terraform has a few ways of authenticating the azurerm provider.  In the first couple of labs we used the Cloud Shell, and the context included `"cloudShellID": true`.  Cloud Shell uses a variant of [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview) (MSI) which is also used by the Terraform marketplace offering.In this lab you will be using the Azure CLI authentication, which is good for local development work.  In later labs we will make use of [Service Principals](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli), which is my preferred mechanism for multi-admin and/or multi-tenanted environments.
 
 * Run through the init -> plan -> apply workflow
 * Check your new NSGs resource group in the [portal](https://portal.azure.com)
@@ -403,4 +403,4 @@ The .tf files in tour repository should look somewhat similar to those in <https
 
 In the next lab we will look at some of the meta parameters that you can use in Terraform to gain richer functionality.
 
-[◄ Lab 2: Variables](../lab2){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 4: Metas ►](../lab4){: .btn-success}
+[◄ Lab 2: Variables](../lab2){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 4: Metas ►](../lab4){: .btn .btn--primary}

@@ -54,7 +54,7 @@ Resource Groups:
 
 > Note that a resource group itself will be located in a region, but this does not limit the regions that can be used by its resource.  The resource group's region determines where the metadata for that group resides.
 
-![Resource Groups](/workshops/arm/images/armResourceGroups.png)
+![Resource Groups](/automation/arm/images/armResourceGroups.png)
 
 How the resources are grouped depends on the natural organisation of applications, or on how the various resources will be managed.  As a guiding rule it is sensible to group together resources that share the same lifecycle, i.e. they will be instantiated in the same period, and may also be deleted in the future at the same time.
 
@@ -62,7 +62,7 @@ How the resources are grouped depends on the natural organisation of application
 
 Resource groups are designed as a natural management point for related resources, based on groupings, linked lifecycle, use case, billing aggregation, role based access control, etc.
 
-![Managing](/workshops/arm/images/armManageResourceGroups.png)
+![Managing](/automation/arm/images/armManageResourceGroups.png)
 
 #### Tagging
 
@@ -124,7 +124,7 @@ You can see the definitions of the resources, resource groups and resource provi
 
 Drill into an existing resource group, select a resource within it and examine the *id* key's value.
 
-![Resource Explorer](/workshops/arm/images/armResourceExplorer.png)
+![Resource Explorer](/automation/arm/images/armResourceExplorer.png)
 
 Here is an example:
 
@@ -155,4 +155,4 @@ For more background information on Azure Resource Manager, start with the follow
 * [What is Resource Manager?](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
 * [Resource Providers and Types](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services)
 
-[▲ Index](../#index){: .btn-subtle} [Theory: Templates ►](../theoryTemplates){: .btn-success}
+[▲ Index](../#index){: .btn .btn--inverse} [Theory: Templates ►](../theoryTemplates){: .btn .btn--primary}

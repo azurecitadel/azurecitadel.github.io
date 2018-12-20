@@ -51,7 +51,7 @@ Azure Account | Microsoft | [ms-vscode.azure-account](https://marketplace.visual
 Azure Resource Manager Tools | Microsoft | [msazurermtools.azurerm-vscode-tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 JSON Tools | Erik Lynd | [eriklynd.json-tools](https://marketplace.visualstudio.com/items?itemName=eriklynd.json-tools)
 
-![Extensions](/workshops/arm/images/extensions.png)
+![Extensions](/automation/arm/images/extensions.png)
 **Figure 1:** Extensions in vscode
 
 Use `CTRL+SHIFT+X` to open the extensions sidebar.  You can search and install the extensions from within there.  Once you have installed them all then click on one of the _Reload_ buttons.
@@ -95,12 +95,12 @@ Follow the instructions in the <https://github.com/azurecitadel/arm-workshop> re
 ## Index
 
 Lab | Section | Description
-| [Azure Resource Manager](/workshops/arm/theoryARM/) | A short theory session on Azure Resource
-| [ARM Templates](/workshops/arm/theoryTemplates/) | Template structure overview, options for creating and deploying
-1 | [First Template](/workshops/arm/arm-lab1-basics/) | Create a simple template, factor parameters, and deploy using the CLIs
-2 | [Sources of Resources](/workshops/arm/arm-lab2-sources) | Different sources of templates
-3 | [References and Secrets](/workshops/arm/arm-lab3-secrets) | Functions, references, and how to handle secrets
-4 | [Conditional Resources](/workshops/arm/arm-lab4-conditions) | Using conditions to selectively deploy resources
-5 | [Using Copy](/workshops/arm/arm-lab5-copies) | Use the copy property to create multiple resources
-6 | [Objects and Arrays](/workshops/arm/arm-lab6-complex) | More complex parameters, variables and outputs
-7 | [Nesting Templates](/workshops/arm/arm-lab7-nesting) | Nesting templates inline and with linked templates
+| [Azure Resource Manager](/automation/arm/theoryARM/) | A short theory session on Azure Resource
+| [ARM Templates](/automation/arm/theoryTemplates/) | Template structure overview, options for creating and deploying
+1 | [First Template](/automation/arm/lab1) | Create a simple template, factor parameters, and deploy using the CLIs
+2 | [Sources of Resources](/automation/arm/lab2) | Different sources of templates
+3 | [References and Secrets](/automation/arm/lab3) | Functions, references, and how to handle secrets
+4 | [Conditional Resources](/automation/arm/lab4) | Using conditions to selectively deploy resources
+5 | [Using Copy](/automation/arm/lab5) | Use the copy property to create multiple resources
+6 | [Objects and Arrays](/automation/arm/lab6) | More complex parameters, variables and outputs
+7 | [Nesting Templates](/automation/arm/lab7) | Nesting templates inline and with linked templates

@@ -9,7 +9,7 @@ hidden: false
 tags: [terraform]
 header:
   overlay_image: images/header/terraform.png
-  teaser: images/teaser/terraform.png
+  teaser: images/teaser/terraformlogo.png
 sidebar:
   nav: "terraform"
 excerpt: Series of labs for Terraform on Azure
@@ -94,7 +94,7 @@ If you have a different distribution then you should use the right package manag
 * For linux systems (including the WSL) that use apt as the package manager you may use the following command to download it to /usr/local/bin:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/workshops/terraform/installLatestTerraform.sh | sudo -E bash -
+curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/automation/terraform/installLatestTerraform.sh | sudo -E bash -
 ```
 
 * Run `terraform --version` to verify

@@ -386,6 +386,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
 **\<insufficient directory permissions>**
 **If you encountered the 'insufficient directory permissions' you need to follow these steps, else you can skip them**
+
 1. Modify the `resource "azurerm_kubernetes_cluster" "aks"` block
     1. Remove the `depends_on = ["module.service_principal"]`
     1. Hardcode the service_principal stanza's values for client_id and client_secret to use the values in your provider.tf
@@ -425,11 +426,13 @@ ssh-keygen -t rsa -b 2048 -C "richard.cheney@microsoft.com"
 
 The `~/.ssh/id_rsa.pub` public SSH key will be used in the locals default. It will be used as the authentication for the aksadmin user.
 Note: You will need to press Enter in the command-line when prompted as follows:
+
 * `Enter file in which to save the key (/home/username/.ssh/id_rsa):`
 * `Enter passphrase (empty for no passphrase):`
 * `Enter same passphrase again:`
 
 You should receive an output similar to the following:
+
 ```bash
 Your identification has been saved in /home/username/.ssh/id_rsa.
 Your public key has been saved in /home/username/.ssh/id_rsa.pub.
@@ -721,4 +724,4 @@ Your AKS module should look similar to that in <https://github.com/richeney/terr
 
 In the next lab we will also look at provisioners and how they can help to go beyond vanilla image deployments for your virtual machines.
 
-[◄ Lab 7: Multi Tenancy](../lab7){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 9: Provisioners ►](../lab9){: .btn-success}
+[◄ Lab 7: Multi Tenancy](../lab7){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 9: Provisioners ►](../lab9){: .btn .btn--primary}

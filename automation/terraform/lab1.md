@@ -263,7 +263,7 @@ can't guarantee that exactly these actions will be performed if
 
 ```
 
-This is a dry run and shows which actions will be made.  This allows manual verification of the changes before going aheading and running the apply step.
+This is a dry run and shows which actions will be made.  This allows manual verification of the changes before running the apply step.
 
 ## - terraform apply
 
@@ -390,4 +390,4 @@ Your main.tf file should look similar to the main.tf file in <https://github.com
 
 In the next lab we will introduce variables, use multiple .tf files, and we'll add and modify to our resources. Click on the right arrow to move to the next lab.
 
-[▲ Index](../#labs){: .btn-subtle} [Lab 2: Variables ►](../lab2){: .btn-success}
+[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Variables ►](../lab2){: .btn .btn--primary}

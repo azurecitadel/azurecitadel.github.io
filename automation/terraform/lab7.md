@@ -215,7 +215,7 @@ Initializing provider plugins...
 
 You should see in the plan output that all of the resources that are now in the module will be deleted and recreated.  **DO NOT RUN A TERRAFORM APPLY!!**
 
-Those resources have essentially all been renamed, with the resources prefixed with `module.terraform.` and we can use that to manipulate the terraform.tfstate file.  This givesw us an opportunity to ontroduce another command to manage state effectively.
+Those resources have essentially all been renamed, with the resources prefixed with `module.terraform.` and we can use that to manipulate the terraform.tfstate file.  This gives us an opportunity to introduce another command to manage state effectively.
 
 ## Refactoring module resources in a state file
 
@@ -382,4 +382,4 @@ Your .tf files should look similar to those in <https://github.com/richeney/terr
 
 In the next lab we will go a little bit deeper on Terraform state and how to manage and protect that in a multi-tenanted environment with multiple admins.
 
-[◄ Lab 6: State](../lab6){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle} [Lab 8: Extending ►](../lab8){: .btn-success}
+[◄ Lab 6: State](../lab6){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 8: Extending ►](../lab8){: .btn .btn--primary}

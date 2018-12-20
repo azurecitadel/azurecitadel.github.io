@@ -62,7 +62,7 @@ Note that the "key" is the name of the blob that will be created in the terrafor
 
 When you first connect using ssh to your Terraform VM then you'll be in your admin IDs home directory.  You can check the `/etc/passwd` and `/etc/group` files to show your default group.
 
-You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group of admins and a shared area for the Terraform files. (And optionally change the default group for your ID.) The code block below shows how thios can be done:
+You could use it like this if you were the only one working on the deployment. But if you were working as a team of Terraform admins for a deployment then you'd probably want to add a group of admins and a shared area for the Terraform files. (And optionally change the default group for your ID.) The code block below shows how this can be done:
 
 ```bash
 $ sudo addgroup terraform
@@ -76,4 +76,4 @@ drwxrwsr-x 2 root terraform 4096 Mar 19 11:19 /terraform/
 
 Only members of the new terraform group will be able to create files in the /terraform folder.  The setgid permission ensures that all new files will automatically be assigned terraform as the group rather than the user's default group. You may need to log out of the Terraform VM and then log back in again to reflect the usermod change to the /etc/passwd file.
 
-[◄ Return to Lab 5](../lab5#end-of-lab-5){: .btn-subtle} [▲ Index](../#labs){: .btn-subtle}
+[◄ Return to Lab 5](../lab5#end-of-lab-5){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse}

@@ -17,7 +17,7 @@ Conditions are a fairly recent addition, and have massively simplified some of t
 
 Our VM template is working well and the naming is coming through nicely when we have multiple VMs in the resource group:
 
-![Multiple VMs](/workshops/arm/images/lab4-1-multipleVms.png)
+![Multiple VMs](/automation/arm/images/lab4-1-multipleVms.png)
 **Figure 1:** Multiple virtual machine naming
 
 We could rename the storage account used solely for the boot diagnostics, but that is not too important.  Note how the unique name for that is seeded by the resource group ID, so both VM deployments got the same "unique name" and are leveraging the same storage account. If you check the storage account then you can see that each VM's boot diagnostics log.
@@ -241,7 +241,7 @@ az group deployment create --parameters "@$parms" --parameters vmName=lab4Ubuntu
 ```
 
 <video video width="800" height="600" controls>
-    <source type="video/mp4" src="/workshops/arm/images/lab4-3-submit.mp4"></source>
+    <source type="video/mp4" src="/automation/arm/images/lab4-3-submit.mp4"></source>
     <p>Your browser does not support the video element.</p>
 </video>
 **Figure 3:** Submitting using inline parameters
@@ -386,4 +386,4 @@ It is good to have choices!  Hopefully your files look something similar to thes
 
 In the next section we will look at using the copy property to create multiple of a resource, or of a property (such as managed disks) within a resource.
 
-[◄ Lab 3: Secrets](../arm-lab3-secrets){: .btn-subtle} [▲ Index](../#index){: .btn-subtle} [Lab 5: Copies ►](../arm-lab5-copies){: .btn-success}
+[◄ Lab 3: Secrets](../lab3){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 5: Copies ►](../lab5){: .btn .btn--primary}
