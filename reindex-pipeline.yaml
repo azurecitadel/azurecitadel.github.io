@@ -1,0 +1,18 @@
+trigger: none 
+queue:
+  name: Hosted Ubuntu 1604
+# Your build pipeline references a secret variable named ‘algolia.key’. 
+# Create or edit the build pipeline for this YAML file, 
+# define the variable on the Variables tab, and then select the option to make it secret.
+steps:
+- task: UseRubyVersion@0
+  displayName: 'Use Ruby >= 2.4'
+
+- script: 'gem install bundler'
+  displayName: 'gem install bundler'
+
+- script: 'bundle install'
+  displayName: 'bundle install'
+
+- script: 'ALGOLIA_API_KEY=$(algolia.key) bundle exec jekyll algolia'
+  displayName: 'run algolia reindex'
