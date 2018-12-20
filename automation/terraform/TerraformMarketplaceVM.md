@@ -1,12 +1,18 @@
 ---
-layout: article
 title: "Terraform Marketplace VM"
-categories: null
 date: 2018-10-29
-tags: [azure, terraform, marketplace, msi]
+author: Richard Cheney
+category: automation
 comments: true
-author: Richard_Cheney
-published: true
+featured: false
+hidden: true
+tags: [terraform]
+header:
+  overlay_image: images/header/terraform.png
+  teaser: images/teaser/terraformlogo.png
+sidebar:
+  nav: "terraform"
+excerpt: Overview of the Terraform VM offering on the Azure Marketplace and how it uses Managed Service Identity
 ---
 
 ## Terraform VM on the Azure Marketplace

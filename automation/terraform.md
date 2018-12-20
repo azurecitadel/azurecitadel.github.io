@@ -8,7 +8,7 @@ featured: true
 hidden: false
 tags: [terraform]
 header:
-  overlay_image: images/header/terraform.jpg
+  overlay_image: images/header/terraform.png
   teaser: images/teaser/terraform.png
 sidebar:
   nav: "terraform"

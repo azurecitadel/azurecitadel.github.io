@@ -8,8 +8,8 @@ featured: true
 hidden: true
 tags: [terraform]
 header:
-  overlay_image: images/header/terraform.jpg
-  teaser: images/teaser/cloud-terraform.png
+  overlay_image: images/header/terraform.png
+  teaser: images/teaser/terraformlogo.png
 sidebar:
   nav: "terraform"
 excerpt: Understand how Terraform modules can be re-used as standard building blocks for your environments and explore the Terraform Registry

@@ -6,7 +6,7 @@ categories: guides
 tags: [pre-requisites, pre-reqs, prereqs, hackathon, lab, ubuntu, wsl, lxss]
 comments: true
 excerpt: Set up Ubuntu, OpenSUSE or SLES as your Windows subsystem for Linux (WSL). Now with additional customisations!
-author: Richard_Cheney
+author: Richard Cheney
 image:
   feature:
   teaser: cloud-tools.png
