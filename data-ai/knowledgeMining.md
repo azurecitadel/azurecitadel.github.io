@@ -1,10 +1,9 @@
 ---
 title: Build a Cognitive Search Solution
 date: 2018-10-10
-comments: true
-author: Faris_Haddad
+author: Faris Haddad
 category: data-ai
-tags: [cognitive, search, knowledge, data]
+tags: [cognitive-services, search, knowledge]
 header:
   overlay_image: /images/header/nothing.png
   teaser: /images/teaser/project.png
