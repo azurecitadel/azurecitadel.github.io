@@ -1,19 +1,13 @@
 ---
-layout: article
 title: IoT Central Lab
-categories: labs
+category: iot
 date: 2018-01-07
-tags: [azure, IoT, IoT Central, IoT Hub, IoT Edge, EventHub, lab]
-comments: true
-author: Mahesh_Balija
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
+tags: [iot-central, iot-hub, eventhub]
+author: Mahesh Balija
+header:
+  teaser: images/teaser/education.png 
 excerpt: Introduction to IoT Central, create and monitor a sample IoT Central application.
 ---
-{% include toc.html %}
-
 ## Pre-Requisites
 
 - An active Azure subscription

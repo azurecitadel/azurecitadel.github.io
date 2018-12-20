@@ -28,6 +28,11 @@
   image: /images/categories/infra.png
   desc: "Infrastructure & Networking"
 
+- name: iot
+  title: Internet Of Things
+  image: /images/categories/iot.png
+  desc: "Internet Of Things"
+
 - name: prereqs
   title: Pre-Requisites
   image: /images/categories/prereqs.png

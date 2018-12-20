@@ -1,19 +1,13 @@
 ---
-layout: article
 title: IoT Hub Lab
-categories: labs
+category: iot
 date: 2018-01-06
-tags: [azure, iothub, iot, iotdevice, lab, portal, resource, group]
-comments: true
-author: Mahesh_Balija
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
+tags: [iot-hub]
+author: Mahesh Balija
+header:
+  teaser: images/teaser/education.png
 excerpt: An intro to IoT Hub, create a IoT Hub and simulate a device in your machine and push messages to cloud (IoT Hub).
 ---
-{% include toc.html %}
-
 ## Introduction
 
 The main Azure portal is <a href="https://portal.azure.com" target="portal">https://portal.azure.com</a>.
@@ -41,7 +35,7 @@ or partitions in the IoT Hub
     - Click on notification bell and click on **Go to resource** button
 - Congrats! you have now setup your IoT Hub instance  
 
-![](/labs/iothub/images/iothub-creation-page.png)
+![](images/iothub-creation-page.png)
 
 ## Documentation
 

@@ -1,19 +1,13 @@
 ---
-layout: article
 title: IoT Hub File Upload
-categories: labs
+category: iot
 date: 2018-03-21
-tags: [azure, iothub, iot, iotdevice, lab, portal, resource, group, IoT File Upload]
-comments: true
-author: Mahesh_Balija
-image:
-  feature: 
-  teaser: Education.jpg
-  thumb: 
+tags: [iot-hub, python, raspberry-pi]
+author: Mahesh Balija
+header:
+  teaser: images/teaser/education.png
 excerpt: Upload file from devices to an existing IoT Hub and persist to Azure Storage.
 ---
-{% include toc.html %}
-
 ## Introduction
 
 The main Azure portal is <a href="https://portal.azure.com" target="portal">https://portal.azure.com</a>.
