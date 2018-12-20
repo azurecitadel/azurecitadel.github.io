@@ -110,5 +110,5 @@ But there's a few final improvements we need to make our app more robust
 
 ---
 
-[🡸 Module 4: Services & Networking](../part4){: .btn-success}  
-[🡺 Module 6: Scaling & Persistence](../part6){: .btn-success}
+[🡸 Module 4: Services & Networking](../part4){: .btn .btn--primary .btn--large}  
+[🡺 Module 6: Scaling & Persistence](../part6){: .btn .btn--primary .btn--large} 

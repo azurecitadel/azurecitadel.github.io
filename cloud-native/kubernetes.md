@@ -84,13 +84,13 @@ We will not be writing real code but there will be significant editing of YAML f
 ## Lab Contents
 As this lab is quite long, it has been split into several modules:
 
-[Module 1 - Deploying Kubernetes](part1){: .btn-success}  
-[Module 2 - Azure Container Registry (ACR)](part2){: .btn-success}   
-[Module 3 - Deploying the Data Layer](part3){: .btn-success}  
-[Module 4 - Services & Networking](part4){: .btn-success}  
-[Module 5 - Deploying the Frontend](part5){: .btn-success}  
-[Module 6 - Scaling & Persistence](part6){: .btn-success}  
-[Extra - Optional Exercises](extra){: .btn-success}
+[Module 1 - Deploying Kubernetes](part1){: .btn .btn--primary .btn--large}  
+[Module 2 - Azure Container Registry (ACR)](part2){: .btn .btn--primary .btn--large}   
+[Module 3 - Deploying the Data Layer](part3){: .btn .btn--primary .btn--large}   
+[Module 4 - Services & Networking](part4){: .btn .btn--primary .btn--large}  
+[Module 5 - Deploying the Frontend](part5){: .btn .btn--primary .btn--large}  
+[Module 6 - Scaling & Persistence](part6){: .btn .btn--primary .btn--large}  
+[Extra - Optional Exercises](extra){: .btn .btn--primary .btn--large}  
 
 ---
 

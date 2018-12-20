@@ -81,7 +81,7 @@ kubectl get all
 You should see a deployment called mongo (prefixed **deploy/**) a replica set (prefixed **rs/**) and a pod (prefixed **po/**), the pod and replica set will have auto generated names appended.
 
 Each pod in Kubernetes gets its own IP address within the cluster. If you are interested, it is worth spending 5 minutes reading some of the concepts  
-[📘 Kubernetes network concepts](https://kubernetes.io/docs/concepts/cluster-administration/networking/#kubernetes-model){:target="_blank" class="btn-info"}
+[📘 Kubernetes network concepts](https://kubernetes.io/docs/concepts/cluster-administration/networking/#kubernetes-model){:target="_blank" class="btn btn--success"}
 
 To get the pod's IP address run the `describe pod` command with a filter set to our `app=mongodb` label
 ```
@@ -163,5 +163,5 @@ Now this is not a recommended configuration for a lot of reasons, and in the nex
 
 ---
 
-[🡸 Module 2: Azure Container Registry (ACR)](../part2){: .btn-success}  
-[🡺 Module 4: Services & Networking](../part4){: .btn-success}
+[🡸 Module 2: Azure Container Registry (ACR)](../part2){: .btn .btn--primary .btn--large} 
+[🡺 Module 4: Services & Networking](../part4){: .btn .btn--primary .btn--large}
