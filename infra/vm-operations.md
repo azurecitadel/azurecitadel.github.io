@@ -2,12 +2,10 @@
 title: VM Operations
 date: 2018-03-12
 category: infra
-tags: [vm, change management]
-comments: true
-featured: false
+tags: [operations, change management]
+
 author: [Dan Baker, Tom Wilde]
 header:
-  overlay_image: images/header/nothing.png
   teaser: images/teaser/cloud-tools.png
 excerpt: This hands on lab is focused on performing operations on virtual machines in Azure
 ---
@@ -36,5 +34,4 @@ The workshop requires the following:
 
 ## VM Operation - Hands on Lab Guide
 
-The main VM Operation Hands on Lab Guide may be found here:
-**[https://github.com/towilde/azure-vm-operations](https://github.com/towilde/azure-vm-operations)**
+[VM Operation Hands on Lab Guide ⇒](https://github.com/towilde/azure-vm-operations){: .btn .btn--primary .btn--large}
