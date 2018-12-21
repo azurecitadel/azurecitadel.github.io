@@ -6,7 +6,7 @@ tags: [operations, change management]
 
 author: [Dan Baker, Tom Wilde]
 header:
-  teaser: images/teaser/cloud-tools.png
+  teaser: /images/teaser/cloud-tools.png
 excerpt: This hands on lab is focused on performing operations on virtual machines in Azure
 ---
 
