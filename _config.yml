@@ -1,147 +1,61 @@
-# Welcome to Jekyll!
 #
-# This config file is meant for settings that affect your entire site, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve`. If you change this file, please restart the server process.
-
-# Theme Settings
+# Azure Citadel - minimal-mistakes config
+# =======================================
+# - This is a heavily modified config, un-used sections have been removed
+# - For an unmodifed config see _config_orig.yml
 #
-# Review documentation to determine if you should use `theme` or `remote_theme`
-# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
+# Ben Coleman, Dec 2018
+# Modified: 
+#
 
-# theme                  : "minimal-mistakes-jekyll"
-# remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "citadel" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
-
-# collections_dir: content
-# collections:
-#   labs:
-#     output: true
-#     permalink: /:collection/:path/
-#     layout: single
-#     author_profile: true
-#   workshops:
-#     output: true
-#     permalink: /:collection/:path/
-#   guides:
-#     output: true
-#     permalink: /:collection/:path/    
+# Skin (note this is a modified & custom skin file)
+minimal_mistakes_skin    : "citadel" 
 
 # Site Settings
 locale                   : "en-GB"
 title                    : "Azure Citadel"
 logo                     : "/images/site/logo.png"
 title_separator          : "-"
-name                     : ""
+name                     : "Microsoft"
 description              : "Azure related training material developed and maintained by the technical field team at Microsoft."
-url                      : # "http://localhost:4000" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : # "/" 
+url                      : # Left empty so default used
+baseurl                  : # Left empty so default used "/" 
 repository               : https://github.com/azurecitadel/azurecitadel.github.io
 teaser                   : "/images/teaser/default.png"
-breadcrumbs              : false  # true, false (default)
+breadcrumbs              : false  # These do not work with the site structure
 words_per_minute         : 100
 comments:
-  provider               : disqus # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
+  provider               : disqus
   disqus:
-    shortname            : https-ukpducim-github-io # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-  discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
-  facebook:
-    # https://developers.facebook.com/docs/plugins/comments
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
-staticman:
-  allowedFields          : # ['name', 'email', 'url', 'message']
-  branch                 : # "master"
-  commitMessage          : # "New comment by {fields.name}"
-  filename               : # comment-{@timestamp}
-  format                 : # "yml"
-  moderation             : # true
-  path                   : # "/_data/comments/{options.slug}" (default)
-  requiredFields         : # ['name', 'email', 'message']
-  transforms:
-    email                : # "md5"
-  generatedFields:
-    date:
-      type               : # "date"
-      options:
-        format           : # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
-  endpoint               : # URL of your own deployment with trailing slash, will fallback to the public instance
-reCaptcha:
-  siteKey                :
-  secret                 :
-atom_feed:
-  path                   : # blank (default) uses feed.xml
-search                   : true # true, false (default)
-search_full_content      : true # true, false (default)
-search_provider          : algolia # lunr (default), algolia, google
-algolia:
-  application_id         : 7OH2BGCS3F # YOUR_APPLICATION_ID
-  index_name             : Azure_Citadel # YOUR_INDEX_NAME
-  search_only_api_key    : c7d0d56e6a342c7a26ae845c63cef275 # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : # true (default), false
-google:
-  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
-  instant_search         : # false (default), true
-# SEO Related
-google_site_verification :
-bing_site_verification   :
-yandex_site_verification :
-naver_site_verification  :
+    shortname            : https-ukpducim-github-io 
 
-# Social Sharing
-twitter:
-  username               :
-facebook:
-  username               :
-  app_id                 :
-  publisher              :
-og_image                 : # Open Graph/Twitter default site image
-# For specifying social profiles
-# - https://developers.google.com/structured-data/customize/social-profiles
-social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+atom_feed:
+  path                   : feed.xml
+
+search                   : true
+search_full_content      : true
+search_provider          : algolia
+algolia:
+  application_id         : 7OH2BGCS3F                       # YOUR_APPLICATION_ID
+  index_name             : Azure_Citadel                    # YOUR_INDEX_NAME
+  search_only_api_key    : c7d0d56e6a342c7a26ae845c63cef275 # YOUR_SEARCH_ONLY_API_KEY
+  powered_by             : true
 
 # Analytics
-analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
-  google:
-    tracking_id          :
-    anonymize_ip         : # true, false (default)
+# We use App Insghts, see _includes/head/custom.html for snippet
 
 
-# Site Author
+# Site Author 
+# - NEED TO REVIEW THIS, DON'T THINK IT'S EVER USED ANYWHERE
 author:
   name             : "Richard Cheney"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : 
+  avatar           : images/authors/rich-c.jpg
+  bio              : Cloud Solution Architect.<br/>Infrastructure as code, automation, networking, storage, compute
   location         : "UK"
   email            : richard.cheney@microsoft.com
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
 
-# Site Footer
+
+# Site Footer - Edited to include disclaimer
 footer:
   links:
     - label: "Disclaimer"
@@ -156,8 +70,8 @@ include:
   - .htaccess
   - _pages
 exclude:
-  - staging
-  - art
+  - _staging
+  - _site_assets
   - "*.sublime-project"
   - "*.sublime-workspace"
   - vendor
@@ -217,11 +131,11 @@ sass:
   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 
-# Outputting POSTS ONLY
+# Outputting 
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+paginate: 5 # amount of posts to show - NOT USED ANYWHERE YET
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Etc/GMT # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins (previously gems:)
@@ -244,34 +158,12 @@ whitelist:
 
 
 # Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path/my-awesome-category/index.html ~> path: /
-
 # category_archive:
 #   type: liquid
 #   path: /categories/
 tag_archive:
   type: liquid
   path: /tags/
-
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
 
 
 # HTML Compression
@@ -282,7 +174,12 @@ compress_html:
     envs: development
 
 
+#
 # Defaults for all user content
+# These defaults are Azure Citadel specific
+#
+# Note. All posts need to have `category: news` for them to show up in the news section
+#
 defaults:
   - scope:
       path: ""

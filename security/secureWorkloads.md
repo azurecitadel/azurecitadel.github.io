@@ -2,7 +2,7 @@
 title: Securing Workloads in Azure
 date: 2018-02-23
 category: security
-tags: [security, azure, infrastructure]
+tags: [security, infrastructure]
 comments: true
 featured: true
 author: Tom Wilde

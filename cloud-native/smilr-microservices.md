@@ -3,6 +3,7 @@ title: Smilr - Microservices
 date: 2018-12-21
 category: cloud-native
 author: Ben Coleman
+tags: [microservices, kubernetes, angular, nodejs, aks]
 header:
   teaser: /images/teaser/blueprint.png
 excerpt: Learn about microservices and modern optimized application architecure, with a working reference application

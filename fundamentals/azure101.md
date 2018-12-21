@@ -3,7 +3,7 @@ title: Azure 101
 date: 2017-08-29
 author: Richard Cheney
 category: fundamentals
-tags: [azure, 101]
+tags: [portal, basics]
 comments: true
 featured: true
 excerpt: The Azure 101 session is an instructor led session for technical learners who have had little to no experience with Azure public cloud

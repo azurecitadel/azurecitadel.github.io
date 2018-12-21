@@ -2,7 +2,7 @@
 title: DevOps with Microsoft and Azure
 date: 2018-03-21
 category: devops
-tags: [vsts, app-insights]
+tags: [azure-devops, app-insights]
 toc: false
 author: Ben Coleman
 image:

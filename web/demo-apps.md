@@ -2,7 +2,7 @@
 title: Demo Web Apps
 date: 2017-09-12
 category: web
-tags: [nodejs, python, dotnet, angular]
+tags: [nodejs, python, dotnet, angular, paas]
 author: Ben Coleman
 header:
   teaser: /images/teaser/blueprint.png

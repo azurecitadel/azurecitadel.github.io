@@ -16,7 +16,7 @@ header:
   overlay_image: /images/header/files.jpg  
 ---
 
-{% assign all_tags = site.pages | map: 'tags' | join: ','  | split: ',' | uniq | sort %}
+{% assign all_tags = site.pages | where_exp: "p", "p.hidden != true" | map: 'tags' | join: ','  | split: ',' | uniq | sort %}
 
 <script>
 function tagJump() {
