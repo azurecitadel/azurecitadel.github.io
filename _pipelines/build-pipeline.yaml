@@ -23,5 +23,5 @@ steps:
 - script: 'bundle exec jekyll build -d _temp'
   displayName: 'build site with jekyll'
 
-- script: 'az storage blob upload-batch -s _temp -d \\$web --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)"'
+- script: 'az storage blob upload-batch -s _temp -d \$web --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)"'
   displayName: 'copy output to staging site'
