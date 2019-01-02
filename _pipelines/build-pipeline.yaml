@@ -1,0 +1,17 @@
+trigger: none 
+
+queue:
+  name: Hosted Ubuntu 1604
+
+steps:
+- task: UseRubyVersion@0
+  displayName: 'Use Ruby >= 2.4'
+
+- script: 'gem install bundler'
+  displayName: 'gem install bundler'
+
+- script: 'bundle install'
+  displayName: 'bundle install'
+
+- script: 'bundle exec jekyll build'
+  displayName: 'build site with jekyll'
