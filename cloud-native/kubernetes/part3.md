@@ -2,7 +2,6 @@
 title: "Kubernetes: Module 3 - Deploying the Data Layer"
 author: Ben Coleman
 date: 2018-10-01
-tags: [kubernetes, microservices, aks]
 hidden: true
 
 header:

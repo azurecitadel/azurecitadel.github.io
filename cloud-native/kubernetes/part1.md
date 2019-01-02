@@ -2,7 +2,6 @@
 title: "Kubernetes: Module 1 - Deploying Kubernetes"
 author: Ben Coleman
 date: 2018-10-01
-tags: [kubernetes, microservices, aks]
 hidden: true
 
 header:
@@ -57,21 +56,23 @@ However you will probably want to customize your cluster, some common options ar
 
 > **📕 Kubernetes Glossary.** A *Node* is a worker machine in Kubernetes, it hosts the workloads in your cluster and runs the containers
 
-The `az aks create` command uses your default SSH keypair located in **~/.ssh/id_rsa.pub** to provision the cluster nodes. If you've never used Cloud Shell or WSL Bash before, them these keys won't exist then you must add `--generate-ssh-keys` to the following command.
+The `az aks create` command uses your default SSH keypair located in **~/.ssh/id_rsa.pub** to provision the cluster nodes. If you've never used Cloud Shell or WSL Bash before, these keys won't exist then you must add `--generate-ssh-keys` to the command, as shown below.
 
 For this lab the recommended cluster configuration and command to run is
 
 ```bash
 az aks create -g $group -n aks-cluster -l $region \
 --node-count 3 --node-vm-size Standard_DS2_v2 \
---kubernetes-version 1.11.3 --verbose
+--kubernetes-version 1.11.5 --verbose
 ```
 
-This is a three node cluster, running Kubernetes 1.11.3 using D-series VMs with 2 cores to minimize costs but allow for reasonable reliability of the cluster.
+This is a three node cluster, running Kubernetes 1.11.5 using D-series VMs with 2 cores to minimize costs but allow for reasonable reliability of the cluster.
 
-**💬 Note 1.** The command might take some time to complete, around 15 mins is normal, but in some cases up to an 30 minutes.
+**💬 Note 1.** The versions of Kubernetes available in AKS change regularly, if version **1.11.5** is not available run `az aks get-versions -l $region -o table` and use the newest version available. It should not affect the lab
 
-**💬 Note 2.** To save costs you can optionally enable auto-shutdown on the node VMs. Find the resource group named **MC_kube-lab_aks-cluster_westeurope** this will contain your cluster's nodes and other Azure resources. Click on each of the VMs and switch on the auto shutdown feature. You will need to manually start them again when you want to use your cluster, which might take around 5 mins, but having the nodes shutdown you can keep your AKS cluster deployed indefinitely for essentially zero cost
+**💬 Note 2.** The command might take some time to complete, around 6 to 10 mins is normal, but in some cases it may take up to 30 minutes.
+
+**💬 Note 3.** To save costs you can optionally enable auto-shutdown on the node VMs. Find the resource group named **MC_kube-lab_aks-cluster_westeurope** this will contain your cluster's nodes and other Azure resources. Click on each of the VMs and switch on the auto shutdown feature. You will need to manually start them again when you want to use your cluster, which might take around 5 mins, but having the nodes shutdown you can keep your AKS cluster deployed indefinitely for essentially zero cost
 
 ## Get Kubectl CLI tool (WSL Bash Only)
 

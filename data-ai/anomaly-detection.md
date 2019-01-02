@@ -85,9 +85,8 @@ https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-02-b
 
 ## Documentation & Links
 
-#### <a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="azuredocs">Azure Databricks - Microsoft</a>
+### <a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="_blank">Azure Databricks - Microsoft</a>
 
+### <a href="https://docs.azuredatabricks.net/" target="_blank">Databricks Official Documentation</a> 
 
-#### <a href="https://docs.azuredatabricks.net/" target="Databricks">Databricks Official Documentation</a> 
-
-#### <a href="https://github.com/mabalija/azure-databricks-labs" target="Databricks Labs GitHub Repo, Mahesh Balija">Azure Databricks Sample Labs</a> 
+### <a href="https://github.com/mabalija/azure-databricks-labs" target="_blank">Azure Databricks Sample Labs</a> 
