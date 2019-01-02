@@ -52,11 +52,11 @@ We will use this secret later on
 
 For this section we will be using a brand new feature of *Azure Container Registry*  called "ACR Tasks", this allows us to build container images in Azure without need access to a Docker host or having Docker installed locally. It also pushes the resulting images directly into your registry.
 
-We will build our images directly from source. The source of Smilr is held on GitHub in this repository https://github.com/benc-uk/microservices-demoapp
+We will build our images directly from source. The source of Smilr is held on GitHub in this repository [https://github.com/benc-uk/smilr](https://github.com/benc-uk/smilr) and ACR lets us run the build directly using the URL of a remote repo
 
 To use ACR Tasks to run our Docker build task in Azure, we call the `az acr build` sub-command. The first image we'll build is for the Smilr data API component, the source Dockerfile is in the **node/data-api** sub-directory and we'll tag the resulting image `smilr/data-api`
 ```
-az acr build --registry $ACR_NAME -g $group --file node/data-api/Dockerfile --image smilr/data-api https://github.com/benc-uk/microservices-demoapp.git
+az acr build --registry $ACR_NAME -g $group --file node/data-api/Dockerfile --image smilr/data-api https://github.com/benc-uk/smilr.git
 ```
 **💬 Note.**  If you are familiar with the Docker command line and the `docker build` command you notice some similarity in syntax and approach
 
@@ -64,7 +64,7 @@ az acr build --registry $ACR_NAME -g $group --file node/data-api/Dockerfile --im
 
 That should take about a minute or two to run. After that we'll build the frontend, the command will be very similar just with a different source file image tag
 ```
-az acr build --registry $ACR_NAME -g $group --file node/frontend/Dockerfile --image smilr/frontend https://github.com/benc-uk/microservices-demoapp.git
+az acr build --registry $ACR_NAME -g $group --file node/frontend/Dockerfile --image smilr/frontend https://github.com/benc-uk/smilr.git
 ```
 This will take slightly longer but should complete in 3-5 minutes
 
