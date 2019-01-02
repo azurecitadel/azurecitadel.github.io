@@ -71,6 +71,7 @@ include:
   - .htaccess
   - _pages
 exclude:
+  - templates
   - _staging
   - _site_assets
   - "*.sublime-project"
