@@ -1,4 +1,6 @@
+# Only trigger on PR, gives us some pre-validation the site hasn't been broken
 trigger: none 
+pr: master
 
 queue:
   name: Hosted Ubuntu 1604

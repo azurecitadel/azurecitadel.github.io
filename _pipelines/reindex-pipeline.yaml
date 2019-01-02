@@ -1,4 +1,6 @@
+# No triggers, run on schedule instead
 trigger: none 
+pr: none
 
 queue:
   name: Hosted Ubuntu 1604
