@@ -10,6 +10,8 @@ header:
 
 excerpt: Keep this fairly short, no more than two or three sentences 
 ---
+# Remove From Here...
+Remove everything from this template (below the `---` line above) when you are ready to use it
 
 # Introduction
 Note. There is no point making the first heading in your page the same as the title. The title will be shown as part of the page banner header, it just wastes space having it repeated here

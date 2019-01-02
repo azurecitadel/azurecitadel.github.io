@@ -10,6 +10,8 @@ header:
 
 excerpt: Keep this fairly short, no more than two or three sentences 
 ---
+# Remove From Here...
+Remove everything from this template (below the `---` line above) when you are ready to use it
 
 # Introduction
 See `single-page-example.md` for general guidance and example for creating your content
