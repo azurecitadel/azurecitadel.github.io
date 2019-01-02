@@ -82,12 +82,12 @@ https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-01-a
 *The detailed steps are listed in the GitHub Repository created by Mahesh Balija please refer to below link :)*
 https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-02-batchpredict  
 
-## Documentation
 
-Azure Databricks Documentation
+## Documentation & Links
 
-Link | Description
-<a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="azuredocs">Azure Databricks - Microsoft</a> | Azure Databricks Microsoft Documentation 
-<a href="https://docs.azuredatabricks.net/" target="Databricks">Databricks Official Documentation</a> | Azure Databricks official documentation from Databricks
-<a href="https://github.com/mabalija/azure-databricks-labs" target="Databricks Labs GitHub Repo, Mahesh Balija">Azure Databricks Sample Labs</a> | Sample Labs in GitHub repository from Mahesh Balija  
-------------------------------------------------------------------
+#### <a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="azuredocs">Azure Databricks - Microsoft</a>
+
+
+#### <a href="https://docs.azuredatabricks.net/" target="Databricks">Databricks Official Documentation</a> 
+
+#### <a href="https://github.com/mabalija/azure-databricks-labs" target="Databricks Labs GitHub Repo, Mahesh Balija">Azure Databricks Sample Labs</a> 

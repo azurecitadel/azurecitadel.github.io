@@ -47,6 +47,7 @@ algolia:
 
 # Site Author 
 # - NEED TO REVIEW THIS, DON'T THINK IT'S EVER USED ANYWHERE
+# (It does show in the feed.xml)
 author:
   name             : "Richard Cheney"
   avatar           : images/authors/rich-c.jpg
