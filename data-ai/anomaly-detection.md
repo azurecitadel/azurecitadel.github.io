@@ -1,8 +1,8 @@
 ---
 title: Anomaly Detection with Azure Databricks
-category: Machine Learning, Advanced Analytics, AI, Data
+category: data-ai
 date: 2018-12-30
-tags: [Anomaly Detection, Predictive Modeling, Machine Learning, Advanced Analytics, AI, Data, Databricks, Azure, Spark, ML Pipelines, Random Forests]
+tags: [anomaly-detection, databricks, ml, ai]
 author: Mahesh Balija
 header:
   teaser: images/teaser/education.png
