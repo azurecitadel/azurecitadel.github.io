@@ -11,16 +11,14 @@ resources:
 jobs:
 - job: jekyllbuild
   displayName: Build site in jekyll container
-  pool:
-    vmImage: 'ubuntu-16.04'
+  pool: Hosted Ubuntu 1604
   container: jekyll_container
   steps:
-  - script: jekyll build
+  - script: ls
 
 - job: copy
   dependsOn: jekyllbuild
   displayName: Copy site
-  pool:
-    vmImage: 'ubuntu-16.04'
+  pool: Hosted Ubuntu 1604
   steps:
   - script: ls
