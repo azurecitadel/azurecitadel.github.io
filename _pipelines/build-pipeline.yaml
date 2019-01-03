@@ -1,20 +1,17 @@
 # Only trigger on PR, gives us some pre-validation the site hasn't been broken
 trigger: none 
+
 pr: 
   - master
 
 queue:
   name: Hosted Ubuntu 1604
 
-# Must pre-created & populated
 variables:
   - group: citadel-shared-vars
 
 steps:
 - task: UseRubyVersion@0
-  inputs:
-    versionSpec: '>= 2.4' 
-    addToPath: true
   displayName: 'Use Ruby >= 2.4'
 
 - script: 'gem install bundler'
@@ -23,8 +20,8 @@ steps:
 - script: 'bundle install'
   displayName: 'bundle install'
 
-- script: 'bundle exec jekyll build'
+- script: 'bundle exec jekyll build -d _temp'
   displayName: 'build site with jekyll'
 
-- script: 'az storage blob upload-batch -s _site -d \$web --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
+- script: 'az storage blob upload-batch -s _temp -d \$web --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
   displayName: 'copy output to staging site'
