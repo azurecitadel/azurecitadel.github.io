@@ -8,9 +8,12 @@ header:
   teaser: images/teaser/education.png
 excerpt: A step-by-step guide to detect Anomalies in the large-scale data with Azure Databricks MLLib module. In this tutorial we will learn various Noval Techniques used for detecting Anomalies and will leverage on Random Forests to build a classification model to predict anomalies within the dataset.   
 ---
-# Building an Anomaly detection model to predict Anomalies with in large-scale data.
+# Design
+![](images/batch_predictions_workflow.jpg)
 
-Anomaly Detection is the ability to detect unusual behavior like un-expected logs, events from the data or in simple terms finding the odd-one-out from the given dataset. 
+# Build Anomaly detection model to detect Network Intrusions (i.e., Bad network connections or attacks) using KDDCup Synthetic Network Logs Dataset 
+
+Anomaly Detection is the ability to detect abnormal behavior in the given data like un-expected logs, events etc (or) in simple terms finding the odd-one-out from the given dataset. 
 
 Anomaly Detection have various applications like,
 
@@ -19,17 +22,18 @@ Anomaly Detection have various applications like,
 * Patient Monitoring
 * Application Monitoring etc
 
-If implemented correctly Anomaly Detection can help users to take pro-active actions to avoid any catastropic losses in various domains. There are various techniques available to implement an Anomaly Detection like,
+If implemented correctly Anomaly Detection can help users to take pro-active actions to avoid any catastropic losses in various domains. There are various techniques proposed to implement an Anomaly Detection as below,
 
 * Supervised Anomaly Detection with Decision Trees, SVMs - Support Vector Machines, DNNs - Deep Neural Networks etc
 * Semi-Supervised Anomaly Detection with One-class classification models like one-class SVMs
 * Unsupervised Anomaly Detection with Clustering techniques like K-NN - K-Nearest Neighbours etc
 
-This is a step-by-step guide to detect Anomalies in the large-scale data with Azure Databricks MLLib module. In this tutorial we will learn various Noval Techniques used for detecting Anomalies and will leverage on Random Forests to build a classification model to predict anomalies within the dataset.
+This is the step-by-step guide to detect Anomalies in the large-scale data with Azure Databricks MLLib module.  
+In this tutorial we will use the Supervised Anomaly Detection technique using Decision Trees (in our case Random Forests in Spark MLLib) for detecting Anomalies within the KDD Cup Network Log Synthetic data and will detect the network intrusions.
 
 ## Azure-Databricks Labs for building ML Models  
   
-This tutorial mainly focuses on how to use Azure Databricks for Machine Learning workloads, saving and loading the Spark MLLib Model pipelines to Azure Storage. This no way claim that this is the best approach for Anomaly detection, rather the intent is to learn how to use Azure Databricks to build ML models.
+This tutorial mainly focuses on how to use Azure Databricks for Machine Learning workloads, saving and loading the Spark MLLib Model pipelines to Azure Storage. This tutorial in no means claim that this is the best approach for Anomaly detection, rather focuses on the approach to create, persist and load the Model pipelines in Azure Databricks.
 
 ## Create an Azure Blob Storage account and upload the Network logs - Synthetic data
 
@@ -44,7 +48,8 @@ The main Azure portal is <a href="https://portal.azure.com" target="portal">http
 8. Once the deployment is successful, goto the storage account through the notification bell and clicking **Go to resource** button
 9. Under **Settings** select **Access Keys** and make a note of **Key1** (or) **Key2**
 10. Download the file **kddcup.data_10_percent.gz** from below link  
-http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html 
+<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html" target="portal">http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html</a> | KDD Cup Datasets
+ 
 NOTE: Only use the 10 percent dataset from this link for the scope of this labs. You can use the whole dataset for your learning in your personal time :)
 11. Extract the gzip file, you will get **kddcup.data_10_percent_corrected**
 12. Open **Microsoft Azure Storage Explorer** from your desktop and connect to your Azure subscription  
@@ -62,9 +67,9 @@ NOTE: Follow the instructions in the **dlsgen2** labs to download and install th
 3. Click on **Workspace** icon from the left navigation pane 
 4. Click on the **down arrow icon** next to workspace
 5. Hit **Import**
-6. Upload the **anomaly_detection_v1.dbc** file from below GitHub repository into this workspace  
-https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-01-anomalydetection  
-
+6. Upload the **anomaly_detection_v1.dbc** file from below GitHub repository into this workspace   
+<a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-01-anomalydetection" target="portal">Databricks Labs GitHub Repo</a>
+  
 7. Click on **Home** icon from the left navigation pane
 8. Goto to the **intrusion_detection_v1** notebook under the **Recents** section
 9. In the **Cmd 1** replace all of the following,
@@ -80,7 +85,7 @@ https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-01-a
 ## Implement Batch Predictions: Save and Load the ML Model Pipeline from Azure Storage
 
 *The detailed steps are listed in the GitHub Repository created by Mahesh Balija please refer to below link :)*
-https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-02-batchpredict  
+<a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-02-batchpredict" target="portal">Azure Databricks - Batch Predictions Lab</a>  
 
 
 ## Documentation & Links
