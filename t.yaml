@@ -1,0 +1,26 @@
+name: $(Date:yyyyMMdd).$(Rev:.r)
+
+trigger: none
+
+resources:
+  containers:
+  - container: jekyll_container
+    image: jekyll/builder
+    options: --volume=/home/vsts/work/1/s:/srv/jekyll
+
+jobs:
+- job: jekyllbuild
+  displayName: Build site in jekyll container
+  pool:
+    vmImage: 'ubuntu-16.04'
+  container: jekyll_container
+  steps:
+  - script: jekyll build
+
+- job: copy
+  dependsOn: jekyllbuild
+  displayName: Copy site
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - script: ls
