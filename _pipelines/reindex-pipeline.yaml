@@ -1,6 +1,3 @@
-resources:
-- repo: self
-
 # No triggers, run on schedule instead
 trigger: none 
 pr: none
