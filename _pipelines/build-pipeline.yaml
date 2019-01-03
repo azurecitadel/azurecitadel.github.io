@@ -24,7 +24,8 @@ steps:
 
 - script: |
     mkdir -p $PWD/_site
-    chmod a+rw $PWD/_site
+    touch Gemfile.lock
+    chmod a+rw $PWD/_site Gemfile.lock
     docker run --rm --volume="$PWD:/srv/jekyll" jekyll/builder jekyll build
   displayName: Docker jekyll build
 
