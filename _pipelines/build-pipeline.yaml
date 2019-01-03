@@ -10,24 +10,24 @@ variables:
   - group: citadel-shared-vars
 
 steps:
-# - task: UseRubyVersion@0
-#   displayName: 'Use Ruby >= 2.4'
+- task: UseRubyVersion@0
+  displayName: 'Use latest Ruby version'
 
-# - script: 'gem install bundler'
-#   displayName: 'gem install bundler'
+- script: 'gem install bundler -v 1.17.3'
+  displayName: 'Install bundler at version 1.17.3'
 
-# - script: 'bundle install'
-#   displayName: 'bundle install'
+- script: 'bundle install'
+  displayName: 'Run bundle install'
 
-# - script: 'bundle exec jekyll build -d _temp'
-#   displayName: 'build site with jekyll'
+- script: 'bundle exec jekyll build'
+  displayName: 'Run jekyll and build site'
 
-- script: |
-    mkdir -p _site
-    touch Gemfile.lock
-    chmod a+rw _site Gemfile.lock
-    docker run --rm --volume="$PWD:/srv/jekyll" jekyll/builder jekyll build
-  displayName: Docker jekyll build
+# - script: |
+#     mkdir -p _site
+#     touch Gemfile.lock
+#     chmod a+rw _site Gemfile.lock
+#     docker run --rm --volume="$PWD:/srv/jekyll" jekyll/builder jekyll build
+#   displayName: Docker jekyll build
 
 - script: 'az storage blob upload-batch -s _site -d \$web --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
-  displayName: 'copy output to staging site'
+  displayName: 'Upload output staging site'
