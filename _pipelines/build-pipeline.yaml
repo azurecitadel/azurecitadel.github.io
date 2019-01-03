@@ -12,8 +12,9 @@ variables:
 
 steps:
 - task: UseRubyVersion@0
-  versionSpec: '>= 2.4' 
-  addToPath: true
+  inputs:
+    versionSpec: '>= 2.4' 
+    addToPath: true
   displayName: 'Use Ruby >= 2.4'
 
 - script: 'gem install bundler'
