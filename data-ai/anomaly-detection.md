@@ -48,7 +48,7 @@ The main Azure portal is <a href="https://portal.azure.com" target="portal">http
 8. Once the deployment is successful, goto the storage account through the notification bell and clicking **Go to resource** button
 9. Under **Settings** select **Access Keys** and make a note of **Key1** (or) **Key2**
 10. Download the file **kddcup.data_10_percent.gz** from below link  
-<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html" target="portal">http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html</a>
+<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html" target="portal">http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html</a> | KDD Cup Datasets
  
 NOTE: Only use the 10 percent dataset from this link for the scope of this labs. You can use the whole dataset for your learning in your personal time :)
 11. Extract the gzip file, you will get **kddcup.data_10_percent_corrected**
