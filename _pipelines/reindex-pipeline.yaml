@@ -25,13 +25,11 @@ steps:
 - script: 'printenv'
   displayName: 'printenv'
 
-# Note. We do not need to explictly reference or pass ALGOLIA_API_KEY 
-#       it should be defined and set in citadel-shared-vars
+# Note. We have to echo the API key to a special file for the stupid thing to work
 - script: |
     mkdir -p $PWD/_site
     touch Gemfile.lock
     chmod a+rw $PWD/_site Gemfile.lock
+    echo $(algolia-admin-key) > _algolia_api_key
     docker run --rm --volume="$PWD:/srv/jekyll" jekyll/builder jekyll algolia
   displayName: Docker run jekyll algolia reindex
-  env: 
-    ALGOLIA_API_KEY: $(algolia-admin-key)
