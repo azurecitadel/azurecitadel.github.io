@@ -13,7 +13,7 @@ excerpt: A step-by-step guide to detect Anomalies in the large-scale data with A
 
 # Build Anomaly detection model to detect Network Intrusions (i.e., Bad network connections or attacks) using KDDCup Synthetic Network Logs Dataset 
 
-Anomaly Detection is the ability to detect unusual behavior in the given data like un-expected logs, events etc (or) in simple terms finding the odd-one-out from the given dataset. 
+Anomaly Detection is the ability to detect abnormal behavior in the given data like un-expected logs, events etc (or) in simple terms finding the odd-one-out from the given dataset. 
 
 Anomaly Detection have various applications like,
 
