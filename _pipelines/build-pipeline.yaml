@@ -1,6 +1,5 @@
 # Only trigger on PR, gives us some pre-validation the site hasn't been broken
 trigger: none 
-
 pr: 
   - master
 
@@ -11,17 +10,23 @@ variables:
   - group: citadel-shared-vars
 
 steps:
-- task: UseRubyVersion@0
-  displayName: 'Use Ruby >= 2.4'
+# - task: UseRubyVersion@0
+#   displayName: 'Use Ruby >= 2.4'
 
-- script: 'gem install bundler'
-  displayName: 'gem install bundler'
+# - script: 'gem install bundler'
+#   displayName: 'gem install bundler'
 
-- script: 'bundle install'
-  displayName: 'bundle install'
+# - script: 'bundle install'
+#   displayName: 'bundle install'
 
-- script: 'bundle exec jekyll build -d _temp'
-  displayName: 'build site with jekyll'
+# - script: 'bundle exec jekyll build -d _temp'
+#   displayName: 'build site with jekyll'
 
-- script: 'az storage blob upload-batch -s _temp -d \$web --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
+- script: |
+    mkdir -p $PWD/_site
+    chmod a+rw $PWD/_site
+    docker run --rm --volume="$PWD:/srv/jekyll" jekyll/builder jekyll build
+  displayName: Docker jekyll build
+
+- script: 'az storage blob upload-batch -s _site -d \$web --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
   displayName: 'copy output to staging site'
