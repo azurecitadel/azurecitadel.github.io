@@ -14,8 +14,11 @@ steps:
 - task: UseRubyVersion@0
   displayName: 'Use Ruby >= 2.4'
 
+- script: 'gem update --system'
+  displayName: 'ruby is the worst language on earth'
+
 - script: 'gem install bundler'
-  displayName: 'gem install bundler -v 1.17.3'
+  displayName: 'gem install bundler'
 
 - script: 'bundle install'
   displayName: 'bundle install'
