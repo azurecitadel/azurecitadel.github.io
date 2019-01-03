@@ -5,7 +5,7 @@ trigger: none
 resources:
   containers:
   - container: jekyll_container
-    image: jekyll/builder
+    image: bencuk/temp
     options: --volume=/home/vsts/work/1/s:/srv/jekyll
 
 jobs:
