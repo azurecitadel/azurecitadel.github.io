@@ -22,14 +22,11 @@ steps:
 # - script: 'ALGOLIA_API_KEY=$(algolia-admin-key) bundle exec jekyll algolia'
 #   displayName: 'run algolia reindex'
 
-- script: 'printenv'
-  displayName: 'printenv'
-
 # Note. We have to echo the API key to a special file for the stupid thing to work
 - script: |
-    mkdir -p $PWD/_site
+    mkdir -p _site
     touch Gemfile.lock
-    chmod a+rw $PWD/_site Gemfile.lock
+    chmod a+rw _site Gemfile.lock
     echo $(algolia-admin-key) > _algolia_api_key
     docker run --rm --volume="$PWD:/srv/jekyll" jekyll/builder jekyll algolia
   displayName: Docker run jekyll algolia reindex
