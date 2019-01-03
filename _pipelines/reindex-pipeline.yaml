@@ -11,19 +11,19 @@ variables:
 
 steps:
 - task: UseRubyVersion@0
-  displayName: 'Use Ruby >= 2.4'
+  displayName: 'Use latest Ruby version'
+
+- script: 'ruby -v'
+  displayName: 'Ruby version'
+
+- script: 'gem install bundler -v 1.17.3'
+  displayName: 'Install bundler rubbish'
 
 - script: 'bundle install'
-  displayName: 'ruby -v'
-
-- script: 'gem install bundler'
-  displayName: ' gem install bundler -v 1.17.3'
-
-- script: 'bundle install'
-  displayName: 'bundle install'
+  displayName: 'Run bundle install'
 
 - script: 'ALGOLIA_API_KEY=$(algolia-admin-key) bundle exec jekyll algolia'
-  displayName: 'run algolia reindex'
+  displayName: 'Run algolia reindex'
 
 # Note. We have to echo the API key to a special file for the stupid thing to work
 # - script: |
