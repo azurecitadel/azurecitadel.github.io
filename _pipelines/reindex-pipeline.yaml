@@ -10,14 +10,24 @@ variables:
   - group: citadel-shared-vars
 
 steps:
-- task: UseRubyVersion@0
-  displayName: 'Use Ruby >= 2.4'
+# - task: UseRubyVersion@0
+#   displayName: 'Use Ruby >= 2.4'
 
-- script: 'gem install bundler'
-  displayName: 'gem install bundler'
+# - script: 'gem install bundler'
+#   displayName: 'gem install bundler'
 
-- script: 'bundle install'
-  displayName: 'bundle install'
+# - script: 'bundle install'
+#   displayName: 'bundle install'
 
-- script: 'ALGOLIA_API_KEY=$(algolia-admin-key) bundle exec jekyll algolia'
-  displayName: 'run algolia reindex'
+# - script: 'ALGOLIA_API_KEY=$(algolia-admin-key) bundle exec jekyll algolia'
+#   displayName: 'run algolia reindex'
+
+- script: |
+    mkdir -p $PWD/_site
+    touch Gemfile.lock
+    chmod a+rw $PWD/_site Gemfile.lock
+    docker run --rm --volume="$PWD:/srv/jekyll" jekyll/builder ALGOLIA_API_KEY=$(algolia-admin-key) jekyll algolia
+  displayName: Docker jekyll build
+
+- script: 'az storage blob upload-batch -s _site -d \$web --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
+  displayName: 'copy output to staging site'
