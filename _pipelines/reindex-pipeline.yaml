@@ -1,3 +1,7 @@
+#
+# Updated pipeline for Azure Search
+#
+
 # No triggers, run on schedule instead
 trigger: none 
 pr: none
@@ -19,8 +23,11 @@ steps:
 - script: 'bundle install'
   displayName: 'Run bundle install'
 
-- script: 'ALGOLIA_API_KEY=$(algolia-admin-key) bundle exec jekyll algolia'
-  displayName: 'Run algolia reindex'
+- script: 'bundle exec jekyll build'
+  displayName: 'Run jekyll and build site'
+
+- script: 'az storage blob upload-batch -s _site -d site-json --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress --pattern "*.json"'
+  displayName: 'Upload JSON output to blob for indexing'
 
 # Note. We have to echo the API key to a special file for the stupid thing to work
 # - script: |
