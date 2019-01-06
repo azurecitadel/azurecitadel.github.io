@@ -15,20 +15,24 @@ variables:
   - group: citadel-shared-vars
 
 steps:
-- task: UseRubyVersion@0
-  displayName: 'Use latest Ruby version'
+- script: 'echo $(storage-acct-name)'
 
-- script: 'gem install bundler -v 1.17.3'
-  displayName: 'Install bundler at version 1.17.3'
+# - task: UseRubyVersion@0
+#   displayName: 'Use latest Ruby version'
 
-- script: 'bundle install'
-  displayName: 'Run bundle install'
+# - script: 'gem install bundler -v 1.17.3'
+#   displayName: 'Install bundler at version 1.17.3'
 
-- script: 'bundle exec jekyll build'
-  displayName: 'Run jekyll and build site'
+# - script: 'bundle install'
+#   displayName: 'Run bundle install'
 
-- script: 'az storage blob upload-batch -s _site -d site-json  --pattern "*.json" --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
-  displayName: 'Upload JSON output to blob for indexing'
+# - script: 'bundle exec jekyll build'
+#   displayName: 'Run jekyll and build site'
+
+# - script: 'az storage blob upload-batch -s _site -d site-json  --pattern "*.json" --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
+#   displayName: 'Upload JSON output to blob for indexing'
+
+
 
 # Note. We have to echo the API key to a special file for the stupid thing to work
 # - script: |
