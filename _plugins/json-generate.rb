@@ -1,5 +1,6 @@
 #
-# Mostly stole & then heavily modified this plugin to output as JSON
+# Side generate JSON for all content on site
+# Taken and heavily modified from https://gist.github.com/egardner/b6bd5d785048ec2d0b2b
 # 
 # Ben C, Jan 2019
 #
@@ -27,34 +28,40 @@ module Jekyll
     end
   end
 
+  ########################################################################################
+  
   class JSONPostGenerator < Generator
     safe true
 
     def generate(site)
-      site.pages.each do |post|
-        # Set the path to the JSON version of the post
+      site.pages.each do |page|
+        # Set the path to the JSON version of the page
         dest = site.config['destination']
 
-        # Only work with our markdown conten
-        unless post.name.end_with? ".md"
+        # Only work with our markdown content, not index pages and others
+        unless page.name.end_with? ".md"
           next
         end
 
-        path = post.destination(dest)
+        # Munge the destination to .json
+        path = page.destination(dest)
         path["#{dest}/"] = ''
         path['/index.html'] = '.json'
 
-        # Convert the post to a hash
-        output = post.to_liquid
+        # Convert the page to a hash
+        output = page.to_liquid
 
         # Prepare the output for JSON conversion
         ['dir', 'layout', 'path'].each do |key|
           output.delete(key)
         end
 
-        output['content_html'] = post.transform
+        # Default field for content was 'content', this trips up Azure Search
+        # So put generated HTML in content_html and source Markdown in content_md
+        output['content_html'] = page.transform
         output['content_md'] = output.delete('content')
 
+        # Queue up for generation
         site.pages << JSONPage.new(site, site.source, File.dirname(path), File.basename(path), output.to_json)
       end
     end

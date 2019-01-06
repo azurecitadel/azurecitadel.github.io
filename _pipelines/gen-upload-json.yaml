@@ -1,5 +1,6 @@
 #
 # Updated pipeline for Azure Search
+# Builds the site then uploads all .json to blob storage for indexing
 #
 
 # No triggers, run on schedule instead
@@ -26,7 +27,7 @@ steps:
 - script: 'bundle exec jekyll build'
   displayName: 'Run jekyll and build site'
 
-- script: 'az storage blob upload-batch -s _site -d site-json --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress --pattern "*.json"'
+- script: 'az storage blob upload-batch -s _site -d site-json  --pattern "*.json" --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
   displayName: 'Upload JSON output to blob for indexing'
 
 # Note. We have to echo the API key to a special file for the stupid thing to work

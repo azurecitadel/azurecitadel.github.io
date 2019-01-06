@@ -32,14 +32,15 @@ comments:
 atom_feed:
   path                   : /feed.xml
 
-search                   : true
-search_full_content      : true
-search_provider          : algolia
-algolia:
-  application_id         : 7OH2BGCS3F                       # YOUR_APPLICATION_ID
-  index_name             : Azure_Citadel                    # YOUR_INDEX_NAME
-  search_only_api_key    : c7d0d56e6a342c7a26ae845c63cef275 # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : true
+# Switched to Azure Search, using json-generate.rb plugin
+search                   : false
+# search_full_content      : true
+# search_provider          : algolia
+# algolia:
+#   application_id         : 7OH2BGCS3F                       # YOUR_APPLICATION_ID
+#   index_name             : Azure_Citadel                    # YOUR_INDEX_NAME
+#   search_only_api_key    : c7d0d56e6a342c7a26ae845c63cef275 # YOUR_SEARCH_ONLY_API_KEY
+#   powered_by             : true
 
 # Analytics
 # We use App Insghts, see _includes/head/custom.html for snippet
