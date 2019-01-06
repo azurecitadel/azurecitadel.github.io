@@ -44,13 +44,10 @@ header:
 }
 </style>
 
-<form action="search">
-  <div class="searchbox">
-    <span>&#x1f50e</span> <input id="query" type="text" autocomplete="off" placeholder="What are you looking for?">
-    <img src="/images/site/ajax-loader.gif" id="spinner" width="50px" height="40px"/>
-  </div>
-</form>
-
+<div class="searchbox">
+  <span>&#x1f50e</span> <input id="query" type="text" autocomplete="off" placeholder="What are you looking for?">
+  <img src="/images/site/ajax-loader.gif" id="spinner" width="50px" height="40px"/>
+</div>
 
 <div class="note">Powered by Azure Search</div>
 
@@ -87,14 +84,18 @@ header:
   // Main function to query Azure Search and process results
   //
   function runSearch() {
-    let query = $("#query").val();
+    let query = $("#query").val()
+    if(!query) { 
+      $("#spinner").hide(); 
+      return 
+    }
 
     // Query Azure Search
     $.get(`${AZURE_SEARCH_URL}&search=${query}`, function(data) {
       $("#spinner").hide()
       saveTerm()
 
-      if(data && data.value.length > 0) {
+      if(data) {  //} && data.value.length > 0) {
         // Clear results
         $("#results").html("")
 
@@ -138,7 +139,7 @@ header:
           </div>`)
         }
       }
-    });
+    })
   }
 
   //
