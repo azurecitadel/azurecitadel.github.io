@@ -13,6 +13,24 @@ excerpt: Azure Databricks Level-400 Workshop, this landing page defines the stru
 
 # Agenda
 
+## Targeted Audience and Scenarios
+
+Azure-Databricks Level-400 Workshop is aimed to upskill various audiences 
+
+* Data Engineers
+* Data Scientists
+* SQL Developers
+* Developers
+* Solution Architects
+* Data Architects
+
+This workshop content is useful in various scenarios,
+
+* POCs / AI Hacks - Developers can understand connecting to Blob Storage, Submitting the jobs, persisting/loading ML models etc. This can be very useful material to expedite the development at early POC stages
+* Self-learning through code samples
+* Best-Practices for Databricks Clusters (Interactive, Job, High-Concurrency) 
+* Best practices for ADLA to Databricks Migration
+
 ## Spark, Azure-Databricks overview
 
 A brief introduction to Spark framework and the history of Big Data technologies. Why Spark framework have been widely adopted across the industries. An Overview on of Spark Modules including Spark Core (Map-Reduce), Datastructures, Streaming, SQL, GraphX. 
