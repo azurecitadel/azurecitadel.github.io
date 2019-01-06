@@ -15,7 +15,7 @@ variables:
   - group: citadel-shared-vars
 
 steps:
-- script: 'curl -H "api-key: $(search-admin-key)" -d "" -X POST "https://$(search-account).search.windows.net/indexers/$(search-indexer)/run?api-version=2017-11-11"'
+- script: 'curl -v -H "api-key: $(search-admin-key)" -d "" -X POST "https://$(search-account).search.windows.net/indexers/$(search-indexer)/run?api-version=2017-11-11"'
   displayName: 'Call Azure Search API to run reindex'
 
 # - task: UseRubyVersion@0
