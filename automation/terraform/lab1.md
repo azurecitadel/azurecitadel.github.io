@@ -36,7 +36,7 @@ Open up an Azure Cloud Shell.  You can do this from within the portal by clickin
 
 You can show the account details for the subscription using `az account show`:
 
-<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
 az account show --output jsonc
 {
   "environmentName": "AzureCloud",
@@ -57,7 +57,7 @@ If you have multiple subscriptions then you can switch using `az account list --
 
 Type `terraform` to see the main help page:
 
-<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
 terraform
 Usage: terraform [--version] [--help] <command> [args]
 
@@ -164,7 +164,7 @@ Let's step through it.
 
 The `terraform init` command looks through all of the *.tf files in the current working directory and automatically downloads any of the providers required for them.  Run it now.
 
-<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
 terraform init
 
 Initializing provider plugins...
@@ -200,7 +200,7 @@ As you can see it has downloaded the provider.azurerm into the `.terraform/plugi
 
 Run the `terraform plan`.
 
-<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
 terraform plan
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
@@ -271,7 +271,7 @@ Run the `terraform apply` command to deploy the resources.
 
 You will see the same output as the `terraform plan` command, but will also be prompted for confirmation that you want to apply those changes.  Type `yes`.
 
-<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
 terraform apply
 
 :
@@ -326,7 +326,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
 The resource group and the storage account have been successfully deployed.
 
-<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
 az resource list --resource-group terraform-lab1 --output table
 Name                   ResourceGroup    Location    Type                               Status
 ---------------------  ---------------  ----------  ---------------------------------  --------
@@ -337,7 +337,7 @@ richeneyterraformlab1  terraform-lab1   westeurope  Microsoft.Storage/storageAcc
 
 Clean up the resources by using the `terraform destroy` command.  The command will let you know what you are about to remove and then prompt you for confirmation.
 
-<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
 terraform destroy
 azurerm_resource_group.lab1: Refreshing state... (ID: /subscriptions/2d31be49-d959-4415-bb65-...2c90ba62/resourceGroups/terraform-lab1)
 azurerm_storage_account.lab1sa: Refreshing state... (ID: /subscriptions/2d31be49-d959-4415-bb65-.../storageAccounts/richeneyterraformlab1)
@@ -377,7 +377,7 @@ Destroy complete! Resources: 2 destroyed.
 
 Rerun the resouce list command to confirm that the resources have been removed:
 
-<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
 az resource list --resource-group terraform-lab1 --output table
 Resource group 'terraform-lab1' could not be found.
 </code></pre>

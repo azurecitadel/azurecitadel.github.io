@@ -70,7 +70,7 @@ resource "azurerm_storage_account" "lab2sa" {
 
 Again, your storage account name should be different to the one in the example. You can now run through the terraform init, plan and apply workflow at the CLI prompt. Check it exists:
 
-<pre class="language-bash command-line" data-output="2-5" data-user="richard" data-host="azure"><code>
+<pre class="language-bash command-line" data-output="2-5" data-prompt="$"><code>
 az resource list -g terraform-lab2 -o table
 Name                   ResourceGroup    Location    Type                               Status
 ---------------------  ---------------  ----------  ---------------------------------  --------
