@@ -36,8 +36,8 @@ Open up an Azure Cloud Shell.  You can do this from within the portal by clickin
 
 You can show the account details for the subscription using `az account show`:
 
-```bash
-richard@Azure:~$ az account show --output jsonc
+<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+az account show --output jsonc
 {
   "environmentName": "AzureCloud",
   "id": "2d31be49-d999-4415-bb65-8aec2c90ba62",
@@ -51,14 +51,14 @@ richard@Azure:~$ az account show --output jsonc
     "type": "user"
   }
 }
-```
+</code></pre>
 
 If you have multiple subscriptions then you can switch using `az account list --output table` and `az account set --subscription <subscriptionId>`.  If you are doing that regularly then you may want to add an alias to the bottom of your ~/.bashrc file, e.g. `alias vs='az account set --subscription <subscriptionId>; az account show'`.
 
 Type `terraform` to see the main help page:
 
-```yaml
-richard@Azure:~$ terraform
+<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+terraform
 Usage: terraform [--version] [--help] <command> [args]
 
 The available commands for execution are listed below.
@@ -93,7 +93,7 @@ All other commands:
     debug              Debug output management (experimental)
     force-unlock       Manually unlock the terraform state
     state              Advanced state management
-```
+</code></pre>
 
 ## Create a simple main.tf file
 
@@ -104,7 +104,7 @@ Terraform uses its own file format, called HCL (Hashicorp Configuration Language
 * Create an empty main.tf file (`touch main.tf`)
 * Copy the text from the codeblock below
 
-```ruby
+```hcl
 resource "azurerm_resource_group" "lab1" {
   name     = "terraform-lab1"
   location = "West Europe"
@@ -164,8 +164,8 @@ Let's step through it.
 
 The `terraform init` command looks through all of the *.tf files in the current working directory and automatically downloads any of the providers required for them.  Run it now.
 
-```yaml
-richard@Azure:~/terraform-labs$ terraform init
+<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+terraform init
 
 Initializing provider plugins...
 - Checking for available provider plugins on https://releases.hashicorp.com...
@@ -190,7 +190,7 @@ should now work.
 If you ever set or change modules or backend configuration for Terraform,
 rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
-```
+</code></pre>
 
 * List out all of the files in the current directory (`find .`)
 
@@ -200,8 +200,8 @@ As you can see it has downloaded the provider.azurerm into the `.terraform/plugi
 
 Run the `terraform plan`.
 
-```yaml
-richard@Azure:~/terraform-labs$ terraform plan
+<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+terraform plan
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
@@ -216,41 +216,41 @@ Resource actions are indicated with the following symbols:
 Terraform will perform the following actions:
 
   + azurerm_resource_group.lab1
-      id:                               <computed>
+      id:                               &lt;computed&gt;
       location:                         "westeurope"
       name:                             "terraform-lab1"
       tags.%:                           "1"
       tags.environment:                 "training"
 
   + azurerm_storage_account.lab1sa
-      id:                               <computed>
-      access_tier:                      <computed>
+      id:                               &lt;computed&gt;
+      access_tier:                      &lt;computed&gt;
       account_encryption_source:        "Microsoft.Storage"
       account_kind:                     "Storage"
       account_replication_type:         "LRS"
       account_tier:                     "Standard"
       enable_blob_encryption:           "true"
       enable_file_encryption:           "true"
-      identity.#:                       <computed>
+      identity.#:                       &lt;computed&gt;
       location:                         "westeurope"
       name:                             "richeneyterraformlab1"
-      primary_access_key:               <computed>
-      primary_blob_connection_string:   <computed>
-      primary_blob_endpoint:            <computed>
-      primary_connection_string:        <computed>
-      primary_file_endpoint:            <computed>
-      primary_location:                 <computed>
-      primary_queue_endpoint:           <computed>
-      primary_table_endpoint:           <computed>
+      primary_access_key:               &lt;computed&gt;
+      primary_blob_connection_string:   &lt;computed&gt;
+      primary_blob_endpoint:            &lt;computed&gt;
+      primary_connection_string:        &lt;computed&gt;
+      primary_file_endpoint:            &lt;computed&gt;
+      primary_location:                 &lt;computed&gt;
+      primary_queue_endpoint:           &lt;computed&gt;
+      primary_table_endpoint:           &lt;computed&gt;
       resource_group_name:              "terraform-lab1"
-      secondary_access_key:             <computed>
-      secondary_blob_connection_string: <computed>
-      secondary_blob_endpoint:          <computed>
-      secondary_connection_string:      <computed>
-      secondary_location:               <computed>
-      secondary_queue_endpoint:         <computed>
-      secondary_table_endpoint:         <computed>
-      tags.%:                           <computed>
+      secondary_access_key:             &lt;computed&gt;
+      secondary_blob_connection_string: &lt;computed&gt;
+      secondary_blob_endpoint:          &lt;computed&gt;
+      secondary_connection_string:      &lt;computed&gt;
+      secondary_location:               &lt;computed&gt;
+      secondary_queue_endpoint:         &lt;computed&gt;
+      secondary_table_endpoint:         &lt;computed&gt;
+      tags.%:                           &lt;computed&gt;
 
 
 Plan: 2 to add, 0 to change, 0 to destroy.
@@ -260,8 +260,8 @@ Plan: 2 to add, 0 to change, 0 to destroy.
 Note: You didn't specify an "-out" parameter to save this plan, so Terraform
 can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
+</code></pre>
 
-```
 
 This is a dry run and shows which actions will be made.  This allows manual verification of the changes before running the apply step.
 
@@ -271,8 +271,8 @@ Run the `terraform apply` command to deploy the resources.
 
 You will see the same output as the `terraform plan` command, but will also be prompted for confirmation that you want to apply those changes.  Type `yes`.
 
-```yaml
-richard@Azure:~/terraform-labs$ terraform apply
+<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+terraform apply
 
 :
 
@@ -285,60 +285,60 @@ Do you want to perform these actions?
   Enter a value: yes
 
 azurerm_resource_group.lab1: Creating...
-  location:         "" => "westeurope"
-  name:             "" => "terraform-lab1"
-  tags.%:           "" => "1"
-  tags.environment: "" => "training"
+  location:         "" =&gt; "westeurope"
+  name:             "" =&gt; "terraform-lab1"
+  tags.%:           "" =&gt; "1"
+  tags.environment: "" =&gt; "training"
 azurerm_resource_group.lab1: Creation complete after 0s (ID: /subscriptions/2d31be49-d959-4415-bb65-...2c90ba62/resourceGroups/terraform-lab1)
 azurerm_storage_account.lab1sa: Creating...
-  access_tier:                      "" => "<computed>"
-  account_encryption_source:        "" => "Microsoft.Storage"
-  account_kind:                     "" => "Storage"
-  account_replication_type:         "" => "LRS"
-  account_tier:                     "" => "Standard"
-  enable_blob_encryption:           "" => "true"
-  enable_file_encryption:           "" => "true"
-  identity.#:                       "" => "<computed>"
-  location:                         "" => "westeurope"
-  name:                             "" => "richeneyterraformlab1"
-  primary_access_key:               "<sensitive>" => "<sensitive>"
-  primary_blob_connection_string:   "<sensitive>" => "<sensitive>"
-  primary_blob_endpoint:            "" => "<computed>"
-  primary_connection_string:        "<sensitive>" => "<sensitive>"
-  primary_file_endpoint:            "" => "<computed>"
-  primary_location:                 "" => "<computed>"
-  primary_queue_endpoint:           "" => "<computed>"
-  primary_table_endpoint:           "" => "<computed>"
-  resource_group_name:              "" => "terraform-lab1"
-  secondary_access_key:             "<sensitive>" => "<sensitive>"
-  secondary_blob_connection_string: "<sensitive>" => "<sensitive>"
-  secondary_blob_endpoint:          "" => "<computed>"
-  secondary_connection_string:      "<sensitive>" => "<sensitive>"
-  secondary_location:               "" => "<computed>"
-  secondary_queue_endpoint:         "" => "<computed>"
-  secondary_table_endpoint:         "" => "<computed>"
-  tags.%:                           "" => "<computed>"
+  access_tier:                      "" =&gt; "&lt;computed&gt;"
+  account_encryption_source:        "" =&gt; "Microsoft.Storage"
+  account_kind:                     "" =&gt; "Storage"
+  account_replication_type:         "" =&gt; "LRS"
+  account_tier:                     "" =&gt; "Standard"
+  enable_blob_encryption:           "" =&gt; "true"
+  enable_file_encryption:           "" =&gt; "true"
+  identity.#:                       "" =&gt; "&lt;computed&gt;"
+  location:                         "" =&gt; "westeurope"
+  name:                             "" =&gt; "richeneyterraformlab1"
+  primary_access_key:               "&lt;sensitive&gt;" =&gt; "&lt;sensitive&gt;"
+  primary_blob_connection_string:   "&lt;sensitive&gt;" =&gt; "&lt;sensitive&gt;"
+  primary_blob_endpoint:            "" =&gt; "&lt;computed&gt;"
+  primary_connection_string:        "&lt;sensitive&gt;" =&gt; "&lt;sensitive&gt;"
+  primary_file_endpoint:            "" =&gt; "&lt;computed&gt;"
+  primary_location:                 "" =&gt; "&lt;computed&gt;"
+  primary_queue_endpoint:           "" =&gt; "&lt;computed&gt;"
+  primary_table_endpoint:           "" =&gt; "&lt;computed&gt;"
+  resource_group_name:              "" =&gt; "terraform-lab1"
+  secondary_access_key:             "&lt;sensitive&gt;" =&gt; "&lt;sensitive&gt;"
+  secondary_blob_connection_string: "&lt;sensitive&gt;" =&gt; "&lt;sensitive&gt;"
+  secondary_blob_endpoint:          "" =&gt; "&lt;computed&gt;"
+  secondary_connection_string:      "&lt;sensitive&gt;" =&gt; "&lt;sensitive&gt;"
+  secondary_location:               "" =&gt; "&lt;computed&gt;"
+  secondary_queue_endpoint:         "" =&gt; "&lt;computed&gt;"
+  secondary_table_endpoint:         "" =&gt; "&lt;computed&gt;"
+  tags.%:                           "" =&gt; "&lt;computed&gt;"
 azurerm_storage_account.lab1sa: Still creating... (10s elapsed)
 azurerm_storage_account.lab1sa: Creation complete after 19s (ID: /subscriptions/2d31be49-d959-4415-bb65-.../storageAccounts/richeneyterraformlab1)
 
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
-```
+</code></pre>
 
 The resource group and the storage account have been successfully deployed.
 
-```bash
-richard@Azure:~/terraform-labs$ az resource list --resource-group terraform-lab1 --output table
+<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+az resource list --resource-group terraform-lab1 --output table
 Name                   ResourceGroup    Location    Type                               Status
 ---------------------  ---------------  ----------  ---------------------------------  --------
 richeneyterraformlab1  terraform-lab1   westeurope  Microsoft.Storage/storageAccounts
-```
+</code></pre>
 
 ## - terraform destroy
 
 Clean up the resources by using the `terraform destroy` command.  The command will let you know what you are about to remove and then prompt you for confirmation.
 
-```yaml
-richard@Azure:~/terraform-labs$ terraform destroy
+<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+terraform destroy
 azurerm_resource_group.lab1: Refreshing state... (ID: /subscriptions/2d31be49-d959-4415-bb65-...2c90ba62/resourceGroups/terraform-lab1)
 azurerm_storage_account.lab1sa: Refreshing state... (ID: /subscriptions/2d31be49-d959-4415-bb65-.../storageAccounts/richeneyterraformlab1)
 
@@ -371,16 +371,16 @@ azurerm_resource_group.lab1: Still destroying... (ID: /subscriptions/2d31be49-d9
 azurerm_resource_group.lab1: Destruction complete after 46s
 
 Destroy complete! Resources: 2 destroyed.
-```
+</code></pre>
 
 [**WARNING** If there are other resources in a Terraform managed resource group then the destroy will remove these as well.](){: .btn-warning}
 
 Rerun the resouce list command to confirm that the resources have been removed:
 
-```bash
-richard@Azure:~/terraform-labs$ az resource list --resource-group terraform-lab1 --output table
+<pre class="language-bash command-line" data-output="2-99" data-user="richard" data-host="azure"><code>
+az resource list --resource-group terraform-lab1 --output table
 Resource group 'terraform-lab1' could not be found.
-```
+</code></pre>
 
 ## End of Lab 1
 

@@ -22,14 +22,14 @@ We have three microservices we need to deploy, and due to dependencies between t
 We'll apply configurations to Kubernetes using `kubectl` and YAML configuration files. These YAML files will describe the objects we want to create, modify and delete in the cluster. 
 
 We'll create a new project directory to work out of for thhis lab
-```
+```bash
 mkdir kube-lab
 cd kube-lab
 ```
 
 ### Cloud Shell Editor
 If using the Azure Cloud Shell, it's strongly recommended to use the built-in online editor which is invoked with the command 
-```
+```bash
 code .
 ``` 
 Note the dot after the command, it's recommended you invoke the editor this way as it will then show a file explorer view for the current directory.
@@ -70,27 +70,27 @@ There's a lot going on here but we'll cover of some of the concepts:
 - We apply label metadata `app=mongodb` which we'll use to help locate the pods later. This labelling is completely up to us, it's just arbitrary key value pairs
 
 To apply this configuration to the cluster we run:
-```
+```bash
 kubectl apply -f mongo.deploy.yaml
 ```
+
 If successful you will see `deployment "mongodb" created`. You can check the status of your cluster with this command (or you can use the dashboard)
-```
+```bash
 kubectl get all
 ```
+
 You should see a deployment called mongo (prefixed **deploy/**) a replica set (prefixed **rs/**) and a pod (prefixed **po/**), the pod and replica set will have auto generated names appended.
 
 Each pod in Kubernetes gets its own IP address within the cluster. If you are interested, it is worth spending 5 minutes reading some of the concepts  
 [📘 Kubernetes network concepts](https://kubernetes.io/docs/concepts/cluster-administration/networking/#kubernetes-model){:target="_blank" class="btn btn--success"}
 
 To get the pod's IP address run the `describe pod` command with a filter set to our `app=mongodb` label
-```
+```bash
 kubectl describe pod -l app=mongodb
 ```
 You can find the IP in the output (it will be a 10.244.x.x address), make a note of it, we'll use it in the next step
 
-**💬 Note.** The kubectl command supports a number of different output formats, including JSON, YAML and a syntax called [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) which allows you to filter and query the output. So in order to just get the IP address we could also have run:
-
-`kubectl get pod -l app=mongodb -o=jsonpath='{.items[0].status.podIP}{"\n"}'`
+**💬 Note.** The kubectl command supports a number of different output formats, including JSON, YAML and a syntax called [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) which allows you to filter and query the output. So in order to just get the IP address we could also have run: `kubectl get pod -l app=mongodb -o=jsonpath='{.items[0].status.podIP}{"\n"}'`
 
 ## Deploy Data API
 Create a new file called **data-api.deploy.yaml** (run `touch data-api.deploy.yaml` and refresh the files view in the editor) and paste the contents below in it. You will need to replace **{acr_name}** and **{mongo_ip}** with their real values.
@@ -124,14 +124,14 @@ spec:
 ```
 
 As before, to apply this configuration to the cluster we run:
-```
+```bash
 kubectl apply -f data-api.deploy.yaml
 ```
 
 You can check the status with either the dashboard, or a couple of commands, a basic check is running `kubectl get pods` and check the pod(s) are in **Running** status. However this status can sometimes be misleading.
 
 A better picture can be found using `kubectl logs` to view the stdout & stderr inside the running containers. This view the logs of all our data-api pods (all one of them)
-```
+```bash
 kubectl logs -l app=data-api
 ```
 Check the output for log messages confirming the app has connected to MongoDB OK and has started listening on port 4000
@@ -140,16 +140,16 @@ Check the output for log messages confirming the app has connected to MongoDB OK
 Now how do we access the Smilr Data API? One quick way is to use port forwarding to create a 'tunnel' into the cluster using `kubectl port-forward`.
 
 First get the name of of the Data API pod with:
-```
+```bash
 kubectl get pods
 ``` 
 
 Then start the port forwarding tunnel from localhost port 8080 to the container port 4000. You should run this in a new Cloud Shell tab, so open that first: 
-```
+```bash
 kubectl port-forward {data_api_pod_name} 8080:4000
 ```
 Now switch back to the main Cloud Shell tab and access the Data API by running 
-```
+```bash
 curl localhost:8080/api/info | jq
 ``` 
 This should return some system & status information from the Smilr API as JSON. You can now use `Ctrl+C` to stop the `kubectl port-forward` command and close the tunnel.

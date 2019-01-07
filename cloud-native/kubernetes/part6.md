@@ -22,14 +22,14 @@ Kubernetes makes this very easy and the *ReplicaSet* which was created by our *D
 
 ### Scale Data API
 Let's scale the `data-api` deployment to three replicas:
-```
+```bash
 kubectl scale --replicas=3 deploy/data-api
 ```
 
 An alternative way to do this is editing the **data-api.deploy.yaml** file, change the replicas from 1 to 3 and then run `kubectl apply -f data-api.deploy.yaml`. Either way works
 
 Now list our Data API pods, using wide output so we get more details 
-```
+```bash
 kubectl get pods -o wide -l app=data-api
 ```
 
@@ -42,13 +42,13 @@ Demonstrating the load balancing is really happening is a little tricky, you can
 `http://{data-api-svc_external_ip}/api/info`  
 And look at the hostname returned, it should change as you make multiple requests (F5) but sometimes your browser or the Azure Load Balancer will decide to stick you to a single host. Another way to see it in action is running the following command repeatedly and observing the hostname returned
 
-```
+```bash
 wget -q -O- http://{data-api-svc_external_ip}/api/info | jq '.hostname'
 ```
 
 ### Scale Frontend
 Now scale the `frontend` deployment to three replicas:
-```
+```bash
 kubectl scale --replicas=3 deploy/frontend
 ```
 
@@ -77,7 +77,7 @@ Kubernetes does provide a feature called *StatefulSets* which greatly helps with
 There's also a second more fundamental problem with our MongoDB instance - **it lacks persistence**. Pods (and therefore containers) are by default ephemeral, so any data they write is lost when they are destroyed or re-scheduled
 
 You can test this out by deleting the MongoDB pod, the deployment (*ReplicaSet*) will then immediately re-create it, so it's effectively a restart
-```
+```bash
 kubectl delete pod -l app=mongodb
 ```
 After about 30 seconds, reload the Smilr UI and you'll see you've lost all the demo data you had loaded!
@@ -139,31 +139,31 @@ This looks a lot like the *Deployment* object we created in module 3, but there'
 **💬 Note.** With AKS two *StorageClasses* are provided out of the box, both are backed by Azure Managed Disks
 
 That's a lot of info to digest, however don't sweat the details. Let's destroy the existing MongoDB deployment
-```
+```bash
 kubectl delete -f mongo.deploy.yaml
 ```
 
 And stand up our new stateful version 
-```
+```bash
 kubectl apply -f mongo.stateful.yaml
 ```
 
 This will take about 5 mins to be fully ready as it needs to create the volume, the Azure disk and then bind that to the host with the pod and also mount the volume into the container in the pod
 
 You can check what is happening, firstly check the *PersistentVolumeClaim* 
-```
+```bash
 kubectl get pvc
 ```
 You should see `mongo-vol-mongodb-0` listed and it should move from status **Pending** to **Bound** after a minute. You can also check the *PersistentVolume* with `kubectl get pv`
 
 The pod will be created at this point, but it will be waiting for the *PersistentVolumeClaim* to be bound to it, when you run:
-```
+```bash
 kubectl get pods -l app=mongodb -o wide
 ```
 You will see it in **ContainerCreating** status for a few minutes.
 
 To better see what is happening in the pod, and get details, event messages etc, you can run:
-```
+```bash
 kubectl describe pod mongodb-0
 ```
 Don't be alarmed if it re-tries a few times and there's some warnings in the events, keep running `kubectl describe` and eventually the container should start and the pod change to **Running** status

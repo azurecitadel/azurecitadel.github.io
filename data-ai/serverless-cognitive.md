@@ -42,7 +42,6 @@ The system consists of four main parts:
 ## Example (Viewer Results)
 ![demo](images/demo.png)
 
-
 ## Deployment & Setup
 The system requires a single Function App, storage account and Cognitive Services account. Using a consumption plan for the Function App means the costs for deploying the system are extremely small.
 
@@ -52,7 +51,10 @@ A bash script `deploy.sh` for fully automated deployment is provided in the **et
 To run the script you will need the Azure CLI installed and configured and either run the script locally under WSL bash or simply use the Azure Cloud Shell
 
 - **Step 1** Go to [shell.azure.com](shell.azure.com) and login
-- **Step 2** Run `curl -s https://raw.githubusercontent.com/benc-uk/serverless-cognitive/master/etc/deploy.sh | bash`
+- **Step 2** Run 
+```bash
+curl -s https://raw.githubusercontent.com/benc-uk/serverless-cognitive/master/etc/deploy.sh | bash
+```
 
 ### Option 2. Manual Deployment
 If you want to learn a little bit more about Functions and how the parts integrate together, then you can manually deploy the solution. All these steps use the Azure Portal, and assume you already have an Azure subscription

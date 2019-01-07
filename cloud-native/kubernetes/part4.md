@@ -52,7 +52,7 @@ spec:
 This will create a service mapped to all pods labelled with `app=mongodb`, and associate port 27017 (used by Mongo) on the service endpoint to port 27107 on the containers. 
 
 Create the new service with:
-```
+```bash
 kubectl apply -f mongo.svc.yaml
 ```
 You can view the service(s) you have by running `kubectl get service`. Check the `mongodb-svc` is there.
@@ -75,12 +75,12 @@ Modify **data-api.deploy.yaml** and change the connection string environmental v
 ```
 
 Then update the deployment by re-running:
-```
+```bash
 kubectl apply -f data-api.deploy.yaml
 ```
 
 The command should output "data-api configured" rather than created. The use of `kubectl apply` tells Kubernetes to perform an update to the existing deployment, it will kill off the old pod(s) and create new one(s) with the updated connection string set. Check the status as before, and the logs of the pod with:
-```
+```bash
 kubectl logs -l app=data-api
 ```
 

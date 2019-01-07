@@ -13,7 +13,7 @@ Starting with a brief look at the code from the app.js source file to see how th
 
 This section calls the modules required to run the bot – added by the NPM install referencing the config file, if you start with an empty application you can add these.
 
-```
+```js
 var restify = require('restify');
 var builder = require('botbuilder');
 var botbuilder_azure = require('botbuilder-azure');
@@ -21,7 +21,7 @@ var botbuilder_azure = require('botbuilder-azure');
 
 The code below sets up the server – Node runs in itself, there is no additional application server install.
 
-```
+```ja
 // Setup Restify Server
 var server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function () {
@@ -31,7 +31,7 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 
 As the comments suggest this is the connector to the bot service – the process.env.<setting>; is an environmental variable, these are stored securely in Azure.
 
-```
+```js
 // Create chat connector for communicating with the Bot Framework Service
 var connector = new builder.ChatConnector({
     appId: process.env.MicrosoftAppId,
@@ -44,7 +44,7 @@ server.post("/api/messages", connector.listen());
 
 Configure the connection to the table store, this handles the conversation history and state:
 
-```
+```js
 var tableName = 'botdata';
 var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['AzureWebJobsStorage']);
 var tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azureTableClient);
@@ -52,7 +52,7 @@ var tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azu
 
 Create the bot and then set the storage configured above:
 
-```
+```js
 // Create your bot with a function to receive messages from the user
 var bot = new builder.UniversalBot(connector);
 bot.set('storage', tableStorage);
@@ -60,7 +60,7 @@ bot.set('storage', tableStorage);
 
 The default bot dialog '/', below is the action if there are no instructions from the application to send the response elsewhere, but for the app currently, this is it, a simple session.send that sends the message to the user, a string appended with the message.text, entered by the user, triggering the application.
 
-```
+```js
 bot.dialog('/', function (session) {
     session.send('You said ' + session.message.text);
 });
@@ -112,7 +112,7 @@ Adding dev.env to gitignore would work, but this will catch any other .env files
 
 The final step, we need to tell the application to use the _dev.env_ file when the application runs, but we only want to do this in the local, development environment, not production – this file won&#39;t be in Azure and would cause an error as the application would be looking for a file that does not exist. Add this code below the first three require variables.
 
-```
+```js
 // Setup for the Dev Environment
 if (process.env.NODE_ENV == 'development') {
      var env = require('./dev.env');
@@ -141,7 +141,7 @@ We now have a bot that works, but it&#39;s a little dull. We are going to add a 
 
 First, we need to comment out the Bot dialog, **highlight the code below** and press **CTRL-/** to comment the code out, alternatively you can just delete it.
 
-```
+```js
 bot.dialog('/', function (session) {
       session.send('You said ' + session.message.text);
 });
@@ -149,7 +149,7 @@ bot.dialog('/', function (session) {
 
 We will now add in a Waterfall, this is a structured list of questions to get information for the user, as an example this could be an order form or part of curated troubleshooting. Copy the Waterfall Q and A code at the end of the app.js file – this is just a sample to see how it works, the arbitrarily selected theme is spirit animals – you will understand the context of this, if not the sense, later.
 
-```
+```js
 // Waterfall Get info
 bot.dialog('/', [
     function (session) {
@@ -189,7 +189,7 @@ The bot is still one dimensional, but the waterfall and data collection are usef
 
 The bot.on method is triggered by conversationUpdate, a change to the conversation such as a new user. Add the following code before the waterfall.
 
-```
+```js
 // detect new users
 bot.on('conversationUpdate', function (message) {
     if (message.membersAdded) {
@@ -204,7 +204,7 @@ bot.on('conversationUpdate', function (message) {
 
 There are a number of variations on the above, this one simply loops through each new user, determined by their unique message address. For each user it triggers the greet _dialog_ which sends a simple welcome message.
 
-```
+```js
 // dialog to send a greeting
 bot.dialog('greet', [
     function (session, args) {
@@ -220,14 +220,14 @@ Use the Azure Storage Explorer if you want to see how the data is stored – ins
 
 Change the original waterfall, from earlier, to stop it picking up the conversations by either changing the name from / to GetInfo, or commenting it out / deleting it:
 
-```
+```js
 // Waterfall Get info
 bot.dialog('GetInfo', [
 ```
 
 Let&#39;s now have the bot collect some data from the user using a slightly more advanced waterfall. Where the initial waterfall collected information about the user and stored that individually, we will create a Profile object to handle the user&#39;s details, and use next() to skip ahead if the data has already been collected.
 
-```
+```js
 bot.dialog('ensureProfile', [
     function (session, args, next) {
         session.dialogData.profile = args || {}; // Set the profile or create the object.
@@ -260,7 +260,7 @@ bot.dialog('ensureProfile', [
 
 The dialog, _ensureprofile_, won&#39;t do anything until it is called – we can do this from the bot setup, update the var bot (and bot.set(&#39;storage&#39;... line) to the code below:
 
-```
+```js
 var bot = new builder.UniversalBot(connector, [
     function (session) {
         session.beginDialog('ensureProfile', session.userData.profile);
@@ -274,4 +274,4 @@ var bot = new builder.UniversalBot(connector, [
 
 A note on the above, you will keep getting the same message each time you reload the bot, but in a real-world application, this will happen a lot less, as most clients will persist the conversation.
 
-Next: [Cognitive Services](./cognitive.md)
+Next: [Cognitive Services](../cognitive)
