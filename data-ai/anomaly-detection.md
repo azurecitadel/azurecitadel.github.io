@@ -2,7 +2,7 @@
 title: Anomaly Detection with Azure Databricks
 category: data-ai
 date: 2018-12-30
-tags: [anomaly-detection, databricks, ml, ai]
+tags: [anomaly-detection, azure-databricks, ml, ai]
 author: Mahesh Balija
 header:
   teaser: images/teaser/education.png
@@ -73,11 +73,11 @@ NOTE: Follow the instructions in the **dlsgen2** labs to download and install th
 7. Click on **Home** icon from the left navigation pane
 8. Goto to the **intrusion_detection_v1** notebook under the **Recents** section
 9. In the **Cmd 1** replace all of the following,
-    * Replace **<Azure Storage KEY - You can copy this from your Azure Portal>** with your Blob Storage Key which you have copied from above instructions
-    * Replace **<STORAGE_ACCOUNT_NAME>** with your Storage Account name, this can be found from the overview page of the Storage resource in Azure portal
-    * Replace **<BLOB_CONTAINER>** with the newly created contianer name above (in my case **root**)
-    * Replace **<STORAGE_ACCOUNT_NAME>** with your Storage Account name, this can be found from the overview page of the Storage resource in Azure portal
-    * Repace **<YOUR_FOLDER>** with the folder name created above (in my case **network-logs**)
+    * Replace <Azure Storage KEY - You can copy this from your Azure Portal> with your Blob Storage Key which you have copied from above instructions
+    * Replace <STORAGE_ACCOUNT_NAME> with your Storage Account name, this can be found from the overview page of the Storage resource in Azure portal
+    * Replace <BLOB_CONTAINER> with the newly created contianer name above (in my case *root*)
+    * Replace <STORAGE_ACCOUNT_NAME> with your Storage Account name, this can be found from the overview page of the Storage resource in Azure portal
+    * Repace <YOUR_FOLDER> with the folder name created above (in my case *network-logs*)
 10. Review each command and run one by one and monitor the results of each command
 
 *Congrats! you are now been able to learn how easy-it-is to create an ML model using Azure Databricks Notebooks :)*
@@ -91,8 +91,9 @@ NOTE: Follow the instructions in the **dlsgen2** labs to download and install th
 
 Azure Databricks Documentation
 
-Link | Description
-<a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="azuredocs">Azure Databricks - Microsoft</a> | Azure Databricks Microsoft Documentation 
-<a href="https://docs.azuredatabricks.net/" target="Databricks">Databricks Official Documentation</a> | Azure Databricks official documentation from Databricks
-<a href="https://github.com/mabalija/azure-databricks-labs" target="Databricks Labs GitHub Repo, Mahesh Balija">Azure Databricks Sample Labs</a> | Sample Labs in GitHub repository from Mahesh Balija  
+| Link    | Description    | 
+| ------------- |:-------------:|  
+| <a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="azuredocs">Azure Databricks - Microsoft</a>   | Azure Databricks Microsoft Documentation   |  
+| <a href="https://docs.azuredatabricks.net/" target="Databricks">Databricks Official Documentation</a>   | Azure Databricks official documentation from Databricks   |    
+| <a href="https://github.com/mabalija/azure-databricks-labs" target="Databricks Labs GitHub Repo, Mahesh Balija">Azure Databricks Sample Labs</a>    | Sample Labs in GitHub repository from Mahesh Balija    | 
 ------------------------------------------------------------------

@@ -5,13 +5,11 @@ date: 2019-01-04
 tags: [azure-databricks, etl, ml, streaming]
 author: Mahesh Balija
 header:
+  overlay_image: images/header/az-db-logo.jpg
   teaser: images/teaser/education.png
 excerpt: Azure Databricks Level-400 Workshop, this landing page defines the structure, content, targeted audience for the Azure Databricks workshop.   
 ---
-# Azure Databricks Level-400 Workshop
-![](images/az-db-logo.jpg)
-
-# Agenda
+# Azure Databricks Level-400 Workshop - Agenda
 
 ## Targeted Audience and Scenarios
 
@@ -50,25 +48,23 @@ An overview of Azure Databricks collaborative workspace and its components. Azur
 * Notebook workflow utilities
 * Widget, Secret, Library utilities
 
-This session follows by labs, 
-
-This lab is designed to help you familiarize with Azure Datbricks CLI
+Azure Databricks CLI Lab
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-00-devtools-01-dbcli" target="azuredocs">Azure Databricks - Developer Tools</a>
 
-This lab is designed to help you familiarize with Azure Datbricks DBUtils such as Widgets, Notebooks, Library etc
+Azure Databricks Lab for DBUtils such as Widgets, Notebooks, Library etc
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-00-devtools-02-dbutils" target="azuredocs">Azure Databricks - DB Utils</a>
 
-This lab is designed to help you work with Azure Blob Storage in the databricks jobs
+Reading data from Azure Blob Storage in the databricks jobs  
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-01-azdataintegration-01-blobstore" target="azuredocs">Azure Databricks - Azure Blob Storage</a>
 
-This lab is designed to help you work with Azure Data Lake Storage Gen2 in the databricks jobs
+Reading data from Azure Data Lake Storage Gen2 in the databricks jobs
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-01-azdataintegration-02-dlsgen2" target="azuredocs">Azure Databricks - Azure Data Lake Storage Gen2</a>
 
-This lab is designed to help you work with Azure Cosmos DB in the databricks jobs
+Read data from Azure Cosmos DB in the databricks jobs
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-01-azdataintegration-03-cosmosdb" target="azuredocs">Azure Databricks - Cosmos DB</a>
 
@@ -76,13 +72,11 @@ This lab is designed to help you work with Azure Cosmos DB in the databricks job
 
 Azure-Databricks have various cluster types like Interactive Clusters, Job Clusters and High-Concurrency Clusters (formarly known as Serverless-pools). This section talks about selecting right cluster type depeding upon the scenario.
 
-This section follows by lab, 
-
-This lab is designed to help you understand ways to submit databricks jobs using CLI and UI
+Submit databricks jobs using CLI and UI
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-02-jobsubmit-01-cli-ui" target="azuredocs">Azure Databricks - Job Submission Lab 1</a>
 
-In this lab you will learn how to create a Workflow Pipeline in Azure Data Factory V2 and submit it to Azure Databricks
+Create and submit Workflow Pipeline in Azure Data Factory V2 to Azure Databricks
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-02-jobsubmit-02-adfv2" target="azuredocs">Azure Databricks - Azure Datafactory V2 Job Pipline submission</a>
 
@@ -94,9 +88,7 @@ In this section we will learn discuss about the performance improvements made by
 
 In this section we will discuss about ways to work with Structured data within Azure Databricks. We will learn the nuances of Managed, Un-managed tables and how to integrate external metastores like Hive.
 
-This follows by a lab,
-
-In this lab you will learn how to create a managed table and work with Spark SQL
+Create a managed table and work with Spark SQL
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-03-sql-01-localtables" target="azuredocs">Azure Databricks - Managed Tables</a>
 
@@ -104,13 +96,11 @@ In this lab you will learn how to create a managed table and work with Spark SQL
 
 An overview of Spark MLLib package and introduction to Statistical modeling also understand how to run Deep Learning models using Tensorflow on Azure Databricks.
 
-This follows by labs,
-
-In this lab you will learn how to use Spark MLLib for Anomaly detection using Random Forests classification technique
+Spark MLLib for Anomaly detection using Random Forests classification technique
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-01-anomalydetection" target="azuredocs">Azure Databricks - Anomaly Detection</a>
 
-In this lab you will learn how to implement batch predictions within Azure Databricks. You will also understand how to persist and load the model from Blob Storage within your Spark Jobs
+Implement batch predictions within Azure Databricks. You will also understand how to persist and load the model from Blob Storage within your Spark Jobs
 
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-02-batchpredict" target="azuredocs">Azure Databricks - Batch Predictions</a>
 
@@ -118,8 +108,10 @@ In this lab you will learn how to implement batch predictions within Azure Datab
 
 Azure Databricks Documentation
 
-Link | Description
-<a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="azuredocs">Azure Databricks - Microsoft</a> | Azure Databricks Microsoft Documentation 
-<a href="https://docs.azuredatabricks.net/" target="Databricks">Databricks Official Documentation</a> | Azure Databricks official documentation from Databricks
-<a href="https://github.com/mabalija/azure-databricks-labs" target="Databricks Labs GitHub Repo, Mahesh Balija">Azure Databricks Sample Labs</a> | Sample Labs in GitHub repository from Mahesh Balija  
-------------------------------------------------------------------
+| Link    | Description    | 
+| ------------- |:-------------:|  
+| <a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="azuredocs">Azure Databricks - Microsoft</a>   | Azure Databricks Microsoft Documentation   |  
+| <a href="https://docs.azuredatabricks.net/" target="Databricks">Databricks Official Documentation</a>   | Azure Databricks official documentation from Databricks   |    
+| <a href="https://github.com/mabalija/azure-databricks-labs" target="Databricks Labs GitHub Repo, Mahesh Balija">Azure Databricks Sample Labs</a>    | Sample Labs in GitHub repository from Mahesh Balija    | 
+  
+-----------------------------------------------------------------
