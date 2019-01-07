@@ -6,7 +6,8 @@ tags: [azure-search, azure-devops, jquery, jekyll]
 author: Ben Coleman
 header:
   teaser: /images/teaser/code.png
-excerpt: A run through of how Azure Citadel is integrated with Azure Search for indexing of static pages, and presenting results to users
+  overlay_image: /images/header/search.png
+excerpt: An overview of the custom integration between Azure Citadel and Azure Search for indexing of static pages, and allowing users to search the site
 ---
 This guide will run through the custom integration that was created for Azure Citadel to use the Azure Search service to index the site and provide search results to users. Although the solution was specific to this site and Jekyll, the working principals and approach could be reused for integrating any static website with Azure Search
 
