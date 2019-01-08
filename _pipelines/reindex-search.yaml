@@ -27,11 +27,11 @@ steps:
 - script: 'bundle exec jekyll build'
   displayName: 'Run jekyll and build site'
 
-- script: 'az storage blob upload-batch -s _site -d site-json  --pattern "*.json" --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
-  displayName: 'Upload JSON output to blobs for indexing'
+# - script: 'az storage blob upload-batch -s _site -d site-json  --pattern "*.json" --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
+#   displayName: 'Upload JSON output to blobs for indexing'
 
-- script: 'curl -v -H "api-key: $(search-admin-key)" -d "" -X POST "https://$(search-account).search.windows.net/indexers/$(search-indexer)/run?api-version=2017-11-11"'
-  displayName: 'Call Azure Search API to run reindex'
+- script: 'curl -v -H "api-key: $(search-admin-key)" -H "Content-Type: application/json" --data-binary "@_site/site.json" -X POST "https://citadel.search.windows.net/indexes/citadel-index/docs/index?api-version=2017-11-11"'
+  displayName: 'Push site.json to Azure Search'
 
 
 # Note. We have to echo the API key to a special file for the stupid thing to work

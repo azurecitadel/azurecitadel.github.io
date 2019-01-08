@@ -1,0 +1,23 @@
+---
+layout: null
+permalink: /site.json
+---
+{% assign content_pages = site.pages | where_exp: "p", "p.path contains '.md'" %}
+{ 
+  "value": [
+    {% for page in content_pages %}
+    {
+      "@search.action": "mergeOrUpload",
+      "id":      "{{ page.url | base64_encode }}",
+      "author":  "{{ page.author | join: ', ' }}",
+      "tags":    "{{ page.tags | join: ', ' }}",
+      "title":   "{{ page.title }}",
+      "teaser":  "{{ page.header.teaser }}",
+      "url":     "{{ page.url }}",
+      "excerpt": "{{ page.excerpt }}",
+      "date":    "{{ page.date | date: "%Y-%m-%d" }}",
+      "content_md": {{ page.content | jsonify }}
+    }{% if forloop.last %}{% else %},{% endif %}
+    {% endfor %}
+    ]
+}

@@ -6,6 +6,8 @@
 #
 
 module Jekyll
+  require 'net/http'
+
   class JSONPage < Page
     def initialize(site, base, dir, name, content)
       @site = site
