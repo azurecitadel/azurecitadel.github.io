@@ -1,6 +1,6 @@
 ---
 layout: null
-permalink: /site.json
+permalink: /search/site.json
 ---
 {% assign content_pages = site.pages | where_exp: "p", "p.path contains '.md'" %}
 { 
