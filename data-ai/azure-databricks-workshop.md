@@ -108,10 +108,9 @@ Implement batch predictions within Azure Databricks. You will also understand ho
 
 Azure Databricks Documentation
 
-| Link    | Description    | 
-| ------------- |:-------------:|  
-| <a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="azuredocs">Azure Databricks - Microsoft</a>   | Azure Databricks Microsoft Documentation   |  
-| <a href="https://docs.azuredatabricks.net/" target="Databricks">Databricks Official Documentation</a>   | Azure Databricks official documentation from Databricks   |    
-| <a href="https://github.com/mabalija/azure-databricks-labs" target="Databricks Labs GitHub Repo, Mahesh Balija">Azure Databricks Sample Labs</a>    | Sample Labs in GitHub repository from Mahesh Balija    | 
-  
+Link | Description
+<a href="https://docs.microsoft.com/en-us/azure/azure-databricks/" target="azuredocs">Azure Databricks - Microsoft</a> | Azure Databricks Microsoft Documentation
+<a href="https://docs.azuredatabricks.net/" target="Databricks">Databricks Official Documentation</a> | Azure Databricks official documentation from Databricks
+<a href="https://github.com/mabalija/azure-databricks-labs" target="Databricks Labs GitHub Repo, Mahesh Balija">Azure Databricks Sample Labs</a> | Sample Labs in GitHub repository from Mahesh Balija
+
 -----------------------------------------------------------------
