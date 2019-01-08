@@ -2,7 +2,6 @@
 title: "Kubernetes: Extra Optional Exercises"
 author: Ben Coleman
 date: 2018-10-01
-tags: [kubernetes, microservices, aks]
 hidden: true
 
 header:

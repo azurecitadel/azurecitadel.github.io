@@ -10,6 +10,8 @@ main:
     url: "/news"
   - title: "About"
     url: "/about"
+  - title: "Search"
+    url: "/search"
 
 # home page side menu
 sidemenu:

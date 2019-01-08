@@ -134,7 +134,9 @@ http://localhost:3978/api/messages
 
 You should see an error in the Log window, because the application is not running. In the VS Code terminal type:
 
-`node app.js`
+```bash
+node app.js
+```
 
 When you see the _restify listening to_ [_http://[::]:3978_](http://%5B::%5D:3978) message go and refresh the emulator.
 
@@ -144,4 +146,4 @@ In the emulator if you type *hello* there will be no error, but you won't get a 
 
 Kill the app in the terminal – **CTRL-C**.
 
-Next: [Node development](./development.md)
+Next: [Node development](../development)

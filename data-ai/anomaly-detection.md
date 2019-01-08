@@ -87,9 +87,8 @@ NOTE: Follow the instructions in the **dlsgen2** labs to download and install th
 *The detailed steps are listed in the GitHub Repository created by Mahesh Balija please refer to below link :)*
 <a href="https://github.com/mabalija/azure-databricks-labs/tree/master/db-labs-04-ml-02-batchpredict" target="portal">Azure Databricks - Batch Predictions Lab</a>  
 
-## Documentation
 
-Azure Databricks Documentation
+## Documentation & Links
 
 | Link    | Description    | 
 | ------------- |:-------------:|  

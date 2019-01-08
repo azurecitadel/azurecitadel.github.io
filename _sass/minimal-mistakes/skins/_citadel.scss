@@ -27,3 +27,19 @@ $menu-color: #1a1a1f !default;
 .social-icons {
   font-size: 120% !important;
 }
+
+// This makes code blocks (```) without a language look like Prism.js blocks
+// Prism.js will overrule this when a language is specified
+pre:not([class*="language-"]) {
+  color: white;
+  background-color: #272822;
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+// Style for single backtick sections
+p code:not([class*="language-"]), li code:not([class*="language-"]) {
+  background-color: #ddd !important;
+}

@@ -8,5 +8,5 @@ header:
 ```
 
 # Guidelines
-- Images should be PNG
+- Images should be JPEG as they maybe quite large
 - Images should a good size as they will stretch across the screen

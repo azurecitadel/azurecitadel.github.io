@@ -3,7 +3,7 @@ title: DevOps Lab App Snippets
 date: 2017-09-29
 comments: false
 hidden: true
-author: false
+author: John Duckmanton
 ---
 
 ## index.pug

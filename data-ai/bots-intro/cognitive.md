@@ -11,7 +11,7 @@ The bot now has some swagger but is still a little stupid, so we are going to ad
 
 For cognitive Services need two additional Node modules, similar to the ones discussed earlier, add the following code toward the top, below var botbuilder\_azure:
 
-```
+```js
 // Added for congnitive services - add to package
 var builder_cognitiveservices = require('botbuilder-cognitiveservices');
 var request = require('request');
@@ -21,7 +21,7 @@ The _botbuilder-congnitiveservices_ module is required to use LUIS and QnA Maker
 
 The code entered above calls the modules, but they are not available and need to be installed. If it is not open type CTRL-&#39; to open the terminal window, and type the following:
 
-```
+```bash
 npm install botbuilder-cognitiveservices
 npm install request
 ```
@@ -30,7 +30,7 @@ The modules will install and the package.json file, discussed in the Initial Set
 
 Add the follow code to configure the QnA and Luis services – this sets up the connection to the cognitive service and the intent dialog, builds out the qnarecognizer and LuisRecognizer.
 
-```
+```js
 // QnA Builder
 var qnarecognizer = new builder_cognitiveservices.QnAMakerRecognizer({
     knowledgeBaseId: process.env.QnAKnowledgebaseId,
@@ -54,7 +54,7 @@ You will notice we have more process.envs to handle, these will need to be added
 
 Add the following to the dev.env file taking and swapping in the &lt; values &gt; where indicated:
 
-```
+```js
 process.env.QnAKnowledgebaseId='<QnAKnowledgebaseId>';
 process.env.QnASubscriptionKey='<QnASubscriptionKey>';
 ```
@@ -72,7 +72,7 @@ In the Azure portal add the key names as below and the values used above, also c
 
 Next are the Luis key values. Prepare the following in the .env file:
 
-```
+```js
 process.env.LuisAPIKey='<Key String value>';
 process.env.LuisAppId='<LuisAPIHostName>';
 process.env.LuisAPIHostName='<LuisAppId>';
@@ -98,14 +98,14 @@ Currently the bot is looking for the root &#39;/&#39; to start the session, but 
 
 Add the following code for the dialog _start_, which will listen for intents, that will make more sense shortly:
 
-```
+```js
 // start to run Intents
 bot.dialog('start', intents);
 ```
 
 The code listens and then routes through welcome message (_profile.welcomed_ is used to track if a user is new or returning) and/or the Ensure Profile waterfall, the conversation needs to be directed from that opening to the new _start_ dialog. Edit the following to add:
 
-```
+```js
 var bot = new builder.UniversalBot(connector, [
     function (session) {
         session.beginDialog('ensureProfile', session.userData.profile);
@@ -127,7 +127,7 @@ By adding the above you are capturing the route into the bot conversations and, 
 
 Responses from Luis are handled individually, that is a message from a user calls Luis and that returns an intent that is handled on a one-to-one basis (will make more sense in a moment), whereas the QnA Maker returns a single result, it returns the result from the service itself. Add the code below to handle the QnA Maker response – essentially it takes the entity (object) returned from the QnA service and provides the _answer_.
 
-```
+```js
 // direct to QnA
 intents.matches('qna', [
     function (session, args, next) {
@@ -187,7 +187,7 @@ If you try any of the intents you created in Luis that won&#39;t work as there i
 
 Add the following code:
 
-```
+```js
 // Intent returned from LUIS – returns a direct response to findSpirit
 intents.matches('findSpirit', [
     function (session) {
@@ -200,7 +200,7 @@ When you ask now, &#39;I want to find my spirit animal&#39;, you will get the se
 
 We now need to handle an entity match for the spirit meaning, add the following:
 
-```
+```js
 // use the entity to get the meaning of a spirit animal
 intents.matches('spiritMeaning',  [
     function (session, args) {
@@ -221,7 +221,7 @@ The _if_ statement is used to determine a response path, based on whether there 
 
 Finally, we will finish by tidying up the responses, replace the code above with the following to steer the conversation and get the information we need:
 
-```
+```js
 // working with intents to return the meaning of an intent and entity
 intents.matches('spiritMeaning',  [
     function (session, args, next) {
@@ -240,7 +240,7 @@ intents.matches('spiritMeaning',  [
 
 The code now prompts for an animal if the entity is absent, from a list, using the prompt seen in the waterfall. To handle the result it would be possible to create a function with a series of _if } { else_ that checks the result again each animal in term and direct it to the appropriate dialog, but that is too rigid. To build in flexibility the function above calls a bot.dialog with the name &lt;animal&gt;Meaning and we call this by create a string using the entity from Luis or the prompt result appended with the word &#39;Meaning&#39; - _results.response.entity + &#39;Meaning&#39;_ - so _tiger_ maps to a dialog called, _tigerMeaning_ – the dialogs could be called using the animal name, but creating a string means that another tiger dialog, eg, tigerAction, can be added if needed, and keeps a consistent format – it is a little redundant for this exercise, but wanted to make the point. Now, add the code for the basic dialogs:
 
-```
+```js
 bot.dialog('tigerMeaning', [
     function (session) {
         session.send('It means you\'re strong like a tiger.');
@@ -284,7 +284,7 @@ Comment out ( **CTRL-/** ) the animal meaning intent ( _intents.matches(&#39;spi
 
 In the Documents pane in VS Code create a file called **animals.json** – where you created the dev.env file earlier. Then click on the empty file and paste the following JSON – very basic, animal and meaning:
 
-```
+```js
 {
     "tiger": {
         "meaning": "It means you're strong like a tiger."
@@ -300,7 +300,7 @@ In the Documents pane in VS Code create a file called **animals.json** – where
 
 To use the above there are some _requires_ to add, put this with the other requires, near the top.
 
-```
+```js
 // Add animals.json reference
 var fs = require("fs");
 var contents = fs.readFileSync("animals.json");
@@ -309,11 +309,13 @@ var spiritanimal = JSON.parse(contents);
 
 For the above to work we need to add in the fs module – this is for the file system and allows access to the animals JSON file.
 
- `npm install fs`
+```bash
+npm install fs
+```
 
 _var contents_ refers to the json file and _spiritanimal_ parses the JSON file into something the application can read. Add the new code for _spiritMeaning_:
 
-```
+```js
 intents.matches('spiritMeaning', [
     function (session, args) {
         var spiritEntity = builder.EntityRecognizer.findEntity(args.entities, 'animal');
@@ -339,7 +341,7 @@ One last addition, to add a little glamour to our bot, is to send the animal mea
 
 We create the variable _sanimal_ to lookup the card text and image URL and then use that to build out the HeroCard – this will be created for both scenarios; the animal name coming from Luis and through the prompt results. Hopefully, by now, the code below is starting to make some sense, do not copy yet, this is illustrative:
 
-```
+```js
 var sanimal = results.response.entity;
 var msg = new builder.Message(session)
         msg.attachments([
@@ -352,7 +354,7 @@ var msg = new builder.Message(session)
 
 The code for the intent _spiritMeaning_ becomes what we have below, copy this to app.js, overwriting the original code:
 
-```
+```js
 intents.matches('spiritMeaning', [
     function (session, args) {
         var spiritEntity = builder.EntityRecognizer.findEntity(args.entities, 'animal');
@@ -386,7 +388,7 @@ intents.matches('spiritMeaning', [
 
 The JSON files needs to be updated to add in the image URL – these are just random ones from Bing, overwrite with the following.
 
-```
+```json
 {
     "tiger": {
         "meaning": "It means you're strong like a tiger.",
@@ -407,7 +409,7 @@ Run the app now and you will see the hero card displayed when you trigger the sp
 
 To that end, there is one very cool feature within VS Code that will help to remove the unnecessary repetition of the code to create the hero card:
 
-```
+```js
 var msg = new builder.Message(session)
         msg.attachments([
             new builder.HeroCard(session)
@@ -425,7 +427,7 @@ In the top section of _spiritMeaning_, highlight the code to build the message w
 
 You should now see a new function created:
 
-```
+```js
 function spiritCard(session, sanimal) {
     var msg = new builder.Message(session);
     msg.attachments([
@@ -444,7 +446,7 @@ And code you highlighted in _spiritMeaning_ is replaced with the new spiritCard 
 
 Simply update the second half of _spiritMeaning_ to remove the original code (as highlighted to create the function) and replace with the single line above, hopefully leaving you with:
 
-```
+```js
 intents.matches('spiritMeaning', [
     function (session, args) {
         var spiritEntity = builder.EntityRecognizer.findEntity(args.entities, 'animal');   

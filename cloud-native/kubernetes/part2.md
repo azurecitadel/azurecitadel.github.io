@@ -2,7 +2,6 @@
 title: "Kubernetes: Module 2 - Azure Container Registry (ACR)"
 author: Ben Coleman
 date: 2018-10-01
-tags: [kubernetes, microservices, aks]
 hidden: true
 
 header:
@@ -20,7 +19,7 @@ To create a *Azure Container Registry* instance, pick a name for your ACR, this 
 
 We'll re-use the `$group` and `$region` variables we set when creating the AKS cluster, so make sure you use the same session/window. If need be, reset the variables to your given values as described at the start of [part 1](../part1)
 
-```
+```bash
 ACR_NAME="change-this-to-your-unique-acr-name"
 az acr create -n $ACR_NAME -g $group -l $region --sku Standard --admin-enabled true
 ```
@@ -31,7 +30,7 @@ The ACR name can only contain letters and numbers (no dots or dashes, etc), and 
 
 ## Configure Kubernetes to use ACR
 Get the ACR login password and set it in a Bash variable 
-```
+```bash
 ACR_PWD=`az acr credential show -n $ACR_NAME -g $group --query "passwords[0].value" -o tsv`
 ```
 
@@ -41,7 +40,7 @@ In order for the Kubernetes nodes to authenticate with ACR we will set up a *Sec
 [📘 ACR and AKS Authentication](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks){:target="_blank" class="btn btn--success"}
 
 Create a secret called **acr-auth** with this command:
-```
+```bash
 kubectl create secret docker-registry acr-auth --docker-server $ACR_NAME.azurecr.io --docker-username $ACR_NAME --docker-password $ACR_PWD --docker-email ignore@dummy.com
 ```
 We will use this secret later on
@@ -52,24 +51,24 @@ We will use this secret later on
 
 For this section we will be using a brand new feature of *Azure Container Registry*  called "ACR Tasks", this allows us to build container images in Azure without need access to a Docker host or having Docker installed locally. It also pushes the resulting images directly into your registry.
 
-We will build our images directly from source. The source of Smilr is held on GitHub in this repository https://github.com/benc-uk/microservices-demoapp
+We will build our images directly from source. The source of Smilr is held on GitHub in this repository [https://github.com/benc-uk/smilr](https://github.com/benc-uk/smilr) and ACR lets us run the build directly using the URL of a remote repo
 
 To use ACR Tasks to run our Docker build task in Azure, we call the `az acr build` sub-command. The first image we'll build is for the Smilr data API component, the source Dockerfile is in the **node/data-api** sub-directory and we'll tag the resulting image `smilr/data-api`
-```
-az acr build --registry $ACR_NAME -g $group --file node/data-api/Dockerfile --image smilr/data-api https://github.com/benc-uk/microservices-demoapp.git
+```bash
+az acr build --registry $ACR_NAME -g $group --file node/data-api/Dockerfile --image smilr/data-api https://github.com/benc-uk/smilr.git
 ```
 **💬 Note.**  If you are familiar with the Docker command line and the `docker build` command you notice some similarity in syntax and approach
 
 **💬 Note.**  If the CLI times out with a "no more logs" message you can still view the build logs by running `az acr task logs -r $ACR_NAME -g $group` to check on the progress
 
 That should take about a minute or two to run. After that we'll build the frontend, the command will be very similar just with a different source file image tag
-```
-az acr build --registry $ACR_NAME -g $group --file node/frontend/Dockerfile --image smilr/frontend https://github.com/benc-uk/microservices-demoapp.git
+```bash
+az acr build --registry $ACR_NAME -g $group --file node/frontend/Dockerfile --image smilr/frontend https://github.com/benc-uk/smilr.git
 ```
 This will take slightly longer but should complete in 3-5 minutes
 
 If you want to double check the images have been built and stored in your registry you can run
-```
+```bash
 az acr repository list -g $group --name $ACR_NAME -o table
 ```
 
