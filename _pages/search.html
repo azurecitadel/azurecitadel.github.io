@@ -1,14 +1,189 @@
 ---
-layout: search
+layout: single
 permalink: /search/
 hidden: true
 title: "Search"
 author_profile: false
 read_time: false
-toc: false
 search: false
+toc: false
+share: false
 comments: false
+classes: wide
+entries_layout: grid
 header:
   overlay_color: "rgb(0, 130, 114)"
   overlay_image: /images/header/search.jpg    
 ---
+<style>
+.searchbox {
+  border: 2px solid rgb(0,120,215);
+  border-radius: 6px;
+  background-color: white;
+  display: flex;
+  padding: 10px
+}
+.searchbox input {
+  background-color: white;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+.searchbox:focus-within {
+  box-shadow: 0 0 10px #479ee6;
+}
+.searchbox span {
+  padding-right: 10px;
+  font-size: 30px;
+}
+.note {
+  float: right;
+  font-size: 12px;
+  color: #555;
+}
+</style>
+
+<div class="searchbox">
+  <span>&#x1f50e</span> <input id="query" type="text" autocomplete="off" placeholder="What are you looking for?">
+  <img src="/images/site/ajax-loader.gif" id="spinner" width="50px" height="40px"/>
+</div>
+
+<div class="note">Powered by Azure Search</div>
+
+<br/>
+
+<div class="entries-grid" id="results">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script>
+  //
+  // If you know what you are doing... change these
+  //
+  const AZURE_SEARCH_KEY = "2F9C8576FF9E1D45FE63CA285A2500C5"
+  const AZURE_SEARCH_ACCOUNT = "citadel"
+  const AZURE_SEARCH_INDEX = "citadel-index"
+  const AZURE_SEARCH_URL = `https://${AZURE_SEARCH_ACCOUNT}.search.windows.net/indexes/${AZURE_SEARCH_INDEX}/docs?api-version=2017-11-11&api-key=${AZURE_SEARCH_KEY}`
+  
+  // Main listen to key events, delays for 500ms and then calls runSearch
+  $("#query").bind("keyup", delay(runSearch, 500));
+
+  // Spinner starts hidden
+  $("#spinner").hide();
+
+  // use existing searchTerm if it's there
+  let q = cookieRead("searchTerm")
+  if(q) {
+    $("#query").val(q)
+    runSearch()
+  }
+
+  //
+  // Main function to query Azure Search and process results
+  //
+  function runSearch() {
+    let query = $("#query").val()
+    if(!query) { 
+      $("#spinner").hide(); 
+      return 
+    }
+
+    // Query Azure Search
+    $.get(`${AZURE_SEARCH_URL}&search=${query}`, function(data) {
+      $("#spinner").hide()
+      saveTerm()
+
+      if(data) {  //} && data.value.length > 0) {
+        // Clear results
+        $("#results").html("")
+
+        // Process results
+        for(let result of data.value) {
+          // Handle long/missing excerpts
+          let excerpt = result.excerpt
+          if(result.excerpt == null) excerpt = ""
+          excerpt = excerpt.substr(0, 160) + (excerpt.length > 160 ? '&hellip;' : '')
+          
+          // Handle header as a JSON string
+          let header = {
+            teaser: '/images/teaser/default.png'
+          }
+          let authors = result.author
+
+          try {
+            header = JSON.parse(result.header)
+            authors = JSON.parse(result.author)
+          } catch(e) {
+          }
+          
+          if(authors instanceof Array) authors = authors.join(', ')
+
+          // People are idiots and don't correctly specify the teaser image path
+          if(!header.teaser.startsWith('/')) header.teaser = `/${header.teaser}`
+
+          // Add result to page
+          $("#results").append(`
+          <div class="grid__item">
+            <article class="archive__item">
+              <div class="archive__item-teaser">
+                <img src="${header.teaser}" alt="">
+              </div>
+              <h2 class="archive__item-title" itemprop="headline">
+                <a onclick="saveTerm()" href="${result.url}" rel="permalink">${result.title}</a>           
+              </h2>     
+              <p class="page__meta">${authors} &mdash; ${result.date}</p>
+              <p class="archive__item-excerpt" itemprop="description">${excerpt}</p>         
+            </article>
+          </div>`)
+        }
+      }
+    })
+  }
+
+  //
+  // Delay function pinched from internet
+  //
+  function delay(callback, ms) {
+    var timer = 0;
+    return function() {
+      $("#spinner").show();
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        callback.apply(context, args);
+      }, ms || 0);
+    };
+  }   
+
+  function saveTerm() {
+    // Set cookie to remember our searchTerm and hide spinner
+    cookieCreate("searchTerm", $("#query").val(), 365)
+  }
+
+  function cookieCreate(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+  }
+
+  function cookieRead(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+
+  function cookieErase(name) {
+    this.createCookie(name,"",-1);
+  }     
+</script>

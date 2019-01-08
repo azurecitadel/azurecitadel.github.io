@@ -114,4 +114,4 @@ Go to the URL above and sing in using your **Azure account credentials** , or, i
 
 Create a new app using the obvious blue button, giving it a relevant name.
 
-Next: [Initial setup – end to end environment](./environment.md)
+Next: [Initial setup – end to end environment](../environment)

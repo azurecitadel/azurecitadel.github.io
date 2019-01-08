@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "90d2cecd-fdda-49fe-85ca-d1ce2a025592",
+		"name": "Azure Search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Index - Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{az-search-key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n  \"name\": \"{{az-search-index}}\",  \r\n  \"fields\": [  \r\n    {  \r\n      \"name\": \"id\",  \r\n      \"key\": true,\r\n      \"retrievable\": true,\r\n      \"type\": \"Edm.String\"\r\n    },\r\n    {  \r\n      \"name\": \"content_md\",  \r\n      \"retrievable\": false,\r\n      \"searchable\": true,\r\n      \"type\": \"Edm.String\"      \r\n    },\r\n    {  \r\n      \"name\": \"title\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"type\": \"Edm.String\"      \r\n    },\r\n    {  \r\n      \"name\": \"excerpt\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"type\": \"Edm.String\"        \r\n    },\r\n    {  \r\n      \"name\": \"url\",\r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"type\": \"Edm.String\"        \r\n    },\r\n    {  \r\n      \"name\": \"author\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"type\": \"Edm.String\"        \r\n    },  \r\n    {  \r\n      \"name\": \"date\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"type\": \"Edm.String\"        \r\n    }, \r\n    {  \r\n      \"name\": \"header\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"type\": \"Edm.String\"        \r\n    }\r\n  ],\r\n  \r\n  \"corsOptions\": { \r\n  \t\"allowedOrigins\": [ \"*\" ]\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{az-search-acct}}.search.windows.net/indexes?api-version=2017-11-11",
+					"protocol": "https",
+					"host": [
+						"{{az-search-acct}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexes"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2017-11-11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Index - Delete",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api-key",
+						"type": "text",
+						"value": "{{az-search-key}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n  \"name\": \"test-index\",  \r\n  \"fields\": [  \r\n    {  \r\n      \"name\": \"metadata_storage_path\",  \r\n      \"key\": true,\r\n      \"retrievable\": true,\r\n      \"type\": \"Edm.String\"\r\n    },\r\n    {  \r\n      \"name\": \"content_md\",  \r\n      \"retrievable\": false,\r\n      \"searchable\": true,\r\n      \"type\": \"Edm.String\"      \r\n    },\r\n    {  \r\n      \"name\": \"title\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"type\": \"Edm.String\"      \r\n    },\r\n    {  \r\n      \"name\": \"excerpt\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": true,\r\n      \"type\": \"Edm.String\"        \r\n    },\r\n    {  \r\n      \"name\": \"url\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"type\": \"Edm.String\"        \r\n    },\r\n    {  \r\n      \"name\": \"author\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"type\": \"Edm.String\"        \r\n    },  \r\n    {  \r\n      \"name\": \"date\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"type\": \"Edm.String\"        \r\n    }, \r\n    {  \r\n      \"name\": \"header\",  \r\n      \"retrievable\": true,\r\n      \"searchable\": false,\r\n      \"type\": \"Edm.String\"        \r\n    }\r\n  ],\r\n  \r\n  \"corsOptions\": { \r\n  \t\"allowedOrigins\": [ \"*\" ]\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{az-search-acct}}.search.windows.net/indexes/{{az-search-index}}/?api-version=2017-11-11",
+					"protocol": "https",
+					"host": [
+						"{{az-search-acct}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexes",
+						"{{az-search-index}}",
+						""
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2017-11-11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Indexer - Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "{{az-search-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{az-search-indexer}}\",\n    \"dataSourceName\": \"{{az-search-datasrc}}\",\n    \"targetIndexName\": \"{{az-search-index}}\",\n    \"parameters\": {\n        \"maxFailedItems\": 20,\n        \"maxFailedItemsPerBatch\": 20,\n        \"base64EncodeKeys\": true,\n        \"configuration\": {\n            \"dataToExtract\": \"contentAndMetadata\",\n            \"parsingMode\": \"json\"\n        }\n    },\n    \"fieldMappings\": [\n        {\n            \"sourceFieldName\": \"url\",\n            \"targetFieldName\": \"id\"\n        },\n        {\n            \"sourceFieldName\": \"url\",\n            \"targetFieldName\": \"url\"\n        }        \n    ]\n}"
+				},
+				"url": {
+					"raw": "https://{{az-search-acct}}.search.windows.net/indexers?api-version=2017-11-11",
+					"protocol": "https",
+					"host": [
+						"{{az-search-acct}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexers"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2017-11-11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Indexer - Run",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"type": "text",
+						"value": "{{az-search-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{az-search-acct}}.search.windows.net/indexers/{{az-search-indexer}}/run?api-version=2017-11-11",
+					"protocol": "https",
+					"host": [
+						"{{az-search-acct}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexers",
+						"{{az-search-indexer}}",
+						"run"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2017-11-11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Indexer - Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "{{az-search-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{az-search-acct}}.search.windows.net/indexers/{{az-search-indexer}}?api-version=2017-11-11",
+					"protocol": "https",
+					"host": [
+						"{{az-search-acct}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"indexers",
+						"{{az-search-indexer}}"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2017-11-11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Data Source - Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "api-key",
+						"type": "text",
+						"value": "{{az-search-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{az-search-acct}}.search.windows.net/datasources//{{az-search-datasrc}}?api-version=2017-11-11",
+					"protocol": "https",
+					"host": [
+						"{{az-search-acct}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"datasources",
+						"",
+						"{{az-search-datasrc}}"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2017-11-11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Data Source - Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "api-key",
+						"type": "text",
+						"value": "{{az-search-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"{{az-search-datasrc}}\",\n\t\"type\": \"azureblob\",\n\t\"credentials\": {\n\t    \"connectionString\": \"<< CHANGE ME >>\"\n\t},\n\t\"container\": {\n\t    \"name\": \"site-json\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "https://{{az-search-acct}}.search.windows.net/datasources?api-version=2017-11-11",
+					"protocol": "https",
+					"host": [
+						"{{az-search-acct}}",
+						"search",
+						"windows",
+						"net"
+					],
+					"path": [
+						"datasources"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2017-11-11"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -22,7 +22,7 @@ In this lab we'll continue to use the Cloud Shell. As you move through the lab y
 
 Let's quickly recreate the storage account in a new resource group.  You should be in your ~/terraform-labs folder. If you `cat main.tf` then it should look like the following (with a different storage account name).
 
-```yaml
+```hcl
 resource "azurerm_resource_group" "lab1" {
   name     = "terraform-lab1"
   location = "West Europe"
@@ -49,7 +49,7 @@ resource "azurerm_storage_account" "lab1sa" {
 
 Your main.tf should now look similar to the code block below:
 
-```yaml
+```hcl
 resource "azurerm_resource_group" "lab2" {
   name     = "terraform-lab2"
   location = "West Europe"
@@ -70,12 +70,13 @@ resource "azurerm_storage_account" "lab2sa" {
 
 Again, your storage account name should be different to the one in the example. You can now run through the terraform init, plan and apply workflow at the CLI prompt. Check it exists:
 
-```bash
-richard@Azure:~$ az resource list -g terraform-lab2 -o table
+<pre class="language-bash command-line" data-output="2-5" data-prompt="$"><code>
+az resource list -g terraform-lab2 -o table
 Name                   ResourceGroup    Location    Type                               Status
 ---------------------  ---------------  ----------  ---------------------------------  --------
 richeneyterraformlab2  terraform-lab2   westeurope  Microsoft.Storage/storageAccounts
-```
+</code></pre>
+
 
 ## Introducing variables
 
@@ -87,7 +88,7 @@ So let's create a variables.tf file in the citadel directory and define some of 
     * Precreating the files with the .tf extension triggers the Terraform linting, i.e. the colour coding for the HCL syntax
 * Paste in the following:
 
-```ruby
+```hcl
 variable "rg" {
     default = "terraform-lab2"
 }

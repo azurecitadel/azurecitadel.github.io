@@ -32,14 +32,15 @@ comments:
 atom_feed:
   path                   : /feed.xml
 
-search                   : true
-search_full_content      : true
-search_provider          : algolia
-algolia:
-  application_id         : 7OH2BGCS3F                       # YOUR_APPLICATION_ID
-  index_name             : Azure_Citadel                    # YOUR_INDEX_NAME
-  search_only_api_key    : c7d0d56e6a342c7a26ae845c63cef275 # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : true
+# Switched to Azure Search, using json-generate.rb plugin
+search                   : false
+# search_full_content      : true
+# search_provider          : algolia
+# algolia:
+#   application_id         : 7OH2BGCS3F                       # YOUR_APPLICATION_ID
+#   index_name             : Azure_Citadel                    # YOUR_INDEX_NAME
+#   search_only_api_key    : c7d0d56e6a342c7a26ae845c63cef275 # YOUR_SEARCH_ONLY_API_KEY
+#   powered_by             : true
 
 # Analytics
 # We use App Insghts, see _includes/head/custom.html for snippet
@@ -47,6 +48,7 @@ algolia:
 
 # Site Author 
 # - NEED TO REVIEW THIS, DON'T THINK IT'S EVER USED ANYWHERE
+# (It does show in the feed.xml)
 author:
   name             : "Richard Cheney"
   avatar           : images/authors/rich-c.jpg
@@ -70,6 +72,7 @@ include:
   - .htaccess
   - _pages
 exclude:
+  - templates
   - _staging
   - _site_assets
   - "*.sublime-project"
@@ -106,8 +109,11 @@ markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 
 # Conversion
+# Note - I've disabled the default Rouge highlighter 
+#        And enabled Prism.js https://prismjs.com
 markdown: kramdown
-highlighter: rouge
+#highlighter: rouge
+highlighter: none
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
@@ -123,7 +129,8 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
-
+  syntax_highlighter_opts:
+    disable: true
 
 # Sass/SCSS
 sass:
