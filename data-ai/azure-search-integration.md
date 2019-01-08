@@ -19,9 +19,9 @@ Using Azure Search with a static site like [Jekyll](https://jekyllrb.com/) prese
 - Allowing users to query the search from the site, i.e. creating the frontend
 
 # Solution Components
-The solution consists of five main elements:
-- Jekyll plugin which outputs JSON
-- Azure Pipeline for automation of re-indexing
+The solution consists of four main elements:
+- Jekyll page (Liquid template) that outputs site as JSON
+- Azure Pipeline for pushing data into Azure Search index
 - Azure Search service
 - Search page 'client' written in jQuery & HTML5
 
