@@ -40,7 +40,8 @@ A Liquid template page was created to output the site as a single JSON document,
 - `@search.action` field is an instruction to Azure Search
 
 The source of `_pages/site.json`
-```markdown
+<pre class="language-liquid"><code>
+{% raw %}
 ---
 layout: null
 permalink: /site.json
@@ -64,7 +65,8 @@ permalink: /site.json
     {% endfor %}
     ]
 }
-```
+{% endraw %}
+</code></pre>
 
 Here's an example of one element (page) in the array
 
