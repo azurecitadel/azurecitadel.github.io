@@ -100,6 +100,7 @@ An example of the JSON version of a page, the HTML and markdown have been remove
 }
 ```
 
+
 # Azure Pipelines - Build & Re-index
 Although Azure Search can regularly run a scheduled re-index scan of its source data, in our case JSON blobs, we still need some process or automation for updating that source data. Azure Pipelines was used for this as it has the ability to run the Jekyll build tasks and is flexible enough to automate the other steps we need.
 
@@ -147,28 +148,138 @@ The pipeline runs on a schedule every 24 hours (and not not on repo pushes/commi
 
 
 # Azure Search Configuration
-Azure Search is a powerful search as a service capability available as PaaS within Azure. However for our needs the set up was fairly simple, and Azure Portal was used to create the service instance and configure it with the 'Import Data wizard'. There are three main parts that require configuration and creation: **data source**, **indexer** and the **index**
+Azure Search is a powerful search as a service capability available as PaaS within Azure. For our needs the set up was fairly simple, an Azure Search instance (or account) was created on the Free tier using the Azure Portal.
+
+As the Azure Portal experience for managing Azure Search is extremely basic & limited, [the REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/) was used to setup and configure the service. [Postman](https://www.getpostman.com/) was used to provide a nice interface to work with the API.
+
+To assist using the API with Postman, the following can be used:
+- [💾 Postman Collection for Azure Search](./Azure Search.postman_collection.json){: .btn .btn--success}  
+- [💾 Postman Environment for Azure Search](./Azure Search.postman_environment.json){: .btn .btn--success} 
+
+Simply import into Postman and configure the variables in 'Azure Search' environment
+
+There are three main parts that require configuration and creation: **data source**, **indexer** and the **index**
 
 ## Azure Search - Data Source
-This was pointed the Azure Storage account using a connection string, and the container named `site-json` used (same as the configuration of the 'Upload JSON' pipeline task)
+This was pointed the Azure Storage account using a connection string, and the blob container named `site-json` used (same as the configuration of the 'Upload JSON' pipeline task)
+
+Example data source JSON:
+```json
+{
+	"name": "citadel-site-json",
+	"type": "azureblob",
+	"credentials": {
+	    "connectionString": "<< YOUR CONNECTION STRING HERE >>"
+	},
+	"container": {
+	    "name": "site-json"
+	}
+}
+```
 
 ## Azure Search - Indexer
-The indexer was set up to read from the above data source, with **parsing mode set to JSON**. Scheduling was disabled as the re-index is invoked regularly from the pipeline. As there were are some JSON files contained in the site source these get uploaded with the `az storage blob upload-batch` step and there's no way to filter them out. To get round this, the failed items value was simply increased to allow the indexer to skip over any JSON docs it finds which aren't in the correct format.
+The indexer was set up to read from the above data source, the indexer runs in JSON parsing mode with both content and metadata extracted.
 
-![Azure Search Indexer](./indexer.png)
+The indexer also maps the `url` field to the `id` to use as a key and Base64 encodes it for safety.
+
+Scheduling was disabled as the re-index is invoked regularly from the pipeline. As there were are some JSON files contained in the site source these get uploaded with the upload step and currently there's no simple way to filter them out. To get around this, the `maxFailedItems` value was simply increased to allow the indexer to skip over any JSON docs it finds which aren't in the correct format.
+
+Example indexer JSON:
+```json
+{
+  "name": "citadel-indexer",
+  "dataSourceName": "citadel-site-json",
+  "targetIndexName": "citadel-index",
+  "parameters": {
+    "maxFailedItems": 20,
+    "maxFailedItemsPerBatch": 20,
+    "base64EncodeKeys": true,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "json"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "url",
+      "targetFieldName": "id"
+    },
+    {
+      "sourceFieldName": "url",
+      "targetFieldName": "url"
+    }        
+  ]
+}
+```
 
 ## Azure Search - Index
 The majority of the Azure Search configuration is done on the index, this determines which fields will be extracted out of the JSON and how they are used.
 
 By default the JSON indexer will put all of the JSON parsed into a huge field called `content`, this isn't a optimal way of using the data we have, so a more refined configuration was used: 
-- The `content` field is removed (retrievable unticked)
-- The `content_md` & `title` fields are marked as searchable & retrievable
-- The `url`. `author`, `date`, `excerpt` and `header` fields are marked as retrievable
+- Custom `id` field used as a key, which is mapped to a Base64 encoded version of the `url` field
+- Main searchable fields are `content_md`, `title` and `excerpt`
+- Other fields marked as retrievable are: `url`, `date`, `author` and `header`
 - All fields are strings
 
 If you refer back to the example JSON document you will notice the `header` field is in fact not a string but an object with nested fields inside it. As we fetch it as a string, this means we get a small chunk of serialized JSON inside it, however we can easily handle this on the client
 
-![Azure Search Index](./index.png)
+Example index JSON:
+```json
+{  
+  "name": "citadel-index",  
+  "fields": [  
+    {  
+      "name": "id",  
+      "key": true,
+      "retrievable": true,
+      "type": "Edm.String"
+    },
+    {  
+      "name": "content_md",  
+      "retrievable": false,
+      "searchable": true,
+      "type": "Edm.String"      
+    },
+    {  
+      "name": "title",  
+      "retrievable": true,
+      "searchable": true,
+      "type": "Edm.String"      
+    },
+    {  
+      "name": "excerpt",  
+      "retrievable": true,
+      "searchable": true,
+      "type": "Edm.String"        
+    },
+    {  
+      "name": "url",
+      "retrievable": true,
+      "searchable": false,
+      "type": "Edm.String"        
+    },
+    {  
+      "name": "author",  
+      "retrievable": true,
+      "searchable": false,
+      "type": "Edm.String"        
+    },  
+    {  
+      "name": "date",  
+      "retrievable": true,
+      "searchable": false,
+      "type": "Edm.String"        
+    }, 
+    {  
+      "name": "header",  
+      "retrievable": true,
+      "searchable": false,
+      "type": "Edm.String"        
+    }
+  ]
+}
+```
+
 
 # Search Page  
 To consume or use the search index and actually find results, a client page was created using jQuery. As the site in question is static HTML more modern JavaScript frameworks were deemed to complex to integrate with the site. The search experience is a single query field, and results are fetched & shown in real time as they are typed
