@@ -1,5 +1,7 @@
 # main links
 main:
+  - title: "Search"
+    url: "/search"
   - title: "Categories"
     url: "/categories"
   - title: "Recent"
@@ -10,8 +12,7 @@ main:
     url: "/news"
   - title: "About"
     url: "/about"
-  - title: "Search"
-    url: "/search"
+
 
 # home page side menu
 sidemenu:

@@ -22,7 +22,6 @@ Using Azure Search with a static site like [Jekyll](https://jekyllrb.com/) prese
 The solution consists of five main elements:
 - Jekyll plugin which outputs JSON
 - Azure Pipeline for automation of re-indexing
-- Azure blob storage
 - Azure Search service
 - Search page 'client' written in jQuery & HTML5
 
@@ -32,77 +31,61 @@ The data flow and interaction between the components is as follows
 ![Overall solution flow](arch.png)
 
 
-# Jekyll JSON Plugin
-First part of the integration requires a way to output the site as JSON documents, so they can be read by Azure Search. The answer was to find a [Jekyll Generator plugin](https://jekyllrb.com/docs/plugins/generators/) that could output JSON. There were several code snippets of Jekyll plugins that would generate JSON, but most were out of date or simply didn't work. A close to working solution was [found here as a Gist](https://https://gist.github.com/egardner/b6bd5d785048ec2d0b2b). This required modification to work with pages rather than posts, to run on the correct subset of pages on the site and also output the JSON with specific fields
+# Site JSON Generation 
+A Liquid template page was created to output the site as a single JSON document, this page resides in `_pages/site.json` with a permalink set to `/site.json` so it outputs to the root of the site. It loops over all pages in the site when the Jekyll build is run. The resulting JSON object is an array of documents in a format ready for Azure Search index to consume. See [Azure Search documentation on the required format of the data](https://docs.microsoft.com/en-us/azure/search/search-import-data-rest-api#request-body)
 
-The core generate function looks as follows:
-```ruby
-def generate(site)
-  site.pages.each do |page|
-    # Set the path to the JSON version of the page
-    dest = site.config['destination']
+- The `id` field is created from the page URL (which is unique) and Base64 encoded to remove any strange characters
+- The other fields are taken from the page object directly
+- The content is placed in a field called `content_md`
+- `@search.action` field is an instruction to Azure Search
 
-    # Only work with our markdown content, not index pages and others
-    unless page.name.end_with? ".md"
-      next
-    end
-
-    # Munge the destination to .json
-    path = page.destination(dest)
-    path["#{dest}/"] = ''
-    path['/index.html'] = '.json'
-
-    # Convert the page to a hash
-    output = page.to_liquid
-
-    # Prepare the output for JSON conversion
-    ['dir', 'layout', 'path'].each do |key|
-      output.delete(key)
-    end
-
-    # Default field for content was 'content', this trips up Azure Search
-    # So put generated HTML in content_html and source Markdown in content_md
-    output['content_html'] = page.transform
-    output['content_md'] = output.delete('content')
-
-    # Queue up for generation
-    site.pages << JSONPage.new(site, site.source, File.dirname(path), File.basename(path), output.to_json)
-  end
-end
+The source of `_pages/site.json`
+```markdown
+---
+layout: null
+permalink: /site.json
+---
+{% assign content_pages = site.pages | where_exp: "p", "p.path contains '.md'" %}
+{ 
+  "value": [
+    {% for page in content_pages %}
+    {
+      "@search.action": "mergeOrUpload",
+      "id":      "{{ page.url | base64_encode }}",
+      "author":  "{{ page.author | join: ', ' }}",
+      "tags":    "{{ page.tags | join: ', ' }}",
+      "title":   "{{ page.title }}",
+      "teaser":  "{{ page.header.teaser }}",
+      "url":     "{{ page.url }}",
+      "excerpt": "{{ page.excerpt }}",
+      "date":    "{{ page.date | date: "%Y-%m-%d" }}",
+      "content_md": {{ page.content | jsonify }}
+    }{% if forloop.last %}{% else %},{% endif %}
+    {% endfor %}
+    ]
+}
 ```
 
-The [full source of the plugin is here on GitHub](https://github.com/azurecitadel/azurecitadel.github.io/blob/master/_plugins/json-generate.rb). This is placed as a single Ruby file into the sites `_plugins` directory
+Here's an example of one element (page) in the array
 
-This plugin is invoked when running a build of the site e.g. `bundle exec jekyll build` and results in `index.json` files being created alongside each of the `index.html` pages. In normal site operation & deployment (e.g. hosting on GitHub pages) these JSON files do nothing and are ignored. However we can build the site and upload the JSON ourselves in a custom build pipeline
-
-An example of the JSON version of a page, the HTML and markdown have been removed to save space:
 ```json
-{
-  "comments": true,
-  "share": true,
-  "toc": true,
-  "header": {
-    "teaser": "/images/teaser/blueprint.png"
-  },
-  "title": "A Very Interesting Thing",
-  "date": "2018-12-21",
-  "category": "stuff",
-  "author": "Ben Coleman",
-  "tags": [
-    "blah",
-    "thing"
-  ],
-  "excerpt": "Some words here explaining about this interesting thing",
-  "name": "example.md",
-  "url": "/stuff/example/",
-  "content_html": "<< HTML GENERATED CONTENT HERE AS A SINGLE LARGE STRING >>",
-  "content_md": "<< SOURCE MARKDOWN HERE AS A SINGLE LARGE STRING >>"
-}
+    {
+      "@search.action": "mergeOrUpload",
+      "id":      "L2F1dG9tYXRpb24vdGVycmFmb3JtL1RlcnJhZm9ybUVudGVycHJpc2Uv",
+      "author":  "Fred Blogs",
+      "tags":    "tag1, tag2",
+      "title":   "Just An Example",
+      "teaser":  "images/teaser/example.png",
+      "url":     "/stuff/example/",
+      "excerpt": "Short overview of a very boring thing that doesn't exist",
+      "date":    "2018-10-29",
+      "content_md": "<< REMOVED >>"
+    },
 ```
 
 
 # Azure Pipelines - Build & Re-index
-Although Azure Search can regularly run a scheduled re-index scan of its source data, in our case JSON blobs, we still need some process or automation for updating that source data. Azure Pipelines was used for this as it has the ability to run the Jekyll build tasks and is flexible enough to automate the other steps we need.
+To keep the index up to date and fresh, some sort of scheduled automation process was required. Azure Pipelines was used for this as it has the ability to run the Jekyll build tasks and is flexible enough to automate the other steps we need.
 
 The automation was done as a single 'Build Pipeline' in Azure Pipelines. The pipeline was defined in YAML and is shown below
 
@@ -129,20 +112,16 @@ steps:
 - script: 'bundle exec jekyll build'
   displayName: 'Run jekyll and build site'
 
-- script: 'az storage blob upload-batch -s _site -d site-json  --pattern "*.json" --account-name=$(storage-acct-name) --account-key="$(storage-acct-key)" --no-progress'
-  displayName: 'Upload JSON output to blobs for indexing'
-
-- script: 'curl -v -H "api-key: $(search-admin-key)" -d "" -X POST "https://$(search-account).search.windows.net/indexers/$(search-indexer)/run?api-version=2017-11-11"'
-  displayName: 'Call Azure Search API to run reindex'
+- script: 'curl -v -H "api-key: $(search-admin-key)" -H "Content-Type: application/json" --data-binary "@_site/site.json" -X POST "https://$(search-account).search.windows.net/indexes/$(search-index)/docs/index?api-version=2017-11-11"'
+  displayName: 'Push site.json to Azure Search'
 ```
 
 A summary of pipeline:
 - Environmental setup (Ruby and bundler)
 - Run `bundle exec jekyll build` to build the site, to default output directory `_site`
-- Use Azure CLI `az storage blob upload-batch` command to upload output JSON from `_site` to a storage account into a blob container called `site-json`
-- Call on the Azure Search indexer to run a re-index, using the Azure Search REST API (using curl)
+- Using curl, call the Azure Search REST API and push our JSON results (site.json) as a single POST
 
-Secrets and other variables are held in Azure Pipelines as a variable group called `citadel-shared-vars`. This variable group was created and pre-populated using the Azure DevOps Portal, so that no secrets or other variable settings needed to be hardcoded into the pipeline. Secrets include `$(storage-acct-key)` and `$(search-admin-key)`
+Secrets and other variables are held in Azure Pipelines as a variable group called `citadel-shared-vars`. This variable group was created and pre-populated using the Azure DevOps Portal, so that no secrets or other variable settings needed to be hardcoded into the pipeline.
 
 The pipeline runs on a schedule every 24 hours (and not not on repo pushes/commits as many build pipelines would) and the definition YAML stored in the Git repo that contains the site
 
@@ -158,67 +137,15 @@ To assist using the API with Postman, the following can be used:
 
 Simply import into Postman and configure the variables in 'Azure Search' environment
 
-There are three main parts that require configuration and creation: **data source**, **indexer** and the **index**
-
-## Azure Search - Data Source
-This was pointed the Azure Storage account using a connection string, and the blob container named `site-json` used (same as the configuration of the 'Upload JSON' pipeline task)
-
-Example data source JSON:
-```json
-{
-	"name": "citadel-site-json",
-	"type": "azureblob",
-	"credentials": {
-	    "connectionString": "<< YOUR CONNECTION STRING HERE >>"
-	},
-	"container": {
-	    "name": "site-json"
-	}
-}
-```
-
-## Azure Search - Indexer
-The indexer was set up to read from the above data source, the indexer runs in JSON parsing mode with both content and metadata extracted.
-
-The indexer also maps the `url` field to the `id` to use as a key and Base64 encodes it for safety.
-
-Scheduling was disabled as the re-index is invoked regularly from the pipeline. As there were are some JSON files contained in the site source these get uploaded with the upload step and currently there's no simple way to filter them out. To get around this, the `maxFailedItems` value was simply increased to allow the indexer to skip over any JSON docs it finds which aren't in the correct format.
-
-Example indexer JSON:
-```json
-{
-  "name": "citadel-indexer",
-  "dataSourceName": "citadel-site-json",
-  "targetIndexName": "citadel-index",
-  "parameters": {
-    "maxFailedItems": 20,
-    "maxFailedItemsPerBatch": 20,
-    "base64EncodeKeys": true,
-    "configuration": {
-      "dataToExtract": "contentAndMetadata",
-      "parsingMode": "json"
-    }
-  },
-  "fieldMappings": [
-    {
-      "sourceFieldName": "url",
-      "targetFieldName": "id"
-    },
-    {
-      "sourceFieldName": "url",
-      "targetFieldName": "url"
-    }        
-  ]
-}
-```
+As we call the API directly with the documents to index, we are bypassing certain features of Azure Search such as **data source** and **indexer**, all that is required to be configured is an **index**
 
 ## Azure Search - Index
-The majority of the Azure Search configuration is done on the index, this determines which fields will be extracted out of the JSON and how they are used.
+The Azure Search index determines which fields will be searchable and returned when querying, and holds the actual data (at least in index form)
 
-By default the JSON indexer will put all of the JSON parsed into a huge field called `content`, this isn't a optimal way of using the data we have, so a more refined configuration was used: 
-- Custom `id` field used as a key, which is mapped to a Base64 encoded version of the `url` field
-- Main searchable fields are `content_md`, `title` and `excerpt`
-- Other fields marked as retrievable are: `url`, `date`, `author` and `header`
+Notes on index fields:
+- Custom `id` field used as a key, created by the `site.json` generation template page
+- Main searchable fields are `content_md`, `title`, `tags` and `excerpt`
+- Other fields marked as retrievable are: `url`, `date`, `author` and `teaser`
 - All fields are strings
 
 If you refer back to the example JSON document you will notice the `header` field is in fact not a string but an object with nested fields inside it. As we fetch it as a string, this means we get a small chunk of serialized JSON inside it, however we can easily handle this on the client
@@ -226,28 +153,34 @@ If you refer back to the example JSON document you will notice the `header` fiel
 Example index JSON:
 ```json
 {  
-  "name": "citadel-index",  
+  "name": "citadel-index",
   "fields": [  
     {  
-      "name": "id",  
+      "name": "id",
       "key": true,
       "retrievable": true,
       "type": "Edm.String"
     },
     {  
-      "name": "content_md",  
+      "name": "content_md",
       "retrievable": false,
       "searchable": true,
       "type": "Edm.String"      
     },
     {  
-      "name": "title",  
+      "name": "title",
       "retrievable": true,
       "searchable": true,
       "type": "Edm.String"      
     },
     {  
-      "name": "excerpt",  
+      "name": "tags",
+      "retrievable": true,
+      "searchable": true,
+      "type": "Edm.String"      
+    },  
+    {  
+      "name": "excerpt",
       "retrievable": true,
       "searchable": true,
       "type": "Edm.String"        
@@ -259,19 +192,19 @@ Example index JSON:
       "type": "Edm.String"        
     },
     {  
-      "name": "author",  
+      "name": "author",
       "retrievable": true,
       "searchable": false,
       "type": "Edm.String"        
-    },  
+    },
     {  
-      "name": "date",  
+      "name": "date",
       "retrievable": true,
       "searchable": false,
       "type": "Edm.String"        
     }, 
     {  
-      "name": "header",  
+      "name": "teaser",
       "retrievable": true,
       "searchable": false,
       "type": "Edm.String"        
