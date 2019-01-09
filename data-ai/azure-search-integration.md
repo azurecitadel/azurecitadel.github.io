@@ -34,9 +34,10 @@ The data flow and interaction between the components is as follows
 # Site JSON Generation 
 A Liquid template page was created to output the site as a single JSON document, this page resides in `_pages/site.json` with a permalink set to `/site.json` so it outputs to the root of the site. It loops over all pages in the site when the Jekyll build is run. The resulting JSON object is an array of documents in a format ready for Azure Search index to consume. See [Azure Search documentation on the required format of the data](https://docs.microsoft.com/en-us/azure/search/search-import-data-rest-api#request-body)
 
-- The `id` field is created from the page URL (which is unique) and Base64 encoded to remove any strange characters
-- The other fields are taken from the page object directly
-- The content is placed in a field called `content_md`
+- Only pages with .md extension are processed, this stops us processing many of the static/special .html pages on the site
+- The `id` field is created from the page URL. This will be used as the key field (as it is unique), Base64 encoding ensures the key is "safe" for Azure Search (no strange characters)
+- The other fields are mostly copied from the page object directly
+- The content is placed in a field called `content`
 - `@search.action` field is an instruction to Azure Search
 
 The source of `_pages/site.json`
@@ -60,7 +61,7 @@ permalink: /site.json
       "url":     "{{ page.url }}",
       "excerpt": "{{ page.excerpt }}",
       "date":    "{{ page.date | date: "%Y-%m-%d" }}",
-      "content_md": {{ page.content | jsonify }}
+      "content":  {{ page.content | jsonify }}
     }{% if forloop.last %}{% else %},{% endif %}
     {% endfor %}
     ]
@@ -68,8 +69,7 @@ permalink: /site.json
 {% endraw %}
 </code></pre>
 
-Here's an example of one element (page) in the array
-
+Here's an example of one element (page) in the array:
 ```json
     {
       "@search.action": "mergeOrUpload",
@@ -81,15 +81,15 @@ Here's an example of one element (page) in the array
       "url":     "/stuff/example/",
       "excerpt": "Short overview of a very boring thing that doesn't exist",
       "date":    "2018-10-29",
-      "content_md": "<< REMOVED >>"
+      "content": "<< REMOVED TO SAVE SPACE >>"
     },
 ```
 
 
 # Azure Pipelines - Build & Re-index
-To keep the index up to date and fresh, some sort of scheduled automation process was required. Azure Pipelines was used for this as it has the ability to run the Jekyll build tasks and is flexible enough to automate the other steps we need.
+To keep the index up to date and fresh, some sort of scheduled automation process was required. Azure Pipelines was used for this as it has the ability to run the Jekyll build tasks and is flexible enough to automate the other steps required.
 
-The automation was done as a single 'Build Pipeline' in Azure Pipelines. The pipeline was defined in YAML and is shown below
+The automation is done as a single 'Build Pipeline' in Azure Pipelines. The pipeline was defined in YAML and is shown in full below
 
 ```yaml
 trigger: none 
@@ -121,7 +121,7 @@ steps:
 A summary of pipeline:
 - Environmental setup (Ruby and bundler)
 - Run `bundle exec jekyll build` to build the site, to default output directory `_site`
-- Using curl, call the Azure Search REST API and push our JSON results (site.json) as a single POST
+- Using curl, call the Azure Search REST API and push the JSON results (site.json) as a single POST
 
 Secrets and other variables are held in Azure Pipelines as a variable group called `citadel-shared-vars`. This variable group was created and pre-populated using the Azure DevOps Portal, so that no secrets or other variable settings needed to be hardcoded into the pipeline.
 
@@ -129,7 +129,7 @@ The pipeline runs on a schedule every 24 hours (and not not on repo pushes/commi
 
 
 # Azure Search Configuration
-Azure Search is a powerful search as a service capability available as PaaS within Azure. For our needs the set up was fairly simple, an Azure Search instance (or account) was created on the Free tier using the Azure Portal.
+Azure Search is a powerful search as a service capability available as PaaS within Azure. For this integration the set up was fairly simple, an Azure Search instance (i.e. account) was created on the Free tier using the Azure Portal. This was a one time task so was not automated.
 
 As the Azure Portal experience for managing Azure Search is extremely basic & limited, [the REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/) was used to setup and configure the service. [Postman](https://www.getpostman.com/) was used to provide a nice interface to work with the API.
 
@@ -137,20 +137,18 @@ To assist using the API with Postman, the following can be used:
 - [💾 Postman Collection for Azure Search](./Azure Search.postman_collection.json){: .btn .btn--success}  
 - [💾 Postman Environment for Azure Search](./Azure Search.postman_environment.json){: .btn .btn--success} 
 
-Simply import into Postman and configure the variables in 'Azure Search' environment
+To use simply download & import into Postman, then configure the variables in 'Azure Search' environment to match your setup.
 
-As we call the API directly with the documents to index, we are bypassing certain features of Azure Search such as **data source** and **indexer**, all that is required to be configured is an **index**
+As the documents to be indexed are pushed directly to the API, certain featured of Azure Search such as **data source** and **indexer** are not required. The only aspect that needs to be setup & configured is an **index**
 
 ## Azure Search - Index
 The Azure Search index determines which fields will be searchable and returned when querying, and holds the actual data (at least in index form)
 
 Notes on index fields:
 - Custom `id` field used as a key, created by the `site.json` generation template page
-- Main searchable fields are `content_md`, `title`, `tags` and `excerpt`
+- Main searchable fields are `content`, `title`, `tags` and `excerpt`
 - Other fields marked as retrievable are: `url`, `date`, `author` and `teaser`
 - All fields are strings
-
-If you refer back to the example JSON document you will notice the `header` field is in fact not a string but an object with nested fields inside it. As we fetch it as a string, this means we get a small chunk of serialized JSON inside it, however we can easily handle this on the client
 
 Example index JSON:
 ```json
@@ -164,7 +162,7 @@ Example index JSON:
       "type": "Edm.String"
     },
     {  
-      "name": "content_md",
+      "name": "content",
       "retrievable": false,
       "searchable": true,
       "type": "Edm.String"      

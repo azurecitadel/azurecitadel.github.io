@@ -16,7 +16,7 @@ permalink: /site.json
       "url":     "{{ page.url }}",
       "excerpt": "{{ page.excerpt }}",
       "date":    "{{ page.date | date: "%Y-%m-%d" }}",
-      "content_md": {{ page.content | jsonify }}
+      "content":  {{ page.content | jsonify }}
     }{% if forloop.last %}{% else %},{% endif %}
     {% endfor %}
     ]

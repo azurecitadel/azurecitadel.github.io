@@ -8,7 +8,7 @@
       "type": "Edm.String"
     },
     {  
-      "name": "content_md",
+      "name": "content",
       "retrievable": false,
       "searchable": true,
       "type": "Edm.String"      
