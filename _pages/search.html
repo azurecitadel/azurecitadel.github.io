@@ -2,7 +2,7 @@
 layout: single
 permalink: /search/
 hidden: true
-title: "Search"
+title: "Search Azure Citadel"
 author_profile: false
 read_time: false
 search: false
@@ -105,35 +105,21 @@ header:
           let excerpt = result.excerpt
           if(result.excerpt == null) excerpt = ""
           excerpt = excerpt.substr(0, 160) + (excerpt.length > 160 ? '&hellip;' : '')
-          
-          // Handle header as a JSON string
-          let header = {
-            teaser: '/images/teaser/default.png'
-          }
-          let authors = result.author
 
-          try {
-            header = JSON.parse(result.header)
-            authors = JSON.parse(result.author)
-          } catch(e) {
-          }
-          
-          if(authors instanceof Array) authors = authors.join(', ')
-
-          // People are idiots and don't correctly specify the teaser image path
-          if(!header.teaser.startsWith('/')) header.teaser = `/${header.teaser}`
+          // People are can be idiots and don't correctly specify the teaser image path
+          if(!result.teaser.startsWith('/')) result.teaser = `/${result.teaser}`
 
           // Add result to page
           $("#results").append(`
           <div class="grid__item">
             <article class="archive__item">
               <div class="archive__item-teaser">
-                <img src="${header.teaser}" alt="">
+                <img src="${result.teaser}" alt="">
               </div>
               <h2 class="archive__item-title" itemprop="headline">
                 <a onclick="saveTerm()" href="${result.url}" rel="permalink">${result.title}</a>           
               </h2>     
-              <p class="page__meta">${authors} &mdash; ${result.date}</p>
+              <p class="page__meta">${result.author} &mdash; ${result.date}</p>
               <p class="archive__item-excerpt" itemprop="description">${excerpt}</p>         
             </article>
           </div>`)

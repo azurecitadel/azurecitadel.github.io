@@ -1,0 +1,63 @@
+{  
+  "name": "citadel-index",
+  "fields": [  
+    {  
+      "name": "id",
+      "key": true,
+      "retrievable": true,
+      "type": "Edm.String"
+    },
+    {  
+      "name": "content",
+      "retrievable": false,
+      "searchable": true,
+      "type": "Edm.String"      
+    },
+    {  
+      "name": "title",
+      "retrievable": true,
+      "searchable": true,
+      "type": "Edm.String"      
+    },
+    {  
+      "name": "tags",
+      "retrievable": true,
+      "searchable": true,
+      "type": "Edm.String"      
+    },  
+    {  
+      "name": "excerpt",
+      "retrievable": true,
+      "searchable": true,
+      "type": "Edm.String"        
+    },
+    {  
+      "name": "url",
+      "retrievable": true,
+      "searchable": false,
+      "type": "Edm.String"        
+    },
+    {  
+      "name": "author",
+      "retrievable": true,
+      "searchable": false,
+      "type": "Edm.String"        
+    },
+    {  
+      "name": "date",
+      "retrievable": true,
+      "searchable": false,
+      "type": "Edm.String"        
+    }, 
+    {  
+      "name": "teaser",
+      "retrievable": true,
+      "searchable": false,
+      "type": "Edm.String"        
+    }
+  ],
+  
+  "corsOptions": { 
+  	"allowedOrigins": [ "*" ]
+  }
+}
