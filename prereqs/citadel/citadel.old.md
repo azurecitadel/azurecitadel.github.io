@@ -2,7 +2,6 @@
 title: Contributing to Azure Citadel
 date: 2018-01-08
 author: Richard Cheney
-category: prereqs
 tags: [citadel, markdown]
 comments: true
 header:
