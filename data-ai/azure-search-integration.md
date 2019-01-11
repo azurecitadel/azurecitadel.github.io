@@ -131,7 +131,7 @@ The pipeline runs on a schedule every 24 hours (and not not on repo pushes/commi
 # Azure Search Configuration
 Azure Search is a powerful search as a service capability available as PaaS within Azure. For this integration the set up was fairly simple, an Azure Search instance (i.e. account) was created on the Free tier using the Azure Portal. This was a one time task so was not automated.
 
-As the Azure Portal experience for managing Azure Search is extremely basic & limited, [the REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/) was used to setup and configure the service. [Postman](https://www.getpostman.com/) was used to provide a nice interface to work with the API.
+As the Azure Portal experience for managing and fully configuring Azure Search is quite limited, [the REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/) was used to setup and configure the service. [Postman](https://www.getpostman.com/) was used to provide a nice interface to work with the API.
 
 To assist using the API with Postman, the following can be used:
 - [💾 Postman Collection for Azure Search](./Azure Search.postman_collection.json){: .btn .btn--success}  
