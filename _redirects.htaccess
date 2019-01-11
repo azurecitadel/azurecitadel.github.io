@@ -1,1 +1,3 @@
+Redirect /workshops /
 Redirect /workshops/terraform /automation/terraform
+Redirect /workshops/arm /automation/arm
