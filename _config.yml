@@ -11,7 +11,7 @@
 #
 
 # Skin (note this is a modified & custom skin file)
-minimal_mistakes_skin    : "citadel" 
+minimal_mistakes_skin    : "citadel"
 
 # Site Settings
 locale                   : "en-GB"
@@ -21,15 +21,16 @@ title_separator          : "-"
 name                     : "Microsoft"
 description              : "Azure related training material developed and maintained by the technical field team at Microsoft."
 url                      : # Left empty so default used
-baseurl                  : # Left empty so default used "/" 
+baseurl                  : # Left empty so default used "/"
 repository               : https://github.com/azurecitadel/azurecitadel.github.io
 teaser                   : "/images/teaser/default.png"
 breadcrumbs              : false  # These do not work with the site structure
 words_per_minute         : 100
+safe                     : false
 comments:
   provider               : disqus
   disqus:
-    shortname            : https-ukpducim-github-io 
+    shortname            : https-ukpducim-github-io
 
 atom_feed:
   path                   : /feed.xml
@@ -48,7 +49,7 @@ search                   : false
 # We use App Insghts, see _includes/head/custom.html for snippet
 
 
-# Site Author 
+# Site Author
 # - NEED TO REVIEW THIS, DON'T THINK IT'S EVER USED ANYWHERE
 # (It does show in the feed.xml)
 author:
@@ -64,7 +65,7 @@ footer:
   links:
     - label: "Disclaimer"
       icon: "fas fa-fw fa-balance-scale"
-      url: "/disclaimer"  
+      url: "/disclaimer"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/azurecitadel/azurecitadel.github.io"
@@ -111,7 +112,7 @@ markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 
 # Conversion
-# Note - I've disabled the default Rouge highlighter 
+# Note - I've disabled the default Rouge highlighter
 #        And enabled Prism.js https://prismjs.com
 markdown: kramdown
 #highlighter: rouge
@@ -140,7 +141,7 @@ sass:
   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 
-# Outputting 
+# Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show - NOT USED ANYWHERE YET
 paginate_path: /page:num/
@@ -223,4 +224,3 @@ defaults:
         teaser: /images/teaser/default.png
         overlay_image: /images/header/news.jpg
         overlay_filter: 0.5
-        
