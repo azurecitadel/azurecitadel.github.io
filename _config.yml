@@ -5,7 +5,9 @@
 # - For an unmodifed config see _config_orig.yml
 #
 # Ben Coleman, Dec 2018
-# Modified: 
+# Modified: Jan 2019 - Removed Algolia search `search false`
+#           Jan 2019 - Switched to Prism.js for synatx highlighting
+#                      Set `highlighter: none` & `syntax_highlighter_opts.disable: true`
 #
 
 # Skin (note this is a modified & custom skin file)
@@ -36,7 +38,7 @@ atom_feed:
 search                   : false
 # search_full_content      : true
 # search_provider          : algolia
-# algolia:
+# search:
 #   application_id         : 7OH2BGCS3F                       # YOUR_APPLICATION_ID
 #   index_name             : Azure_Citadel                    # YOUR_INDEX_NAME
 #   search_only_api_key    : c7d0d56e6a342c7a26ae845c63cef275 # YOUR_SEARCH_ONLY_API_KEY
