@@ -24,6 +24,7 @@ The solution consists of four main elements:
 - Azure Pipeline for pushing data into Azure Search index
 - Azure Search service
 - Search page 'client' written in jQuery & HTML5
+- App Insights for analytics and gathering telemetry 
 
 ## End to End Data Flow
 The data flow and interaction between the components is as follows
@@ -229,9 +230,15 @@ The basic form is the Azure Search query API is used as follows
 GET https://${AZURE_SEARCH_ACCOUNT}.search.windows.net/indexes/${AZURE_SEARCH_INDEX}/docs?api-version=2017-11-11&api-key=${AZURE_SEARCH_KEY}&search={QUERY}
 ```
 
-The delay function prevents us overloading the API with requests, so API calls are only made after the user has stopped typing for 500 milliseconds
+The delay function prevents us overloading the API with requests, so API calls are only made after the user has stopped typing for 500 milliseconds. The API call is made with jQuery, however something like Fetch could have been used.
 
 The API results are parsed as JSON, and certain fields such as `header` run through `JSON.parse()` as they contain embedded JSON strings for nested objects. The `url` can be used to form a link to the relevant page, and fields such as `header.teaser`, `title`, `excerpt`, `date` & `author` allow for display of meaningful results on the page. The parsed results are pushed back to the page with a dynamic element and jQuery append. 
+
+There's one other task the search page performs, and that's to track search events in Azure Application Insights for analytics & reporting. For Azure Citadel, App Insights had already been setup and all pages instrumented with the standard JavaScript code snippet. The search page sends two types of custom event to App Insights using `appInsights.trackEvent`, one called "Search" for a completed search (where results > 0) and another called "Click". The two events can be correlated together with the id parameters provided in the events
+
+This is fully documented in the Azure Search Docs:  
+[Search Traffic Analytics ⇒](https://docs.microsoft.com/en-us/azure/search/search-traffic-analytics){:target="_blank" class="btn btn--success"}
+
 
 The source of the page created can [be found in the Citadel GitHub repo](https://github.com/azurecitadel/azurecitadel.github.io/blob/master/_pages/search.html)
 

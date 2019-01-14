@@ -11,7 +11,7 @@
 #
 
 # Extra Azure integration things, keys etc. These are all safe to have public
-azure_app_insights       : "2702934d-41f5-4a1c-beb6-0c631fd8f28f"
+azure_app_insights       : "2702934d-41f5-4a1c-beb6-0c631fd8f28f" #"75483cef-e0a0-45aa-8c2e-019f5a1acb2f"
 azure_search_key         : "2F9C8576FF9E1D45FE63CA285A2500C5"
 azure_search_account     : "citadel"
 azure_search_index       : "citadel-index"

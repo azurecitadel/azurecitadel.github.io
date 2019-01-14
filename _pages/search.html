@@ -59,14 +59,14 @@ header:
 <div class="entries-grid" id="results">
 </div>
 
+<!-- Use recent version of jQuery from CDN -->   
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+<!--
+  Azure search integration code
+  Ben Coleman, 2019
+-->
 <script>
-  var appInsights=window.appInsights||function(config){function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t}
-  ({
-  instrumentationKey: "75483cef-e0a0-45aa-8c2e-019f5a1acb2f"
-  });
-
   //
   // Now set in _config.yml change setting there!
   //
@@ -92,14 +92,24 @@ header:
   // Main function to query Azure Search and process results
   //
   function runSearch() {
-    let query = $("#query").val()
+    let query = $("#query").val().trim()
     if(!query) { 
       $("#spinner").hide(); 
       return 
     }
 
+    let searchApiRequest = {
+      url: `${AZURE_SEARCH_URL}&search=${query}`,
+      method: 'GET',
+      headers: {
+        // These weird headers are how we get the search ID, apparently
+        'x-ms-azs-return-searchid': 'true',
+        'Access-Control-Expose-Headers': 'x-ms-azs-searchid'
+      }
+    }
+
     // Query Azure Search
-    $.get(`${AZURE_SEARCH_URL}&search=${query}`, function(data) {
+    $.get(searchApiRequest, function(data, status, xhr) {      
       $("#spinner").hide()
       cookieCreate("searchTerm", $("#query").val(), 365)
 
@@ -107,9 +117,9 @@ header:
         // Clear results
         $("#results").html("")
 
-        // Create a GUID for this search
-        let searchId = guid()
-        console.log(`### Search for "${query}" returned ${data.value.length} results, tracked with GUID ${searchId}`);
+        // Get the search id, which for whatever reason is hidden in the headers        
+        let searchId = xhr.getResponseHeader('x-ms-azs-searchid');
+        console.log(`### Search for "${query}" returned ${data.value.length} results, tracked with searchId: ${searchId}`);
         
         // Log SEARCH event with App Insights, initialized in head/custom.html include file
         window.appInsights.trackEvent("Search", {
@@ -121,7 +131,8 @@ header:
           ScoringProfile: "none"
         });
 
-        let docRank = 0
+        let docRank = 0 // Just a simple counter
+
         // Process results
         for(let result of data.value) {
           // Handle long/missing excerpts
@@ -155,17 +166,20 @@ header:
   // Delay function pinched from internet
   //
   function delay(callback, ms) {
-    var timer = 0;
+    var timer = 0
     return function() {
-      $("#spinner").show();
+      $("#spinner").show()
       var context = this, args = arguments;
-      clearTimeout(timer);
+      clearTimeout(timer)
       timer = setTimeout(function () {
-        callback.apply(context, args);
-      }, ms || 0);
+        callback.apply(context, args)
+      }, ms || 0)
     };
   }   
 
+  //
+  // Register click with App Insights and save to cookie
+  //
   function searchClick(docId, searchId, rank) {
     // Log CLICK event with App Insights, initialized in head/custom.html include file
     window.appInsights.trackEvent("Click", {
@@ -173,43 +187,47 @@ header:
       SearchId: searchId,
       ClickedDocId: docId,
       Rank: rank
-    });
+    })
 
     // Set cookie to remember our searchTerm and hide spinner
     cookieCreate("searchTerm", $("#query").val(), 365)
   }
 
+  //
+  // Generic cookie write/create function
+  //
   function cookieCreate(name,value,days) {
-    var expires = "";
+    var expires = ""
     if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
+        var date = new Date()
+        date.setTime(date.getTime() + (days*24*60*60*1000))
+        expires = "; expires=" + date.toUTCString()
     }
-    document.cookie = name + "=" + value + expires + "; path=/";
+    document.cookie = name + "=" + value + expires + "; path=/"
   }
 
+  //
+  // Generic cookie read function
+  //
   function cookieRead(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
+    var nameEQ = name + "="
+    var ca = document.cookie.split(';')
     for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        var c = ca[i]
+        while (c.charAt(0)==' ') c = c.substring(1,c.length)
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length)
     }
-    return null;
-  }
+    return null
+  }  
 
-  function cookieErase(name) {
-    this.createCookie(name,"",-1);
-  }     
-
+  //
   // Cheap and dirty GUID generator
+  //
   function guid() {
     function s4() {
       return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
-        .substring(1);
+        .substring(1)
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
   }
