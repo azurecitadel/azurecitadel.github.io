@@ -62,12 +62,17 @@ header:
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 <script>
+  var appInsights=window.appInsights||function(config){function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t}
+  ({
+  instrumentationKey: "75483cef-e0a0-45aa-8c2e-019f5a1acb2f"
+  });
+
   //
-  // If you know what you are doing... change these
+  // Now set in _config.yml change setting there!
   //
-  const AZURE_SEARCH_KEY = "2F9C8576FF9E1D45FE63CA285A2500C5"
-  const AZURE_SEARCH_ACCOUNT = "citadel"
-  const AZURE_SEARCH_INDEX = "citadel-index"
+  const AZURE_SEARCH_KEY = "{{ site.azure_search_key }}"
+  const AZURE_SEARCH_ACCOUNT = "{{ site.azure_search_account }}"
+  const AZURE_SEARCH_INDEX = "{{ site.azure_search_index }}"
   const AZURE_SEARCH_URL = `https://${AZURE_SEARCH_ACCOUNT}.search.windows.net/indexes/${AZURE_SEARCH_INDEX}/docs?api-version=2017-11-11&api-key=${AZURE_SEARCH_KEY}`
   
   // Main listen to key events, delays for 500ms and then calls runSearch
@@ -96,12 +101,26 @@ header:
     // Query Azure Search
     $.get(`${AZURE_SEARCH_URL}&search=${query}`, function(data) {
       $("#spinner").hide()
-      saveTerm()
+      cookieCreate("searchTerm", $("#query").val(), 365)
 
       if(data) {  //} && data.value.length > 0) {
         // Clear results
         $("#results").html("")
 
+        // Create a GUID for this search
+        let searchId = guid()
+        
+        // Log SEARCH event with App Insights, initialized in head/custom.html include file
+        window.appInsights.trackEvent("Search", {
+          SearchServiceName: AZURE_SEARCH_ACCOUNT,
+          SearchId: searchId,
+          IndexName: AZURE_SEARCH_INDEX,
+          QueryTerms: query,
+          ResultCount: data.value.length,
+          ScoringProfile: "none"
+        });
+
+        let docRank = 0
         // Process results
         for(let result of data.value) {
           // Handle long/missing excerpts
@@ -111,7 +130,7 @@ header:
 
           // People are can be idiots and don't correctly specify the teaser image path
           if(!result.teaser.startsWith('/')) result.teaser = `/${result.teaser}`
-
+          
           // Add result to page
           $("#results").append(`
           <div class="grid__item">
@@ -120,7 +139,7 @@ header:
                 <img src="${result.teaser}" alt="">
               </div>
               <h2 class="archive__item-title" itemprop="headline">
-                <a onclick="saveTerm()" href="${result.url}" rel="permalink">${result.title}</a>           
+                <a onclick="searchClick('${result.id}', '${searchId}', ${docRank++})" href="${result.url}" rel="permalink">${result.title}</a>           
               </h2>     
               <p class="page__meta">${result.author} &mdash; ${result.date}</p>
               <p class="archive__item-excerpt" itemprop="description">${excerpt}</p>         
@@ -146,7 +165,15 @@ header:
     };
   }   
 
-  function saveTerm() {
+  function searchClick(docId, searchId, rank) {
+    // Log CLICK event with App Insights, initialized in head/custom.html include file
+    window.appInsights.trackEvent("Click", {
+      SearchServiceName: AZURE_SEARCH_ACCOUNT,
+      SearchId: searchId,
+      ClickedDocId: docId,
+      Rank: rank
+    });
+
     // Set cookie to remember our searchTerm and hide spinner
     cookieCreate("searchTerm", $("#query").val(), 365)
   }
@@ -175,4 +202,15 @@ header:
   function cookieErase(name) {
     this.createCookie(name,"",-1);
   }     
+
+  // Cheap and dirty GUID generator
+  function guid() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  }
+
 </script>
