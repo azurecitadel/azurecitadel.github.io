@@ -103,12 +103,13 @@ header:
       $("#spinner").hide()
       cookieCreate("searchTerm", $("#query").val(), 365)
 
-      if(data) {  //} && data.value.length > 0) {
+      if(data && data.value.length > 0) {
         // Clear results
         $("#results").html("")
 
         // Create a GUID for this search
         let searchId = guid()
+        console.log(`### Search for "${query}" returned ${data.value.length} results, tracked with GUID ${searchId}`);
         
         // Log SEARCH event with App Insights, initialized in head/custom.html include file
         window.appInsights.trackEvent("Search", {
@@ -130,7 +131,7 @@ header:
 
           // People are can be idiots and don't correctly specify the teaser image path
           if(!result.teaser.startsWith('/')) result.teaser = `/${result.teaser}`
-          
+
           // Add result to page
           $("#results").append(`
           <div class="grid__item">
@@ -139,7 +140,7 @@ header:
                 <img src="${result.teaser}" alt="">
               </div>
               <h2 class="archive__item-title" itemprop="headline">
-                <a onclick="searchClick('${result.id}', '${searchId}', ${docRank++})" href="${result.url}" rel="permalink">${result.title}</a>           
+                <a onclick="searchClick('${result.url}', '${searchId}', ${docRank++})" href="${result.url}" rel="permalink">${result.title}</a>           
               </h2>     
               <p class="page__meta">${result.author} &mdash; ${result.date}</p>
               <p class="archive__item-excerpt" itemprop="description">${excerpt}</p>         
