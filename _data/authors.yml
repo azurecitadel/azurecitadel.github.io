@@ -11,7 +11,7 @@ Ben Coleman:
     name     : Ben Coleman
     bio      : Cloud Solution Architect.<br/>Containers, Open source, Node.js, DevOps, automation
     avatar   : images/authors/benc.jpg
-    email    : ben.coleman@microsoft.com    
+    email    : ben.coleman@microsoft.com
     twitter  : BenCodeGeek
     github   : benc-uk
     linkedin : benc-uk
@@ -132,7 +132,7 @@ Mike James:
     name     : Mike James
     bio      :
     avatar   : images/authors/mike-james.jpg
-    email    : 
+    email    :
     twitter  :
     github   :
     linkedin :
@@ -141,7 +141,7 @@ Robin-Manuel Thiel:
     name     : Robin-Manuel Thiel
     bio      :
     avatar   : images/authors/robin-manuel-thiel.jpg
-    email    : 
+    email    :
     twitter  :
     github   :
     linkedin :
@@ -159,11 +159,11 @@ Dave Placeholder:
     name     : Dave Placeholder
     bio      : Goat Herder.<br/>Cheese, goats cheese, other types of cheese, mostly cheese
     avatar   : images/authors/harold.jpg
-    email    :
-    twitter  : Cofffee_Dad
-    github   : example
-    linkedin : example
+    email    : dave.placeholder@microsoft.com
+    twitter  : Coffee_Dad
+    github   : monsieurfromage
+    linkedin : daveplaceholder
     links:
-      - label: "Website"
+      - label: "Blogsite"
         icon : "fas fa-fw fa-link"
-        url  : "http://microsoft.com"      # Author details.
+        url  : "http://monsieurfromageblog.com"      # Author details.

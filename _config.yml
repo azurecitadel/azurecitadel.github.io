@@ -208,7 +208,7 @@ defaults:
       share: true
       toc: true
       toc_sticky: true
-      toc_depth: 3
+      toc_depth: 2
       header:
         teaser: /images/teaser/default.png
         overlay_color: "rgb(0, 120, 215)"
