@@ -210,4 +210,4 @@ For more background information on JSON templates and how they are deployed usin
 
 * [Template Sections](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)
 
-[◄ Theory: ARM](../theoryARM){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 1: Basics ►](../lab1-basics){: .btn .btn--primary}
+[◄ Theory: ARM](../theoryARM){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 1: Basics ►](../lab1){: .btn .btn--primary}
