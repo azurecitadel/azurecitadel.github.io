@@ -8,8 +8,6 @@ published: true
 
 I think we have worked through the remaining teething difficulties and the site is in good health. Thanks to those of you who have picked up on issues and let us know.  It is always appreciated.
 
-A few key updates
-
 ## Disqus comments
 
 We managed to retain the comments from the old site, but pages without comments weren't loading.  This is now fixed so we look forward to hearing your questions, comments and suggestions!
