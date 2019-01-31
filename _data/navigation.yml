@@ -44,7 +44,7 @@ sidemenu:
 #
 kubernetes_lab:
   - title: "Lab Main"
-    url: "containers/kubernetes"
+    url: "cloud-native/kubernetes"
 
   - title: "Lab Modules"
     children:
