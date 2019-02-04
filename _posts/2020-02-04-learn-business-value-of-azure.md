@@ -1,7 +1,7 @@
 ---
 title: "New Business Value Learning Path, plus the AZ-900 Azure Fundamentals exam"
 author: "Richard Cheney"
-published: false
+published: true
 ---
 
 # Microsoft Learn
