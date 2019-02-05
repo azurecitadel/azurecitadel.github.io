@@ -57,23 +57,24 @@ You can run the Docker tools that are installed "externally" in Windows (e.g. **
 
 Under WSL bash you only need the client tools installed **not the full Docker engine**. Do not try to install *Docker CE* (e.g. by running `apt install docker-ce`) as this will try to install the Docker engine in WSL and this will fail
 
-You can install the client tools; **docker**, **docker-compose** & **docker-machine**, by running the following snippet of commands in WSL bash. It's safe to copy and paste/run the whole snippet
+You can install the client tools; **docker**, **docker-compose** & **docker-machine**, by running the following snippet of commands in WSL bash. It's safe to copy and paste/run the whole snippet 
 ```
-curl -L https://download.docker.com/linux/static/stable/x86_64/docker-17.12.1-ce.tgz -o /tmp/docker.tgz
+curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.09.1.tgz -o /tmp/docker.tgz
 tar -zxvf /tmp/docker.tgz docker/docker
 chmod +x docker/docker
 sudo mv docker/docker /usr/local/bin/docker
 rmdir docker/
 
-curl -L https://github.com/docker/machine/releases/download/v0.14.0/docker-machine-`uname -s`-`uname -m` -o /tmp/docker-machine
+curl -L https://github.com/docker/machine/releases/download/v0.16.1/docker-machine-`uname -s`-`uname -m` -o /tmp/docker-machine
 chmod +x /tmp/docker-machine
 sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
 
-curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` -o /tmp/docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /tmp/docker-compose
 chmod +x /tmp/docker-compose
 sudo cp /tmp/docker-compose /usr/local/bin/docker-compose
 
 ```
+(Updated Feb 2019)
 
 ### 2. Enable Network Access 
 Set the `DOCKER_HOST` environmental variable as follows `export DOCKER_HOST=tcp://0.0.0.0:2375` to point the Docker tools at your local install of Docker.
