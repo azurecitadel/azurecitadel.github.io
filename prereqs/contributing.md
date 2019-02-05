@@ -41,7 +41,7 @@ The new guide will cover the following areas:
 [Authors](page) | If you are a new contributor to Citadel then see how to add your details
 [Content](content) | Guidance on structuring your content
 [Single Page](singlepage) | How to configure content to generate a single page
-[Front Matter](fromtmatter) | How to configuring the Front Matter section at the top of the .md files
+[Front Matter](frontmatter) | How to configuring the Front Matter section at the top of the .md files
 [Markdown](markdown) | A few markdown basics, including links, images and videos, plus alternatives
 [Multi Page](multipage) | How to create multi page content and custom navigation
 [Reviewing](reviewing) | How to check your content before submitting for the Pull Request
