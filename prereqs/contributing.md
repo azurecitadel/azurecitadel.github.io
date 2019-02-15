@@ -38,7 +38,7 @@ The new guide will cover the following areas:
 [Categories](categories) | New categorisation and content curators
 [GitHub](github) | Overview of the GitHub workflow
 [Cloning](cloning) | How to fork the repository and clone it locally within vscode
-[Authors](page) | If you are a new contributor to Citadel then see how to add your details
+[Authors](authors) | If you are a new contributor to Citadel then see how to add your details
 [Content](content) | Guidance on structuring your content
 [Single Page](singlepage) | How to configure content to generate a single page
 [Front Matter](frontmatter) | How to configuring the Front Matter section at the top of the .md files
