@@ -15,6 +15,16 @@ sidebar:
   nav: "azure101"
 featured: true
 ---
+
+----------
+
+
+<div class="danger">NOTICE: This workshop will be removed at the end of March.  For those who are new to Azure then we highly recommend the Azure learning paths within Microsoft Learn.</div>
+
+The session needs to be delivered as a workshop, whereas the newer content on this site is intended to be usable both in that context and as self serve material. The Portal and Virtual Machine labs will also be retired, but the Web App and Logic Apps labs will be moved into the Fundamentals category.
+
+----------
+
 ## Introduction
 
 The Azure 101 session is intended as an introductory training for technical learners who have had little to no experience with Azure public cloud.
