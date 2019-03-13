@@ -123,6 +123,40 @@ cli:
     - title: "Scripting in Bash"
       url: "prereqs/cli/cli-4-bash"
 
+linux:
+  - title: "Main Page"
+    url: "automation/linux"
+
+  - title: "Labs"
+    children:
+    - title: "Simple Packer Image Creation"
+      url: "automation/linux/lab1"
+
+policy:
+  - title: "Main Page"
+    url: "automation/policy"
+
+  - title: "Labs"
+    children:
+    - title: "Using Deny"
+      url: "automation/policy/lab1"
+    - title: "Using Audit"
+      url: "automation/policy/lab2"
+    - title: "Initiatives"
+      url: "automation/policy/lab3"
+    - title: "Using Deploy"
+      url: "automation/policy/lab4"
+    - title: "Remediation"
+      url: "automation/policy/lab5"
+    - title: "Resource Tagging"
+      url: "automation/policy/lab6"
+    - title: "Resource Naming"
+      url: "automation/policy/lab7"
+    - title: "Custom Initiatives"
+      url: "automation/policy/lab8"
+    - title: "ARM & Terraform"
+      url: "automation/policy/lab9"
+
 terraform:
   - title: "Main Page"
     url: "automation/terraform"
