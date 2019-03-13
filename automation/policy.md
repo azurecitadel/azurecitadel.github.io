@@ -18,7 +18,11 @@ excerpt: Governance starts with policy compliance. Work through these labs to ma
 
 ## Introduction
 
-This is an introduction.
+If you don't have standards in IT, things can get out of control and there's no change in cloud. In fact, there's more of a need for governnce than ever, if you don't have it in cloud it could cause allot of issues, excessive costs, issues supporting and a bad cloud experience to name a few. Azure Policy is essentially designed to help set those standards on Azure use (using policies), making sure it's used in the right way highlighting issues (using compliance) and help fix those issues (using remediation).
+
+You can manually create policies (to check Azure resources are configured in a certain way) or you can use the growing number of pre-built policies.
+						
+
 
 ## Pre-requisites
 
