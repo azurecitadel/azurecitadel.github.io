@@ -20,12 +20,12 @@ excerpt: Use a simple policy to stipulate the permitted regions
 
 Most organizations don't want users creating Azure resources in any region, in this lab we'll specify that resources can only be created in the UK.
 
-## Using Policy definitions
+## Using Policy from the portal
 
 
 1. Launch the Azure Policy service in the Azure portal by clicking All services, then searching for and selecting Policy.
 
-2. Select Definitions on the left site of the Azure Policy page. In the search text box, type "location" and open up the "Allowed Locations" definition.
+2. Select Definitions on the left site of the Azure Policy page, definitions are effectively the restriction you want to impose. You can use the built in policies, edit them or create your own from various templates like those on [github](https://github.com/Azure/azure-policy).  In the search text box, type "location" and open up the "Allowed Locations" definition. 
 
 ![Policy Definition](/automation/policy/images/lab1-policydefinition.png)
 **Figure 1:** Policy Definition
@@ -70,7 +70,9 @@ The scope chosen will take effect on all child resources below it, but you can a
 ![Policy Test-Portal](/automation/policy/images/lab1-policytest-portal-success.png)
 **Figure 7:** VM deployment success to UK location
 
-That concludes this lab. Next we'll tackle another common requirement, specifying which VM SKU’s are allowed to be deployed and we’ll start to automate it too.
+That concludes this lab, where we've learnt about applying a policy from the Azure portal.
+
+Next we'll tackle another common requirement, specifying which VM SKU’s are allowed to be deployed and we’ll start to automate it too.
 
 
 [▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Audit ►](../lab2){: .btn .btn--primary}
