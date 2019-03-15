@@ -17,4 +17,11 @@ excerpt: Audit on allowed VM SKU sizes for compliancy reporting.
 ---
 ## Introduction
 
+Most organizations don't want users creating creating any types of resources as some can be very expensive, in this lab we'll specify whic virtual machines a user is allowed to create.
+
+## Using Policy definitions
+
+ 
+
+
 [◄ Lab 1: Deny](../lab1){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 3: Initiatives ►](../lab3){: .btn .btn--primary}
