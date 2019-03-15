@@ -22,6 +22,7 @@ Most organizations don't want users creating creating any types of resources as 
 ## Using Policy definitions
 
  
+ .test
 
 
 [◄ Lab 1: Deny](../lab1){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 3: Initiatives ►](../lab3){: .btn .btn--primary}
