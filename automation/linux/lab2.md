@@ -67,10 +67,21 @@ Don't forget the comma between the two JSON objects in the array.  Once done the
       "type": "shell"
     }
   ]
+```
 
 OK, se have split the original block into two.  We'll start with a few prep commands, and then bookend it with the generalisation.
 
-## Install Ansible
+## Ansible
+
+Ansible could be a (large) set of labs by itself. It is popular for configuration management as it is open source and it is agentless. We could use Ansible to provision the  Azure infrastructure, but we will leave that job to Terraform.  We will use Ansible purely for configuring the servers themselves once they have been stood up.
+
+This lab should give you one approach to get it running as part of your Packer builds.  Later labs will show Terraform deploying from these images and then using Ansible to run playbooks on the new VMs.
+
+You should be aware that there are many other options in the configuration management space, such as Chef, Puppet, Salt, Octopus, etc.
+
+If you want to learn more about Ansible then I would recommend starting with the Azure Ansible document area at <https://aka.ms/ansible>, and then progressing from there to the wider Ansible documentation and playbook examples.
+
+## Install Ansible using the shell
 
 If you are doing simple package installations then you can add commands to that first inline array.
 
@@ -80,28 +91,97 @@ The following will add another apt repository to the list, install a few pre-req
    "inline": [
       "apt-add-repository -y ppa:ansible/ansible",
       "apt-get update",
-      "apt-get upgrade -y",
       "apt-get install -y libssl-dev libffi-dev python-dev python-pip",
+      "apt-get upgrade -y",
       "pip install ansible[azure]"
    ]
 ```
 
+The Hashicorp documentation has more information on the [Packer shell provisioner](https://www.packer.io/docs/provisioners/shell.html).
+
 ## File uploads
 
-File uploads are very simple.  Let's create a simple YOU ARE HERE
+File uploads are very simple, copying files from the local machine to the remote.
 
-## Deleteme
+Create a file in your current working directory called *credentials*, in the following format:
 
-<pre class="language-bash command-line" data-output="2-5,7-99" data-prompt="$"><code>
-az resource list --resource-group packer_images --output table
-Name                ResourceGroup    Location    Type                      Status
-------------------  ---------------  ----------  ------------------------  --------
-configManagementVm  packer_images    westeurope  Microsoft.Compute/images
+```ini
+[default]
+tenant=<tenantId>
+subscription_id=<subId>
+client_id=<clientId>
+secret=<clientSecret>
+```
 
-az image list --resource-group packer_images --output table
-Location    Name                ProvisioningState    ResourceGroup
-----------  ------------------  -------------------  ---------------
-westeurope  configManagementVm  Succeeded            packer_images
+Make sure that your local copy is protected using `chmod 600 credentials`.  This .ini for file is one way of handling [Azure credentials for Ansible](https://docs.ansible.com/ansible/latest/scenario_guides/guide_azure.html#authenticating-with-azure).
+
+Now add a new step in your provisioners, in the middle:
+
+```json
+    {
+      "type": "file",
+      "source": "./credentials",
+      "destination": "/tmp/credentials"
+    },
+```
+
+This will copy the credentials file you've just created and put it into the /tmp folder.  The file provisioner does not allow you to write using sudo, or change permissions, so it is common to follow it with a script step to move it correctly to the right place.
+
+Add the following step to move the credentials file to the correct location:
+
+```json
+    {
+      "type": "shell",
+      "inline": [
+        "test -d ~/.azure || mkdir -m 700 ~/.azure",
+        "chmod 600 /tmp/credentials && mv /tmp/credentials ~/.azure/credentials"
+      ],
+      "inline_shebang": "/bin/sh -x",
+      "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"
+    },
+```
+
+> Note that the execute commands run using sudo for elevated privileges, and use the lightweight sh (Dash) shell as opposed to bash. Ansible only runs the next entry in the inline array if the previous one had a zero return code.
+
+## Create an Ansible role for Azure CLI installation
+
+Create an area to put your Ansible config files.  For example, I did the following on my Ubuntu WSL distribution:
+
+```bash
+umask 022
+mkdir /mnt/c/ansible
+sudo ln -s /mnt/c/ansible /ansible
+cd /ansible
+```
+
+We could have large Ansible YAML files containing all of the required functionality.  Instead we'll get into good habits and create some roles, which are Ansible's reusable playbook modules.  The ansible-galaxy command can pre-create the are for us:
+
+<pre class="language-bash command-line" data-output="3-4,6-99" data-prompt="$"><code>
+cd /ansible
+ansible-galaxy init az
+- az was created successfully
+
+tree /ansible
+/ansible
+└── az
+    ├── README.md
+    ├── defaults
+    │   └── main.yml
+    ├── files
+    ├── handlers
+    │   └── main.yml
+    ├── meta
+    │   └── main.yml
+    ├── tasks
+    │   └── main.yml
+    ├── templates
+    ├── tests
+    │   ├── inventory
+    │   └── test.yml
+    └── vars
+        └── main.yml
 </code></pre>
+
+
 
 [▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Audit ►](../lab2){: .btn .btn--primary}

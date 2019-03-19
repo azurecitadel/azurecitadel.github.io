@@ -48,3 +48,19 @@ git config --global user.name "Your Name"
 git config --global credential.helper manager
 ```
 
+## Visual Studio Code, Windows Subsystem for Linux and .gitattributes
+
+One irritation for those of us that live within the Windows Subsystem for Linux is that the SCM within vscode uses the Windows installation of Git, whilst the terminal sessions we use have Git installed in our prefererd distribution.  And they can get out of sync, which can get a little messy, particularly when there are multiple contributors to a repo. All very unneccessary.
+
+A recommendation is to create a .gitattributes in the root of your repo:
+
+```ini
+* text=auto eol=lf
+```
+
+This will force all files to have linux style line endings, but has the bonus side effect of keeping the Windows and Linux sides in sync.  
+
+If you are doing so on an existing repo then you may have to run the git cli commands to add and commit files to get everything synced initially, and then it should stay that way.
+
+
+
