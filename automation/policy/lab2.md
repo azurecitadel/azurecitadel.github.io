@@ -2,11 +2,11 @@
 title: "Using Audit"
 date: 2019-03-25
 author: [ "Tom Wilde", "Richard Cheney" ]
-category: automation
+category:
 comments: true
 featured: false
-hidden: false
-published: false
+hidden: true
+published: true
 tags: [ policy, initiative, compliance, governance ]
 header:
   overlay_image: images/header/whiteboard.png
@@ -47,7 +47,7 @@ No results? The default scope on the above command is on the subscription you're
 az policy assignment list --disable-scope-strict-match -o jsonc
 ```
 
-3. We need to think about the definition where we can restrict what VM SKUs can be used, let's see if there are built in definitions. 
+3. We need to think about the definition where we can restrict what VM SKUs can be used, let's see if there are built in definitions.
 
 To view all definitions
 
@@ -134,7 +134,7 @@ Using a Standard_B1s should fail
  ```bash
  az vm create -n Lab2VM -g PolicyLab --image UbuntuLTS --admin-username policyuser --size Standard_B1s
   ```
-Using a Standard_D2s_v3 should succeed  
+Using a Standard_D2s_v3 should succeed
 
 ```bash
 az vm create -n Lab2VM -g PolicyLab --image UbuntuLTS --admin-username policyuser --size Standard_D2s_v3

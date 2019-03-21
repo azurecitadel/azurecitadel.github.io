@@ -2,11 +2,11 @@
 title: "Using Deny"
 date: 2019-03-25
 author: [ "Tom Wilde", "Richard Cheney" ]
-category: automation
+category:
 comments: true
 featured: false
-hidden: false
-published: false
+hidden: true
+published: true
 tags: [ policy, initiative, compliance, governance ]
 header:
   overlay_image: images/header/whiteboard.png
@@ -25,7 +25,7 @@ Most organizations don't want users creating Azure resources in any region, in t
 
 1. Launch the Azure Policy service in the Azure portal by clicking All services, then searching for and selecting Policy.
 
-2. Select Definitions on the left site of the Azure Policy page, definitions are effectively the restriction you want to impose. You can use the built in policies, edit them or create your own from various templates like those on [github](https://github.com/Azure/azure-policy).  In the search text box, type "location" and open up the "Allowed Locations" definition. 
+2. Select Definitions on the left site of the Azure Policy page, definitions are effectively the restriction you want to impose. You can use the built in policies, edit them or create your own from various templates like those on [github](https://github.com/Azure/azure-policy).  In the search text box, type "location" and open up the "Allowed Locations" definition.
 
 ![Policy Definition](/automation/policy/images/lab1-policydefinition.png)
 **Figure 1:** Policy Definition
@@ -35,27 +35,27 @@ Most organizations don't want users creating Azure resources in any region, in t
 ![Policy Definition-Allowed Locations](/automation/policy/images/lab1-policydefinition-allowedlocations.png)
 **Figure 2:** Policy Definition - Allowed Locations
 
-For more details on the policy definition structure see [here.](https://docs.microsoft.com/en-us/azure/governance/policy/concepts/definition-structure) 
+For more details on the policy definition structure see [here.](https://docs.microsoft.com/en-us/azure/governance/policy/concepts/definition-structure)
 
 
-4. When assigning a policy, we first have to choose the scope. 
-  
+4. When assigning a policy, we first have to choose the scope.
+
   a. The scope could be a [Management Group](https://docs.microsoft.com/en-us/azure/governance/management-groups/) (think of them like a folder hierarchy where subscriptions can exist)
 
 ![Management Groups example](/automation/policy/images/lab1-managementgroups.png)
 **Figure 3:** Management Group
 
   b. The scope could be a subscription
-  
+
   c. Or the scope could be on a resource group
-  
+
 The scope chosen will take effect on all child resources below it, but you can add exclusions if needed. For this lab I have selected resource group called PolicyLab.
 
 5.  In the Basics section you can change the assignment name and add a description (which helps when you have alot of policies).
 
 6. In the Parameters section choose the allowed locations of UK South and UK West.
 
-7. As this is a Deny policy there is no need for Managed Identity and we'll get in to that in a later lab. Click Assign. 
+7. As this is a Deny policy there is no need for Managed Identity and we'll get in to that in a later lab. Click Assign.
 
 ![Policy Definition-Allowed Locations](/automation/policy/images/lab1-policydefinition-allowedlocations-assign.png)
 **Figure 4:** Assigning Allowed Locations Definition
@@ -72,10 +72,7 @@ The scope chosen will take effect on all child resources below it, but you can a
 
 That concludes this lab, where we've learnt about applying a policy from the Azure portal. The resources you've created will be used in the next lab so don't delete them yet.
 
-Next we'll tackle another common requirement, specifying which VM SKU’s are allowed to be deployed and we’ll start to automate it too. 
+Next we'll tackle another common requirement, specifying which VM SKU’s are allowed to be deployed and we’ll start to automate it too.
 
 
 [▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Audit ►](../lab2){: .btn .btn--primary}
-
-
-
