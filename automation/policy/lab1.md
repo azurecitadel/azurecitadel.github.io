@@ -70,9 +70,9 @@ The scope chosen will take effect on all child resources below it, but you can a
 ![Policy Test-Portal](/automation/policy/images/lab1-policytest-portal-success.png)
 **Figure 7:** VM deployment success to UK location
 
-That concludes this lab, where we've learnt about applying a policy from the Azure portal.
+That concludes this lab, where we've learnt about applying a policy from the Azure portal. The resources you've created will be used in the next lab so don't delete them yet.
 
-Next we'll tackle another common requirement, specifying which VM SKU’s are allowed to be deployed and we’ll start to automate it too.
+Next we'll tackle another common requirement, specifying which VM SKU’s are allowed to be deployed and we’ll start to automate it too. 
 
 
 [▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Audit ►](../lab2){: .btn .btn--primary}

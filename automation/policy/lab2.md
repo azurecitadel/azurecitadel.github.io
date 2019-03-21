@@ -13,7 +13,7 @@ header:
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"
-excerpt: Audit on allowed VM SKU sizes for compliancy reporting.
+excerpt: Specify allowed VM SKU sizes using Azure CLI.
 ---
 ## Introduction
 
@@ -144,7 +144,7 @@ az vm create -n Lab2VM -g PolicyLab --image UbuntuLTS --admin-username policyuse
 **Figure 1:** Policy Test
 
 
-That concludes this lab, where we've learnt about applying a policy from the Azure CLI.
+That concludes this lab, where we've learnt about applying a policy from the Azure CLI. The resources you've created will be used in the next lab so don't delete them yet.
 
 Next we'll group policies together using an initiative and use automatic remediation.
 
