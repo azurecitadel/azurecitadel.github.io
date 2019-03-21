@@ -2,10 +2,10 @@
 title: "Simple Packer Image creation"
 date: 2019-03-18
 author: Richard Cheney
-category: automation
+category:
 comments: true
 featured: false
-hidden: false
+hidden: true
 published: true
 tags: [ image, packer, linux ]
 header:
