@@ -86,9 +86,9 @@ Read through the [Azure Policy](https://docs.microsoft.com/en-gb/azure/governanc
 
 **Lab** | **Description**
 1 | [Using Deny](lab1) | Use a simple policy to stipulate the permitted regions
-2 | [Using Audit](lab2) | Audit on allowed VM SKU sizes for compliancy reporting
-3 | [Initiatives](lab3) | Explore the inbuilt Policies and Policy Initiatives
-4 | [Using Deploy](lab4) | Use DeployIfNotExist for automatic agent deployment
+2 | [Using Audit](lab2) | Specify allowed VM SKU sizes using Azure CLI
+3 | [Initiatives](lab3) | Using a policy initiative DeployIfNotExist for automatic agent deployment
+4 | [Using Deploy](lab4) | 
 5 | [Remediation](lab5) | Reporting and remediating non-compliant resources
 6 | [Resource Tagging](lab6) | Create a set of policies for custom tagging
 7 | [Resource Naming](lab7) | Custom policy to enforce a naming convention
