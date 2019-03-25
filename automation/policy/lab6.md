@@ -9,7 +9,7 @@ hidden: false
 published: false
 tags: [ policy, initiative, compliance, governance ]
 header:
-  overlay_image: images/header/whiteboard.png
+  overlay_image: images/header/whiteboard.jpg
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"

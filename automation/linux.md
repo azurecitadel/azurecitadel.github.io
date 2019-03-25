@@ -9,7 +9,7 @@ hidden: false
 published: false
 tags: [ "linux", "virtual machine" ]
 header:
-  overlay_image: images/header/whiteboard.png
+  overlay_image: images/header/whiteboard.jpg
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "linux"

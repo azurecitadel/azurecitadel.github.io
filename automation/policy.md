@@ -9,7 +9,7 @@ hidden: false
 published: false
 tags: [ policy, initiative, compliance, governance ]
 header:
-  overlay_image: images/header/whiteboard.png
+  overlay_image: images/header/whiteboard.jpg
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"
@@ -21,7 +21,7 @@ excerpt: Governance starts with policy compliance. Work through these labs to ma
 If you don't have standards in IT, things can get out of control and there's no change in cloud. In fact, there's more of a need for governnce than ever, if you don't have it in cloud it could cause allot of issues, excessive costs, issues supporting and a bad cloud experience to name a few. Azure Policy is essentially designed to help set those standards on Azure use (using policies), making sure it's used in the right way highlighting issues (using compliance) and help fix those issues (using remediation).
 
 You can manually create policies (to check Azure resources are configured in a certain way) or you can use the growing number of pre-built policies.
-						
+
 
 
 ## Pre-requisites
@@ -88,7 +88,7 @@ Read through the [Azure Policy](https://docs.microsoft.com/en-gb/azure/governanc
 1 | [Using Deny](lab1) | Use a simple policy to stipulate the permitted regions
 2 | [Using Audit](lab2) | Specify allowed VM SKU sizes using Azure CLI
 3 | [Initiatives](lab3) | Using a policy initiative DeployIfNotExist for automatic agent deployment
-4 | [Using Deploy](lab4) | 
+4 | [Using Deploy](lab4) |
 5 | [Remediation](lab5) | Reporting and remediating non-compliant resources
 6 | [Resource Tagging](lab6) | Create a set of policies for custom tagging
 7 | [Resource Naming](lab7) | Custom policy to enforce a naming convention
