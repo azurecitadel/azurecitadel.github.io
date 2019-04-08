@@ -83,7 +83,7 @@ You can easily customise the colour scheme for it.  Download [colortools](https:
 
 The colortools download will include a few files, but you can also find [repositories](https://github.com/mbadolato/iTerm2-Color-Schemes) full of itermcolors files.
 
-Or you can customise and then export your own ini files in the console, such as this [Nord Extra Dark colour scheme](https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/prereqs/wsl/nord-extra-dark.ini), which is close to the extension in vscode. Right click the link and save alongside the other schemes, and then you can use `.\colortools.exe -b nord-extra-dark` to set.
+Or you can customise and then export your own ini files in the console, such as this [Nord Extra Dark colour scheme](https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/prereqs/wsl/nord-extra-dark.ini), which is close to the extension in vscode. Right click the link and save alongside the other schemes, and then you can use `.\colortool.exe -b nord-extra-dark.ite` to set.
 
 ### Updated PS1 prompt
 
