@@ -2,7 +2,7 @@
 title: "Creating custom policies and initiatives"
 date: 2019-03-25
 author: [ "Richard Cheney" ]
-category: automation
+category:
 comments: true
 featured: false
 hidden: false
