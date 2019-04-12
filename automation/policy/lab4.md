@@ -192,7 +192,11 @@ If you are Global Admin within a tenancy then you can elevate your permissions t
     az account management-group --name 230 --display-name "Dev" --parent 200
     ```
 
-    The `--parent` switch defaults to the Tenant Root Group.
+    The `--parent` switch defaults to the Tenant Root Group. The resourceId for the Dev management group will be:
+
+    ```text
+    /providers/Microsoft.Management/managementgroups/230
+    ```
 
 1. See the current policy initiative definition level
 
@@ -225,7 +229,7 @@ If you are Global Admin within a tenancy then you can elevate your permissions t
     az policy set-definition create --name nonProdDeny --display-name "Standard set of deny policies" --description "Limit regions and VM SKUs" --definitions policies/deny.initiative.definition.json --management-group 200 --output jsonc
     ```
 
-    The resourceId for the policy initiative definition will be new, based on the management group Id and the provider type.  For example:
+    The resourceId for the policy initiative definition will be very different to the previous one, as it is now based on the management group Id and the provider type:
 
     ```text
     /providers/Microsoft.Management/managementgroups/200/providers/Microsoft.Authorization/policySetDefinitions/nonProdDeny
@@ -233,11 +237,15 @@ If you are Global Admin within a tenancy then you can elevate your permissions t
 
     OK, we should now be able to assign it at any level from Non-Prod downwards.
 
-1. Assign the initiative at the Dev level
+1. Assign the initiative at the Non-Prod level
 
     ```bash
-    policySetId=$(az policy set-definition show --name nonProdDeny --output tsv --query id)
+    devMg=/providers/Microsoft.Management/managementgroups/200
+    policySetId=/providers/Microsoft.Management/managementgroups/200/providers/Microsoft.Authorization/policySetDefinitions/nonProdDeny
+    az policy assignment create --name "nonProdDeny" --display-name "Standard deny for non-prod" --policy-set-definition $policySetId --scope $devMg
+    ```
 
+    > Remember that you can only assign policies and initiatives at the same level or lower than the scope at which the definition was created.
 
 1. Move your subscription under the new management group
 
@@ -248,16 +256,12 @@ If you are Global Admin within a tenancy then you can elevate your permissions t
     az account management-group subscription add --name 230 --subscription $subscriptionId
     ```
 
+    The subscription will now inherit the policies within the initiative from the management groups.
 
-
-In this section we will allocate the policy initiative definition at the highest point possible, which is the Tenant Root Group. This is auto-created within every Azure Active Directory tenancy, and all subscriptions for that AAD tenancy are under this management group.
-
-
-
-1/
-
-
+    > Note that new subscriptions will be created within the Tenant Root Group.  As soon as you move a subscription under a management group then it will inherit any assigned policies from all of the levels above.
 
 ## Updating an existing policy initiative
+
+YOU ARE HERE
 
 [◄ Lab 3: Initiatives](../lab3){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 5: Remediation ►](../lab5){: .btn .btn--primary}
