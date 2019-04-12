@@ -6,7 +6,7 @@ category: automation
 comments: true
 featured: false
 hidden: false
-published: false
+published: true
 tags: [ policy, initiative, compliance, governance ]
 header:
   overlay_image: images/header/whiteboard.jpg
