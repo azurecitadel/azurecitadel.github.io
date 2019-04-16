@@ -1,7 +1,7 @@
 ---
 title: "Automatically deploy Azure Monitoring Agents with a policy initiative"
 date: 2019-03-25
-author: [ "Tom Wilde", "Richard Cheney" ]
+author: [ "Tom Wilde" ]
 category:
 comments: true
 featured: false
