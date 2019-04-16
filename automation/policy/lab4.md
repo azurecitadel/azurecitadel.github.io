@@ -30,21 +30,25 @@ Policies and initiatives are great for introducing a layer of governance onto su
 
     As you already know, the names of resource groups and resources form part of the resourceId within Azure.  Therefore you cannot rename them.  For resource groups you have to create a new one with the desired name and then move the resources. For resources it is an disruptive change, forcing a delete and recreate. Enforcing a naming convention with a deny policy can avoid that situation.
 
-    Using a deny initiative is very effective for these.  For other types of policies then  it can be overkill and cause friction.  For example enforcing tagging with a deny effect in your policy definition can prevent users from creating certain resources within the portal GUI.  Which is a nice segue into using the Audit effect...
+    Using a deny initiative is very effective for these.  For other types of policies then it can be overkill and cause friction.  For example, if you were to enforce tagging with a deny effect in your policy definition then you would prevent users from creating certain resources types within the Azure portal. (Only some resource types support tag definitions in the create screens.)
 
-2. **Use the Audit effect for desired configurations and check compliancy within Azure Policy.**
+1. **Use the Audit effect for desired configurations and check compliancy within Azure Policy.**
+
+    If you want a softer impact then use the audit policy and then you can use that to flag up those that don't meet the policy.
 
     Tagging is a great example for this and will be used later in the set of labs.  It is good practice to have a default set of tags created for each resource (and possibly resource group).  You can then slice and dice the billing using the tagging, find out who is the application owner, which resources are naturally related, or establish values which can then be used in automation around downtime, or switching on and off resources to get benefit from cloud's utility computing models.
 
     Using Audit means that those resources can still be deployed, and you can be nice in auto-creating tags, defaulting values etc., and then use the compliancy reporting in Azure Policy to correct non-compliant resources.  In certain circumstances (e.g. where resources are deployed purely through CI/CD) then you may want to switch from Audit to Deny.
 
-3. **Leverage the DeployIfNotExists inbuilt initiatives**
+1. **Leverage the DeployIfNotExists inbuilt initiatives**
 
     The new initiatives are perfect for ensuring that standard agents are auto-installed for both newly instantiated resources and for those that are migrated into the environment.
 
-In this lab we will address the first area, and show how to create and then update an example Deny initiative.  We'll create it initially with constraints for geography and VM SKUs and assign it.  Then we'll create a custom policies for resource group and resource naming and then update the initiative.
+In this lab we will address the first area, and show how to create and then update an example Deny initiative.  We'll create it initially with constraints for geography and VM SKUs and assign it.  Then we'll create a simple custom policy for resource naming, add it to the initiative json and then update the initiative definition.
 
-In later labs we will translate this into both a subscription level ARM template and a Terraform module.
+We will also start using management groups to get an understanding of where to define policies and initiatives, and where to assign them.
+
+In later labs we will translate this deny initiative into both a subscription level ARM template and a Terraform module.
 
 ## Create a Custom Policy Initiative
 
@@ -57,12 +61,12 @@ In later labs we will translate this into both a subscription level ARM template
     az group create --name PolicyLab
     ```
 
-    (Personally I always configure the CLI output to jsonc using `az configure`, but you can choose from the various options, from the default table to the more detailed json or yaml outputs.  The tsv output is usually used in combination with [JMESPATH](/prereqs/cli/cli-3-jmespath/) queries in scripting.)
+    (Personally I always configure the CLI output to jsonc using `az configure`, but choose whichever you prefer. You can choose from the  default table or switch to the more detailed json or yaml outputs.  The tsv output is usually used in scripts, combined with the [JMESPATH](/prereqs/cli/cli-3-jmespath/) queries.)
 
 1. Create a new subdirectory called policy
 
     ```bash
-    mkdir -m 755 policy
+    mkdir -m 755 policies
     ```
 
 1. Create a new file within it called deny.initiative.json
