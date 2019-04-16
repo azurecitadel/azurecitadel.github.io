@@ -262,6 +262,115 @@ If you are Global Admin within a tenancy then you can elevate your permissions t
 
 ## Updating an existing policy initiative
 
-YOU ARE HERE
+OK, time to add custom policies to the initiative. We'll ensure that we have a standard naming convention enforced, as any resource named incorrectly would have to be deleted and recreated.
+
+The creation of custom policy rules is currently a little bit of a dark art at the moment.  The product group is aware of this and is looking for ways to make the process simpler.
+
+In the meantime, be familiar with the available logical operators, conditions and fields within the [Azure Policy definition structure](https://docs.microsoft.com/en-us/azure/governance/policy/concepts/definition-structure#policy-rule).  You will also find some good examples of policies that others have defined, including the Microsoft GitHub repo for [Azure Policy samples](https://github.com/Azure/azure-policy/tree/master/samples), from or from individual contributors such as [Richard Green](https://github.com/richardjgreen/azure-resource-policy-templates).
+
+For naming you can use either the **match** conditional, which will match against standard patterns.  You can use either *#* for a number or *?* for a letter.  Using *like* allows for the use of _\*_ wildcards.
+
+Let's create a simple global naming format based on the [sample](https://docs.microsoft.com/en-us/azure/governance/policy/samples/enforce-like-pattern), allowing a simple parameter to be passed in.
+
+1. Create policy/naming.global.rules.json:
+
+    ```json
+    {
+        "if": {
+            "not": {
+                "field": "name",
+                "like": "[parameters('namePattern')]"
+            }
+        },
+        "then": {
+            "effect": "deny"
+        }
+    }
+    ```
+
+1. And then a policy/naming.global.parameters.json
+
+    ```json
+    {
+        "namePattern": {
+        "type": "String",
+        "metadata": {
+            "description": "Pattern to use for names. Can include wildcard (*)."
+            }
+        }
+    }
+    ```
+
+1. Create the policy definition at the Tenant Root Group level:
+
+    ```bash
+    az policy definition create --name 'global-naming-convention' --display-name 'Global naming convention' --description 'Ensure resource names meet the like condition for a pattern.' --rules policies/naming.global.rule.json --params policies/naming.global.parameters.json --mode All --management-group $tenantId --query id --output tsv
+
+    ```
+
+    The `--management-group` switch is really important here.  By default the command defines policies at the subscription level, i.e.:
+
+    ```text
+    /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/providers/Microsoft.Authorization/policyDefinitions/global-naming-convention
+    ```
+
+    With the ``management-group` switch then the policy will be defined at:
+
+    ```text
+    /providers/Microsoft.Management/managementgroups/f246eeb7-b820-4971-a083-9e100e084ed0/providers/Microsoft.Authorization/policyDefinitions/global-naming-convention
+    ```
+
+    Also note the use of the `--mode All` switch as this policy can apply to resources that do not have a region and/or do not have tags.
+
+1. Add the following to the end of the array in your deny.initiative.definition.json:
+
+    ```json
+    {
+        "comment": "Naming: uk[sw]-[dtup]-<resourcetype>-<resourcename>01, where [dtup] is dev/test/UAT/production, e.g. uks-p-vm-citadeldb01",
+        "parameters": {
+            "namePattern": {
+                "value": "uk?-?-??-?*?##"
+            }
+        },
+        "policyDefinitionId": "/subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/providers/Microsoft.Authorization/policyDefinitions/global-naming-convention"
+    }
+    ```
+
+    This is a simple naming convention and there is no real enforcement of the desired naming in the comment field.  Check out later labs for examples of using multiple policies within initiatives to strongly control naming.
+
+1. Update the initiative
+
+    ```bash
+    az policy set-definition update --name nonProdDeny --definitions policies/deny.initiative.definition.json --management-group 200 --output jsonc
+    ```
+
+    The policy initiative will now be updated.  And importantly, every single policy assignment using that policy initiative will also be updated.  The subscription within the non-prod management group will now be subject to the new naming convention enforcement.
+
+    Note that if you have created the global naming policy at the default subscription level then you would not be able to add it to the initiative, as that is defined at a higher management group level.  You would get this error message:
+
+    ```bash
+    InvalidCreatePolicySetDefinitionRequest - The policy set definition 'nonProdDeny' request is invalid. Policy definitions should be specified only at or above the policy set definition's scope. The following policy definitions are invalid: 'global-naming-convention'.
+    ```
+
+    For this reason, our recommendation is to create the custom policies at the Tenant Root Group by default, and ensure that they are parameterised so they can be used flexibly by your initiatives.
+
+## Recommendations
+
+This is a useful lab to get an understanding of management groups and how the various scope points work for policy definitions, for policy initiative definitions and then for your policy assignments.
+
+It also reinforces our recommendation to create policy definitions as high as possible in the hierarchy and then use initiative definitions against management groups.  This has two really key benefits:
+
+* The policy initiative definitions are easy to understand, and easy to update or extend
+* Updating the initiative definitions automatically feeds into the assignments
+
+Therefore lifecycle management of your policies becomes simpler.  If you then add a new subscription to that tenant then it will automatically fall under the Tenant Root Group.  If you then move it under one of your existing management groups then it will automatically inherit the policy initiatives from the management group(s) above.
+
+Looking at this from the partner perspective, I would also think of your custom policies as a shared library of subroutines.  Have a standard set that you deploy at the Tenant Root Group for your customers.  Later labs will have Terraform modules and example Bash scripts to get those defined programmatically.  Both will exist in GitHub. There will also be an example ARM subscription template, but as the name suggests these will only work at the subscription scope, and can not at this point define the custom policies at a management group level.
+
+You can then make your initiatives configurable by customer. Allow different resources types, different SKUs, different regions, different naming conventions, different tagging requirements.  For most of these you can just use initiative definitions.
+
+## What's up next
+
+In the next lab we'll explore tagging, and looking at using multiple policies to get the desired effect.  We'll then look at incorporating initiative parameters to be used by multiple policies.
 
 [◄ Lab 3: Initiatives](../lab3){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 5: Remediation ►](../lab5){: .btn .btn--primary}
