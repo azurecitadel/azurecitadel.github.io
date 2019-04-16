@@ -272,7 +272,7 @@ The creation of custom policy rules is currently a little bit of a dark art at t
 
 In the meantime, be familiar with the available logical operators, conditions and fields within the [Azure Policy definition structure](https://docs.microsoft.com/en-us/azure/governance/policy/concepts/definition-structure#policy-rule).  You will also find some good examples of policies that others have defined, including the Microsoft GitHub repo for [Azure Policy samples](https://github.com/Azure/azure-policy/tree/master/samples), from or from individual contributors such as [Richard Green](https://github.com/richardjgreen/azure-resource-policy-templates).
 
-For naming you can use either the **match** conditional, which will match against standard patterns.  You can use either *#* for a number or *?* for a letter.  Using *like* allows for the use of _\*_ wildcards.
+For naming you can use either the **match** conditional, which will match against standard patterns.  You can use either *#* for a number or *?* for a letter.  Using **like** allows for the use of _\*_ wildcards.
 
 Let's create a simple global naming format based on the [sample](https://docs.microsoft.com/en-us/azure/governance/policy/samples/enforce-like-pattern), allowing a simple parameter to be passed in.
 
@@ -318,7 +318,7 @@ Let's create a simple global naming format based on the [sample](https://docs.mi
     /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/providers/Microsoft.Authorization/policyDefinitions/global-naming-convention
     ```
 
-    With the ``management-group` switch then the policy will be defined at:
+    With the `--management-group` switch then the policy will be defined at:
 
     ```text
     /providers/Microsoft.Management/managementgroups/f246eeb7-b820-4971-a083-9e100e084ed0/providers/Microsoft.Authorization/policyDefinitions/global-naming-convention
@@ -352,7 +352,7 @@ Let's create a simple global naming format based on the [sample](https://docs.mi
 
     Note that if you have created the global naming policy at the default subscription level then you would not be able to add it to the initiative, as that is defined at a higher management group level.  You would get this error message:
 
-    ```bash
+    ```text
     InvalidCreatePolicySetDefinitionRequest - The policy set definition 'nonProdDeny' request is invalid. Policy definitions should be specified only at or above the policy set definition's scope. The following policy definitions are invalid: 'global-naming-convention'.
     ```
 
