@@ -1,5 +1,5 @@
 ---
-title: "Inbuilt Policies and Policy Initiatives"
+title: "Automatically deploy Azure Monitoring Agents with a policy initiative"
 date: 2019-03-25
 author: [ "Tom Wilde" ]
 category:
@@ -13,7 +13,7 @@ header:
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"
-excerpt: Using a policy initiative DeployIfNotExist for automatic agent deployment.
+excerpt: Automatically deploy Azure Monitoring Agents with a policy initiative
 ---
 
 ## Introduction

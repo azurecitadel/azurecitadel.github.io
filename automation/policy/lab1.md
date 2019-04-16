@@ -1,5 +1,5 @@
 ---
-title: "Using Deny"
+title: "Use a simple policy to stipulate the permitted regions"
 date: 2019-03-25
 author: [ "Tom Wilde" ]
 category:
