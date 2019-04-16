@@ -1,7 +1,7 @@
 ---
 title: "Inbuilt Policies and Policy Initiatives"
 date: 2019-03-25
-author: [ "Tom Wilde", "Richard Cheney" ]
+author: [ "Tom Wilde" ]
 category:
 comments: true
 featured: false
