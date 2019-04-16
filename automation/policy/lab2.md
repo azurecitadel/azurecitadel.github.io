@@ -1,5 +1,5 @@
 ---
-title: "Using Audit"
+title: "Specify allowed VM SKU sizes using Azure CLI"
 date: 2019-03-25
 author: [ "Tom Wilde" ]
 category:
@@ -13,7 +13,7 @@ header:
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"
-excerpt: Specify allowed VM SKU sizes using Azure CLI.
+excerpt: Specify allowed VM SKU sizes using Azure CLI
 ---
 ## Introduction
 
