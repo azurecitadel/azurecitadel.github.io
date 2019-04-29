@@ -86,6 +86,8 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$subId" -
 
 Create a file called myFirstImage.json with the following template, and then configure the correct values for the service principal.
 
+{% raw %}
+
 ```json
 {
   "builders": [{
@@ -127,6 +129,8 @@ Create a file called myFirstImage.json with the following template, and then con
   ]
 }
 ```
+
+{% endraw %}
 
 The first two commands in that inline array will update the operating system, and then the last command will generalise the virtual machine into an image.
 

@@ -131,6 +131,12 @@ Dan Baker:
     linkedin :
 ```
 
+{% raw %}
+
+> Note that Jekyll also uses [Liquid](https://jekyllrb.com/docs/liquid/) to process templates.  This guide will not go into that in any great detail but feel free to read around.  SomeLiquid uses double curly braces.  If you find this conflicts (such as with Packer) then make use of the [{% raw %}](https://shopify.github.io/liquid/tags/raw/) controls.  This note does exactly that!
+
+{% endraw %}
+
 ## Tables
 
 Tables are officially outside of the markdown standard but are supported by Jekyll.  Use vertical pipes between the columns.
