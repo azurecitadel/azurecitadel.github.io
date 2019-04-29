@@ -75,6 +75,9 @@ footer:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/azurecitadel/azurecitadel.github.io"
+    - label: "Contributing"
+      icon: "fas fa-fw fa-user-edit"
+      url: "/contributing"
 
 # Reading Files
 include:
