@@ -16,5 +16,4 @@ If you're new to Azure and especially the Azure Resource Manager, this guide is 
 
 This content can be used for presentations, used in labs & exercises but also given as handout/reading material.
 
-[Azure Resource Manager - Tech Primer ⇒](https://1drv.ms/b/s!AhEX99ErZbKGg1DtCFnLLTCjuazu){: .btn .btn--primary .btn--large}
-
+[Azure Resource Manager - Tech Primer ⇒](https://1drv.ms/p/s!AhEX99ErZbKGg0EPvCoAUvLYFyGP){: .btn .btn--primary .btn--large}
