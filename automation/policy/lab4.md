@@ -373,6 +373,8 @@ Looking at this from the partner perspective, I would also think of your custom 
 
 You can then make your initiatives configurable by customer. Allow different resources types, different SKUs, different regions, different naming conventions, different tagging requirements.  For most of these you can just use initiative definitions.
 
+Finally, the naming convention policy above is a little coarse and unforgiving.  You may want to look at very customised policies within an initiative so that you can restrict the enforcement to certain provider types such as this [VM naming policy](https://github.com/richardjgreen/azure-resource-policy-templates/blob/master/forceVMNamingConvention.json) from Richard Green.  You might also want to use the [substring()](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions-string#substring) function so that you can pull out location codes or environment codes from the naming convention and then ensure that they are from a list of allowedValues. You could get very precise in what is permitted.
+
 ## What's up next
 
 In the next lab we'll explore tagging, and looking at using multiple policies to get the desired effect.  We'll then look at incorporating initiative parameters to be used by multiple policies.
