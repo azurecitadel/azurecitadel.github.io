@@ -312,13 +312,13 @@ Now that we have our list of BuiltIn and Custom policies, let's define a policy 
     /providers/Microsoft.Management/managementgroups/f246eeb7-b820-4971-a083-9e100e084ed0/providers/Microsoft.Authorization/policySetDefinitions/tags
     ```
 
-    And you can list out your custom initiatives at the Tenant Root Group using a command similar to the custom policy ine we used earflier in the lab:
+    And you can list out your custom initiatives at the Tenant Root Group using a command similar to the custom policy ine we used earlier in the lab:
 
     ```bash
     az policy set-definition list --management-group $tenantId --query "[? policyType == 'Custom'].id"
     ```
 
-## Assign the tagging initiative
+## Testing the tagging initiative
 
 The initiative has now been defined at the Tenant Root Group. You should still have the Dev management group that you created in lab 4, which had an ID of 230.  We'll eventually assign the initiative there and specify the value of Environment.
 
@@ -364,11 +364,95 @@ But first, let's test it out at a safer resource group level. (It is assumed tha
 
     ![Non Compliant](/automation/policy/images/lab5-noncompliant.png)
 
+    You can also use CLI commands to interrogate the state:
+
+    ```bash
+    az policy state list --resource-group tagInitiativeTest --policy-assignment tags --query "[?! isCompliant ].{resourceId:resourceId, policy:policyDefinitionName}" --output table
+    ```
+
 1. Update the tags
 
     Manually update the tags to make the resource compliant for the next compliancy poll
 
-    ![Non Compliant](/automation/policy/images/lab5-updatedtags.png)
+    ![Updated Tags](/automation/policy/images/lab5-updatedtags.png)
+
+1. Use REST API call to trigger evaluation
+
+    The Azure docs have information on the standard [evaluation triggers](https://docs.microsoft.com/en-us/azure/governance/policy/how-to/get-compliance-data#evaluation-triggers), but I'm going to assume that you're impatient and don't want to wait 24 hours for the standard compliance evaluation cycle to go round.
+
+    We'll use the REST API to trigger an [on demand scan](https://docs.microsoft.com/en-us/azure/governance/policy/how-to/get-compliance-data#on-demand-evaluation-scan) on our resource group. (Hopefully this will become a CLI command in the future.)
+
+    ```bash
+    subscriptionId=$(az account show --output tsv --query id)
+    rg=tagInitiativeTest
+    triggeruri=https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$rg/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+
+    accessToken=$(az account get-access-token --output tsv --query accessToken)
+    curl --silent --include --header "Authorization: Bearer $accessToken" --header "Content-Type: application/json" --data '{}' --request POST $triggeruri
+    ```
+
+    You should get back a number of header from the HTTP 202 response, including a location URI.
+
+1. Wait for evaluation completion
+
+    You can track the scanning event in the Activity Log if you have non-compliant resources:
+
+    * Azure Policy
+    * Click on the Standard Tags policy assigned to the test resource group scope
+    * Click on Non-compliant Resources
+    * Click on the ellipsis (**...**) to the right of the non-compliant resource
+    * Click on Show Activity Logs
+
+    The _Trigger Policy Insights Compliance Evaluation_ operation will show a status of 'Accepted', which will become 'Started' and then 'Succeeded' once the policy evaluation has finished.
+
+1. \[Optional] - Query the location URI for scanning status
+
+    Alternatively, you can use REST You can use a REST API GET command against that location URI.
+
+    The REST call returns **202 Accepted** whilst running and then **200 OK** once the evaluation has completed.
+
+    Here is an example of the REST call against the location URI:
+
+    ```bash
+    locationuri=https://management.azure.com/subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/providers/Microsoft.PolicyInsights/asyncOperationResults/eyJpZCI6IlBTUkFKb2I6MkRFMTVERjczMSIsImxvY2F0aW9uIjoiIn0?api-version=2018-07-01-preview
+
+    curl --silent --include --header "Authorization: Bearer $accessToken" --header "Content-Type: application/json" --request GET $locationuri
+    ```
+
+    > Note that your location URI will not be the same as the one above. Use the `location:` value in the trigger output.
+
+1. Verify compliancy
+
+    Once the resources have been rescanned, you can return to the Azure Policy screen and verify that the resource is now compliant with the Default Tagging policy initiative.
+
+    ![Compliant](/automation/policy/images/lab5-compliant.png)
+
+## Assigning the policy initiative to a management group
+
+1. Remove the test resource group
+
+    Deleting the test resource group will delete the resource group, the resources and the policy assignment.
+
+    ```bash
+    az group delete --yes --no-wait --name tagInitiativeTest
+    ```
+
+1. Add the policy to a higher scope point
+
+    Now that you have tested the policy, you can assign it at a more appropriate scope point, such as the Dev management group.
+
+    ```bash
+    tenantId=$(az account show --query tenantId --output tsv)
+    initiatives=/providers/Microsoft.Management/managementgroups/${tenantId}/providers/Microsoft.Authorization/policySetDefinitions
+    mgs=/providers/Microsoft.Management/managementGroups
+    az policy assignment create --name tags --display-name "Standard Tags" --policy-set-definition $initiatives/tags --params '{"Environment":{"value": "Dev"}}' --scope $mgs/230
+    ```
+
+## Wrapping up
+
+OK, that is quite a few labs covering the creation of policies and initiatives, and how they work with management groups.
+
+In the next lab we will explore an example workflow for deploying a new tenancy in Azure, using Terraform to create the management groups, policy definitions, assignments and RBAC assignments.
 
 
 [◄ Lab 4: Deploy](../lab4){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 6: Tagging ►](../lab6){: .btn .btn--primary}
