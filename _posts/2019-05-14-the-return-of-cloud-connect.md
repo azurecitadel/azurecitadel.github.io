@@ -10,9 +10,11 @@ We are very lucky to be working in Microsoft as we get early access to some of t
 
 We also have a number of great events, including Ready, Inspire and Future Decoded.  And over May 6th - 8th we held our premier developer conference, Microsoft Build, over in Seattle.
 
+There were a lot of great announcements which we wanted you to be aware of, so it got us thinking... 
+
 ## Cloud Connect
 
-Some of you that work for Microsoft partners will be aware that we used to run Cloud Connects. These were partner oriented webinar sessions covering a number of Azure areas and the key announcements. 
+Some of you that work for Microsoft partners will be aware that we used to run Cloud Connects. These were partner oriented webinar sessions covering a number of Azure areas and what was important in those areas. 
 
 We understand that the rate of innovation on the platform makes it hard to keep on top of all of the information that is released each week, so the aim of the Cloud Connect is to concentrate on the areas in each of the workloads that we see as being important.  What are the major announcements? How is it going to change how we provide services in the channel? What is the direction of travel? 
 
@@ -23,10 +25,10 @@ So in the aftermath of Build 2019 we thought it would be a great opportunity to 
 Ben Coleman will compere the session, which will cover:
 
 **What** | **Who**
-Ben: App Dev | Ben Coleman
-Tom: Security | Tom Wilde
-Rich: Infrastructure | Richard Cheney
-Christina: Data & AI | Christina Leo
+App Dev | Ben Coleman
+Security | Tom Wilde
+Infrastructure | Richard Cheney
+Data & AI | Christina Leo
 
 We'll give our view of the key announcements. And there will be plenty of scope for questions so make the most of it!
 
