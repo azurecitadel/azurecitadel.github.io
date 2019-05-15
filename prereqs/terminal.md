@@ -15,13 +15,13 @@ excerpt: Build and deploy the new open sourced Windows Terminal
 
 ## Windows Terminal
 
-One of the most unexpected announcements from Build 2019 was for the new Windows Terminal app.  This will run as a separate project alongside the existing console host used by Command Prompt, PowerShell and WSL distros, although they will use some shared components. The whole project is open sourced and you can find it  on [GitHub](https://github.com/microsoft/terminal).  If you want to know more about the new Terminal and how it differs from an architectural perspective then watch the excellent [Ready session](https://mybuild.techcommunity.microsoft.com/sessions/77004) from Rich Turner and Michael Niksa.
+One of the most unexpected announcements from Build 2019 was for the new Windows Terminal app.  This will run as a separate project alongside the existing console host used by Command Prompt, PowerShell and WSL distros, although they will use some shared components. The whole project is open sourced and you can find it  on [GitHub](https://github.com/microsoft/terminal).  If you want to know more about the new Terminal and how it differs from an architectural perspective then watch the excellent [Build session](https://mybuild.techcommunity.microsoft.com/sessions/77004) from Rich Turner and Michael Niksa.
 
 Given the runaway success of Visual Studio Code, we are excited about this.  And given the amount of work we do at the CLI then we naturally wanted to see how it compared to using the standard WSL Ubuntu terminal, or one of our other third party favourites, [Hyper](https://hyper.is/).
 
-Windows Terminal should be coming out later in the year and at that point it will be a nice simple download from the Microsoft Store.
+Windows Terminal should be coming out later in the year and at that point it will be a nice simple download from the Microsoft Store. At that point I can delete this guide!
 
-However, those of you who are a little more technical and a little less patient can get it working earlier by following the instructions below.
+If you are a little more technical and a little less patient then you can build and deploy the new Terminal from the source code by following the instructions below.
 
 ## Pre-reqs
 
@@ -262,4 +262,12 @@ I first installed my preferred Powerline font, [DejaVu Sans Mono](https://github
 
 It is recommended to have Erik Lynd's JSON Tools extension in vscode so that you can prettify the file (`CTRL` + `ALT` + `V`) so that editing is easier. And don't forget that vscode has a great file compare, which you can find in the Command Palette (`CTRL` + `SHIFT` + `P`).
 
-If you ever mess up your profiles.json then rename it and restart the application and it will regenerate a default version.
+If you ever mess up your profiles.json file then rename it and restart the application and it will regenerate a default version. If you right click on a tab in vscode then you can Reveal in Explorer to find the roaming profile folder for the application.
+
+## References
+
+Here are the sources I used as a reference:
+
+* [Build 2019 Windows Terminal session](https://mybuild.techcommunity.microsoft.com/sessions/77004)
+* [GitHub README.md](https://github.com/microsoft/terminal/blob/master/README.md)
+* [YouTube: Build Windows Terminal application with Visual Studio 2019](https://www.youtube.com/watch?v=4N1Ils4cDYo)
