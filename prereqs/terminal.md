@@ -15,13 +15,13 @@ excerpt: Build and deploy the new open sourced Windows Terminal
 
 ## Windows Terminal
 
-There was a great announcement from Build 2019 for the new Windows Terminal app, that is open sourced and available on [GitHub](https://github.com/microsoft/terminal) and brings with it a host of new features.
+One of the most unexpected announcements from Build 2019 was for the new Windows Terminal app.  This will run as a separate project alongside the existing console host used by Command Prompt, PowerShell and WSL distros, although they will use some shared components. The whole project is open sourced and you can find it  on [GitHub](https://github.com/microsoft/terminal).  If you want to know more about the new Terminal and how it differs from an architectural perspective then watch the excellent [Ready session](https://mybuild.techcommunity.microsoft.com/sessions/77004) from Rich Turner and Michael Niksa.
 
-Given the runaway success of Visual Studio Code, we are excited about this.  And given the amount of work we do at the CLI then we wanted to see how it compared to using the WSL Ubuntu terminal or Hyper.
+Given the runaway success of Visual Studio Code, we are excited about this.  And given the amount of work we do at the CLI then we naturally wanted to see how it compared to using the standard WSL Ubuntu terminal, or one of our other third party favourites, [Hyper](https://hyper.is/).
 
-Windows Terminal should be coming out later in the year and will be a nice simple download from the Microsoft Store.
+Windows Terminal should be coming out later in the year and at that point it will be a nice simple download from the Microsoft Store.
 
-Those of you who are a little more technical and a little less patient can try to follow the instructions below.
+However, those of you who are a little more technical and a little less patient can get it working earlier by following the instructions below.
 
 ## Pre-reqs
 
@@ -84,13 +84,13 @@ I first installed my preferred Powerline font, [DejaVu Sans Mono](https://github
     "initialRows": 30,
     "initialCols": 120,
     "alwaysShowTabs": false,
-    "showTerminalTitleInTitlebar": false,
-    "experimental_showTabsInTitlebar": false,
+    "showTerminalTitleInTitlebar": true,
+    "experimental_showTabsInTitlebar": true,
     "profiles": [
         {
             "startingDirectory": "",
             "guid": "{6691901c-764a-11e9-b9c0-bc838515ccd4}",
-            "name": "WSL",
+            "name": "Ubuntu",
             "colorscheme": "Relaxed",
             "historySize": 9001,
             "snapOnInput": true,
@@ -99,7 +99,7 @@ I first installed my preferred Powerline font, [DejaVu Sans Mono](https://github
             "commandline": "wsl.exe ~",
             "fontFace": "DejaVu Sans Mono for Powerline",
             "fontSize": 14,
-            "acrylicOpacity": 0.7,
+            "acrylicOpacity": 0.5,
             "useAcrylic": true,
             "closeOnExit": true,
             "padding": "8, 8, 8, 8"
@@ -125,7 +125,7 @@ I first installed my preferred Powerline font, [DejaVu Sans Mono](https://github
         {
             "startingDirectory": "%USERPROFILE%",
             "guid": "{e5c4a7b9-bd87-416d-9506-877ab7c8722b}",
-            "name": "cmd",
+            "name": "Command Prompt",
             "colorscheme": "Campbell",
             "historySize": 9001,
             "snapOnInput": true,
