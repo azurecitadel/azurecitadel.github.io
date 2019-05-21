@@ -161,6 +161,8 @@ Jekyll also allows HTML to be included in the files. This is useful for includin
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ePxAH5YBKP4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 ```
 
+> Note the use of `?rel=0` after the generated URI. With YouTube you can no longer stop it from showing suggested videos once the video has finished, but adding `?rel=0` does mean that the suggested videos only come from that channel.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ePxAH5YBKP4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 The buttons at the bottom of the page use HTML classes. For example the button below to go back to the Front Matter page is `[◄ Front Matter](../frontmatter){: .btn .btn--inverse}`.

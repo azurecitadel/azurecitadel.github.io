@@ -19,7 +19,7 @@ One of the most unexpected announcements from Build 2019 was for the new Windows
 
 Here is the launch video, showing the direction for the project and some of the ideas they are looking to incorporate:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8gw0rXPMMPE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8gw0rXPMMPE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Given the runaway success of Visual Studio Code, we are excited about this.  And given the amount of work we do at the CLI then we naturally wanted to see how the current work in progress compares to using the standard WSL Ubuntu terminal, or one of our other third party favourites, such as [Hyper](https://hyper.is/) or [Terminus](https://eugeny.github.io/terminus/).
 
