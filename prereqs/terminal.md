@@ -2,7 +2,7 @@
 title: Windows Terminal
 date: 2019-05-14
 author: Richard Cheney
-category: prereq
+category: prereqs
 comments: true
 featured: false
 hidden: false
@@ -17,7 +17,11 @@ excerpt: Build and deploy the new open sourced Windows Terminal
 
 One of the most unexpected announcements from Build 2019 was for the new Windows Terminal app.  This will run as a separate project alongside the existing console host used by Command Prompt, PowerShell and WSL distros, although they will use some shared components. The whole project is open sourced and you can find it  on [GitHub](https://github.com/microsoft/terminal).  If you want to know more about the new Terminal and how it differs from an architectural perspective then watch the excellent [Build session](https://mybuild.techcommunity.microsoft.com/sessions/77004) from Rich Turner and Michael Niksa.
 
-Given the runaway success of Visual Studio Code, we are excited about this.  And given the amount of work we do at the CLI then we naturally wanted to see how it compared to using the standard WSL Ubuntu terminal, or one of our other third party favourites, [Hyper](https://hyper.is/).
+Here is the launch video, showing the direction for the project and some of the ideas they are looking to incorporate:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8gw0rXPMMPE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Given the runaway success of Visual Studio Code, we are excited about this.  And given the amount of work we do at the CLI then we naturally wanted to see how the current work in progress compares to using the standard WSL Ubuntu terminal, or one of our other third party favourites, such as [Hyper](https://hyper.is/) or [Terminus](https://eugeny.github.io/terminus/).
 
 Windows Terminal should be coming out later in the year and at that point it will be a nice simple download from the Microsoft Store. At that point I can delete this guide!
 
@@ -64,11 +68,11 @@ There will be frequent updates to the code base.  Instructions to rebuild:
 
 1. `cd /git/terminal`
 1. `git pull`
-1. `git submodule update --init --recursive`
-1. `./dep/nuget/nuget.exe restore OpenConsole.sln`
+    * _Optional_: `git submodule update --init --recursive`
+    * _Optional_: `./dep/nuget/nuget.exe restore OpenConsole.sln`
 1. `explorer.exe .`
-1. Double click OpenConsole.sln
-    1. Release, x64 and CascadiaPackage should already be selected
+1. Double click OpenConsole.sln to open Visual Studio 2019
+    * Release, x64 and CascadiaPackage should already be selected
 1. Build --> Build Solution
 1. Build --> Deploy Solution
 
@@ -271,3 +275,4 @@ Here are the sources I used as a reference:
 * [Build 2019 Windows Terminal session](https://mybuild.techcommunity.microsoft.com/sessions/77004)
 * [GitHub README.md](https://github.com/microsoft/terminal/blob/master/README.md)
 * [YouTube: Build Windows Terminal application with Visual Studio 2019](https://www.youtube.com/watch?v=4N1Ils4cDYo)
+* [Scott Hanselman's Blog Post](https://www.hanselman.com/blog/ANewConsoleForWindowsItsTheOpenSourceWindowsTerminal.aspx)
