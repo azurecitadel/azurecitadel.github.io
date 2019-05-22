@@ -1,8 +1,8 @@
 ---
 title: "Automatically deploy Azure Backup using GitHub policies"
-date: 2019-03-25
+date: 2019-06-01
 author: [ "Tom Wilde" ]
-category: automation
+category:
 comments: true
 featured: false
 hidden: false
@@ -15,6 +15,8 @@ sidebar:
   nav: "policy"
 excerpt: "Automatically deploy Azure Backup using GitHub policies"
 ---
+
+**WORK IN PROGRESS**
 
 ## Introduction
 

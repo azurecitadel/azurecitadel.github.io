@@ -1,6 +1,6 @@
 ---
 title: "Use a simple policy to stipulate the permitted regions"
-date: 2019-03-25
+date: 2019-05-21
 author: [ "Tom Wilde" ]
 category:
 comments: true
@@ -13,7 +13,7 @@ header:
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"
-excerpt: Use a simple policy to stipulate the permitted regions
+excerpt: Use the portal to define which regions will be premitted for deployments
 ---
 
 ## Introduction
@@ -90,4 +90,4 @@ That concludes this lab, where we've learnt about applying a policy from the Azu
 
 Next we'll tackle another common requirement, specifying which VM SKUs are allowed to be deployed. We’ll start to automate policy creation too.
 
-[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Audit ►](../lab2){: .btn .btn--primary}
+[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: CLI ►](../lab2){: .btn .btn--primary}

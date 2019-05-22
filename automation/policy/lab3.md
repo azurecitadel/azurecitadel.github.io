@@ -1,6 +1,6 @@
 ---
 title: "Automatically deploy Azure Monitoring Agents with a policy initiative"
-date: 2019-03-25
+date: 2019-05-21
 author: [ "Tom Wilde" ]
 category:
 comments: true
@@ -13,7 +13,7 @@ header:
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"
-excerpt: Automatically deploy Azure Monitoring Agents with a policy initiative
+excerpt: Use built-in Policy Initiatives to deploy Azure Monitoring Agents and remediate non-compliant VMs
 ---
 
 ## Introduction
@@ -126,4 +126,4 @@ az vm delete --ids $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
 
 Next we'll create some policies to ensure a resource naming policy
 
-[◄ Lab 2: Audit](../lab2){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 4: Deploy ►](../lab4){: .btn .btn--primary}
+[◄ Lab 2: CLI](../lab2){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 4: Custom Policies ►](../lab4){: .btn .btn--primary}

@@ -1,6 +1,6 @@
 ---
 title: "Specify allowed VM SKU sizes using Azure CLI"
-date: 2019-03-25
+date: 2019-05-21
 author: [ "Tom Wilde" ]
 category:
 comments: true
@@ -156,4 +156,4 @@ That concludes this lab, where we've learnt about applying an inbuilt policy usi
 
 Next we'll group policies together using an initiative and use automatic remediation.
 
-[◄ Lab 1: Deny](../lab1){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 3: Initiatives ►](../lab3){: .btn .btn--primary}
+[◄ Lab 1: Basics](../lab1){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 3: Deploy Policies ►](../lab3){: .btn .btn--primary}

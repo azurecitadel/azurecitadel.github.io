@@ -1,11 +1,11 @@
 ---
 title: "Creating custom policies and initiatives"
-date: 2019-03-25
+date: 2019-05-21
 author: [ "Richard Cheney" ]
 category:
 comments: true
 featured: false
-hidden: false
+hidden: true
 published: true
 tags: [ policy, initiative, compliance, governance ]
 header:
@@ -379,4 +379,4 @@ Finally, the naming convention policy above is a little coarse and unforgiving. 
 
 In the next lab we'll explore tagging, and looking at using multiple policies to get the desired effect.  We'll then look at incorporating initiative parameters to be used by multiple policies.
 
-[◄ Lab 3: Initiatives](../lab3){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 5: Remediation ►](../lab5){: .btn .btn--primary}
+[◄ Lab 3: Deploy](../lab3){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 5: Tagging ►](../lab5){: .btn .btn--primary}

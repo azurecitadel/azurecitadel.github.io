@@ -1,11 +1,11 @@
 ---
 title: "Tagging Policies"
-date: 2019-03-25
+date: 2019-05-21
 author: [ "Richard Cheney" ]
-category: automation
+category:
 comments: true
 featured: false
-hidden: false
+hidden: true
 published: true
 tags: [ policy, initiative, compliance, governance, tagging, tags ]
 header:
@@ -454,4 +454,4 @@ OK, that is quite a few labs covering the creation of policies and initiatives, 
 
 In the next lab we will explore an example workflow for deploying a new tenancy in Azure, using Terraform to create the management groups, policy definitions, assignments and RBAC assignments.
 
-[◄ Lab 4: Deploy](../lab4){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 6: Tagging ►](../lab6){: .btn .btn--primary}
+[◄ Lab 4: Custom](../lab4){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse}
