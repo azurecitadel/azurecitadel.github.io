@@ -12,7 +12,7 @@ At Build 2019 there was a lot of exciting new information in this area, some of 
 
 ## Build and Deploy Guide
 
-A lot of people won't care about a new terminal.  And most will be willing to wait a few months until it arrives into the Windows Store. But for those of you who are as impatient as we are then head over to our [Windows Terminal](/]prereqs/terminal) page for instructions on how to take the open sourced [GitHub repo](https://github.com/microsoft/terminal) and build and deploy the application for yourself.
+A lot of people won't care about a new terminal.  And most will be willing to wait a few months until it arrives into the Windows Store. But for those of you who are as impatient as we are then head over to our [Windows Terminal](/prereqs/terminal) page for instructions on how to take the open sourced [GitHub repo](https://github.com/microsoft/terminal) and build and deploy the application for yourself.
 
 The page also includes additional links for the launch video, for the excellent Build 2019 webinar, for Scott Hanselman's blog post and other resources we have found useful.
 
