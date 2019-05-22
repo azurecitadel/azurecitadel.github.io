@@ -22,9 +22,9 @@ All organizations should have a backup strategy but ensuring that backup is actu
 
 ## Using Policies from GitHub
 
-There isn't a built in Azure Policy for Recovery Vaults or Backup so in this instance we'll use definiations from GitHub.
+There isn't a built in Azure Policy for Recovery Vaults or Backup so in this instance we'll use definitions from GitHub.
 
-1. View the Azure Policies [here](https://github.com/towilde/policy) to see that it meets the requirements. In a nut shell, these definitions look at your Recovery Services Vault to see if your in scope VM's have the required backup policy set, if they don't, it will make the change. 
+1. View the Azure Policies [here](https://github.com/towilde/policy) to see that it meets the requirements. In a nut shell, these definitions look at your Recovery Services Vault to see if your in scope VMs have the required backup policy set, if they don't, it will make the change.
 
 1. Let's create resources needed for the policies ()
 
@@ -43,6 +43,7 @@ az backup vault create --resource-group $rg \
     --name RecoveryServicesVault \
     --location $loc
 ```
+
 1. When you create a Recovery Service Vault a Backup Policy for Virtual Machines is automatically created.
 
 ```bash
