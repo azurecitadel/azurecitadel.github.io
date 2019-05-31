@@ -100,6 +100,8 @@ Let's add a simple storage account resource into the empty list:
 
 Your ARM template should now look something like this, but with a different (and hopefully unique) storage account name.
 
+> Your snippet may use a newer apiVersion with a slightly different format than displayed in these labs. ARM snippets are updated regularly to take advantage of newer features and functionality within Azure, and this is reflected in the apiVersion of the resource. See [https://aka.ms/armref](https://docs.microsoft.com/en-gb/azure/templates/microsoft.storage/allversions) for resource format corresponding to the apiVersion.
+
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -264,6 +266,8 @@ Let's also do the same with the accountType, and introduce a couple more paramet
 1. Add the accountType to the parameters section, and use the parameter value in the resource section.
 1. Set the allowed values to be Standard\_LRS, Premium\_LRS, or Standard\_RAGRS
 1. Set the default value to be Standard\_LRS
+
+> accountType has moved to "sku" object in apiVersions newer than 2016-01-01. If your deployment fails, check the apiVersion and format at [https://aka.ms/armref](https://docs.microsoft.com/en-gb/azure/templates/microsoft.storage/allversions).
 
 Note that the parameter type is from a fixed list:
 
