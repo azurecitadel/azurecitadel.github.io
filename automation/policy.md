@@ -26,7 +26,7 @@ You can manually create policies (to check Azure resources are configured in a c
 
 ## Pre-requisites
 
-[**Azure Subscription**](/guides/subscription){:target="_blank" class="btn-info"}
+[**Azure Subscription**](/prereqs/subscription){:target="_blank" class="btn-info"}
 
 **Required for all labs.**
 
@@ -72,7 +72,7 @@ For Windows 10 users who have enabled the Windows Subsystem for Linux (WSL) feat
 
 ----------
 
-[**💻 Visual Studio Code**](/guides/vscode){:target="_blank" class="btn-info"}
+[**💻 Visual Studio Code**](/prereqs/vscode){:target="_blank" class="btn-info"}
 
 Recommended for editing.
 

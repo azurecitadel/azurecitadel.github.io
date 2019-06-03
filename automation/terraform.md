@@ -44,7 +44,7 @@ For labs 3 onwards it is assumed that you have a linux terminal environment (for
 
 ----------
 
-[**Azure Subscription**](/guides/subscription){:target="_blank" class="btn-info"}
+[**Azure Subscription**](/prereqs/subscription){:target="_blank" class="btn-info"}
 
 **Required for all labs.**
 
@@ -113,7 +113,7 @@ For Windows 10 users who have enabled the Windows Subsystem for Linux (WSL) feat
 
 ----------
 
-[**💻 Visual Studio Code**](/guides/vscode){:target="_blank" class="btn-info"}
+[**💻 Visual Studio Code**](/prereqs/vscode){:target="_blank" class="btn-info"}
 
 **Required for lab 3 onwards.**
 

@@ -51,7 +51,7 @@ You will need a linux terminal environment. If you have macOS or Linux desktop t
 
 ----------
 
-[**Azure Subscription**](/guides/subscription){:target="_blank" class="btn-info"}
+[**Azure Subscription**](/prereqs/subscription){:target="_blank" class="btn-info"}
 
 **Required for all labs.**
 
@@ -134,7 +134,7 @@ For Windows 10 users who have enabled the Windows Subsystem for Linux (WSL) feat
 
 ----------
 
-[**💻 Visual Studio Code**](/guides/vscode){:target="_blank" class="btn-info"}
+[**💻 Visual Studio Code**](/prereqs/vscode){:target="_blank" class="btn-info"}
 
 Please install and configure Visual Studio Code as per the link in the button above.  We won't be writing any real code, but the editor has some great support for editing the .tf files used by Terraform and integrating with Azure.
 
