@@ -1,7 +1,7 @@
 ---
-title: "Using Audit"
-date: 2019-03-25
-author: [ "Tom Wilde", "Richard Cheney" ]
+title: "Specify allowed VM SKU sizes using Azure CLI"
+date: 2019-05-21
+author: [ "Tom Wilde" ]
 category:
 comments: true
 featured: false
@@ -13,13 +13,13 @@ header:
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"
-excerpt: Specify allowed VM SKU sizes using Azure CLI.
+excerpt: Specify allowed VM SKU sizes using Azure CLI
 ---
 ## Introduction
 
 Most organizations want to give users freedom to create resources within Azure, but want to avoid users creating certain types of resources as some can be very expensive. In this lab we'll specify which virtual machines a user is allowed to create and we'll use Azure CLI to do so.
 
-## Using Policy from CLI
+## Registering the Policy provider
 
 1. As we're working in Azure CLI, we first we need to check that the policy resource provider is registered:
 
@@ -32,6 +32,8 @@ Most organizations want to give users freedom to create resources within Azure, 
     ```bash
     az provider register --namespace Microsoft.PolicyInsights
     ```
+
+## Viewing policy definitions and assignments
 
 1. Let's have a look at the current assignments through cli. We should be able to see the work we did in the previous lab.
 
@@ -111,6 +113,8 @@ Most organizations want to give users freedom to create resources within Azure, 
     }
     ```
 
+## Assign an inbuilt policy
+
 1. Now we know the policy name, what it does, what it needs so we can assign it.
 
     ```bash
@@ -127,7 +131,9 @@ Most organizations want to give users freedom to create resources within Azure, 
     az policy assignment create --name 'Allowed Virtual Machine SKUs' --display-name 'Allowed Virtual Machine SKUs' --scope $scope --policy $definition --params "$policyparam" --output jsonc
     ```
 
-5. Now let's test
+## Test the policy
+
+1. Now let's test
 
     Using a Standard_B1s should fail
 
@@ -144,8 +150,10 @@ Most organizations want to give users freedom to create resources within Azure, 
     ![Policy Definition](/automation/policy/images/lab2-policytest.png)
 **Figure 1:** Policy Test
 
+## Finishing up
+
 That concludes this lab, where we've learnt about applying an inbuilt policy using the Azure CLI. The resources you've created will be used in the next lab so don't delete them yet.
 
 Next we'll group policies together using an initiative and use automatic remediation.
 
-[◄ Lab 1: Deny](../lab1){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 3: Initiatives ►](../lab3){: .btn .btn--primary}
+[◄ Lab 1: Basics](../lab1){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 3: Deploy Policies ►](../lab3){: .btn .btn--primary}

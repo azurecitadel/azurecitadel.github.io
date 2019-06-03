@@ -1,7 +1,7 @@
 ---
-title: "Using Deny"
-date: 2019-03-25
-author: [ "Tom Wilde", "Richard Cheney" ]
+title: "Use a simple policy to stipulate the permitted regions"
+date: 2019-05-21
+author: [ "Tom Wilde" ]
 category:
 comments: true
 featured: false
@@ -13,7 +13,7 @@ header:
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"
-excerpt: Use a simple policy to stipulate the permitted regions
+excerpt: Use the portal to define which regions will be premitted for deployments
 ---
 
 ## Introduction
@@ -72,6 +72,8 @@ Most organizations don't want users creating Azure resources in any region. In t
     ![Policy Definition-Allowed Locations](/automation/policy/images/lab1-policydefinition-allowedlocations-assign.png)
 **Figure 4:** Assigning Allowed Locations Definition
 
+## Testing the Deny policy
+
 1. Now test creating a resource in the PolicyLab resource group with a location outside the UK
 
     ![Policy Test-Portal](/automation/policy/images/lab1-policytest-portal.png)
@@ -82,8 +84,10 @@ Most organizations don't want users creating Azure resources in any region. In t
     ![Policy Test-Portal](/automation/policy/images/lab1-policytest-portal-success.png)
 **Figure 7:** VM deployment success to UK location
 
+## Finishing up
+
 That concludes this lab, where we've learnt about applying a policy from the Azure portal. The resources you've created will be used in the next lab so don't delete them yet.
 
 Next we'll tackle another common requirement, specifying which VM SKUs are allowed to be deployed. We’ll start to automate policy creation too.
 
-[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Audit ►](../lab2){: .btn .btn--primary}
+[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: CLI ►](../lab2){: .btn .btn--primary}

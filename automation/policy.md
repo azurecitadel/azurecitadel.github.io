@@ -1,12 +1,12 @@
 ---
 title: "Azure Policy and Initiatives"
-date: 2019-03-25
+date: 2019-05-21
 author: [ "Tom Wilde", "Richard Cheney" ]
 category: automation
 comments: true
-featured: false
+featured: true
 hidden: false
-published: false
+published: true
 tags: [ policy, initiative, compliance, governance ]
 header:
   overlay_image: images/header/whiteboard.jpg
@@ -18,11 +18,17 @@ excerpt: Governance starts with policy compliance. Work through these labs to ma
 
 ## Introduction
 
-If you don't have standards in IT, things can get out of control and there's no change in cloud. In fact, there's more of a need for governnce than ever, if you don't have it in cloud it could cause allot of issues, excessive costs, issues supporting and a bad cloud experience to name a few. Azure Policy is essentially designed to help set those standards on Azure use (using policies), making sure it's used in the right way highlighting issues (using compliance) and help fix those issues (using remediation).
+If you don't have standards in IT, things can get out of control and there's no change in cloud. In fact, there's more of a need for governance than ever, if you don't have it in cloud it could cause allot of issues, excessive costs, issues supporting and a bad cloud experience to name a few. Azure Policy is essentially designed to help set those standards on Azure use (using policies), making sure it's used in the right way highlighting issues (using compliance) and help fix those issues (using remediation).
 
 You can manually create policies (to check Azure resources are configured in a certain way) or you can use the growing number of pre-built policies.
 
+## Governance
 
+We have labs for ARM templates, for Terraform configurations and for Azure Policies and Policy Initiatives. All of these will come together in a set of upcoming labs around initial customer governance in line with the [Cloud Adoption Framework](https://aka.ms/caf), plus the deployment of default shared services, policy assignments and role based access control (RBAC) assignments.
+
+These will be achieved using a variety of tools, including Azure Blueprints, Terraform, subscription level ARM templates and Azure DevOps Pieplines, and will be aligned with common definition and deployment stages and organisational structures that we see in both partners and end customers.
+
+Make sure you subscribe to the Azure Citadel [Atom (RSS) feed](/feed.xml) to get notified of the new content as it becomes available.
 
 ## Pre-requisites
 
@@ -38,7 +44,7 @@ Ensure that it is active by logging onto the [portal](http://portal.azure.com) a
 
 ----------
 
-[**Windows Subsytem for Linux**](https://azurecitadel.github.io/guides/wsl/){:target="_blank" class="btn-info"}
+[**Windows Subsystem for Linux**](https://azurecitadel.github.io/guides/wsl/){:target="_blank" class="btn-info"}
 
 **Required for Windows 10 users.**
 
@@ -85,14 +91,10 @@ Read through the [Azure Policy](https://docs.microsoft.com/en-gb/azure/governanc
 ## Labs
 
 **Lab** | **Description**
-1 | [Using Deny](lab1) | Use a simple policy to stipulate the permitted regions
-2 | [Using Audit](lab2) | Specify allowed VM SKU sizes using Azure CLI
-3 | [Initiatives](lab3) | Using a policy initiative DeployIfNotExist for automatic agent deployment
-4 | [Using Deploy](lab4) |
-5 | [Remediation](lab5) | Reporting and remediating non-compliant resources
-6 | [Resource Tagging](lab6) | Create a set of policies for custom tagging
-7 | [Resource Naming](lab7) | Custom policy to enforce a naming convention
-8 | [Custom Initiatives](lab8) | Create a custom initiative for the tagging and naming policies
-9 | [ARM and Terraform](lab9) | Assign the monitoring and custom initiatives to the subscription
+1 | [Simple Portal Policy](lab1) | Use a simple policy to stipulate the permitted regions
+2 | [Creating Policies via CLI](lab2) | Specify the allowed VM SKU sizes using the Azure CLI
+3 | [DeployIfNotExists](lab3) | Using a policy initiative with the DeployIfNotExist effect for automatic agent deployment and remediation
+4 | [Management Groups and Initiatives](lab4) | Step up a level using Management Groups and assigning a custom Deny initiative
+5 | [Tagging and Auditing](lab5) | Enable default resource tagging without compromising innovation using the append and audit effects
 
-**💬 Note.** The labs are currently being built and will become available over the coming month.
+**💬 Note.** Additional labs are currently being built and will become available over the coming month.

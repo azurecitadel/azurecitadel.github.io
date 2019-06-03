@@ -22,6 +22,8 @@ The first lab created a basic image, but there was no real value compared to the
 
 We will be mainly working with the provisioners block in the Packer file. The block currently looks like this:
 
+{% raw %}
+
 ```json
   "provisioners": [
     {
@@ -38,6 +40,8 @@ We will be mainly working with the provisioners block in the Packer file. The bl
   ]
 ```
 
+{% endraw %}
+
 ## Multiple steps
 
 The provisioners block is a JSON array (`[]`) and it currently has just the one shell step within it.  Duplicated that block, and then reduce down the inline array in each version:
@@ -46,6 +50,8 @@ The provisioners block is a JSON array (`[]`) and it currently has just the one 
 1. Only the generalisation (waagent) command
 
 Don't forget the comma between the two JSON objects in the array.  Once done thew section should look like this:
+
+{% raw %}
 
 ```json
   "provisioners": [
@@ -68,6 +74,8 @@ Don't forget the comma between the two JSON objects in the array.  Once done the
     }
   ]
 ```
+
+{% endraw %}
 
 OK, se have split the original block into two.  We'll start with a few prep commands, and then bookend it with the generalisation.
 
@@ -129,6 +137,8 @@ This will copy the credentials file you've just created and put it into the /tmp
 
 Add the following step to move the credentials file to the correct location:
 
+{% raw %}
+
 ```json
     {
       "type": "shell",
@@ -140,6 +150,8 @@ Add the following step to move the credentials file to the correct location:
       "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"
     },
 ```
+
+{% endraw %}
 
 > Note that the execute commands run using sudo for elevated privileges, and use the lightweight sh (Dash) shell as opposed to bash. Ansible only runs the next entry in the inline array if the previous one had a zero return code.
 

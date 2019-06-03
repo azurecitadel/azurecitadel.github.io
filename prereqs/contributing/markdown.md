@@ -131,6 +131,12 @@ Dan Baker:
     linkedin :
 ```
 
+{% raw %}
+
+> Note that Jekyll also uses [Liquid](https://jekyllrb.com/docs/liquid/) to process templates.  This guide will not go into that in any great detail but feel free to read around.  SomeLiquid uses double curly braces.  If you find this conflicts (such as with Packer) then make use of the [{% raw %}](https://shopify.github.io/liquid/tags/raw/) controls.  This note does exactly that!
+
+{% endraw %}
+
 ## Tables
 
 Tables are officially outside of the markdown standard but are supported by Jekyll.  Use vertical pipes between the columns.
@@ -154,6 +160,8 @@ Jekyll also allows HTML to be included in the files. This is useful for includin
 ```html
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ePxAH5YBKP4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 ```
+
+> Note the use of `?rel=0` after the generated URI. With YouTube you can no longer stop it from showing suggested videos once the video has finished, but adding `?rel=0` does mean that the suggested videos only come from that channel.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ePxAH5YBKP4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 

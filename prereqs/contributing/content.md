@@ -13,7 +13,7 @@ sidebar:
   nav: "contributing"
 ---
 
-# Where should new files go?
+## Where should new files go?
 
 The standard content from the contributors is held in the category folders, e.g.:
 
@@ -33,7 +33,7 @@ These folders are referenced by the `/_data/categories.yml` file. You won't need
 
 The **_data** directory also contains YAML format files to manage the authors and custom navigation. We will cover these later in the guide.
 
-# Out of bounds
+## Out of bounds
 
 The following areas are out of scope for contributions and may be ignored. Feel free to [skip forward](#style).
 
@@ -55,7 +55,7 @@ Please do not create content in these folders.
 
 > (For the record, the html redirect files in here were created locally using the /_redirects.htaccess file and the /_plugins/pageless_redirects.rb plugin from <https://github.com/nquinlan/jekyll-pageless-redirects>. The generated HTML redirects were then manually copied from the _site folder into the root as GitPages does not support custom plugins.)
 
-# Style
+## Style
 
 This a community site for technical Azure users, so your content should be geared for them.
 
@@ -63,11 +63,11 @@ Keep the text professional, concise and clear.
 
 Make full use of headers links, lists and pictures to make the content easy to digest.
 
-# Navigation
+## Navigation
 
 The H1 and H2 headers on each page will be used to generate the navigation pane on the right.  Keep the number of headers sensible so that the navigation pane doesn't become too long for standard screen sizes.
 
-# Centralised media
+## Centralised media
 
 We'll ignore the page specific media for the moment.
 
@@ -79,7 +79,7 @@ The **/images/teaser** folder contains the smaller images used in the category g
 
 These images get reused on multiple pages, which is why they are kept centrally.
 
-# Next
+## Next
 
 The following page goes through single page content using an example template and gives an opportunity to go through the recommended structure.
 

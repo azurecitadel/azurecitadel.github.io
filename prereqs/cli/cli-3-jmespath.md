@@ -192,6 +192,28 @@ The last version is commonly seen when pulling information to be used as variabl
 
 Compound tests can also be created, using && for a logical AND, and \|\| for a logical OR.  For example `--query "[?tags.env == 'test' || tags.env == 'dev']`.
 
+Filtering on boolean values is simple.  All of the filtering examples above resolve to either boolean true or false, and the same is true when using the boolean values themselves.
+
+For example, here is the command to generate a table listing out the objectIds in the Azure AD directory which have the `securityEnabled: true` boolean set:
+
+```bash
+az ad group list --output table --query "[?securityEnabled].{name:displayName, description:description, objectId:objectId}"
+```
+
+Note the `[?securityEnabled]`.  (You can also convert booleans to strings, e.g. `[? to_string(securityEnabled) == 'true']`.)
+
+Resulting table:
+
+```text
+Name                    Description                                      ObjectId
+----------------------  -----------------------------------------------  ------------------------------------
+Databricks Admins       Enable Databricks workspace via portal as admin  3ba57833-991b-40a8-8ce8-895a34464ebf
+RBAC Admins             Allowed to create and assign roles               3defc448-c5f8-4dd0-addd-c94ea54341d3
+Network Admins          Admins for the shared services                   4a1451a1-de76-45e5-ac80-e9276541c96b
+Key Vault Secrets       Those with access to update Key Vault secrets    74fa1c03-aeeb-422e-bab3-796575407e9c
+Virtual Machine Admins  Admins for the Virtual Machines                  88515d1f-e386-4a23-afcc-79b0124805f9
+```
+
 ## Pipes
 
 As in Bash, we can use pipes in our JMESPATH queries to get to the desired point.  As a simple example, compare the following:
