@@ -53,13 +53,13 @@ This lab does not require any prior Kubernetes skills or knowledge, however bein
 
 As Kubernetes is built on top of containers and Docker, and we'll be using Azure, baseline level of knowledge is assumed in two main areas:
 - **Standard use of Azure:** - Azure CLI, Resource groups, subscriptions, etc. 
-- **Docker basics:** - What are images & containers, tags, container registries etc. If you need to get up to speed quickly, you can try reading the [Containers Tech Primer](/guides/tech-primer-containers)
+- **Docker basics:** - What are images & containers, tags, container registries etc. If you need to get up to speed quickly, you can try reading the [Containers Tech Primer](/cloud-native/tech-primer-containers/)
 
 
 ## Pre-Reqs
 There are several things you will need before starting this lab:
 
-- [Azure Subscription](/guides/subscription){:target="_blank" class="btn-info"}   
+- [Azure Subscription](/prereqs/subscription){:target="_blank" class="btn-info"}   
 Either an existing Azure subscription you have access to (with 'contributor' rights) or Azure Pass or free account.  
 We will deploy an *Azure Container Service (AKS)* cluster however this is not necessarily an expensive service, and could easily run for several weeks in the credit provided by an Azure Pass
   - ***Note On Permissions*** - If using an existing subscription you will need rights to create a service principal in the Azure AD tenant you use. This is a pre-req to deploying AKS. 

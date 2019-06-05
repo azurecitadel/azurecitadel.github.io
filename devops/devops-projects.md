@@ -29,7 +29,7 @@ As developers, we all know that to get your application in the hands of your cus
 ## Pre-Reqs
 There are several things you will need before starting this lab:
 
-- [Azure Subscription](/guides/subscription){:target="_blank" class="btn-info"}   
+- [Azure Subscription](/prereqs/subscription){:target="_blank" class="btn-info"}   
 Either an existing Azure subscription you have access to (with 'contributor' rights) or Azure Pass or free account. 
 
 - [VSTS Account](/guides/vsts){:target="_blank" class="btn-info"}   
