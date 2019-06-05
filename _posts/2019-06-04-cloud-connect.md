@@ -11,7 +11,7 @@ If you're not sure what a Cloud Connect is then please take a look at the post f
 For those of you who could not make it then we have a [recording](https://portal.meets4b.com/Join?e=e0ad6ffb-1f2f-415c-8faf-ec75ece5c363)
 and [deck](https://aka.ms/cc/may2019) for you.
 
-Current thinking is that we will run another of these a little  after Ignite which is in Vegas in July.
+Current thinking is that we will run another of these a little after Ignite which is in Vegas during July.
 
 ## Content
 
