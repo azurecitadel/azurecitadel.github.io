@@ -16,3 +16,4 @@ npm-debug.log*
 _site
 _t
 vendor/bundle
+.vscode
