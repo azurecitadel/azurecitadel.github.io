@@ -79,6 +79,8 @@ Use relative links to descend into a sub-page, e.g. `[Module 1 - Deploying Kuber
 
 You can also link to header sections within a lab as anchor ids are generated for you. Example links to sections of this page are `[images](#images)` or `[inline code](/contributing/markdown#inline-code)`. The text after the # must be the exact header text in lowercase, any punctuation will be dropped, and multiple words should be hyphenated such as the inline code example.
 
+> Please remove the localisation for links to the Azure Docs area.  For example, do not use `[Linux VMs](https://docs.microsoft.com/en-gb/azure/virtual-machines/linux/)`, instead use `[Linux VMs](https://docs.microsoft.com/azure/virtual-machines/linux/)`. We get traffic from around the world, so removing `en-us` or `en-gb` will redirect to the localisation page for that user if localisation is available. Don't forget to test any manually edited links before committing!
+
 ## Images
 
 Images use the following format.
