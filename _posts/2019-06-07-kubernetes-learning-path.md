@@ -12,14 +12,14 @@ All of the hyperscale cloud providers have managed Kubernetes services, and the 
 
 Anyone that listened to the Cloud Connect recording will be aware of how much development activity is being poured into AKS from the product team. This includes virtual nodes, multiple pools, Windows container support, policies, network traffic control, event driven container scale out, etc.
 
-Kubernets is definitely one of the hottest technologies around, and one that many visitors to this site are already comfortable with. But if you have not jumped on board yet and are concerned about being left behind then there is good news.
+Kubernetes is definitely one of the hottest technologies around, and one that many visitors to this site are already comfortable with. But if you have not jumped on board yet and are concerned about being left behind then there is good news.
 
 ## Kubernetes Learning Path
 
 The importance of Kubernetes and AKS to Microsoft is evident in the quality of the new [Kubernetes Learning Path](https://azure.microsoft.com/resources/kubernetes-learning-path/) that has been put together.
 
-The diagram below shows how you can move from Kubernetes core concepts all the way through to managing large scale Kubernetes clusters.
-
 ![Kubernetes Learning Path](/images/posts/2019-06-07-kubernetes-learning-path.png)
 
-Enjoy!
+The learning path will take you from Kubernetes core concepts all the way through to managing large scale Kubernetes clusters with AKS.
+
+There is some great material here and Kubernete's co-founder Brendan Burns has been directly involved in the material and presents many of the videos. Enjoy!
