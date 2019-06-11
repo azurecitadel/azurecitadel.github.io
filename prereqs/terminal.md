@@ -68,8 +68,6 @@ There will be frequent updates to the code base.  Instructions to rebuild:
 
 1. `cd /git/terminal`
 1. `git pull`
-    * _Optional_: `git submodule update --init --recursive`
-    * _Optional_: `./dep/nuget/nuget.exe restore OpenConsole.sln`
 1. `explorer.exe .`
 1. Double click OpenConsole.sln to open Visual Studio 2019
     * Release, x64 and CascadiaPackage should already be selected
@@ -80,185 +78,406 @@ There will be frequent updates to the code base.  Instructions to rebuild:
 
 One of the great features of the new Terminal project is that it is very customisable, and it is all based on a JSON file called profiles.json. The aim is that you will be able to store it centrally so that you have the same experience wherever you go.
 
-I first installed my preferred Powerline font, [DejaVu Sans Mono](https://github.com/powerline/fonts/tree/master/DejaVuSansMono) and then used the following profiles.json to have WSL as my default profile, with the new font and customised colours based on the Hyper Relaxed theme.
+I first installed my preferred Powerline font, [DejaVu Sans Mono](https://github.com/powerline/fonts/tree/master/DejaVuSansMono).
+
+I also installed the experimental [azshell](https://github.com/yangl900/azshell) project, using Chocolatey at the Windows level and the curl command at the WSL level. I can jump in and out of Cloud Shell from Ubuntu using `azshell`, or use the Windows `"C:\ProgramData\chocolatey\bin\azshell.exe --shell bash"` command to start a new Terminal session straight into the Cloud Shell.
+
+Here is my the following profiles.json to have WSL as my default profile, with the new font and customised colours based on the Hyper Relaxed theme.
 
 ```json
 {
-    "defaultProfile": "{6691901c-764a-11e9-b9c0-bc838515ccd4}",
-    "initialRows": 30,
-    "initialCols": 120,
-    "alwaysShowTabs": false,
-    "showTerminalTitleInTitlebar": true,
-    "experimental_showTabsInTitlebar": true,
-    "profiles": [
+    "globals" :
+    {
+        "alwaysShowTabs" : false,
+        "defaultProfile" : "{6691901c-764a-11e9-b9c0-bc838515ccd4}",
+        "initialCols" : 120,
+        "initialRows" : 30,
+        "keybindings" :
+        [
+            {
+                "command" : "closeTab",
+                "keys" :
+                [
+                    "ctrl+w"
+                ]
+            },
+            {
+                "command" : "newTab",
+                "keys" :
+                [
+                    "ctrl+t"
+                ]
+            },
+            {
+                "command" : "newTabProfile0",
+                "keys" :
+                [
+                    "ctrl+shift+1"
+                ]
+            },
+            {
+                "command" : "newTabProfile1",
+                "keys" :
+                [
+                    "ctrl+shift+2"
+                ]
+            },
+            {
+                "command" : "newTabProfile2",
+                "keys" :
+                [
+                    "ctrl+shift+3"
+                ]
+            },
+            {
+                "command" : "newTabProfile3",
+                "keys" :
+                [
+                    "ctrl+shift+4"
+                ]
+            },
+            {
+                "command" : "newTabProfile4",
+                "keys" :
+                [
+                    "ctrl+shift+5"
+                ]
+            },
+            {
+                "command" : "newTabProfile5",
+                "keys" :
+                [
+                    "ctrl+shift+6"
+                ]
+            },
+            {
+                "command" : "newTabProfile6",
+                "keys" :
+                [
+                    "ctrl+shift+7"
+                ]
+            },
+            {
+                "command" : "newTabProfile7",
+                "keys" :
+                [
+                    "ctrl+shift+8"
+                ]
+            },
+            {
+                "command" : "newTabProfile8",
+                "keys" :
+                [
+                    "ctrl+shift+9"
+                ]
+            },
+            {
+                "command" : "nextTab",
+                "keys" :
+                [
+                    "ctrl+tab"
+                ]
+            },
+            {
+                "command" : "prevTab",
+                "keys" :
+                [
+                    "ctrl+shift+tab"
+                ]
+            },
+            {
+                "command" : "scrollDown",
+                "keys" :
+                [
+                    "ctrl+shift+down"
+                ]
+            },
+            {
+                "command" : "scrollDownPage",
+                "keys" :
+                [
+                    "ctrl+shift+pgdn"
+                ]
+            },
+            {
+                "command" : "scrollUp",
+                "keys" :
+                [
+                    "ctrl+shift+up"
+                ]
+            },
+            {
+                "command" : "scrollUpPage",
+                "keys" :
+                [
+                    "ctrl+shift+pgup"
+                ]
+            },
+            {
+                "command" : "switchToTab0",
+                "keys" :
+                [
+                    "alt+1"
+                ]
+            },
+            {
+                "command" : "switchToTab1",
+                "keys" :
+                [
+                    "alt+2"
+                ]
+            },
+            {
+                "command" : "switchToTab2",
+                "keys" :
+                [
+                    "alt+3"
+                ]
+            },
+            {
+                "command" : "switchToTab3",
+                "keys" :
+                [
+                    "alt+4"
+                ]
+            },
+            {
+                "command" : "switchToTab4",
+                "keys" :
+                [
+                    "alt+5"
+                ]
+            },
+            {
+                "command" : "switchToTab5",
+                "keys" :
+                [
+                    "alt+6"
+                ]
+            },
+            {
+                "command" : "switchToTab6",
+                "keys" :
+                [
+                    "alt+7"
+                ]
+            },
+            {
+                "command" : "switchToTab7",
+                "keys" :
+                [
+                    "alt+8"
+                ]
+            },
+            {
+                "command" : "switchToTab8",
+                "keys" :
+                [
+                    "alt+9"
+                ]
+            }
+        ],
+        "requestedTheme" : "system",
+        "showTabsInTitlebar" : false,
+        "showTerminalTitleInTitlebar" : false
+    },
+    "profiles" :
+    [
         {
-            "startingDirectory": "",
-            "guid": "{6691901c-764a-11e9-b9c0-bc838515ccd4}",
-            "name": "Ubuntu",
-            "colorscheme": "Relaxed",
-            "historySize": 9001,
-            "snapOnInput": true,
-            "cursorColor": "#FFFFFF",
-            "cursorShape": "bar",
-            "commandline": "wsl.exe ~",
-            "fontFace": "DejaVu Sans Mono for Powerline",
-            "fontSize": 14,
-            "acrylicOpacity": 0.5,
-            "useAcrylic": true,
-            "closeOnExit": true,
-            "padding": "8, 8, 8, 8"
+            "acrylicOpacity" : 0.60000002384185791,
+            "closeOnExit" : true,
+            "colorScheme" : "Relaxed",
+            "commandline" : "wsl.exe ~",
+            "cursorColor" : "#FFFFFF",
+            "cursorHeight" : 25,
+            "cursorShape" : "vintage",
+            "fontFace" : "DejaVu Sans Mono for Powerline",
+            "fontSize" : 14,
+            "guid" : "{6691901c-764a-11e9-b9c0-bc838515ccd4}",
+            "historySize" : 9001,
+            "name" : "Ubuntu",
+            "padding" : "8, 8, 8, 8",
+            "snapOnInput" : true,
+            "startingDirectory" : "",
+            "useAcrylic" : true
         },
         {
-            "startingDirectory": "%USERPROFILE%",
-            "guid": "{29191df3-f8f6-41a6-bc50-5f86757e5ef4}",
-            "name": "PowerShell",
-            "background": "#012456",
-            "colorscheme": "Campbell",
-            "historySize": 9001,
-            "snapOnInput": true,
-            "cursorColor": "#FFFFFF",
-            "cursorShape": "bar",
-            "commandline": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
-            "fontFace": "Courier New",
-            "fontSize": 12,
-            "acrylicOpacity": 0.5,
-            "useAcrylic": false,
-            "closeOnExit": true,
-            "padding": "0, 0, 0, 0"
+            "acrylicOpacity" : 0.60000002384185791,
+            "closeOnExit" : true,
+            "colorScheme" : "Relaxed",
+            "commandline" : "C:\\ProgramData\\chocolatey\\bin\\azshell.exe --shell bash",
+            "cursorColor" : "#FFFFFF",
+            "cursorHeight" : 25,
+            "cursorShape" : "vintage",
+            "fontFace" : "DejaVu Sans Mono for Powerline",
+            "fontSize" : 14,
+            "guid" : "{6691901c-764a-11e9-b9c0-bc838515ccd5}",
+            "historySize" : 9001,
+            "name" : "Cloud Shell",
+            "padding" : "8, 8, 8, 8",
+            "snapOnInput" : true,
+            "startingDirectory" : "",
+            "useAcrylic" : true
         },
         {
-            "startingDirectory": "%USERPROFILE%",
-            "guid": "{e5c4a7b9-bd87-416d-9506-877ab7c8722b}",
-            "name": "Command Prompt",
-            "colorscheme": "Campbell",
-            "historySize": 9001,
-            "snapOnInput": true,
-            "cursorColor": "#FFFFFF",
-            "cursorShape": "bar",
-            "commandline": "cmd.exe",
-            "fontFace": "Consolas",
-            "fontSize": 12,
-            "acrylicOpacity": 0.75,
-            "useAcrylic": true,
-            "closeOnExit": true,
-            "padding": "0, 0, 0, 0"
+            "acrylicOpacity" : 0.80000001192092896,
+            "closeOnExit" : true,
+            "colorScheme" : "Solarized Dark",
+            "commandline" : "wsl.exe -d openSUSE-42",
+            "cursorColor" : "#FFFFFF",
+            "cursorShape" : "bar",
+            "fontFace" : "Consolas",
+            "fontSize" : 12,
+            "guid" : "{6691901c-764a-11e9-b9c0-bc838515ccd7}",
+            "historySize" : 9001,
+            "name" : "openSUSE",
+            "padding" : "8, 8, 8, 8",
+            "snapOnInput" : true,
+            "startingDirectory" : "~",
+            "useAcrylic" : true
+        },
+        {
+            "acrylicOpacity" : 0.5,
+            "background" : "#012456",
+            "closeOnExit" : true,
+            "colorScheme" : "Campbell",
+            "commandline" : "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
+            "cursorColor" : "#FFFFFF",
+            "cursorShape" : "bar",
+            "fontFace" : "Courier New",
+            "fontSize" : 12,
+            "guid" : "{29191df3-f8f6-41a6-bc50-5f86757e5ef4}",
+            "historySize" : 9001,
+            "name" : "PowerShell",
+            "padding" : "0, 0, 0, 0",
+            "snapOnInput" : true,
+            "startingDirectory" : "%USERPROFILE%",
+            "useAcrylic" : false
+        },
+        {
+            "acrylicOpacity" : 0.75,
+            "closeOnExit" : true,
+            "colorScheme" : "Campbell",
+            "commandline" : "cmd.exe",
+            "cursorColor" : "#FFFFFF",
+            "cursorShape" : "bar",
+            "fontFace" : "Consolas",
+            "fontSize" : 12,
+            "guid" : "{e5c4a7b9-bd87-416d-9506-877ab7c8722b}",
+            "historySize" : 9001,
+            "name" : "Command Prompt",
+            "padding" : "0, 0, 0, 0",
+            "snapOnInput" : true,
+            "startingDirectory" : "%USERPROFILE%",
+            "useAcrylic" : true
         }
     ],
-    "schemes": [
+    "schemes" :
+    [
         {
-            "name": "Campbell",
-            "foreground": "#F2F2F2",
-            "background": "#0C0C0C",
-            "colors": [
-                "#0C0C0C",
-                "#C50F1F",
-                "#13A10E",
-                "#C19C00",
-                "#0037DA",
-                "#881798",
-                "#3A96DD",
-                "#CCCCCC",
-                "#767676",
-                "#E74856",
-                "#16C60C",
-                "#F9F1A5",
-                "#3B78FF",
-                "#B4009E",
-                "#61D6D6",
-                "#F2F2F2"
-            ]
+            "background" : "#0C0C0C",
+            "black" : "#0C0C0C",
+            "blue" : "#0037DA",
+            "brightBlack" : "#767676",
+            "brightBlue" : "#3B78FF",
+            "brightCyan" : "#61D6D6",
+            "brightGreen" : "#16C60C",
+            "brightPurple" : "#B4009E",
+            "brightRed" : "#E74856",
+            "brightWhite" : "#F2F2F2",
+            "brightYellow" : "#F9F1A5",
+            "cyan" : "#3A96DD",
+            "foreground" : "#F2F2F2",
+            "green" : "#13A10E",
+            "name" : "Campbell",
+            "purple" : "#881798",
+            "red" : "#C50F1F",
+            "white" : "#CCCCCC",
+            "yellow" : "#C19C00"
         },
         {
-            "name": "Solarized Dark",
-            "foreground": "#FDF6E3",
-            "background": "#073642",
-            "colors": [
-                "#073642",
-                "#D30102",
-                "#859900",
-                "#B58900",
-                "#268BD2",
-                "#D33682",
-                "#2AA198",
-                "#EEE8D5",
-                "#002B36",
-                "#CB4B16",
-                "#586E75",
-                "#657B83",
-                "#839496",
-                "#6C71C4",
-                "#93A1A1",
-                "#FDF6E3"
-            ]
+            "background" : "#073642",
+            "black" : "#073642",
+            "blue" : "#268BD2",
+            "brightBlack" : "#002B36",
+            "brightBlue" : "#839496",
+            "brightCyan" : "#93A1A1",
+            "brightGreen" : "#586E75",
+            "brightPurple" : "#6C71C4",
+            "brightRed" : "#CB4B16",
+            "brightWhite" : "#FDF6E3",
+            "brightYellow" : "#657B83",
+            "cyan" : "#2AA198",
+            "foreground" : "#FDF6E3",
+            "green" : "#859900",
+            "name" : "Solarized Dark",
+            "purple" : "#D33682",
+            "red" : "#D30102",
+            "white" : "#EEE8D5",
+            "yellow" : "#B58900"
         },
         {
-            "name": "Solarized Light",
-            "foreground": "#073642",
-            "background": "#FDF6E3",
-            "colors": [
-                "#073642",
-                "#D30102",
-                "#859900",
-                "#B58900",
-                "#268BD2",
-                "#D33682",
-                "#2AA198",
-                "#EEE8D5",
-                "#002B36",
-                "#CB4B16",
-                "#586E75",
-                "#657B83",
-                "#839496",
-                "#6C71C4",
-                "#93A1A1",
-                "#FDF6E3"
-            ]
+            "background" : "#FDF6E3",
+            "black" : "#073642",
+            "blue" : "#268BD2",
+            "brightBlack" : "#002B36",
+            "brightBlue" : "#839496",
+            "brightCyan" : "#93A1A1",
+            "brightGreen" : "#586E75",
+            "brightPurple" : "#6C71C4",
+            "brightRed" : "#CB4B16",
+            "brightWhite" : "#FDF6E3",
+            "brightYellow" : "#657B83",
+            "cyan" : "#2AA198",
+            "foreground" : "#073642",
+            "green" : "#859900",
+            "name" : "Solarized Light",
+            "purple" : "#D33682",
+            "red" : "#D30102",
+            "white" : "#EEE8D5",
+            "yellow" : "#B58900"
         },
         {
-            "name": "Nord Extra Dark",
-            "foreground": "#E7EAF1",
-            "background": "#3B4356",
-            "colors": [
-                "#161920",
-                "#4E8FB3",
-                "#92B279",
-                "#76B3C5",
-                "#AF4B57",
-                "#A3799D",
-                "#E5C078",
-                "#DEE3EC",
-                "#3B4356",
-                "#6E8FB3",
-                "#92B279",
-                "#7DAEAC",
-                "#AF4B57",
-                "#A3799D",
-                "#E5C078",
-                "#E7EAF1"
-            ]
+            "background" : "#3B4356",
+            "black" : "#161920",
+            "blue" : "#AF4B57",
+            "brightBlack" : "#3B4356",
+            "brightBlue" : "#AF4B57",
+            "brightCyan" : "#E5C078",
+            "brightGreen" : "#92B279",
+            "brightPurple" : "#A3799D",
+            "brightRed" : "#6E8FB3",
+            "brightWhite" : "#E7EAF1",
+            "brightYellow" : "#7DAEAC",
+            "cyan" : "#E5C078",
+            "foreground" : "#E7EAF1",
+            "green" : "#92B279",
+            "name" : "Nord Extra Dark",
+            "purple" : "#A3799D",
+            "red" : "#4E8FB3",
+            "white" : "#DEE3EC",
+            "yellow" : "#76B3C5"
         },
         {
-            "name": "Relaxed",
-            "foreground": "#D9D9D9",
-            "background": "#353A44",
-            "colors": [
-                "#151515",
-                "#BC5653",
-                "#909D63",
-                "#EBC17A",
-                "#6A8799",
-                "#B06698",
-                "#C9DFFF",
-                "#D9D9D9",
-                "#636363",
-                "#BC5653",
-                "#A0AC77",
-                "#EBC17A",
-                "#7EAAC7",
-                "#B48EAD",
-                "#ACBBD0",
-                "#F7F7F7"
-            ]
+            "background" : "#353A44",
+            "black" : "#151515",
+            "blue" : "#6A8799",
+            "brightBlack" : "#636363",
+            "brightBlue" : "#7EAAC7",
+            "brightCyan" : "#ACBBD0",
+            "brightGreen" : "#A0AC77",
+            "brightPurple" : "#B48EAD",
+            "brightRed" : "#BC5653",
+            "brightWhite" : "#F7F7F7",
+            "brightYellow" : "#EBC17A",
+            "cyan" : "#C9DFFF",
+            "foreground" : "#D9D9D9",
+            "green" : "#909D63",
+            "name" : "Relaxed",
+            "purple" : "#B06698",
+            "red" : "#BC5653",
+            "white" : "#D9D9D9",
+            "yellow" : "#EBC17A"
         }
     ]
 }
