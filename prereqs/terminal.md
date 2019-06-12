@@ -80,7 +80,7 @@ One of the great features of the new Terminal project is that it is very customi
 
 I first installed my preferred Powerline font, [DejaVu Sans Mono](https://github.com/powerline/fonts/tree/master/DejaVuSansMono).
 
-I also installed the experimental [azshell](https://github.com/yangl900/azshell) project, using Chocolatey at the Windows level and the curl command at the WSL level. I can jump in and out of Cloud Shell from Ubuntu using `azshell`, or use the Windows `"C:\ProgramData\chocolatey\bin\azshell.exe --shell bash"` command to start a new Terminal session straight into the Cloud Shell.
+I also installed the experimental [azshell](https://github.com/yangl900/azshell) project twice over, using Chocolatey at the Windows level and the curl command at the WSL level. I can jump in and out of Cloud Shell from Ubuntu using `azshell`, or use the Windows `"C:\ProgramData\chocolatey\bin\azshell.exe --shell bash"` command to start a new Terminal session straight into the Cloud Shell.
 
 Here is my the following profiles.json to have WSL as my default profile, with the new font and customised colours based on the Hyper Relaxed theme.
 
