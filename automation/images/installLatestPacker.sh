@@ -25,19 +25,7 @@ error()
   exit 1
 }
 
-# Grab software name based on either first parameters or the script name
-
-declare -l software
-
-if [[ -n "$1" ]]
-then
-  software=$1
-  [[ "$software"  =~ ^(terraform|packer)$ ]] || error "Argument must be either terraform or packer"
-else
-  # Derive the software from the script name if it is installLatestTerraform.sh or installLatestPacker.sh
-  software=$(basename $0 .sh | sed 's/^installLatest//1')
-  [[ "$software"  =~ ^(terraform|packer)$ ]] || error "Usage is \"$(basename $0) terraform|packer\""
-fi
+declare -l software=packer
 
 # Check for zip and jq
 _pkgs=""
