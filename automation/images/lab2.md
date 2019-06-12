@@ -6,7 +6,7 @@ category:
 comments: true
 featured: false
 hidden: true
-published: true
+published: false
 tags: [ image, packer, linux ]
 header:
   overlay_image: images/header/whiteboard.jpg
