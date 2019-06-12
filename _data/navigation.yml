@@ -123,14 +123,20 @@ cli:
     - title: "Scripting in Bash"
       url: "prereqs/cli/cli-4-bash"
 
-linux:
+images:
   - title: "Main Page"
-    url: "automation/linux"
+    url: "automation/images"
 
   - title: "Labs"
     children:
-    - title: "Simple Packer Image Creation"
-      url: "automation/linux/lab1"
+    - title: "Packer"
+      url: "automation/images/lab1"
+    - title: "Ansible"
+      url: "automation/images/lab2"
+    - title: "Shared Image Gallery"
+      url: "automation/images/lab3"
+    - title: "Azure DevOps"
+      url: "automation/images/lab4"
 
 policy:
   - title: "Main Page"

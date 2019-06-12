@@ -1,5 +1,5 @@
 ---
-title: "Automating linux VM image creation"
+title: "Automating Linux VM image creation"
 date: 2019-06-17
 author: Richard Cheney
 category: automation

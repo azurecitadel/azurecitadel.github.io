@@ -1,6 +1,6 @@
 ---
-title: "Simple Packer Image creation"
-date: 2019-03-18
+title: "Image creation using Packer"
+date: 2019-06-17
 author: Richard Cheney
 category:
 comments: true
@@ -12,7 +12,7 @@ header:
   overlay_image: images/header/whiteboard.jpg
   teaser: images/teaser/blueprint.png
 sidebar:
-  nav: "linux"
+  nav: "images"
 excerpt: Use Packer to script the generation of a simple Ubuntu image
 ---
 
@@ -22,7 +22,7 @@ This is an introductory lab, and is frankly very similar to the one on Azure doc
 
 ## Install Packer
 
-Follow Hashicorp's instructions for installing the binary:
+Follow Hashicorp's instructions for installing the binary if you haven't done so as part of the [prereqs](../prereqs):
 
   <https://www.packer.io/intro/getting-started/install.html#precompiled-binaries>
 
@@ -35,7 +35,7 @@ which packer
 /usr/local/bin/packer
 
 packer --version
-1.3.5
+1.4.1
 </code></pre>
 
 Personally I use a script to accelerate the installation.  Feel free to download a copy using:
@@ -82,9 +82,19 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$subId" -
 
 **Capture the output of this command for the next step!**
 
+## Create a Packer area
+
+Create a folder for your lab files.  The commands below will create subdirectory in your home directory:
+
+```bash
+cd ~
+mkdir -m 755 packer
+cd packer
+```
+
 ## Create the packer template
 
-Create a file called myFirstImage.json with the following template, and then configure the correct values for the service principal.
+Create a file called lab1.json with the following template.
 
 {% raw %}
 
@@ -99,7 +109,7 @@ Create a file called myFirstImage.json with the following template, and then con
     "subscription_id": "<subscription_id>",
 
     "managed_image_resource_group_name": "packer_images",
-    "managed_image_name": "myFirstImage",
+    "managed_image_name": "lab1",
 
     "os_type": "Linux",
     "image_publisher": "Canonical",
@@ -132,40 +142,39 @@ Create a file called myFirstImage.json with the following template, and then con
 
 {% endraw %}
 
-The first two commands in that inline array will update the operating system, and then the last command will generalise the virtual machine into an image.
+Configure the correct values for the service principal.
 
-(This is the essentially the same template in the [Packer documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/build-image-with-packer#define-packer-template) on Azure docs.)
+Look at the inline array near the bottom of the file.  The first two commands in that array will update the operating system, and then the last command will generalise the virtual machine into an image.
 
-If you want a different location, size, or platform image then you may find the following example commands useful:
-
-```bash
-az account list-locations --output table
-az vm list-sizes --location westeurope --output table
-az vm image list-publishers --location westeurope --output table
-az vm image list-offers --publisher SUSE --location westeurope --output table
-az vm image list-skus --publisher SUSE --offer SLES --location westeurope --output table
-```
+> This is the essentially the same template in the [Packer documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/build-image-with-packer#define-packer-template) on Azure docs.)
+>
+> If you want a different location, size, or platform image then you may find the following example commands useful:
+>
+> ```bash
+> az account list-locations --output table
+> az vm list-sizes --location westeurope --output table
+> az vm image list-publishers --location westeurope --output table
+> az vm image list-offers --publisher SUSE --location westeurope --output table
+> az vm image list-skus --publisher SUSE --offer SLES --location westeurope --output table
+> ```
 
 ## Run the build
 
 Run packer locally to build the image:
 
 ```bash
-packer build myFirstImage.json
+packer build lab1.json
 ```
 
-The command will show progress with output to screen.  Once complete, it will be an image resource type, ready to use for a deployment.
+> If you get an error saying `Build 'azure-arm' errored: adal: Refresh request failed. Status Code = '400'. Response body: Bad Request` it is because you forgot to update the fields for the service principal's credentials.
 
-<pre class="language-bash command-line" data-output="2-5,7-99" data-prompt="$"><code>
-az resource list --resource-group packer_images --output table
-Name                ResourceGroup    Location    Type                      Status
-------------------  ---------------  ----------  ------------------------  --------
-configManagementVm  packer_images    westeurope  Microsoft.Compute/images
+The command will show progress with output to screen.  Once complete, it will be an image resource type, ready to use for a deployment. Standard VM images use the `Microsoft.Compute/images` provider type.
 
+<pre class="language-bash command-line" data-output="2-" data-prompt="$"><code>
 az image list --resource-group packer_images --output table
-Location    Name                ProvisioningState    ResourceGroup
-----------  ------------------  -------------------  ---------------
-westeurope  configManagementVm  Succeeded            packer_images
+Location    Name    ProvisioningState    ResourceGroup
+----------  ------  -------------------  ---------------
+westeurope  lab1    Succeeded            packer_images
 </code></pre>
 
-[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Audit ►](../lab2){: .btn .btn--primary}
+[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Ansible ►](../lab2){: .btn .btn--primary}

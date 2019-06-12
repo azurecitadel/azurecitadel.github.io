@@ -1,6 +1,6 @@
 ---
 title: "Going deeper with Packer"
-date: 2019-03-18
+date: 2019-06-17
 author: Richard Cheney
 category:
 comments: true
@@ -12,7 +12,7 @@ header:
   overlay_image: images/header/whiteboard.jpg
   teaser: images/teaser/blueprint.png
 sidebar:
-  nav: "linux"
+  nav: "images"
 excerpt: Adding additional provisioning steps to Packer
 ---
 
@@ -49,7 +49,7 @@ The provisioners block is a JSON array (`[]`) and it currently has just the one 
 1. Just the apt-get commands
 1. Only the generalisation (waagent) command
 
-Don't forget the comma between the two JSON objects in the array.  Once done thew section should look like this:
+Don't forget the comma between the two JSON objects in the array.  Your section should look like this:
 
 {% raw %}
 
@@ -81,9 +81,7 @@ OK, se have split the original block into two.  We'll start with a few prep comm
 
 ## Ansible
 
-Ansible could be a (large) set of labs by itself. It is popular for configuration management as it is open source and it is agentless. We could use Ansible to provision the  Azure infrastructure, but we will leave that job to Terraform.  We will use Ansible purely for configuring the servers themselves once they have been stood up.
-
-This lab should give you one approach to get it running as part of your Packer builds.  Later labs will show Terraform deploying from these images and then using Ansible to run playbooks on the new VMs.
+Ansible could be a (large) set of labs by itself. It is popular for configuration management as it is open source and it is agentless. We could use Ansible to provision the Azure infrastructure, but we will leave that job to Terraform.  We will use Ansible purely for configuring the servers themselves once they have been stood up.
 
 You should be aware that there are many other options in the configuration management space, such as Chef, Puppet, Salt, Octopus, etc.
 
@@ -121,7 +119,7 @@ client_id=<clientId>
 secret=<clientSecret>
 ```
 
-Make sure that your local copy is protected using `chmod 600 credentials`.  This .ini for file is one way of handling [Azure credentials for Ansible](https://docs.ansible.com/ansible/latest/scenario_guides/guide_azure.html#authenticating-with-azure).
+Make sure that your local copy is protected using `chmod 600 credentials`.  This .ini file is one way of handling [Azure credentials for Ansible](https://docs.ansible.com/ansible/latest/scenario_guides/guide_azure.html#authenticating-with-azure).
 
 Now add a new step in your provisioners, in the middle:
 
@@ -194,6 +192,4 @@ tree /ansible
         └── main.yml
 </code></pre>
 
-
-
-[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Audit ►](../lab2){: .btn .btn--primary}
+[◄ Lab 1: Packer](../lab1){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 3: Shared Image Gallery ►](../lab3){: .btn .btn--primary}
