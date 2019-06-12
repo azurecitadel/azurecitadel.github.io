@@ -6,7 +6,7 @@ category: automation
 comments: true
 featured: true
 hidden: false
-published: false
+published: true
 tags: [ "prereqs", "automation" ]
 header:
   overlay_image: images/header/whiteboard.jpg
