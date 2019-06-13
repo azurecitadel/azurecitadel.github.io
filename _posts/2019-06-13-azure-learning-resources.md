@@ -24,7 +24,7 @@ These are great for getting your hands dirty with the technology and going a lit
 
 ## Cloud Workshops
 
-Some of partners have taken content on here and used that with their customers and we actively encourage that.  Sessions like that help everyone to understand Azure and addressing the skills gap, and both of those only ever result in greater adoption of the platform.
+Some of our partners have taken content from Citadel and used that with their customers and we actively encourage that.  Those sessions create greater understanding of Azure and help to address the skills gap, driving greater adoption of the platform.
 
 There is an official [Microsoft Cloud Workshop](https://microsoftcloudworkshop.com/) resource that you might not be aware of that can help you in this area. It is a community sharing experience helping to accelerate the delivery of customer and partner workshops based on specific key topics.
 
