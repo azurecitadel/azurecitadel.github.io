@@ -4,7 +4,7 @@ date: 2019-06-12
 author: Richard Cheney
 category: automation
 comments: true
-featured: true
+featured: false
 hidden: false
 published: true
 tags: [ "prereqs", "automation" ]
