@@ -35,34 +35,6 @@ Set up your machine as per the [automation prereqs](./prereqs) page.
 
 Note that you won't need the Terraform or Packer binaries for these labs.
 
-## ARM Snippets
-
-Finally, add the snippets for Azure Resource Manager.
-
-1. Browse to the [snippets file](https://raw.githubusercontent.com/sam-cogan/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) and copy the contents
-    * Click on the file contents to get focus
-    * Type `CTRL`+`A` then `CTRL`+`C`
-1. In VS Code, go to File -> Preferences -> User Snippets -> JSON
-1. Paste in the contents **before the last curly brace**
-1. Ensure the JSON file has no syntax errors and save
-
-**💬 Note.** Do not install the third party Azure Resource Manager Snippets extension available in the gallery.  This only has a subset of the snippets that you will find in Sam Cogan's [GitHub repository](https://github.com/sam-cogan/azure-xplat-arm-tooling/blob/master/VSCode/armsnippets.json).
-
-If you have done this correctly then the following test should work:
-
-1. Create a new file (`CTRL`+`N`)
-1. Save it as _test.json_ (`CTRL`+`S`)
-1. Click in the file to get focus
-1. Type 'arm' and you should see the Intellisense list appear
-1. Hit `ENTER` or `TAB` when _arm!_ is highlighted
-1. Save the file (`CTRL`+`S`)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ePxAH5YBKP4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-**Figure 2:** Adding JSON snippets into vscode and testing
-
-Feel free to delete the resulting test.json file.
-
 ## Index
 
 Lab | Section | Description

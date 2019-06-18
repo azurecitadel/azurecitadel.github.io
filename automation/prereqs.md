@@ -123,6 +123,7 @@ The following extensions should also be installed as they are assumed by the lab
 Azure Account | All | Microsoft | [ms-vscode.azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 JSON Tools | All | Erik Lynd | [eriklynd.json-tools](https://marketplace.visualstudio.com/items?itemName=eriklynd.json-tools)
 Azure Resource Manager Tools | ARM | Microsoft | [msazurermtools.azurerm-vscode-tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+Azure Resource Manager Snippets | ARM | Sam Cogan | [samcogan.arm-snippets](https://marketplace.visualstudio.com/items?itemName=samcogan.arm-snippets)
 Terraform | Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
 Advanced Terraform Snippets Generator | Terraform | Richard Sentino | [mindginative.terraform-snippets](https://marketplace.visualstudio.com/items?itemName=mindginative.terraform-snippets)
 Ansible | Images | Microsoft | [vscoss.vscode-ansible](https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible)
