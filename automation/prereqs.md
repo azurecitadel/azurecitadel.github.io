@@ -122,6 +122,7 @@ The following extensions should also be installed as they are assumed by the lab
 **Module Name** | Labs | **Author** | **Extension Identifier**
 Azure Account | All | Microsoft | [ms-vscode.azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 JSON Tools | All | Erik Lynd | [eriklynd.json-tools](https://marketplace.visualstudio.com/items?itemName=eriklynd.json-tools)
+Bracket Pair Colorizer 2 | CoenraadS | [coenraads.bracket-pair-colorizer-2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
 Azure Resource Manager Tools | ARM | Microsoft | [msazurermtools.azurerm-vscode-tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 Azure Resource Manager Snippets | ARM | Sam Cogan | [samcogan.arm-snippets](https://marketplace.visualstudio.com/items?itemName=samcogan.arm-snippets)
 Terraform | Terraform | Mikael Olenfalk | [mauve.terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
