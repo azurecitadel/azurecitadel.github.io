@@ -5,7 +5,7 @@ author: Richard Cheney
 category: automation
 comments: true
 featured: false
-hidden: true
+hidden: false
 tags: [terraform]
 header:
   overlay_image: images/header/nothing.png
