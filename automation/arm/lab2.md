@@ -202,7 +202,7 @@ Quick guide:
 1. Strip down the parameters file to only the required webAppName parameter value
 1. Test
 
-> Note that the "name" parameter as generated from the portal would cause a problem for PowerShell submissions.  This is because the PowerShell New-AzureRmResourceGroupDeployment cmdlet automatically creates new switches on the fly based on the parameter names, but these must not clash with existing switches.  As `-name` is one of those switches you will see an error.  Changing it to 'webAppName' avoids this.
+> Note that the "name" parameter as generated from the portal would cause a problem for PowerShell submissions.  This is because the PowerShell New-AzResourceGroupDeployment cmdlet automatically creates new switches on the fly based on the parameter names, but these must not clash with existing switches.  As `-name` is one of those switches you will see an error.  Changing it to 'webAppName' avoids this.
 
 It is worth going through the pain of this refactoring section as it is really good practice for you.  If you do get stuck then the video below shows the files being edited.
 
@@ -427,7 +427,7 @@ The first line used a JMESPATH query to filter down to the output section of the
 Let's look at setting a variable in PowerShell to the full output object and then pulling out the required variables.
 
 ```powershell
-$outputs = (New-AzureRmResourceGroupDeployment -Name $job -TemplateParameterFile $parms -TemplateFile $template -ResourceGroupName $rg).Outputs
+$outputs = (New-AzResourceGroupDeployment -Name $job -TemplateParameterFile $parms -TemplateFile $template -ResourceGroupName $rg).Outputs
 $hostName = $Outputs.hostname.Value
 $sshCommand = $Outputs.sshCommand.Value
 ```

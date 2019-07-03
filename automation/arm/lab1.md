@@ -157,10 +157,10 @@ Let's move on and deploy the template.  We'll run this in the Integrated Console
 
 ### Logging in using PowerShell
 
-* Type `Login-AzureRmAccount` to launch the dialog window
+* Type `Login-AzAccount` to launch the dialog window
 * Switch to it using ALT-TAB and authenticate
 
-> It has been assumed that you have only one subscription.  If not then use `Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>`.
+> It has been assumed that you have only one subscription.  If not then use `Select-AzSubscription -SubscriptionName <yourSubscriptionName>`.
 
 Once authenticated then you will not need to reauthenticate for a period of time.
 
@@ -184,8 +184,8 @@ az group deployment create --name job1 --resource-group lab1 --template-file azu
 
 ```powershell
 cd lab1
-New-AzureRmResourceGroup -Name lab1 -Location "West Europe"
-New-AzureRmResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile azuredeploy.json
+New-AzResourceGroup -Name lab1 -Location "West Europe"
+New-AzResourceGroupDeployment -Name job1 -ResourceGroupName lab1 -TemplateFile azuredeploy.json
 ```
 
 ## Validating a deployment
@@ -372,7 +372,7 @@ $rg="lab1"
 $template="C:\myTemplates\lab1\azuredeploy.json"
 $job="job2"
 $storageAccount="richeneysa2"
-New-AzureRmResourceGroupDeployment -Name $job -storageAccount $storageAccount -TemplateFile $template -ResourceGroupName $rg
+New-AzResourceGroupDeployment -Name $job -storageAccount $storageAccount -TemplateFile $template -ResourceGroupName $rg
 ```
 
 The inline parameters for PowerShell deployments are very slick, and effectively create additional switches for the deployment cmdlet on the fly based on the parameter names specified in the template.  See the `-storageAccount` switch in the example above; this only works as we have storageAccount as a parameter value in our template.
@@ -458,13 +458,13 @@ You should not consider a template file ready to use until all errors and warnin
 
 You can also use the `az group deployment validate` subcommand to syntactically validate a template file.  The rest of the command switches are the same as `az group deployment create`, making it easy to include that in a workflow.
 
-PowerShell can do exactly the same, replacing `New-AzureRmResourceGroupDeployment` with `Test-AzureRmResourceGroupDeployment`.
+PowerShell can do exactly the same, replacing `New-AzResourceGroupDeployment` with `Test-AzResourceGroupDeployment`.
 
 These will all flush out fundamental issues with the format of the template.  However, the only true test is to deploy the template.
 
 Once you have completed updating your template then deploy it to the lab1 resource group to confirm that it works as expected. You shouldn't need to specify any parameters, but you can do so if you wish.  If you have issues with your template then compare it against the one at the bottom of the lab to see how it differs.
 
-You can use the `az storage account list --resource-group lab1 --output table` or `(Get-AzureRmStorageAccount -ResourceGroupName lab1).StorageAccountName` commands to show the results of the concatenated unique name.
+You can use the `az storage account list --resource-group lab1 --output table` or `(Get-AzStorageAccount -ResourceGroupName lab1).StorageAccountName` commands to show the results of the concatenated unique name.
 
 ------------------------------------------------
 
@@ -594,7 +594,7 @@ $rg="lab1"
 $job = 'job.' + ((Get-Date).ToUniversalTime()).tostring("MMddyy.HHmm")
 $template="C:\myTemplates\lab1\azuredeploy.json"
 $storageAccountPrefix = "richeneysa"
-$storageAccount = (New-AzureRmResourceGroupDeployment -Name $job -storageAccountPrefix $storageAccountPrefix -TemplateFile $template -ResourceGroupName $rg).Outputs.storageAccount.Value
+$storageAccount = (New-AzResourceGroupDeployment -Name $job -storageAccountPrefix $storageAccountPrefix -TemplateFile $template -ResourceGroupName $rg).Outputs.storageAccount.Value
 echo $storageAccount
 ```
 
@@ -710,7 +710,7 @@ $rg="lab1"
 $job = 'job.' + ((Get-Date).ToUniversalTime()).tostring("MMddyy.HHmm")
 $template="C:\myTemplates\lab1\azuredeploy.json"
 $parms="c:\myTemplates\lab1\azuredeploy.parameters.json"
-$storageAccount = (New-AzureRmResourceGroupDeployment -Name $job -TemplateParameterFile $parms -TemplateFile $template -ResourceGroupName $rg).Outputs.storageAccount.Value
+$storageAccount = (New-AzResourceGroupDeployment -Name $job -TemplateParameterFile $parms -TemplateFile $template -ResourceGroupName $rg).Outputs.storageAccount.Value
 echo "Storage account $storageAccount has been created."
 ```
 
@@ -746,7 +746,7 @@ az group delete --name lab1 --yes --no-wait
 ##### PowerShell
 
 ```powershell
-Remove-AzureRmResourceGroup -Name lab1
+Remove-AzResourceGroup -Name lab1
 ```
 
 ## What's up next

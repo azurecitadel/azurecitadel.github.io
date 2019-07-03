@@ -138,9 +138,9 @@ $rg       = "myResourceGroup"
 $loc      = "West Europe"
 $template = "C:\MyTemplates\WebApp\azuredeploy.json"
 
-Login-AzureRmAccount
-New-AzureRmResourceGroup -Name $rg -Location $loc
-New-AzureRmResourceGroupDeployment -Name myDeployment -ResourceGroupName $rg -TemplateFile $template
+Login-AzAccount
+New-AzResourceGroup -Name $rg -Location $loc
+New-AzResourceGroupDeployment -Name myDeployment -ResourceGroupName $rg -TemplateFile $template
 ```
 
 Note that PowerShell is also an option for the Cloud Shell (`>_`) built into the Azure Portal.

@@ -460,7 +460,7 @@ As you start working with more complex templates with parameter and variable arr
 
 1. Start simple with small and hardcoded templates, and then iterate to add in the flexibility and complexity that you need
 1. Use the intellisense within VS Code to check for syntactical errors
-1. Use the `Test-AzureRmResourceGroupDeployment` and `az group deployment validate` commands
+1. Use the `Test-AzResourceGroupDeployment` and `az group deployment validate` commands
 1. Use the outputs section to check your parameters and variables function calls that you are using in your resources section.  If you are not getting the right output in the outputs section then it can help to explain why your resources are not working properly.
 1. If you have multiple resources and you cannot determine which is causing your problem then select them all, and then cut and paste them into a temporary file. Check that the template deploys with no resources, and then slowly re-add the resources one by one and this will help to identify the problematic resource.
 1. Read the error messages! There are times that they are not particularly informative, but often they will give a useful pointer to help you troubleshoot the offending statement.
