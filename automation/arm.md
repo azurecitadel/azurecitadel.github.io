@@ -31,7 +31,7 @@ The short URL to get back to this page is:
 
 ## Pre-requisites
 
-Set up your machine as per the [automation prereqs](./prereqs) page.
+Set up your machine as per the [automation prereqs](../prereqs) page.
 
 Note that you won't need the Terraform or Packer binaries for these labs.
 
