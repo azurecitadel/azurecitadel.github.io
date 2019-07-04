@@ -297,13 +297,13 @@ You will also see implicit dependencies, where resource properties in one resour
 It is possible to export a whole resource group definition as ARM JSON.  This is very verbose and it will hardcode many of the property values. Frankly it is not pretty and is of limited use. However, one thing it is very useful for is to compare the files before and after a manual change to see how that can be driven using ARM.
 
 1. Open up the blade for the lab2 resource group once it has successfully deployed
-1. Click on Automation Script in the Settings section
+1. Click on Export Template in the Settings section
 1. Copy out the JSON into a new file within VS Code
 1. Open up the Web App blade
 1. Select CORS in the API section
-1. Enter in a valid origin site and port, e.g. `http://azurecitadel.github.io:1976`
+1. Enter in a valid origin site and port, e.g. `http://azurecitadel.github.io:1976` into the Allowed Origins field
 1. Click on Save
-1. Go back up to the resource group and click on Automation Script again
+1. Go back up to the resource group and click on Export Template again
 1. Copy out the "after" version of the JSON and paste it into another new file in VS Code
 1. Type `CTRL-SHIFT-P` to bring up the Command Palette
 1. Use the 'File: Compare Active File With...' to see the difference
@@ -317,7 +317,7 @@ If you take a look at the [web app reference page](https://docs.microsoft.com/en
 
 ## Azure Quickstart templates
 
-In the previous section we were working in the portal, and you may have noticed the "Load a GitHub quickstart template" option.  There is a GitHub repo that has a wide selection of ARM templates that have been contributed by both Microsoft employees and by the wider community.  You can find it by searching for "Azure quickstart templates", which will find both the main [Azure Quickstart GitHub repo](https://github.com/Azure/azure-quickstart-templates) and the [Azure Quickstart Templates portal](https://azure.microsoft.com/en-gb/resources/templates/) site that helps to navigate some of the content.  Check both links to see how they work together.
+There is a GitHub repo that has a wide selection of ARM templates that have been contributed by both Microsoft employees and by the wider community.  You can find it by searching for "Azure quickstart templates", which will find both the main [Azure Quickstart GitHub repo](https://github.com/Azure/azure-quickstart-templates) and the [Azure Quickstart Templates portal](https://azure.microsoft.com/en-gb/resources/templates/) site that helps to navigate some of the content.  Check both links to see how they work together.
 
 This is a good time to introduce the second of our important short URLs to take you straight through to the GitHub repo:
 
