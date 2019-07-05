@@ -1,18 +1,15 @@
 ---
-title: "Kubernetes: Hands On With Microservices"
+title: "Test Post about SAP"
 author: Ben Coleman
 date: 2018-10-01
-tags: [kubernetes, microservices, aks]
-category: cloud-native
-featured: true
+tags: [sap]
+category: specialised
 
 header:
   overlay_image: images/header/kube.png
   teaser: images/teaser/kube.png
 excerpt: Designed for people wanting to learn Kubernetes; going from the basics to deploying a real working application The Smilr app makes use of many other open source technologies such as *Angular, Node.JS, Express* and *MongoDB*, however for this lab we will focus on Kubernetes so the internal workings of each software component will not be covered in any detail
 
-sidebar:
-  nav: "kubernetes_lab"
 ---
 
 ## Introduction
