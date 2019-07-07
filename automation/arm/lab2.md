@@ -65,8 +65,8 @@ For Azure Stack there is a new root element called [apiProfile](https://docs.mic
 
 We'll now look at different places to source templates and we'll start with exporting templates directly out of the Azure portal itself.  There are a couple of ways of doing this:
 
-1. viewing the _automation options_ prior to resource deployment
-1. creating a full export of a whole resource group
+1. Viewing the ARM generated Template prior to resource deployment (The link for viewing the generated templates is labeled either _Download a template for automation_ or _Automation options_ across different resource blades)
+2. Creating a full export of a whole resource group
 
 Both have their benefits and limitations and the labs will hopefully illustrate this.  This is also a good lab to talk about API versions and to start utilising the reference documentation.
 
@@ -92,7 +92,7 @@ OK, let's export an example template and parameters file.
         * Location: **West Europe**
         * Pricing tier: **F1 Free**
 
-**_DO NOT CLICK ON THE CREATE BUTTON!_** Click on the _Automation Options_ link instead.
+**_DO NOT CLICK ON THE CREATE BUTTON!_** Click on the _Download a template for automation_ link instead.
 
 This will open up the template that the portal has created on the fly.  If you tab through the Template, Parameters, CLI, PowerShell, .NET and Ruby tabs then you will see the two JSON templates, plus deployment code for the various CLIs and key SDKs.
 
@@ -176,8 +176,6 @@ Here are the example initial files:
 }
 ```
 
-> You may find that the portal has created the template based on the `2014-04-01-preview` version of the ARM schema.  If this is the case then change it to `2015-01-01` (as above). You may also want to change the API version of the `Microsoft.Web/sites` resource to `2016-08-01` which is the current API version at the time of writing.  This will remove any of the "problems" as triggered by the ARM Tools extension.
-
 Configure VS Code to have both the azuredeploy.json and the azuredeploy.parameters.json side by side. (Use either `CTRL`+`ALT`+`<|>`, or drag the parameters tab towards the right hand side until the snap area is shown.)
 
 ![vscode](/automation/arm/images/lab2-3-vscode.png)
@@ -214,7 +212,7 @@ Here is the resulting azuredeploy.json:
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "webAppName": {
@@ -260,8 +258,6 @@ Here is the resulting azuredeploy.json:
 }
 ```
 
-> Note that we could also change the schema from _2014-04-01-preview_ to _2015-01-01_
-
 And the matching azuredeploy.parameters.json file should only have one parameter:
 
 ```json
@@ -297,13 +293,13 @@ You will also see implicit dependencies, where resource properties in one resour
 It is possible to export a whole resource group definition as ARM JSON.  This is very verbose and it will hardcode many of the property values. Frankly it is not pretty and is of limited use. However, one thing it is very useful for is to compare the files before and after a manual change to see how that can be driven using ARM.
 
 1. Open up the blade for the lab2 resource group once it has successfully deployed
-1. Click on Export Template in the Settings section
+1. Click on _Export Template_ in the Settings section
 1. Copy out the JSON into a new file within VS Code
 1. Open up the Web App blade
 1. Select CORS in the API section
 1. Enter in a valid origin site and port, e.g. `http://azurecitadel.github.io:1976` into the Allowed Origins field
 1. Click on Save
-1. Go back up to the resource group and click on Export Template again
+1. Go back up to the resource group and click on _Export Template_ again
 1. Copy out the "after" version of the JSON and paste it into another new file in VS Code
 1. Type `CTRL-SHIFT-P` to bring up the Command Palette
 1. Use the 'File: Compare Active File With...' to see the difference
