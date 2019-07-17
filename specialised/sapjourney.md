@@ -1,3 +1,13 @@
+---
+title: SAP Systems Journey to Azure
+date: 2019-07-17
+category: saponazure
+tags: [azure-ad, identity, hybrid]
+author: Pankaj Meshram
+header:
+  teaser: /images/teaser/saponazure.png
+excerpt: Learn about SAP Systems journey to Azure & and how that unlocks Innovation by Integration with Azure Services.  
+
 # ****SAP Systems Journey to Azure ****
 
 SAP systems are one of the most complex systems in any customer’s landscape. In this blog I want to highlight the sequence of steps a typical customer would go through in their journey to Azure. 
