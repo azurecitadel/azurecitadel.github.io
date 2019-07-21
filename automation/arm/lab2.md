@@ -200,8 +200,6 @@ Quick guide:
 1. Strip down the parameters file to only the required webAppName parameter value
 1. Test
 
-> Note that the "name" parameter as generated from the portal would cause a problem for PowerShell submissions.  This is because the PowerShell New-AzResourceGroupDeployment cmdlet automatically creates new switches on the fly based on the parameter names, but these must not clash with existing switches.  As `-name` is one of those switches you will see an error.  Changing it to 'webAppName' avoids this.
-
 It is worth going through the pain of this refactoring section as it is really good practice for you.  If you do get stuck then the video below shows the files being edited.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4I1qE1Epx8g?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
