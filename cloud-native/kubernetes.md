@@ -92,7 +92,7 @@ As this lab is quite long, it has been split into several modules:
 [Module 6 - Scaling & Persistence](part6){: .btn .btn--primary .btn--large}  
 [Extra - Optional Exercises](extra){: .btn .btn--primary .btn--large}  
 
----
+<!-- ---
 
 ## Supporting Slides
-[Azure Container Strategy & Orchestration with Kubernetes](https://1drv.ms/b/s!AhEX99ErZbKGg1n8wQOPvgtQoYsl){:target="_blank" class="btn-info"}
+[Azure Container Strategy & Orchestration with Kubernetes](https://1drv.ms/b/s!AhEX99ErZbKGg1n8wQOPvgtQoYsl){:target="_blank" class="btn-info"} -->

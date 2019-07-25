@@ -43,7 +43,13 @@
   image: /images/categories/security.png
   desc: "Securing your data & applications in the cloud. Managing access and identities with Azure AD"
 
+- name: specialised
+  title: Specialised Workloads
+  image: /images/categories/specialised.png
+  desc: "Specialised topics such as SAP, HPC and other demanding enterprise workloads"
+
 - name: web
   title: Web & Mobile
   image: /images/categories/web.png
   desc: "Developing using web & mobile platforms using RESTful APIs. Azure platform services and API management"
+

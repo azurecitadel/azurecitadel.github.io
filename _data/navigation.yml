@@ -37,6 +37,8 @@ sidemenu:
       url: "/prereqs"
     - title: "Security"
       url: "/security"
+    - title: "Specialised Workloads"
+      url: "/specalised"      
     - title: "Web & Mobile"
       url: "/web"
 #
@@ -245,3 +247,17 @@ custom_lab:
       url: "/foo"
     - title: "Knitting Socks"
       url: "/bar"
+
+kubernetes_lab2:
+  - title: "Lab Main"
+    url: "cloud-native/kube-advanced"
+
+  - title: "Lab Modules"
+    children:
+    - title: "1 - Using an Ingress"
+      url: "cloud-native/kubernetes/part1"
+
+  - title: "Optional Modules"
+    children:
+    - title: "Quick Start Skip Ahead"
+      url: "cloud-native/kube-advanced/quickstart"
