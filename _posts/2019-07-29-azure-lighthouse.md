@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Inspire 2019 and the Book of News"
+title: "Azure Lighthouse"
 author: "Richard Cheney"
 published: true
 ---
