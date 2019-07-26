@@ -8,7 +8,7 @@ published: true
 
 As mentioned in the last post, one of the most significant announcements at Inspire 2019 for partners was Azure Lighthouse.  This is a huge improvement for partners managing resource for multiple tenants.
 
-Tom Wilde and I will have a host of new content building on the automation and governance labs so that you can automate as much as possible. This will extend to automating the recognition of the impact and influence that you as partners have within your customer subscriptions. (Using [Partner Admin Link](https://aka.ms/partneradminlink.)
+Tom Wilde and I will have a host of new content building on the automation and governance labs so that you can automate as much as possible. This will extend to automating the recognition of the impact and influence that you as partners have within your customer subscriptions. (Using [Partner Admin Link](https://aka.ms/partneradminlink).)
 
 ## Links
 
@@ -32,9 +32,11 @@ Ahead of that, get some understanding of the capabilities of the service using t
 
 * <https://aka.ms/azurelighthouse-github>
 
-Product
+### Product
 
 * <https://azure.com/lighthouse>
+
+----------
 
 ## Credit
 
