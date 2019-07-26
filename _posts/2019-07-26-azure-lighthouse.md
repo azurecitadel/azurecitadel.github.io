@@ -36,8 +36,6 @@ Ahead of that, get some understanding of the capabilities of the service using t
 
 * <https://azure.com/lighthouse>
 
-----------
-
 ## Credit
 
 Thanks to Taygan Rifat for this excellent set of links.
