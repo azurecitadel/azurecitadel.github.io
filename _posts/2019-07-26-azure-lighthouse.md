@@ -2,6 +2,9 @@
 title: "Azure Lighthouse"
 author: "Richard Cheney"
 published: true
+header:
+  teaser: images/teaser/azure-lighthouse.jpg
+excerpt: Partners can get up to speed with multi tenancy access and subscription visibility with these Azure Lighthouse links.
 ---
 
 ## Introduction
