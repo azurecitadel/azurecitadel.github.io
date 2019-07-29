@@ -14,7 +14,7 @@ sidebar:
 toc_depth: 3
 ---
 
-# Introduction
+## Introduction
 
 OK, so you have created some new content.
 
@@ -54,6 +54,21 @@ For of all, [install Jekyll into the Ubuntu subsystem](https://jekyllrb.com/docs
 
 If you find any missing packages on your installation then install them using `sudo apt install <packagename>`.
 
+> For reference, here are the commands I ran in Ubuntu in WSL 2 to get my configuration working, although I'm not entirely sure the order is correct!:
+>
+> ```bash
+> sudo apt-get update -y && sudo apt-get upgrade -y
+> sudo apt-add-repository ppa:brightbox/ruby-ng
+> sudo apt-get update
+> sudo apt-get install ruby2.5 ruby2.5-dev build-essential dh-autoreconf
+> sudo apt-get install zlib1g-dev
+> sudo gem install nokogiri -v '1.8.5' --source 'https://rubygems.org/'
+> sudo gem update
+> sudo gem install jekyll bundler
+> bundle update --bundler
+> jekyll -v
+> ```
+
 ### Create _config_local.yml
 
 Create a file called _config_local.yml in the root of the repository.  (It should be right alongside the _config.yml.)
@@ -68,12 +83,14 @@ Your .gitignore file should include _config_local.yml.
 
 ### Run Jekyll
 
-Once it is installed then use the following command to run the site locally from the local repository folder. (On my installation the folder is `/git/<repository>`.)
+Once it is installed then use the following command to run the site locally from the local repository folder. (On my installation this folder is `/git/<repository>`.)
 
 ```bash
 cd /git/azurecitadel.github.io
 bundler exec jekyll serve --config _config.yml,_config_local.yml --future --unpublished'
 ```
+
+> If localhost does not work for you then specify your Ethernet NIC's IP address using `--host xxx.xxx.xxx.xxx`.
 
 The `--future` switch allows you to view posts that have a future date set. And the `--unpublished` switch will generate HTML for files that have `published: false` set in the Front Matter. Feel free to omit these switches.
 
@@ -81,13 +98,21 @@ You may also use the `--incremental` switch, which is much faster.  This mode on
 
 ### Alias
 
-It is a long command, so save time by setting an alias.  Put the following line near the bottom of your `~/bashrc`:
+It is a long command, so save time by setting an alias.  Again, these examples are using my local repo in /git/azurecitadel.github.io. You will need to change the fully pathed repository directory.
+
+Put the following line near the bottom of your `~/bashrc`:
 
 ```bash
 alias jk='cd /git/azurecitadel.github.io; bundler exec jekyll serve --config _config.yml,_config_local.yml --future --unpublished'
 ```
 
-You will need to change the fully pathed repository directory.
+> If you need to specify the IP address (rather than using localhost) then the following should work on Ubuntu WSL:
+>
+> ```bash
+> alias wslip="ip addr | grep eth0$ | awk '{print \$2}' | cut -f1 -d/"
+> export WSLIP=$(wslip)
+> alias jk='cd /git/azurecitadel.github.io; bundler exec jekyll serve --host $WSLIP --config _config.yml,_config_local.yml --future --unpublished'
+> ```
 
 Type `source ~/.bashrc` to re-read the profile and then `alias jk` to confirm.
 
