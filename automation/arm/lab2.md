@@ -437,4 +437,4 @@ Clean up your lab2 resource group containing the web app before moving on.  From
 
 In the next section we will handle secrets and securetext.
 
-[◄ Lab 1: Basics](../lab1){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 3: Shh Secrets ►](../lab3){: .btn .btn--primary}
+[◄ Lab 1: Basics](../lab1){: .btn .btn--inverse} [▲ Index](../#index){: .btn .btn--inverse} [Lab 3: Secrets ►](../lab3){: .btn .btn--primary}
