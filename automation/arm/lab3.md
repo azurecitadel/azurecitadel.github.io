@@ -213,12 +213,12 @@ OK, we've addressed the password.  Let's start turning the template itself into 
     * vnetPrefix parameter is replacing addressPrefix variable
     * subnetName parameter is replacing subnetName variable
     * subnetPrefix parameter is replacing subnetPrefix variable
-2. Remove the default for the vmName
-3. Change the value for the nicName variable to be the vmName with '-nic' at the end
-4. Change the publicIPAddressName variable to pipName
+1. Remove the default for the vmName
+1. Change the value for the nicName variable to be the vmName with '-nic' at the end
+1. Change the publicIPAddressName variable to pipName
     * Change the value for the pipName variable to be the vmName with '-pip' at the end
-5. Change the publicIPAddressType variable to pipType
-6. Change the value for the vmSize variable to "Standard_B1s"
+1. Change the publicIPAddressType variable to pipType
+1. Change the value for the vmSize variable to "Standard_B1s"
 
 In the parameters file, add in new vnetName and subnetName parameters and **remove** both vmName and dnsLabelPrefix. Here is an example:
 
