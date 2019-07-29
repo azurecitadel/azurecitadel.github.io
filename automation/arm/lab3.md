@@ -209,8 +209,10 @@ OK, we've addressed the password.  Let's start turning the template itself into 
     * subnetName, defaulting to "Subnet"
     * subnetPrefix, defaulting to "10.0.0.0/24"
 1. Remove the corresponding variables
-    * vnetName is replacing virtualNetworkName
-    * vnetPrefix is replacing addressPrefix
+    * vnetName parameter is replacing virtualNetworkName variable
+    * vnetPrefix parameter is replacing addressPrefix variable
+    * subnetName parameter is replacing subnetName variable
+    * subnetPrefix parameter is replacing subnetPrefix variable
 1. Remove the default for the vmName
 1. Change the value for the nicName variable to be the vmName with '-nic' at the end
 1. Change the publicIPAddressName variable to pipName

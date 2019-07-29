@@ -167,3 +167,20 @@ Dave Placeholder:
       - label: "Blogsite"
         icon : "fas fa-fw fa-link"
         url  : "http://monsieurfromageblog.com"      # Author details.
+
+Arjun Bahree:
+    name     : Arjun Bahree
+    bio      : Cloud Architect | Advisor | Developer.<br/>Infrastructure/IaC, Native Apps, Automation, Containers, OSS, DevOps, Networking, Storage, Compute ...
+    avatar   : images/authors/bahree.jpg
+    email    : arjun.bahree@gmail.com
+    twitter  : arjunbahree
+    github   : bahreex
+    linkedin : bahree
+    links:
+      - label: "Blogsite #1"
+        icon : "fas fa-fw fa-link"
+        url  : "http://azurepost.com"
+      - label: "Blogsite #2"
+        icon : "fas fa-fw fa-link"
+        url  : "http://cloudchakra.com"
+                
