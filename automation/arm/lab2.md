@@ -65,8 +65,8 @@ For Azure Stack there is a new root element called [apiProfile](https://docs.mic
 
 We'll now look at different places to source templates and we'll start with exporting templates directly out of the Azure portal itself.  There are a couple of ways of doing this:
 
-1. Viewing the ARM generated Template prior to resource deployment (The link for viewing the generated templates is labeled either _Download a template for automation_ or _Automation options_ across different resource blades)
-2. Creating a full export of a whole resource group
+1. viewing the ARM generated template prior to resource deployment using the _Download a template for automation_ link (NB. may be labelled _Automation options_ in certain resources blades)
+1. Creating a full export of a whole resource group
 
 Both have their benefits and limitations and the labs will hopefully illustrate this.  This is also a good lab to talk about API versions and to start utilising the reference documentation.
 
