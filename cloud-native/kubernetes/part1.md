@@ -63,12 +63,12 @@ For this lab the recommended cluster configuration and command to run is
 ```bash
 az aks create -g $group -n aks-cluster -l $region \
 --node-count 3 --node-vm-size Standard_DS2_v2 \
---kubernetes-version 1.11.8 --verbose
+--kubernetes-version 1.11.10 --verbose
 ```
 
-This is a three node cluster, running Kubernetes 1.11.8 using D-series VMs with 2 cores to minimize costs but allow for reasonable reliability of the cluster.
+This is a three node cluster, running Kubernetes 1.11.10 using D-series VMs with 2 cores to minimize costs but allow for reasonable reliability of the cluster.
 
-**💬 Note 1.** The versions of Kubernetes available in AKS change regularly, if version **1.11.8** is not available run `az aks get-versions -l $region -o table` and use the newest version available. It should not affect the lab
+**💬 Note 1.** The versions of Kubernetes available in AKS change regularly, if version **1.11.10** is not available run `az aks get-versions -l $region -o table` and use the newest version available. It should not affect the lab.
 
 **💬 Note 2.** The command might take some time to complete, around 6 to 10 mins is normal, but in some cases it may take up to 30 minutes.
 
