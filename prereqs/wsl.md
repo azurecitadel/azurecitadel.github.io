@@ -2,10 +2,10 @@
 title: Windows Subsystem for Linux
 date: 2018-10-22
 author: Richard Cheney
-category: automation
+category: prereqs
 comments: true
 featured: false
-hidden: false
+hidden: true
 tags: [terraform]
 header:
   overlay_image: images/header/nothing.png
