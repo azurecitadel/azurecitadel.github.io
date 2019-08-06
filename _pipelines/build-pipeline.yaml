@@ -13,8 +13,8 @@ steps:
 - task: UseRubyVersion@0
   displayName: 'Use latest Ruby version'
 
-- script: 'gem install bundler -v 1.17.3'
-  displayName: 'Install bundler at version 1.17.3'
+- script: 'gem install bundler -v 2.0.2'
+  displayName: 'Install bundler at version 2.0.2'
 
 - script: 'bundle install'
   displayName: 'Run bundle install'
