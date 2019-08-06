@@ -9,7 +9,7 @@ header:
 excerpt: Learn about SAP Systems journey to Azure & and how that unlocks Innovation by Integration with Azure Services.  
 ---
 
-# ****SAP Systems Journey to Azure ****
+# _***SAP Systems Journey to Azure ***_
 
 SAP systems are one of the most complex systems in any customer’s landscape. In this blog I want to highlight the sequence of steps a typical customer would go through in their journey to Azure. 
 There are different migration triggers for the customer when they decide to move to cloud for example datacentre contract come to an end, hardware or software refresh cycles but one of the major driver is SAP’s Deadline - SAP will stop supporting currently supported databases for example SAP on SQL/Oracle/DB2 etc. & will only support HANA as a database for SAP Business Suite 7 core applications. For example, SAP ECC on Oracle will have to move to S/4 HANA which is the next-generation business suite designed to Run Simple in a digital economy. This means the new generation ERP called S/4 HANA running on HANA database only. 
@@ -28,7 +28,7 @@ The deadline provides an opportunity & interesting challenge to move SAP systems
 No matter at which stage the customer is with respect to their landscape, the eventual aim is S/4 Hana or BW/4HANA or C/4HANA depending on the landscape components. Outlined are the typical steps for a customer’s journey into Azure. Once might find overlapping scenarios between Step 1 and 2 depending on the path a customer wants to take for S/4HANA. Let’s explore each option
 
 
-##STEP -1 Journey to Azure 
+## **STEP -1 Journey to Azure**
 
 -**Scenario A** - The customer’s SAP landscape has got SAP ERP systems and other SAP systems running on any database other than SAP HANA. For example, SQL, ASE, Oracle etc. This is a pure Lift & shift opportunity. Cloud is the driver to reduce IT TCO. 
 
@@ -55,9 +55,9 @@ Based on the above scenarios & the industry segment one must think about some im
 Our engineering team has released a deployment checklist which covers all the steps and can be found here 
 https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-deployment-checklist
 
-##STEP -2 – Journey to S/4 HANA 
+## **STEP -2 – Journey to S/4 HANA**
 
->Once the customer has moved their SAP Landscape into Azure, they will embark on their journey to S/4 HANA. This could be achieved uses the three different routes. 
+Once the customer has moved their SAP Landscape into Azure, they will embark on their journey to S/4 HANA. This could be achieved uses the three different routes. 
 Let us look at these 3 options 
 
 1. **New Implementation** - A new implementation of SAP S/4HANA (also called a “greenfield”
@@ -68,7 +68,7 @@ adoption of new innovations.
 2. **Landscape Transformation** - This route is for you if you’re looking to consolidate your
 landscape, while selectively transforming data in a phased approach that focuses on the
 parts of your business with the highest ROI and lowest TCI. The most commonly used example is S/4 HANA central finance system where multiple SAP systems replicate financial data real-time to a CFIN S/4 HANA system. 
-![s/4hana][\specialised\sapjourney\images\s4hana.jpg]
+![s/4hana][specialised\sapjourney\images\s4hana.jpg]
 
 3. **System Conversion** – This route, also called a “brownfield” approach, enables migration
 to SAP S/4HANA without re-implementation and without disruption to existing business
@@ -76,7 +76,7 @@ processes. At the same time, it enables re-evaluation of customization and exist
 
 No Matter which option a customer chooses, they could use the advantages of Azure like Flexibility, Agility, Performant, Security, Automation, Insights & Geographic Reach. Using this one can build extremely quick POCs for S/4 HANA projects, test the requirements and based on results proceed for the production systems. 
 
-##**Step 3 - Convert Data into Intelligence/Innovation  ** 
+## **Step 3 - Convert Data into Intelligence/Innovation** 
 
 One of the major benefits of moving into Azure is that the customers can leverage the power of Intelligent Cloud. There are various tools and services available within azure using which you can integrate SAP systems & extract data into Azure. Once the data is available further analytics & reporting can be performed. These tools help the customers to harness SAP data or non-SAP data, combine it & convert that data into Intelligence. Azure has a rich set of services which we collectively call as Cortana Intelligence Suite providing gallery of services used for this scenario. You can use services such as HDInsight or Data Bricks for Big Data, Power BI for visualizing, and Azure ML for analyzing and building predictive models. Once you have meaningful insight, you can drive projects to act on Azure where you can build apps, bots and so on. 
 
@@ -84,11 +84,12 @@ One of the major benefits of moving into Azure is that the customers can leverag
 ![adf][specialised\sapjourney\images\adf.png]
 
 
-![missioncritical][\specialised\sapjourney\images\missioncritical.jpg]
+![missioncritical][specialised\sapjourney\images\missioncritical.jpg]
 
 Some of the listed connectors or integration scenarios are 
 
--  Integration with Azure AD - One of the most common use cases is the Integration with Azure Active directory to serve customer’s identity & access management needs. Whether the requirement is to integrate with SAP’s SaaS products like SAP Cloud Platform or with Standard product like SAP NetWeaver, the customers can leverage the power of Azure AD along with features like SSO with MFA etc. To explore further, please see the link - https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+-  Integration with Azure AD - One of the most common use cases is the Integration with Azure Active directory to serve customer’s identity & access management needs. Whether the requirement is to integrate with SAP’s SaaS products like SAP Cloud Platform or with Standard product like SAP NetWeaver, the customers can leverage the power of Azure AD along with features like SSO with MFA etc. To explore further, please see the link -
+https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
 
 -	Azure Data Factory Connectors – If you have integration requirements for SAP HANA, SAP BW, SAP ECC or SAP Cloud for Customer, there are different connectors available to extract data. For example, SAP ECC connector or SAP HANA connector 
 
