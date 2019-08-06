@@ -70,7 +70,7 @@ landscape, while selectively transforming data in a phased approach that focuses
 parts of your business with the highest ROI and lowest TCI. The most commonly used example is S/4 HANA central finance system where multiple SAP systems replicate financial data real-time to a CFIN S/4 HANA system. 
 
 
-![s/4hana][images/s4hana.jpg]
+![s4hana][images/s4hana.jpg]
 
 
 
@@ -80,7 +80,7 @@ processes. At the same time, it enables re-evaluation of customization and exist
 
 No Matter which option a customer chooses, they could use the advantages of Azure like Flexibility, Agility, Performant, Security, Automation, Insights & Geographic Reach. Using this one can build extremely quick POCs for S/4 HANA projects, test the requirements and based on results proceed for the production systems. 
 
-## **Step 3 - Convert Data into Intelligence/Innovation** 
+## **STEP 3 - Convert Data into Intelligence/Innovation** 
 
 One of the major benefits of moving into Azure is that the customers can leverage the power of Intelligent Cloud. There are various tools and services available within azure using which you can integrate SAP systems & extract data into Azure. Once the data is available further analytics & reporting can be performed. These tools help the customers to harness SAP data or non-SAP data, combine it & convert that data into Intelligence. Azure has a rich set of services which we collectively call as Cortana Intelligence Suite providing gallery of services used for this scenario. You can use services such as HDInsight or Data Bricks for Big Data, Power BI for visualizing, and Azure ML for analyzing and building predictive models. Once you have meaningful insight, you can drive projects to act on Azure where you can build apps, bots and so on. 
 
@@ -102,6 +102,7 @@ One of the major benefits of moving into Azure is that the customers can leverag
 Some of the listed connectors or integration scenarios are 
 
 -  Integration with Azure AD - One of the most common use cases is the Integration with Azure Active directory to serve customer’s identity & access management needs. Whether the requirement is to integrate with SAP’s SaaS products like SAP Cloud Platform or with Standard product like SAP NetWeaver, the customers can leverage the power of Azure AD along with features like SSO with MFA etc. To explore further, please see the link -
+
 https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
 
 -	Azure Data Factory Connectors – If you have integration requirements for SAP HANA, SAP BW, SAP ECC or SAP Cloud for Customer, there are different connectors available to extract data. For example, SAP ECC connector or SAP HANA connector 
