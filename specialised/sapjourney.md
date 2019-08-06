@@ -1,7 +1,7 @@
 ---
 title: SAP Systems Journey to Azure
 date: 2019-07-17
-category: saponazure
+category: specialised
 tags: [sap, integration, migration]
 author: Pankaj Meshram
 header:
