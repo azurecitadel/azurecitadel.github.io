@@ -1,16 +1,16 @@
 ---
 title: "Kubernetes: Advanced Lab"
 author: Ben Coleman
-date: 2019-06-15
+date: 2019-07-17
 tags: [kubernetes, microservices, aks]
 category: cloud-native
 featured: false
-published: false
+published: true
 
 header:
   overlay_image: images/header/kube.png
   teaser: images/teaser/kube.png
-excerpt: "Follow on from the 'Kubernetes: Hands On With Microservices' lab, covering some more advanced areas of Kubernetes for networking, monitoring, scaling and DevOps"
+excerpt: "Follow on from the 'Kubernetes: Hands On With Microservices' lab, covering some more advanced areas of Kubernetes such as networking, monitoring, scaling and DevOps"
 
 sidebar:
   nav: "kubernetes_lab2"
@@ -19,6 +19,7 @@ sidebar:
 ## Introduction
 This is a follow on from the [Kubernetes: Hands On With Microservices](../kubernetes) lab, and aims to introduce users to some more advanced and real world usage of Kubernetes. The areas we will address are:
 
+[[ !TODO! Update when lab complete ]]
 - Ingress for routing HTTP traffic
 - Enabling TLS for HTTPS
 - Secrets
@@ -28,7 +29,7 @@ This is a follow on from the [Kubernetes: Hands On With Microservices](../kubern
 - DevOps
 
 ### Assumptions & Scope
-As this lab follows on from the previous one, you will need to have completed the [first lab](../kubernetes) as far as the end of part-6, alternatively a set of quick start steps is provided below to allow you to jump in and "fast forward" to be ready to pick up & start this lab
+As this lab follows on from previous exercise, you will need to have completed the [first lab](../kubernetes) as far as the end of part-6, alternatively a set of quick start steps is provided below to allow you to jump in and "fast forward" to be ready to pick up & start this lab
 
 ## Pre-Reqs
 >Note. These pre-reqs are identical to the first lab

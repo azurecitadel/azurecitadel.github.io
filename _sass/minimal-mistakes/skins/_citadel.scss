@@ -28,6 +28,10 @@ $menu-color: #1a1a1f !default;
   font-size: 120% !important;
 }
 
+pre {
+  margin-bottom: 2em !important;
+}
+
 // This makes code blocks (```) without a language look like Prism.js blocks
 // Prism.js will overrule this when a language is specified
 pre:not([class*="language-"]) {

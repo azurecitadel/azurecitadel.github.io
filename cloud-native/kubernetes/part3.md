@@ -21,7 +21,7 @@ We have three microservices we need to deploy, and due to dependencies between t
 
 We'll apply configurations to Kubernetes using `kubectl` and YAML configuration files. These YAML files will describe the objects we want to create, modify and delete in the cluster. 
 
-We'll create a new project directory to work out of for thhis lab
+We'll create a new project directory to work out of for this lab
 ```bash
 mkdir kube-lab
 cd kube-lab
