@@ -9,7 +9,7 @@ teaser: /images/teaser/saponazure.png
 excerpt: Learn about SAP Systems journey to Azure & and how that unlocks Innovation by Integration with Azure Services.  
 ---
 
-# _***SAP Systems Journey to Azure ***_
+#  _**SAP Systems Journey to Azure**_
 
 SAP systems are one of the most complex systems in any customer’s landscape. In this blog I want to highlight the sequence of steps a typical customer would go through in their journey to Azure. 
 There are different migration triggers for the customer when they decide to move to cloud for example datacentre contract come to an end, hardware or software refresh cycles but one of the major driver is SAP’s Deadline - SAP will stop supporting currently supported databases for example SAP on SQL/Oracle/DB2 etc. & will only support HANA as a database for SAP Business Suite 7 core applications. For example, SAP ECC on Oracle will have to move to S/4 HANA which is the next-generation business suite designed to Run Simple in a digital economy. This means the new generation ERP called S/4 HANA running on HANA database only. 
@@ -68,7 +68,11 @@ adoption of new innovations.
 2. **Landscape Transformation** - This route is for you if you’re looking to consolidate your
 landscape, while selectively transforming data in a phased approach that focuses on the
 parts of your business with the highest ROI and lowest TCI. The most commonly used example is S/4 HANA central finance system where multiple SAP systems replicate financial data real-time to a CFIN S/4 HANA system. 
-![s/4hana][images/s4hana.jpg]
+
+
+![s/4hana][specialised/images/s4hana.jpg]
+
+
 
 3. **System Conversion** – This route, also called a “brownfield” approach, enables migration
 to SAP S/4HANA without re-implementation and without disruption to existing business
@@ -81,10 +85,19 @@ No Matter which option a customer chooses, they could use the advantages of Azur
 One of the major benefits of moving into Azure is that the customers can leverage the power of Intelligent Cloud. There are various tools and services available within azure using which you can integrate SAP systems & extract data into Azure. Once the data is available further analytics & reporting can be performed. These tools help the customers to harness SAP data or non-SAP data, combine it & convert that data into Intelligence. Azure has a rich set of services which we collectively call as Cortana Intelligence Suite providing gallery of services used for this scenario. You can use services such as HDInsight or Data Bricks for Big Data, Power BI for visualizing, and Azure ML for analyzing and building predictive models. Once you have meaningful insight, you can drive projects to act on Azure where you can build apps, bots and so on. 
 
 
-![adf][images/adf.png]
+![adf][specilised/images/adf.png]
 
 
-![missioncritical][images/missioncritical.jpg]
+
+
+
+
+
+![missioncritical][specialised/images/missioncritical.jpg]
+
+
+
+
 
 Some of the listed connectors or integration scenarios are 
 
