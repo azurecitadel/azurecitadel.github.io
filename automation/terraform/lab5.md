@@ -29,7 +29,7 @@ You will have already been using the az and terraform executables locally.  As T
 
 For Windows 10 then the minimum is to use both terraform and az at the Windows OS level so that you can use them within a Command Prompt or PowerShell session.
 
-However the remaining labs really are based on Windows 10 users having enabled the [Windows Subsystem for Linux](https://azurecitadel.github.io/guides/wsl/) (WSL) and do make use of Bash scripting at points.  If you have Windows 10 and can enable WSL then it is very much recommended.  Don't forget to follow the [guide](https://azurecitadel.github.io/guides/wsl/) to also install az, jq, git and terraform at that level.
+However the remaining labs really are based on Windows 10 users having enabled the [Windows Subsystem for Linux](https://azurecitadel.github.io/prereqs/wsl/) (WSL) and do make use of Bash scripting at points.  If you have Windows 10 and can enable WSL then it is very much recommended.  Don't forget to follow the [guide](https://azurecitadel.github.io/prereqs/wsl/) to also install az, jq, git and terraform at that level.
 
 > An alternative is to make use of the [Terraform VM](#terraform-vm-on-the-azure-marketplace) discussed towards the bottom of the lab.  This has az, jq and terraform pre-installed and defaults to using MSI so the whole VM is authenticated to a subscription.  You can ssh on to the VM and work straight away.  And you are still free to use service principals in preference to MSI. This is an option, especially if your vi, nano or emacs skills are good.
 

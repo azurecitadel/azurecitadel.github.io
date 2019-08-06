@@ -46,11 +46,11 @@ Ensure that it is active by logging onto the [portal](http://portal.azure.com) a
 
 ----------
 
-[**Windows Subsystem for Linux**](https://azurecitadel.github.io/guides/wsl/){:target="_blank" class="btn-info"}
+[**Windows Subsystem for Linux**](https://azurecitadel.github.io/prereqs/wsl/){:target="_blank" class="btn-info"}
 
 **Required for Windows 10 users.**
 
-For Windows 10 users then enable and use the Windows Subsystem for Linux for these labs.   Follow the instructions here: <https://azurecitadel.github.io/guides/wsl/>.  (This also has the instructions for installing terraform, git, tree and jq.)
+For Windows 10 users then enable and use the Windows Subsystem for Linux for these labs.   Follow the instructions here: <https://azurecitadel.github.io/prereqs/wsl/>.  (This also has the instructions for installing terraform, git, tree and jq.)
 
 > These labs are not tested on Windows 7. If you are using Windows 7 then you cannot install the Windows Subsystem for Linux. It is recommended to upgrade to Windows 10 and use the Windows Subsystem for Linux. It is possible to use both az and terraform commands within a PowerShell integrated console on Windows 7 machine and you can still make your way through the labs, but if there are examples of Bash scripting then you will need to work around that. You may be able to use the Git Bash on Windows 7 but this has not been tested.
 

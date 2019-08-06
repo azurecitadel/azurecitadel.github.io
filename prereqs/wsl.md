@@ -2,7 +2,7 @@
 title: Windows Subsystem for Linux
 date: 2018-10-22
 author: Richard Cheney
-category: automation
+category: prereqs
 comments: true
 featured: false
 hidden: false
