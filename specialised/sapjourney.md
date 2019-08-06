@@ -22,7 +22,7 @@ An extract from SAP’s last announcement - “In October 2014, SAP announced an
 The deadline provides an opportunity & interesting challenge to move SAP systems into Azure with different scenarios possible. A customer will typically convert, transform or take a greenfield approach to S/4 HANA.  The following diagram gives an overview about the different scenarios 
 
 
-![sapjourney](\images\sapjourney.jpg)
+![sapjourney](specialised\images\sapjourney.jpg)
 
 
 No matter at which stage the customer is with respect to their landscape, the eventual aim is S/4 Hana or BW/4HANA or C/4HANA depending on the landscape components. Outlined are the typical steps for a customer’s journey into Azure. Once might find overlapping scenarios between Step 1 and 2 depending on the path a customer wants to take for S/4HANA. Let’s explore each option
@@ -68,7 +68,7 @@ adoption of new innovations.
 2. **Landscape Transformation** - This route is for you if you’re looking to consolidate your
 landscape, while selectively transforming data in a phased approach that focuses on the
 parts of your business with the highest ROI and lowest TCI. The most commonly used example is S/4 HANA central finance system where multiple SAP systems replicate financial data real-time to a CFIN S/4 HANA system. 
-![s/4hana][\images\s4hana.jpg]
+![s/4hana][\specialised\images\s4hana.jpg]
 
 3. **System Conversion** – This route, also called a “brownfield” approach, enables migration
 to SAP S/4HANA without re-implementation and without disruption to existing business
@@ -81,10 +81,10 @@ No Matter which option a customer chooses, they could use the advantages of Azur
 One of the major benefits of moving into Azure is that the customers can leverage the power of Intelligent Cloud. There are various tools and services available within azure using which you can integrate SAP systems & extract data into Azure. Once the data is available further analytics & reporting can be performed. These tools help the customers to harness SAP data or non-SAP data, combine it & convert that data into Intelligence. Azure has a rich set of services which we collectively call as Cortana Intelligence Suite providing gallery of services used for this scenario. You can use services such as HDInsight or Data Bricks for Big Data, Power BI for visualizing, and Azure ML for analyzing and building predictive models. Once you have meaningful insight, you can drive projects to act on Azure where you can build apps, bots and so on. 
 
 
-![adf][\images\adf.png]
+![adf][specialised\images\adf.png]
 
 
-![missioncritical][images\missioncritical.jpg]
+![missioncritical][\specialised\images\missioncritical.jpg]
 
 Some of the listed connectors or integration scenarios are 
 
