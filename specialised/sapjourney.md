@@ -60,12 +60,12 @@ https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-deploy
 Once the customer has moved their SAP Landscape into Azure, they will embark on their journey to S/4 HANA. This could be achieved uses the three different routes. 
 Let us look at these 3 options 
 
-1. **New Implementation** - A new implementation of SAP S/4HANA (also called a “greenfield”
+A. **New Implementation** - A new implementation of SAP S/4HANA (also called a “greenfield”
 approach) enables complete reengineering and process simplification, lets you predefine
 migration objects and best practices, lowers time to value and TCO, and facilitates faster
 adoption of new innovations.
 
-2. **Landscape Transformation** - This route is for you if you’re looking to consolidate your
+B. **Landscape Transformation** - This route is for you if you’re looking to consolidate your
 landscape, while selectively transforming data in a phased approach that focuses on the
 parts of your business with the highest ROI and lowest TCI. The most commonly used example is S/4 HANA central finance system where multiple SAP systems replicate financial data real-time to a CFIN S/4 HANA system. 
 
@@ -74,7 +74,7 @@ parts of your business with the highest ROI and lowest TCI. The most commonly us
 
 
 
-3. **System Conversion** – This route, also called a “brownfield” approach, enables migration
+C. **System Conversion** – This route, also called a “brownfield” approach, enables migration
 to SAP S/4HANA without re-implementation and without disruption to existing business
 processes. At the same time, it enables re-evaluation of customization and existing process flows.
 
