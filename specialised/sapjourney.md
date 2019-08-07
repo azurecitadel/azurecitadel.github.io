@@ -70,7 +70,7 @@ landscape, while selectively transforming data in a phased approach that focuses
 parts of your business with the highest ROI and lowest TCI. The most commonly used example is S/4 HANA central finance system where multiple SAP systems replicate financial data real-time to a CFIN S/4 HANA system. 
 
 
-![s4hana|20%](images/s4hana.jpg)
+![s4hana](images/s4hana.jpg)
 
 
 
