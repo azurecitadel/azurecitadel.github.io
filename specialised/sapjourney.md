@@ -30,13 +30,13 @@ No matter at which stage the customer is with respect to their landscape, the ev
 
 ## **STEP -1 Journey to Azure**
 
--**Scenario A** - The customer’s SAP landscape has got SAP ERP systems and other SAP systems running on any database other than SAP HANA. For example, SQL, ASE, Oracle etc. This is a pure Lift & shift opportunity. Cloud is the driver to reduce IT TCO. 
+**Scenario A** - The customer’s SAP landscape has got SAP ERP systems and other SAP systems running on any database other than SAP HANA. For example, SQL, ASE, Oracle etc. This is a pure Lift & shift opportunity. Cloud is the driver to reduce IT TCO. 
 
--**Scenario B** - The customers landscape has SAP ERP systems and other SAP systems running on non- HANA Databases, so this is exactly the same as option A but the customer could like to change the database to save cost on licensing. A regular example is to change from Oracle to SQL database. This requires migration of SAP systems from one database into another and is termed as “Database migration”.  The opportunity is “Lift and Migrate”. Once the systems are moved into Azure the customer can start the preparation for S/4 HANA. Cloud is the driver to reduce IT TCO along with cost savings from licensing of databases. 
+**Scenario B** - The customers landscape has SAP ERP systems and other SAP systems running on non- HANA Databases, so this is exactly the same as option A but the customer could like to change the database to save cost on licensing. A regular example is to change from Oracle to SQL database. This requires migration of SAP systems from one database into another and is termed as “Database migration”.  The opportunity is “Lift and Migrate”. Once the systems are moved into Azure the customer can start the preparation for S/4 HANA. Cloud is the driver to reduce IT TCO along with cost savings from licensing of databases. 
 
--**Scenario C** - The customer could be running a combination of option A or B and would like to move to Cloud along with changing the database to SAP HANA. This is Lift and shift/Migration to cloud/Migrate part to SAP HANA. Example SAP ERP system running on Oracle or SQL will become SAP ERP running HANA. This is termed as ‘Suite on HANA’ aka ‘SoH’. This fits with the technology roadmap for the customers where in few years they are looking to change to S/4 HANA and with HANA  as underlying database they are best placed in their journey to S/4 HANA.
+**Scenario C** - The customer could be running a combination of option A or B and would like to move to Cloud along with changing the database to SAP HANA. This is Lift and shift/Migration to cloud/Migrate part to SAP HANA. Example SAP ERP system running on Oracle or SQL will become SAP ERP running HANA. This is termed as ‘Suite on HANA’ aka ‘SoH’. This fits with the technology roadmap for the customers where in few years they are looking to change to S/4 HANA and with HANA  as underlying database they are best placed in their journey to S/4 HANA.
 
--**Scenario D** - The customer is looking to move directly to S/4 HANA. This could be via consolidation, selective Re-implementation or a complete greenfield approach. 
+**Scenario D** - The customer is looking to move directly to S/4 HANA. This could be via consolidation, selective Re-implementation or a complete greenfield approach. 
 
 Based on the above scenarios & the industry segment one must think about some important factors. Some of them are listed below 
 
