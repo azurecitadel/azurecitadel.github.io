@@ -89,13 +89,7 @@ One of the major benefits of moving into Azure is that the customers can leverag
 
 
 
-
-
-
-
-!(missioncritical][images/missioncritical.jpg)
-
-
+![missioncritical](images/missioncritical.jpg)
 
 
 
