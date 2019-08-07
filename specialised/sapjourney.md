@@ -70,7 +70,7 @@ landscape, while selectively transforming data in a phased approach that focuses
 parts of your business with the highest ROI and lowest TCI. The most commonly used example is S/4 HANA central finance system where multiple SAP systems replicate financial data real-time to a CFIN S/4 HANA system. 
 
 
-![s4hana][images/s4hana.jpg]
+![sapjourney][images/s4hana.jpg]
 
 
 
@@ -123,4 +123,4 @@ A lot of customers especially large-scale enterprises can provide unique challen
 -	Attunity Replicate for SAP ECC  - https://www.attunity.com/
 
 
-To summarize the customers can move SAP systems into azure using various options, transform to S/4 HANA leveraging the flexibility and agility of Azure and use Azure Services for insights that can help them to innovate faster and transform business processes. #
+To summarize the customers can move SAP systems into azure using various options, transform to S/4 HANA leveraging the flexibility and agility of Azure and use Azure Services for insights that can help them to innovate faster and transform business processes. 
