@@ -42,11 +42,9 @@ Based on the above scenarios & the industry segment one must think about some im
 
 - Assessment of current landscape – Understand the versions for Operating systems, Database & SAP software. Understand the current hardware specifications i.e. Server, storage, network. It is important to asses these versions and upgrade them to the supported version on Azure.
 
-- Database Requirements - Check the DB metrics available e.g. DB volume, IOPS etc & understand the Database specific requirements on Azure while designing the systems. The general guidance & DB specific ones can be found here  
-[DBMS Guide](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- Database Requirements - Check the DB metrics available e.g. DB volume, IOPS etc & understand the Database specific requirements on Azure while designing the systems. The general guidance & DB specific ones can be found here - [DBMS Guide](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms_guide_general)
 
-- Availability needs – What are the uptime requirements, current SLAs, RTO & RPOs. This will help to design the right solution for High availability and Disaster recovery.  The general guidance can be found here 
-[SAP HADR](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
+- Availability needs – What are the uptime requirements, current SLAs, RTO & RPOs. This will help to design the right solution for High availability and Disaster recovery.  The general guidance can be found here - [SAP HADR](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
 
 - Backup/Archival- Understand the backup lifecycle for example how many backups for production in a week and the retention for them. Check if any archiving is in place & explore the possibility of reducing Database footprint. 
 
@@ -54,8 +52,7 @@ Based on the above scenarios & the industry segment one must think about some im
 
 -	Design to be architecture – Based on the above input, design To Be architecture. The design of architecture could be different on Azure based on different technologies available. For Example, Windows HA for ASCS cluster can be achieved using SIOS or SOFS. It is important to understand what the different options are available on Azure
 
-Our engineering team has released a deployment checklist which covers all the steps and can be found here 
-[Deployment Checklist](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
+Our engineering team has released a deployment checklist which covers all the steps and can be found here - [Deployment Checklist](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 
 ## **STEP -2 – Journey to S/4 HANA**
 
@@ -97,9 +94,7 @@ One of the major benefits of moving into Azure is that the customers can leverag
 
 Some of the listed connectors or integration scenarios are 
 
--  Integration with Azure AD - One of the most common use cases is the Integration with Azure Active directory to serve customer’s identity & access management needs. Whether the requirement is to integrate with SAP’s SaaS products like SAP Cloud Platform or with Standard product like SAP NetWeaver, the customers can leverage the power of Azure AD along with features like SSO with MFA etc. To explore further, please see the link -
-
-[Active Directory Integration](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+-  Integration with Azure AD - One of the most common use cases is the Integration with Azure Active directory to serve customer’s identity & access management needs. Whether the requirement is to integrate with SAP’s SaaS products like SAP Cloud Platform or with Standard product like SAP NetWeaver, the customers can leverage the power of Azure AD along with features like SSO with MFA etc. To explore further, please see the link - [Active Directory Integration](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 
 -	Azure Data Factory Connectors – If you have integration requirements for SAP HANA, SAP BW, SAP ECC or SAP Cloud for Customer, there are different connectors available to extract data. For example, SAP ECC connector or SAP HANA connector 
 
