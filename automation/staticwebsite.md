@@ -5,7 +5,7 @@ author: Richard Cheney
 tags: [ azure, azcopy, web ]
 category: automation
 comments: true
-hidden: false
+hidden: true
 published: true
 header:
   teaser: /images/teaser/code.png
