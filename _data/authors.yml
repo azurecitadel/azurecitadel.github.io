@@ -155,6 +155,15 @@ Jonathan Lyon:
     github   :
     linkedin :
 
+Pankaj Meshram:
+    name     : Pankaj Meshram
+    bio      : Cloud Solution Architect.<br/>SAP on Azure
+    avatar   : images/authors/p-meshram.jpg
+    email    : pankaj.meshram@microsoft.com
+    twitter  : pankajmeshram04  
+    github   : PankajMeshramCSA
+    linkedin : pankajmeshram
+    
 Dave Placeholder:
     name     : Dave Placeholder
     bio      : Goat Herder.<br/>Cheese, goats cheese, other types of cheese, mostly cheese
@@ -167,3 +176,5 @@ Dave Placeholder:
       - label: "Blogsite"
         icon : "fas fa-fw fa-link"
         url  : "http://monsieurfromageblog.com"      # Author details.
+
+

@@ -5,7 +5,7 @@ date: 2019-07-17
 tags: [kubernetes, microservices, aks]
 category: cloud-native
 featured: false
-published: true
+published: false
 
 header:
   overlay_image: images/header/kube.png
