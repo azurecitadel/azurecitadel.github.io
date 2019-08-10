@@ -77,27 +77,14 @@ The Smilr app client UI should load and look something like this, (here I've ope
 We have a functioning app! Well mostly, wouldn't it be great to have some data in the app to look at. We could use the admin screens to manually create some events, but there is another way and we'll use another feature of Kubernetes to do it
 
 ## Create Demo Data
-Inside the data-api container image is a Node.js script which can be run to initialise the MongoDB database with some demo data. Let's look how we can run that script.
+Lastly we'll load some demo data into the app, we can do this by calling the data API we've just deployed and POSTing over example data from a JSON file. The demo data is held in the Smilr git repo
 
-First get the name of the data-api pod with:
+Download the demo data and push it into the app with the following two commands, change the `<<data_api_ip>>` to the actual value of your data API external IP (obtained in the previous step)
+
 ```bash
-kubectl get pods -l app=data-api
+wget https://raw.githubusercontent.com/benc-uk/smilr/master/etc/demodata.json
+curl -d @demodata.json -H "Content-Type: application/json" -X POST http://<<data_api_ip>>:4000/api/bulk
 ```
-
-Next we execute a command directly on one of the pods, in this case the Bash shell 
-```bash
-kubectl exec -it {pod_name} bash
-```
-You should see a linux command prompt, as this will drop us into a Bash shell session right inside the running container in the pod. Run the `ls` command and have a look about, and running `ps -ef` you will see the node process which is the microservice data-api app running inside the container 
-
-**💬 Note.**  The `-it` part of the kubectl command tells Docker to give us an interactive terminal session, and we run `bash` as the Smilr images are based on Linux. Not all Linux containers have Bash installed and sometimes you need to fall back to plain `sh`. If this was a Windows container you would use `powershell` or the new `pwsh` command to start PowerShell Core
-
-To run the script we need in the container:
-```bash
-cd demoData
-node demoData.js
-```
-This script will connect to MongoDB, and inject some demo data (events and feedback) you should see some messages confirming what it has done. Type `exit` to leave the Bash session 
 
 Now refresh the Smilr app in your browser, and check there are events on the home screen, and go into the reports view to validate there is example feedback in the database.
 
