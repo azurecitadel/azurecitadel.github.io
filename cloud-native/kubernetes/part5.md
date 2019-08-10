@@ -77,14 +77,14 @@ The Smilr app client UI should load and look something like this, (here I've ope
 We have a functioning app! Well mostly, wouldn't it be great to have some data in the app to look at. We could use the admin screens to manually create some events, but there is another way and we'll use another feature of Kubernetes to do it
 
 ## Create Demo Data
-Inside the data-api container image is a Node.js script which can be run to initialise the MongoDB database with some demo data. Let's look how we can run that script.
+The Smilr data-api provides a way to bulk load data into the database, however for security reasons this particular API is only accessible from localhost. Lets look how we can get "inside" our pod and run commands from there to load a set of demo data
 
 First get the name of the data-api pod with:
 ```bash
 kubectl get pods -l app=data-api
 ```
 
-Next we execute a command directly on one of the pods, in this case the Bash shell 
+Next we tell Kubernetes we want to run a command directly in one of the pods. This command could be anything, in this case the command is `bash` which will give us a shell session inside the pod
 ```bash
 kubectl exec -it {pod_name} bash
 ```
