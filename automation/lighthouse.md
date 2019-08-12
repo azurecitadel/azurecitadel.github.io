@@ -2,7 +2,7 @@
 title: "Azure Lighthouse"
 date: 2019-08-09
 author: [ "Tom Wilde" ]
-category: azure
+category: automation
 comments: true
 featured: true
 hidden: false
