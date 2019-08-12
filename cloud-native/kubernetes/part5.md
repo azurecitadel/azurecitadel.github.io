@@ -77,27 +77,28 @@ The Smilr app client UI should load and look something like this, (here I've ope
 We have a functioning app! Well mostly, wouldn't it be great to have some data in the app to look at. We could use the admin screens to manually create some events, but there is another way and we'll use another feature of Kubernetes to do it
 
 ## Create Demo Data
-Inside the data-api container image is a Node.js script which can be run to initialise the MongoDB database with some demo data. Let's look how we can run that script.
+The Smilr data-api provides a way to bulk load data into the database, however for security reasons this particular API is only accessible from localhost. Lets look how we can get "inside" our pod and run commands from there to load a set of demo data
 
 First get the name of the data-api pod with:
 ```bash
 kubectl get pods -l app=data-api
 ```
 
-Next we execute a command directly on one of the pods, in this case the Bash shell 
+Next we tell Kubernetes we want to run a command directly in one of the pods. This command could be anything, in this case the command is `bash` which will give us a shell session inside the pod
 ```bash
 kubectl exec -it {pod_name} bash
 ```
-You should see a linux command prompt, as this will drop us into a Bash shell session right inside the running container in the pod. Run the `ls` command and have a look about, and running `ps -ef` you will see the node process which is the microservice data-api app running inside the container 
+You should see a linux command prompt, as this will drop us into a bash shell session right inside the running container in the pod. Run the `ls` command and have a look about, and running `ps -ef` you will see the node process which is the data-api app running inside the container.
 
-**💬 Note.**  The `-it` part of the kubectl command tells Docker to give us an interactive terminal session, and we run `bash` as the Smilr images are based on Linux. Not all Linux containers have Bash installed and sometimes you need to fall back to plain `sh`. If this was a Windows container you would use `powershell` or the new `pwsh` command to start PowerShell Core
+**💬 Note.**  The `-it` part of the kubectl command tells Docker to give us an interactive terminal session, and we run `bash` as the Smilr images are based on Linux. Not all Linux containers have bash installed and sometimes you need to fall back to plain `sh`. If this was a Windows container you would use `powershell` or the new `pwsh` command to start PowerShell Core
 
-To run the script we need in the container:
+The following commands downloads some demo data and pushes it into the app via the API, make sure you run them from the bash session **inside** the pod
 ```bash
-cd demoData
-node demoData.js
+wget https://raw.githubusercontent.com/benc-uk/smilr/master/etc/demodata.json
+apk add curl
+curl -d @demodata.json -H "Content-Type: application/json" -X POST http://localhost:4000/api/bulk
 ```
-This script will connect to MongoDB, and inject some demo data (events and feedback) you should see some messages confirming what it has done. Type `exit` to leave the Bash session 
+Type `exit` to leave the bash session in the pod, and return to your terminal
 
 Now refresh the Smilr app in your browser, and check there are events on the home screen, and go into the reports view to validate there is example feedback in the database.
 
