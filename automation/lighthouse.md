@@ -42,3 +42,6 @@ Azure Delegated Resource Management is the foundational fabric that projects the
 This is going to be a game changer for Azure Partners and same them lots of time.
 
 In the following posts we'll explore some benefits of Azure Lighthouse involving automation, governance, security and more.
+
+Next [Lighthouse Onboarding](https://azurecitadel.com/automation/lighthouse/onboarding)
+
