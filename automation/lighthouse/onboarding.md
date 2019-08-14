@@ -35,12 +35,12 @@ Microsoft have added ARM template samples for Lighthouse to Github, all you have
 **principalIdDisplayName** - The friendly name of the principleID (partner Azure AD Group) that the customer can see.
 
 
-1. In the example below we'll onboard a whole subscription so we'll need to use these [files](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management) and edit the parameters.json with the info above.
+1\. In the example below we'll onboard a whole subscription so we'll need to use these [files](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management) and edit the parameters.json with the info above.
 
 ![Onboarding Subscription - Parameters file](/automation/lighthouse/lighthouse-deploy-sub-parameters.png)
 **Figure 1:** Onboarding Subscription - Parameters file
 
-2. Now we need to deploy the template in the customer tenant on the subscription we want to onboard. Note - This can only be done by an identity that has Owner permissions on the subscription but **cannot** be done by a guest account. 
+2\. Now we need to deploy the template in the customer tenant on the subscription we want to onboard. Note - This can only be done by an identity that has Owner permissions on the subscription but **cannot** be done by a guest account. 
 
 ```bash
 # Login
@@ -56,12 +56,12 @@ az deployment create --name LighthouseOnboarding --location westeurope --templat
 ![Onboarding Subscription - Success](/automation/lighthouse/lighthouse-deploy-sub-success.png)
 **Figure 2:** Onboarding Success
 
-3. As the customer in the portal go to All Services > Service Providers. You'll see the service provider offer and delegation you've just deployed.
+3\. As the customer in the portal go to All Services > Service Providers. You'll see the service provider offer and delegation you've just deployed.
 
 ![Service Providers - Delegation](/automation/lighthouse/lighthouse-service-providers.png)
 **Figure 3:** Service Providers - Delegation
 
-4. I've also onboarded a single Resource Group from another tenant using this [template](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json) and [parameters file](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json), the only difference is adding the Resource Group name. 
+4\. I've also onboarded a single Resource Group from another tenant using this [template](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json) and [parameters file](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json), the only difference is adding the Resource Group name. 
 
 Now logged into the Azure Portal as the partner user that's a member of the groups you just assigned, go to All Services > My Customers. You'll see the new customers and delegation assigned.
 
@@ -69,12 +69,12 @@ Now logged into the Azure Portal as the partner user that's a member of the grou
 **Figure 4:** My Customers
 
 
-5. As the partner, click on your identity in the top right hand corner > switch directories and notice you can now select multiple directories/tenants and therefor multiple subscriptions.
+5\. As the partner, click on your identity in the top right hand corner > switch directories and notice you can now select multiple directories/tenants and therefor multiple subscriptions.
 
 ![Available Directories](/automation/lighthouse/lighthouse-available-directories.png)
 **Figure 5:** Available Directories
 
-6. Once you've selected multiple subscriptions you can work with the resources from the partner tenant using the Azure Portal, Powershell, CLI, etc.
+6\. Once you've selected multiple subscriptions you can work with the resources from the partner tenant using the Azure Portal, Powershell, CLI, etc.
 
 ![Resources Across Directories](/automation/lighthouse/lighthouse-resources.png)
 **Figure 6:** Resources Across Directories
