@@ -49,8 +49,7 @@ You can then clone the repository:
 1. Open vscode
 1. Open the Command Palette (`CTRL`+`SHIFT`+`P`)
 1. Type `git clone`
-    1. The drop down list will show `Git: Clone`
-    1. Hit Enter
+    1. Hit `Enter` to select `Gi: Clone`
 1. You will be prompted to enter the **Repository URL**
     1. Paste in the URL for your fork of the repo that you copied from the address bar
 1. You will be prompted to choose the destination directory
