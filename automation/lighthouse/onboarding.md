@@ -2,18 +2,12 @@
 title: "Azure Lighthouse"
 date: 2019-08-12
 author: [ "Tom Wilde" ]
-category: automation
 comments: true
-featured: true
-hidden: false
-published: true
+hidden: true
 tags: [ policy, initiative, compliance, governance, cloud, azure, adoption, framework, lighthouse ]
 header:
   overlay_image: images/header/whiteboard.jpg
   teaser: images/teaser/blueprint.png
-sidebar:
-  nav: "lighthouse"
-excerpt: Onboard to Azure Lighthouse
 ---
 
 ## Onboard to Azure Lighthouse

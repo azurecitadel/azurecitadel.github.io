@@ -11,8 +11,6 @@ tags: [ policy, initiative, compliance, governance, cloud, azure, adoption, fram
 header:
   overlay_image: images/header/whiteboard.jpg
   teaser: images/teaser/blueprint.png
-sidebar:
-  nav: "lighthouse"
 excerpt: Azure Lighthouse enables service providers to automate and scale
 ---
 
