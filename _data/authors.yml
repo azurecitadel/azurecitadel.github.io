@@ -178,3 +178,11 @@ Dave Placeholder:
         url  : "http://monsieurfromageblog.com"      # Author details.
 
 
+Karl Kocar:
+    name     : Karl Kocar
+    bio      : Partner Technical Architect.<br/>Infrastructure as code, automation, networking, storage, compute
+    avatar   : images/authors/rich-c.jpg
+    email    : kakocar@microsoft.com
+    twitter  : karlkocar
+    github   : karlkocar
+    linkedin : karlkocar
