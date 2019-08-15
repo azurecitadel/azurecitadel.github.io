@@ -160,10 +160,10 @@ Pankaj Meshram:
     bio      : Cloud Solution Architect.<br/>SAP on Azure
     avatar   : images/authors/p-meshram.jpg
     email    : pankaj.meshram@microsoft.com
-    twitter  : pankajmeshram04  
+    twitter  : pankajmeshram04
     github   : PankajMeshramCSA
     linkedin : pankajmeshram
-    
+
 Dave Placeholder:
     name     : Dave Placeholder
     bio      : Goat Herder.<br/>Cheese, goats cheese, other types of cheese, mostly cheese
@@ -180,9 +180,56 @@ Dave Placeholder:
 
 Karl Kocar:
     name     : Karl Kocar
-    bio      : Partner Technical Architect.<br/>Infrastructure as code, automation, networking, storage, compute
-    avatar   : images/authors/rich-c.jpg
+    bio      : Partner Technical Architect.<br/>Focused on advanced technologies around Microsoft Teams
+    avatar   : images/authors/karl.jpg
     email    : kakocar@microsoft.com
     twitter  : karlkocar
     github   : karlkocar
     linkedin : karlkocar
+
+Jack Lewis:
+    name     : Jack Lewis
+    bio      : Partner Technical Architect.<br/>Windows 10, security (E3/E5)
+    avatar   : images/authors/jack-l.png
+    email    : jack.lewis@microsoft.com
+    github   : jalew123
+
+Steven DeQuincey:
+    name     : Steven DeQuincey
+    bio      : Partner Technical Architect.<br/>Windows 10, security (E3/E5)
+    avatar   : images/authors/sdqmugshot.jpg
+    email    : steven.dequincey@microsoft.com
+    twitter  : stevendq
+    github   : stdequin
+    linkedin : sdq
+
+Paul Buxton:
+    name     : Paul Buxton
+    bio      : Partner Technical Architect.<br/>Focused on advanced technologies around Microsoft Teams
+    avatar   : images/authors/rich-c.jpg
+    email    : paul.buxton@microsoft.com
+
+Ally Turnbull:
+    name     : Ally Turnbull
+    bio      : Cloud Solution Architect.<br/>Focused on security in Modern Workplace
+    avatar   : images/authors/ally-t.jpg
+    email    : alison.turnbull@microsoft.com
+    github   : allyt-ms
+    linkedin : turnvirtual
+
+Chris Huntingford:
+    name     : Chris Huntingford
+    bio      : Partner Technical Architect.<br/>Dynamic365 and Power Platform
+    avatar   : images/authors/chris-h.jpg
+    email    : chris.huntingford@microsoft.com
+    twitter  : tattooedcrmguy
+    github   : chrishuntingford
+    linkedin : chrishuntingford
+
+Umar Bari:
+    name     : Umar Bari
+    bio      : Partner Technical Architect.<br/>Dynamics365
+    avatar   : images/authors/umbari1.jpg
+    email    : umar.bari@microsoft.com
+    github   : umbari
+    linkedin : umbari
