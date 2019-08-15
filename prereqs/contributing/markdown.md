@@ -139,6 +139,16 @@ Dan Baker:
 
 {% endraw %}
 
+## Notes
+
+If you are adding notes then prefix the lines with `> `.
+
+```markdown
+> Here is an example note.
+```
+
+> Here is an example note.
+
 ## Tables
 
 Tables are officially outside of the markdown standard but are supported by Jekyll.  Use vertical pipes between the columns.
