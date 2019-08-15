@@ -79,13 +79,13 @@ origin  https://github.com/richeney/azurecitadel.github.io (fetch)
 origin  https://github.com/richeney/azurecitadel.github.io (push)
 ```
 
-1. Add the main repo as the upstream:
+2. Add the main repo as the upstream:
 
 ```bash
 git remote add upstream http://github.com/azurecitadel/azurecitadel.github.io
 ```
 
-1. Check it is now in the list of remotes:
+3. Check it is now in the list of remotes:
 
 ```bash
 git remote -v
