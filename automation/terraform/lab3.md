@@ -191,6 +191,8 @@ variable "tags" {
 
 We'll add to that file as we move through the lab.
 
+> Tip: Give your filenames a .tf extension and save them before adding any HCL. The .tf extension will activate the Terraform extension within vscode, along with the intellisense and syntax highlighting.
+
 ## NSGs
 
 OK, let's start with the NSGs.  We will hardcode these from the name of the resource group to the names of the NSGs and the security rules within them.  The initial file includes the NSG intended fo use at the resource group level, and the Ubuntu NSG intended for use at the VM's NIC. You'll then add on RFP to the resource_group_default NSG and create a new NSG for Windows.
