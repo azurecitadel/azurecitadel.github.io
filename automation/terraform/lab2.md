@@ -27,7 +27,7 @@ resource "azurerm_resource_group" "lab1" {
   name     = "terraform-lab1"
   location = "West Europe"
 
-  tags {
+  tags = {
     environment = "training"
   }
 }
@@ -54,7 +54,7 @@ resource "azurerm_resource_group" "lab2" {
   name     = "terraform-lab2"
   location = "West Europe"
 
-  tags {
+  tags = {
     environment = "training"
   }
 }
@@ -155,7 +155,7 @@ What would be the interpolation syntax to return the number of Web App locations
 
 That's our first function. It won't be our last.
 
-We will use use lists actively in the next lab when defining multiple subnets in our virtual network.  Let's move on to maps.
+We will use lists actively in the next lab when defining multiple subnets in our virtual network.  Let's move on to maps.
 
 ## Using maps
 
@@ -173,7 +173,7 @@ variable "tags" {
 
 We can pull out individual values.  For instance `"${var.tags["source"]}"` would be evaluated as `citadel`. (Note the syntax always uses double speech marks `"` rather than single quotes `'`.)
 
-Wwe can also pass in the whole map using `"${var.tags}"`, which will be resolved to:
+We can also pass in the whole map using `"${var.tags}"`, which will be resolved to:
 
 ```json
 {
@@ -188,6 +188,8 @@ Let's use that tags map for our resources:
 * Set the tags on the storage account to use the tags exported attribute of the azurerm_resource_group
 * Prefix the storage account name with the value of the **source tag**
 * Rerun the `terraform plan`
+
+> Note: A storage account must be 3-24 characters of lowercase alphanumerics, so be wary of the length when adding your prefix.
 
 If you get stuck on this section then you can skip to the end of the lab and click on the _terraform-lab2_ repo to show example files.
 
@@ -294,6 +296,7 @@ Again, you will need to be more self sufficient in this section.  (If you do get
 * Read the Terraform provider page for [random](https://www.terraform.io/docs/providers/random/index.html)
     * What are the arguments?
     * What is the exported attribute?
+    * Note the Argument Reference for restrictions
 * Add in a new resource stanza
     * Use random_string as the provider type
     * Specify the id as "rnd"

@@ -109,7 +109,7 @@ resource "azurerm_resource_group" "lab1" {
   name     = "terraform-lab1"
   location = "West Europe"
 
-  tags {
+  tags = {
     environment = "training"
   }
 }
