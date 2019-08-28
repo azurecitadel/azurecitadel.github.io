@@ -260,9 +260,9 @@ The team wants to test that their new application runs in a container.
 Make use of these resource to help address any gaps in your knowledge of the AZ-300 topics.
 
 * [AZ-300 Exam](https://aka.ms/az-300)
-* [Pixel Robots](https://pixelrobots.co.uk/2018/09/study-resources-for-the-az-300/)
+    * [Pixel Robots](https://pixelrobots.co.uk/2018/09/study-resources-for-the-az-300/)
 * [Microsoft Learn](https://azure.com/learn)
-* [Learning Paths for Solution Architects](https://docs.microsoft.com/en-us/learn/browse/?products=azure&resource_type=learning%20path&roles=solution-architect)
-* [Hands On Labs](https://aka.ms/hol)
-* [Pluralsight for Azure Architects](https://www.pluralsight.com/role-iq/microsoft-azure-solution-architect)
+    * [Learning Paths for Solution Architects](https://docs.microsoft.com/en-us/learn/browse/?products=azure&resource_type=learning%20path&roles=solution-architect)
+    * [Hands On Labs](https://aka.ms/hol)
+    * [Pluralsight for Azure Architects](https://www.pluralsight.com/role-iq/microsoft-azure-solution-architect)
 * [Azure Citadel](https://azurecitadel.com/)
