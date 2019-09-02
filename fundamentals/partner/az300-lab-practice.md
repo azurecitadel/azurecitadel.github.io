@@ -99,13 +99,13 @@ Again, the questions will only ask for simple one line cmdlet execution, so no s
 
 1. Provision a vNet called vnet0, with namespace 10.0.0.0/16
     1. this will be your hub vNet in a hub and spoke config
-    1. We’ll create a VPN gateway later; so create a suitable subnet with address prefix of 10.0.0.0/24
+    1. we’ll create a VPN gateway later; so create a suitable subnet with address prefix of 10.0.0.0/24
     1. create an Azure Firewall called “firewall” (10.0.10.0/24)
 
 1. Deploy a VPN Gateway called vpngw (don’t wait for it to finish)
     1. the customer does not yet understand their traffic requirements
     1. there are two on premise VPN devices, requiring IKEv2
-    1. they use BGP, with AS number 65515
+    1. they use BGP, and have requested you specify AS number 65515
     1. the customer is concerned about Azure datacentre failure and minimising any downtime
 
 1. Add two spoke vNets, called vnet1 and vnet2
@@ -113,8 +113,9 @@ Again, the questions will only ask for simple one line cmdlet execution, so no s
     1. vNet2 needs two subnets, subnet2 and subnet3
 
 1. vNet peer both spokes vNets to the hub vNet
-    1. the spoke vNets should use the hub for on prem traffic
     1. resources in vnet1 should not be able to talk to resource in vnet2, and vice versa
+    1. the spoke vNets will use the hub for on prem traffic
+    1. note that you won’t be able to configure this until the VPN Gateway has been successfully deployed
 
 1. Create static route table called “spoke”
     1. Via the VPN gateway to reach on prem address space 10.76.0.0/16
