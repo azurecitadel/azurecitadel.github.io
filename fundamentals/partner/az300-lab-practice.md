@@ -99,12 +99,12 @@ Again, the questions will only ask for simple one line cmdlet execution, so no s
 
 1. Provision a vNet called vnet0, with namespace 10.0.0.0/16
     1. this will be your hub vNet in a hub and spoke config
-    1. create an Azure Firewall called “firewall”
+    1. We’ll create a VPN gateway later; so create a suitable subnet with address prefix of 10.0.0.0/24
+    1. create an Azure Firewall called “firewall” (10.0.10.0/24)
 
 1. Deploy a VPN Gateway called vpngw (don’t wait for it to finish)
     1. the customer does not yet understand their traffic requirements
-    1. there are two on premise VPN devices
-    1. they requires IKEv2
+    1. there are two on premise VPN devices, requiring IKEv2
     1. they use BGP, with AS number 65515
     1. the customer is concerned about Azure datacentre failure and minimising any downtime
 
