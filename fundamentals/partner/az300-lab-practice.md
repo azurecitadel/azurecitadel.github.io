@@ -235,7 +235,7 @@ Compare Web App features: <https://azure.microsoft.com/en-gb/pricing/details/app
 ### Tasks
 
 1. The customer wishes to host private DNS records in Azure without running a domain controller
-    1. Domain is practice.com
+    1. Specify a globally unique test domain suffix i.e. `az300mynamepractice.com`
     1. Create a record for lb.practice.com for the load balancer’s public IP address
     1. It is important that the public IP address does not change
 
