@@ -170,7 +170,7 @@ Again, the questions will only ask for simple one line cmdlet execution, so no s
 
 ### Assumptions
 
-* None
+* Your subscription may not have Microsoft.Insights registered as a provider. If that is the case then find  Subscriptions in the search bar, filter to fine Microsoft.Insights and then register.  It will take a few minutes. (In the labs all of the required providers should be pre-registered for you.)
 
 ### Tasks
 
