@@ -200,7 +200,7 @@ As you can see it has downloaded the provider.azurerm into the `.terraform/plugi
 
 Run the `terraform plan`.
 
-<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
+<pre class="language-bash command-line" data-output="2-" data-prompt="$"><code>
 terraform plan
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
@@ -338,7 +338,7 @@ Run the `terraform apply` command to deploy the resources.
 
 You will see the same output as the `terraform plan` command, but will also be prompted for confirmation that you want to apply those changes.  Type `yes`.
 
-<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
+<pre class="language-bash command-line" data-output="2-" data-prompt="$"><code>
 terraform apply
 
 :
@@ -374,7 +374,7 @@ richeneyterraformlab1  terraform-lab1   westeurope  Microsoft.Storage/storageAcc
 
 Clean up the resources by using the `terraform destroy` command.  The command will let you know what you are about to remove and then prompt you for confirmation.
 
-<pre class="language-bash command-line" data-output="2-99" data-prompt="$"><code>
+<pre class="language-bash command-line" data-output="2-" data-prompt="$"><code>
 terraform destroy
 azurerm_resource_group.lab1: Refreshing state... [id=/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/terraform-lab1]
 azurerm_storage_account.lab1sa: Refreshing state... [id=/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/terraform-lab1/providers/Microsoft.Storage/storageAccounts/richeneylab1sa]

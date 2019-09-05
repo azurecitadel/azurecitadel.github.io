@@ -105,11 +105,14 @@ Terraform uses its own file format, called HCL (Hashicorp Configuration Language
 * Copy the text from the codeblock below
 
 ```hcl
+provider "azurerm" {
+  version = "~> 1.33.1"
+}
+
 resource "azurerm_resource_group" "lab1" {
   name     = "terraform-lab1"
   location = "West Europe"
-
-  tags {
+  tags = {
     environment = "training"
   }
 }
