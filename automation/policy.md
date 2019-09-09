@@ -32,7 +32,7 @@ Make sure you subscribe to the Azure Citadel [Atom (RSS) feed](/feed.xml) to get
 
 ## Pre-requisites
 
-Set up your machine for these labs using the [automation prereqs](./prereqs) page.
+Set up your machine for these labs using the [automation prereqs](/prereqs) page.
 
 ## Assumptions
 
