@@ -1,19 +1,19 @@
 ---
-title: "Automating Linux VM image creation"
+title: "Using Packer and Ansible"
 date: 2019-06-17
 author: Richard Cheney
 category: automation
 comments: true
-featured: true
-hidden: false
-published: false
+featured: false
+hidden: true
+published: true
 tags: [ "linux", "virtual machine", "images" ]
 header:
   overlay_image: images/header/whiteboard.jpg
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "linux"
-excerpt: Collection of labs using Packer and Ansible to automate Linux VMs image creation
+excerpt: Collection of labs using Packer and Ansible to automate VM image creation and manage VMs
 ---
 
 ## Introduction
