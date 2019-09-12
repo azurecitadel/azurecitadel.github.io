@@ -84,9 +84,8 @@ In this section you'll create a local Ansible area to work in, including a defau
 
     ```text
     inventory = ~/ansible/hosts
-    default_roles_path = ~/ansible/roles
+    roles_path = ~/ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
     interpreter_python = auto
-    host_key_checking = false
     nocows = 1
     ```
 
