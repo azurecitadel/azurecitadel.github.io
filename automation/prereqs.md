@@ -106,7 +106,7 @@ Used in the virtual machine image creation labs.
 The approach is the same for Packer as it is for Terraform. You may use the following to automate the install:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/automation/images/installLatestPacker.sh | sudo -E bash -
+curl -sL https://raw.githubusercontent.com/azurecitadel/azurecitadel.github.io/master/automation/packeransible/installLatestPacker.sh | sudo -E bash -
 ```
 
 ----------
