@@ -25,11 +25,11 @@ Tom Wilde and I have put together a set of labs that you can use to get up to sp
 Main Azure Policy page (including links to the prereqs)
 
 **Lab** | **Description**
-1 | [Simple Portal Policy](lab1) | Use a simple policy to stipulate the permitted regions
-2 | [Creating Policies via CLI](lab2) | Specify the allowed VM SKU sizes using the Azure CLI
-3 | [DeployIfNotExists](lab3) | Using a policy initiative with the DeployIfNotExist effect for automatic agent deployment and remediation
-4 | [Management Groups and Initiatives](lab4) | Step up a level using Management Groups and assigning a custom Deny initiative
-5 | [Tagging and Auditing](lab5) | Enable default resource tagging without compromising innovation using the append and audit effects
+1 | [Simple Portal Policy](/automation/policy/lab1) | Use a simple policy to stipulate the permitted regions
+2 | [Creating Policies via CLI](/automation/policy/lab2) | Specify the allowed VM SKU sizes using the Azure CLI
+3 | [DeployIfNotExists](/automation/policy/lab3) | Using a policy initiative with the DeployIfNotExist effect for automatic agent deployment and remediation
+4 | [Management Groups and Initiatives](/automation/policy/lab4) | Step up a level using Management Groups and assigning a custom Deny initiative
+5 | [Tagging and Auditing](/automation/policy/lab5) | Enable default resource tagging without compromising innovation using the append and audit effects
 
 In the unlikely (!) event that you find any problems with the labs then let us know either by using the Disqus comments at the bottom of the lab pages, or if you are more proficient with GitHub then you can always [contribute](https://azurecitadel.com/contributing) directly.
 
@@ -45,6 +45,6 @@ These will cover:
 
 The aim is to cover some of the governance aspects around management group organisation, role assignments and policy assignments, as well as the provision of standard share services.
 
-And they will be aimed at gwo levels, for either simpler and smaller businesses, or for more scalable organisations using the hub and spoke topology.
+And they will be aimed at two levels, for either simpler and smaller businesses, or for more scalable organisations using the hub and spoke topology.
 
 Enjoy!
