@@ -358,7 +358,7 @@ The copy property can be used in two sections of an ARM template, and those are 
 
 An example for this would be the data disks, where the diskCount integer property could be used in a copy as the count, and then the name and LUN number could then be derived from the copyIndex. This would be similar to copy sections you have already seen.
 
-Again, for readability you might also wish to dynamically create an array to be used later in the template, and you can create arrays in the variables section.  Let's take a look ahead at one of the building block templates that we will be using in the lab 7, [vnet-spoke.json](https://github.com/richeney/arm/blob/master/lab7/vnet-spoke.json).  This template creates a 'spoke' vNet, and it creates the two way vNet peering to an existing 'hub' vNet. It is designed to be called in a nested deployment, hence the liberal use of objects for the parameters.
+Again, for readability you might also wish to dynamically create an array to be used later in the template, and you can create arrays in the variables section.  Let's take a look ahead at one of the building block templates that we will be using in the lab 7, [vnet-spoke.json](https://raw.githubusercontent.com/richeney/arm-labs/master/nestedTemplates/vnet-spoke.json).  This template creates a 'spoke' vNet, and it creates the two way vNet peering to an existing 'hub' vNet. It is designed to be called in a nested deployment, hence the liberal use of objects for the parameters.
 
 There are a number of outputs returned so that the master template can easily find the resource IDs. This is simple for the vNet IDs, but there may be more than one subnet, and this is where copy is useful.  I have removed the content of the resources section to shorten it:
 
@@ -470,7 +470,7 @@ As you start working with more complex templates with parameter and variable arr
 <div class="success">
     <b>
         <li>
-          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab6/noresources.json" target="_blank">noresources.json</a>
+          <a href="https://raw.githubusercontent.com/richeney/arm-labs/master/lab6/noresources.json" target="_blank">noresources.json</a>
         </li>
     </b>
 </div>

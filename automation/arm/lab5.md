@@ -212,9 +212,9 @@ Here are the final set of files:
 <div class="success">
     <b>
         <li>
-          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab5/azuredeploy.json" target="_blank">azuredeploy.json</a>
+          <a href="https://raw.githubusercontent.com/richeney/arm-labs/master/lab5/azuredeploy.json" target="_blank">azuredeploy.json</a>
         </li><li>
-          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab5/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
+          <a href="https://raw.githubusercontent.com/richeney/arm-labs/master/lab5/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
         </li>
     </b>
 </div>

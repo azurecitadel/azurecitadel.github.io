@@ -279,9 +279,9 @@ Combining parameter files and inline parameters in this way can be very useful, 
 <div class="success">
     <b>
         <li>
-          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab3/azuredeploy.json" target="_blank">azuredeploy.json</a>
+          <a href="https://raw.githubusercontent.com/richeney/arm-labs/master/lab3/azuredeploy.json" target="_blank">azuredeploy.json</a>
         </li><li>
-          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab3/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
+          <a href="https://raw.githubusercontent.com/richeney/arm-labs/master/lab3/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
         </li>
     </b>
 </div>

@@ -72,7 +72,7 @@ Alternatively you can replace either of these with links to an external URI, usi
 
 ```json
     "templateLink": {
-       "uri":"https://raw.githubusercontent.com/richeney/arm/master/nestedTemplates/vnet-spoke.json",
+       "uri":"https://raw.githubusercontent.com/richeney/arm-labs/master/nestedTemplates/vnet-spoke.json",
        "contentVersion":"1.0.0.0"
     },
 ```
@@ -318,11 +318,11 @@ If you look at some of the other resource deployments in this master template th
 <div class="success">
     <b>
         <li>
-          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.json" target="_blank">azuredeploy.json</a>
+          <a href="https://raw.githubusercontent.com/richeney/arm-labs/master/lab7/azuredeploy.json" target="_blank">azuredeploy.json</a>
         </li><li>
-          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab7/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
+          <a href="https://raw.githubusercontent.com/richeney/arm-labs/master/lab7/azuredeploy.parameters.json" target="_blank">azuredeploy.parameters.json</a>
         </li><li>
-          <a href="https://raw.githubusercontent.com/richeney/arm/master/lab7/vm.json" target="_blank">vm.json</a>
+          <a href="https://raw.githubusercontent.com/richeney/arm-labs/master/lab7/vm.json" target="_blank">vm.json</a>
         </li>
     </b>
 </div>
