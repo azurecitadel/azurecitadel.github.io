@@ -1,8 +1,8 @@
 ---
-title: "Azure Tips and Tricks"
+title: "ARM Template Viewer extension"
 author: "Richard Cheney"
 published: true
-excerpt: Ben Coleman's vscode extension - ARM Template Viewer
+excerpt: Ben Coleman's vscode extension for graphically displaying ARM Templates
 ---
 
 ## ARM Template Viewer
