@@ -50,7 +50,7 @@ A bash script `deploy.sh` for fully automated deployment is provided in the **et
 
 To run the script you will need the Azure CLI installed and configured and either run the script locally under WSL bash or simply use the Azure Cloud Shell
 
-- **Step 1** Go to [shell.azure.com](shell.azure.com) and login
+- **Step 1** Go to [shell.azure.com](https://shell.azure.com) and login
 - **Step 2** Run 
 ```bash
 curl -s https://raw.githubusercontent.com/benc-uk/serverless-cognitive/master/etc/deploy.sh | bash

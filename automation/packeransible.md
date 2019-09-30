@@ -12,7 +12,7 @@ header:
   overlay_image: images/header/gherkin.jpg
   teaser: images/teaser/packeransible.png
 sidebar:
-  nav: "linux"
+  nav: "packeransible"
 excerpt: Collection of labs using Packer and Ansible to automate VM image creation and management
 ---
 

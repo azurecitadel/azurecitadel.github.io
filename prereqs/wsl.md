@@ -110,7 +110,7 @@ EOF
 
 You will need to move to a local git repo to see the branch within the prompt.
 
-There is online documentation available if you want to customise the [colors]((http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html)) or [content](https://help.ubuntu.com/community/CustomizingBashPrompt) of the PS1 string.
+There is online documentation available if you want to customise the [colors]((https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html)) or [content](https://help.ubuntu.com/community/CustomizingBashPrompt) of the PS1 string.
 
 ### Customised vi(m)
 

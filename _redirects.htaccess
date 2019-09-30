@@ -2,7 +2,7 @@ Redirect /workshops /
 Redirect /workshops/azure101 /fundamentals/azure101
 Redirect /workshops/arm /automation/arm
 Redirect /workshops/terraform /automation/terraform
-Redirect /workshops/vdc /infra/terraform
+Redirect /workshops/vdc /automation/terraform
 Redirect /guides /
 Redirect /guides/citadel /citadel
 Redirect /guides/cli /prereqs/cli
