@@ -1,0 +1,42 @@
+name: Pull Request Validation
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+ 
+    - name: Install dependencies
+      run: |
+        gem install bundler -N
+        gem update bundler
+        
+    - run: bundle install
+    
+    - name: Build Site
+      run: bundle exec jekyll build
+
+    - name: Upload to staging
+      run: |
+        PULL_REQUEST_ID=$(jq --raw-output .pull_request.number "${GITHUB_EVENT_PATH}")
+        az storage blob upload-batch --source _site --destination \$web/pull-request-${PULL_REQUEST_ID} --account-name=${STORAGE_ACCOUNT_NAME} --account-key="${STORAGE_ACCOUNT_KEY}" --no-progress
+        echo "Deployed staging version to https://citadelstaging.z6.web.core.windows.net/pull-request-${PULL_REQUEST_ID}"
+      env:
+        STORAGE_ACCOUNT_KEY: ${{ secrets.STORAGE_ACCOUNT_KEY }}
+        STORAGE_ACCOUNT_NAME: ${{ secrets.STORAGE_ACCOUNT_NAME }}
+
+    - name: Run HTML Proofer
+      run: bundle exec htmlproofer --assume-extension --only-4xx --url-ignore "http://127,http://localhost,/specalised,/\/tags\/#.*/,#" ./_site
+
