@@ -22,11 +22,11 @@ In this lab you will create a custom image using Packer, and then use it to depl
 
 If you already have Packer installed then skip to the [working environment](#create-a-working-environment-for-packer) step.
 
-If you do no have Packer installed then you can either [install Packer manually](#install-packer-manually) or using a [script](#scripted-packer-installation).
+If you do not have Packer installed then you can either [install Packer manually](#install-packer-manually) or using a [script](#scripted-packer-installation).
 
 ## Install Packer manually
 
-If installing Packer manually
+If installing Packer manually:
 
 1. Follow Hashicorp's instructions for installing the binary if you haven't done so as part of the [prereqs](../prereqs):
 
@@ -43,7 +43,7 @@ If installing Packer manually
 
 ## Scripted Packer installation
 
-Alternatively you may use my script to accelerate the installation.
+Alternatively you may use a scripted installation:
 
 1. Download the script
 
