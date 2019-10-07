@@ -1,6 +1,6 @@
 ---
-title: "Dynamic Inventories in Ansible"
-date: 2019-08-19
+title: "Dynamic Ansible Inventories on Azure"
+date: 2019-10-07
 author: Richard Cheney
 category: automation
 comments: true
@@ -9,10 +9,10 @@ hidden: true
 published: true
 tags: [ ansible, dynamic, linux ]
 header:
-  overlay_image: images/header/whiteboard.jpg
-  teaser: images/teaser/blueprint.png
+  overlay_image: images/header/gherkin.jpg
+  teaser: images/teaser/packeransible.png
 sidebar:
-  nav: "images"
+  nav: "packeransible"
 excerpt: Using dynamic inventories on Azure based on tags, resource groups and more
 ---
 
@@ -24,29 +24,7 @@ Dynamic inventories are integrated into Ansible as of version 2.8.
 
 > If you stumble across internet sites that reference a Python script called azure_rm.py then this is the way that dynamic inventories were done prior to v2.8. Those pages are now out of date.
 
-## Setup
-
-In the setup for the last lab you extended the bottom of the ~/.images_env file with additional environment variables.
-
-```bash
-
-export AZURE_TENANT=$ARM_TENANT_ID
-export AZURE_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
-export AZURE_CLIENT_ID=$ARM_CLIENT_ID
-export AZURE_SECRET=$ARM_CLIENT_SECRET
-```
-
-> Note that ~/_images_env is not an Ansible standard.  You could have named the file anything you like, or just exported the same environment variables in your .bashrc file.
-
-1. Export the environment variables
-
-    Make sure the environment variables are exported in your current session.
-
-    ```bash
-    source ~/.image_env
-    ```
-
-    > Remember that there are other options for Azure credentials, as per the [documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+## Dynamic inventory based on resource group filters
 
 1. Change directory to the working area
 
@@ -55,8 +33,6 @@ export AZURE_SECRET=$ARM_CLIENT_SECRET
     ```bash
     cd ~/ansible
     ```
-
-## Dynamic inventory based on resource group filters
 
 1. Create a third VM
 
@@ -126,11 +102,11 @@ key.
 
     # Generate 'tag_(tag name)_(tag value)' for each tag on a VM.
     - prefix: tag
-    key: tags
+      key: tags
 
     # Generate 'loc_(location name)', depending on the VM's location
     - prefix: loc
-    key: location
+      key: location
     ```
 
 1. Verify the keyed groups
@@ -151,8 +127,9 @@ key.
     ```yaml
     [defaults]
     inventory = ~/ansible/inventory.azure_rm.yml
-    default_roles_path = ~/ansible/roles
-    interpreter_python = auto
+    roles_path = ~/ansible/roles
+    deprecation_warnings=False
+    nocows = 1
     ```
 
 1. Clean up the static file
@@ -179,9 +156,9 @@ That would be one way to organise your dynamic inventories. Instead we'll maximi
 
 ## Keyed groups format
 
-We'll add to the number of automatically generated dynamic groups by extending the keyed groups.
+In the next section we will add to the number of automatically generated dynamic groups by extending the keyed groups. Let's take a moment to understand the format for each keyed groups entry in the config file.
 
-The keyed groups all defined under the `keyed_groups:` section, and have the following format.
+The keyed groups all defined under the `keyed_groups:` section.  Let's look at the one you just added in to group by location:
 
 ```yaml
 - prefix: loc
@@ -190,11 +167,36 @@ The keyed groups all defined under the `keyed_groups:` section, and have the fol
 
 The prefix is a text string that prefixes the resulting auto generated groups.  It is combined with underscore and then the key, which in this example is location.  With our VMs this resulted in a group called **loc_westeurope**. (You can override the underscore default separator if desired.)
 
+But how does Ansible know the region for our VMs?  The answer is the Instance Metadata Service.
+
 ## Instance Metadata Service
 
-Adding the Azure dynamic inventories functionality has added a wide number of Azure platform values to the hostvars set.  These have been pulled from the [Azure instance metadata service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service), so we'll take a quick look at that now.
+Adding the Azure dynamic inventories functionality has added a wide number of Azure platform values to the hostvars set.  These values been pulled from the [Azure instance metadata service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service). Let's take a quick look at that now.
 
-1. SSH onto one of your hosts
+1. Remind yourself of the public IP address for VM1
+
+    ```bash
+    az vm list-ip-addresses --resource-group ansible_vms --output table
+    ```
+
+    Example output:
+
+    ```text
+    VirtualMachine    PublicIPAddresses    PrivateIPAddresses
+    ----------------  -------------------  --------------------
+    vm1               13.95.141.87         10.0.0.4
+    vm2               13.95.143.192        10.0.0.5
+    vm3               52.148.241.98        10.0.0.6
+    ```
+
+1. SSH onto VM1
+
+    Example command:
+
+    ```bash
+    ssh richeney@13.95.141.87
+    ```
+
 1. Hit the Instance Metadata Service
 
     Run the following command to see the Azure environmental information for that Ubuntu server
@@ -209,7 +211,7 @@ Adding the Azure dynamic inventories functionality has added a wide number of Az
 
     ```json
     {
-    "compute": {
+      "compute": {
         "azEnvironment": "AzurePublicCloud",
         "customData": "",
         "location": "westeurope",
@@ -218,57 +220,59 @@ Adding the Azure dynamic inventories functionality has added a wide number of Az
         "osType": "Linux",
         "placementGroupId": "",
         "plan": {
-        "name": "",
-        "product": "",
-        "publisher": ""
+          "name": "",
+          "product": "",
+          "publisher": ""
         },
         "platformFaultDomain": "0",
         "platformUpdateDomain": "0",
         "provider": "Microsoft.Compute",
         "publicKeys": [
-        {
-            "keyData": "<REDACTED>",
+          {
+            "keyData": "<<REDACTED>>",
             "path": "/home/richeney/.ssh/authorized_keys"
-        }
+          }
         ],
         "publisher": "",
         "resourceGroupName": "ansible_vms",
-        "resourceId": "/subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/ansible_vms/providers/Microsoft.Compute/virtualMachines/vm1",
+        "resourceId": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/ansible_vms/providers/Microsoft.Compute/virtualMachines/vm1",
         "sku": "",
-        "subscriptionId": "2d31be49-d999-4415-bb65-8aec2c90ba62",
-        "tags": "managed_by:ansible;owner:citadel",
+        "subscriptionId": "2ca40be1-7e80-4f2b-92f7-06b2123a68cc",
+        "tags": "docker:true;owner:citadel",
         "version": "",
-        "vmId": "526a1d3a-467c-400b-8ea0-ab2d0f393bff",
+        "vmId": "056ac4bd-d9d8-474a-a990-f18f3c01729c",
         "vmScaleSetName": "",
         "vmSize": "Standard_DS1_v2",
         "zone": ""
-    },
-    "network": {
+      },
+      "network": {
         "interface": [
-        {
+          {
             "ipv4": {
-            "ipAddress": [
+              "ipAddress": [
                 {
-                "privateIpAddress": "10.0.0.4",
-                "publicIpAddress": "65.52.158.233"
+                  "privateIpAddress": "10.0.0.4",
+                  "publicIpAddress": "13.95.141.87"
                 }
-            ],
-            "subnet": [
+              ],
+              "subnet": [
                 {
-                "address": "10.0.0.0",
-                "prefix": "24"
+                  "address": "10.0.0.0",
+                  "prefix": "24"
                 }
-            ]
+              ]
             },
             "ipv6": {
-            "ipAddress": []
+              "ipAddress": []
             },
-            "macAddress": "000D3A4A002D"
-        }
+            "macAddress": "000D3A2E8FDC"
+          }
         ]
-    }
+      }
     }
     ```
+
+    > You will see your public key in compute.publicKeys.keyData. I have redacted mine.
 
     If you are bash scripting on a host then it is common to pull the metadata JSON into a file and then pull out values using jq. Or you can use a fully pathed value directly using the service, e.g.:
 
@@ -292,94 +296,102 @@ A subset of the Azure instance metadata is being pulled into the hostvars now th
 1. View the hostvars visible from one host
 
     ```bash
-    ansible vm1_c069 -m debug -a 'var=hostvars'
+    ansible vm1_cf1d -m debug -a 'var=hostvars'
     ```
 
     Excerpt of example output for one of the hosts:
 
     ```json
-    {
-        "ansible_check_mode": false,
-        "ansible_diff_mode": false,
-        "ansible_facts": {},
-        "ansible_forks": 5,
-        "ansible_host": "13.94.232.252",
-        "ansible_inventory_sources": [
-            "/home/richeney/ansible/inventory.azure_rm.yml"
-        ],
-        "ansible_playbook_python": "/usr/bin/python",
-        "ansible_verbosity": 0,
-        "ansible_version": {
-            "full": "2.8.3",
-            "major": 2,
-            "minor": 8,
-            "revision": 3,
-            "string": "2.8.3"
-        },
-        "group_names": [
-            "loc_westeurope"
-        ],
-        "groups": {
-            "all": [
-                "vm1_c069",
-                "vm2_8506",
-                "vm3_7e2c"
-            ],
-            "loc_westeurope": [
-                "vm1_c069",
-                "vm2_8506",
-                "vm3_7e2c"
-            ],
-            "tag_managed_by_ansible": [
-                "vm1_c069",
-                "vm2_8506"
-            ],
-            "tag_owner_citadel": [
-                "vm1_c069",
-                "vm2_8506"
-            ],
-            "ungrouped": []
-        },
-        "id": "/subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/ansible_vms/providers/Microsoft.Compute/virtualMachines/vm3",
-        "image": {
-            "id": "/subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/packer_images/providers/Microsoft.Compute/images/lab1"
-        },
-        "inventory_dir": "/home/richeney/ansible",
-        "inventory_file": "/home/richeney/ansible/inventory.azure_rm.yml",
-        "inventory_hostname": "vm3_7e2c",
-        "inventory_hostname_short": "vm3_7e2c",
-        "location": "westeurope",
-        "mac_address": "00-0D-3A-4A-6D-13",
-        "name": "vm3",
-        "network_interface": "vm3VMNic",
-        "network_interface_id": "/subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/ansible_vms/providers/Microsoft.Network/networkInterfaces/vm3VMNic",
-        "omit": "__omit_place_holder__3c14a05b4e80fe0ed654257a299a255d3cd93bfc",
-        "os_disk": {
-            "name": "vm3_disk1_18a9d5b216c74c649d51e8d67612fa72",
-            "operating_system_type": "linux"
-        },
-        "plan": null,
-        "playbook_dir": "/home/richeney/ansible",
-        "powerstate": "running",
-        "private_ipv4_addresses": [
-            "10.0.0.6"
-        ],
-        "provisioning_state": "succeeded",
-        "public_dns_hostnames": [],
-        "public_ip_id": "/subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/ansible_vms/providers/Microsoft.Network/publicIPAddresses/vm3PublicIP",
-        "public_ip_name": "vm3PublicIP",
-        "public_ipv4_addresses": [
-            "13.94.232.252"
-        ],
-        "resource_group": "ansible_vms",
-        "resource_type": "Microsoft.Compute/virtualMachines",
-        "security_group": "vm3NSG",
-        "security_group_id": "/subscriptions/2d31be49-d999-4415-bb65-8aec2c90ba62/resourceGroups/ansible_vms/providers/Microsoft.Network/networkSecurityGroups/vm3NSG",
-        "tags": {},
-        "virtual_machine_size": "Standard_DS1_v2",
-        "vmid": "b0ae2ca7-d524-4d26-9cd8-e59ca240756e",
-        "vmss": {}
-    }
+    vm1_cf1d | SUCCESS => {
+        "hostvars": {
+            "vm1_cf1d": {
+                "ansible_check_mode": false,
+                "ansible_diff_mode": false,
+                "ansible_facts": {},
+                "ansible_forks": 5,
+                "ansible_host": "13.95.141.87",
+                "ansible_inventory_sources": [
+                    "/home/richeney/ansible/inventory.azure_rm.yml"
+                ],
+                "ansible_playbook_python": "/usr/bin/python",
+                "ansible_verbosity": 0,
+                "ansible_version": {
+                    "full": "2.8.3",
+                    "major": 2,
+                    "minor": 8,
+                    "revision": 3,
+                    "string": "2.8.3"
+                },
+                "group_names": [
+                    "loc_westeurope",
+                    "tag_docker_true",
+                    "tag_owner_citadel"
+                ],
+                "groups": {
+                    "all": [
+                        "vm1_cf1d",
+                        "vm2_1e76",
+                        "vm3_aa09"
+                    ],
+                    "loc_westeurope": [
+                        "vm1_cf1d",
+                        "vm2_1e76",
+                        "vm3_aa09"
+                    ],
+                    "tag_docker_true": [
+                        "vm1_cf1d",
+                        "vm2_1e76"
+                    ],
+                    "tag_owner_citadel": [
+                        "vm1_cf1d",
+                        "vm2_1e76"
+                    ],
+                    "ungrouped": []
+                },
+                "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/ansible_vms/providers/Microsoft.Compute/virtualMachines/vm1",
+                "image": {
+                    "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/images/providers/Microsoft.Compute/images/lab1"
+                },
+                "inventory_dir": "/home/richeney/ansible",
+                "inventory_file": "/home/richeney/ansible/inventory.azure_rm.yml",
+                "inventory_hostname": "vm1_cf1d",
+                "inventory_hostname_short": "vm1_cf1d",
+                "location": "westeurope",
+                "mac_address": "00-0D-3A-2E-8F-DC",
+                "name": "vm1",
+                "network_interface": "vm1VMNic",
+                "network_interface_id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/ansible_vms/providers/Microsoft.Network/networkInterfaces/vm1VMNic",
+                "omit": "__omit_place_holder__5a75ee2f678d39048d7c4d288c68a897bb00e8df",
+                "os_disk": {
+                    "name": "vm1_disk1_c3111459458744568f03ba0a078661b4",
+                    "operating_system_type": "linux"
+                },
+                "plan": null,
+                "playbook_dir": "/home/richeney/ansible",
+                "powerstate": "running",
+                "private_ipv4_addresses": [
+                    "10.0.0.4"
+                ],
+                "provisioning_state": "succeeded",
+                "public_dns_hostnames": [],
+                "public_ip_id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/ansible_vms/providers/Microsoft.Network/publicIPAddresses/vm1PublicIP",
+                "public_ip_name": "vm1PublicIP",
+                "public_ipv4_addresses": [
+                    "13.95.141.87"
+                ],
+                "resource_group": "ansible_vms",
+                "resource_type": "Microsoft.Compute/virtualMachines",
+                "security_group": "vm1NSG",
+                "security_group_id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/ansible_vms/providers/Microsoft.Network/networkSecurityGroups/vm1NSG",
+                "tags": {
+                    "docker": "true",
+                    "owner": "citadel"
+                },
+                "virtual_machine_size": "Standard_DS1_v2",
+                "vmid": "056ac4bd-d9d8-474a-a990-f18f3c01729c",
+                "vmss": {}
+            }
+        }
     ```
 
 > Note that this output only shows the information for one host.  Each host actually sees the hostvar info for others in the inventory.
@@ -399,15 +411,15 @@ Let's add keyed groups based on resource group, operating system type and VM siz
     ```yaml
     # Generate rg_(resource_group)
     - prefix: rg
-    key: resource_group
+      key: resource_group
 
     # Generate os_type_(os_type)
     - prefix: os
-    key: os_disk.operating_system_type
+      key: os_disk.operating_system_type
 
     # Generate vm_size_(vm_size)
     - prefix: vm_size
-    key: virtual_machine_size
+      key: virtual_machine_size
     ```
 
 1. List the groups and members
@@ -427,7 +439,7 @@ For example, the operating system type is within the os_disk hostvar:
 
 ```json
     "os_disk": {
-        "name": "vm3_disk1_18a9d5b216c74c649d51e8d67612fa72",
+        "name": "vm1_disk1_c3111459458744568f03ba0a078661b4",
         "operating_system_type": "linux"
     },
 ```
@@ -440,11 +452,9 @@ So your keyed group would look like:
   key: os_disk.operating_system_type
 ```
 
-Assuming that you have followed the labs all the way through, then one of your three VMs will not have any tags.
-
 ## Defaults
 
-There is more functionality shown in the [documentation](https://docs.ansible.com/ansible/latest/plugins/inventory/azure_rm.html). One of those is using defaults.
+Assuming that you have followed the labs all the way through, then one of your three VMs will not have any tags. We recommend using [Azure Policy](/automation/policy) for creating default tags and flagging those that are non-compliant. You can also use defaults in the keyed groups to create dynamic groups of servers that do not have certain tags.
 
 If you remember the tags keyed group then it was in this format:
 
@@ -454,15 +464,19 @@ If you remember the tags keyed group then it was in this format:
   key: tags
 ```
 
-This does all of the tags. But it won't provide a group for an important tag that is missing a value. What if we wanted to look at all servers that didn't have an owners tag?
+This is powerful as it creates groups for all combinations of tags and tag values. But can you use Ansible to generate a group of servers that are missing a required tag and value? What if we wanted to look at all servers that didn't have an owners tag?
 
-You can use the following format to get a specific set of owner tags keyed groups including an owner_none group for those that do not have a defined owner value:
+You can use the following format to get a specific set of owner tags keyed groups including an tag_owner_none group for those that do not have a defined owner value:
 
 ```yaml
-# Generate 'owner__(owner value)'
-- prefix: owner
+# Generate 'tag_owner_(owner value)'
+- prefix: tag_owner
   key: tags.owner | default('none')
 ```
+
+Note that the groups this generates overlap with those created by the first keyed group, but they will be merged naturally.
+
+There is far more that you can do with the dynamic inventory file for Azure, so take time to review the other functionality shown in the [documentation](https://docs.ansible.com/ansible/latest/plugins/inventory/azure_rm.html).
 
 ## Complete the dynamic inventory file
 
@@ -473,10 +487,10 @@ You can use the following format to get a specific set of owner tags keyed group
     ```yaml
     # Generate os_type_(os_type)
     - prefix: os
-    key: os_disk.operating_system_type
-    # Generate 'owner__(owner value)'
-    - prefix: owner
-    key: tags.owner | default('none')
+      key: os_disk.operating_system_type
+    # Generate 'tag_owner_(owner value)'
+    - prefix: tag_owner
+      key: tags.owner | default('none')
     ```
 
 1. List the groups
@@ -515,4 +529,4 @@ In the next section we will look at playbooks and publishing to the shared image
 * <https://docs.microsoft.com/en-us/azure/ansible/ansible-manage-azure-dynamic-inventories>
 * <https://docs.ansible.com/ansible/latest/plugins/inventory/azure_rm.html>
 
-[◄ Lab 2: Packer](../lab2){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 4: Shared Image Gallery ►](../lab4){: .btn .btn--primary}
+[◄ Lab 2: Ansible](../lab2){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 4: Playbooks ►](../lab4){: .btn .btn--primary}

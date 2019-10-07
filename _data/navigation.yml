@@ -38,7 +38,7 @@ sidemenu:
     - title: "Security"
       url: "/security"
     - title: "Specialised Workloads"
-      url: "/specalised"      
+      url: "/specalised"
     - title: "Web & Mobile"
       url: "/web"
 #
@@ -125,20 +125,26 @@ cli:
     - title: "Scripting in Bash"
       url: "prereqs/cli/cli-4-bash"
 
-images:
+packeransible:
   - title: "Main Page"
-    url: "automation/images"
+    url: "automation/packeransible"
 
   - title: "Labs"
     children:
     - title: "Packer"
-      url: "automation/images/lab1"
+      url: "automation/packeransible/lab1"
     - title: "Ansible"
-      url: "automation/images/lab2"
+      url: "automation/packeransible/lab2"
+    - title: "Dynamic Inventories"
+      url: "automation/packeransible/lab3"
+    - title: "Ansible Playbooks"
+      url: "automation/packeransible/lab4"
+    - title: "Custom Roles"
+      url: "automation/packeransible/lab5"
     - title: "Shared Image Gallery"
-      url: "automation/images/lab3"
-    - title: "Azure DevOps"
-      url: "automation/images/lab4"
+      url: "automation/packeransible/lab6"
+    - title: "Config Management Example"
+      url: "automation/packeransible/lab7"
 
 policy:
   - title: "Main Page"

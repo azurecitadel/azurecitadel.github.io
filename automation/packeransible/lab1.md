@@ -1,6 +1,6 @@
 ---
-title: "Image creation with Packer"
-date: 2019-08-19
+title: "Basic image creation with Packer"
+date: 2019-10-07
 author: Richard Cheney
 category: automation
 comments: true
@@ -9,10 +9,10 @@ hidden: true
 published: true
 tags: [ image, packer, linux ]
 header:
-  overlay_image: images/header/whiteboard.jpg
-  teaser: images/teaser/blueprint.png
+  overlay_image: images/header/gherkin.jpg
+  teaser: images/teaser/packeransible.png
 sidebar:
-  nav: "images"
+  nav: "packeransible"
 excerpt: Generate a simple Ubuntu image and then deploy VMs from it
 ---
 
@@ -48,13 +48,14 @@ Alternatively you may use my script to accelerate the installation.
 1. Download the script
 
     ```bash
-    curl -sSL https://raw.githubusercontent.com/richeney/azure-blueprints/master/scripts/installLatestHashicorpBinary.sh --output     installLatestPacker.sh && chmod 755 installLatestPacker.sh
+    script=installLatestHashicorpBinary.sh
+    curl -sSL https://raw.githubusercontent.com/richeney/arm/master/scripts/$script --output $script && chmod 755 $script
     ```
 
 1. Run the script
 
     ```bash
-    ./installLatestPacker.sh
+    ./installLatestHashicorpBinary.sh packer
     ```
 
 ## Create a working environment for Packer
@@ -64,92 +65,98 @@ In this section you'll create:
 * a resource group where Packer will store the generated images
 * a secure folder for your Packer config files
 * a service principal for Packer to access your Azure subscription
-* an env file in your home directory with the required environment variables
+* extend your .bashrc file with the required environment variables
 
-> You can hardcode the tenancy, subscription and service principal details in the JSON files, but we will make use of environment variables instead and put those into a more protected file. This will also make your Packer template reusable in other subscription contexts.
+> You can hardcode the tenancy, subscription and service principal details in the JSON files, but we will make use of environment variables instead.
 
 1. Create a resource group
 
     ```bash
-    az group create --name packer_images --location westeurope --output yaml
-    ```
-
-    Example output:
-
-    ```yaml
-    id: /subscriptions/2d31be49-d959-4415-bb65-8aec2c90ba62/resourceGroups/packer_images
-    location: westeurope
-    managedBy: null
-    name: packer_images
-    properties:
-      provisioningState: Succeeded
-    tags: null
-    type: null
-    ```
-
-1. Create a folder for your lab files.  The commands below will create a subdirectory in your home directory:
-
-    ```bash
-    mkdir -m 755 ~packer && cd packer
-    ```
-
-1. Create a service principal for packer to use
-
-    You will need a service principal to create the images using Packer.  If you have one already for Terraform then you can reuse it. Capture     the output from the following command as the value will transpose directly into the top of the packer template.
-
-    The packer image generation process will create a temporary folder so the service principal needs sufficient permissions to do so.
-
-    ```bash
-    subId=$(az account show --output tsv --query id)
-    name="http://images-${subId}-sp"
-    az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$subId" --name "$name" --output json
+    az group create --name images --location westeurope --output jsonc
     ```
 
     Example output:
 
     ```json
     {
-      "appId": "6c0c9e20-9541-4591-bd9e-893e21099c72",
-      "displayName": "images-2d31be49-d999-4415-bb65-8aec2c90ba62-sp",
-      "name": "http://images-2d31be49-d999-4415-bb65-8aec2c90ba62-sp",
-      "password": "0858048e-c8c2-4d70-ad28-5fe0dd073201",
-      "tenant": "f246eeb7-b820-1971-a083-9e100e084ed0"
+      "id": "/subscriptions/2ca40be1-7e80-4f2b-92f7-06b2123a68cc/resourceGroups/images",
+      "location": "westeurope",
+      "managedBy": null,
+      "name": "images",
+      "properties": {
+        "provisioningState": "Succeeded"
+      },
+      "tags": null,
+      "type": "Microsoft.Resources/resourceGroups"
+    }
+    ```
+
+1. Create a folder for your lab files.  The commands below will create a subdirectory in your home directory:
+
+    ```bash
+    mkdir -m 755 ~/packer && cd ~/packer
+    ```
+
+1. Create a service principal for packer to use
+
+    You will need a service principal to create the images using Packer.  We will call is `http://hashicorp` as we will also use it for Terraform in a later lab. The packer image generation process will create a temporary resource group so the service principal needs sufficient permissions to create one. We'll use Contributor.
+
+    Capture the output from the `az ad sp create-for-rbac` command as you will need the values for some environment variables.
+
+    ```bash
+    name="http://hashicorp"
+    subId=$(az account show --output tsv --query id)
+    az ad sp create-for-rbac --name $name --role="Contributor" --scopes="/subscriptions/$subId" --output json
+    ```
+
+    > If you are in a shared environment and `http://hashicorp` has been taken by someone else then set `name="http://hashicorp-${subId}-sp"` and then retry the `az ad sp create-for-rbac` command above..
+
+    Example output:
+
+    ```json
+    {
+      "appId": "19704041-8953-47f5-9b58-45c58f7fb9be",
+      "displayName": "hashicorp",
+      "name": "http://hashicorp",
+      "password": "5ddd8baf-4780-41c9-b7a0-6e23f242d275",
+      "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
     }
     ```
 
     Take a copy of the screen output for that last command. You will need some of the values in the next step.
 
-1. Create an .image_env file in your home directory
-
-    ```bash
-    touch ~/.images_env && chmod 600 ~/.images_env
-    ```
-
-    The file has secure permissions to protect the service principal credentials.
-
-1. Edit the .images_env file in your preferred editor
+1. Extend your ~/.bashrc file with your preferred editor
 
     E.g. vscode, vi, or nano.
 
 1. Add the export commands for the environment variables
 
-    Packer can use environment variables for authentication: ARM_TENANT_ID, ARM_SUBSRIPTION_ID, ARM_CLIENT_ID and ARM_CLIENT_SECRET.
+    Packer can use environment variables for authentication:
 
-    Below are example commands based on the returned values from the command output above.
+    **Environment variable** | **`az ad sp create-for-rbac` value**
+    **ARM_TENANT_ID** | **tenant**
+    **ARM_SUBSCRIPTION_ID** | **_Use your existing $subId value_**
+    **ARM_CLIENT_ID** | **appId**
+    **ARM_CLIENT_SECRET** | **password**
+
+    Example lines added to .bashrc, based on the values returned in the command output above:
 
     ```bash
-    export ARM_TENANT_ID=f246eeb7-b820-1971-a083-9e100e084ed0
-    export ARM_SUBSCRIPTION_ID=2d31be49-d999-4415-bb65-8aec2c90ba62
-    export ARM_CLIENT_ID=6c0c9e20-9541-4591-bd9e-893e21099c72
-    export ARM_CLIENT_SECRET=0858048e-c8c2-4d70-ad28-5fe0dd073201
+    # Environment variables for Packer and Terraform
+    export ARM_TENANT_ID=72f988bf-86f1-41af-91ab-2d7cd011db47
+    export ARM_SUBSCRIPTION_ID=2ca40be1-7e80-4f2b-92f7-06b2123a68cc
+    export ARM_CLIENT_ID=19704041-8953-47f5-9b58-45c58f7fb9be
+    export ARM_CLIENT_SECRET=5eee8baf-4780-41c9-b7a0-6e23f242d275
     ```
 
     **Ensure your values are modified to match those shown in the output of your `az ad sp create-for-rbac` command.**
 
-1. Source the environment file
+    > You can always rerun the `az ad sp create-for-rbac` command above which will also change the password value.
+
+1. Source the .bashrc file
 
     ```bash
-    source ~/.image_env
+    source ~/.bashrc
     ```
 
 1. Check the environment variables are set
@@ -161,13 +168,13 @@ In this section you'll create:
     Example output:
 
     ```text
-    ARM_SUBSCRIPTION_ID=2d31be49-d959-4415-bb65-8aec2c90ba62
-    ARM_TENANT_ID=f246eeb7-b820-4971-a083-9e100e084ed0
-    ARM_CLIENT_SECRET=0858048e-c8c2-4d70-ad28-5fe0dd073201
-    ARM_CLIENT_ID=6c0c9e20-9541-4591-bd9e-893e21099c72
+    ARM_SUBSCRIPTION_ID=2ca40be1-7e80-4f2b-92f7-06b2123a68cc
+    ARM_TENANT_ID=72f988bf-86f1-41af-91ab-2d7cd011db47
+    ARM_CLIENT_ID=19704041-8953-47f5-9b58-45c58f7fb9be
+    ARM_CLIENT_SECRET=5eee8baf-4780-41c9-b7a0-6e23f242d275
     ```
 
-    > Your .bashrc file could also explicitly export the or it could include the source command above.
+    OK, you're set.
 
 ## Create the Packer template
 
@@ -178,6 +185,7 @@ In this section you'll create:
     ```json
     {
       "variables": {
+        "tenant_id": "{{env `ARM_TENANT_ID`}}",
         "subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}",
         "client_id": "{{env `ARM_CLIENT_ID`}}",
         "client_secret": "{{env `ARM_CLIENT_SECRET`}}"
@@ -188,8 +196,9 @@ In this section you'll create:
         "client_id": "{{user `client_id`}}",
         "client_secret": "{{user `client_secret`}}",
         "subscription_id": "{{user `subscription_id`}}",
+        "tenant_id": "{{user `tenant_id`}}",
 
-        "managed_image_resource_group_name": "packer_images",
+        "managed_image_resource_group_name": "images",
         "managed_image_name": "lab1",
 
         "os_type": "Linux",
@@ -255,15 +264,15 @@ In this section you'll create:
 1. List the resulting image
 
     ```bash
-    az image list --resource-group packer_images --output table
+    az image list --resource-group images --output table
     ```
 
     Example output:
 
     ```text
-    Location    Name    ProvisioningState    ResourceGroup
-    ----------  ------  -------------------  ---------------
-    westeurope  lab1    Succeeded            packer_images
+    HyperVgeneration    Location    Name    ProvisioningState    ResourceGroup
+    ------------------  ----------  ------  -------------------  ---------------
+    V1                  westeurope  lab1    Succeeded            images
     ```
 
 ## SSH Keys
@@ -317,12 +326,12 @@ In this section we will create a resource group, vNet and subnet and then attach
 1. Set a variable to your image's resource ID
 
     ```bash
-    imageId=$(az image show --resource-group packer_images --name lab1 --output tsv --query id)
+    imageId=$(az image show --resource-group images --name lab1 --output tsv --query id)
     ```
 
     > Note: if you are deploying VMs into the same resource group as the image then `az vm create` command can use the far shorter image name (e.g. lab1) rather than the full ID
 
-1. Create a VM from the lab1 image
+1. Create vm1 from the lab1 image
 
     ```bash
     az vm create --name vm1 \
@@ -331,22 +340,28 @@ In this section we will create a resource group, vNet and subnet and then attach
       --ssh-key-values "@~/.ssh/id_rsa.pub" \
       --vnet-name vnet \
       --subnet subnet \
-      --tags owner=citadel managed_by=ansible \
+      --tags owner=citadel docker=true \
       --output jsonc \
       --no-wait
     ```
 
-1. Create a second VM from the image
+    The command returned immediately as we specified `--no-wait`. The job will be visible in the Deployments screen within the ansible_vms resource group.
 
-    Modify the last command to create a VM named vm2.
+1. Create vm2
 
-    We will use the two VMs in the next lab. Note the tags we added; we'll be using those for dynamic inventories in a later lab.
+    ```bash
+    az vm create --name vm2 \
+      --resource-group ansible_vms \
+      --image $imageId \
+      --ssh-key-values "@~/.ssh/id_rsa.pub" \
+      --vnet-name vnet \
+      --subnet subnet \
+      --tags owner=citadel docker=true \
+      --output jsonc \
+      --no-wait
+    ```
 
-Additional notes:
-
-* The `--ssh-key-values` switch will take a space delimited list of public key files, so you can add a few user IDs in one go.
-* Also check out the manual pages for `ssh-agent` and `ssh-add`
-* For those of you using Azure Key Vault, look at the help using `az vm create --help`. There is also a PowerShell based tutorial, which at least shows the process.
+    Both are now deploying. We will use the two VMs in the next lab. Note the tags we added; we'll be using those for dynamic inventories in a later lab.
 
 ## Connect to the VM
 
@@ -358,9 +373,7 @@ Working ssh access to deployed VMs is critical to making use of Ansible. In this
     az group deployment list --resource-group ansible_vms --output table
     ```
 
-    > The two VMs were deployed with `--no-wait`.
-
-1. Repeat the last command until both have succeeded
+    > Repeat this command until both show a state of succeeded.
 
 1. List out the IP addresses
 
@@ -368,20 +381,20 @@ Working ssh access to deployed VMs is critical to making use of Ansible. In this
     az vm list-ip-addresses --resource-group ansible_vms --output table
     ```
 
-1. SSH into the first of the two VMs
+1. SSH into the public IP address for vm1
 
     Connect using `ssh <userid>@<publicIpAddress>`.
 
     Example SSH command below. Your public IP address will be different.
 
     ```bash
-    ssh richeney@65.52.158.233
-    The authenticity of host '65.52.158.233 (65.52.158.233)' can't be established.
+    ssh richeney@13.95.141.87
+    The authenticity of host '13.95.141.87 (13.95.141.87)' can't be established.
     ECDSA key fingerprint is SHA256:ODtHkhERTQx+bUc3ZEL1LBW41VxtGf9JboqYtXe6Dc4.
     Are you sure you want to continue connecting (yes/no)? yes
     ```
 
-    > Answering yes will add the server to the `~/.ssh/authorized_keys` file. Future ssh session will go straight in.
+    > Answering yes will add the server to the `~/.ssh/authorized_keys` file. Future ssh connections will go straight in.
 
 1. Test that the additional packages were installed correctly into the image
 
@@ -423,4 +436,4 @@ Working ssh access to deployed VMs is critical to making use of Ansible. In this
 
 Don't delete the VMs. We will make use of them over the next few labs! Click on the Ansible Basics link below to move onto the next lab.
 
-[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Ansible Basics ►](../lab2){: .btn .btn--primary}
+[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Ansible ►](../lab2){: .btn .btn--primary}

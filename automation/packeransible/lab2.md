@@ -1,6 +1,6 @@
 ---
-title: "Basic Ansible Management"
-date: 2019-08-19
+title: "Ad Hoc VM Management with Ansible"
+date: 2019-10-07
 author: Richard Cheney
 category: automation
 comments: true
@@ -9,10 +9,10 @@ hidden: true
 published: true
 tags: [ ansible, ad hoc, linux ]
 header:
-  overlay_image: images/header/whiteboard.jpg
-  teaser: images/teaser/blueprint.png
+  overlay_image: images/header/gherkin.jpg
+  teaser: images/teaser/packeransible.png
 sidebar:
-  nav: "images"
+  nav: "packeransible"
 excerpt: Run ad hoc Ansible commands against static inventories
 ---
 
@@ -36,7 +36,7 @@ Go to <https://www.ansible.com/resources/get-started> and watch the Quick Start 
 
 In this section you'll create a local Ansible area to work in, including a default cfg file and a static hosts file containing the public IP addresses for the two VMs we created in the previous lab.
 
-1. Create an ansible folder
+1. Create an ansible folder for our dev and test work
 
     ```bash
     umask 077
@@ -45,47 +45,68 @@ In this section you'll create a local Ansible area to work in, including a defau
 
     We will be intentionally strict with permissions.
 
+    > Note that we will be using /etc/ansible later as our 'production' area.
+
 1. Install Ansible
 
     ```bash
-    sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
+    sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip python-setuptools
     sudo -H pip install ansible[azure]
     ```
 
-    As per the [Ansible install guide](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ansible-install-configure) for Azure.
+    As per the [Ansible install guide](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ansible-install-configure) for Azure. (Plus python-setuptools.)
 
-1. Extend the .env file
+1. Create an `http://ansible` service principal and Ansible environment variables
 
-    We'll reuse the service principal from lab1 for Ansible to authenticate to Azure's ARM layer.
+    Note that the Ansible service principal will be similar to the Hashicorp one, but uses a slight different set of environment variables.
 
-    Add the following to the bottom of the ~/.images_env file.
+    **Ansible environment variable** | **`az ad sp create-for-rbac` value** | Hashicorp environment variable
+    **AZURE_TENANT** | **tenant** | ARM_TENANT_ID
+    **AZURE_SUBSCRIPTION_ID** | **_Use your existing $subId value_** | ARM_SUBSCRIPTION_ID
+    **AZURE_CLIENT_ID** | **appId** | ARM_CLIENT_ID
+    **AZURE_SECRET** | **password** | ARM_CLIENT_SECRET
 
-    ```bash
-
-    export AZURE_TENANT=$ARM_TENANT_ID
-    export AZURE_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
-    export AZURE_CLIENT_ID=$ARM_CLIENT_ID
-    export AZURE_SECRET=$ARM_CLIENT_SECRET
-    ```
-
-    Note that the environment variables used by Ansible are slightly different to those used by Packer.
-
-1. Export the additional set of environment variables
+    We'll do this via a few commands for speed.
 
     ```bash
-    source ~/.image_env
+    name="http://ansible"
+    subId=$(az account show --output tsv --query id)
+    tenantId=$(az account show --output tsv --query tenantId)
+    secret=$(az ad sp create-for-rbac --name $name --role="Contributor" --scopes="/subscriptions/$subId" --output tsv --query password)
     ```
 
-    > There are many other options for Azure credentials, as per the [documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+    > Again, use `name="http://ansible-${subId}-sp"` and rerun the `az ad sp create-for-rbac` command if it is taken.
+
+    ```bash
+    clientId=$(az ad sp show --id $name --output tsv --query appId)
+
+    cat << EOF >> ~/.bashrc
+
+    # Environment variables for Ansible ($name)
+    export AZURE_TENANT=$tenantId
+    export AZURE_SUBSCRIPTION_ID=$subId
+    export AZURE_CLIENT_ID=$clientId
+    export AZURE_SECRET=$secret
+
+    EOF
+
+    source ~/.bashrc
+    env | grep AZURE
+    ```
+
+    There are many other options for Ansible to authenticate to Azure, as per the [documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials).
+
+    > Note that these will be listed if you run `az configure`.
 
 1. Create an *ansible.cfg* file
 
     The file should contain the following:
 
     ```text
+    [defaults]
     inventory = ~/ansible/hosts
-    roles_path = ~/ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
-    interpreter_python = auto
+    roles_path = ~/ansible/roles
+    deprecation_warnings=False
     nocows = 1
     ```
 
@@ -97,8 +118,8 @@ In this section you'll create a local Ansible area to work in, including a defau
 
     ```yaml
     [citadel]
-    65.52.158.233
-    104.47.146.216
+    13.95.141.87
+    13.95.143.192
     ```
 
     If you wanted to do that programmatically:
@@ -157,9 +178,9 @@ Below are some good commands to begin with.
     Example output:
 
     ```yaml
-    hosts (2):
-        65.52.158.233
-        104.47.146.216
+      hosts (2):
+        13.95.141.87
+        13.95.143.192
     ```
 
     This command used the *all* group.  You could have instead specified *citadel*, or any other group that you have defined in the inventory file.
@@ -175,16 +196,16 @@ Below are some good commands to begin with.
     Example output:
 
     ```text
-    65.52.158.233 | SUCCESS => {
+    13.95.141.87 | SUCCESS => {
         "ansible_facts": {
-            "discovered_interpreter_python": "/usr/bin/python3"
+            "discovered_interpreter_python": "/usr/bin/python"
         },
         "changed": false,
         "ping": "pong"
     }
-    104.47.146.216 | SUCCESS => {
+    13.95.143.192 | SUCCESS => {
         "ansible_facts": {
-            "discovered_interpreter_python": "/usr/bin/python3"
+            "discovered_interpreter_python": "/usr/bin/python"
         },
         "changed": false,
         "ping": "pong"
@@ -206,12 +227,11 @@ If you do not specify a module then ansible will default module to *command*. He
     Example output:
 
     ```text
-    104.47.146.216 | CHANGED | rc=0 >>
+    13.95.143.192 | CHANGED | rc=0 >>
     richeney
 
-    65.52.158.233 | CHANGED | rc=0 >>
+    13.95.141.87 | CHANGED | rc=0 >>
     richeney
-
     ```
 
 1. Run the same command as root
@@ -225,10 +245,10 @@ If you do not specify a module then ansible will default module to *command*. He
     Example output:
 
     ```text
-    104.47.146.216 | CHANGED | rc=0 >>
+    13.95.141.87 | CHANGED | rc=0 >>
     root
 
-    65.52.158.233 | CHANGED | rc=0 >>
+    13.95.143.192 | CHANGED | rc=0 >>
     root
 
     ```
@@ -246,10 +266,10 @@ If you do not specify a module then ansible will default module to *command*. He
     Example output:
 
     ```text
-    104.47.146.216 | CHANGED | rc=0 >>
+    13.95.143.192 | CHANGED | rc=0 >>
     /root
 
-    65.52.158.233 | CHANGED | rc=0 >>
+    13.95.141.87 | CHANGED | rc=0 >>
     /root
 
     ```
@@ -334,26 +354,26 @@ You can get an enormous number of ansible _facts_ from your hosts using the [set
     ansible all --list-hosts
     ```
 
-    I will use the host with a public IP of 65.52.158.233 in the following examples.
+    I will use the host with a public IP of 13.95.141.87 in the following examples.
 
 1. List out the facts
 
     List out all of the facts for a host:
 
     ```bash
-    ansible 65.52.158.233 -m setup | more
+    ansible 13.95.141.87 -m setup | more
     ```
 
 1. Filter on a string
 
     ```bash
-    ansible 65.52.158.233 -m setup -a "filter=ansible_distribution*"
+    ansible 13.95.141.87 -m setup -a "filter=ansible_distribution*"
     ```
 
 1. Get a subset of the output
 
     ```bash
-    ansible 65.52.158.233 -m setup -a 'gather_subset=!all,!min,network'
+    ansible 13.95.141.87 -m setup -a 'gather_subset=!all,!min,network'
     ```
 
     You can also use the [debug](https://docs.ansible.com/ansible/latest/modules/debug_module.html) tool.  This is useful for creating messages, and for showing the list of hostvars available.
@@ -361,7 +381,7 @@ You can get an enormous number of ansible _facts_ from your hosts using the [set
 1. display the available _hostvars_
 
     ```bash
-    ansible 65.52.158.233 -m debug -a 'var=hostvars'
+    ansible 13.95.141.87 -m debug -a 'var=hostvars'
     ```
 
     You should see the hostvars information from the host's perspective, but it will include information about both hosts in the inventory, including group information.

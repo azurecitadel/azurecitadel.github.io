@@ -1,19 +1,19 @@
 ---
 title: "Using Packer and Ansible"
-date: 2019-06-17
+date: 2019-10-07
 author: Richard Cheney
 category: automation
 comments: true
-featured: false
-hidden: true
+featured: true
+hidden: false
 published: true
-tags: [ "linux", "virtual machine", "images" ]
+tags: [ "virtual machine", "images", "packer", "ansible" ]
 header:
-  overlay_image: images/header/whiteboard.jpg
-  teaser: images/teaser/blueprint.png
+  overlay_image: images/header/gherkin.jpg
+  teaser: images/teaser/packeransible.png
 sidebar:
   nav: "linux"
-excerpt: Collection of labs using Packer and Ansible to automate VM image creation and manage VMs
+excerpt: Collection of labs using Packer and Ansible to automate VM image creation and management
 ---
 
 ## Introduction
@@ -30,7 +30,7 @@ The aim of these labs is to bring together some of these technologies together i
 
 Please set up your laptop as per the [automation prereqs](./prereqs) page.
 
-Not everything is needed for the image labs, but chances are that you'll dig into the other content as well!
+Not everything is needed for the Packer and Ansible labs, but chances are that you'll dig into the other content as well!
 
 ----------
 
@@ -38,23 +38,13 @@ Not everything is needed for the image labs, but chances are that you'll dig int
 
 **Lab** | **Name** | **Description**
 1 | [Packer](lab1) | Use Packer to generate a VM image
-2 | [Ansible](lab2) | Add in Ansible for declarative image creation
-3 | [Shared Image Gallery](lab3) | Use Shared Image Gallery as a target for multi-tenancy images
-4 | [Azure DevOps](lab4) | Create a build pipeline in Azure DevOps
-
-**💬 Note.** The labs are currently being built up and will become available over the coming months.
+2 | [Ansible](lab2) | Use Ansible for ad hoc VM management
+3 | [Dynamic Inventories](lab3) | Automatically generate server inventories and groups
+4 | [Ansible Playbooks](lab4) | Use Ansible playbooks to manage server groups declaratively
+5 | [Custom Roles](lab5) | Publish your own Ansible custom roles
+6 | [Shared Image Gallery](lab6) | Use Packer and Ansible together to publish to a Shared Image Gallery
+7 | [Config Management Image](lab7) | Example config management image with last mile config and managed identity
 
 ## Future Labs
 
-Creating the images is a good start, but these labs make even more sense when combined with other parts of the automation.  Here are some areas under consideration:
-
-* Using custom-init
-    * ARM deployment calling custom-init
-    * Terraform module using custom-init
-* Using Ansible for last mile configuration
-    * ARM deployment calling an Ansible playbook
-    * Terraform module calling an Ansible playbook via local-exec
-* Virtual Machine Agents
-    * Extensions in ARM
-    * Extensions in Terraform
-    * Using DeployIfNotExists in Azure Policy and Initiatives
+This set of labs is focused on linux technologies.  There is good documentation out there for using Packer and Ansible on Windows VMs, but we are open to creating a couple of Windows specific labs if you let us know in the comments.
