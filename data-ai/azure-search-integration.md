@@ -21,7 +21,7 @@ Using Azure Search with a static site like [Jekyll](https://jekyllrb.com/) prese
 # Solution Components
 The solution consists of four main elements:
 - Jekyll page (Liquid template) that outputs site as JSON
-- Azure Pipeline for pushing data into Azure Search index
+- GitHub action for pushing data into Azure Search index
 - Azure Search service
 - Search page 'client' written in jQuery & HTML5
 - App Insights for analytics and gathering telemetry 
@@ -87,36 +87,48 @@ Here's an example of one element (page) in the array:
 ```
 
 
-# Azure Pipelines - Build & Re-index
-To keep the index up to date and fresh, some sort of scheduled automation process was required. Azure Pipelines was used for this as it has the ability to run the Jekyll build tasks and is flexible enough to automate the other steps required.
+# GitHub Actions - Build & Re-index
+To keep the index up to date and fresh, some sort of scheduled automation process was required. GitHub Actions was used for this as it has the ability to run the Jekyll build tasks and is flexible enough to automate the other steps required.
 
-The automation is done as a single 'Build Pipeline' in Azure Pipelines. The pipeline was defined in YAML and is shown in full below
+The automation is done as a single action in GitHub. The workflow was defined in YAML and is shown in full below
 
 ```yaml
-trigger: none 
-pr: none
+name: Build Search Index
 
-queue:
-  name: Hosted Ubuntu 1604
+on:
+  schedule:
+    - cron:  '0 3 * * *'
 
-variables:
-  - group: citadel-shared-vars
+jobs:
+  build:
 
-steps:
-- task: UseRubyVersion@0
-  displayName: 'Use latest Ruby version'
+    runs-on: ubuntu-latest
 
-- script: 'gem install bundler -v 1.17.3'
-  displayName: 'Install bundler at version 1.17.3'
+    steps:
+    - uses: actions/checkout@v1
 
-- script: 'bundle install'
-  displayName: 'Run bundle install'
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
 
-- script: 'bundle exec jekyll build'
-  displayName: 'Run jekyll and build site'
+    - name: Install dependencies
+      run: |
+        gem install bundler -N
+        gem update bundler
 
-- script: 'curl -v -H "api-key: $(search-admin-key)" -H "Content-Type: application/json" --data-binary "@_site/site.json" -X POST "https://$(search-account).search.windows.net/indexes/$(search-index)/docs/index?api-version=2017-11-11"'
-  displayName: 'Push site.json to Azure Search'
+    - run: bundle install
+
+    - name: Build Site
+      run: bundle exec jekyll build
+
+    - name: Push site.json to Azure Search
+      run: |
+        curl -v -H "api-key: ${SEARCH_ADMIN_KEY}" -H "Content-Type: application/json" --data-binary "@_site/site.json" -X POST "https://${SEARCH_ACCOUNT}.search.windows.net/indexes/${SEARCH_INDEX}/docs/index?api-version=2017-11-11"
+      env:
+        SEARCH_ACCOUNT: ${{ secrets.SEARCH_ACCOUNT }}
+        SEARCH_ADMIN_KEY: ${{ secrets.SEARCH_ADMIN_KEY }}
+        SEARCH_INDEX: ${{ secrets.SEARCH_INDEX }}
 ```
 
 A summary of pipeline:
@@ -124,9 +136,9 @@ A summary of pipeline:
 - Run `bundle exec jekyll build` to build the site, to default output directory `_site`
 - Using curl, call the Azure Search REST API and push the JSON results (site.json) as a single POST
 
-Secrets and other variables are held in Azure Pipelines as a variable group called `citadel-shared-vars`. This variable group was created and pre-populated using the Azure DevOps Portal, so that no secrets or other variable settings needed to be hardcoded into the pipeline.
+Secrets and other variables are held in the [settings of the repository](https://github.com/azurecitadel/azurecitadel.github.io/settings/secrets) on GitHub. These are imported into environment variables when the action is run to avoid secrets or other variable settings needing to be hardcoded into the workflow.
 
-The pipeline runs on a schedule every 24 hours (and not not on repo pushes/commits as many build pipelines would) and the definition YAML stored in the Git repo that contains the site
+The workflow runs on a schedule every day at 3am (and not not on repo pushes/commits as many build pipelines would) and the definition YAML stored in the Git repo that contains the site
 
 
 # Azure Search Configuration
