@@ -1,4 +1,4 @@
-name: Pull Request Validation
+name: Validate Links and Upload to Staging
 
 on:
   pull_request:
