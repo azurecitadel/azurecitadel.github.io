@@ -96,8 +96,9 @@ The automation is done as a single action in GitHub. The workflow was defined in
 name: Build Search Index
 
 on:
-  schedule:
-    - cron:  '0 3 * * *'
+  push:
+    branches:
+    - master
 
 jobs:
   build:
@@ -138,7 +139,7 @@ A summary of pipeline:
 
 Secrets and other variables are held in the [settings of the repository](https://github.com/azurecitadel/azurecitadel.github.io/settings/secrets) on GitHub. These are imported into environment variables when the action is run to avoid secrets or other variable settings needing to be hardcoded into the workflow.
 
-The workflow runs on a schedule every day at 3am (and not not on repo pushes/commits as many build pipelines would) and the definition YAML stored in the Git repo that contains the site
+The workflow runs on any push to master in the Git repo that contains the site
 
 
 # Azure Search Configuration
