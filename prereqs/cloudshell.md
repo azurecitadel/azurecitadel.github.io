@@ -40,8 +40,8 @@ If you want a colourscheme that more closely resembles the main cloud shell colo
 ```bash
 umask 022
 mkdir --parents ~/.vim/colors
-curl -o ~/.vim/colors/cloudshell.vim https://azurecitadel.github.io/prereqs/cloudshell/cloudshell.vim
-echo > ~/.vimrc <<EOF
+curl -o ~/.vim/colors/cloudshell.vim https://azurecitadel.com/prereqs/cloudshell/cloudshell.vim
+cat > ~/.vimrc <<EOF
 syntax on
 colorscheme cloudshell
 EOF
