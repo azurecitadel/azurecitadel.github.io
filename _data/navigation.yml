@@ -38,7 +38,7 @@ sidemenu:
     - title: "Security"
       url: "/security"
     - title: "Specialised Workloads"
-      url: "/specalised"
+      url: "/specialised"
     - title: "Web & Mobile"
       url: "/web"
 #
