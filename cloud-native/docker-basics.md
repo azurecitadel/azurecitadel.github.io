@@ -364,6 +364,12 @@ We've covered a lot of the basics of Docker, from using the docker CLI client, r
 ## Cleanup
 The dockerhost VM will be incurring normal Azure VM compute costs, which can quickly add up, it's suggested you either stop (deallocate) or delete this as soon as you are done with the lab, the same goes for the container instance.
 
+To remove the Azure resources and the docker-machine reference from your cloud shell, run:
+```bash
+~/dockerlab/docker-machine rm dockerhost
+```
+This will remove the VM and associated resources *but will leave the container registry and container instance.*
+
 To remove all resources, just delete the resource group from Azure
 
 ```bash
