@@ -251,12 +251,15 @@ OK, let's configure the role to install the Azure CLI.
         name: "{{ azure_package_name }}"
         update_cache: yes
 
+    - name: Update all packages
+      apt:
+        upgrade: dist
     ...
     ```
 
     {% endraw %}
 
-    In terms of file structure this is a straight YAML list of tasks.  If you remember the format in the single playbook file then ]the tasks were indented and therefore nested within.
+    In terms of file structure this is a straight YAML list of tasks.  If you remember the format in the single playbook file then the tasks were indented and therefore nested.
 
     Note the curly braced variable names. We could have hardcoded the values, but instead we'll define those in a defaults file.
 
