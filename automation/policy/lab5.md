@@ -53,9 +53,9 @@ The resourceId for a BuiltIn policy is `/providers/Microsoft.Authorization/polic
 
 There are more BuiltIn policies, but they use the deny effect.  We'll create some Custom policies that use audit instead. I have created a few example policies using the format seen in ARM templates:
 
-* <https://github.com/richeney/azure-blueprints/blob/master/policies/auditemptytag.json>
-* <https://github.com/richeney/azure-blueprints/blob/master/policies/audittagvalues.json>
-* <https://github.com/richeney/azure-blueprints/blob/master/policies/audittagvaluepattern.json>
+* <https://github.com/richeney/arm/blob/master/policies/auditemptytag.json>
+* <https://github.com/richeney/arm/blob/master/policies/audittagvalues.json>
+* <https://github.com/richeney/arm/blob/master/policies/audittagvaluepattern.json>
 
 Note how the files contain both the rule and the parameters, as well as the values we have been specifying using the CLI switches. (We will cover the creation of custom policies declaratively (using both ARM and Terraform) in a later lab.)
 
@@ -64,7 +64,7 @@ You know how to create policies manually via the CLI, but let's use a utility sc
 1. Download the addpolicy.sh script and show the usage
 
     ```bash
-    curl -sSL https://raw.githubusercontent.com/richeney/azure-blueprints/master/scripts/addpolicy.sh --output addpolicy.sh && chmod 755 addpolicy.sh
+    curl -sSL https://raw.githubusercontent.com/richeney/arm/master/scripts/addpolicy.sh --output addpolicy.sh && chmod 755 addpolicy.sh
     ./addpolicy -h
     ```
 
@@ -73,7 +73,7 @@ You know how to create policies manually via the CLI, but let's use a utility sc
 1. Add the two custom policies
 
     ```bash
-    export URIBASE=https://raw.githubusercontent.com/richeney/azure-blueprints/master/policies
+    export URIBASE=https://raw.githubusercontent.com/richeney/arm/master/policies
     ./addpolicy.sh auditemptytag audittagvalues audittagvaluepattern
     ```
 
