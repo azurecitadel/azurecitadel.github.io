@@ -375,3 +375,5 @@ To remove all resources, just delete the resource group from Azure
 ```bash
 az group delete -g $resGrp --no-wait
 ```
+
+You may wish to remove the `dockerlab` directory from your cloud shell with `rm -rf ~/dockerlab`
