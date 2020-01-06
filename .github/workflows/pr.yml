@@ -20,7 +20,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        gem install bundler --version=2.0.2
+        gem install bundler -N
         gem update bundler
 
     - run: bundle install
