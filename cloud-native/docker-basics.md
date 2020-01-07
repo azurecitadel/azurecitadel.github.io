@@ -1,7 +1,7 @@
 ---
 title: Docker For Beginners
 category: cloud-native
-date: 2020-01-03
+date: 2020-01-07
 tags: [docker]
 
 header:
@@ -114,7 +114,7 @@ The last parameter is the image name, there's numerous ways that you can specify
 - The image will be pulled down and now reside in the local image cache
 - Docker starts the container from the local image
 
-Now go to http://**{{public-ip}}**/ in your browser to see the "Welcome to nginx!" NGINX holding page served from the container.  
+Now go to http://**{public-ip}**/ in your browser to see the "Welcome to nginx!" NGINX holding page served from the container.  
 
 Hit `ctrl+c` in the cloud shell when done to exit the container.  
 
