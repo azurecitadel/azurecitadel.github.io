@@ -133,7 +133,11 @@ resource "azurerm_app_service" "citadel" {
 
 ## Using count
 
-OK, we'll now modify the app service plan and app service stanzas to make them multi-region.  This is done by using the count meta parameter. Here is a dummy example:
+OK, we'll now modify the app service plan and app service stanzas to make them multi-region.  This is done by using the count meta parameter.
+
+> Note that the example still uses the Linux free tier.  In some subscription offers this will be limited to one per subscription.  If so then either switch to Windows, or change the sku and tier tro Standard and S1 respectively.
+
+Here is a dummy example:
 
 ```ruby
 resource "azurerm_provider_type" "terraformid" {
