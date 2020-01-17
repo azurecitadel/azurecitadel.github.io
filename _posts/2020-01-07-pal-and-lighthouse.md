@@ -15,13 +15,13 @@ As you know this site is open to all, but was principally created to help UK par
 
 The CSP subscriptions automatically confer Admin on Behalf Of (AOBO) access, plus automated recognition of the Azure Consumed Revenue (ACR) that goes through that transaction flow. But how do we recognise where partners have influence via their managed services into EA and Direct customer subscriptions? (Hint - it's Partner Admin Link!) And how does the new Azure Lighthouse service work in combination with  PAL for true multi-tenancy management for MSPs?
 
-Many of the partners that are managed out of the UK subsidiary are aware of a webinar we are running tomorrow (Wed 8th 13:00 - 14:30 GMT), and this is open to anyone that has an MPN.
+Many of the partners that are managed out of the UK subsidiary are aware of a webinar we run on Wed 8th 13:00 - 14:30 GMT, which was open to anyone that has an MPN.
 
-The session will be recorded and will have captioning and Q&A facility. I'll update this post with the recording links once I have them.
+The session was recorded including captioning!
 
-## Webinar Description
+## Webinar Recording
 
-Registration Link: <https://www.microsoftevents.com/profile/9054850>
+[Azure Lighthouse and PAL Deep Dive & AMA Recording Link](https://portal.meets4b.com/JoinCertain/Lobby?e=bcad15c9-ae7e-4983-96d2-a13b71e3f98c)
 
 Maximising your partner recognition is more important than ever. Understand how to configure Partner Admin Link for managed services and trigger recognition and incentives for your managed services.
 
@@ -31,4 +31,4 @@ Maximising your partner recognition is more important than ever. Understand how 
 * Each subscription?
 * How does it work when you have a Lighthouse delegation?
 
-We'll go into detail and take your questions in the AMA (Ask Me Anything) section.​
+We went into some detail and took your questions in the AMA (Ask Me Anything) section.​
