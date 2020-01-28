@@ -47,7 +47,7 @@ OK, let's create our repository.
 
 * Log into [GitHub](https://github.com)
 
-![New Repository](/automation/terraform/images/newRepo.png)
+![New Repository](/automation/terraform-pre012/images/newRepo.png)
 
 * Click on the `+` at the top right and 'New repository'
     * Name: **terraform-labs**
@@ -58,7 +58,7 @@ OK, let's create our repository.
 * Click on the green **Clone or download** button
 * Copy the repository URL, which should be similar to `https://github.com/<githubUsername>/terraform-labs.git`
 
-![Repository URL](/automation/terraform/images/repoUrl.png)
+![Repository URL](/automation/terraform-pre012/images/repoUrl.png)
 
 Clone the empty terraform-labs repository into vscode:
 
@@ -70,7 +70,7 @@ Clone the empty terraform-labs repository into vscode:
 * Once cloned you should see a toast notification
 * Click Open Repository
 
-![Toast Notification](/automation/terraform/images/toast.png)
+![Toast Notification](/automation/terraform-pre012/images/toast.png)
 
 Now that you have cloned the repository locally, your local repository will have an 'origin' upstream configured, which is a link back to the original GitHub repository.  As you make changes you can commit those to your local repository and then push them upstream to GitHub.
 
@@ -91,7 +91,7 @@ Let's check that process by modifying the README.md, committing the change and t
 * Once the push has completed then go back into GitHub (`https://github.com/\<githubUsername>/terraform-labs`) and refresh
 * Confirm the README file now shows your committed change
 
-![GitHub](/automation/terraform/images/github.png)
+![GitHub](/automation/terraform-pre012/images/github.png)
 
 OK, so we can save the files and run terraform commands locally as  move through the lab.  Don't forget to periodically commit your changes locally and push them up into your GitHub repository.
 
