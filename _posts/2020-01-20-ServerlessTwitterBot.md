@@ -7,7 +7,7 @@ excerpt: New lab, plus link to partner event at The Reactor
 
 ## New ServerlessTwitterBot Lab
 
-We have a nice, short lab from our very own Phil Harvey that is great as an introduction to Azure Serverless, creating a Logic App workflow withintegration points, plus how simple it is to leverage GitHub Actions for CI/CD pipelines. Most cloud literate people should rattle through it in an hour or two and it is a great introduction to those services, plus how vscode can interact with them.
+We have a nice, short lab from our very own Phil Harvey that is great as an introduction to Azure Serverless, creating a Logic App workflow with integration points, plus how simple it is to leverage GitHub Actions for CI/CD pipelines. Most cloud literate people should rattle through it in an hour or two and it is a great introduction to those services, plus how vscode can interact with them.
 
 If you want to try the lab out then you can use our [landing page](/devops/ServerlessTwitterBot/), or head straight to Phil's [repo](https://github.com/therealcodebeard/serverlesstwitterbot).
 
