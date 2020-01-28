@@ -16,6 +16,8 @@ excerpt: Nothing to see here...
 ---
 ## Introduction
 
+> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
+
 In this lab we will look at provisioners, and how they can be used to drive additional virtual machine customisation once the base image has been deployed.
 
 We will also look at templates in the context of Terraform, and how you can use variables to customise the creation of text files on your servers.

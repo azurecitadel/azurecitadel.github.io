@@ -17,6 +17,8 @@ excerpt: Understand Terraform interpolation better, use the count meta-parameter
 
 ## Introduction
 
+> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
+
 You can go a long way with Terraform making use of hard coded stanzas or defaulted variables.  If you have a simpler configuration or don't mind manually editing the files to configure the variables then this is a simple way to manage your Terraform files.  However we are looking to build up reusable IP that will work in a multi-tenanted environment, and will prove to be more robust over time as we update those building blocks.
 
 In this lab we will leverage some of the functions and meta parameters that you can use within HCL.  Some of the richer configuration examples that you see will make extensive use of these meta parameters so you will need to have an idea of what they do if you want to leverage the work of others.

@@ -17,6 +17,8 @@ excerpt: Create a GitHub repository and a core environment for the subsequent la
 
 ## Introduction
 
+> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
+
 In this lab we will build out a core environment, with some of the core networking services you would expect to see in a hub and spoke topology.  We will start using multiple .tf files, and we'll make use of GitHub as our repository so that you get the benefits of version control.
 
 This environment will be the basis of the remaining labs in the workshop, so no need to blow it away at the end of the lab!

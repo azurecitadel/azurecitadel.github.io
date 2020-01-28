@@ -17,6 +17,8 @@ excerpt: Create an Azure Kubernetes Service module that not only creates the AKS
 
 ## Introduction
 
+> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
+
 In this lab we will look at other providers that can help with our Azure deployments. One of the reasons for choosing Terraform is the extensible support for multiple providers so that the same workflow and logic can be applied to various public and private cloud platforms.
 
 The same provider extensibility also applies to supporting services and data plane configuration.  In this lab we will look at examples from Cloudflare and Datadog, and then we'll deploy an Azure Kubernetes Service (AKS) Kubernetes cluster using a combination of the AzureRM provider for the control plane and the Kubernetes provider for the data plane.

@@ -17,6 +17,8 @@ excerpt: Start using Service Principals to manage multiple subscriptions and Azu
 
 ## Introduction
 
+> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
+
 So far we have been authenticating using either Cloud Shell (labs 1 and 2) or Azure CLI (labs 3 and 4), which both work really well for one person when doing demos and a little development work.  If you see your current context (as shown by `az account show`) then that will show the authentication type (if not explicitly) and also shows the tenancy and subscription you will be deploying into.
 
 However it is not a workable approach when you have multiple admins working on an environment and it is not suitable if you are dealing with multiple tenants.

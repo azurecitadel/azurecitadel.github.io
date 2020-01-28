@@ -17,6 +17,8 @@ excerpt: Configure remote state to use Azure Blob Storage, import existing resou
 
 ## Introduction
 
+> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
+
 In this lab we will go a little deeper in understanding the Terraform state file.
 
 We will also look at how you can configure remote state to protect the local file and make it usable in an environment with multiple Terraform admins.

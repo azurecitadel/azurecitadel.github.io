@@ -17,6 +17,8 @@ excerpt: Understand how Terraform modules can be re-used as standard building bl
 
 ## Introduction
 
+> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
+
 Terraform modules are used to create reusable components, and are the key to sensibly scaling out your configurations whilst maintaining your sanity.
 
 This lab will cover:

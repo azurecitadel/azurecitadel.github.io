@@ -18,6 +18,8 @@ excerpt: Create .tf files and run through the basic Terraform workflow
 
 ## Introduction
 
+> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
+
 This is a short and simple lab to introduce you to the Terraform workflow and HCL file format.  Everything will be run within the bash version of the Azure Cloud Shell which already has Terraform installed and maintained for you, so all you need for this lab is an active Azure subscription.
 
 There are three ways of authenticating the Terraform provider to Azure:
