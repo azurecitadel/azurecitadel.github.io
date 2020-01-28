@@ -13,6 +13,8 @@ I am pleased to have another example added to the site today. Binal Shah is one 
 
 ## Networking Labs
 
+You will find the links to Binal's repo on our [networking labs](/infra/networking) landing page.
+
 Each of the labs gives a simple example that highlights a specific area, and they are individually a nice manageable size, making it easy to consume. Some of the labs build on the configuration from the preceding lab so it is recommended to take them in order.
 
 They cover both the portal and Azure CLI. You will create vNets and subnets, work with NSGs and UDRs, create transitive vNet peers, hub and spoke topology, deploy an NVA, set up a S2S VPN, plus Virtual WAN and Azure Firewall. The last few aren't covered in our older Virtual Data Centre lab so this definitely fills a gap for this site.
