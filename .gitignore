@@ -17,3 +17,4 @@ _site
 _t
 vendor/bundle
 .vscode
+*.jpg:Zone.Identifier

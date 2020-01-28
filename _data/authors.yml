@@ -43,7 +43,7 @@ Jason Cabot:
     bio      : Cloud Solution Architect.<br/>DevOps, Automation, Mobile Apps
     avatar   : images/authors/jason-c.jpg
     email    : Jason.Cabot@microsoft.com
-    twitter  : 
+    twitter  :
     github   : jasoncabot-ms
     linkedin : jasoncabot
 
@@ -172,6 +172,15 @@ Pankaj Meshram:
     twitter  : pankajmeshram04
     github   : PankajMeshramCSA
     linkedin : pankajmeshram
+
+Binal Shah:
+    name     : Binal Shah
+    bio      : Principal Cloud Solution Architect.<br/>Apps & Infra with a focus on networking security
+    avatar   : images/authors/binal-shah.jpg
+    email    : binal.shah@microsoft.com
+    twitter  :
+    github   : binals
+    linkedin : binal-shah-7445249
 
 Dave Placeholder:
     name     : Dave Placeholder

@@ -25,7 +25,7 @@
 
 - name: infra
   title: Infrastructure
-  image: /images/categories/infra.png
+  image: /images/categories/infra.jpg
   desc: "Virtual machines & networking are still the backbone of many cloud architectures"
 
 - name: iot
@@ -52,4 +52,3 @@
   title: Web & Mobile
   image: /images/categories/web.png
   desc: "Developing using web & mobile platforms using RESTful APIs. Azure platform services and API management"
-
