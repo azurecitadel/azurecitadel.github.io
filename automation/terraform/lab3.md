@@ -327,8 +327,6 @@ OK, time for you to get a little self sufficient and create a coreNetwork.tf fil
 
 This lab is designed to get you to start working with the <https://aka.ms/terraform> documentation area. Note that you'll have to **scroll past the data sources** on the left to get to the resource types.  (The data sources are used to get information about existing Azure resources.)
 
-You may also make use of the snippets that came with one of the modules. Type `CTRL-SPACE` and then type tf-azurerm_resource_group to get an example snippet copied into your file.  The snippets do not cover all resource types - for instance the azurerm_virtual_network_gateway is not currently in the set - but can be useful in quickly creating .tf files.
-
 Note that we will create a stanza for the VPN Gateway. but for the sake of time we will default to commenting it out as it takes around 45 minutes to run.
 
 * Create a coreNetwork.tf file containing:
@@ -403,7 +401,7 @@ The .gitignore exclusions should grey out the Terraform system files in the vsco
 
 We have reached the end of the lab. You have started to use GitHub and work with multiple resource groups, resources and .tf files. We also deployed a very simple set of core resources that we can leverage in the following labs.
 
-The .tf files in tour repository should look somewhat similar to those in <https://github.com/richeney/terraform-pre-012-lab3>, although you may have spread your Terraform stanzas across your .tf files differently dependent on how you have it organised.
+The .tf files in tour repository should look somewhat similar to those in <https://github.com/richeney/terraform-pre012-lab3>, although you may have spread your Terraform stanzas across your .tf files differently dependent on how you have it organised.
 
 In the next lab we will look at some of the meta parameters that you can use in Terraform to gain richer functionality.
 
