@@ -329,6 +329,8 @@ This lab is designed to get you to start working with the <https://aka.ms/terraf
 
 Note that we will create a stanza for the VPN Gateway. but for the sake of time we will default to commenting it out as it takes around 45 minutes to run.
 
+> Note that the correct resource for this is _azurerm_virtual_network_gateway_.  Don't be confused by the _azurerm_vpn_gateway_ which is used by the completely separate Virtual WAN service.  Also note that the example includes information for certificates - you can remove those blocks for the sake of this lab. 
+
 * Create a coreNetwork.tf file containing:
     * Resource Group
         * Name: **core**
