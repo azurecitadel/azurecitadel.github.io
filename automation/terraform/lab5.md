@@ -516,7 +516,7 @@ Here are the answers to the challenge part of the lab.
 
 We have reached the end of the lab. We're now using Service Principals for authentication.
 
-Your .tf files should look similar to those in <https://github.com/richeney/terraform-pre-012-lab5>.
+Your .tf files should look similar to those in <https://github.com/richeney/terraform-pre012-lab5>.
 
 If you want to explore other options in a multi-tenanted environment then take a look at the following:
 
