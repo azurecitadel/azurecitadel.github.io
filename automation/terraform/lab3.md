@@ -203,7 +203,7 @@ OK, let's start with the NSGs.  We will hardcode these from the name of the reso
 * Add in the following text
 
 ```ruby
-*/resource "azurerm_resource_group" "nsgs" {
+resource "azurerm_resource_group" "nsgs" {
    name         = "NSGs"
    location     = "${var.loc}"
    tags         = "${var.tags}"
