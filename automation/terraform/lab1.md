@@ -391,7 +391,7 @@ Resource group 'terraform-lab1' could not be found.
 
 We have reached the end of the lab. You have learned some basics about Terraform HCL files, and gone through the standard Terraform workflow for creating and destroying Azure resources.
 
-Your main.tf file should look similar to the main.tf file in <https://github.com/richeney/terraform-pre-012-lab1>.
+Your main.tf file should look similar to the main.tf file in <https://github.com/richeney/terraform-pre012-lab1>.
 
 In the next lab we will introduce variables, use multiple .tf files, and we'll add and modify to our resources. Click on the right arrow to move to the next lab.
 
