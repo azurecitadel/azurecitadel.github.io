@@ -240,7 +240,7 @@ And the naming has been formatted better, to include the count index which has b
 
 And here is the end result after running through the workflow:
 
-![Multiple Web Apps in multiple locations](/automation/terraform-pre012/images/webappsperloc.png)
+![Multiple Web Apps in multiple locations](/automation/terraform/images/webappsperloc.png)
 
 OK, so that is the basics for using copy.  For those who are familiar with copy in ARM templates then it is roughly comparable with some important differences:
 

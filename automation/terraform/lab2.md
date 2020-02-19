@@ -267,7 +267,7 @@ Note that renaming a resource group or renaming a resource will require a more d
 
 ----------
 
-![planSymbols](/automation/terraform-pre012/images/planSymbols.png)
+![planSymbols](/automation/terraform/images/planSymbols.png)
 
 ----------
 

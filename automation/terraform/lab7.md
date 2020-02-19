@@ -103,7 +103,7 @@ We'll first make a make a new GitHub repository for our modules.
 * Clone it in vscode
 * Select add Add to Workspace from the notification
 
-![Add to Workspace](/automation/terraform-pre012/images/addToWorkshop/png)
+![Add to Workspace](/automation/terraform/images/addToWorkshop/png)
 
 * Check vscode's Explorer (`CTRL`+`SHIFT`+`E`) and SCM (`CTRL`+`SHIFT`+`G`) to see how it handles multi root workspaces
 

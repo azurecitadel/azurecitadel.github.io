@@ -164,7 +164,7 @@ Using the reference to the other resource also sets an implicit dependency, so t
 
 The main Terraform workflow is shown below:
 
-![Terraform Workflow](/automation/terraform-pre012/images/terraform.png)
+![Terraform Workflow](/automation/terraform/images/terraform.png)
 
 Let's step through it.
 
