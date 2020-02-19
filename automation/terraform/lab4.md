@@ -408,7 +408,7 @@ terraform-labs$ terraform output -json | jq -r '.webapp_ids.value[] | select(end
 
 We have reached the end of the lab. You have made use of count and count.index and also been introduced to a few other areas such as ways of setting variables, using locals and defining outputs.
 
-Your .tf files should look similar to those in <https://github.com/richeney/terraform-pre-012-lab4>.
+Your .tf files should look similar to those in <https://github.com/richeney/terraform-pre012-lab4>.
 
 With everything we have looked at so far you can develop some pretty complex configurations.  In the next lab we will move away from the Coud Shell or Azure CLI authentication we have used to date, and start using Service Principals.
 
