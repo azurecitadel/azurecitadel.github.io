@@ -17,8 +17,6 @@ excerpt: Create an Azure Kubernetes Service module that not only creates the AKS
 
 ## Introduction
 
-> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
-
 In this lab we will look at other providers that can help with our Azure deployments. One of the reasons for choosing Terraform is the extensible support for multiple providers so that the same workflow and logic can be applied to various public and private cloud platforms.
 
 The same provider extensibility also applies to supporting services and data plane configuration.  In this lab we will look at examples from Cloudflare and Datadog, and then we'll deploy an Azure Kubernetes Service (AKS) Kubernetes cluster using a combination of the AzureRM provider for the control plane and the Kubernetes provider for the data plane.
@@ -180,7 +178,7 @@ az ad app show --id $appId --query requiredResourceAccess
     * Click the 'Grant admin consent for Default Directory' button
     * Click Yes on the confirmation prompt
 
-![permissions](/automation/terraform/images/permissions.png)
+![permissions](/automation/terraform-pre012/images/permissions.png)
 
 ## Create the service_principal sub-module
 
@@ -526,7 +524,7 @@ aks-default-38841400-1   Ready    agent   29m   v1.9.11
         * Use `kill %1` to kill off background job 1
 * Open the [dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/overview?namespace=default)
 
-[![dashboard](/automation/terraform/images/dashboard.png)](http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/overview?namespace=default)
+[![dashboard](/automation/terraform-pre012/images/dashboard.png)](http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/overview?namespace=default)
 
 If your browser screen is similar to the image above then all is good.
 

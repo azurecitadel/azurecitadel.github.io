@@ -16,8 +16,6 @@ excerpt: Declare and use variables, and introduce more functions
 ---
 ## Introduction
 
-> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
-
 In this lab we'll continue to use the Cloud Shell. As you move through the lab you will start to make use of variables and multiple .tf files.  We'll modify existing resources and add new resources and new providers.
 
 ## Create the terraform-lab2 resource group and storage account
@@ -269,7 +267,7 @@ Note that renaming a resource group or renaming a resource will require a more d
 
 ----------
 
-![planSymbols](/automation/terraform/images/planSymbols.png)
+![planSymbols](/automation/terraform-pre012/images/planSymbols.png)
 
 ----------
 

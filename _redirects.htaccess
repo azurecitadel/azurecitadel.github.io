@@ -16,3 +16,5 @@ Redirect /labs/portal /fundamentals/azure101/portal
 Redirect /labs/vmquickstart /fundamentals/azure101/vmquickstart
 Redirect /labs/webapps /fundamentals/azure101/webapps
 Redirect /labs/logicapps /fundamentals/azure101/logicapps
+Redirect /automation/terraform-pre012 /automation/terraform
+Redirect /automation/terraform-pre-012 /automation/terraform

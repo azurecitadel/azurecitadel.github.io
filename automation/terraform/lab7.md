@@ -17,8 +17,6 @@ excerpt: Understand how Terraform modules can be re-used as standard building bl
 
 ## Introduction
 
-> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
-
 Terraform modules are used to create reusable components, and are the key to sensibly scaling out your configurations whilst maintaining your sanity.
 
 This lab will cover:
@@ -105,7 +103,7 @@ We'll first make a make a new GitHub repository for our modules.
 * Clone it in vscode
 * Select add Add to Workspace from the notification
 
-![Add to Workspace](/automation/terraform/images/addToWorkshop/png)
+![Add to Workspace](/automation/terraform-pre012/images/addToWorkshop/png)
 
 * Check vscode's Explorer (`CTRL`+`SHIFT`+`E`) and SCM (`CTRL`+`SHIFT`+`G`) to see how it handles multi root workspaces
 

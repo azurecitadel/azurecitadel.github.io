@@ -1,10 +1,10 @@
 ---
-title: "Terraform on Azure - Pre 0.12"
-date: 2018-09-05
+title: "Terraform on Azure"
+date: 2020-02-01
 author: Richard Cheney
 category: automation
 comments: true
-featured: false
+featured: true
 hidden: false
 tags: [terraform]
 header:
@@ -12,12 +12,12 @@ header:
   teaser: images/teaser/terraformlogo.png
 sidebar:
   nav: "terraform"
-excerpt: Series of labs for Terraform on Azure (OLD VERSION)
+excerpt: Series of labs for Terraform on Azure. (Updated for Terraform 0.12.)
 ---
 
 ## Introduction
 
-> This is the older version of the Terraform labs that were created before 0.12 came along and dramatically cleaned up the HCL and enabled rich list and map support when interacting with modules. If you haven't started the labs then switch to the newer set. If you have already started with these then feel free to continue, nut please let me know if you encounter any broken links!
+> Updated for Terraform 0.12.
 
 This workshops is made up of a series of labs to take you through the fundamentals of using Terraform to manage the deployment and removal of simple Azure services, through to modularising your own standards to effectively manage large scale deployments.
 
@@ -44,7 +44,7 @@ This lab will cover a lot of ground, including
 
 For labs 1 and 2 you only need an Azure subscription as we will use the Cloud Shell.
 
-For labs 3 then please get your machine set up as per the [automation prereqs](./prereqs) page.
+For labs 3 then please get your machine set up as per the [automation prereqs](../prereqs) page.
 
 ----------
 

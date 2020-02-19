@@ -1,6 +1,6 @@
 ---
 title: "Terraform and Multi Tenanted Environments"
-date: 2018-09-05
+date: 2020-02-01
 author: Richard Cheney
 category: automation
 comments: true
@@ -16,6 +16,8 @@ excerpt: Start using Service Principals to manage multiple subscriptions and Azu
 ---
 
 ## Introduction
+
+> These labs have been updated soon for 0.12 compliant HCL. If you were working through the original set of labs then go to [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
 
 So far we have been authenticating using either Cloud Shell (labs 1 and 2) or Azure CLI (labs 3 and 4), which both work really well for one person when doing demos and a little development work.  If you see your current context (as shown by `az account show`) then that will show the authentication type (if not explicitly) and also shows the tenancy and subscription you will be deploying into.
 
@@ -410,7 +412,7 @@ As you can tell from the labs, I like to automate wherever possible. As a one of
     * Click on the Manifest in the blade
     * Scroll down to the requiredResourceAccess section
 
-![manifest](/automation/terraform-pre012/images/manifest.png)
+![manifest](/automation/terraform/images/manifest.png)
 
 > The Resource App ID for the AAD API is 00000002-0000-0000-c000-000000000000, and the permissions GUIDs are listed in this [GUID Table](https://blogs.msdn.microsoft.com/aaddevsup/2018/06/06/guid-table-for-windows-azure-active-directory-permissions/)
 
@@ -421,7 +423,7 @@ As you can tell from the labs, I like to automate wherever possible. As a one of
 * Grant admin consent for Default Directory
     * Click Yes when prompted
 
-![permissions](/automation/terraform-pre012/images/permissions.png)
+![permissions](/automation/terraform/images/permissions.png)
 
 The Terraform service principal will now be able to use the azurerm_service_principal provider type.
 

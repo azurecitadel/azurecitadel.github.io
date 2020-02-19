@@ -131,6 +131,37 @@ Ansible | Images | Microsoft | [vscoss.vscode-ansible](https://marketplace.visua
 
 Use `CTRL`+`SHIFT`+`X` to open the extensions sidebar.  You can search and install the extensions from within there.
 
+Ensure that the mauve.terraform extension is using the language server so that it will syntax check the 0.12 HCL correctly:
+
+1. Open up the Command Palette using `CTRL`+`SHIFT`+`P`
+1. Type "settings json"
+
+    ![Command Palette](/automation/prereqs/images/vscodeJsonSettings.png)
+
+1. Check that the terraform leangue server is set to `true`:
+
+    ```json
+    {
+        {
+            :
+            :
+        },
+        "terraform.indexing": {
+            "enabled": true,
+            "liveIndexing": false,
+            "delay": 500,
+            "exclude": [
+                ".terraform/**/*",
+                "**/.terraform/**/*"
+            ]
+        },
+        "terraform.languageServer": {
+            "enabled": true,
+            "args": []
+        }
+    }
+    ```
+
 **Integrated Console**
 
 For Windows Subsystem for Linux users then switch your integrated console from the default $SHELL (either Command Prompt or PowerShell) to WSL. Open the Command Palette (`CTRL`+`SHIFT`+`P`) and then search for the convenience command **Select Default Shell**.

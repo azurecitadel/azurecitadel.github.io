@@ -1,6 +1,6 @@
 ---
 title: "Terraform Provisioners"
-date: 2018-08-01
+date: 2020-02-01
 author: Richard Cheney
 category: automation
 comments: true
@@ -15,6 +15,8 @@ sidebar:
 excerpt: Nothing to see here...
 ---
 ## Introduction
+
+> These labs have been updated soon for 0.12 compliant HCL. If you were working through the original set of labs then go to [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
 
 In this lab we will look at provisioners, and how they can be used to drive additional virtual machine customisation once the base image has been deployed.
 

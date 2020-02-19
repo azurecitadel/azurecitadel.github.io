@@ -1,6 +1,6 @@
 ---
 title: "Terraform Variables"
-date: 2018-09-05
+date: 2020-02-01
 author: Richard Cheney
 category: automation
 comments: true
@@ -14,7 +14,10 @@ sidebar:
   nav: "terraform"
 excerpt: Declare and use variables, and introduce more functions
 ---
+
 ## Introduction
+
+> These labs have been updated soon for 0.12 compliant HCL. If you were working through the original set of labs then go to [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
 
 In this lab we'll continue to use the Cloud Shell. As you move through the lab you will start to make use of variables and multiple .tf files.  We'll modify existing resources and add new resources and new providers.
 
@@ -23,53 +26,73 @@ In this lab we'll continue to use the Cloud Shell. As you move through the lab y
 Let's quickly recreate the storage account in a new resource group.  You should be in your ~/terraform-labs folder. If you `cat main.tf` then it should look like the following (with a different storage account name).
 
 ```hcl
+provider "azurerm" {
+  version = "~> 1.42.0"
+}
+
 resource "azurerm_resource_group" "lab1" {
   name     = "terraform-lab1"
   location = "West Europe"
-
-  tags {
+  tags = {
     environment = "training"
   }
 }
 
 resource "azurerm_storage_account" "lab1sa" {
-  name                     = "richeneyterraformlab1"
-  resource_group_name      = "${azurerm_resource_group.lab1.name}"
-  location                 = "westeurope"
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+  name                      = "richeneyterraformlab1"
+  resource_group_name       =  azurerm_resource_group.lab1.name
+  location                  =  azurerm_resource_group.lab1.location
+  account_kind              = "StorageV2"
+  account_tier              = "Standard"
+  account_replication_type  = "LRS"
+  access_tier               = "Cool"
 }
 ```
 
-* Restart vscode (`code .`), refresh the Files pane and reselect main.tf
-* Change the Terraform resource ID (and name) for the resource group from lab1 to lab2
+## Update to lab2
+
+1. Restart vscode (`code .`), refresh the Files pane and reselect main.tf
+1. Change the Terraform resource ID (and name) for the resource group from lab1 to lab2
     * For speed, use the Replace (`CTRL`+`H`), add lab1 and lab2 in the boxes and then use `CTRL`+`ALT`+`Enter`
     * To find the command shortcuts you can click on the ellipsis (`...`) and search in the Command Palette (`F1`)
-* Save (`CTRL`+`S`)
+1. Save (`CTRL`+`S`)
 
-Your main.tf should now look similar to the code block below:
+    Your main.tf should now look similar to the code block below:
 
-```hcl
-resource "azurerm_resource_group" "lab2" {
-  name     = "terraform-lab2"
-  location = "West Europe"
+    ```hcl
+    provider "azurerm" {
+      version = "~> 1.42.0"
+    }
 
-  tags {
-    environment = "training"
-  }
-}
+    resource "azurerm_resource_group" "lab2" {
+      name     = "terraform-lab2"
+      location = "West Europe"
+      tags = {
+        environment = "training"
+      }
+    }
 
-resource "azurerm_storage_account" "lab2sa" {
-  name                     = "richeneyterraformlab2"
-  resource_group_name      = "${azurerm_resource_group.lab2.name}"
-  location                 = "westeurope"
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
-```
+    resource "azurerm_storage_account" "lab2sa" {
+      name                      = "richeneyterraformlab2"
+      resource_group_name       =  azurerm_resource_group.lab2.name
+      location                  =  azurerm_resource_group.lab2.location
+      account_kind              = "StorageV2"
+      account_tier              = "Standard"
+      account_replication_type  = "LRS"
+      access_tier               = "Cool"
+    }
+    ```
 
-Again, your storage account name should be different to the one in the example. You can now run through the terraform init, plan and apply workflow at the CLI prompt. Check it exists:
+    Again, your storage account name should be different to the one in the example.
 
+1. You can now run through the terraform init, plan and apply workflow at the CLI
+
+    ```bash
+    terraform init
+    terraform plan
+    terraform  Check it exists:
+
+1.
 <pre class="language-bash command-line" data-output="2-5" data-prompt="$"><code>
 az resource list -g terraform-lab2 -o table
 Name                   ResourceGroup    Location    Type                               Status
@@ -267,7 +290,7 @@ Note that renaming a resource group or renaming a resource will require a more d
 
 ----------
 
-![planSymbols](/automation/terraform-pre012/images/planSymbols.png)
+![planSymbols](/automation/terraform/images/planSymbols.png)
 
 ----------
 

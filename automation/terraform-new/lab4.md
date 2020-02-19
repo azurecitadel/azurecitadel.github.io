@@ -1,6 +1,6 @@
 ---
 title: "Terraform Interpolation and Count"
-date: 2018-09-05
+date: 2020-02-01
 author: Richard Cheney
 category: automation
 comments: true
@@ -16,6 +16,8 @@ excerpt: Understand Terraform interpolation better, use the count meta-parameter
 ---
 
 ## Introduction
+
+> These labs have been updated soon for 0.12 compliant HCL. If you were working through the original set of labs then go to [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
 
 You can go a long way with Terraform making use of hard coded stanzas or defaulted variables.  If you have a simpler configuration or don't mind manually editing the files to configure the variables then this is a simple way to manage your Terraform files.  However we are looking to build up reusable IP that will work in a multi-tenanted environment, and will prove to be more robust over time as we update those building blocks.
 
@@ -240,7 +242,7 @@ And the naming has been formatted better, to include the count index which has b
 
 And here is the end result after running through the workflow:
 
-![Multiple Web Apps in multiple locations](/automation/terraform-pre012/images/webappsperloc.png)
+![Multiple Web Apps in multiple locations](/automation/terraform/images/webappsperloc.png)
 
 OK, so that is the basics for using copy.  For those who are familiar with copy in ARM templates then it is roughly comparable with some important differences:
 

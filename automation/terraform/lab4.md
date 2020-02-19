@@ -17,8 +17,6 @@ excerpt: Understand Terraform interpolation better, use the count meta-parameter
 
 ## Introduction
 
-> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
-
 You can go a long way with Terraform making use of hard coded stanzas or defaulted variables.  If you have a simpler configuration or don't mind manually editing the files to configure the variables then this is a simple way to manage your Terraform files.  However we are looking to build up reusable IP that will work in a multi-tenanted environment, and will prove to be more robust over time as we update those building blocks.
 
 In this lab we will leverage some of the functions and meta parameters that you can use within HCL.  Some of the richer configuration examples that you see will make extensive use of these meta parameters so you will need to have an idea of what they do if you want to leverage the work of others.
@@ -242,7 +240,7 @@ And the naming has been formatted better, to include the count index which has b
 
 And here is the end result after running through the workflow:
 
-![Multiple Web Apps in multiple locations](/automation/terraform/images/webappsperloc.png)
+![Multiple Web Apps in multiple locations](/automation/terraform-pre012/images/webappsperloc.png)
 
 OK, so that is the basics for using copy.  For those who are familiar with copy in ARM templates then it is roughly comparable with some important differences:
 

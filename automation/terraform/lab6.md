@@ -17,8 +17,6 @@ excerpt: Configure remote state to use Azure Blob Storage, import existing resou
 
 ## Introduction
 
-> These labs are currently the original set first published towards the end of 2018, but will be updated soon for 0.12 compliant HCL. If you are working through these then bookmark [Terraform on Azure - Pre 0.12](/automation/terraform-pre012).
-
 In this lab we will go a little deeper in understanding the Terraform state file.
 
 We will also look at how you can configure remote state to protect the local file and make it usable in an environment with multiple Terraform admins.
@@ -147,13 +145,13 @@ The storage account name, container name and storage account access key are all 
 
 The "key" is the **name** of the blob file that Terraform will create within the container for the remote state.
 
-![Container Name and "Key"](/automation/terraform/images/tfstateContainer.png)
+![Container Name and "Key"](/automation/terraform-pre012/images/tfstateContainer.png)
 
 You get to choose this. I have used the subscriptionId as part of the naming convention, but essentially it needs to be unique and tied to the terraform directory you are using. If you have multiple Terraform directories for a particular subscription then you could use "terraform.tfstate" as the key (blob name) for each of them if your container name if you had a unique and different container_name for each.  (The file locking is per blob.)
 
 The access key is in the Access Keys part of the storage account blade. (The sensitive values in the screenshot have been masked by the excellent Azure Mask extension for Chrome.)
 
-![Access Key](/automation/terraform/images/tfstateAccessKey.png)
+![Access Key](/automation/terraform-pre012/images/tfstateAccessKey.png)
 
 There are a number of key benefits to using remote state, and in using Azure Storage for the remote state storage:
 
