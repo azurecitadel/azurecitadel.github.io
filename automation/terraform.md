@@ -44,7 +44,7 @@ This lab will cover a lot of ground, including
 
 For labs 1 and 2 you only need an Azure subscription as we will use the Cloud Shell.
 
-For labs 3 then please get your machine set up as per the [automation prereqs](./prereqs) page.
+For labs 3 then please get your machine set up as per the [automation prereqs](../prereqs) page.
 
 ----------
 
