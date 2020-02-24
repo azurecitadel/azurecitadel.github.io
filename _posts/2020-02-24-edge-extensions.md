@@ -2,7 +2,7 @@
 title: "Edge extensions to download Azure icons and mask sensitive data"
 author: "Richard Cheney"
 published: true
-excerpt: Cool extensions to allow you to download SVGs of the Azure Portal icons or mask sensitive in screenshots
+excerpt: Cool extensions to allow you to download SVGs of the Azure Portal icons or mask sensitive data in screenshots
 ---
 
 ## Introduction
@@ -11,7 +11,7 @@ We are big fans of the work done by the Edge team with the new Chromium based br
 
 One thing that makes it all the more useful is the extensibility.  There are a couple of useful extensions that we use regularly, and we thought it only right to share them now that Edge has gone GA. (If you prefer Chrome then they'll work there too.)
 
-Both extensions are community contributions from Microsoft and Pluralsight employees specifically designed to enhance your use of the Azure Portal. Both have been asked not to use the name "Azure" in their titles due to trademark infringement.  This has made them a little more difficult to find so here is a quick post to help their work reach a slightly wider audience.
+Both extensions are community contributions from Microsoft employees and are designed to enhance your use of the Azure Portal. Both have been asked not to use the name "Azure" in their titles due to trademark infringement.  This has made them a little more difficult to find so here is a quick post to help their work reach a slightly wider audience.
 
 ## Amazing Icon Downloader
 
