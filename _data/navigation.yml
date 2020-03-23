@@ -143,8 +143,7 @@ packeransible:
       url: "automation/packeransible/lab5"
     - title: "Shared Image Gallery"
       url: "automation/packeransible/lab6"
-    - title: "Config Management Example"
-      url: "automation/packeransible/lab7"
+
 
 policy:
   - title: "Main Page"

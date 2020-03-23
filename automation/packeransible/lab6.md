@@ -534,10 +534,12 @@ az role assignment create --role "Reader" --assignee <assignee> --scope <gallery
 
 ## Finishing Up
 
-There are many benefits in combining Ansible playbooks and roles with Packer and the Shared Image Gallery. If you need to share the images across tenants then refer to the link above.
+There are many benefits in combining Ansible playbooks and roles with Packer and the Shared Image Gallery. If you need to share the images across tenants then refer to the links above.
 
-In the next lab we will go further with some of the options. The lab will use the new ubuntu_standard baseline image as a source, and then use a combination of Ansible, Ansible Local, cloud-init and a CustomScript extension to create an image for a configuration management server and then deploy it with Managed Identity. For managed service providers this may prove useful if you plan to deploy a configuration management server into each customer tenancy.
+You have reached the end of the labs. Don't forget to clean up any resources in your subscription that you no longer need.
 
-One of the benefits of the next lab is that it will showcase some of the different configuration points that you have to control both your image creation and deployment.
+We have scratched the surface on what is possible with Azure images, Packer and Ansible, but at least now you know what tooling is available and how to drive it.  Getting good quality build pipelines for container images and putting those artifacts into a registry is a given. With Packer and Ansibled there is no reason not to do exactly the same for your VM deployments. As always, if you can decide if the time savings from automation justify the time to configure.
 
-[◄ Lab 5: Custom Roles](../lab4){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 7: Config Management Example ►](../lab7){: .btn .btn--primary}
+As a plus, Ansible is massively powerful as a VM management tool. Look out for labs on Azure Arc for Servers as we look to extend that power beyone Azure and into other clouds and on prem locations.
+
+[◄ Lab 5: Custom Roles](../lab4){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse}

@@ -43,7 +43,6 @@ Not everything is needed for the Packer and Ansible labs, but chances are that y
 4 | [Ansible Playbooks](lab4) | Use Ansible playbooks to manage server groups declaratively
 5 | [Custom Roles](lab5) | Publish your own Ansible custom roles
 6 | [Shared Image Gallery](lab6) | Use Packer and Ansible together to publish to a Shared Image Gallery
-7 | [Config Management Image](lab7) | Example config management image with last mile config and managed identity
 
 ## Future Labs
 
