@@ -5,7 +5,7 @@ date: 2019-09-05
 author: Richard Cheney
 category: automation
 comments: true
-featured: true
+featured: false
 hidden: true
 tags: [terraform]
 header:
