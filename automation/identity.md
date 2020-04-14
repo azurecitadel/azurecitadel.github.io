@@ -3,10 +3,11 @@ title: "Automation with Azure Identities "
 date: 2020-04-29
 author: Richard Cheney
 category: automation
-comments: true
-featured: false
+published: false
 hidden: true
-tags: [identity, user, service, security, principal]
+featured: false
+comments: true
+tags: [ identity, user, service, security, principal ]
 header:
   overlay_image: images/header/yellowpages.jpg
   teaser: images/teaser/identity.png
@@ -23,12 +24,12 @@ Instead we will focus on identities and how you can automate their creation and 
 
 We will cover:
 
-* RBAC roles in AAD, RBAC roles in Azure
 * Types of security principals
     * Directory Accounts
     * Guest Accounts
     * Service Principals
     * Managed Identities
+* RBAC roles in AAD, RBAC roles in Azure, API permssions for App Registrations
 * Creating service principals and storing client secrets
 * Creating custom RBAC roles
 * Adding API permissions to App Registrations
@@ -38,6 +39,8 @@ We will cover:
 ----------
 
 ## Pre-requisites
+
+You will need to be the Global Administrator for your AAD tenant to fully complete these labs. The recommendation is to get a Visual Studio subscription and ensure that you create a new tenant by using a Microsoft Live ID, e.g. richard.cheney@outlook.com.
 
 As with all of the labs in the automation category, we recommend setting up your machine as per the [automation prereqs](../prereqs) page.
 
