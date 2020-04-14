@@ -12,69 +12,86 @@ error()
   exit 1
 }
 
-yellow() { tput setaf 3; cat - ; tput sgr0; return; }
-cyan()   { tput setaf 6; cat - ; tput sgr0; return; }
-
 # Set default values
+
+export AZURE_STORAGE_AUTH_MODE=login
+
 rg=tfstate
 loc=westeurope
+prefix=$(echo ${1:-tfstate} | tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]')
 
 # Grab the Azure subscription ID
+# Doesn't have to be the same as the one accessed by a service principal
 subId=$(az account show --output tsv --query id)
 [[ -z "$subId" ]] && error "Not logged into Azure as expected."
 
-# Check for existing provider.tf
-if [[ -f backend.tf ]]
-then
-  echo "The backend.tf file exists:"
-  cat backend.tf | cyan
-  echo -n "Do you want to overwrite? [Y/n]: "
-  read ans
-  [[ "${ans:-Y}" != [Yy] ]] && exit 0
-fi
-
+# Check we're logged in as a user principal
+upn=$(az ad signed-in-user show --query userPrincipalName --output tsv)
+[[ -z "$upn" ]] && error "Must be logged in as a user principal."
 
 # Create the resource group
 
-echo "az group create --name $rg --location $loc"
-az group create --name $rg --location $loc --output jsonc
+echo "az group create --name $rg --location $loc" >&2
+az group create --name $rg --location $loc --output jsonc >&2
 [[ $? -ne 0 ]] && error "Failed to create resource group $rg"
 
-# Create the storage account
+# If the resource group already contains a storage account name starting with that prefix then use it, else create
 
-saName=tfstate$(tr -dc "[:lower:][:digit:]" < /dev/urandom | head -c 10)
-echo "az storage account create --name $saName --kind BlobStorage --access-tier hot --sku Standard_LRS --resource-group $rg --location $loc"
-az storage account create --name $saName --kind BlobStorage --access-tier hot --sku Standard_LRS --resource-group $rg --location $loc --output jsonc
-[[ $? -ne 0 ]] && error "Failed to create storage account $saName"
+saName=$(az storage account list --resource-group $rg --query "[?starts_with(name, '"${prefix}"')]|[0].name" --output tsv)
+if [[ -z "$saName" ]]
+then
+  saName=$(echo "${prefix}$(tr -dc "[:lower:][:digit:]" < /dev/urandom | head -c 10)" | cut -c 1-24)
+  echo "az storage account create --name $saName --kind StorageV2 --access-tier hot --sku Standard_LRS --resource-group $rg --location $loc" >&2
+  az storage account create --name $saName --kind StorageV2 --access-tier hot --sku Standard_LRS --resource-group $rg --location $loc --output jsonc >&2
+  [[ $? -ne 0 ]] && error "Failed to create storage account $saName"
+fi
+saId=$(az storage account show --name $saName --query id --output tsv)
 
-# Grab the storage account key
+# Become Storage Blob Data Owner on the storage account
 
-saKey=$(az storage account keys list --account-name $saName --resource-group $rg --query "[1].value" --output tsv)
-[[ $? -ne 0 ]] && error "Do not have sufficient privileges to read the storage account access key"
+echo "az role assignment create --role \"Storage Blob Data Owner\" --assignee $upn --scope $saId" >&2
+az role assignment create --role "Storage Blob Data Owner" --assignee $upn --scope $saId >&2
+[[ $? -ne 0 ]] && error "Could not add Storage Blob Data Owner role"
 
-# Create the container
+## # Grab the storage account key
+## 
+## saKey=$(az storage account keys list --account-name $saName --resource-group $rg --query "[1].value" --output tsv)
+## [[ $? -ne 0 ]] && error "Do not have sufficient privileges to read the storage account access key"
+
+# Create the container 
+
 containerName="tfstate-$subId-$(basename $(pwd))"
-echo "az storage container create --name $containerName --account-name $saName --account-key $saKey"
-az storage container create --name $containerName --account-name $saName --account-key $saKey --output jsonc
+## echo "az storage container create --name $containerName --account-name $saName --account-key $saKey" >&2
+## az storage container create --name $containerName --account-name $saName --account-key $saKey --output jsonc >&2
+echo "az storage container create --name $containerName --account-name $saName" >&2
+az storage container create --name $containerName --account-name $saName --output jsonc >&2
 [[ $? -ne 0 ]] && error "Failed to create the container $containerName"
+containerId="$saId/blobServices/default/containers/$containerName"
 
-# Creating the backend.tf
+# If there is an obvious service principal in the current directory, add Storage Blob Contributor role
+# Note that if you are setting up a data backend_remote_state then you'll need to assign Storage Blob Reader to the storage account or container
+appId=$(grep --no-messages --no-filename --max-count=1 --extended-regexp "^\s+client_id\s*=" *.tf | awk '{print $NF}' | cut -c2-37)
+appId=${appId:-ARM_CLIENT_ID}
+if [[ -n "$appId" ]]
+then
+  objectId=$(az ad sp show --id $appId --query objectId --output tsv)
+  echo "az role assignment create --role \"Storage Blob Data Contributor\" --assignee-object-id $objectId --scope $containerId" >&2
+  az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id $objectId --scope $containerId >&2
+fi
 
+# Creating the backend.tf, using OAuth access version rather than exposing the key
 
-read -r -d'\0' backend <<-EOV
-    terraform {
-	    backend "azurerm" {
-	      storage_account_name = "$saName"
-	      container_name       = "$containerName"
-	      key                  = "terraform.tfstate"
-	      access_key           = "$saKey"
-	    }
-	}
-EOV
+read -r -d'\0' backend <<EOF
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "$rg"  
+    storage_account_name = "$saName"
+    container_name       = "$containerName"
+    key                  = "terraform.tfstate"
+  }
+}
+EOF
 
-umask 027
-echo "Creating backend.tf:"
-echo "$backend" > backend.tf || error "Failed to create backend.tf"
-cat backend.tf | cyan
+echo "$backend"
 
 exit 0
