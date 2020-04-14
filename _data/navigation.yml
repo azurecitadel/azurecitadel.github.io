@@ -125,6 +125,25 @@ cli:
     - title: "Scripting in Bash"
       url: "prereqs/cli/cli-4-bash"
 
+identity:
+  - title: "Identity Main Page"
+    url: "automation/identity"
+
+  - title: "Labs"
+    children:
+    - title: "Security Principals"
+      url: "automation/identity/lab1"
+    - title: "RBAC & API Permissions"
+      url: "automation/identity/lab2"
+    - title: "Creating service principals"
+      url: "automation/identity/lab3"
+    - title: "Custom RBAC roles"
+      url: "automation/identity/lab4"
+    - title: "API permissions"
+      url: "automation/identity/lab5"
+    - title: "Managed identities"
+      url: "automation/identity/lab6"
+
 packeransible:
   - title: "Main Page"
     url: "automation/packeransible"

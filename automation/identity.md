@@ -8,7 +8,7 @@ featured: false
 hidden: true
 tags: [identity, user, service, security, principal]
 header:
-  overlay_image: images/header/yellowpages.png
+  overlay_image: images/header/yellowpages.jpg
   teaser: images/teaser/identity.png
 sidebar:
   nav: "identity"
