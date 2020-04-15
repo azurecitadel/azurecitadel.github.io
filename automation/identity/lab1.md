@@ -191,11 +191,9 @@ Example output:
 54a6edbb-5c88-421c-8e26-4721dbf4f686
 ```
 
-OK, let's go past users and groups to service principals and managed identities.
-
 ## Summary
 
-OK, so now you should have a better understanding of the security principals used for users and groups in Azure.
+OK, that covers the basics for the security principals used for users and groups in Azure.
 
 In the next section we'll look at the security principals used for applications and trusted compute.
 
