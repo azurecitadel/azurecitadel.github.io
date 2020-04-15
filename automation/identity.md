@@ -53,9 +53,10 @@ A good working knowledge of the Azure services and ecosystem has been assumed.
 ## Labs
 
 **Lab** | **Name** | **Description**
-1 | [Security Principals](lab1) | What are the different types of security principals in Azure?
-2 | [RBAC and API permissions](lab2) | What are the RBAC models for AAD, Azure and the APIs used by App Registrations? What are tokens?
-3 | [Creating service principals](lab3) | Create a service principal for Terraform, and another with its secret in Azure Key Vault
-4 | [Custom RBAC role](lab4) | Understand management and data planes and the actions available to custom RBAC definitions
-5 | [API permissions](lab5) | Enable a service principal to access the Microsoft Graph or the legacy AAD API
-6 | [Managed Identities](lab6) | Create and use managed identities
+1 | [Users & Groups](lab1) | The Azure security principals for users
+2 | [Service Principals and Managed Identities](lab2) | Security principals for applications and
+3 | [RBAC and API permissions](lab3) | What are the RBAC models for AAD, Azure and the APIs used by App Registrations? What are tokens?
+4 | [Creating service principals](lab4) | Create a service principal for Terraform, and another with its secret in Azure Key Vault
+5 | [Custom RBAC role](lab5) | Understand management and data planes and the actions available to custom RBAC definitions
+6 | [API permissions](lab6) | Enable a service principal to access the Microsoft Graph or the legacy AAD API
+7 | [Managed Identities](lab7) | Create and use managed identities

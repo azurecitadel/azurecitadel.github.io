@@ -1,5 +1,5 @@
 ---
-title: "API Permissions"
+title: "Creating Custom RBAC Roles"
 date: 2020-04-29
 author: Richard Cheney
 category: automation
@@ -7,13 +7,13 @@ published: false
 hidden: true
 featured: false
 comments: true
-tags: [ identity, api, permissions ]
+tags: [ identity, RBAC, custom, security ]
 header:
   overlay_image: images/header/yellowpages.jpg
   teaser: images/teaser/identity.png
 sidebar:
   nav: "identity"
-excerpt: Adding API permissions to an App Registration.
+excerpt: Understand management and data plane actions, how to list out the various actions available within a resource provider and how to create your own custom RBAC roles.
 ---
 
 ## Introduction
@@ -22,8 +22,8 @@ Some text.
 
 ## Summary
 
-You have used AAD to assign additional API permissions to your service principal, both manually and scripted.
+Having completed this lab you will now know how to create your own custom RBAC role definitions to augment the wide number of built in roles that are available on Azure.
 
-In the next section we'll look at trusted compute and managed identities.
+In the next section we'll look outside of Azure and see how you can permit your service principal to access other APIs such as the Microsoft Graph.
 
-[◄ Lab 4: Custom RBAC Roles](../lab4){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 6: Managed Identities ►](../lab6){: .btn .btn--primary}
+[◄ Lab 4: Service Principals](../lab4){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 6: API Permissions ►](../lab6){: .btn .btn--primary}

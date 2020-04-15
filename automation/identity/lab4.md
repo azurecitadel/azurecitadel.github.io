@@ -1,5 +1,5 @@
 ---
-title: "Creating Custom RBAC Roles"
+title: "Service Principals"
 date: 2020-04-29
 author: Richard Cheney
 category: automation
@@ -7,13 +7,13 @@ published: false
 hidden: true
 featured: false
 comments: true
-tags: [ identity, RBAC, custom, security ]
+tags: [ identity, service, principal, secret, key vault ]
 header:
   overlay_image: images/header/yellowpages.jpg
   teaser: images/teaser/identity.png
 sidebar:
   nav: "identity"
-excerpt: Understand management and data plane actions, how to list out the various actions available within a resource provider and how to create your own custom RBAC roles.
+excerpt: Create a service principal and store the secret
 ---
 
 ## Introduction
@@ -22,8 +22,8 @@ Some text.
 
 ## Summary
 
-Having completed this lab you will now know how to create your own custom RBAC role definitions to augment the wide number of built in roles that are available on Azure.
+We have gone through the scripted method to create a service principal and assign a standard built in RBAC role. We have also looked at a couple of different ways to store the secrets.
 
-In the next section we'll look outside of Azure and see how you can permit your service principal to access other APIs such as the Microsoft Graph.
+In the next section we'll look beyond the built in roles and look at how you can create your own custom RBAC role definitions.
 
-[◄ Lab 3: Service Principals](../lab3){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 5: API Permissions ►](../lab5){: .btn .btn--primary}
+[◄ Lab 3: RBAC & API Permissions](../lab3){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 5: Custom RBAC Roles ►](../lab5){: .btn .btn--primary}

@@ -1,5 +1,5 @@
 ---
-title: "Managed Identities"
+title: "API Permissions"
 date: 2020-04-29
 author: Richard Cheney
 category: automation
@@ -7,13 +7,13 @@ published: false
 hidden: true
 featured: false
 comments: true
-tags: [ managed identity, trusted compute, vm, container ]
+tags: [ identity, api, permissions ]
 header:
   overlay_image: images/header/yellowpages.jpg
   teaser: images/teaser/identity.png
 sidebar:
   nav: "identity"
-excerpt: Creating and using managed identities
+excerpt: Adding API permissions to an App Registration.
 ---
 
 ## Introduction
@@ -22,8 +22,8 @@ Some text.
 
 ## Summary
 
-In this last section we have learnt how to create or associate managed identities and then access Azure resources.
+You have used AAD to assign additional API permissions to your service principal, both manually and scripted.
 
-This is the end of the identity labs. Please let us know if you found them useful by adding to the comments below.
+In the next section we'll look at trusted compute and managed identities.
 
-[◄ Lab 5: API Permissions](../lab5){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse}
+[◄ Lab 5: Custom RBAC Roles](../lab5){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 7: Managed Identities ►](../lab7){: .btn .btn--primary}
