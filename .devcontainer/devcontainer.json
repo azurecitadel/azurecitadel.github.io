@@ -1,0 +1,17 @@
+{
+    "name": "Azure Citadel",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USERNAME": "vscode",
+        }
+    },
+	"settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "remoteUser": "vscode",
+    "extensions": [
+        "ms-vscode.azurecli",
+        "streetsidesoftware.code-spell-checker"
+	],
+}
