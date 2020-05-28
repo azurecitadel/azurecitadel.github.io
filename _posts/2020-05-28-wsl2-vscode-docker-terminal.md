@@ -1,5 +1,5 @@
 ---
-title: "Finally! WSL2 hits GA with the Windows 10 May 2020 update"
+title: "WSL2 goes GA with the Windows 10 May 2020 update"
 author: "Richard Cheney"
 published: true
 excerpt: Change up your laptop config for Ubuntu, Docker, Visual Studio Code etc.
@@ -7,9 +7,9 @@ excerpt: Change up your laptop config for Ubuntu, Docker, Visual Studio Code etc
 
 ## Introduction
 
-Those of you using the site know that we are big fans of vscode and running WSL on Windows as we have a strong focus on open source software here. And if you follow Ben Coleman, Jason Cabot, myself or the other Citadel contributors on Twitter then you know we absolutely love the direction the teams are taking in terms of open source support on Windows 10.
+Those of you using the site know that we are big fans of vscode and running WSL on Windows. We have a strong focus on open source software here and appreciate the direction the producy groups are taking in terms of open source support on Windows 10.
 
-We have been using WSL2 for a long time, suffering the frequent OS updates on the insiders fast ring just to get the benefit. WSL1 was a major innovation, but the filesystem was slow and it did not have full system call compatibility, so it was limited for development. WSL2 addressed that by including the full Linux kernel in a lightweight VM. They worked some serious magic here, with usual startup time under a second.
+We have been using WSL2 for a long time, suffering the frequent OS updates on the insiders fast ring just to get the benefit. WSL1 was a major innovation, but it was limited for development as the filesystem was slow and it did not have full system call compatibility. WSL2 addressed that by including the full Linux kernel in a lightweight VM. They worked some serious magic here, with usual startup time under a second.
 
 The [Microsoft Build](https://aka.ms/build) event has just finished as a full online event and WSL2 was prominent there, along with some of the other tooling in this post, such as Windows Terminal that has just gone GA. (If you missed [Scott Henselman's keynote](https://mybuild.microsoft.com/sessions/871ef73f-f04a-405b-a0fa-01d7433067d1?source=sessions) then that is recommended.) This post will use winget to install Windows Terminal, and then add in a few customisations. And we'll also configure both Visual Studio Code and Docker Desktop to use WSL2 as the backend.
 
@@ -25,7 +25,7 @@ Update to WSL2
 
     ![Windows Store](/images/posts/2020-05-28-distros.png)
 
-> If you are downloading a new distro from the Windows Store and you don't have a preference then I would recommend Ubuntu 20.04. This post will assume Ubuntu from this point; if you have chosen another flavour of Linux then substitute it in.
+    > If you are downloading a new distro from the Windows Store and you don't have a preference then I would recommend Ubuntu 20.04. This post will assume Ubuntu from this point; if you have chosen another flavour of Linux then substitute it in.
 
 Here are a few recommended updates for initial config, assuming your distro is Ubuntu 20.04:
 
@@ -62,19 +62,21 @@ You could download [Windows Terminal](https://aka.ms/terminal) from the store, b
     winget install terminal --rainbow
     ```
 
-Example:
+    Example:
 
-![winget install terminal](/images/posts/2020-05-28-winget.png)
+    ![winget install terminal](/images/posts/2020-05-28-winget.png)
 
-Once it is downloaded then you can close Command Prompt and open Windows Terminal instead.
+    Once it is downloaded then you can close Command Prompt and open Windows Terminal instead.
 
-* Check the drop down next to the default tab and you'll see it has auto-detected Windows PowerShell, Command Prompt, Azure Cloud Shell, plus anything else you have installed such as your WSL Linux distributions and PowerShell Core. It supports multiple tabs and multiple panes. Here's mine:
+* Check the drop down next to the default tab and you'll see it has auto-detected Windows PowerShell, Command Prompt, Azure Cloud Shell, plus anything else you have installed such as your WSL Linux distributions and PowerShell Core:
 
     ![terminal](/images/posts/2020-05-28-terminal.png)
 
+    It supports multiple tabs and multiple panes, full characters sets etc.
+
 If you are spending a lot of time in the CLI then your Windows Terminal probably deserves a little customisation, which is covered in the last section of this post.
 
-### Installing vscode and the Remote Development extension pack
+## Visual Studio Code and the Remote Development extension pack
 
 You could browse to the [vscode download page](https://aka.ms/vscode) and then follow the [install extensions](https://code.visualstudio.com/docs/editor/extension-gallery) to install the [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) extension pack, but for speed and brevity here are the PowerShell or Command Prompt commands:
 
@@ -111,29 +113,31 @@ My favourite way to open vscode is directly from Windows Terminal.
     code .
     ```
 
-This makes use of the magical integration between WSL and Windows 10 to open the application at the OS level. Note the `>< WSL: Ubuntu` at the bottom left, denoting Remote-WSL use and the distro. You can also remote via SSH, into local Containers, or the hosted containers called CodeSpaces. Check out the extensions
+    This makes use of the magical integration between WSL and Windows 10 to open the application at the OS level. Note the `>< WSL: Ubuntu` at the bottom left, denoting Remote-WSL use and the distro. You can also remote via SSH, into local Containers, or the hosted containers called CodeSpaces. Check out the extensions
 
 * Open the integrated terminal using `CTRL`+`'`
 * Run `lsb_release -a` to show the Ubuntu version
 
     ![vscode](/images/posts/2020-05-28-vscode.png)
 
-    You are now running the vscode-server backend process in WSL2.
+You are now running the vscode-server backend process in WSL2.
 
 Top tips:
 
 1. Use the local filesystem spaces in preference to anything within /mnt/c as it will run significantly faster
-1. In the File Explorer address bar, go to `\\wsl$\Ubuntu` (where Ubuntu is the name of your distro from wsl -l -v), e.g.
+1. Go to `\\wsl$\Ubuntu` in File Explorer, e.g.
 
     ![File Explorer](/images/posts/2020-05-28-explorer.png)
 
-    You can drag and drop files between and it seems to handle the EOL conversion nicely.
+    > Change Ubuntu to the name of your distro from `wsl -l -v`
+
+    You can drag and drop files between Windows and Linux filesystems and it seems to handle the EOL conversion nicely.
 
 ## Docker
 
-Running linux Docker containers on Windows using Docker Desktop has traditionally used a full VM on the Hyper-V subsystem. It has been completely separate from anything with WSL. You can now change Docker Desktop to use the [WSL2 backend](https://docs.docker.com/docker-for-windows/wsl/), which will be a lot quicker and make Docker Desktop more lightweight. This has now moved from experimental to being the default backend on systems that support WSL2.
+Running linux Docker containers on Windows using Docker Desktop has traditionally used a full VM on the Hyper-V subsystem. It has been completely separate from anything with WSL. Docker Desktop will now use the [WSL2 backend](https://docs.docker.com/docker-for-windows/wsl/) as the default backend on systems that support WSL2.  It is a lot quicker and reduces Docker Desktop's memory usage.
 
-The Docker Desktop runs in the systray. Hover over the icon to see the status in the tooltip, and right click for the context menu for settings, restart, learn etc.
+Docker Desktop runs in the systray. Hover over the icon to see the status in the tooltip, and right click for the context menu for settings, restart, learn etc.
 
 * Install Docker Desktop
     * You will need to be running the session as Administrator. (Start -> "Terminal" -> Right Click -> Run As Administrator)
@@ -146,8 +150,8 @@ The Docker Desktop runs in the systray. Hover over the icon to see the status in
     * Close the _Installation succeeded_  dialog box once deployed
 * Start Docker Desktop (from the Start Menu)
     * Wait for the systray icon to move from "Docker is starting" to "Docker Desktop is running"
-* The Get Started with Docker tutorial will start up
-    * Click on Skip Tutorial (you can always restart the tutorial via Learn on the context menu)
+* Skip the _Get Started with Docker_ tutorial
+    * You can always restart the tutorial via Learn on the context menu
 * Click on Settings
     * General: Use the WSL2 based engine is checked
     * Resources; WSL Integration: Your default distro should be checked and you can add others
@@ -227,7 +231,6 @@ Almost mandatory for WSL2's default colour scheme...
 
     ```json
     {
-        //"background" : "#0C0C0C",
         "background": "#000000",
         "black": "#151515",
         "blue": "#6A8799",
