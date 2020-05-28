@@ -7,11 +7,13 @@ excerpt: Change up your laptop config for Ubuntu, Docker, Visual Studio Code etc
 
 ## Introduction
 
-Those of you using the site know that we are big fans of vscode and running WSL on Windows. We have a strong focus on open source software here and appreciate the direction the producy groups are taking in terms of open source support on Windows 10.
+Those of you using the site know that we are big fans of vscode and running WSL on Windows. We have a strong focus on open source software here and appreciate the direction the product groups are taking in terms of open source support on Windows 10.
 
-We have been using WSL2 for a long time, suffering the frequent OS updates on the insiders fast ring just to get the benefit. WSL1 was a major innovation, but it was limited for development as the filesystem was slow and it did not have full system call compatibility. WSL2 addressed that by including the full Linux kernel in a lightweight VM. They worked some serious magic here, with usual startup time under a second.
+We have been using WSL2 for a long time, putting up with the frequent OS updates on the Insiders fast ring purely to get the benefit. (Thank goodness for the shift to the slow ring late last year.)
 
-The [Microsoft Build](https://aka.ms/build) event has just finished as a full online event and WSL2 was prominent there, along with some of the other tooling in this post, such as Windows Terminal that has just gone GA. (If you missed [Scott Henselman's keynote](https://mybuild.microsoft.com/sessions/871ef73f-f04a-405b-a0fa-01d7433067d1?source=sessions) then that is recommended.) This post will use winget to install Windows Terminal, and then add in a few customisations. And we'll also configure both Visual Studio Code and Docker Desktop to use WSL2 as the backend.
+WSL1 was a major innovation, but it was limited for development as the filesystem was slow and it did not have full system call compatibility. WSL2 addressed that by including the full Linux kernel in a lightweight VM. They have worked some serious magic here, with usual startup time under a second.
+
+WSL2 was prominent at [Microsoft Build](https://aka.ms/build) along with some of the other tooling included in this post such as Windows Terminal which has also gone GA. (If you missed [Scott Henselman's keynote](https://mybuild.microsoft.com/sessions/871ef73f-f04a-405b-a0fa-01d7433067d1?source=sessions) then that is recommended.) This post will use winget to install Windows Terminal, and then add in a few customisations. And we'll also configure both Visual Studio Code and Docker Desktop to use WSL2 as the backend.
 
 Right, let's get on with it!
 
