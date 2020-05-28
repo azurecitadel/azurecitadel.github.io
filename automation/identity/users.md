@@ -1,5 +1,5 @@
 ---
-title: "Users and Groups"
+title: "User Principals and Security Groups"
 date: 2020-04-29
 author: Richard Cheney
 category: automation
@@ -13,7 +13,7 @@ header:
   teaser: images/teaser/identity.png
 sidebar:
   nav: "identity"
-excerpt: Directory accounts, guest accounts, and security groups
+excerpt: Users and groups in Azure Active Directory with directory accounts, guest accounts, and security groups.
 ---
 
 ## Introduction
@@ -27,11 +27,13 @@ This page and the next will quickly run through the various types of security pr
 * Service Principals
 * Managed Identities
 
+> Directory and Guest Accounts are grouped together as User Principals.
+
 We will also mention object IDs, app IDs, app registrations, authentication and tokens as these will be covered in more depth in later labs
 
 ## Directory Accounts
 
-![Directory Account](/automation/identity/images/directoryAccount.png)
+<img alt="Directory Account" src="/automation/identity/images/directoryAccount.png" class="powerpoint"/>
 
 Directory accounts are the key security principals used by people as opposed to applications or trusted compute. If someone talks about user accounts or member accounts on Azure then they will be talking about an AAD directory account. If you look in the [portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) then you can see the accounts with user type of Member:
 
@@ -102,7 +104,7 @@ l return to them briefly in the next lab when we look in more detail at the auth
 
 ## Guest Accounts
 
-![Guest Account](/automation/identity/images/guestAccount.png)
+<img alt="Guest Account" src="/automation/identity/images/guestAccount.png" class="powerpoint"/>
 
 Guest users are directory accounts in one tenancy that have been invited into another tenant. In the Users screen you add on `+ New Guest User` and then invite them via the magic of AAD B2B (business to business). This is a far better way to add access to your resources for a person who works in another organisation as they will authenticate using their normal ID and authentication factors and leverage SSO, password rotation, B2B etc. effectively.
 
@@ -191,10 +193,14 @@ Example output:
 54a6edbb-5c88-421c-8e26-4721dbf4f686
 ```
 
+## References
+
+* <https://docs.microsoft.com/azure/active-directory/users-groups-roles/>
+
 ## Summary
 
 OK, that covers the basics for the security principals used for users and groups in Azure.
 
 In the next section we'll look at the security principals used for applications and trusted compute.
 
-[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Service Principals & Managed Identities ►](../lab2){: .btn .btn--primary}
+[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: Service Principals & Managed Identities ►](../sp&msi){: .btn .btn--primary}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "tenantId": "ce508eb3-7354-4fb6-9101-03b4b81f8c54",
+    "roleName": "Resource Policy Operator",
+    "description": "Allows the assignment of policies. Also the creation of policy initiatives.",
+    "permissions": [
+          {
+            "actions": [
+              "*/read",
+              "Microsoft.Authorization/policyassignments/*",
+              "Microsoft.Authorization/policySetDefinitions/read",
+              "Microsoft.Authorization/policySetDefinitions/write",
+              "Microsoft.Authorization/policyDefinitions/read",
+              "Microsoft.PolicyInsights/*",
+              "Microsoft.Support/*"
+            ]
+          }
+        ]
+  },
+  "resources": [
+    {
+      "comments": "Deploy using `az deployment tenant create --template-file <template.json>`",
+      "name": "[guid(variables('tenantId'),variables('roleName'))]",
+      "type": "Microsoft.Authorization/roleDefinitions",
+      "apiVersion": "2018-01-01-preview",
+      "properties": {
+        "roleName": "[variables('roleName')]",
+        "description": "[variables('description')]",
+        "type": "CustomRole",
+        "permissions": "[variables('permissions')]",
+        "assignableScopes": [
+          "[concat('/providers/Microsoft.Management/managementGroups/', variables('tenantId'))]"
+        ]
+      }
+    }
+  ]
+}

@@ -52,10 +52,12 @@ A good working knowledge of the Azure services and ecosystem has been assumed.
 
 ## Labs
 
+### Core Labs
+
 **Lab** | **Name** | **Description**
-1 | [Users & Groups](lab1) | The Azure security principals for users
-2 | [Service Principals & Managed Identities](lab2) | Security principals for applications and trusted compute
-3 | [RBAC & API permissions](lab3) | RBAC models for AAD & Azure, additional API permissions and tokens
+1 | [Users & Groups](users) | The Azure security principals for users
+2 | [Service Principals & Managed Identities](sp&mi) | Security principals for applications and trusted compute
+3 | [RBAC](rbac) | RBAC models for AAD & Azure
 4 | [Creating service principals](lab4) | Create a service principal for Terraform, and another using a Azure Key Vault secret
 5 | [Custom RBAC role](lab5) | Management and data plane actions in custom RBAC definitions
 6 | [API permissions](lab6) | Enable a service principal to access the Microsoft Graph or the legacy AAD API

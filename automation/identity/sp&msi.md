@@ -29,7 +29,7 @@ We will also cover object IDs, app IDs, app registrations, authentication and to
 
 ## Service Principals
 
-![Service Principals](/automation/identity/images/servicePrincipal.png)
+<img alt="Service Principal" src="/automation/identity/images/servicePrincipal.png" class="powerpoint"/>
 
 Service Principals are the security identities that we use within services or applications when you want to have specific access rather than authenticate the user and make use of their access levels.
 
@@ -41,7 +41,7 @@ Here are a few common use cases:
 
 When you create a service principal you create both an app registration and the service principal belonging to it:
 
-![App Registrations and Service Principals](/automation/identity/images/appRegistrationAndServicePrincipal.png)
+<img alt="App Registrations & Service Principals" src="/automation/identity/images/appRegistrationAndServicePrincipal.png" class="powerpoint"/>
 
 Let's quickly create a service principal on the CLI using the defaults:
 
@@ -63,8 +63,8 @@ Take a copy of the resulting JSON output. Here is an example:
 
 The command has generated a name for the service principal based on the UTC timestamp. If documentation mentions the "client ID" then that is synonymous with the appId. Likewise, the password is also known as the "client secret".
 
-> It is important to protect these credentials to prevent unauthorised access.
->
+**It is important to protect these credentials to prevent unauthorised access.**
+
 > (This service principal has already been deleted, otherwise this would be a serious security faux pas.)
 
 Open the [portal](https://portal.azure.com), search on App Registrations and then find the app you just created:
@@ -113,7 +113,7 @@ az ad sp delete --id "http://azure-cli-2020-04-15-09-02-09"
 
 ## Managed Identities
 
-![Managed Identities](/automation/identity/images/managedIdentity.png)
+<img alt="Managed Identities" src="/automation/identity/images/managedIdentity.png" class="powerpoint"/>
 
 A managed identity is actually a variant on a service principal. In the last section we said that service principals are used by applications, whereas managed identities can be used by trusted compute in Azure, such as virtual machines, virtual machine scale sets and containers.
 
@@ -123,17 +123,26 @@ Managed identities solve an age old problem in starting the trust chain. With se
 
 But how are you then starting the authentication process and validating access to read a key vault secret? We're back to square one.
 
-This is where managed identity comes in. The managed identity is granted the correct access to resources as per normal. But it is also linked to the Azure compute resource, which is trusted. Rather than getting a token from a traditional authentication process, the managed identity gets the token from the Azure Instance Metadata Service (IMDS). More detail on this in the next lab.
+This is where managed identity comes in. The managed identity is granted the correct access to resources as per normal. But it is also linked to the Azure compute resource, which is trusted.
+
+How does the managed identity acquire its token? Rather than having to use a secret or go through a traditional authentication process, the managed identity grabs the token from the Azure Instance Metadata Service (IMDS).
 
 Also be aware that there are two types of managed identity, User and System:
 
 * **System** The managed identity is linked to the lifecycle of the compute, so it is generated when the compute is instantiated, and it is removed if the compute is deleted
 * **User** The managed identity is created as a separate step, much like a standard service principal, and is then associated with compute to establish the trust relationship
 
+## References
+
+* <https://docs.microsoft.com/azure/active-directory/develop/>
+* <https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals>
+* <https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/>
+* <https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service>
+
 ## Summary
 
-OK, so now you should have a better understanding of the various service principals in Azure, the use cases they are designed for and how they differ in terms of User Principal Names, App IDs and the processes to acquire tokens.
+OK, so now you should have a better understanding of the various service principals in Azure, the basic use cases they are designed for.
 
-In the next section we'll cover the RBAC models in AAD and Azure, and then the API permissions that you can assign to your service principals.
+In the next section we'll cover the RBAC models in AAD and Azure.
 
-[◄ Lab 1: Users and Groups](../lab1){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 3: RBAC & API Permissions ►](../lab3){: .btn .btn--primary}
+[◄ Users and Groups](../users){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [RBAC ►](../rbac){: .btn .btn--primary}

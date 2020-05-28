@@ -1,0 +1,20 @@
+{
+  "Name": "Resource Policy Operator",
+  "IsCustom": true,
+  "Description": "Allows the assignment of policies. Also the creation of policy initiatives.",
+  "Actions": [
+    "*/read",
+    "Microsoft.Authorization/policyassignments/*",
+    "Microsoft.Authorization/policySetDefinitions/read",
+    "Microsoft.Authorization/policySetDefinitions/write",
+    "Microsoft.Authorization/policyDefinitions/read",
+    "Microsoft.PolicyInsights/*",
+    "Microsoft.Support/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/providers/Microsoft.Management/managementGroups/ce508eb3-7354-4fb6-9101-03b4b81f8c54"
+  ]
+}
