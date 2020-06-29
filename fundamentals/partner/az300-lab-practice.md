@@ -18,6 +18,8 @@ excerpt: Work through these exercises to prepare for the labs in the AZ-300.
 
 Practising with these examples will help to prepare you for the kind of tasks that you will find in the two AZ-300 lab sections.
 
+> ***IMPORTANT!!*** Note that there are no longer exams in the AZ-300. This page will be retained in case they return, and also so that you can test your own knowledge and get broader portal experience if you find any gaps.
+
 There are two lab sections in the exam:
 
 1. IaaS
