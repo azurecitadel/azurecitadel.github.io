@@ -1,5 +1,5 @@
 ---
-title: "Use a simple policy to stipulate the permitted regions"
+title: "Policy basics in the portal"
 date: 2019-05-21
 author: [ "Tom Wilde" ]
 category:
@@ -90,4 +90,4 @@ That concludes this lab, where we've learnt about applying a policy from the Azu
 
 Next we'll tackle another common requirement, specifying which VM SKUs are allowed to be deployed. We’ll start to automate policy creation too.
 
-[▲ Index](../#labs){: .btn .btn--inverse} [Lab 2: CLI ►](../lab2){: .btn .btn--primary}
+[▲ Index](../#labs){: .btn .btn--inverse} [CLI ►](../cli){: .btn .btn--primary}

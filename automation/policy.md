@@ -43,10 +43,9 @@ Read through the [Azure Policy](https://docs.microsoft.com/en-gb/azure/governanc
 ## Labs
 
 **Lab** | **Description**
-1 | [Simple Portal Policy](lab1) | Use a simple policy to stipulate the permitted regions
-2 | [Creating Policies via CLI](lab2) | Specify the allowed VM SKU sizes using the Azure CLI
-3 | [DeployIfNotExists](lab3) | Using a policy initiative with the DeployIfNotExist effect for automatic agent deployment and remediation
-4 | [Management Groups and Initiatives](lab4) | Step up a level using Management Groups and assigning a custom Deny initiative
-5 | [Tagging and Auditing](lab5) | Enable default resource tagging without compromising innovation using the append and audit effects
-
-**💬 Note.** Additional labs are currently being built and will become available over the coming month.
+1 | [Policy basics in the portal](basics) | Use a simple policy to stipulate the permitted regions
+2 | [Creating Policies via CLI](cli) | Specify the allowed VM SKU sizes using the Azure CLI
+3 | [Custom Policies and Aliases](custom) | Use the vscode policy extension to determine aliases and create a custom policy
+4 | [DeployIfNotExists](deploy) | Using a policy initiative with the DeployIfNotExist effect for automatic agent deployment and remediation
+5 | [Management Groups and Initiatives](mg) | Step up a level using Management Groups and assigning a custom Deny initiative
+6 | [Tagging and Auditing](tagging) | Enable default resource tagging without compromising innovation using the append and audit effects

@@ -454,4 +454,4 @@ OK, that is quite a few labs covering the creation of policies and initiatives, 
 
 In the next lab we will explore an example workflow for deploying a new tenancy in Azure, using Terraform to create the management groups, policy definitions, assignments and RBAC assignments.
 
-[◄ Lab 4: Custom](../lab4){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse}
+[◄ Management Groups](../mg){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse}

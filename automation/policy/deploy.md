@@ -1,5 +1,5 @@
 ---
-title: "Automatically deploy Azure Monitoring Agents with a policy initiative"
+title: "Automating compliance with deployIfNotExists"
 date: 2019-05-21
 author: [ "Tom Wilde" ]
 category:
@@ -126,4 +126,4 @@ az vm delete --ids $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
 
 Next we'll create some policies to ensure a resource naming policy
 
-[◄ Lab 2: CLI](../lab2){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 4: Custom Policies ►](../lab4){: .btn .btn--primary}
+[◄ Custom](../custom){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Management Groups ►](../mg){: .btn .btn--primary}

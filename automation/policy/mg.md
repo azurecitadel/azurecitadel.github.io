@@ -1,5 +1,5 @@
 ---
-title: "Creating custom policies and initiatives"
+title: "Working with management groups"
 date: 2019-05-21
 author: [ "Richard Cheney" ]
 category:
@@ -13,7 +13,7 @@ header:
   teaser: images/teaser/blueprint.png
 sidebar:
   nav: "policy"
-excerpt: Create your own custom Deny initiative
+excerpt: Create your own custom deny policies, bundle them into an initiative and apply at the management group level
 ---
 
 ## Introduction
@@ -379,4 +379,4 @@ Finally, the naming convention policy above is a little coarse and unforgiving. 
 
 In the next lab we'll explore tagging, and looking at using multiple policies to get the desired effect.  We'll then look at incorporating initiative parameters to be used by multiple policies.
 
-[◄ Lab 3: Deploy](../lab3){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Lab 5: Tagging ►](../lab5){: .btn .btn--primary}
+[◄ Deploy](../deploy){: .btn .btn--inverse} [▲ Index](../#labs){: .btn .btn--inverse} [Tagging ►](../tagging){: .btn .btn--primary}
