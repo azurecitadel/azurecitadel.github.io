@@ -151,16 +151,18 @@ policy:
 
   - title: "Labs"
     children:
-    - title: "Simple policy in the portal"
-      url: "automation/policy/lab1"
-    - title: "Limit VM SKUs using the CLI"
-      url: "automation/policy/lab2"
-    - title: "Deploy VM agents using Azure Policy"
-      url: "automation/policy/lab3"
-    - title: "Management groups, custom policies and initiatives"
-      url: "automation/policy/lab4"
-    - title: "Tagging resources with custom initiatives"
-      url: "automation/policy/lab5"
+    - title: "Policy basics"
+      url: "automation/policy/basics"
+    - title: "Limit VM SKUs"
+      url: "automation/policy/cli"
+    - title: "Custom policy & aliases"
+      url: "automation/policy/custom"
+    - title: "Deploy VM agents"
+      url: "automation/policy/deploy"
+    - title: "Management groups"
+      url: "automation/policy/mg"
+    - title: "Custom tagging initiative"
+      url: "automation/policy/tagging"
 
 terraform:
   - title: "Main Page"
