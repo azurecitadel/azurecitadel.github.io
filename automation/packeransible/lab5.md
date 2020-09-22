@@ -13,7 +13,7 @@ header:
   teaser: images/teaser/packeransible.png
 sidebar:
   nav: "packeransible"
-excerpt: Do you need a role and cannot find it in Ansible Galaxy? Follow our guide to creating your own.
+excerpt: Do you need a role, but you can't find it in Ansible Galaxy? Follow our guide to creating your own.
 ---
 
 ## Introduction
