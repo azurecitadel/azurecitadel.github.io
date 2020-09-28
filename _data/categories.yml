@@ -52,3 +52,8 @@
   title: Web & Mobile
   image: /images/categories/web.png
   desc: "Developing using web & mobile platforms using RESTful APIs. Azure platform services and API management"
+
+- name: videos
+  title: Videos
+  image: /images/categories/videos.png
+  desc: "Collection of Azure related videos."
